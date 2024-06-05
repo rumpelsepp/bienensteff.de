@@ -1,0 +1,3 @@
+{{ $gpx := .Page.Resources.GetMatch (.Get "gpx") }}
+{{ $state := printf `{"urls": ["%s"]}` $gpx.Permalink }}
+<iframe src="https://gpx.studio/?state={{ $state }}&embed" width="100%" height="500" frameborder="0" allowfullscreen><p><a href="https://gpx.studio/?state={{ $state }}"></a></p></iframe>

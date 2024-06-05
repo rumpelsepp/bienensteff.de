@@ -1,0 +1,73 @@
+baseURL = 'https://bienensteff.de'
+languageCode = 'de-de'
+title = "Imkerei BienenSteff 🐝"
+enableRobotsTXT = true
+
+[params]
+description = "Imkerei BienenSteff: Honig aus dem Münchner Grüngürtel. Keep it simple."
+
+[menus]
+[[menus.main]]
+    name = 'Home'
+    pageRef = '/'
+    weight = 10
+[[menus.main]]
+    name = 'Verkauf'
+    pageRef = '/sale'
+    weight = 20
+[[menus.main]]
+    name = 'Datenbank'
+    pageRef = '/database'
+    weight = 30
+[[menus.main]]
+    name = 'Werkzeuge'
+    pageRef = '/tools'
+    weight = 40
+[[menus.main]]
+    name = 'Über uns'
+    pageRef = '/about'
+    weight = 50
+
+[[menus.footer]]
+    name = '🔗 Flaticon'
+    URL = 'https://www.flaticon.com/free-icons/bee'
+    weight = 10
+
+[[menus.footer]]
+    name = '🔗 Instagram'
+    URL = 'https://www.instagram.com/bienensteff'
+    weight = 20
+
+[[menus.footer]]
+    name = '🔗 Schwarmrettung'
+    URL = 'https://schwarmrettung.de/'
+    weight = 30
+
+[[menus.footer]]
+    name = '🔗 Kleinanzeigen'
+    URL = 'https://www.kleinanzeigen.de/s-bestandsliste.html?userId=138484447'
+    weight = 40
+
+[[menus.footer]]
+    name = 'Impressum'
+    pageRef = '/impressum'
+    weight = 50
+
+[imaging]
+  quality = 97
+
+  [markup.goldmark.renderer]
+    unsafe = true
+
+      [markup.goldmark.extensions.typographer]
+        apostrophe = '&rsquo;'
+        disable = false
+        ellipsis = '&hellip;'
+        emDash = '&mdash;'
+        enDash = '&ndash;'
+        leftAngleQuote = '&laquo;'
+        leftDoubleQuote = '„'
+        leftSingleQuote = '‚'
+        rightAngleQuote = '&raquo;'
+        rightDoubleQuote = '”'
+        rightSingleQuote = '‘'

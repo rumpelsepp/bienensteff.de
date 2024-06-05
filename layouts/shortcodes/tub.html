@@ -1,0 +1,31 @@
+<script type="module">
+  import { TUBTable, DateTime, getDateParam } from "/js/main.js";
+
+  let date = getDateParam();
+
+  // Fill date picker with today default.
+  document.querySelector("#beetable #input #date").value = date.toISODate();
+
+  let target = document.querySelector("#beetable #output");
+  let table = new TUBTable(target, date);
+  table.render();
+</script>
+
+<div id="beetable">
+  <form action="" method="get" id="input">
+    <label for="date">Tag X</label>
+    <input name="date" type="date" id="date">
+    <input type="submit">
+  </form>
+
+  <table id="output">
+  <thead>
+    <tr>
+      <td><abbr title="Startzeitpunkt von TUB durch Teilung des Volkes">Start (X)</abbr></td>
+      <td><abbr title="Flugling hat sich jetzt gebildet und kann behandelt sowie gefüttert werden">Flugling gebildet (X+2)</abbr></td>
+      <td><abbr title="Das Brutvolk ist brutfrei und kann behandelt werden.">Brutvolk brutfrei (X+21)</abbr></td>
+      <td><abbr title="Das Brutvolk hat die erste verdeckelte Brut. Behandlungserfolg ab jetzt nicht mehr garantiert.">Brutvolk verdeckelt (X+28)</abbr></td>
+    </tr>
+  </thead>
+  </table>
+</div>

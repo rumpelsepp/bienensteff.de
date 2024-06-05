@@ -1,0 +1,18 @@
+{{ define "main" }}
+
+<main class="section">
+    <article>
+    <header>
+        <h1>{{$.Title}}</h1>
+    </header>
+        {{.Content}}
+    </article>
+
+        <ul>
+            {{ range .Paginator.Pages }}
+                <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+            {{ end }}
+        </ul>
+</main>
+
+{{ end }}
