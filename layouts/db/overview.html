@@ -1,0 +1,63 @@
+{{ define "main" }}
+
+<main class="single">
+    <article>
+    <header>
+        <h1>{{$.Title}}</h1>
+    </header>
+
+        {{.Content}}
+        
+    <hr>
+
+        
+{{ with resources.Get "/db/db.json" }}
+    {{ with . | transform.Unmarshal }}
+        {{ $data := .abf }}
+
+        <div id="beetable">
+        <table id="honeydb" class="sortable">
+        <thead>
+            <tr>
+                <th>Abfüllung</th>
+                <th>Los</th>
+                <th>Schleuderdatum</th>
+                <th>Abfülldatum</th>
+                <th><abbr title="Mindesthaltbarkeitsdatum">MHD</abbr></th>
+                <th>Sortenempfehlung</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {{ range $data }}
+            <tr>
+                <td><a href="{{ urls.AbsURL (urls.JoinPath "database" "q" (strings.ToLower .Nummer)) }}">{{ .Nummer }}</a></td>
+                <td><a href="{{ urls.AbsURL (urls.JoinPath "database" "q" (strings.ToLower .Los)) }}">{{ .Los }}</a></td>
+                <td><time datetime="{{ (time.AsTime .Schleuderdatum).Format "2006-01-02" }}">{{ (time.AsTime .Schleuderdatum).Format "02.01.2006" }}</time></td>
+                <td><time datetime="{{ (time.AsTime .Abfülldatum).Format "2006-01-02" }}">{{ (time.AsTime .Abfülldatum).Format "02.01.2006" }}</time></td>
+                <td><time datetime="{{ (time.AsTime .MHD).Format "2006-01-02" }}">{{ (time.AsTime .MHD).Format "02.01.2006" }}</time></td>
+                <td>{{ .Honigsorte }}</td>
+            </tr>
+        {{ end }}
+
+        </tbody>
+        </table>
+        </div>
+    {{ end }}
+{{ end }}
+
+<script type="module">
+  import { DateTime } from "/js/main.js";
+    
+    let table = document.querySelector("#beetable #honeydb");
+    for (let i = 1, row; row = table.rows[i]; i++) {
+        let cell = row.cells[4];
+        let rawMHD = cell.childNodes[0].dateTime;
+        let mhd = DateTime.fromISO(rawMHD);
+        
+        if (mhd.diffNow("months").toObject().months < -6) {
+            row.classList.add("expired");
+        }
+    }
+</script>
+{{ end }}

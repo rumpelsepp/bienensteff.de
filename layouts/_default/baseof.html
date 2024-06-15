@@ -2,7 +2,7 @@
 <html lang="{{ $.Site.LanguageCode }}">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   {{ if $.Params.noindex }}
   {{ end }}
   <title>{{ block "title" . }}
@@ -16,9 +16,9 @@
 {{ template "_internal/schema.html" . }}
 {{ template "_internal/twitter_cards.html" . }}
 
-{{ with .OutputFormats.Get "rss" -}}
-  {{ printf `<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
-{{ end -}}
+{{ range .AlternativeOutputFormats -}}
+  <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+{{ end }}
 
   {{ with $favicon := resources.Get "favicon.png" }}
   <link rel="icon" type="image/png" sizes="16x16" href="{{ ( $favicon.Fill "16x16" ).Permalink }}">
@@ -31,23 +31,25 @@
 
 
   {{ block "css" . }}
-    {{ $style := resources.Get "/main.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
-    <link rel="stylesheet" href="{{ $style.Permalink }}">
+    {{ $mainCSS := resources.Get "/css/main.css" | resources.Fingerprint }}
+    <link rel="stylesheet" href="{{ $mainCSS.Permalink }}">
+
+    {{ range resources.Match "/css/*.css" }}
+      {{ if (eq .Title "/css/main.css") }}
+        {{ continue }}
+      {{ end }}
+
+      {{ $css := . | resources.Fingerprint }}
+      <link rel="stylesheet" href="{{ $css.Permalink }}">
+    {{ end }}
   {{ end }}
 
   {{ block "js" . }}
     {{ with resources.Get "js/main.ts" }}
-    {{ if hugo.IsDevelopment }}
       {{ $opts := dict "format" "esm" }}
       {{ with . | js.Build $opts }}
-        <script type="module" src="{{ .RelPermalink }}"></script>
+        <script type="module" src="{{ .Permalink }}"></script>
       {{ end }}
-    {{ else }}
-      {{ $opts := dict "minify" true "format" "esm"}}
-      {{ with . | js.Build $opts }}
-        <script type="module" src="{{ .Permalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
-      {{ end }}
-    {{ end }}
     {{ end }}
   {{ end }}
 </head>
@@ -56,25 +58,30 @@
     <header class="main-header">
       {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
       {{ block "banner" . }}
-      <div class="banner-container">
-        <img id="banner" src="{{ "banner1.jpg" | absURL }}" height="230" width="920">
 
-        <div class="overlay">
-          <a href="{{ "" | absURL }}"><img id="logo" src="{{ "logo.png" | absURL }}" width="100" height="100"></a>
-          <div id="logo-text" style="text-align: center;">Imkerei<br>BienenSteff</div>
+      {{ with $banner := resources.Get "/img/banner.jpg" | resources.Fingerprint }}
+        <div class="banner-container">
+          <img id="banner" src="{{ $banner.Permalink }}" height="230" width="920">
+
+        {{ with $logo := resources.Get "/img/logo.png" | resources.Fingerprint }}
+          <div class="overlay">
+            <a href="{{ "" | absURL }}"><img id="logo" src="{{ $logo.Permalink }}" width="100" height="100"></a>
+            <div id="logo-text" style="text-align: center;">Imkerei<br>BienenSteff</div>
+          </div>
+        {{ end }}
         </div>
-      </div>
+        {{ end }}
       {{ end }}
 
       <nav aria-label="breadcrumb" class="breadcrumb">
         <ol>
           {{ range .Ancestors.Reverse }}
             <li>
-              <a href="{{ .RelPermalink }}">{{ if .IsHome }}Home{{ else }}{{ .LinkTitle }}{{ end }}</a>
+              <a href="{{ .Permalink }}">{{ if .IsHome }}Home{{ else }}{{ .LinkTitle }}{{ end }}</a>
             </li>
           {{ end }}
           <li class="active">
-            <a aria-current="page" href="{{ .RelPermalink }}">{{ if .IsHome }}Home{{ else }}{{ .LinkTitle }}{{ end }}</a>
+            <a aria-current="page" href="{{ .Permalink }}">{{ if .IsHome }}Home{{ else }}{{ .LinkTitle }}{{ end }}</a>
           </li>
         </ol>
       </nav>

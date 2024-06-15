@@ -1,67 +1,19 @@
-
 <script type="module">
-    import { Calendar, calDeLocale, calDayGridPlugin, calListPlugin } from '/js/main.js';
-  import { Beetable, DateTime, getDateParam } from "/js/main.js";
+  import { renderBeeCalendar, getDateParam } from "/js/main.js";
 
   let date = getDateParam();
-  let table = new Beetable(date);
 
-  const calendarEl = document.getElementById('calendar')
-  const calendar = new Calendar(calendarEl, {
-    plugins: [calDayGridPlugin, calListPlugin],
-    initialView: 'dayGridMonth',
-    firstDay: 1,
-    locale: calDeLocale,
-    weekNumbers: true,
-    validRange: {
-      start: table.startDate.toISO(),
-      end: table.jungbienenDate.toISO(),
-    },
-    headerToolbar: {
-      start: 'title',
-      center: '',
-      end: 'today prev,next dayGridMonth,listYear'
-    },
-    events: [
-    {
-      title: 'Start (X)',
-      start: table.startDate.toISO(),
-      allDay: true,
-    },
-    {
-      title: 'Kö schlüpft (X+11)',
-      start: table.schlupfDate.toISO(),
-      allDay: true,
-    },
-    {
-      title: 'Kö in Eilage (X+18)',
-      start: table.eilageDate.toISO(),
-      allDay: true,
-    },
-    {
-      title: 'brutfrei (X+21)',
-      start: table.brutfreiDate.toISO(),
-      allDay: true,
-    },
-    {
-      title: 'verdeckelt (X+28)',
-      start: table.verdeckeltDate.toISO(),
-      allDay: true,
-    },
-    {
-      title: 'Jungbienen (X+39)',
-      start: table.jungbienenDate.toISO(),
-      allDay: true,
-    },
-    {
-      start: table.brutfreiDate.toISO(),
-      end: table.verdeckeltDate.toISO(),
-      allDay: true,
-      display: 'background',
-    },
-  ]
-  })
-  calendar.render()
+  // Fill date picker with today default.
+  document.querySelector("#widget #input #date").value = date.toISODate();
+  renderBeeCalendar("calendar");
 </script>
 
-<div id='calendar'></div>
+<div id="widget">
+  <form action="" method="get" id="input">
+    <label for="date">Tag X</label>
+    <input name="date" type="date" id="date">
+    <input type="submit">
+  </form>
+
+  <div id="calendar"></div>
+</div>

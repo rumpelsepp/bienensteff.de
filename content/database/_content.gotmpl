@@ -1,0 +1,18 @@
+{{ with resources.Get "/db/db.json" }}
+    {{ with . | transform.Unmarshal }}
+        {{ range $k, $v := . }}
+            {{ range $row := $v }}
+                {{ $page := dict
+                    "kind" "page"
+                    "layout" "single"
+                    "type" "db"
+                    "outputs" (slice "html" "json")
+                    "params" $row
+                    "path" (urls.JoinPath "q" .Nummer)
+                    "title" .Nummer
+                }}
+                {{ $.AddPage $page }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+{{ end }}

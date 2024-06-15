@@ -11,10 +11,11 @@
                     {{ $img := "" }}
 
                     {{- $images := .Page.Resources.ByType "image" -}}
-                    {{- $featured := $images.GetMatch "*feature*" -}}
+                    {{- $featured := $images.GetMatch .Params.feature -}}
+                    {{- if not $featured }}{{- $featured = $images.GetMatch "*feature*" -}}{{ end -}}
                     {{- if not $featured }}{{ $featured = $images.GetMatch "{*cover*,*thumbnail*}" }}{{ end -}}
                     {{- with $featured -}}
-                    {{ $img = $featured.Fit "400x200 webp" }}
+                        {{ $img = $featured.Fit "400x200 webp" }}
                     {{- end -}}
 
                     {{ if not (eq $img "") }}
@@ -31,10 +32,10 @@
                             </header>
 
                             {{ if .Truncated }}
-                            {{ .Summary}}
-                            <a href="{{.Permalink}}">[…]</a>
+                                {{ .Summary }}
+                                <a href="{{.Permalink}}">[…]</a>
                             {{ else }}
-                            <p>{{ .Summary }}</p>
+                                <p>{{ .Summary }}</p>
                             {{ end }}
                         </div>
                     </div>
@@ -45,14 +46,16 @@
                                 <p><time datetime="{{.Date.Format "2006-01-02"}}">{{.Date.Format "02.01.2006"}}</time></p>
                             </hgroup>
 
-                            <p>{{ .Summary }} {{ if .Truncated }}<a href="{{.Permalink}}">[…]</a>{{ end }}</p>
+                            {{ partial "tags-div.html" . }}
                         </header>
-                    {{ partial "tags-div.html" . }}
-                    {{ end }}
 
-                <footer>
-                    <a href="{{.Permalink}}">zum Artikel</a>
-                </footer>
+                            {{ if .Truncated }}
+                                {{ .Summary }}
+                                <a href="{{.Permalink}}">[…]</a>
+                            {{ else }}
+                                <p>{{ .Summary }}</p>
+                            {{ end }}
+                    {{ end }}
             </article>
             {{ end }}
         </div>

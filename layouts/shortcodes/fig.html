@@ -17,7 +17,6 @@
     {{ else if (eq $orientation 8) }}
         {{ $img = $img.Resize (printf "%dx%d r90" $img.Height $img.Width) }}
     {{ end }}
-
 {{ else }}
     {{ $img = $img.Fit $size }}
 {{ end }}
@@ -49,11 +48,11 @@
             </p>
             {{- end }}
 
-            <!-- {{ with $img.Exif}}
+            {{ with $img.Exif}}
                 {{ with .Date }}{{ . }}{{ end }}
                 {{ with .Lat }}{{ . }}{{ end }}
                 {{ with .Long }}{{ . }}{{ end }}
-            {{- end }} -->
+            {{- end }}
         </figcaption>
     {{- end }}
 </figure>

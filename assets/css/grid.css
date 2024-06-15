@@ -1,0 +1,95 @@
+.container {
+    display: flex;
+
+    @media only screen and (min-width: 576px) {
+        .ninety {
+            width: 90%;
+        }
+
+        .eighty {
+            width: 80%;
+        }
+
+        .seventy {
+            width: 70%;
+        }
+
+        .sixty {
+            width: 60%;
+        }
+
+        .fifty {
+            width: 50%;
+        }
+
+        .forty {
+            width: 40%;
+        }
+
+        .thirty {
+            width: 30%;
+        }
+
+        .twenty {
+            width: 20%;
+        }
+
+        .ten {
+            width: 10%;
+        }
+    }
+}
+
+.container-non-responsive {
+    display: flex;
+
+    .ninety {
+        width: 90%;
+    }
+
+    .eighty {
+        width: 80%;
+    }
+
+    .seventy {
+        width: 70%;
+    }
+
+    .sixty {
+        width: 60%;
+    }
+
+    .fifty {
+        width: 50%;
+    }
+
+    .forty {
+        width: 40%;
+    }
+
+    .thirty {
+        width: 30%;
+    }
+
+    .twenty {
+        width: 20%;
+    }
+
+    .ten {
+        width: 10%;
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-end {
+    justify-content: flex-end;
+}
+
+.flex-column {
+    @media only screen and (max-width: 576px) {
+        flex-direction: column;
+    }
+}

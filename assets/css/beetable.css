@@ -1,0 +1,17 @@
+#beetable {
+    overflow-x: auto;
+
+    thead {
+        font-weight: bold;
+    }
+
+    .problem {
+        color: red;
+    }
+
+    label,
+    input {
+        display: block;
+        margin-bottom: 0.5em;
+    }
+}
