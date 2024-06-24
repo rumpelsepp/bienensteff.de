@@ -19,7 +19,6 @@ pylsp-mypy = "^0.6"
 pylsp-rope = "^0.1"
 python-lsp-server = "^1.5"
 ruff = "^0.4.0"
-python-lsp-ruff = ">=1.6,<3.0"
 
 [tool.mypy]
 strict = true

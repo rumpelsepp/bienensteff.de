@@ -6,9 +6,9 @@ layout: single
 
 ## Honig 🍯
 
-**Aktuell ist die Ernte von 2023 leider ausverkauft. Die nächste Ernte wird vorraussichtlich Juni 2024 stattfinden.**
+**Die Frühjahrstrachternte von 2024 ist ab sofort bei unseren Verkaufsstellen erhältlich!**
 
-{{< fig src="sommerhonig-2023.jpg" size="400x400 jpg" overlay="Ausverkauft!" >}}
+{{< fig src="frühjahrstracht-2024.jpg" size="400x400 jpg" >}}
 
 Unser Honig wird unter der Marke [Echter Deutscher Honig](https://deutscherimkerbund.de/226-Echter_Deutscher_Honig) vertrieben.
 Seit 2023 werden Proben aus allen unseren Honigchargen für eine genauere Sortenbestimmung zur Laboranalyse eingesendet.

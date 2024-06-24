@@ -8,8 +8,8 @@
                     "type" "db"
                     "outputs" (slice "html" "json")
                     "params" $row
-                    "path" (urls.JoinPath "q" .Nummer)
-                    "title" .Nummer
+                    "path" (urls.JoinPath "q" .id)
+                    "title" .id
                 }}
                 {{ $.AddPage $page }}
             {{ end }}

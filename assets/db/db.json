@@ -1,499 +1,822 @@
 {
-    "lose": [
+    "buckets": [
         {
-            "Nummer": "L-2022-01",
-            "Closed": "x",
-            "Schleuderdatum": "2022-06-09T00:00:00",
-            "Gewicht": "15,50 kg",
-            "Gewicht_(abf\u00fcllbar)": "0,00 kg",
-            "Lagerbestand_(Verkauf)": "0,00 kg",
-            "Verschnitt": "0,00 kg",
-            "Honigsorte": "Fr\u00fchjahrstrachthonig",
-            "Kommentar": "Eimer noch nicht getracked",
-            "Abf\u00fcllungen": [
-                "A-2022-01",
-                "A-2022-02"
-            ],
-            "Eimer": [
+            "id": "E-2022-01",
+            "extraction_id": "Z-2022-01",
+            "batch_id": "L-2022-01",
+            "location": "AISEC",
+            "weight": 15.5,
+            "moisture": 0.18100000000000002,
+            "finished": 1,
+            "comment": ""
+        },
+        {
+            "id": "E-2022-02",
+            "extraction_id": "Z-2022-02",
+            "batch_id": "L-2022-02",
+            "location": "AISEC",
+            "weight": 13.0,
+            "moisture": 0.18,
+            "finished": 1,
+            "comment": ""
+        },
+        {
+            "id": "E-2023-01",
+            "extraction_id": "Z-2023-01",
+            "batch_id": "L-2023-01",
+            "location": "AISEC",
+            "weight": 9.5,
+            "moisture": 0.171,
+            "finished": 1,
+            "comment": ""
+        },
+        {
+            "id": "E-2023-02",
+            "extraction_id": "Z-2023-01",
+            "batch_id": "L-2023-01",
+            "location": "AISEC",
+            "weight": 9.6,
+            "moisture": 0.171,
+            "finished": 1,
+            "comment": ""
+        },
+        {
+            "id": "E-2023-03",
+            "extraction_id": "Z-2023-01",
+            "batch_id": "L-2023-01",
+            "location": "AISEC",
+            "weight": 7.5,
+            "moisture": 0.174,
+            "finished": 1,
+            "comment": ""
+        },
+        {
+            "id": "E-2023-04",
+            "extraction_id": "Z-2023-01",
+            "batch_id": "L-2023-01",
+            "location": "WIEDE",
+            "weight": 10.1,
+            "moisture": 0.17600000000000002,
+            "finished": 1,
+            "comment": ""
+        },
+        {
+            "id": "E-2023-05",
+            "extraction_id": "Z-2023-01",
+            "batch_id": "L-2023-01",
+            "location": "WIEDE",
+            "weight": 6.8,
+            "moisture": 0.17800000000000002,
+            "finished": 1,
+            "comment": ""
+        },
+        {
+            "id": "E-2023-06",
+            "extraction_id": "Z-2023-02",
+            "batch_id": "L-2023-02",
+            "location": "WIEDE",
+            "weight": 10.1,
+            "moisture": 0.17,
+            "finished": 1,
+            "comment": ""
+        },
+        {
+            "id": "E-2023-07",
+            "extraction_id": "Z-2023-02",
+            "batch_id": "L-2023-02",
+            "location": "WIEDE",
+            "weight": 9.6,
+            "moisture": 0.185,
+            "finished": 1,
+            "comment": ""
+        },
+        {
+            "id": "E-2023-08",
+            "extraction_id": "Z-2023-02",
+            "batch_id": "L-2023-02",
+            "location": "WIEDE",
+            "weight": 9.4,
+            "moisture": 0.18,
+            "finished": 1,
+            "comment": ""
+        },
+        {
+            "id": "E-2023-09",
+            "extraction_id": "Z-2023-02",
+            "batch_id": "L-2023-02",
+            "location": "WIEDE",
+            "weight": 10.8,
+            "moisture": 0.171,
+            "finished": 1,
+            "comment": ""
+        },
+        {
+            "id": "E-2023-10",
+            "extraction_id": "Z-2023-02",
+            "batch_id": "L-2023-02",
+            "location": "AISEC",
+            "weight": 9.9,
+            "moisture": 0.171,
+            "finished": 1,
+            "comment": ""
+        },
+        {
+            "id": "E-2023-11",
+            "extraction_id": "Z-2023-02",
+            "batch_id": "L-2023-02",
+            "location": "AISEC",
+            "weight": 9.6,
+            "moisture": 0.16899999999999998,
+            "finished": 1,
+            "comment": ""
+        },
+        {
+            "id": "E-2024-01",
+            "extraction_id": "Z-2024-01",
+            "batch_id": "L-2024-01",
+            "location": "",
+            "weight": 14.0,
+            "moisture": 0.17,
+            "finished": 1,
+            "comment": ""
+        },
+        {
+            "id": "E-2024-02",
+            "extraction_id": "Z-2024-01",
+            "batch_id": "L-2024-01",
+            "location": "",
+            "weight": 15.7,
+            "moisture": 0.18100000000000002,
+            "finished": 1,
+            "comment": ""
+        },
+        {
+            "id": "E-2024-03",
+            "extraction_id": "Z-2024-01",
+            "batch_id": "L-2024-01",
+            "location": "",
+            "weight": 14.0,
+            "moisture": 0.18100000000000002,
+            "finished": 1,
+            "comment": ""
+        },
+        {
+            "id": "E-2024-04",
+            "extraction_id": "Z-2024-01",
+            "batch_id": "L-2024-01",
+            "location": "",
+            "weight": 14.0,
+            "moisture": 0.172,
+            "finished": 1,
+            "comment": ""
+        },
+        {
+            "id": "E-2024-05",
+            "extraction_id": "Z-2024-01",
+            "batch_id": "L-2024-01",
+            "location": "",
+            "weight": 14.0,
+            "moisture": 0.171,
+            "finished": 0,
+            "comment": ""
+        },
+        {
+            "id": "E-2024-06",
+            "extraction_id": "Z-2024-01",
+            "batch_id": "L-2024-01",
+            "location": "",
+            "weight": 14.2,
+            "moisture": 0.17,
+            "finished": 0,
+            "comment": ""
+        },
+        {
+            "id": "E-2024-07",
+            "extraction_id": "Z-2024-01",
+            "batch_id": "L-2024-01",
+            "location": "",
+            "weight": 13.7,
+            "moisture": 0.171,
+            "finished": 0,
+            "comment": ""
+        },
+        {
+            "id": "E-2024-08",
+            "extraction_id": "Z-2024-01",
+            "batch_id": "",
+            "location": "",
+            "weight": 12.8,
+            "moisture": 0.182,
+            "finished": 1,
+            "comment": "Gemischt mit Honig aus Z-2024-02"
+        },
+        {
+            "id": "E-2024-09",
+            "extraction_id": "Z-2024-02",
+            "batch_id": "",
+            "location": "",
+            "weight": 14.8,
+            "moisture": 0.215,
+            "finished": 1,
+            "comment": "Gemischt mit Honig aus Z-2024-01"
+        },
+        {
+            "id": "E-2024-10",
+            "extraction_id": "Z-2024-02",
+            "batch_id": "",
+            "location": "",
+            "weight": 14.8,
+            "moisture": 0.20199999999999999,
+            "finished": 1,
+            "comment": "Gemischt mit Honig aus Z-2024-01"
+        },
+        {
+            "id": "E-2024-11",
+            "extraction_id": "Z-2024-02",
+            "batch_id": "L-2024-02",
+            "location": "",
+            "weight": 14.5,
+            "moisture": 0.22,
+            "finished": 0,
+            "comment": ""
+        },
+        {
+            "id": "E-2024-12",
+            "extraction_id": "Z-2024-02",
+            "batch_id": "L-2024-02",
+            "location": "",
+            "weight": 13.5,
+            "moisture": 0.22,
+            "finished": 0,
+            "comment": ""
+        },
+        {
+            "id": "E-2024-13",
+            "extraction_id": "Z-2024-02",
+            "batch_id": "",
+            "location": "",
+            "weight": 14.0,
+            "moisture": 0.23,
+            "finished": 0,
+            "comment": "wieder verf\u00fcttert"
+        },
+        {
+            "id": "E-2024-14",
+            "extraction_id": "Z-2024-02",
+            "batch_id": "",
+            "location": "",
+            "weight": 14.0,
+            "moisture": 0.23,
+            "finished": 0,
+            "comment": "wieder verf\u00fcttert"
+        },
+        {
+            "id": "E-2024-15",
+            "extraction_id": "",
+            "batch_id": "L-2024-03",
+            "location": "",
+            "weight": 13.0,
+            "moisture": 0.19,
+            "finished": 1,
+            "comment": "Mischung aus Z-2024-01 und Z-2024-02 um Wassergehalt zu korrigieren"
+        },
+        {
+            "id": "E-2024-16",
+            "extraction_id": "",
+            "batch_id": "L-2024-03",
+            "location": "",
+            "weight": 15.0,
+            "moisture": 0.19,
+            "finished": 1,
+            "comment": "Mischung aus Z-2024-01 und Z-2024-02 um Wassergehalt zu korrigieren"
+        },
+        {
+            "id": "E-2024-17",
+            "extraction_id": "",
+            "batch_id": "L-2024-03",
+            "location": "",
+            "weight": 14.4,
+            "moisture": 0.19,
+            "finished": 1,
+            "comment": "Mischung aus Z-2024-01 und Z-2024-02 um Wassergehalt zu korrigieren"
+        }
+    ],
+    "extractions": [
+        {
+            "id": "Z-2022-01",
+            "date": "2022-06-09T00:00:00",
+            "weight": 15.5,
+            "comment": "Eimer noch nicht getracked",
+            "buckets": [
                 "E-2022-01"
+            ],
+            "batches": [
+                "L-2022-01"
             ]
         },
         {
-            "Nummer": "L-2022-02",
-            "Closed": "x",
-            "Schleuderdatum": "2022-07-28T00:00:00",
-            "Gewicht": "13,00 kg",
-            "Gewicht_(abf\u00fcllbar)": "0,00 kg",
-            "Lagerbestand_(Verkauf)": "0,00 kg",
-            "Verschnitt": "0,00 kg",
-            "Honigsorte": "Sommertrachthonig",
-            "Kommentar": "Eimer noch nicht getracked",
-            "Abf\u00fcllungen": [
-                "A-2022-03",
-                "A-2022-04"
-            ],
-            "Eimer": [
+            "id": "Z-2022-02",
+            "date": "2022-07-28T00:00:00",
+            "weight": 13.0,
+            "comment": "Eimer noch nicht getracked",
+            "buckets": [
                 "E-2022-02"
+            ],
+            "batches": [
+                "L-2022-02"
             ]
         },
         {
-            "Nummer": "L-2023-01",
-            "Closed": "x",
-            "Schleuderdatum": "2023-06-17T00:00:00",
-            "Gewicht": "26,60 kg",
-            "Gewicht_(abf\u00fcllbar)": "0,00 kg",
-            "Lagerbestand_(Verkauf)": "0,00 kg",
-            "Verschnitt": "0,10 kg",
-            "Honigsorte": "Fr\u00fchjahrstrachthonig",
-            "Kommentar": "AISEC",
-            "Abf\u00fcllungen": [
-                "A-2023-03",
-                "A-2023-08"
-            ],
-            "Eimer": [
+            "id": "Z-2023-01",
+            "date": "2023-06-17T00:00:00",
+            "weight": 43.5,
+            "comment": "",
+            "buckets": [
                 "E-2023-01",
                 "E-2023-02",
-                "E-2023-03"
-            ]
-        },
-        {
-            "Nummer": "L-2023-02",
-            "Closed": "",
-            "Schleuderdatum": "2023-06-17T00:00:00",
-            "Gewicht": "16,90 kg",
-            "Gewicht_(abf\u00fcllbar)": "1,20 kg",
-            "Lagerbestand_(Verkauf)": "0,00 kg",
-            "Verschnitt": "0,00 kg",
-            "Honigsorte": "Fr\u00fchjahrstrachthonig",
-            "Kommentar": "WIEDE",
-            "Abf\u00fcllungen": [
-                "A-2023-01",
-                "A-2023-02"
-            ],
-            "Eimer": [
+                "E-2023-03",
                 "E-2023-04",
                 "E-2023-05"
+            ],
+            "batches": [
+                "L-2023-01"
             ]
         },
         {
-            "Nummer": "L-2023-03",
-            "Closed": "",
-            "Schleuderdatum": "2023-07-23T00:00:00",
-            "Gewicht": "59,40 kg",
-            "Gewicht_(abf\u00fcllbar)": "1,50 kg",
-            "Lagerbestand_(Verkauf)": "0,00 kg",
-            "Verschnitt": "0,00 kg",
-            "Honigsorte": "Lindenbl\u00fctenhonig",
-            "Kommentar": "",
-            "Abf\u00fcllungen": [
-                "A-2023-04",
-                "A-2023-05",
-                "A-2023-06",
-                "A-2023-07"
-            ],
-            "Eimer": [
+            "id": "Z-2023-02",
+            "date": "2023-07-23T00:00:00",
+            "weight": 59.4,
+            "comment": "",
+            "buckets": [
                 "E-2023-06",
                 "E-2023-07",
                 "E-2023-08",
                 "E-2023-09",
                 "E-2023-10",
                 "E-2023-11"
+            ],
+            "batches": [
+                "L-2023-02"
             ]
         },
         {
-            "Nummer": "L-2024-01",
-            "Closed": "",
-            "Schleuderdatum": "2024-06-02T00:00:00",
-            "Gewicht": "112,00 kg",
-            "Gewicht_(abf\u00fcllbar)": "",
-            "Lagerbestand_(Verkauf)": "",
-            "Verschnitt": "",
-            "Honigsorte": "",
-            "Kommentar": ""
+            "id": "Z-2024-01",
+            "date": "2024-06-02T00:00:00",
+            "weight": 112.4,
+            "comment": "",
+            "buckets": [
+                "E-2024-01",
+                "E-2024-02",
+                "E-2024-03",
+                "E-2024-04",
+                "E-2024-05",
+                "E-2024-06",
+                "E-2024-07",
+                "E-2024-08"
+            ],
+            "batches": [
+                "L-2024-01"
+            ]
+        },
+        {
+            "id": "Z-2024-02",
+            "date": "2024-06-17T00:00:00",
+            "weight": 85.6,
+            "comment": "Melezitosehonig; teilweise wieder verf\u00fcttert",
+            "buckets": [
+                "E-2024-09",
+                "E-2024-10",
+                "E-2024-11",
+                "E-2024-12",
+                "E-2024-13",
+                "E-2024-14"
+            ],
+            "batches": [
+                "L-2024-02"
+            ]
         }
     ],
-    "abf": [
+    "batches": [
         {
-            "Nummer": "A-2023-07",
-            "Los": "L-2023-03",
-            "Schleuderdatum": "2023-07-23T00:00:00",
-            "Abf\u00fclldatum": "2023-11-19T00:00:00",
-            "MHD": "2025-11-19T00:00:00",
-            "MHD_(overwrite)": "",
-            "Bezeichnung": "Sommertracht DIB",
-            "Honigsorte": "Lindenbl\u00fctenhonig",
-            "Gewicht": "13,00 kg",
-            "Gebinde": "0,50 kg",
-            "Preis_/_kg": "16,00 \u20ac",
-            "Anzahl": "26",
-            "Lagerbestand": "0",
-            "Lagerbestand_/_kg": "0,00 kg",
-            "Einnahmen": "208,00 \u20ac",
-            "Wert": "208,00 \u20ac",
-            "Glastyp": "DIB",
-            "KN_Pr\u00e4fix": "GKSK",
-            "KN_Start": "75",
-            "KN_End": "100",
-            "Kommentar": ""
+            "id": "L-2022-01",
+            "closed": true,
+            "weight": 15.5,
+            "sort": "Fr\u00fchjahrstrachthonig",
+            "comment": "Eimer noch nicht getracked",
+            "fillings": [
+                "A-2022-01",
+                "A-2022-02"
+            ],
+            "buckets": [
+                "E-2022-01"
+            ],
+            "extractions": [
+                "Z-2022-01"
+            ]
         },
         {
-            "Nummer": "A-2023-08",
-            "Los": "L-2023-01",
-            "Schleuderdatum": "2023-06-17T00:00:00",
-            "Abf\u00fclldatum": "2023-11-19T00:00:00",
-            "MHD": "2025-11-19T00:00:00",
-            "MHD_(overwrite)": "",
-            "Bezeichnung": "Fr\u00fchtracht DIB",
-            "Honigsorte": "Fr\u00fchjahrstrachthonig",
-            "Gewicht": "9,00 kg",
-            "Gebinde": "0,50 kg",
-            "Preis_/_kg": "16,00 \u20ac",
-            "Anzahl": "18",
-            "Lagerbestand": "0",
-            "Lagerbestand_/_kg": "0,00 kg",
-            "Einnahmen": "144,00 \u20ac",
-            "Wert": "144,00 \u20ac",
-            "Glastyp": "DIB",
-            "KN_Pr\u00e4fix": "GKSI",
-            "KN_Start": "57",
-            "KN_End": "74",
-            "Kommentar": ""
+            "id": "L-2022-02",
+            "closed": true,
+            "weight": 13.0,
+            "sort": "Sommertrachthonig",
+            "comment": "Eimer noch nicht getracked",
+            "fillings": [
+                "A-2022-03",
+                "A-2022-04"
+            ],
+            "buckets": [
+                "E-2022-02"
+            ],
+            "extractions": [
+                "Z-2022-02"
+            ]
         },
         {
-            "Nummer": "A-2023-05",
-            "Los": "L-2023-03",
-            "Schleuderdatum": "2023-07-23T00:00:00",
-            "Abf\u00fclldatum": "2023-09-16T00:00:00",
-            "MHD": "2025-09-16T00:00:00",
-            "MHD_(overwrite)": "",
-            "Bezeichnung": "Sommertracht DIB",
-            "Honigsorte": "Lindenbl\u00fctenhonig",
-            "Gewicht": "37,00 kg",
-            "Gebinde": "0,50 kg",
-            "Preis_/_kg": "16,00 \u20ac",
-            "Anzahl": "74",
-            "Lagerbestand": "0",
-            "Lagerbestand_/_kg": "0,00 kg",
-            "Einnahmen": "592,00 \u20ac",
-            "Wert": "592,00 \u20ac",
-            "Glastyp": "DIB",
-            "KN_Pr\u00e4fix": "GKSK",
-            "KN_Start": "1",
-            "KN_End": "74",
-            "Kommentar": ""
+            "id": "L-2023-01",
+            "closed": true,
+            "weight": 43.5,
+            "sort": "Fr\u00fchjahrstrachthonig",
+            "comment": "AISEC",
+            "fillings": [
+                "A-2023-01",
+                "A-2023-02",
+                "A-2023-03",
+                "A-2023-08"
+            ],
+            "buckets": [
+                "E-2023-01",
+                "E-2023-02",
+                "E-2023-03",
+                "E-2023-04",
+                "E-2023-05"
+            ],
+            "extractions": [
+                "Z-2023-01"
+            ]
         },
         {
-            "Nummer": "A-2023-04",
-            "Los": "L-2023-03",
-            "Schleuderdatum": "2023-07-23T00:00:00",
-            "Abf\u00fclldatum": "2023-07-23T00:00:00",
-            "MHD": "2025-07-23T00:00:00",
-            "MHD_(overwrite)": "",
-            "Bezeichnung": "Sommertracht unverpackt",
-            "Honigsorte": "Lindenbl\u00fctenhonig",
-            "Gewicht": "6,40 kg",
-            "Gebinde": "1,00 kg",
-            "Preis_/_kg": "14,00 \u20ac",
-            "Anzahl": "6,4",
-            "Lagerbestand": "0",
-            "Lagerbestand_/_kg": "0,00 kg",
-            "Einnahmen": "89,60 \u20ac",
-            "Wert": "89,60 \u20ac",
-            "Glastyp": "unverpackt",
-            "KN_Pr\u00e4fix": "",
-            "KN_Start": "",
-            "KN_End": "",
-            "Kommentar": ""
+            "id": "L-2023-02",
+            "closed": true,
+            "weight": 59.4,
+            "sort": "Lindenbl\u00fctenhonig",
+            "comment": "WIEDE",
+            "fillings": [
+                "A-2023-04",
+                "A-2023-05",
+                "A-2023-06",
+                "A-2023-07"
+            ],
+            "buckets": [
+                "E-2023-06",
+                "E-2023-07",
+                "E-2023-08",
+                "E-2023-09",
+                "E-2023-10",
+                "E-2023-11"
+            ],
+            "extractions": [
+                "Z-2023-02"
+            ]
         },
         {
-            "Nummer": "A-2023-06",
-            "Los": "L-2023-03",
-            "Schleuderdatum": "2023-07-23T00:00:00",
-            "Abf\u00fclldatum": "2023-07-23T00:00:00",
-            "MHD": "2025-07-23T00:00:00",
-            "MHD_(overwrite)": "",
-            "Bezeichnung": "Sommertracht meta",
-            "Honigsorte": "Lindenbl\u00fctenhonig",
-            "Gewicht": "1,50 kg",
-            "Gebinde": "0,50 kg",
-            "Preis_/_kg": "0,00 \u20ac",
-            "Anzahl": "3",
-            "Lagerbestand": "0",
-            "Lagerbestand_/_kg": "0,00 kg",
-            "Einnahmen": "0,00 \u20ac",
-            "Wert": "0,00 \u20ac",
-            "Glastyp": "DIB",
-            "KN_Pr\u00e4fix": "GKSK",
-            "KN_Start": "498",
-            "KN_End": "500",
-            "Kommentar": "Geburtstagsgeschenk, Honigprobe"
+            "id": "L-2024-01",
+            "closed": false,
+            "weight": 99.6,
+            "sort": "Fr\u00fchjahrstrachthonig",
+            "comment": "",
+            "fillings": [
+                "A-2024-01",
+                "A-2024-03",
+                "A-2024-04"
+            ],
+            "buckets": [
+                "E-2024-01",
+                "E-2024-02",
+                "E-2024-03",
+                "E-2024-04",
+                "E-2024-05",
+                "E-2024-06",
+                "E-2024-07"
+            ],
+            "extractions": [
+                "Z-2024-01"
+            ]
         },
         {
-            "Nummer": "A-2023-01",
-            "Los": "L-2023-02",
-            "Schleuderdatum": "2023-06-17T00:00:00",
-            "Abf\u00fclldatum": "2023-06-25T00:00:00",
-            "MHD": "2025-06-25T00:00:00",
-            "MHD_(overwrite)": "",
-            "Bezeichnung": "Fr\u00fchtracht DIB",
-            "Honigsorte": "Fr\u00fchjahrstrachthonig",
-            "Gewicht": "10,50 kg",
-            "Gebinde": "0,50 kg",
-            "Preis_/_kg": "16,00 \u20ac",
-            "Anzahl": "21",
-            "Lagerbestand": "0",
-            "Lagerbestand_/_kg": "0,00 kg",
-            "Einnahmen": "168,00 \u20ac",
-            "Wert": "168,00 \u20ac",
-            "Glastyp": "DIB",
-            "KN_Pr\u00e4fix": "GKSI",
-            "KN_Start": "1",
-            "KN_End": "21",
-            "Kommentar": "DIB Gl\u00e4ser"
+            "id": "L-2024-02",
+            "closed": false,
+            "weight": 28.0,
+            "sort": "Backhonig",
+            "comment": "Melezitosehonig",
+            "fillings": [
+                "A-2024-02"
+            ],
+            "buckets": [
+                "E-2024-11",
+                "E-2024-12"
+            ],
+            "extractions": [
+                "Z-2024-02"
+            ]
         },
         {
-            "Nummer": "A-2023-02",
-            "Los": "L-2023-02",
-            "Schleuderdatum": "2023-06-17T00:00:00",
-            "Abf\u00fclldatum": "2023-06-25T00:00:00",
-            "MHD": "2025-06-25T00:00:00",
-            "MHD_(overwrite)": "",
-            "Bezeichnung": "Fr\u00fchtracht unverpackt",
-            "Honigsorte": "Fr\u00fchjahrstrachthonig",
-            "Gewicht": "5,20 kg",
-            "Gebinde": "1,00 kg",
-            "Preis_/_kg": "14,00 \u20ac",
-            "Anzahl": "5,2",
-            "Lagerbestand": "0",
-            "Lagerbestand_/_kg": "0,00 kg",
-            "Einnahmen": "72,80 \u20ac",
-            "Wert": "72,80 \u20ac",
-            "Glastyp": "unverpackt",
-            "KN_Pr\u00e4fix": "",
-            "KN_Start": "",
-            "KN_End": "",
-            "Kommentar": "Abf\u00fcllung in eigene Gl\u00e4ser"
-        },
-        {
-            "Nummer": "A-2023-03",
-            "Los": "L-2023-01",
-            "Schleuderdatum": "2023-06-17T00:00:00",
-            "Abf\u00fclldatum": "2023-06-25T00:00:00",
-            "MHD": "2025-06-25T00:00:00",
-            "MHD_(overwrite)": "",
-            "Bezeichnung": "Fr\u00fchtracht DIB",
-            "Honigsorte": "Fr\u00fchjahrstrachthonig",
-            "Gewicht": "17,50 kg",
-            "Gebinde": "0,50 kg",
-            "Preis_/_kg": "16,00 \u20ac",
-            "Anzahl": "35",
-            "Lagerbestand": "0",
-            "Lagerbestand_/_kg": "0,00 kg",
-            "Einnahmen": "280,00 \u20ac",
-            "Wert": "280,00 \u20ac",
-            "Glastyp": "DIB",
-            "KN_Pr\u00e4fix": "GKSI",
-            "KN_Start": "22",
-            "KN_End": "56",
-            "Kommentar": "DIB Gl\u00e4ser"
-        },
-        {
-            "Nummer": "A-2022-04",
-            "Los": "L-2022-02",
-            "Schleuderdatum": "2022-07-28T00:00:00",
-            "Abf\u00fclldatum": "2022-09-11T00:00:00",
-            "MHD": "2024-09-11T00:00:00",
-            "MHD_(overwrite)": "",
-            "Bezeichnung": "Sommertracht DIB",
-            "Honigsorte": "Sommertrachthonig",
-            "Gewicht": "9,50 kg",
-            "Gebinde": "0,50 kg",
-            "Preis_/_kg": "16,00 \u20ac",
-            "Anzahl": "19",
-            "Lagerbestand": "0",
-            "Lagerbestand_/_kg": "0,00 kg",
-            "Einnahmen": "152,00 \u20ac",
-            "Wert": "152,00 \u20ac",
-            "Glastyp": "DIB",
-            "KN_Pr\u00e4fix": "WW",
-            "KN_Start": "884563",
-            "KN_End": "884581",
-            "Kommentar": ""
-        },
-        {
-            "Nummer": "A-2022-03",
-            "Los": "L-2022-02",
-            "Schleuderdatum": "2022-07-28T00:00:00",
-            "Abf\u00fclldatum": "2022-08-21T00:00:00",
-            "MHD": "2024-08-21T00:00:00",
-            "MHD_(overwrite)": "",
-            "Bezeichnung": "Sommertracht ",
-            "Honigsorte": "Sommertrachthonig",
-            "Gewicht": "3,50 kg",
-            "Gebinde": "0,50 kg",
-            "Preis_/_kg": "0,00 \u20ac",
-            "Anzahl": "7",
-            "Lagerbestand": "0",
-            "Lagerbestand_/_kg": "0,00 kg",
-            "Einnahmen": "0,00 \u20ac",
-            "Wert": "0,00 \u20ac",
-            "Glastyp": "neutral",
-            "KN_Pr\u00e4fix": "",
-            "KN_Start": "",
-            "KN_End": "",
-            "Kommentar": "verschenkt"
-        },
-        {
-            "Nummer": "A-2022-01",
-            "Los": "L-2022-01",
-            "Schleuderdatum": "2022-06-09T00:00:00",
-            "Abf\u00fclldatum": "2022-08-20T00:00:00",
-            "MHD": "2024-08-20T00:00:00",
-            "MHD_(overwrite)": "",
-            "Bezeichnung": "Fr\u00fchtracht Neutral",
-            "Honigsorte": "Fr\u00fchjahrstrachthonig",
-            "Gewicht": "6,50 kg",
-            "Gebinde": "0,50 kg",
-            "Preis_/_kg": "16,00 \u20ac",
-            "Anzahl": "13",
-            "Lagerbestand": "0",
-            "Lagerbestand_/_kg": "0,00 kg",
-            "Einnahmen": "104,00 \u20ac",
-            "Wert": "104,00 \u20ac",
-            "Glastyp": "neutral",
-            "KN_Pr\u00e4fix": "",
-            "KN_Start": "",
-            "KN_End": "",
-            "Kommentar": "Neutralglas"
-        },
-        {
-            "Nummer": "A-2022-02",
-            "Los": "L-2022-01",
-            "Schleuderdatum": "2022-06-09T00:00:00",
-            "Abf\u00fclldatum": "2022-08-20T00:00:00",
-            "MHD": "2024-08-20T00:00:00",
-            "MHD_(overwrite)": "",
-            "Bezeichnung": "Fr\u00fchtracht DIB",
-            "Honigsorte": "Fr\u00fchjahrstrachthonig",
-            "Gewicht": "9,00 kg",
-            "Gebinde": "0,50 kg",
-            "Preis_/_kg": "16,00 \u20ac",
-            "Anzahl": "18",
-            "Lagerbestand": "0",
-            "Lagerbestand_/_kg": "0,00 kg",
-            "Einnahmen": "144,00 \u20ac",
-            "Wert": "144,00 \u20ac",
-            "Glastyp": "DIB",
-            "KN_Pr\u00e4fix": "WW",
-            "KN_Start": "884582",
-            "KN_End": "884599",
-            "Kommentar": ""
+            "id": "L-2024-03",
+            "closed": false,
+            "weight": 42.4,
+            "sort": "Mischhonig",
+            "comment": "Nearbees",
+            "fillings": [
+                "A-2024-05"
+            ],
+            "buckets": [
+                "E-2024-15",
+                "E-2024-16",
+                "E-2024-17"
+            ]
         }
     ],
-    "eimer": [
+    "fillings": [
         {
-            "Nummer": "E-2022-01",
-            "Los": "L-2022-01",
-            "Datum": "2022-06-09T00:00:00",
-            "Standort": "AISEC",
-            "Gewicht": "15,5 kg",
-            "Wassergehalt": "18,1%"
+            "id": "A-2022-01",
+            "batch_id": "L-2022-01",
+            "date": "2022-08-20T00:00:00",
+            "bbd": "2024-08-20T00:00:00",
+            "description": "Fr\u00fchjahrstrachthonig neutral",
+            "weight": 6.5,
+            "container": 0.5,
+            "price": 16.0,
+            "glass_info": {
+                "type": "neutral"
+            },
+            "comment": "Neutralglas",
+            "sort": "Fr\u00fchjahrstrachthonig"
         },
         {
-            "Nummer": "E-2022-02",
-            "Los": "L-2022-02",
-            "Datum": "2023-07-28T00:00:00",
-            "Standort": "AISEC",
-            "Gewicht": "13,0 kg",
-            "Wassergehalt": "18,0%"
+            "id": "A-2022-02",
+            "batch_id": "L-2022-01",
+            "date": "2022-08-20T00:00:00",
+            "bbd": "2024-08-20T00:00:00",
+            "description": "Fr\u00fchjahrstrachthonig DIB",
+            "weight": 9.0,
+            "container": 0.5,
+            "price": 16.0,
+            "glass_info": {
+                "type": "DIB",
+                "id_prefix": "WW",
+                "id_start": 884582,
+                "id_end": 884599
+            },
+            "comment": "",
+            "sort": "Fr\u00fchjahrstrachthonig"
         },
         {
-            "Nummer": "E-2023-01",
-            "Los": "L-2023-01",
-            "Datum": "2023-06-17T00:00:00",
-            "Standort": "AISEC",
-            "Gewicht": "9,5 kg",
-            "Wassergehalt": "17,1%"
+            "id": "A-2022-03",
+            "batch_id": "L-2022-02",
+            "date": "2022-08-21T00:00:00",
+            "bbd": "2024-08-21T00:00:00",
+            "description": "Sommertrachthonig neutral",
+            "weight": 3.5,
+            "container": 0.5,
+            "price": 0.0,
+            "glass_info": {
+                "type": "neutral"
+            },
+            "comment": "verschenkt",
+            "sort": "Sommertrachthonig"
         },
         {
-            "Nummer": "E-2023-02",
-            "Los": "L-2023-01",
-            "Datum": "2023-06-17T00:00:00",
-            "Standort": "AISEC",
-            "Gewicht": "9,6 kg",
-            "Wassergehalt": "17,1%"
+            "id": "A-2022-04",
+            "batch_id": "L-2022-02",
+            "date": "2022-09-11T00:00:00",
+            "bbd": "2024-09-11T00:00:00",
+            "description": "Sommertrachthonig DIB",
+            "weight": 9.5,
+            "container": 0.5,
+            "price": 16.0,
+            "glass_info": {
+                "type": "DIB",
+                "id_prefix": "WW",
+                "id_start": 884563,
+                "id_end": 884581
+            },
+            "comment": "",
+            "sort": "Sommertrachthonig"
         },
         {
-            "Nummer": "E-2023-03",
-            "Los": "L-2023-01",
-            "Datum": "2023-06-17T00:00:00",
-            "Standort": "AISEC",
-            "Gewicht": "7,5 kg",
-            "Wassergehalt": "17,4%"
+            "id": "A-2023-01",
+            "batch_id": "L-2023-01",
+            "date": "2023-06-25T00:00:00",
+            "bbd": "2025-06-25T00:00:00",
+            "description": "Fr\u00fchjahrstrachthonig DIB",
+            "weight": 10.5,
+            "container": 0.5,
+            "price": 16.0,
+            "glass_info": {
+                "type": "DIB",
+                "id_prefix": "GKSI",
+                "id_start": 1,
+                "id_end": 21
+            },
+            "comment": "DIB Gl\u00e4ser",
+            "sort": "Fr\u00fchjahrstrachthonig"
         },
         {
-            "Nummer": "E-2023-04",
-            "Los": "L-2023-02",
-            "Datum": "2023-06-17T00:00:00",
-            "Standort": "WIEDE",
-            "Gewicht": "10,1 kg",
-            "Wassergehalt": "17,6%"
+            "id": "A-2023-02",
+            "batch_id": "L-2023-01",
+            "date": "2023-06-25T00:00:00",
+            "bbd": "2025-06-25T00:00:00",
+            "description": "Fr\u00fchjahrstrachthonig unverpackt",
+            "weight": 5.2,
+            "container": 1.0,
+            "price": 14.0,
+            "glass_info": {
+                "type": "unverpackt"
+            },
+            "comment": "Abf\u00fcllung in eigene Gl\u00e4ser",
+            "sort": "Fr\u00fchjahrstrachthonig"
         },
         {
-            "Nummer": "E-2023-05",
-            "Los": "L-2023-02",
-            "Datum": "2023-06-17T00:00:00",
-            "Standort": "WIEDE",
-            "Gewicht": "6,8 kg",
-            "Wassergehalt": "17,8%"
+            "id": "A-2023-03",
+            "batch_id": "L-2023-01",
+            "date": "2023-06-25T00:00:00",
+            "bbd": "2025-06-25T00:00:00",
+            "description": "Fr\u00fchjahrstrachthonig DIB",
+            "weight": 17.5,
+            "container": 0.5,
+            "price": 16.0,
+            "glass_info": {
+                "type": "DIB",
+                "id_prefix": "GKSI",
+                "id_start": 22,
+                "id_end": 56
+            },
+            "comment": "DIB Gl\u00e4ser",
+            "sort": "Fr\u00fchjahrstrachthonig"
         },
         {
-            "Nummer": "E-2023-06",
-            "Los": "L-2023-03",
-            "Datum": "2023-07-23T00:00:00",
-            "Standort": "WIEDE",
-            "Gewicht": "10,1 kg",
-            "Wassergehalt": "17,0%"
+            "id": "A-2023-04",
+            "batch_id": "L-2023-02",
+            "date": "2023-07-23T00:00:00",
+            "bbd": "2025-07-23T00:00:00",
+            "description": "Lindenbl\u00fctenhonig unverpackt",
+            "weight": 6.4,
+            "container": 1.0,
+            "price": 14.0,
+            "glass_info": {
+                "type": "unverpackt"
+            },
+            "comment": "",
+            "sort": "Lindenbl\u00fctenhonig"
         },
         {
-            "Nummer": "E-2023-07",
-            "Los": "L-2023-03",
-            "Datum": "2023-07-23T00:00:00",
-            "Standort": "WIEDE",
-            "Gewicht": "9,6 kg",
-            "Wassergehalt": "18,5%"
+            "id": "A-2023-05",
+            "batch_id": "L-2023-02",
+            "date": "2023-09-16T00:00:00",
+            "bbd": "2025-09-16T00:00:00",
+            "description": "Lindenbl\u00fctenhonig DIB",
+            "weight": 37.0,
+            "container": 0.5,
+            "price": 16.0,
+            "glass_info": {
+                "type": "DIB",
+                "id_prefix": "GKSK",
+                "id_start": 1,
+                "id_end": 74
+            },
+            "comment": "",
+            "sort": "Lindenbl\u00fctenhonig"
         },
         {
-            "Nummer": "E-2023-08",
-            "Los": "L-2023-03",
-            "Datum": "2023-07-23T00:00:00",
-            "Standort": "WIEDE",
-            "Gewicht": "9,4 kg",
-            "Wassergehalt": "18,0%"
+            "id": "A-2023-06",
+            "batch_id": "L-2023-02",
+            "date": "2023-07-23T00:00:00",
+            "bbd": "2025-07-23T00:00:00",
+            "description": "Sommertracht meta",
+            "weight": 1.5,
+            "container": 0.5,
+            "price": 0.0,
+            "glass_info": {
+                "type": "DIB",
+                "id_prefix": "GKSK",
+                "id_start": 498,
+                "id_end": 500
+            },
+            "comment": "Geburtstagsgeschenk, Honigprobe",
+            "sort": "Lindenbl\u00fctenhonig"
         },
         {
-            "Nummer": "E-2023-09",
-            "Los": "L-2023-03",
-            "Datum": "2023-07-23T00:00:00",
-            "Standort": "WIEDE",
-            "Gewicht": "10,8 kg",
-            "Wassergehalt": "17,1%"
+            "id": "A-2023-07",
+            "batch_id": "L-2023-02",
+            "date": "2023-11-19T00:00:00",
+            "bbd": "2025-11-19T00:00:00",
+            "description": "Lindenbl\u00fctenhonig DIB",
+            "weight": 13.0,
+            "container": 0.5,
+            "price": 16.0,
+            "glass_info": {
+                "type": "DIB",
+                "id_prefix": "GKSK",
+                "id_start": 75,
+                "id_end": 100
+            },
+            "comment": "",
+            "sort": "Lindenbl\u00fctenhonig"
         },
         {
-            "Nummer": "E-2023-10",
-            "Los": "L-2023-03",
-            "Datum": "2023-07-23T00:00:00",
-            "Standort": "AISEC",
-            "Gewicht": "9,9 kg",
-            "Wassergehalt": "17,1%"
+            "id": "A-2023-08",
+            "batch_id": "L-2023-01",
+            "date": "2023-11-19T00:00:00",
+            "bbd": "2025-11-19T00:00:00",
+            "description": "Fr\u00fchjahrstrachthonig DIB",
+            "weight": 9.0,
+            "container": 0.5,
+            "price": 16.0,
+            "glass_info": {
+                "type": "DIB",
+                "id_prefix": "GKSI",
+                "id_start": 57,
+                "id_end": 74
+            },
+            "comment": "",
+            "sort": "Fr\u00fchjahrstrachthonig"
         },
         {
-            "Nummer": "E-2023-11",
-            "Los": "L-2023-03",
-            "Datum": "2023-07-23T00:00:00",
-            "Standort": "AISEC",
-            "Gewicht": "9,6 kg",
-            "Wassergehalt": "16,9%"
+            "id": "A-2024-01",
+            "batch_id": "L-2024-01",
+            "date": "2024-06-22T00:00:00",
+            "bbd": "2026-06-22T00:00:00",
+            "description": "Fr\u00fchjahrstrachthonig DIB",
+            "weight": 47.5,
+            "container": 0.5,
+            "price": 16.0,
+            "glass_info": {
+                "type": "DIB",
+                "id_prefix": "GKSI",
+                "id_start": 75,
+                "id_end": 169
+            },
+            "comment": "",
+            "sort": "Fr\u00fchjahrstrachthonig"
+        },
+        {
+            "id": "A-2024-02",
+            "batch_id": "L-2024-02",
+            "date": "2024-06-22T00:00:00",
+            "bbd": "2025-06-22T00:00:00",
+            "description": "Backhonig unverpackt",
+            "weight": 0.0,
+            "container": 1.0,
+            "price": 7.0,
+            "glass_info": {
+                "type": "unverpackt"
+            },
+            "comment": "",
+            "sort": "Backhonig"
+        },
+        {
+            "id": "A-2024-03",
+            "batch_id": "L-2024-01",
+            "date": "2024-06-22T00:00:00",
+            "bbd": "2026-06-22T00:00:00",
+            "description": "Fr\u00fchjahrstrachthonig unverpackt",
+            "weight": 0.0,
+            "container": 1.0,
+            "price": 14.0,
+            "glass_info": {
+                "type": "unverpackt"
+            },
+            "comment": "",
+            "sort": "Fr\u00fchjahrstrachthonig"
+        },
+        {
+            "id": "A-2024-04",
+            "batch_id": "L-2024-01",
+            "date": "2024-06-22T00:00:00",
+            "bbd": "2026-06-22T00:00:00",
+            "description": "Fr\u00fchjahrstrachthonig neutral",
+            "weight": 4.0,
+            "container": 0.5,
+            "price": 16.0,
+            "glass_info": {
+                "type": "neutral"
+            },
+            "comment": "",
+            "sort": "Fr\u00fchjahrstrachthonig"
+        },
+        {
+            "id": "A-2024-05",
+            "batch_id": "L-2024-03",
+            "date": "2024-06-22T00:00:00",
+            "bbd": "2026-06-22T00:00:00",
+            "description": "Mischhonig Eimer",
+            "weight": 42.4,
+            "container": 1.0,
+            "price": 9.0,
+            "glass_info": {
+                "type": "Eimer"
+            },
+            "comment": "",
+            "sort": "Mischhonig"
         }
     ]
 }

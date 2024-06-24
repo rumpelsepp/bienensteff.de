@@ -1,3 +1,30 @@
+{{ define "partials/inline-permalink.html" }}
+    <tr><th>Permalink</th>
+        <td>
+            {{ if hugo.IsDevelopment }}
+                <a href="{{ .Permalink }}">{{ .Permalink }}</a>
+            {{ else }}
+                <a href="https://db.bienensteff.de/?q={{ strings.ToLower .Params.id }}">https://db.bienensteff.de/?q={{ strings.ToLower .Params.id }}</a>
+            {{ end }}
+        </td>
+    </tr>
+{{ end }}
+
+{{ define "partials/inline-analysis-permalink.html" }}
+    {{ with resources.GetMatch (printf "/db/analysen/an-%s.pdf" (strings.ToLower .)) }}
+    <tr>
+        <th>Laboranalyse</th>
+        <td>
+            {{ if hugo.IsDevelopment }}
+                <a href="{{ .Permalink }}">{{ .Permalink }}</a>
+            {{ else }}
+                <a href="https://db.bienensteff.de/?q={{ strings.ToLower (strings.TrimPrefix "/db/analysen/" .Title) }}">https://db.bienensteff.de/?q={{ strings.ToLower (strings.TrimPrefix "/db/analysen/" .Title) }}</a>
+            {{ end }}
+        </td>
+    </tr>
+    {{ end }}
+{{ end }}
+
 {{ define "main" }}
 
 {{ if not .Params }}
@@ -5,14 +32,16 @@
 {{ end }}
 
 {{ $type := "" }}
-{{ if strings.HasPrefix .Params.Nummer "A-" }}
-    {{ $type = "abf" }}
-{{ else if strings.HasPrefix .Params.Nummer "L-" }}
-    {{ $type = "los" }}
-{{ else if strings.HasPrefix .Params.Nummer "E-" }}
+{{ if strings.HasPrefix .Params.id "A-" }}
+    {{ $type = "filling" }}
+{{ else if strings.HasPrefix .Params.id "L-" }}
+    {{ $type = "batch" }}
+{{ else if strings.HasPrefix .Params.id "E-" }}
     {{ $type = "bucket" }}
+{{ else if strings.HasPrefix .Params.id "Z-" }}
+    {{ $type = "extraction" }}
 {{ else }}
-    {{ errorf "invalid nummer: %s" .Params.Nummer }}
+    {{ errorf "invalid nummer: %s" .Params.id }}
 {{ end }}
 
 <!-- TODO: inline partial -->
@@ -22,56 +51,25 @@
     <article>
     <header>
         <h1>
-            {{$.Title}}
-            {{ if eq $type "abf" }}
+            {{ $.Title }}
+            {{ if eq $type "filling" }}
                 (Abfüllung)
-            {{ else if eq $type "los" }}
+            {{ else if eq $type "batch" }}
                 (Los)
             {{ else if eq $type "bucket" }}
                 (Eimer)
+            {{ else if eq $type "extraction" }}
+                (Schleuderung)
             {{ end }}
         </h1>
     </header>
     
     <table id="honeydb">
-        {{ if eq $type "abf" }}
-            <tr><th>Abfüllnummer</th><td>{{ .Params.Nummer }}</td></tr>
-            <tr><th>Losnummer</th><td><a href="{{ urls.AbsURL (urls.JoinPath "database" "q" (strings.ToLower .Params.Los)) }}">{{ .Params.Los }}</a></th></td></tr>
-            <tr><th>Schleuderdatum</th><td><time datetime="{{ (time.AsTime .Params.Schleuderdatum).Format "2006-01-02" }}">{{ (time.AsTime .Params.Schleuderdatum).Format "02.01.2006" }}</time></td></tr>
-            <tr><th>Abfülldatum</th><td><time datetime="{{ (time.AsTime .Params.Abfülldatum).Format "2006-01-02" }}">{{ (time.AsTime .Params.Abfülldatum).Format "02.01.2006" }}</time></td></tr>
-            <tr><th><abbr title="Mindesthaltbarkeitsdatum">MHD</abbr></th><td><time datetime="{{ (time.AsTime .Params.MHD).Format "2006-01-02" }}">{{ (time.AsTime .Params.MHD).Format "02.01.2006" }}</time></td></tr>
-            <tr><th>Gebinde</th><td>{{ .Params.Gebinde }}</td></tr>
-            <tr><th>Sortenempfehlung</th><td>{{ .Params.Honigsorte }}</td></tr>
-            <tr><th>Glastyp</th><td>{{ .Params.Glastyp }}</td></tr>
-            {{ if eq .Params.Glastyp "DIB" }}
-                <tr><th>Glasnummer</th><td><strong>{{ .Params.KN_Präfix }}</strong>{{ .Params.KN_Start }}…{{ .Params.KN_End }}</td></tr>
-            {{ end }}
-            <tr>
-                <th>Laboranalyse</th>
-                <td>
-                    {{ with resources.GetMatch (printf "/db/analysen/an-%s.pdf" (strings.ToLower .Params.Los)) }}
-                        {{ if hugo.IsDevelopment }}
-                            <a href="{{ .Permalink }}">{{ .Permalink }}</a>
-                        {{ else }}
-                            <a href="https://db.bienensteff.de/?q={{ strings.ToLower (strings.TrimPrefix "/db/analysen/" .Title) }}">https://db.bienensteff.de/?q={{ strings.ToLower (strings.TrimPrefix "/db/analysen/" .Title) }}</a>
-                        {{ end }}
-                    {{ end }}
-                </td>
-            </tr>
-            <tr><th>Permalink</th>
-                <td>
-                    {{ if hugo.IsDevelopment }}
-                        <a href="{{ .Permalink }}">{{ .Permalink }}</a>
-                    {{ else }}
-                        <a href="https://db.bienensteff.de/?q={{ strings.ToLower .Params.Nummer }}">https://db.bienensteff.de/?q={{ strings.ToLower .Params.Nummer }}</a>
-                    {{ end }}
-                </td>
-            </tr>
-        {{ else if eq $type "los" }}
-            <tr><th>Losnummer</th><td>{{ .Params.Nummer }}</td></tr>
-            <tr><th>Schleuderdatum</th><td><time datetime="{{ (time.AsTime .Params.Schleuderdatum).Format "2006-01-02" }}">{{ (time.AsTime .Params.Schleuderdatum).Format "02.01.2006" }}</time></td></tr>
-            <tr><th>Sortenempfehlung</th><td>{{ .Params.Honigsorte }}</td></tr>
-            {{ with .Params.Abfüllungen }}
+        {{ if eq $type "batch" }}
+            <tr><th>Losnummer</th><td>{{ .Params.id }}</td></tr>
+            <tr><th>Sortenempfehlung</th><td>{{ .Params.sort }}</td></tr>
+            <tr><th>Gewicht</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.weight) "." "," }}</td></tr>
+            {{ with .Params.fillings }}
                 <tr><th>Abfüllungen</th><td>
                     <ul>
                         {{ range . }}
@@ -80,7 +78,16 @@
                     </ul>
                 </td></tr>
             {{ end }}
-            {{ with .Params.Eimer }}
+            {{ with .Params.extractions }}
+                <tr><th>Schleuderungen</th><td>
+                    <ul>
+                        {{ range . }}
+                            <li><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
+                        {{ end }}
+                    </ul>
+                </td></tr>
+            {{ end }}
+            {{ with .Params.buckets }}
                 <tr><th>Eimer</th><td>
                     <ul>
                         {{ range . }}
@@ -89,46 +96,67 @@
                     </ul>
                 </td></tr>
             {{ end }}
-            <tr>
-                <th>Laboranalyse</th>
-                <td>
-                    {{ with resources.GetMatch (printf "/db/analysen/an-%s.pdf" (strings.ToLower .Params.Nummer)) }}
-                        {{ if hugo.IsDevelopment }}
-                            <a href="{{ .Permalink }}">{{ .Permalink }}</a>
-                        {{ else }}
-                            <a href="https://db.bienensteff.de/?q={{ strings.ToLower (strings.TrimPrefix "/db/analysen/" .Title) }}">https://db.bienensteff.de/?q={{ strings.ToLower (strings.TrimPrefix "/db/analysen/" .Title) }}</a>
-                        {{ end }}
-                    {{ end }}
-                </td>
-            </tr>
-            <tr><th>Permalink</th>
-                <td>
-                    {{ if hugo.IsDevelopment }}
-                        <a href="{{ .Permalink }}">{{ .Permalink }}</a>
-                    {{ else }}
-                        <a href="https://db.bienensteff.de/?q={{ strings.ToLower .Params.Nummer }}">https://db.bienensteff.de/?q={{ strings.ToLower .Params.Nummer }}</a>
-                    {{ end }}
-                </td>
-            </tr>
+            {{ partial "partials/inline-analysis-permalink.html" .Params.id }}
+            {{ partial "partials/inline-permalink.html" . }}
         {{ else if eq $type "bucket" }}
-            <tr><th>Eimernummer</th><td>{{ .Params.Nummer }}</td></tr>
-            <tr><th>Schleuderdatum</th><td><time datetime="{{ (time.AsTime .Params.Datum).Format "2006-01-02" }}">{{ (time.AsTime .Params.Datum).Format "02.01.2006" }}</time></td></tr>
-            <tr><th>Wassergehalt</th><td>{{ .Params.Wassergehalt }}</td></tr>
-            <tr><th>Gewicht</th><td>{{ .Params.Gewicht }}</td></tr>
-            <tr><th>Permalink</th>
-                <td>
-                    {{ if hugo.IsDevelopment }}
-                        <a href="{{ .Permalink }}">{{ .Permalink }}</a>
-                    {{ else }}
-                        <a href="https://db.bienensteff.de/?q={{ strings.ToLower .Params.Nummer }}">https://db.bienensteff.de/?q={{ strings.ToLower .Params.Nummer }}</a>
-                    {{ end }}
-                </td>
-            </tr>
+            <tr><th>Eimernummer</th><td>{{ .Params.id }}</td></tr>
+            {{ with .Params.extraction_id }}
+                <tr><th>Schleuderungsnummer</th><td><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></td></tr>
+            {{ end }}
+            {{ with .Params.batch_id }}
+                <tr><th>Losnummer</th><td><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></td></tr>
+            {{ end }}
+            <tr><th>Wassergehalt</th><td>{{ strings.Replace (fmt.Printf "%.2f%%" (math.Mul .Params.moisture 100)) "." "," }}</td></tr>
+            <tr><th>Gewicht</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.weight) "." "," }}</td></tr>
+            {{ with .Params.comment }}
+                <tr><th>Kommentar</th><td>{{ . }}</td></tr>
+            {{ end }}
+            {{ partial "partials/inline-permalink.html" . }}
+        {{ else if eq $type "extraction" }}
+            <tr><th>Schleuderungsnummer</th><td>{{ .Params.id }}</td></tr>
+            <tr><th>Schleuderdatum</th><td><time datetime="{{ (time.AsTime .Params.date).Format "2006-01-02" }}">{{ (time.AsTime .Params.date).Format "02.01.2006" }}</time></td></tr>
+            <tr><th>Gewicht</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.weight) "." "," }}</td></tr>
+            {{ with .Params.batches }}
+                <tr><th>Lose</th><td>
+                    <ul>
+                        {{ range . }}
+                            <li><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
+                        {{ end }}
+                    </ul>
+                </td></tr>
+            {{ end }}
+            {{ with .Params.buckets }}
+                <tr><th>Eimer</th><td>
+                    <ul>
+                        {{ range . }}
+                            <li><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
+                        {{ end }}
+                    </ul>
+                </td></tr>
+            {{ end }}
+            {{ with .Params.comment }}
+                <tr><th>Kommentar</th><td>{{ . }}</td></tr>
+            {{ end }}
+            {{ partial "partials/inline-permalink.html" . }}
+        {{ else if eq $type "filling" }}
+            <tr><th>Abfüllnummer</th><td>{{ .Params.id }}</td></tr>
+            <tr><th>Losnummer</th><td><a href="{{ urls.AbsURL (urls.JoinPath "database" "q" (strings.ToLower .Params.batch_id)) }}">{{ .Params.batch_id }}</a></th></td></tr>
+            <tr><th>Abfülldatum</th><td><time datetime="{{ (time.AsTime .Params.date).Format "2006-01-02" }}">{{ (time.AsTime .Params.date).Format "02.01.2006" }}</time></td></tr>
+            <tr><th><abbr title="Mindesthaltbarkeitsdatum">MHD</abbr></th><td><time datetime="{{ (time.AsTime .Params.bbd).Format "2006-01-02" }}">{{ (time.AsTime .Params.bbd).Format "02.01.2006" }}</time></td></tr>
+            <tr><th>Gebinde</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.container) "." "," }}</td></tr>
+            <tr><th>Gewicht</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.weight) "." "," }}</td></tr>
+            <tr><th>Glastyp</th><td>{{ .Params.glass_info.type }}</td></tr>
+            <tr><th>Sortenempfehlung</th><td>{{ .Params.sort }}</td></tr>
+            {{ if eq .Params.glass_info.type "DIB" }}
+                <tr><th>Glasnummer</th><td><strong>{{ .Params.glass_info.id_prefix }}</strong>{{ .Params.glass_info.id_start }}…{{ .Params.glass_info.id_end }}</td></tr>
+            {{ end }}
+            {{ partial "partials/inline-analysis-permalink.html" .Params.batch_id }}
+            {{ partial "partials/inline-permalink.html" . }}
         {{ end }}
     </table>
     
-    {{ $id := .Params.Nummer }}
-    {{ with resources.GetMatch (printf "/db/img/%s.jpg" (strings.ToLower .Params.Nummer)) }}
+    {{ $id := .Params.id }}
+    {{ with resources.GetMatch (printf "/db/img/%s.jpg" (strings.ToLower .Params.id)) }}
         {{ $size := "800x600 webp" }}
         {{ $img := .Fit $size }}
         <hr>
