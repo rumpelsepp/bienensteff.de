@@ -1,0 +1,46 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "bienensteff"
+version = "0.0.1"
+description = ""
+authors = ["Stefan Tatschner"]
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.13"
+pydantic = "^2.0"
+httpx = {extras = ["http2"], version = ">=0.26,<0.28"}
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.0"
+pylsp-mypy = "^0.6"
+pylsp-rope = "^0.1"
+python-lsp-server = "^1.5"
+ruff = "^0.4.0"
+python-lsp-ruff = ">=1.6,<3.0"
+
+[tool.mypy]
+strict = true
+plugins = [
+    "pydantic.mypy"
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = [
+    # TODO: Enable this
+    # "B",    # flake8-bugbear
+    "C4",   # flake8-comprehensions
+    "E",    # pycodestlye
+    "F",    # pyflakes
+    "I",    # isort
+    "PL",   # pylint
+    "PTH",  # flake8-use-pathlib
+    "TID",  # flake8-tidy-imports
+    "UP",   # pyupgrade
+]
