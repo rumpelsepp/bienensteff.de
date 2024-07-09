@@ -1,0 +1,64 @@
+{{ define "main" }}
+<main class="index">
+    <header>
+        <h1>{{ .Title }}</h1>
+    </header>
+
+	<div class="flex container">
+        <div class="article-list">
+            {{ range (where .Site.RegularPages "Section" "blog") }}
+            <article>
+                    {{ $img := "" }}
+
+                    {{- $images := .Page.Resources.ByType "image" -}}
+                    {{- $featured := $images.GetMatch .Params.feature -}}
+                    {{- if not $featured }}{{- $featured = $images.GetMatch "*feature*" -}}{{ end -}}
+                    {{- if not $featured }}{{ $featured = $images.GetMatch "{*cover*,*thumbnail*}" }}{{ end -}}
+                    {{- with $featured -}}
+                        {{ $img = $featured.Fit "400x200 webp" }}
+                    {{- end -}}
+
+                    {{ if not (eq $img "") }}
+                    <div class="container">
+                        <aside class="thirty post_image mobile-hide"><img src="{{ $img.Permalink }}"></aside>
+                        <div class="seventy">
+                            <header>
+                                <hgroup>
+                                    <h2><a href="{{ .Permalink }}">{{ if .Draft }}DRAFT · {{ end }}{{.Title}}</a></h2>
+                                    <p><time datetime="{{.Date.Format "2006-01-02"}}">{{.Date.Format "02.01.2006"}}</time></p>
+                                </hgroup>
+
+                                {{ partial "tags-div.html" . }}
+                            </header>
+
+                            {{ if .Truncated }}
+                                {{ .Summary }}
+                                <a href="{{.Permalink}}">[…]</a>
+                            {{ else }}
+                                <p>{{ .Summary }}</p>
+                            {{ end }}
+                        </div>
+                    </div>
+                    {{ else }}
+                        <header>
+                            <hgroup>
+                                <h2><a href="{{ .Permalink }}">{{ if .Draft }}DRAFT · {{ end }}{{.Title}}</a></h2>
+                                <p><time datetime="{{.Date.Format "2006-01-02"}}">{{.Date.Format "02.01.2006"}}</time></p>
+                            </hgroup>
+
+                            {{ partial "tags-div.html" . }}
+                        </header>
+
+                            {{ if .Truncated }}
+                                {{ .Summary }}
+                                <a href="{{.Permalink}}">[…]</a>
+                            {{ else }}
+                                <p>{{ .Summary }}</p>
+                            {{ end }}
+                    {{ end }}
+            </article>
+            {{ end }}
+        </div>
+	</div>
+</main>
+{{ end }}

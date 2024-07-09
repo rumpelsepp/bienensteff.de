@@ -61,8 +61,8 @@ body {
     }
 }
 
-main.single {
-    article {
+main.single, main.home {
+    article.content {
         text-align: justify;
         hyphens: auto;
 
@@ -276,32 +276,29 @@ main.single {
     }
 }
 
-.blog.single {
-    .content {
-        header {
-            margin-bottom: 2rem;
+article.content {
+    header {
+        margin-bottom: 2rem;
 
-            .meta,
-            .tags {
-                color: dimgray;
+        .meta,
+        .tags {
+            color: dimgray;
+        }
+
+        .tags {
+            a {
+                text-decoration: none;
+                color: inherit;
             }
 
-            .tags {
-                a {
-                    text-decoration: none;
-                    color: inherit;
-                }
-
-                a:hover {
-                    color: black;
-                }
+            a:hover {
+                color: black;
             }
-
         }
     }
 }
 
-.single {
+.single, .home {
     article {
         margin: 0 auto;
 

@@ -11,6 +11,7 @@
         buildInputs = with pkgs; [
           nodejs_22
           hugo
+          just
         ];
       };
       formatter.x86_64-linux = pkgs.nixpkgs-fmt;

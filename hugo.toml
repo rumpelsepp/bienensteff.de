@@ -2,6 +2,7 @@ baseURL = 'https://bienensteff.de'
 languageCode = 'de-de'
 title = "Imkerei BienenSteff 🐝"
 enableRobotsTXT = true
+pluralizelisttitles = "false"
 
 [params]
 description = "Imkerei BienenSteff: Honig aus dem Münchner Grüngürtel. Keep it simple."
@@ -12,21 +13,25 @@ description = "Imkerei BienenSteff: Honig aus dem Münchner Grüngürtel. Keep i
     pageRef = '/'
     weight = 10
 [[menus.main]]
+    name = 'News'
+    pageRef = '/blog'
+    weight = 20
+[[menus.main]]
     name = 'Verkauf'
     pageRef = '/sale'
-    weight = 20
+    weight = 30
 [[menus.main]]
     name = 'Datenbank'
     pageRef = '/database'
-    weight = 30
+    weight = 40
 [[menus.main]]
     name = 'Werkzeuge'
     pageRef = '/tools'
-    weight = 40
+    weight = 50
 [[menus.main]]
     name = 'Über uns'
     pageRef = '/about'
-    weight = 50
+    weight = 60
 
 [[menus.footer]]
     name = '🔗 Flaticon'
@@ -71,3 +76,8 @@ description = "Imkerei BienenSteff: Honig aus dem Münchner Grüngürtel. Keep i
         rightAngleQuote = '&raquo;'
         rightDoubleQuote = '”'
         rightSingleQuote = '‘'
+
+[privacy]
+  [privacy.youtube]
+    disable = false
+    privacyEnhanced = true

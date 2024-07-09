@@ -6,7 +6,7 @@ feature: IMG_20240602_145928.jpg
 ---
 
 Am 2. Juni 2024 war es das erste Mal so weit!
-Wir haben das erste Mal geschleudert.
+Wir haben das [erste Mal](https://db.bienensteff.de?q=z-2024-01) geschleudert.
 Dank dem neuen Schleuderhaus vom [BZVM](https://bzvm.de/) und der mentalen Unterstützung von [Judas Priest](https://youtu.be/1h9QU9c2Q7s?si=Qzb5h-O82zQZ48yD) verlief die Honigernte reibungslos.
 Trotz des schlechten Wetters und der Sorge, dass die Honigqualität unter dem feuchten Wetter leiden könnte, haben wir sehr leckeren Frühjahrstrachthonig geerntet.
 Hat Spaß gemacht!
