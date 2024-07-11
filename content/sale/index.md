@@ -29,8 +29,9 @@ Die Direktverkaufsstellen werden von uns persönlich betreut; bei diesen am best
 
 #### #ZeroWaste 
 
-[500 g DIB Gläser](https://bienenzuchtbedarf-geller.de/DIB-Glas-500-g-mit-Deckel-lose-nur-Selbstabholung/274330) werden gerne zur Wiederbefüllung angenommen. Es wird darum gebeten alte Etiketten vorab zu entfernen.
-Besondere Anfragen, wie z. B. Abfüllung in eigene Gläser oder auch größere Mengen in Honigeimern werden gerne berücksichtigt.
+500 g Honiggläser werden gerne zur Wiederbefüllung angenommen.
+Wir bitten alte Etiketten vorab zu entfernen.
+Besondere Anfragen, wie z. B. Abfüllung in eigene Gläser oder auch größere Mengen in Honigeimern berücksichtigen wir sehr gerne.
 
 ## Bienenvölker 🐝
 
