@@ -14,134 +14,52 @@ body {
     padding: 1rem;
       
 
-    header.main-header {
-
-        .banner-container {
-            position: relative;
-            /* No idea why this is needed… The container is always 4px too large. */
-            max-height: 230px;
-
-            .overlay {
-                position: absolute;
-                bottom: 0;
-                right: 0;
-                height: 100%;
-                padding-left: 1rem;
-                padding-right: 1rem;
-                background: rgba(38, 38, 38, 0.4);
-
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-
-                #logo {
-                    filter: saturate(55%);
-                }
-
-                #logo-text {
-                    color: white;
-                    font-weight: bold;
-                    margin-top: 1rem;
-                    font-size: 1.2rem;
-                }
-            }
-
-            #banner {
-                /* height: 10rem; */
-                max-width: 100%;
-                object-fit: cover;
-            }
-        }
-
-    }
-
-    header.main-header {
-        margin-bottom: 1rem;
-    }
 }
 
-main.single, main.home {
-    article.content {
-        text-align: justify;
-        hyphens: auto;
+header.main-header {
+    margin-bottom: 1rem;
 
-        :target {
-            background-color: yellow;
-        }
+    .banner-container {
+        position: relative;
+        /* No idea why this is needed… The container is always 4px too large. */
+        max-height: 230px;
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            a {
-                color: black;
-                text-decoration: none;
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            height: 100%;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            background: rgba(38, 38, 38, 0.4);
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            #logo {
+                filter: saturate(55%);
             }
 
-            a:hover {
-                display: inline;
-                text-decoration: underline;
-            }
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            font-size: 0.85rem;
-
-            th,
-            td {
-                padding: 0.25rem;
-                text-align: left;
-                border: 1px solid lightgray;
-            }
-
-            tbody tr:nth-child(odd) {
-                background: whitesmoke;
-            }
-
-            tbody tr.highlight {
-                background-color: yellow;
-            }
-
-            tbody tr.expired {
-                color: gray;
-            }
-        }
-
-        figure {
-            figcaption {
-                text-align: center;
-            }
-
-            .overlay-container {
-                position: relative;
-                width: max-content;
-                max-width: 100%;
-                margin: 0 auto;
-            }
-
-            .overlay {
-                position: absolute;
-                bottom: 0;
-                background: rgba(0, 0, 0, 0.5);
-                color: red;
-                width: 100%;
-                font-size: 1.5rem;
+            #logo-text {
+                color: white;
                 font-weight: bold;
-                padding-top: 0.5rem;
-                padding-bottom: 0.5rem;
-                text-align: center;
+                margin-top: 1rem;
+                font-size: 1.2rem;
             }
+        }
+
+        #banner {
+            /* height: 10rem; */
+            max-width: 100%;
+            object-fit: cover;
         }
     }
 }
 
-.main-header,
-.main-footer {
+header.main-header,
+footer.main-footer {
     nav {
         margin-bottom: 1.5rem;
 
@@ -155,7 +73,6 @@ main.single, main.home {
             li::after {
                 content: " · ";
             }
-
 
             li:last-child:after {
                 content: "";
@@ -200,16 +117,140 @@ main.single, main.home {
     }
 }
 
-.info {
-    padding: 1rem;
-    /* …border: 1px dotted; */
-    border-left: 0.2rem solid;
-    background-color: rgb(227, 227, 227);
 
-    .gscheidhaferl {
-        font-size: 1.4rem;
-        font-weight: bold;
+article.content {
+    text-align: justify;
+    hyphens: auto;
+    margin: 0 auto;
+
+    header {
+        margin-bottom: 2rem;
+
+        .meta,
+        .tags {
+            color: dimgray;
+        }
+
+        .tags {
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            a:hover {
+                color: black;
+            }
+        }
+
+        nav.article-nav {
+            margin-top: 1rem;
+
+            a.disabled {
+                pointer-events: none;
+                color: dimgray;
+            }
+        }
     }
+
+    img,
+    video {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+    }
+
+    .footnotes {
+        font-size: 0.75rem;
+    }
+
+    :target {
+        background-color: yellow;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:hover {
+            display: inline;
+            text-decoration: underline;
+        }
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 0.85rem;
+
+        th,
+        td {
+            padding: 0.25rem;
+            text-align: left;
+            border: 1px solid lightgray;
+        }
+
+        tbody tr:nth-child(odd) {
+            background: whitesmoke;
+        }
+
+        tbody tr.highlight {
+            background-color: yellow;
+        }
+
+        tbody tr.expired {
+            color: gray;
+        }
+    }
+
+    figure {
+        max-width: 80%;
+        margin: auto;
+
+        figcaption {
+            text-align: center;
+        }
+
+        .overlay-container {
+            position: relative;
+            width: max-content;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: red;
+            width: 100%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            text-align: center;
+        }
+    }
+
+    .info {
+        padding: 1rem;
+        /* …border: 1px dotted; */
+        border-left: 0.2rem solid;
+        background-color: rgb(227, 227, 227);
+
+        /* TODO: Move to beehen.de custom styles. */
+        .gscheidhaferl {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+    }
+
 }
 
 .related {
@@ -217,7 +258,7 @@ main.single, main.home {
     border-left: none;
 }
 
-.index {
+main.index {
     h1 {
         font-size: 1.8rem;
     }
@@ -240,7 +281,6 @@ main.single, main.home {
                 font-size: 1.4rem;
 
                 hgroup {
-
                     h2 {
                         margin: 0;
                         color: inherit;
@@ -276,54 +316,6 @@ main.single, main.home {
     }
 }
 
-article.content {
-    header {
-        margin-bottom: 2rem;
-
-        .meta,
-        .tags {
-            color: dimgray;
-        }
-
-        .tags {
-            a {
-                text-decoration: none;
-                color: inherit;
-            }
-
-            a:hover {
-                color: black;
-            }
-        }
-    }
-}
-
-.single, .home {
-    article {
-        margin: 0 auto;
-
-        img,
-        video {
-            display: block;
-            margin: 0 auto;
-            max-width: 100%;
-        }
-
-        nav.article-nav {
-            margin-top: 1rem;
-
-            a.disabled {
-                pointer-events: none;
-                color: dimgray;
-            }
-        }
-    }
-
-    .footnotes {
-        font-size: 0.75rem;
-    }
-}
-
 footer.main-footer {
     margin-top: 2rem;
     text-align: center;
@@ -333,4 +325,3 @@ footer.main-footer {
 .text-center {
     text-align: center;
 }
-
