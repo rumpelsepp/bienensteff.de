@@ -523,7 +523,7 @@
             "id": "L-2024-03",
             "closed": false,
             "weight": 42.4,
-            "sort": "Mischhonig",
+            "sort": "Honig",
             "comment": "Nearbees",
             "fillings": [
                 "A-2024-05"
@@ -808,7 +808,7 @@
             "batch_id": "L-2024-03",
             "date": "2024-06-22T00:00:00",
             "bbd": "2026-06-22T00:00:00",
-            "description": "Mischhonig Eimer",
+            "description": "Honig Eimer",
             "weight": 42.4,
             "container": 1.0,
             "price": 9.0,
@@ -816,7 +816,7 @@
                 "type": "Eimer"
             },
             "comment": "",
-            "sort": "Mischhonig"
+            "sort": "Honig"
         }
     ]
 }
