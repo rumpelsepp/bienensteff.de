@@ -23,7 +23,7 @@ Die Direktverkaufsstellen werden von uns persönlich betreut; bei diesen am best
 |-----------------|------|---------| ------- |
 | [Haustür](https://www.dlr.rlp.de/Internet/Bienenkunde/DEImkerbund.nsf/bfde223bcca7faa0c1257671003a76b2/8c188f84652aa995c12588b6002c3e7d) | Direktverkauf | [Stefan Tatschner<br>Gräfelfinger Straße 169a<br>81375 München](https://maps.app.goo.gl/CxwePVnqYxZf5y3k8) | E-Mail: stefan.tatschner@mailbox.org<br>Handy: <a href="tel:+4915124096409">+49 1512 4096409</a> |
 | Haustür | Direktverkauf | [Fam. Tatschner<br>Granitweg 20<br>94481 Grafenau](https://maps.app.goo.gl/jTKsPPaF4Zm2bUPV6) | E-Mail: anneliese.tatschner@gmail.com |
-| [bienensteff.etsy.com](https://bienensteff.etsy.com) | Online-Show | — | [-> zum Shop](https://etsy.com) |
+| [bienensteff.etsy.com](https://bienensteff.etsy.com) | Online-Shop | — | [-> zum Shop](https://etsy.com) |
 <!--| [kleinanzeigen.de](https://www.kleinanzeigen.de/s-bestandsliste.html?userId=138484447) | Online Inserate    | — | [-> zu den Inseraten](https://www.kleinanzeigen.de/s-bestandsliste.html?userId=138484447)  | -->
 <!--| [Heimathonig.de](https://heimathonig.de/imker/21835-bienensteff) | Online-Shop     | — | [-> zum Shop](https://heimathonig.de/imker/21835-bienensteff/product_listing)  | -->
 <!--| [Honighäusl](https://www.instagram.com/p/CwKldu-os06/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==) | SB-Verkaufskasten | [Rambaldistr. 33; 81929 München](https://maps.app.goo.gl/DKsJSy5xJL3j8Hmh9)  | — |-->
