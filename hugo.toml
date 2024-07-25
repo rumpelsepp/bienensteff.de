@@ -1,7 +1,9 @@
 baseURL = 'https://bienensteff.de'
 languageCode = 'de-de'
 title = "Imkerei BienenSteff 🐝"
-enableRobotsTXT = true
+enableRobotsTXT = "true"
+timeZone = "Europe/Berlin"
+enableEmoji = "true"
 pluralizelisttitles = "false"
 
 [params]
