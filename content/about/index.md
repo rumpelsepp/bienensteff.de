@@ -30,3 +30,10 @@ Unsere Bienen befinden sich an mehreren Standorten in und um München.
 Als Münchner Imkerei sind wir berechtigt die Marke [„Münchner Grüngürtel“](https://stadt.muenchen.de/infos/muenchner-gruenguertel.html) zu nutzen.
 
 {{< fig src="gruenguertel-muc.jpg" size="500x500" >}}
+
+## Fachkundenachweise
+
+* 04.09.2024: [Vespa velutina - Die asiatische Hornisse](/fachkunde/2024-09-04-velutina.pdf); Landakademie
+* 28.06.2024: [Biologie Varroamilbe & Varroamanagement](/fachkunde/2024-06-28-fachkunde-varroa.pdf); Bezirk Oberbayern: Fachberatung für Imkerei
+* 05.02.2024: [Völkervermehrung in vier Schritten mit Dr. Pia Aumeier](/fachkunde/2024-02-05-Völkervermehrung.pdf); Imkerling — Die Akademie für Bienenfreunde
+* 18.07.2022: [Qualitätsanforderungen für Deutschen Honig gemäß den Warenzeichenbestimmungen des Deutschen Imkerbundes e.V.](/fachkunde/2022-07-18-DIB-cert.pdf); Deutscher Imkerbund

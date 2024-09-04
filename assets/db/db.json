@@ -299,6 +299,116 @@
             "moisture": 0.19,
             "finished": 1,
             "comment": "Mischung aus Z-2024-01 und Z-2024-02 um Wassergehalt zu korrigieren"
+        },
+        {
+            "id": "E-2024-18",
+            "extraction_id": "Z-2024-03",
+            "batch_id": "L-2024-04",
+            "location": "",
+            "weight": 14.6,
+            "moisture": 0.191,
+            "finished": 0,
+            "comment": ""
+        },
+        {
+            "id": "E-2024-19",
+            "extraction_id": "Z-2024-03",
+            "batch_id": "L-2024-04",
+            "location": "",
+            "weight": 14.5,
+            "moisture": 0.182,
+            "finished": 0,
+            "comment": ""
+        },
+        {
+            "id": "E-2024-20",
+            "extraction_id": "Z-2024-03",
+            "batch_id": "L-2024-04",
+            "location": "",
+            "weight": 14.5,
+            "moisture": 0.18100000000000002,
+            "finished": 0,
+            "comment": ""
+        },
+        {
+            "id": "E-2024-21",
+            "extraction_id": "Z-2024-03",
+            "batch_id": "L-2024-04",
+            "location": "",
+            "weight": 14.5,
+            "moisture": 0.188,
+            "finished": 0,
+            "comment": ""
+        },
+        {
+            "id": "E-2024-22",
+            "extraction_id": "Z-2024-03",
+            "batch_id": "L-2024-04",
+            "location": "",
+            "weight": 14.3,
+            "moisture": 0.18,
+            "finished": 0,
+            "comment": ""
+        },
+        {
+            "id": "E-2024-23",
+            "extraction_id": "Z-2024-03",
+            "batch_id": "L-2024-04",
+            "location": "",
+            "weight": 14.4,
+            "moisture": 0.193,
+            "finished": 0,
+            "comment": ""
+        },
+        {
+            "id": "E-2024-24",
+            "extraction_id": "Z-2024-03",
+            "batch_id": "L-2024-04",
+            "location": "",
+            "weight": 14.7,
+            "moisture": 0.182,
+            "finished": 0,
+            "comment": ""
+        },
+        {
+            "id": "E-2024-25",
+            "extraction_id": "Z-2024-03",
+            "batch_id": "L-2024-04",
+            "location": "",
+            "weight": 14.1,
+            "moisture": 0.18899999999999997,
+            "finished": 0,
+            "comment": ""
+        },
+        {
+            "id": "E-2024-26",
+            "extraction_id": "Z-2024-03",
+            "batch_id": "L-2024-04",
+            "location": "",
+            "weight": 14.4,
+            "moisture": 0.185,
+            "finished": 0,
+            "comment": ""
+        },
+        {
+            "id": "E-2024-27",
+            "extraction_id": "Z-2024-03",
+            "batch_id": "L-2024-04",
+            "location": "",
+            "weight": 14.0,
+            "moisture": 0.188,
+            "finished": 0,
+            "comment": ""
+        },
+        {
+            "id": "E-2024-28",
+            "extraction_id": "Z-2024-03",
+            "batch_id": "L-2024-04",
+            "location": "",
+            "weight": 14.0,
+            "moisture": 0.188,
+            "finished": 0,
+            "comment": ""
         }
     ],
     "extractions": [
@@ -393,6 +503,28 @@
             ],
             "batches": [
                 "L-2024-02"
+            ]
+        },
+        {
+            "id": "Z-2024-03",
+            "date": "2024-08-03T00:00:00",
+            "weight": 158.0,
+            "comment": "",
+            "buckets": [
+                "E-2024-18",
+                "E-2024-19",
+                "E-2024-20",
+                "E-2024-21",
+                "E-2024-22",
+                "E-2024-23",
+                "E-2024-24",
+                "E-2024-25",
+                "E-2024-26",
+                "E-2024-27",
+                "E-2024-28"
+            ],
+            "batches": [
+                "L-2024-04"
             ]
         }
     ],
@@ -532,6 +664,30 @@
                 "E-2024-15",
                 "E-2024-16",
                 "E-2024-17"
+            ]
+        },
+        {
+            "id": "L-2024-04",
+            "closed": false,
+            "weight": 158.0,
+            "sort": "",
+            "comment": "",
+            "fillings": [],
+            "buckets": [
+                "E-2024-18",
+                "E-2024-19",
+                "E-2024-20",
+                "E-2024-21",
+                "E-2024-22",
+                "E-2024-23",
+                "E-2024-24",
+                "E-2024-25",
+                "E-2024-26",
+                "E-2024-27",
+                "E-2024-28"
+            ],
+            "extractions": [
+                "Z-2024-03"
             ]
         }
     ],

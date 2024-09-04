@@ -11,6 +11,8 @@ Die ersten Honigräume sind auf den Völkern und die ersten Ableger wurden gebil
 Seit kurzen ist unser Betrieb im [Münchner Grüngürtel](https://stadt.muenchen.de/infos/muenchner-gruenguertel.html) gelistet und wir sind berechtigt die Marke Münchner Grüngürtel zu nutzen.
 Eine coole Sache von der Stadt München! 🥳 
 
+<!--more-->
+
 {{< fig src="gruenguertel-muc.jpg" size="500x500" >}}
 
 Anbei ein paar Impressionen vom Bienenstand.
