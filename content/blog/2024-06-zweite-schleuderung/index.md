@@ -12,7 +12,9 @@ Melezitose ist ein spezieller Zucker der von Blattläusen produziert wird.
 Dabei kristallisiert der Honig in kürzester Zeit innerhalb der Waben aus und kann nicht mehr geschleudert werden.
 Wir hatten Glück und konnten den wirklich schmackhaften Honig rechtzeitig schleudern.
 
-{{< youtube SPQX6FidzFo >}}
-{{< youtube FcX-elbFQAo >}}
+<!--more-->
+
+{{< youtube_player id="SPQX6FidzFo" >}}
+{{< youtube_player id="FcX-elbFQAo" >}}
 {{< fig src="IMG_20240616_140857.jpg" >}}
 {{< fig src="IMG_20240617_095927.jpg" >}}

@@ -32,7 +32,7 @@
         <div class="overlay-container">
     {{- end -}}
 
-    <img src="{{ $img.Permalink }}"{{- if or (.Get "alt") (.Get "caption") }} alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify | plainify }}{{ end }}" {{- end -}} {{- with .Get "loading" }} loading="{{ . }}"{{ else }} loading="lazy"{{ end -}}>
+    <a href="{{ $img.Permalink }}"><img src="{{ $img.Permalink }}"{{- if or (.Get "alt") (.Get "caption") }} alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify | plainify }}{{ end }}" {{- end -}} {{- with .Get "loading" }} loading="{{ . }}"{{ else }} loading="lazy"{{ end -}}></a>
 
     {{- if .Get "overlay" -}}
         <div class="overlay">{{ .Get "overlay" }}</div>

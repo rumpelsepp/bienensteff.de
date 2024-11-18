@@ -8,7 +8,16 @@ Hauptberuflich habe ich die meiste Zeit mit Computern zu tun und ich war lange a
 Aus anfänglich einem einzigen Volk sind es mittlerweile viele geworden mit der Tendenz zu mehr!
 Meine Familie unterstützt mich sehr liebevoll wo sie kann, sei es beim Wachsschmelzen, Honigschleudern oder einfach indem alle mein pausenloses Bienengelaber mit einem Lächeln ertragen… 😁
 
-{{< fig src="IMG_20230617_093428-crop.png" >}}
+<!--{{< fig src="IMG_20230617_093428-crop.png" >}}-->
+{{< fig src="IMG_20240708_195442.jpg" >}}
+
+## Regionalität
+
+Unsere Bienen befinden sich an mehreren Standorten in und um München.
+Der Hauptstandort unserer Imkerei befindet sich in den Bayerischen Staatsforsten im Münchner Südwesten.
+Durch die Nähe zu Streuobstwiesen und v.a. durch das umfangreiche Angebot im Wald wird unsere Arbeit jährlich mit sehr schmackhaften Honig belohnt. 
+
+{{< fig src="IMG_20240708_205828.jpg" >}}
 
 ## Philosophie
 
@@ -24,16 +33,20 @@ Imkern ist sehr abwechslungsreich.
 Jeder Monat ist anders und stellt den Imker vor verschiedenste Herausforderungen, die oft ein gehöriges Maß an Kreativität oder auch handwerklichem Geschick erfordern.
 Die Bienen bedanken sich mit sehr leckerem Honig, der am allerbesten schmeckt, wenn man das ganze Jahr mit dabei war 🐝🍯!
 
-## Regionalität
+## Auszeichnungen
 
-Unsere Bienen befinden sich an mehreren Standorten in und um München.
-Als Münchner Imkerei sind wir berechtigt die Marke [„Münchner Grüngürtel“](https://stadt.muenchen.de/infos/muenchner-gruenguertel.html) zu nutzen.
-
-{{< fig src="gruenguertel-muc.jpg" size="500x500" >}}
+* 03.11.2024: [Medaille für hervorragende Leistungen in **Gold**](/auszeichnungen/2024-11-03-honigpraemierung.pdf); Bienenwirtschtliche Ausstellung „Honigprämierung“ beim 10. Bayerischen Honigfest; Hauzenberg (Niederbayern)
 
 ## Fachkundenachweise
 
+* 11.10.2024: [Biozertifizierung in der Imkerei](/fachkunde/2024-10-11-bio-zertifizierung.pdf); Bezirk Oberbayern: Fachberatung für Imkerei
 * 04.09.2024: [Vespa velutina - Die asiatische Hornisse](/fachkunde/2024-09-04-velutina.pdf); Landakademie
 * 28.06.2024: [Biologie Varroamilbe & Varroamanagement](/fachkunde/2024-06-28-fachkunde-varroa.pdf); Bezirk Oberbayern: Fachberatung für Imkerei
 * 05.02.2024: [Völkervermehrung in vier Schritten mit Dr. Pia Aumeier](/fachkunde/2024-02-05-Völkervermehrung.pdf); Imkerling — Die Akademie für Bienenfreunde
 * 18.07.2022: [Qualitätsanforderungen für Deutschen Honig gemäß den Warenzeichenbestimmungen des Deutschen Imkerbundes e.V.](/fachkunde/2022-07-18-DIB-cert.pdf); Deutscher Imkerbund
+
+## Zertifikate
+
+Als Münchner Imkerei sind wir berechtigt die Marke [„Münchner Grüngürtel“](https://stadt.muenchen.de/infos/muenchner-gruenguertel.html) zu nutzen.
+
+{{< fig src="gruenguertel-muc.jpg" size="500x500" >}}

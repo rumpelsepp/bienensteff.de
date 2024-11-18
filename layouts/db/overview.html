@@ -13,27 +13,22 @@
         
 {{ with resources.Get "/db/db.json" }}
     {{ with . | transform.Unmarshal }}
-        {{ $data := .fillings }}
+        {{ $data := .batches }}
 
         <div id="beetable">
         <table id="honeydb" class="sortable">
         <thead>
             <tr>
-                <th>Abfüllung</th>
-                <th>Los</th>
-                <th>Abfülldatum</th>
-                <th><abbr title="Mindesthaltbarkeitsdatum">MHD</abbr></th>
+                <th>Honiglos</th>
                 <th>Sortenempfehlung</th>
             </tr>
         </thead>
         <tbody>
 
         {{ range $data }}
+        {{ if .closed }}{{ continue }}{{ end }}
             <tr>
                 <td><a href="{{ urls.AbsURL (urls.JoinPath "database" "q" (strings.ToLower .id)) }}">{{ .id }}</a></td>
-                <td><a href="{{ urls.AbsURL (urls.JoinPath "database" "q" (strings.ToLower .batch_id)) }}">{{ .batch_id }}</a></td>
-                <td><time datetime="{{ (time.AsTime .date).Format "2006-01-02" }}">{{ (time.AsTime .date).Format "02.01.2006" }}</time></td>
-                <td><time datetime="{{ (time.AsTime .bbd).Format "2006-01-02" }}">{{ (time.AsTime .bbd).Format "02.01.2006" }}</time></td>
                 <td>{{ .sort }}</td>
             </tr>
         {{ end }}
@@ -43,19 +38,4 @@
         </div>
     {{ end }}
 {{ end }}
-
-<script type="module">
-  import { DateTime } from "/js/main.js";
-    
-    let table = document.querySelector("#beetable #honeydb");
-    for (let i = 1, row; row = table.rows[i]; i++) {
-        let cell = row.cells[3];
-        let rawMHD = cell.childNodes[0].dateTime;
-        let mhd = DateTime.fromISO(rawMHD);
-        
-        if (mhd.diffNow("months").toObject().months < -6) {
-            row.classList.add("expired");
-        }
-    }
-</script>
 {{ end }}

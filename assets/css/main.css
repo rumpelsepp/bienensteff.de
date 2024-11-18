@@ -199,14 +199,6 @@ article.content {
         tbody tr:nth-child(odd) {
             background: whitesmoke;
         }
-
-        tbody tr.highlight {
-            background-color: yellow;
-        }
-
-        tbody tr.expired {
-            color: gray;
-        }
     }
 
     figure {

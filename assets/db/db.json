@@ -1,8 +1,54 @@
 {
+    "articles": [
+        {
+            "gtin": "GTIN-4270004430233",
+            "description": "BienenSteff Sommertrachthonig 500 g",
+            "long_description": "",
+            "msrp": 8.0,
+            "pu": 0.5,
+            "comment": "",
+            "id": "GTIN-4270004430233",
+            "batches": [
+                "L-2024-04"
+            ]
+        },
+        {
+            "gtin": "GTIN-4270004430226",
+            "description": "BienenSteff Backhonig",
+            "long_description": "",
+            "msrp": 2.0,
+            "pu": 1.0,
+            "comment": "",
+            "id": "GTIN-4270004430226",
+            "batches": []
+        },
+        {
+            "gtin": "GTIN-4270004430219",
+            "description": "BienenSteff Fr\u00fchjahrstrachthonig 500 g",
+            "long_description": "",
+            "msrp": 8.0,
+            "pu": 0.5,
+            "comment": "",
+            "id": "GTIN-4270004430219",
+            "batches": [
+                "L-2024-01"
+            ]
+        },
+        {
+            "gtin": "GTIN-4270004430202",
+            "description": "BienenSteff Honig",
+            "long_description": "",
+            "msrp": 16.0,
+            "pu": 1.0,
+            "comment": "",
+            "id": "GTIN-4270004430202",
+            "batches": []
+        }
+    ],
     "buckets": [
         {
             "id": "E-2022-01",
-            "extraction_id": "Z-2022-01",
+            "centrifugation_id": "Z-2022-01",
             "batch_id": "L-2022-01",
             "location": "AISEC",
             "weight": 15.5,
@@ -12,7 +58,7 @@
         },
         {
             "id": "E-2022-02",
-            "extraction_id": "Z-2022-02",
+            "centrifugation_id": "Z-2022-02",
             "batch_id": "L-2022-02",
             "location": "AISEC",
             "weight": 13.0,
@@ -22,7 +68,7 @@
         },
         {
             "id": "E-2023-01",
-            "extraction_id": "Z-2023-01",
+            "centrifugation_id": "Z-2023-01",
             "batch_id": "L-2023-01",
             "location": "AISEC",
             "weight": 9.5,
@@ -32,7 +78,7 @@
         },
         {
             "id": "E-2023-02",
-            "extraction_id": "Z-2023-01",
+            "centrifugation_id": "Z-2023-01",
             "batch_id": "L-2023-01",
             "location": "AISEC",
             "weight": 9.6,
@@ -42,7 +88,7 @@
         },
         {
             "id": "E-2023-03",
-            "extraction_id": "Z-2023-01",
+            "centrifugation_id": "Z-2023-01",
             "batch_id": "L-2023-01",
             "location": "AISEC",
             "weight": 7.5,
@@ -52,7 +98,7 @@
         },
         {
             "id": "E-2023-04",
-            "extraction_id": "Z-2023-01",
+            "centrifugation_id": "Z-2023-01",
             "batch_id": "L-2023-01",
             "location": "WIEDE",
             "weight": 10.1,
@@ -62,7 +108,7 @@
         },
         {
             "id": "E-2023-05",
-            "extraction_id": "Z-2023-01",
+            "centrifugation_id": "Z-2023-01",
             "batch_id": "L-2023-01",
             "location": "WIEDE",
             "weight": 6.8,
@@ -72,7 +118,7 @@
         },
         {
             "id": "E-2023-06",
-            "extraction_id": "Z-2023-02",
+            "centrifugation_id": "Z-2023-02",
             "batch_id": "L-2023-02",
             "location": "WIEDE",
             "weight": 10.1,
@@ -82,7 +128,7 @@
         },
         {
             "id": "E-2023-07",
-            "extraction_id": "Z-2023-02",
+            "centrifugation_id": "Z-2023-02",
             "batch_id": "L-2023-02",
             "location": "WIEDE",
             "weight": 9.6,
@@ -92,7 +138,7 @@
         },
         {
             "id": "E-2023-08",
-            "extraction_id": "Z-2023-02",
+            "centrifugation_id": "Z-2023-02",
             "batch_id": "L-2023-02",
             "location": "WIEDE",
             "weight": 9.4,
@@ -102,7 +148,7 @@
         },
         {
             "id": "E-2023-09",
-            "extraction_id": "Z-2023-02",
+            "centrifugation_id": "Z-2023-02",
             "batch_id": "L-2023-02",
             "location": "WIEDE",
             "weight": 10.8,
@@ -112,7 +158,7 @@
         },
         {
             "id": "E-2023-10",
-            "extraction_id": "Z-2023-02",
+            "centrifugation_id": "Z-2023-02",
             "batch_id": "L-2023-02",
             "location": "AISEC",
             "weight": 9.9,
@@ -122,7 +168,7 @@
         },
         {
             "id": "E-2023-11",
-            "extraction_id": "Z-2023-02",
+            "centrifugation_id": "Z-2023-02",
             "batch_id": "L-2023-02",
             "location": "AISEC",
             "weight": 9.6,
@@ -132,9 +178,9 @@
         },
         {
             "id": "E-2024-01",
-            "extraction_id": "Z-2024-01",
+            "centrifugation_id": "Z-2024-01",
             "batch_id": "L-2024-01",
-            "location": "",
+            "location": "SFG",
             "weight": 14.0,
             "moisture": 0.17,
             "finished": 1,
@@ -142,9 +188,9 @@
         },
         {
             "id": "E-2024-02",
-            "extraction_id": "Z-2024-01",
+            "centrifugation_id": "Z-2024-01",
             "batch_id": "L-2024-01",
-            "location": "",
+            "location": "SFG",
             "weight": 15.7,
             "moisture": 0.18100000000000002,
             "finished": 1,
@@ -152,9 +198,9 @@
         },
         {
             "id": "E-2024-03",
-            "extraction_id": "Z-2024-01",
+            "centrifugation_id": "Z-2024-01",
             "batch_id": "L-2024-01",
-            "location": "",
+            "location": "SFG",
             "weight": 14.0,
             "moisture": 0.18100000000000002,
             "finished": 1,
@@ -162,9 +208,9 @@
         },
         {
             "id": "E-2024-04",
-            "extraction_id": "Z-2024-01",
+            "centrifugation_id": "Z-2024-01",
             "batch_id": "L-2024-01",
-            "location": "",
+            "location": "SFG",
             "weight": 14.0,
             "moisture": 0.172,
             "finished": 1,
@@ -172,9 +218,9 @@
         },
         {
             "id": "E-2024-05",
-            "extraction_id": "Z-2024-01",
+            "centrifugation_id": "Z-2024-01",
             "batch_id": "L-2024-01",
-            "location": "",
+            "location": "SFG",
             "weight": 14.0,
             "moisture": 0.171,
             "finished": 0,
@@ -182,9 +228,9 @@
         },
         {
             "id": "E-2024-06",
-            "extraction_id": "Z-2024-01",
+            "centrifugation_id": "Z-2024-01",
             "batch_id": "L-2024-01",
-            "location": "",
+            "location": "SFG",
             "weight": 14.2,
             "moisture": 0.17,
             "finished": 0,
@@ -192,9 +238,9 @@
         },
         {
             "id": "E-2024-07",
-            "extraction_id": "Z-2024-01",
+            "centrifugation_id": "Z-2024-01",
             "batch_id": "L-2024-01",
-            "location": "",
+            "location": "SFG",
             "weight": 13.7,
             "moisture": 0.171,
             "finished": 0,
@@ -202,9 +248,9 @@
         },
         {
             "id": "E-2024-08",
-            "extraction_id": "Z-2024-01",
+            "centrifugation_id": "Z-2024-01",
             "batch_id": "",
-            "location": "",
+            "location": "SFG",
             "weight": 12.8,
             "moisture": 0.182,
             "finished": 1,
@@ -212,9 +258,9 @@
         },
         {
             "id": "E-2024-09",
-            "extraction_id": "Z-2024-02",
+            "centrifugation_id": "Z-2024-02",
             "batch_id": "",
-            "location": "",
+            "location": "SFG",
             "weight": 14.8,
             "moisture": 0.215,
             "finished": 1,
@@ -222,9 +268,9 @@
         },
         {
             "id": "E-2024-10",
-            "extraction_id": "Z-2024-02",
+            "centrifugation_id": "Z-2024-02",
             "batch_id": "",
-            "location": "",
+            "location": "SFG",
             "weight": 14.8,
             "moisture": 0.20199999999999999,
             "finished": 1,
@@ -232,9 +278,9 @@
         },
         {
             "id": "E-2024-11",
-            "extraction_id": "Z-2024-02",
+            "centrifugation_id": "Z-2024-02",
             "batch_id": "L-2024-02",
-            "location": "",
+            "location": "SFG",
             "weight": 14.5,
             "moisture": 0.22,
             "finished": 0,
@@ -242,9 +288,9 @@
         },
         {
             "id": "E-2024-12",
-            "extraction_id": "Z-2024-02",
+            "centrifugation_id": "Z-2024-02",
             "batch_id": "L-2024-02",
-            "location": "",
+            "location": "SFG",
             "weight": 13.5,
             "moisture": 0.22,
             "finished": 0,
@@ -252,9 +298,9 @@
         },
         {
             "id": "E-2024-13",
-            "extraction_id": "Z-2024-02",
+            "centrifugation_id": "Z-2024-02",
             "batch_id": "",
-            "location": "",
+            "location": "SFG",
             "weight": 14.0,
             "moisture": 0.23,
             "finished": 0,
@@ -262,9 +308,9 @@
         },
         {
             "id": "E-2024-14",
-            "extraction_id": "Z-2024-02",
+            "centrifugation_id": "Z-2024-02",
             "batch_id": "",
-            "location": "",
+            "location": "SFG",
             "weight": 14.0,
             "moisture": 0.23,
             "finished": 0,
@@ -272,9 +318,9 @@
         },
         {
             "id": "E-2024-15",
-            "extraction_id": "",
+            "centrifugation_id": "",
             "batch_id": "L-2024-03",
-            "location": "",
+            "location": "SFG",
             "weight": 13.0,
             "moisture": 0.19,
             "finished": 1,
@@ -282,9 +328,9 @@
         },
         {
             "id": "E-2024-16",
-            "extraction_id": "",
+            "centrifugation_id": "",
             "batch_id": "L-2024-03",
-            "location": "",
+            "location": "SFG",
             "weight": 15.0,
             "moisture": 0.19,
             "finished": 1,
@@ -292,9 +338,9 @@
         },
         {
             "id": "E-2024-17",
-            "extraction_id": "",
+            "centrifugation_id": "",
             "batch_id": "L-2024-03",
-            "location": "",
+            "location": "SFG",
             "weight": 14.4,
             "moisture": 0.19,
             "finished": 1,
@@ -302,9 +348,9 @@
         },
         {
             "id": "E-2024-18",
-            "extraction_id": "Z-2024-03",
+            "centrifugation_id": "Z-2024-03",
             "batch_id": "L-2024-04",
-            "location": "",
+            "location": "SFG",
             "weight": 14.6,
             "moisture": 0.191,
             "finished": 0,
@@ -312,9 +358,9 @@
         },
         {
             "id": "E-2024-19",
-            "extraction_id": "Z-2024-03",
+            "centrifugation_id": "Z-2024-03",
             "batch_id": "L-2024-04",
-            "location": "",
+            "location": "SFG",
             "weight": 14.5,
             "moisture": 0.182,
             "finished": 0,
@@ -322,9 +368,9 @@
         },
         {
             "id": "E-2024-20",
-            "extraction_id": "Z-2024-03",
+            "centrifugation_id": "Z-2024-03",
             "batch_id": "L-2024-04",
-            "location": "",
+            "location": "SFG",
             "weight": 14.5,
             "moisture": 0.18100000000000002,
             "finished": 0,
@@ -332,9 +378,9 @@
         },
         {
             "id": "E-2024-21",
-            "extraction_id": "Z-2024-03",
+            "centrifugation_id": "Z-2024-03",
             "batch_id": "L-2024-04",
-            "location": "",
+            "location": "SFG",
             "weight": 14.5,
             "moisture": 0.188,
             "finished": 0,
@@ -342,9 +388,9 @@
         },
         {
             "id": "E-2024-22",
-            "extraction_id": "Z-2024-03",
+            "centrifugation_id": "Z-2024-03",
             "batch_id": "L-2024-04",
-            "location": "",
+            "location": "SFG",
             "weight": 14.3,
             "moisture": 0.18,
             "finished": 0,
@@ -352,9 +398,9 @@
         },
         {
             "id": "E-2024-23",
-            "extraction_id": "Z-2024-03",
+            "centrifugation_id": "Z-2024-03",
             "batch_id": "L-2024-04",
-            "location": "",
+            "location": "SFG",
             "weight": 14.4,
             "moisture": 0.193,
             "finished": 0,
@@ -362,9 +408,9 @@
         },
         {
             "id": "E-2024-24",
-            "extraction_id": "Z-2024-03",
+            "centrifugation_id": "Z-2024-03",
             "batch_id": "L-2024-04",
-            "location": "",
+            "location": "SFG",
             "weight": 14.7,
             "moisture": 0.182,
             "finished": 0,
@@ -372,9 +418,9 @@
         },
         {
             "id": "E-2024-25",
-            "extraction_id": "Z-2024-03",
+            "centrifugation_id": "Z-2024-03",
             "batch_id": "L-2024-04",
-            "location": "",
+            "location": "SFG",
             "weight": 14.1,
             "moisture": 0.18899999999999997,
             "finished": 0,
@@ -382,9 +428,9 @@
         },
         {
             "id": "E-2024-26",
-            "extraction_id": "Z-2024-03",
+            "centrifugation_id": "Z-2024-03",
             "batch_id": "L-2024-04",
-            "location": "",
+            "location": "SFG",
             "weight": 14.4,
             "moisture": 0.185,
             "finished": 0,
@@ -392,9 +438,9 @@
         },
         {
             "id": "E-2024-27",
-            "extraction_id": "Z-2024-03",
+            "centrifugation_id": "Z-2024-03",
             "batch_id": "L-2024-04",
-            "location": "",
+            "location": "SFG",
             "weight": 14.0,
             "moisture": 0.188,
             "finished": 0,
@@ -402,16 +448,16 @@
         },
         {
             "id": "E-2024-28",
-            "extraction_id": "Z-2024-03",
+            "centrifugation_id": "Z-2024-03",
             "batch_id": "L-2024-04",
-            "location": "",
+            "location": "SFG",
             "weight": 14.0,
             "moisture": 0.188,
             "finished": 0,
             "comment": ""
         }
     ],
-    "extractions": [
+    "centrifugations": [
         {
             "id": "Z-2022-01",
             "date": "2022-06-09T00:00:00",
@@ -531,50 +577,42 @@
     "batches": [
         {
             "id": "L-2022-01",
-            "closed": true,
+            "closed": false,
             "weight": 15.5,
             "sort": "Fr\u00fchjahrstrachthonig",
             "comment": "Eimer noch nicht getracked",
-            "fillings": [
-                "A-2022-01",
-                "A-2022-02"
-            ],
             "buckets": [
                 "E-2022-01"
             ],
-            "extractions": [
+            "centrifugations": [
                 "Z-2022-01"
+            ],
+            "articles": [
+                "GTIN-0000000202201"
             ]
         },
         {
             "id": "L-2022-02",
-            "closed": true,
+            "closed": false,
             "weight": 13.0,
             "sort": "Sommertrachthonig",
             "comment": "Eimer noch nicht getracked",
-            "fillings": [
-                "A-2022-03",
-                "A-2022-04"
-            ],
             "buckets": [
                 "E-2022-02"
             ],
-            "extractions": [
+            "centrifugations": [
                 "Z-2022-02"
+            ],
+            "articles": [
+                "GTIN-0000000202202"
             ]
         },
         {
             "id": "L-2023-01",
-            "closed": true,
+            "closed": false,
             "weight": 43.5,
             "sort": "Fr\u00fchjahrstrachthonig",
             "comment": "AISEC",
-            "fillings": [
-                "A-2023-01",
-                "A-2023-02",
-                "A-2023-03",
-                "A-2023-08"
-            ],
             "buckets": [
                 "E-2023-01",
                 "E-2023-02",
@@ -582,22 +620,19 @@
                 "E-2023-04",
                 "E-2023-05"
             ],
-            "extractions": [
+            "centrifugations": [
                 "Z-2023-01"
+            ],
+            "articles": [
+                "GTIN-0000000202201"
             ]
         },
         {
             "id": "L-2023-02",
-            "closed": true,
+            "closed": false,
             "weight": 59.4,
-            "sort": "Lindenbl\u00fctenhonig",
+            "sort": "Lindenhonig",
             "comment": "WIEDE",
-            "fillings": [
-                "A-2023-04",
-                "A-2023-05",
-                "A-2023-06",
-                "A-2023-07"
-            ],
             "buckets": [
                 "E-2023-06",
                 "E-2023-07",
@@ -606,8 +641,11 @@
                 "E-2023-10",
                 "E-2023-11"
             ],
-            "extractions": [
+            "centrifugations": [
                 "Z-2023-02"
+            ],
+            "articles": [
+                "GTIN-0000000202202"
             ]
         },
         {
@@ -616,11 +654,6 @@
             "weight": 99.6,
             "sort": "Fr\u00fchjahrstrachthonig",
             "comment": "",
-            "fillings": [
-                "A-2024-01",
-                "A-2024-03",
-                "A-2024-04"
-            ],
             "buckets": [
                 "E-2024-01",
                 "E-2024-02",
@@ -630,8 +663,12 @@
                 "E-2024-06",
                 "E-2024-07"
             ],
-            "extractions": [
+            "centrifugations": [
                 "Z-2024-01"
+            ],
+            "articles": [
+                "GTIN-0000000202201",
+                "GTIN-4270004430219"
             ]
         },
         {
@@ -640,39 +677,34 @@
             "weight": 28.0,
             "sort": "Backhonig",
             "comment": "Melezitosehonig",
-            "fillings": [
-                "A-2024-02"
-            ],
             "buckets": [
                 "E-2024-11",
                 "E-2024-12"
             ],
-            "extractions": [
+            "centrifugations": [
                 "Z-2024-02"
-            ]
+            ],
+            "articles": []
         },
         {
             "id": "L-2024-03",
-            "closed": false,
+            "closed": true,
             "weight": 42.4,
             "sort": "Honig",
             "comment": "Nearbees",
-            "fillings": [
-                "A-2024-05"
-            ],
             "buckets": [
                 "E-2024-15",
                 "E-2024-16",
                 "E-2024-17"
-            ]
+            ],
+            "articles": []
         },
         {
             "id": "L-2024-04",
             "closed": false,
             "weight": 158.0,
-            "sort": "",
+            "sort": "Lindenhonig",
             "comment": "",
-            "fillings": [],
             "buckets": [
                 "E-2024-18",
                 "E-2024-19",
@@ -686,293 +718,12 @@
                 "E-2024-27",
                 "E-2024-28"
             ],
-            "extractions": [
+            "centrifugations": [
                 "Z-2024-03"
+            ],
+            "articles": [
+                "GTIN-4270004430233"
             ]
-        }
-    ],
-    "fillings": [
-        {
-            "id": "A-2022-01",
-            "batch_id": "L-2022-01",
-            "date": "2022-08-20T00:00:00",
-            "bbd": "2024-08-20T00:00:00",
-            "description": "Fr\u00fchjahrstrachthonig neutral",
-            "weight": 6.5,
-            "container": 0.5,
-            "price": 16.0,
-            "glass_info": {
-                "type": "neutral"
-            },
-            "comment": "Neutralglas",
-            "sort": "Fr\u00fchjahrstrachthonig"
-        },
-        {
-            "id": "A-2022-02",
-            "batch_id": "L-2022-01",
-            "date": "2022-08-20T00:00:00",
-            "bbd": "2024-08-20T00:00:00",
-            "description": "Fr\u00fchjahrstrachthonig DIB",
-            "weight": 9.0,
-            "container": 0.5,
-            "price": 16.0,
-            "glass_info": {
-                "type": "DIB",
-                "id_prefix": "WW",
-                "id_start": 884582,
-                "id_end": 884599
-            },
-            "comment": "",
-            "sort": "Fr\u00fchjahrstrachthonig"
-        },
-        {
-            "id": "A-2022-03",
-            "batch_id": "L-2022-02",
-            "date": "2022-08-21T00:00:00",
-            "bbd": "2024-08-21T00:00:00",
-            "description": "Sommertrachthonig neutral",
-            "weight": 3.5,
-            "container": 0.5,
-            "price": 0.0,
-            "glass_info": {
-                "type": "neutral"
-            },
-            "comment": "verschenkt",
-            "sort": "Sommertrachthonig"
-        },
-        {
-            "id": "A-2022-04",
-            "batch_id": "L-2022-02",
-            "date": "2022-09-11T00:00:00",
-            "bbd": "2024-09-11T00:00:00",
-            "description": "Sommertrachthonig DIB",
-            "weight": 9.5,
-            "container": 0.5,
-            "price": 16.0,
-            "glass_info": {
-                "type": "DIB",
-                "id_prefix": "WW",
-                "id_start": 884563,
-                "id_end": 884581
-            },
-            "comment": "",
-            "sort": "Sommertrachthonig"
-        },
-        {
-            "id": "A-2023-01",
-            "batch_id": "L-2023-01",
-            "date": "2023-06-25T00:00:00",
-            "bbd": "2025-06-25T00:00:00",
-            "description": "Fr\u00fchjahrstrachthonig DIB",
-            "weight": 10.5,
-            "container": 0.5,
-            "price": 16.0,
-            "glass_info": {
-                "type": "DIB",
-                "id_prefix": "GKSI",
-                "id_start": 1,
-                "id_end": 21
-            },
-            "comment": "DIB Gl\u00e4ser",
-            "sort": "Fr\u00fchjahrstrachthonig"
-        },
-        {
-            "id": "A-2023-02",
-            "batch_id": "L-2023-01",
-            "date": "2023-06-25T00:00:00",
-            "bbd": "2025-06-25T00:00:00",
-            "description": "Fr\u00fchjahrstrachthonig unverpackt",
-            "weight": 5.2,
-            "container": 1.0,
-            "price": 14.0,
-            "glass_info": {
-                "type": "unverpackt"
-            },
-            "comment": "Abf\u00fcllung in eigene Gl\u00e4ser",
-            "sort": "Fr\u00fchjahrstrachthonig"
-        },
-        {
-            "id": "A-2023-03",
-            "batch_id": "L-2023-01",
-            "date": "2023-06-25T00:00:00",
-            "bbd": "2025-06-25T00:00:00",
-            "description": "Fr\u00fchjahrstrachthonig DIB",
-            "weight": 17.5,
-            "container": 0.5,
-            "price": 16.0,
-            "glass_info": {
-                "type": "DIB",
-                "id_prefix": "GKSI",
-                "id_start": 22,
-                "id_end": 56
-            },
-            "comment": "DIB Gl\u00e4ser",
-            "sort": "Fr\u00fchjahrstrachthonig"
-        },
-        {
-            "id": "A-2023-04",
-            "batch_id": "L-2023-02",
-            "date": "2023-07-23T00:00:00",
-            "bbd": "2025-07-23T00:00:00",
-            "description": "Lindenbl\u00fctenhonig unverpackt",
-            "weight": 6.4,
-            "container": 1.0,
-            "price": 14.0,
-            "glass_info": {
-                "type": "unverpackt"
-            },
-            "comment": "",
-            "sort": "Lindenbl\u00fctenhonig"
-        },
-        {
-            "id": "A-2023-05",
-            "batch_id": "L-2023-02",
-            "date": "2023-09-16T00:00:00",
-            "bbd": "2025-09-16T00:00:00",
-            "description": "Lindenbl\u00fctenhonig DIB",
-            "weight": 37.0,
-            "container": 0.5,
-            "price": 16.0,
-            "glass_info": {
-                "type": "DIB",
-                "id_prefix": "GKSK",
-                "id_start": 1,
-                "id_end": 74
-            },
-            "comment": "",
-            "sort": "Lindenbl\u00fctenhonig"
-        },
-        {
-            "id": "A-2023-06",
-            "batch_id": "L-2023-02",
-            "date": "2023-07-23T00:00:00",
-            "bbd": "2025-07-23T00:00:00",
-            "description": "Sommertracht meta",
-            "weight": 1.5,
-            "container": 0.5,
-            "price": 0.0,
-            "glass_info": {
-                "type": "DIB",
-                "id_prefix": "GKSK",
-                "id_start": 498,
-                "id_end": 500
-            },
-            "comment": "Geburtstagsgeschenk, Honigprobe",
-            "sort": "Lindenbl\u00fctenhonig"
-        },
-        {
-            "id": "A-2023-07",
-            "batch_id": "L-2023-02",
-            "date": "2023-11-19T00:00:00",
-            "bbd": "2025-11-19T00:00:00",
-            "description": "Lindenbl\u00fctenhonig DIB",
-            "weight": 13.0,
-            "container": 0.5,
-            "price": 16.0,
-            "glass_info": {
-                "type": "DIB",
-                "id_prefix": "GKSK",
-                "id_start": 75,
-                "id_end": 100
-            },
-            "comment": "",
-            "sort": "Lindenbl\u00fctenhonig"
-        },
-        {
-            "id": "A-2023-08",
-            "batch_id": "L-2023-01",
-            "date": "2023-11-19T00:00:00",
-            "bbd": "2025-11-19T00:00:00",
-            "description": "Fr\u00fchjahrstrachthonig DIB",
-            "weight": 9.0,
-            "container": 0.5,
-            "price": 16.0,
-            "glass_info": {
-                "type": "DIB",
-                "id_prefix": "GKSI",
-                "id_start": 57,
-                "id_end": 74
-            },
-            "comment": "",
-            "sort": "Fr\u00fchjahrstrachthonig"
-        },
-        {
-            "id": "A-2024-01",
-            "batch_id": "L-2024-01",
-            "date": "2024-06-22T00:00:00",
-            "bbd": "2026-06-22T00:00:00",
-            "description": "Fr\u00fchjahrstrachthonig DIB",
-            "weight": 47.5,
-            "container": 0.5,
-            "price": 16.0,
-            "glass_info": {
-                "type": "DIB",
-                "id_prefix": "GKSI",
-                "id_start": 75,
-                "id_end": 169
-            },
-            "comment": "",
-            "sort": "Fr\u00fchjahrstrachthonig"
-        },
-        {
-            "id": "A-2024-02",
-            "batch_id": "L-2024-02",
-            "date": "2024-06-22T00:00:00",
-            "bbd": "2025-06-22T00:00:00",
-            "description": "Backhonig unverpackt",
-            "weight": 0.0,
-            "container": 1.0,
-            "price": 7.0,
-            "glass_info": {
-                "type": "unverpackt"
-            },
-            "comment": "",
-            "sort": "Backhonig"
-        },
-        {
-            "id": "A-2024-03",
-            "batch_id": "L-2024-01",
-            "date": "2024-06-22T00:00:00",
-            "bbd": "2026-06-22T00:00:00",
-            "description": "Fr\u00fchjahrstrachthonig unverpackt",
-            "weight": 0.0,
-            "container": 1.0,
-            "price": 14.0,
-            "glass_info": {
-                "type": "unverpackt"
-            },
-            "comment": "",
-            "sort": "Fr\u00fchjahrstrachthonig"
-        },
-        {
-            "id": "A-2024-04",
-            "batch_id": "L-2024-01",
-            "date": "2024-06-22T00:00:00",
-            "bbd": "2026-06-22T00:00:00",
-            "description": "Fr\u00fchjahrstrachthonig neutral",
-            "weight": 4.0,
-            "container": 0.5,
-            "price": 16.0,
-            "glass_info": {
-                "type": "neutral"
-            },
-            "comment": "",
-            "sort": "Fr\u00fchjahrstrachthonig"
-        },
-        {
-            "id": "A-2024-05",
-            "batch_id": "L-2024-03",
-            "date": "2024-06-22T00:00:00",
-            "bbd": "2026-06-22T00:00:00",
-            "description": "Honig Eimer",
-            "weight": 42.4,
-            "container": 1.0,
-            "price": 9.0,
-            "glass_info": {
-                "type": "Eimer"
-            },
-            "comment": "",
-            "sort": "Honig"
         }
     ]
 }

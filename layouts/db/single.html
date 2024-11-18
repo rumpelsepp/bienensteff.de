@@ -32,14 +32,14 @@
 {{ end }}
 
 {{ $type := "" }}
-{{ if strings.HasPrefix .Params.id "A-" }}
-    {{ $type = "filling" }}
+{{ if strings.HasPrefix .Params.id "GTIN-" }}
+    {{ $type = "article" }}
 {{ else if strings.HasPrefix .Params.id "L-" }}
     {{ $type = "batch" }}
 {{ else if strings.HasPrefix .Params.id "E-" }}
     {{ $type = "bucket" }}
 {{ else if strings.HasPrefix .Params.id "Z-" }}
-    {{ $type = "extraction" }}
+    {{ $type = "centrifugation" }}
 {{ else }}
     {{ errorf "invalid nummer: %s" .Params.id }}
 {{ end }}
@@ -51,26 +51,29 @@
     <article class="content">
     <header>
         <h1>
-            {{ $.Title }}
-            {{ if eq $type "filling" }}
-                (Abfüllung)
+            {{ if eq $type "article" }}
+                {{ .Params.description }}
             {{ else if eq $type "batch" }}
+                {{ $.Title }}
                 (Los)
             {{ else if eq $type "bucket" }}
+                {{ $.Title }}
                 (Eimer)
-            {{ else if eq $type "extraction" }}
+            {{ else if eq $type "centrifugation" }}
+                {{ $.Title }}
                 (Schleuderung)
             {{ end }}
         </h1>
     </header>
     
     <table id="honeydb">
-        {{ if eq $type "batch" }}
-            <tr><th>Losnummer</th><td>{{ .Params.id }}</td></tr>
-            <tr><th>Sortenempfehlung</th><td>{{ .Params.sort }}</td></tr>
-            <tr><th>Gewicht</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.weight) "." "," }}</td></tr>
-            {{ with .Params.fillings }}
-                <tr><th>Abfüllungen</th><td>
+        {{ if eq $type "article" }}
+            <tr><th>Bezeichnung</th><td>{{ .Params.description }}</td></tr>
+            <tr><th><abbr title="Global Trade Item Number (vormals EAN)">GTIN</abbr></th> <td><a href="https://www.gs1.org/services/verified-by-gs1/results?gtin={{ strings.TrimPrefix "GTIN-" .Params.gtin }}">{{ strings.TrimPrefix "GTIN-" .Params.gtin }}</a></td></tr>
+            <tr><th>Artikelbeschreibung</th><td>{{ .Params.long_description }}</td></tr>
+            {{ with .Params.batches }}
+                <tr><th>Honiglose</th>
+                <td>
                     <ul>
                         {{ range . }}
                             <li><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
@@ -78,8 +81,36 @@
                     </ul>
                 </td></tr>
             {{ end }}
-            {{ with .Params.extractions }}
-                <tr><th>Schleuderungen</th><td>
+            {{ partial "partials/inline-permalink.html" . }}
+        {{ end }}
+        {{ if eq $type "batch" }}
+            <tr><th>Losnummer</th><td>{{ .Params.id }}</td></tr>
+            <tr><th>Sortenempfehlung</th><td>{{ .Params.sort }}</td></tr>
+            <tr><th>Gewicht</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.weight) "." "," }}</td></tr>
+            {{ with .Params.articles }}
+                <tr><th>Artikel</th>
+                <td>
+                    <ul>
+                        {{ range . }}
+                            {{ if strings.HasPrefix . "GTIN-0000000" }}{{ continue }}{{ end }}
+                            <li><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
+                        {{ end }}
+                    </ul>
+                </td></tr>
+            {{ end }}
+            {{ with .Params.fillings }}
+                <tr><th>Abfüllungen</th>
+                <td>
+                    <ul>
+                        {{ range . }}
+                            <li><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
+                        {{ end }}
+                    </ul>
+                </td></tr>
+            {{ end }}
+            {{ with .Params.centrifugations }}
+                <tr><th>Schleuderungen</th>
+                <td>
                     <ul>
                         {{ range . }}
                             <li><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
@@ -112,12 +143,13 @@
                 <tr><th>Kommentar</th><td>{{ . }}</td></tr>
             {{ end }}
             {{ partial "partials/inline-permalink.html" . }}
-        {{ else if eq $type "extraction" }}
+        {{ else if eq $type "centrifugation" }}
             <tr><th>Schleuderungsnummer</th><td>{{ .Params.id }}</td></tr>
             <tr><th>Schleuderdatum</th><td><time datetime="{{ (time.AsTime .Params.date).Format "2006-01-02" }}">{{ (time.AsTime .Params.date).Format "02.01.2006" }}</time></td></tr>
             <tr><th>Gewicht</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.weight) "." "," }}</td></tr>
             {{ with .Params.batches }}
-                <tr><th>Lose</th><td>
+                <tr><th>Honiglose</th>
+                <td>
                     <ul>
                         {{ range . }}
                             <li><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
@@ -126,7 +158,8 @@
                 </td></tr>
             {{ end }}
             {{ with .Params.buckets }}
-                <tr><th>Eimer</th><td>
+                <tr><th>Eimer</th>
+                <td>
                     <ul>
                         {{ range . }}
                             <li><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
@@ -137,20 +170,6 @@
             {{ with .Params.comment }}
                 <tr><th>Kommentar</th><td>{{ . }}</td></tr>
             {{ end }}
-            {{ partial "partials/inline-permalink.html" . }}
-        {{ else if eq $type "filling" }}
-            <tr><th>Abfüllnummer</th><td>{{ .Params.id }}</td></tr>
-            <tr><th>Losnummer</th><td><a href="{{ urls.AbsURL (urls.JoinPath "database" "q" (strings.ToLower .Params.batch_id)) }}">{{ .Params.batch_id }}</a></th></td></tr>
-            <tr><th>Abfülldatum</th><td><time datetime="{{ (time.AsTime .Params.date).Format "2006-01-02" }}">{{ (time.AsTime .Params.date).Format "02.01.2006" }}</time></td></tr>
-            <tr><th><abbr title="Mindesthaltbarkeitsdatum">MHD</abbr></th><td><time datetime="{{ (time.AsTime .Params.bbd).Format "2006-01-02" }}">{{ (time.AsTime .Params.bbd).Format "02.01.2006" }}</time></td></tr>
-            <tr><th>Gebinde</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.container) "." "," }}</td></tr>
-            <tr><th>Gewicht</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.weight) "." "," }}</td></tr>
-            <tr><th>Glastyp</th><td>{{ .Params.glass_info.type }}</td></tr>
-            <tr><th>Sortenempfehlung</th><td>{{ .Params.sort }}</td></tr>
-            {{ if eq .Params.glass_info.type "DIB" }}
-                <tr><th>Glasnummer</th><td><strong>{{ .Params.glass_info.id_prefix }}</strong>{{ .Params.glass_info.id_start }}…{{ .Params.glass_info.id_end }}</td></tr>
-            {{ end }}
-            {{ partial "partials/inline-analysis-permalink.html" .Params.batch_id }}
             {{ partial "partials/inline-permalink.html" . }}
         {{ end }}
     </table>

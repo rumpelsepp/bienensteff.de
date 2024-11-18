@@ -1,4 +1,10 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run -q
+
+# /// script
+# dependencies = [
+#     "httpx",
+# ]
+# ///
 
 import csv
 import json
@@ -10,9 +16,10 @@ from typing import Any
 import httpx
 
 L_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=319545385&single=true&output=csv"
-A_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=1094250359&single=true&output=csv"
+A_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=321365816&single=true&output=csv"
 E_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=614306566&single=true&output=csv"
 Z_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=424473037&single=true&output=csv"
+STOCK_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=1660941194&single=true&output=csv"
 
 
 def fetch_sheet(url: str) -> list[dict[str, Any]]:
@@ -24,21 +31,12 @@ def fetch_sheet(url: str) -> list[dict[str, Any]]:
 
 def init_db(cur: sqlite3.Cursor) -> None:
     cur.executescript("""
-        CREATE TABLE buckets (
-            id TEXT PRIMARY KEY,
-            extraction_id TEXT,
-            batch_id TEXT,
-            location TEXT,
-            weight REAL,
-            moisture REAL,
-            finished INTEGER,
-            comment TEXT
-        ) STRICT;
-
-        CREATE TABLE extractions (
-            id TEXT PRIMARY KEY,
-            date TEXT,
-            weight REAL,
+        CREATE TABLE articles (
+            gtin TEXT,
+            description TEXT,
+            long_description TEXT,
+            msrp REAL,
+            pu REAL,
             comment TEXT
         ) STRICT;
 
@@ -50,19 +48,65 @@ def init_db(cur: sqlite3.Cursor) -> None:
             comment TEXT
         ) STRICT;
 
-        CREATE TABLE fillings (
+        CREATE TABLE buckets (
             id TEXT PRIMARY KEY,
+            centrifugation_id TEXT,
             batch_id TEXT,
-            date TEXT,
-            bbd TEXT,
-            description TEXT,
+            location TEXT,
             weight REAL,
-            container REAL,
-            price REAL,
-            glass_info JSON ,
+            moisture REAL,
+            finished INTEGER,
             comment TEXT
-        );
+        ) STRICT;
+
+        CREATE TABLE centrifugations (
+            id TEXT PRIMARY KEY,
+            date TEXT,
+            weight REAL,
+            comment TEXT
+        ) STRICT;
+
+        CREATE TABLE stock_transactions (
+            date TEXT,
+            best_before TEXT,
+            batch_id TEXT,
+            gtin TEXT,
+            weight REAL,
+            quantity REAL,
+            comment TEXT,
+            dib_field TEXT
+        ) STRICT;
     """)
+
+
+def convert_to_float(raw: str, remove: str) -> float:
+    return float(raw.replace(remove, "").replace(",", "."))
+
+
+def import_articles(cur: sqlite3.Cursor) -> None:
+    for article in fetch_sheet(A_URL):
+        if article["GTIN"].startswith("0000000"):
+            continue
+        cur.execute(
+            """
+            INSERT INTO articles(
+                gtin,
+                description,
+                long_description,
+                msrp,
+                pu,
+                comment
+            ) VALUES (?, ?, ?, ?, ?, ?);
+        """,
+            (
+                f"GTIN-{article['GTIN']}",
+                article["Bezeichnung"],
+                article["Artikelbeschreibung"],
+                convert_to_float(article["UVP"], " €"),
+                convert_to_float(article["VPE"], " kg"),
+                article["Kommentar"],
+            ),
+        )
 
 
 def import_buckets(cur: sqlite3.Cursor) -> None:
@@ -71,7 +115,7 @@ def import_buckets(cur: sqlite3.Cursor) -> None:
             """
             INSERT INTO buckets(
                 id,
-                extraction_id,
+                centrifugation_id,
                 batch_id,
                 location,
                 weight,
@@ -85,19 +129,19 @@ def import_buckets(cur: sqlite3.Cursor) -> None:
                 bucket["Schleuderung"],
                 bucket["Los"],
                 bucket["Standort"],
-                float(bucket["Gewicht"].replace(" kg", "").replace(",", ".")),
-                float(bucket["Wassergehalt"].replace("%", "").replace(",", ".")) / 100,
+                convert_to_float(bucket["Gewicht"], " kg"),
+                convert_to_float(bucket["Wassergehalt"], "%") / 100,
                 bucket["abgefüllt"] == "x",
                 bucket["Kommentar"],
             ),
         )
 
 
-def import_extractions(cur: sqlite3.Cursor) -> None:
-    for extraction in fetch_sheet(Z_URL):
+def import_centrifugations(cur: sqlite3.Cursor) -> None:
+    for centrifugation in fetch_sheet(Z_URL):
         cur.execute(
             """
-            INSERT INTO extractions(
+            INSERT INTO centrifugations(
                 id,
                 date,
                 weight,
@@ -105,10 +149,10 @@ def import_extractions(cur: sqlite3.Cursor) -> None:
             ) VALUES (?, ?, ?, ?);
         """,
             (
-                extraction["Nummer"],
-                datetime.strptime(extraction["Schleuderdatum"], "%d.%m.%Y"),
-                float(extraction["Gewicht"].replace(" kg", "").replace(",", ".")),
-                extraction["Kommentar"],
+                centrifugation["Nummer"],
+                datetime.strptime(centrifugation["Schleuderdatum"], "%d.%m.%Y"),
+                convert_to_float(centrifugation["Gewicht"], " kg"),
+                centrifugation["Kommentar"],
             ),
         )
 
@@ -128,50 +172,37 @@ def import_batches(cur: sqlite3.Cursor) -> None:
             (
                 batch["Nummer"],
                 batch["Closed"] == "x",
-                float(batch["Gewicht"].replace(" kg", "").replace(",", ".")),
+                convert_to_float(batch["Gewicht"], " kg"),
                 batch["Honigsorte"],
                 batch["Kommentar"],
             ),
         )
 
 
-def import_fillings(cur: sqlite3.Cursor) -> None:
-    for filling in fetch_sheet(A_URL):
-        if "1970" in filling["Nummer"]:
-            continue
-
-        glass_info = {"type": filling["Glastyp"]}
-        if glass_info["type"] == "DIB":
-            glass_info["id_prefix"] = filling["KN Präfix"]
-            glass_info["id_start"] = int(filling["KN Start"])
-            glass_info["id_end"] = int(filling["KN End"])
-
+def import_stock(cur: sqlite3.Cursor) -> None:
+    for transaction in fetch_sheet(STOCK_URL):
         cur.execute(
             """
-            INSERT INTO fillings(
-                id,
-                batch_id,
+            INSERT INTO stock_transactions(
                 date,
-                bbd,
-                description,
+                best_before,
+                batch_id,
+                gtin,
                 weight,
-                container,
-                price,
-                glass_info,
-                comment
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+                quantity,
+                comment,
+                dib_field
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
         """,
             (
-                filling["Nummer"],
-                filling["Los"],
-                datetime.strptime(filling["Abfülldatum"], "%d.%m.%Y"),
-                datetime.strptime(filling["MHD"], "%d.%m.%Y"),
-                filling["Bezeichnung"],
-                float(filling["Gewicht"].replace(" kg", "").replace(",", ".")),
-                float(filling["Gebinde"].replace(" kg", "").replace(",", ".")),
-                float(filling["Preis / kg"].replace(" €", "").replace(",", ".")),
-                json.dumps(glass_info),
-                filling["Kommentar"],
+                datetime.strptime(transaction["Datum"], "%d.%m.%Y"),
+                datetime.strptime(transaction["MHD"], "%d.%m.%Y"),
+                transaction["Los"],
+                f"GTIN-{transaction['GTIN']}",
+                convert_to_float(transaction["Gesamt"], " kg"),
+                int(transaction["Stück"]),
+                transaction["Kommentar"],
+                transaction["DIB"],
             ),
         )
 
@@ -179,52 +210,56 @@ def import_fillings(cur: sqlite3.Cursor) -> None:
 def gen_json(cur: sqlite3.Cursor) -> str:
     output: dict[str, Any] = {}
 
+    cur.execute("SELECT * FROM articles")
+    output["articles"] = [dict(row) for row in cur.fetchall()]
+    for article in output["articles"]:
+        article["id"] = article["gtin"]
+        cur.execute(f"SELECT * from stock_transactions WHERE stock_transactions.gtin = '{article['gtin']}'")
+        if (rows := cur.fetchall()) is not None:
+            batches = set()
+            for row_raw in rows:
+                row = dict(row_raw)
+                batches.add(row["batch_id"])
+            article["batches"] = list(batches)
+
     cur.execute("SELECT * FROM buckets")
     output["buckets"] = [dict(row) for row in cur.fetchall()]
 
-    cur.execute("SELECT * FROM extractions")
-    output["extractions"] = [dict(row) for row in cur.fetchall()]
-    for extraction in output["extractions"]:
-        cur.execute(f"SELECT id FROM buckets WHERE buckets.extraction_id = '{extraction['id']}'")
-        extraction["buckets"] = [row["id"] for row in cur.fetchall()]
+    cur.execute("SELECT * FROM centrifugations")
+    output["centrifugations"] = [dict(row) for row in cur.fetchall()]
+    for centrifugation in output["centrifugations"]:
         cur.execute(
-            f"SELECT batch_id FROM buckets WHERE buckets.extraction_id = '{extraction['id']}'"
+            f"SELECT id FROM buckets WHERE buckets.centrifugation_id = '{centrifugation['id']}'"
         )
-        extraction["batches"] = list(
+        centrifugation["buckets"] = [row["id"] for row in cur.fetchall()]
+        cur.execute(
+            f"SELECT batch_id FROM buckets WHERE buckets.centrifugation_id = '{centrifugation['id']}'"
+        )
+        centrifugation["batches"] = list(
             {row["batch_id"] for row in cur.fetchall() if row["batch_id"] != ""}
         )
 
     cur.execute("SELECT * FROM batches")
     output["batches"] = [dict(row) for row in cur.fetchall()]
     for batch in output["batches"]:
-        cur.execute(f"SELECT id FROM fillings WHERE fillings.batch_id = '{batch['id']}'")
-        batch["fillings"] = [row["id"] for row in cur.fetchall()]
         batch["closed"] = batch["closed"] == 1
-        cur.execute(
-            f"SELECT id FROM buckets WHERE buckets.batch_id = '{batch['id']}'"
-        )
+        cur.execute(f"SELECT id FROM buckets WHERE buckets.batch_id = '{batch['id']}'")
         batch["buckets"] = [row["id"] for row in cur.fetchall()]
-        batch["extractions"] = []
+        batch["centrifugations"] = []
         for bucket_id in batch["buckets"]:
             cur.execute(
-                f"SELECT extraction_id FROM buckets WHERE buckets.id = '{bucket_id}'"
+                f"SELECT centrifugation_id FROM buckets WHERE buckets.id = '{bucket_id}'"
             )
             if (row := cur.fetchone()) is not None:
                 row = dict(row)
-                if "extraction_id" in row and row["extraction_id"]:
-                    batch["extractions"].append(row["extraction_id"])
-        batch["extractions"] = list(set(batch["extractions"]))
-        if not batch["extractions"]:
-            del batch["extractions"]
-            
+                if "centrifugation_id" in row and row["centrifugation_id"]:
+                    batch["centrifugations"].append(row["centrifugation_id"])
+        batch["centrifugations"] = list(set(batch["centrifugations"]))
+        if not batch["centrifugations"]:
+            del batch["centrifugations"]
 
-    cur.execute("SELECT * FROM fillings")
-    output["fillings"] = [dict(row) for row in cur.fetchall()]
-    for filling in output["fillings"]:
-        cur.execute(f"SELECT sort FROM batches WHERE batches.id = '{filling['batch_id']}'")
-        filling["sort"] = cur.fetchone()["sort"]
-        if info := filling["glass_info"]:
-            filling["glass_info"] = json.loads(info)
+        cur.execute(f"SELECT gtin FROM stock_transactions WHERE stock_transactions.batch_id = '{batch['id']}'")
+        batch["articles"] = list(set([dict(row)["gtin"] for row in cur.fetchall()]))
 
     return json.dumps(output, indent=4)
 
@@ -233,7 +268,9 @@ def main() -> None:
     sqlite3.register_adapter(date, lambda val: val.isoformat())
     sqlite3.register_adapter(datetime, lambda val: val.isoformat())
     sqlite3.register_converter("date", lambda val: date.fromisoformat(val.decode()))
-    sqlite3.register_converter("datetime", lambda val: datetime.fromisoformat(val.decode()))
+    sqlite3.register_converter(
+        "datetime", lambda val: datetime.fromisoformat(val.decode())
+    )
 
     with sqlite3.connect(
         ":memory:",
@@ -242,10 +279,11 @@ def main() -> None:
         db.row_factory = sqlite3.Row
         cur = db.cursor()
         init_db(cur)
+        import_articles(cur)
         import_buckets(cur)
-        import_extractions(cur)
+        import_centrifugations(cur)
         import_batches(cur)
-        import_fillings(cur)
+        import_stock(cur)
 
         db.commit()
 

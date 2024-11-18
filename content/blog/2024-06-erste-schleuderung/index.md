@@ -14,7 +14,7 @@ Hat Spaß gemacht!
 In ein paar Wochen füllen wir ab und starten den Verkauf.
 Wir halten euch auf dem Laufenden.
 
-{{< youtube pL6P-Xbuk1g >}}
+{{< youtube_player id="pL6P-Xbuk1g" >}}
 {{< fig src="IMG_20240602_114113.jpg" >}}
 {{< fig src="IMG_20240602_143911.jpg" >}}
 {{< fig src="IMG_20240602_144707.jpg" >}}
