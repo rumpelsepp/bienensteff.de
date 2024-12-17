@@ -14,10 +14,10 @@ description = "Imkerei BienenSteff: Honig aus dem Münchner Grüngürtel. Keep i
     name = 'Home'
     pageRef = '/'
     weight = 10
-[[menus.main]]
-    name = 'News'
-    pageRef = '/blog'
-    weight = 20
+# [[menus.main]]
+#     name = 'News'
+#     pageRef = '/blog'
+#     weight = 20
 [[menus.main]]
     name = 'Verkauf'
     pageRef = '/sale'
@@ -50,15 +50,20 @@ description = "Imkerei BienenSteff: Honig aus dem Münchner Grüngürtel. Keep i
     URL = 'https://schwarmrettung.de/'
     weight = 30
 
-[[menus.footer]]
-    name = '🔗 Kleinanzeigen'
-    URL = 'https://www.kleinanzeigen.de/s-bestandsliste.html?userId=138484447'
-    weight = 40
-
+# [[menus.footer]]
+#     name = '🔗 Kleinanzeigen'
+#     URL = 'https://www.kleinanzeigen.de/s-bestandsliste.html?userId=138484447'
+#     weight = 40
+#
 [[menus.footer]]
     name = 'Impressum'
     pageRef = '/impressum'
     weight = 50
+
+[[menus.footer]]
+    name = 'Datenschutz'
+    pageRef = '/datenschutz'
+    weight = 60
 
 [imaging]
   quality = 97

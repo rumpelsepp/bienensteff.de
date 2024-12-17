@@ -137,7 +137,7 @@
             {{ with .Params.batch_id }}
                 <tr><th>Losnummer</th><td><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></td></tr>
             {{ end }}
-            <tr><th>Wassergehalt</th><td>{{ strings.Replace (fmt.Printf "%.2f%%" (math.Mul .Params.moisture 100)) "." "," }}</td></tr>
+            <tr><th>Wassergehalt</th><td>{{ strings.Replace (fmt.Printf "%.2f %%" (math.Mul .Params.moisture 100)) "." "," }}</td></tr>
             <tr><th>Gewicht</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.weight) "." "," }}</td></tr>
             {{ with .Params.comment }}
                 <tr><th>Kommentar</th><td>{{ . }}</td></tr>
