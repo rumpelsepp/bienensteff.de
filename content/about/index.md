@@ -47,6 +47,4 @@ Die Bienen bedanken sich mit sehr leckerem Honig, der am allerbesten schmeckt, w
 
 ## Zertifikate
 
-Als Münchner Imkerei sind wir berechtigt die Marke [„Münchner Grüngürtel“](https://stadt.muenchen.de/infos/muenchner-gruenguertel.html) zu nutzen.
-
-{{< fig src="gruenguertel-muc.jpg" size="500x500" >}}
+* 10.04.2024: Als Münchner Imkerei sind wir berechtigt die Marke [„Münchner Grüngürtel“](gruenguertel-muc.jpg) zu nutzen. Der Münchner Grüngürtel ist eine [Initiative](https://stadt.muenchen.de/infos/muenchner-gruenguertel.html) der Stadt München.

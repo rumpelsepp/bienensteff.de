@@ -176,11 +176,9 @@
     
     {{ $id := .Params.id }}
     {{ with resources.GetMatch (printf "/db/img/%s.jpg" (strings.ToLower .Params.id)) }}
-        {{ $size := "800x600 webp" }}
-        {{ $img := .Fit $size }}
         <hr>
         <figure>
-            <img src="{{ $img.Permalink }}" loading="lazy">
+            <img src="{{ .Permalink }}" loading="lazy">
             <figcaption>
                 {{ $id }}
             </figcaption>
