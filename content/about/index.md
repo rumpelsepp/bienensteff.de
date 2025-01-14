@@ -2,11 +2,11 @@
 title: Über uns
 ---
 
-Meine Geschichte wie ich zum Imkern gekommen bin ist verhältnismäßig langweilig.
-Hauptberuflich habe ich die meiste Zeit mit Computern zu tun und ich war lange auf der Suche nach einem Ausgleich.
-Über die Webseite meines [Imkervereins BZVM](https://bzvm.de/) habe ich 2021 das Konzept "Imkern auf Probe" und damit das Imkern für mich entdeckt.
-Aus anfänglich einem einzigen Volk sind es mittlerweile viele geworden mit der Tendenz zu mehr!
-Meine Familie unterstützt mich sehr liebevoll wo sie kann, sei es beim Wachsschmelzen, Honigschleudern oder einfach indem alle mein pausenloses Bienengelaber mit einem Lächeln ertragen… 😁
+Meine Geschichte, wie ich zum Imkern gekommen bin, ist eher unspektakulär.
+Hauptberuflich habe ich die meiste Zeit mit Computern zu tun und suchte lange nach einem Ausgleich.
+Über die Webseite meines [Imkervereins BZVM](https://bzvm.de/) entdeckte ich 2021 das Konzept „Imkern auf Probe“ und fand so meine Leidenschaft für das Imkern.
+Aus anfangs einem einzigen Volk sind mittlerweile viele geworden, mit der Tendenz zu wachsen!
+Meine Familie unterstützt mich liebevoll, wo sie kann – sei es beim Wachsschmelzen, Honigschleudern oder einfach, indem sie mein pausenloses Bienengelaber mit einem Lächeln erträgt… 😁
 
 <!--{{< fig src="IMG_20230617_093428-crop.png" >}}-->
 {{< fig src="IMG_20240708_195442.jpg" >}}
@@ -39,6 +39,7 @@ Die Bienen bedanken sich mit sehr leckerem Honig, der am allerbesten schmeckt, w
 
 ## Fachkundenachweise
 
+* 03.01.2025: [Imkerkurs mit Dr. Pia Aumeier (Modul 1 — 8)](/fachkunde/2025-01-03-imkerkurs-mit-dr-pia-aumeier.pdf); Imkerling — Die Akademie für Bienenfreunde
 * 11.10.2024: [Biozertifizierung in der Imkerei](/fachkunde/2024-10-11-bio-zertifizierung.pdf); Bezirk Oberbayern: Fachberatung für Imkerei
 * 04.09.2024: [Vespa velutina - Die asiatische Hornisse](/fachkunde/2024-09-04-velutina.pdf); Landakademie
 * 28.06.2024: [Biologie Varroamilbe & Varroamanagement](/fachkunde/2024-06-28-fachkunde-varroa.pdf); Bezirk Oberbayern: Fachberatung für Imkerei

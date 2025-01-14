@@ -2,16 +2,15 @@
 title: Imkerei BienenSteff 🐝
 ---
 
-Servus beinand!
+Servus zusammen!
 
-Schön, dass ihr uns in den Untiefen des Internet gefunden habt.
-Wir sind eine [kleine Imkerei]({{<ref "about">}}) aus Großhadern im Münchner Südwesten, dem [„Münchner Grüngürtel“](https://stadt.muenchen.de/infos/muenchner-gruenguertel.html).
-Seit 2021 sind wir von Honigbienen und vor allem von Honig mehr als begeistert.
-2024 wurde unsere Imkerei mit der [Medaille in Gold]({{<ref "about#auszeichnungen">}}) für hervorragende Leistungen ausgezeichnet.
-
-Unsere Bienen 🐝 befinden sich an ausgewählten Plätzen in der Natur mit einem umfangreichen Angebot an Blühpflanzen.
-Unseren Honig 🍯 aus eigener Imkerei [bieten wir]({{<ref "sale">}}) in verschiedenen Sorten an und sind bestrebt diesen in der bestmöglichen Qualität zu verarbeiten.
-Wir legen großen Wert auf eine transparente Rückverfolgbarkeit, daher [veröffentlichen]({{<ref "database" >}}) wir weiterführende Informationen zu unseren Schleuderungen und Honiglosen.
+Schön, dass ihr den Weg zu uns durch die Untiefen des Internets gefunden habt.
+Wir sind eine [kleine Imkerei]({{<ref "about">}}) aus Großhadern im Münchner Südwesten, im [„Münchner Grüngürtel“](https://stadt.muenchen.de/infos/muenchner-gruenguertel.html).
+Seit 2021 sind wir von unseren Honigbienen und vor allem von ihrem köstlichen Honig begeistert.
+Im Jahr 2024 wurde unsere Imkerei mit der [Goldmedaille]({{<ref "about#auszeichnungen">}}) für hervorragende Leistungen ausgezeichnet.
+Unsere Bienen 🐝 stehen an ausgewählten Standorten in der Natur, wo ein reichhaltiges Angebot an Blühpflanzen vorhanden ist.
+Den Honig 🍯 aus unserer eigenen Imkerei bieten wir in verschiedenen Sorten an und sind bestrebt, ihn in bestmöglicher Qualität zu verarbeiten.
+Transparente Rückverfolgbarkeit ist uns wichtig, daher veröffentlichen wir umfassende [Informationen]({{<ref "database">}}) zu unseren Ernten und Honiglotsen.
 
 Bis bald!
 

@@ -73,6 +73,6 @@ Eine AS-Behandlung war erfolgreich wenn…
 
 Pia erkärt [hier](https://www.youtube.com/live/4ucRGqwG1Fs?si=0qaJGudswvtFk-34&t=6090), dass nach sieben Tagen bei der Oxalsäure Sprühbehandlung 80% der getöteten Milben in der Windel sind.
 In [diesem Video](https://www.youtube.com/live/Vmc8g3VFOgQ?si=ZVJc22rpZHya7mX7&t=6259) ergänzt Pia, dass die restlichen 20% in Woche zwei und drei fallen.
-In [diesem Artikel]() schreibt Pia, dass man nach etwa vier Tagen zählen soll.
+In [diesem Artikel](https://www.dropbox.com/scl/fo/3yad1g7m9lavdxl9b1nnv/AOM87lRrdKVNsFpks3W-gVM/AKTUELLES/Pr%C3%A4vention%20Varroose?preview=8_DieBlaue_TuB.pdf&rlkey=muaguh1h34t6mtl9vuttixzn7&subfolder_nav_tracking=1&st=8glar5zr&dl=0) schreibt Pia, dass man nach etwa vier Tagen zählen soll.
 Wenn mehr als 3000 Milben in der Windeln liegen, muss die Behandlung wiederholt werden.
 
