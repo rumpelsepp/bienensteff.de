@@ -13,9 +13,9 @@ Meine Familie unterstützt mich liebevoll, wo sie kann – sei es beim Wachsschm
 
 ## Regionalität
 
-Unsere Bienen befinden sich an mehreren Standorten in und um München.
+Unsere Bienen sind an mehreren Standorten in und um München angesiedelt.
 Der Hauptstandort unserer Imkerei befindet sich in den Bayerischen Staatsforsten im Münchner Südwesten.
-Durch die Nähe zu Streuobstwiesen und v.a. durch das umfangreiche Angebot im Wald wird unsere Arbeit jährlich mit sehr schmackhaften Honig belohnt. 
+Die Nähe zu Streuobstwiesen und insbesondere das umfangreiche Nahrungsangebot im Wald belohnen unsere Arbeit jährlich mit besonders schmackhaftem Honig.
 
 {{< fig src="IMG_20240708_205828.jpg" >}}
 
@@ -25,13 +25,13 @@ Die Betriebsweise richtet sich nach dem aktuellen Stand der Bienenwissenschaften
 Dabei werden regelmäßig Weiterbildungsmaßnahmen besucht und die Betriebsweise entsprechend adaptiert.
 Nach unserem Verständnis soll Imkern möglichst simpel sein und es muss Spaß machen.
 Vor allem aber muss es den Bienen gut gehen!
-Das Motto unseres Betriebs lautet daher ganz einfach “keep it simple”!
+Das Motto unseres Betriebs lautet daher ganz einfach: „keep it simple“!
 
 {{< fig src="IMG_20230904_182133.jpg" >}}
 
-Imkern ist sehr abwechslungsreich.
-Jeder Monat ist anders und stellt den Imker vor verschiedenste Herausforderungen, die oft ein gehöriges Maß an Kreativität oder auch handwerklichem Geschick erfordern.
-Die Bienen bedanken sich mit sehr leckerem Honig, der am allerbesten schmeckt, wenn man das ganze Jahr mit dabei war 🐝🍯!
+Imkern ist äußerst abwechslungsreich.
+Jeder Monat bringt neue Herausforderungen, die oft ein gehöriges Maß an Kreativität oder handwerklichem Geschick erfordern.
+Die Bienen bedanken sich mit köstlichem Honig, der am besten schmeckt, wenn man das ganze Jahr über dabei war 🐝🍯!
 
 ## Auszeichnungen
 
@@ -39,12 +39,17 @@ Die Bienen bedanken sich mit sehr leckerem Honig, der am allerbesten schmeckt, w
 
 ## Fachkundenachweise
 
+* 06.02.2025: [Trachtpflanzen erkennen und bewerten](/fachkunde/2025-02-06-trachtpflanzen.pdf); Bezirk Oberbayern: Fachberatung für Imkerei
 * 03.01.2025: [Imkerkurs mit Dr. Pia Aumeier (Modul 1 — 8)](/fachkunde/2025-01-03-imkerkurs-mit-dr-pia-aumeier.pdf); Imkerling — Die Akademie für Bienenfreunde
 * 11.10.2024: [Biozertifizierung in der Imkerei](/fachkunde/2024-10-11-bio-zertifizierung.pdf); Bezirk Oberbayern: Fachberatung für Imkerei
 * 04.09.2024: [Vespa velutina - Die asiatische Hornisse](/fachkunde/2024-09-04-velutina.pdf); Landakademie
 * 28.06.2024: [Biologie Varroamilbe & Varroamanagement](/fachkunde/2024-06-28-fachkunde-varroa.pdf); Bezirk Oberbayern: Fachberatung für Imkerei
 * 05.02.2024: [Völkervermehrung in vier Schritten mit Dr. Pia Aumeier](/fachkunde/2024-02-05-Völkervermehrung.pdf); Imkerling — Die Akademie für Bienenfreunde
 * 18.07.2022: [Qualitätsanforderungen für Deutschen Honig gemäß den Warenzeichenbestimmungen des Deutschen Imkerbundes e.V.](/fachkunde/2022-07-18-DIB-cert.pdf); Deutscher Imkerbund
+
+## Mitgliedschaften
+
+Unsere Imkerei ist Mitglied im [Deutschen Imkerbund e.V.](https://deutscherimkerbund.de/), dem [Landesverband Bayerischer Imker e.V.](https://www.lvbi.de/) und dem [Bienenzuchtverein München und Umgebung e.V. (BZVM)](https://bzvm.de/).
 
 ## Zertifikate
 
