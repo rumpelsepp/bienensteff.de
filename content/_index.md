@@ -17,6 +17,3 @@ Bis bald!
 Steff
 
 {{< fig src="IMG_20230617_093428-crop.png" size="1000x1000" >}}
-
-{{< youtube_player id="SPQX6FidzFo" >}}
-

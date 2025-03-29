@@ -1,7 +1,0 @@
-{{ with .Get "id" }}
-    <noscript>YouTube Video: <a href="https://youtube.com/watch?v={{ . }}">https://youtube.com/watch?v={{ . }}</a></noscript>
-    <youtube-player video-id="{{ . }}"></youtube-player>
-{{ else }}
-    {{ errorf "The %q shortcode requires a 'id' argument. See %s" .Name .Position }}
-{{ end }}
-
