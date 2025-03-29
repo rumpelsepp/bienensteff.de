@@ -18,6 +18,7 @@
             {{ if hugo.IsDevelopment }}
                 <a href="{{ .Permalink }}">{{ .Permalink }}</a>
             {{ else }}
+                <!-- This is needed to force hugo to copy the files: {{ .Permalink }} -->
                 <a href="https://db.bienensteff.de/?q={{ strings.ToLower (strings.TrimPrefix "/db/analysen/" .Title) }}">https://db.bienensteff.de/?q={{ strings.ToLower (strings.TrimPrefix "/db/analysen/" .Title) }}</a>
             {{ end }}
         </td>
