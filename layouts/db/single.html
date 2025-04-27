@@ -77,12 +77,12 @@
                 <td>
                     <ul>
                         {{ range . }}
-                            <li><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
+                            <li><a href="{{ absURL (urls.JoinPath "datenbank" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
                         {{ end }}
                     </ul>
                 </td></tr>
             {{ end }}
-            {{ partial "partials/inline-permalink.html" . }}
+            {{ partial "inline-permalink.html" . }}
         {{ end }}
         {{ if eq $type "batch" }}
             <tr><th>Losnummer</th><td>{{ .Params.id }}</td></tr>
@@ -94,7 +94,7 @@
                     <ul>
                         {{ range . }}
                             {{ if strings.HasPrefix . "GTIN-0000000" }}{{ continue }}{{ end }}
-                            <li><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
+                            <li><a href="{{ absURL (urls.JoinPath "datenbank" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
                         {{ end }}
                     </ul>
                 </td></tr>
@@ -104,7 +104,7 @@
                 <td>
                     <ul>
                         {{ range . }}
-                            <li><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
+                            <li><a href="{{ absURL (urls.JoinPath "datenbank" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
                         {{ end }}
                     </ul>
                 </td></tr>
@@ -114,7 +114,7 @@
                 <td>
                     <ul>
                         {{ range . }}
-                            <li><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
+                            <li><a href="{{ absURL (urls.JoinPath "datenbank" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
                         {{ end }}
                     </ul>
                 </td></tr>
@@ -123,27 +123,27 @@
                 <tr><th>Eimer</th><td>
                     <ul>
                         {{ range . }}
-                            <li><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
+                            <li><a href="{{ absURL (urls.JoinPath "datenbank" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
                         {{ end }}
                     </ul>
                 </td></tr>
             {{ end }}
-            {{ partial "partials/inline-analysis-permalink.html" .Params.id }}
-            {{ partial "partials/inline-permalink.html" . }}
+            {{ partial "inline-analysis-permalink.html" .Params.id }}
+            {{ partial "inline-permalink.html" . }}
         {{ else if eq $type "bucket" }}
             <tr><th>Eimernummer</th><td>{{ .Params.id }}</td></tr>
             {{ with .Params.extraction_id }}
-                <tr><th>Schleuderungsnummer</th><td><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></td></tr>
+                <tr><th>Schleuderungsnummer</th><td><a href="{{ absURL (urls.JoinPath "datenbank" "q" (strings.ToLower .)) }}">{{ . }}</a></td></tr>
             {{ end }}
             {{ with .Params.batch_id }}
-                <tr><th>Losnummer</th><td><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></td></tr>
+                <tr><th>Losnummer</th><td><a href="{{ absURL (urls.JoinPath "datenbank" "q" (strings.ToLower .)) }}">{{ . }}</a></td></tr>
             {{ end }}
             <tr><th>Wassergehalt</th><td>{{ strings.Replace (fmt.Printf "%.2f %%" (math.Mul .Params.moisture 100)) "." "," }}</td></tr>
             <tr><th>Gewicht</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.weight) "." "," }}</td></tr>
             {{ with .Params.comment }}
                 <tr><th>Kommentar</th><td>{{ . }}</td></tr>
             {{ end }}
-            {{ partial "partials/inline-permalink.html" . }}
+            {{ partial "inline-permalink.html" . }}
         {{ else if eq $type "centrifugation" }}
             <tr><th>Schleuderungsnummer</th><td>{{ .Params.id }}</td></tr>
             <tr><th>Schleuderdatum</th><td><time datetime="{{ (time.AsTime .Params.date).Format "2006-01-02" }}">{{ (time.AsTime .Params.date).Format "02.01.2006" }}</time></td></tr>
@@ -153,7 +153,7 @@
                 <td>
                     <ul>
                         {{ range . }}
-                            <li><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
+                            <li><a href="{{ absURL (urls.JoinPath "datenbank" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
                         {{ end }}
                     </ul>
                 </td></tr>
@@ -163,7 +163,7 @@
                 <td>
                     <ul>
                         {{ range . }}
-                            <li><a href="{{ absURL (urls.JoinPath "database" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
+                            <li><a href="{{ absURL (urls.JoinPath "datenbank" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
                         {{ end }}
                     </ul>
                 </td></tr>
@@ -171,7 +171,7 @@
             {{ with .Params.comment }}
                 <tr><th>Kommentar</th><td>{{ . }}</td></tr>
             {{ end }}
-            {{ partial "partials/inline-permalink.html" . }}
+            {{ partial "inline-permalink.html" . }}
         {{ end }}
     </table>
     

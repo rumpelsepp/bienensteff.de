@@ -2,11 +2,9 @@
 title: Impressum
 ---
 
-Stefan Tatschner  
+Imkerei Stefan Tatschner  
 Gräfelfinger Straße 169a  
 81375 München
-
-Geschäftsbezeichnung: Imkerei BienenSteff
 
 ## Kontakt
 
@@ -15,7 +13,7 @@ E-Mail: stefan.tatschner@mailbox.org
 
 ## Verantwortlich für den Inhalt
 
-Stefan Tatschner  
+Dr. Stefan Tatschner  
 Gräfelfinger Straße 169a  
 81375 München
 

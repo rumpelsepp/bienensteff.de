@@ -1,9 +1,7 @@
-//import { Calendar } from 'fullcalendar';
 import { Calendar } from '@fullcalendar/core';
 import calDeLocale from '@fullcalendar/core/locales/de';
 import calDayGridPlugin from '@fullcalendar/daygrid'
 import calListPlugin from '@fullcalendar/list';
-import { createEvents} from 'ics';
 
 import { BeeDates, TUBDates } from "./dates";
 import { getDateParam } from "./helpers";
@@ -11,7 +9,7 @@ import { getDateParam } from "./helpers";
 function renderBeeCalendar(id: string) {
   let date = getDateParam();
   let dates = new BeeDates(date);
-  
+
   const calendarEl = document.getElementById(id);
   const calendar = new Calendar(calendarEl, {
     plugins: [calDayGridPlugin, calListPlugin],
@@ -40,9 +38,15 @@ function renderBeeCalendar(id: string) {
       allDay: true,
     },
     {
-      title: 'Kö in Eilage (X+18)',
+      title: 'Kö geschlechtsreif (X+18)',
+      start: dates.gReifDate.toISO(),
+      allDay: true,
+    },
+    {
+      title: 'Kö in Eilage (X+19)',
       start: dates.eilageDate.toISO(),
       allDay: true,
+      color: "gray",
     },
     {
       title: 'brutfrei (X+21)',
@@ -53,11 +57,13 @@ function renderBeeCalendar(id: string) {
       title: 'verdeckelt (X+28)',
       start: dates.verdeckeltDate.toISO(),
       allDay: true,
+      color: "gray",
     },
     {
       title: 'Jungbienen (X+39)',
       start: dates.jungbienenDate.toISO(),
       allDay: true,
+      color: "gray",
     },
     {
       start: dates.brutfreiDate.toISO(),
@@ -144,54 +150,4 @@ function renderTUBCalendar(id: string) {
   calendar.render()
 }
 
-
-function genICS(events, filename: string) {
-  return async function () {
-    const file = await new Promise((resolve, reject) => {
-        resolve(new File([events], filename, { type: 'text/calendar' }))
-      })
-
-    const url = URL.createObjectURL(file);
-
-    // trying to assign the file URL to a window could cause cross-site
-    // issues so this is a workaround using HTML5
-    const anchor = document.createElement('a');
-    anchor.href = url;
-    anchor.download = filename;
-
-    document.body.appendChild(anchor);
-    anchor.click();
-    document.body.removeChild(anchor);
-
-    URL.revokeObjectURL(url);
-  }
-}
-
-function genTUB_ICS() {
-  let date = getDateParam();
-  let rawEvents = getTUBEvents();
-  let events = [];
-
-  for ( const rawEvent of rawEvents) {
-    let event = {
-      title: rawEvent.title,
-      start: rawEvent.start,
-      end: rawEvent.start,
-    }
-
-    events.push(event);
-  }
-
-  const { error, value } = createEvents(events);
-
-  if (error) {
-    console.log(error)
-    return
-  }
-
-  document.getElementById("dowloadICS").onclick=async function() {
-    await genICS(value, "tub-events.ics")();
-  };
-}
-
-export { renderBeeCalendar, renderTUBCalendar, genTUB_ICS };
+export { renderBeeCalendar, renderTUBCalendar };

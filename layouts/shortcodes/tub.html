@@ -1,12 +1,11 @@
 <script type="module">
-  import { renderTUBCalendar, getDateParam, genTUB_ICS } from "/js/main.js";
+  import { renderTUBCalendar, getDateParam } from "/js/main.js";
 
   let date = getDateParam();
 
   // Fill date picker with today default.
   document.querySelector("#widget #input #date").value = date.toISODate();
   renderTUBCalendar("calendar");
-  genTUB_ICS();
 </script>
 
 <div id="widget">
@@ -15,8 +14,6 @@
     <input name="date" type="date" id="date">
     <input type="submit">
   </form>
-
-  <button style="margin-top: 1rem;"><a id="dowloadICS" href="#">Dowload ICS</a></button>
 
   <div id="calendar"></div>
 </div>

@@ -6,7 +6,7 @@ Stand: 29. März 2025
 
 ## Verantwortlicher
 
-Stefan Tatschner  
+Dr. Stefan Tatschner  
 Gräfelfinger Straße 169a  
 81375 München
 

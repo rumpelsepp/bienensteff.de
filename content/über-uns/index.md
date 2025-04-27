@@ -5,7 +5,7 @@ title: Über uns
 Meine Geschichte, wie ich zum Imkern gekommen bin, ist eher unspektakulär.
 Hauptberuflich habe ich die meiste Zeit mit Computern zu tun und suchte lange nach einem Ausgleich.
 Über die Webseite meines [Imkervereins BZVM](https://bzvm.de/) entdeckte ich 2021 das Konzept „Imkern auf Probe“ und fand so meine Leidenschaft für das Imkern.
-Aus anfangs einem einzigen Volk sind mittlerweile viele geworden, mit der Tendenz zu wachsen!
+Aus anfangs einem einzigen Volk sind mittlerweile viele geworden, mit der Tendenz zu mehr!
 Meine Familie unterstützt mich liebevoll, wo sie kann – sei es beim Wachsschmelzen, Honigschleudern oder einfach, indem sie mein pausenloses Bienengelaber mit einem Lächeln erträgt… 😁
 
 <!--{{< fig src="IMG_20230617_093428-crop.png" >}}-->
@@ -53,4 +53,4 @@ Unsere Imkerei ist Mitglied im [Deutschen Imkerbund e.V.](https://deutscherimker
 
 ## Zertifikate
 
-* 10.04.2024: Als Münchner Imkerei sind wir berechtigt die Marke [„Münchner Grüngürtel“](gruenguertel-muc.jpg) zu nutzen. Der Münchner Grüngürtel ist eine [Initiative](https://stadt.muenchen.de/infos/muenchner-gruenguertel.html) der Stadt München.
+* 10.04.2024: Als Münchner Imkerei sind wir berechtigt die Marke [„Münchner Grüngürtel“](gruenguertel-muc.jpg) zu nutzen. Das Münchner Grüngürtel-Projekt ist eine [Initiative](https://stadt.muenchen.de/infos/muenchner-gruenguertel.html) der Stadt München.

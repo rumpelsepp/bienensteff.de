@@ -4,23 +4,27 @@ type: _default
 layout: single
 ---
 
-{{< figure src="/sale/verkauf-2024.jpg" width="600" >}}
+{{< figure src="/verkauf/verkauf-2024.jpg" width="600" >}}
 
 **Wir wurden auf der bayerischen Honigprämierung 2024 mit einer [Goldmedaille](/auszeichnungen/2024-11-03-honigpraemierung.pdf) ausgezeichnet!**
+
+## Preisliste
+
+Unsere Produkte sind in unserer aktuellen [Preisübersicht]({{< ref "preisliste" >}}) mit Endverbraucherpreisen (EVP) aufgelistet.
 
 ## Sorten
 
 Als kleine Imkerei betreuen wir ortsfeste Bienenstände und schleudern zweimal im Jahr.
-Je nach Verfügbarkeit haben wir folgende [Honigsorten](/infos/Merkblatt_3.4_Honigsorten-Bezeichnung_April_2022.pdf) im Angebot:
+Je nach Verfügbarkeit haben wir folgende Honigsorten aus eigener Imkerei im Angebot:
 
-* **Frühjahrstrachthonig**: Honig aus den Frühjahrsmonaten (allgemeine Bezeichnung)
-* **Sommertrachthonig**: Honig aus den Sommermonaten (allgemeine Bezeichnung)
-* **Lindenhonig**: Honig aus Nektar und Honigtau von Linden (Tilia-Arten)
+* **Frühjahrsblüte**: Blütenhonig aus den Frühjahrsmonaten
+* **Sommerblüte**: Blütenhonig aus den Sommermonaten
+* **Lindenhonig**: Honig aus Nektar und Honigtau von Lindenarten
 
 ## Qualität
 
 Nach den [Leitsätzen](https://www.bmel.de/SharedDocs/Downloads/DE/_Ernaehrung/Lebensmittel-Kennzeichnung/LeitsaetzeHonig.html) des Deutschen Lebensmittelbuchs für Honig entsprechen unsere Honige dem Qualitätskriterium **„Premium“**.
-Weiterführende Informationen zu unseren Honigen können der [Honigdatenbank]({{< ref "database" >}}) anhand der Losnummer entnommen werden.
+Weiterführende Informationen zu unseren Honigen können der [Honigdatenbank]({{< ref "datenbank" >}}) anhand der Losnummer entnommen werden.
 
 <!--Unser Honig wird unter der Marke [Echter Deutscher Honig](https://deutscherimkerbund.de/226-Echter_Deutscher_Honig) vertrieben.-->
 
@@ -39,7 +43,7 @@ Die Direktverkaufsstellen werden von uns persönlich betreut; bei diesen am best
 <!--| [etsy.com](https://etsy.com) | Online-Shop | [bienensteff.etsy.com](https://bienensteff.etsy.com) | Mobil: <a href="tel:+4915124096409">+49 1512 409 6409</a><br>E-Mail: info@bienensteff.de |-->
 <!--| [Heimathonig.de](https://heimathonig.de/imker/21835-bienensteff) | Online-Shop     | — | [-> zum Shop](https://heimathonig.de/imker/21835-bienensteff/product_listing)  | -->
 
-## Nachhaltigkeit / #ZeroWaste 
+## Nachhaltigkeit
 
 500 g Honiggläser werden gerne zur Wiederbefüllung angenommen.
 Wir freuen uns, wenn alte Etiketten vorab entfernt werden 😊.

@@ -15,6 +15,7 @@ class BeeDatesBase {
 
 class BeeDates extends BeeDatesBase {
   schlupfDate: DateTime;
+  gReifDate: DateTime;
   eilageDate: DateTime;
   brutfreiDate: DateTime;
   verdeckeltDate: DateTime;
@@ -24,6 +25,7 @@ class BeeDates extends BeeDatesBase {
     super(date);
     
     this.schlupfDate = this.startDate.plus({days: 11});;
+    this.gReifDate = this.schlupfDate.plus({days: 7});
     this.eilageDate = this.schlupfDate.plus({days: 8});
     this.brutfreiDate = this.startDate.plus({days: 21});
     this.verdeckeltDate = this.eilageDate.plus({days: 9});

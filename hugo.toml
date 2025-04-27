@@ -1,38 +1,34 @@
 baseURL = 'https://bienensteff.de'
 languageCode = 'de-de'
-title = "Imkerei BienenSteff 🐝"
+title = "Imkerei Stefan Tatschner 🐝"
 enableRobotsTXT = "true"
 timeZone = "Europe/Berlin"
 enableEmoji = "true"
 pluralizelisttitles = "false"
 
 [params]
-description = "Honig aus dem Münchner Grüngürtel aus eigener Imkerei."
+description = "Bienen und Honig aus dem Münchner Grüngürtel"
 
 [menus]
 [[menus.main]]
     name = 'Home'
     pageRef = '/'
     weight = 10
-# [[menus.main]]
-#     name = 'News'
-#     pageRef = '/blog'
-#     weight = 20
 [[menus.main]]
     name = 'Verkauf'
-    pageRef = '/sale'
+    pageRef = '/verkauf'
     weight = 30
 [[menus.main]]
     name = 'Datenbank'
-    pageRef = '/database'
+    pageRef = '/datenbank'
     weight = 40
 [[menus.main]]
     name = 'Werkzeuge'
-    pageRef = '/tools'
+    pageRef = '/werkzeuge'
     weight = 50
 [[menus.main]]
     name = 'Über uns'
-    pageRef = '/about'
+    pageRef = '/über-uns'
     weight = 60
 
 [[menus.footer]]

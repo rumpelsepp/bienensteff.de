@@ -28,7 +28,11 @@
         {{ range $data }}
         {{ if .closed }}{{ continue }}{{ end }}
             <tr>
-                <td><a href="{{ urls.AbsURL (urls.JoinPath "database" "q" (strings.ToLower .id)) }}">{{ .id }}</a></td>
+            {{ if hugo.IsDevelopment }}
+                <td><a href="{{ urls.AbsURL (urls.JoinPath "datenbank" "q" (strings.ToLower .id)) }}">{{ .id }}</a></td>
+            {{ else }}
+                <td><a href="https://db.bienensteff.de/?q={{ (strings.ToLower .id) }}">{{ .id }}</a></td>
+            {{ end }}
                 <td>{{ .sort }}</td>
             </tr>
         {{ end }}

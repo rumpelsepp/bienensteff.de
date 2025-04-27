@@ -2,7 +2,7 @@
 title: Teilen und Behandeln
 ---
 
-[Teilen und Behandeln (TuB)](https://www.laves.niedersachsen.de/startseite/tiere/bienenkunde/informationsmaterial/teilen-und-behandeln-223924.html) ist ein modernes Konzept zur gleichzeitigen Varroabekämpfung, Wabenhygiene und Königinnenverjüngung.
+[Teilen und Behandeln (TuB)](https://www.laves.niedersachsen.de/startseite/tiere/bienenkunde/informationsmaterial/varroa-bekampfungskonzept-teilen-und-behandeln-234443.html) ist ein modernes Konzept zur gleichzeitigen Varroabekämpfung, Wabenhygiene und Königinnenverjüngung.
 TuB ist größtenteils witterungsunabhängig und kann gut nach Zeitplan durchgeführt werden.
 Die grünen Bereiche im Kalendertool unten symbolisieren die brutfreien Zeiten.
 
@@ -18,27 +18,27 @@ Die grünen Bereiche im Kalendertool unten symbolisieren die brutfreien Zeiten.
     <tbody>
         <tr>
             <td>Schritt 1</td>
-            <td>Tag X</td>
+            <td>X</td>
             <td>Startzeitpunkt von TuB durch Teilung des Volkes (optimal Mitte Juli bis Mitte August)</td>
         </tr>
         <tr>
             <td>Schritt 2</td>
-            <td>Tag X + 2</td>
+            <td>X + 2</td>
             <td>Flugling hat sich gebildet und kann behandelt sowie gefüttert werden</td>
         </tr>
         <tr>
             <td></td>
-            <td>Tag X + 9</td>
+            <td>X + 9</td>
             <td>Flugling ist verdeckelt. Wirkungsgrad der Behandlung ab jetzt geringer.</td>
         </tr>
         <tr>
             <td>Schritt 3(a)</td>
-            <td>Tag X + 21</td>
+            <td>X + 21</td>
             <td>Das Brutvolk ist brutfrei und kann behandelt werden. Das Brutvolk unter Beachtung der Wabenhygiene auf eine Zarge einengen. Prüfen auf Weiselrichtigkeit. Nachdem sich die Bienen beruhigt haben eine Sprüh-Behandlung mit Oxalsäure durchführen und füttern.</td>
         </tr>
         <tr>
             <td>Schritt 3(b)</td>
-            <td rowspan="2">Tag X + 27—30</td>
+            <td rowspan="2">X + 27—30</td>
             <td>Bei starkem Varroabefall erneut mit Oxalsäure behandeln. Starker Befall bei 3000 gefallenen Milben innerhalb der ersten vier Tagen nach Behandlung.</td>
         </tr>
         <tr>
@@ -47,7 +47,7 @@ Die grünen Bereiche im Kalendertool unten symbolisieren die brutfreien Zeiten.
         </tr>
         <tr>
             <td></td>
-            <td>Tag X + 28</td>
+            <td>X + 28</td>
             <td>Das Brutvolk hat die erste verdeckelte Brut. Wirkungsgrad der Behandlung ab jetzt geringer.</td>
         </tr>
         <tr>
