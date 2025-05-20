@@ -2,10 +2,10 @@
     "articles": [
         {
             "gtin": "GTIN-4270004430233",
-            "description": "BienenSteff Sommertrachthonig 500 g",
+            "description": "bienensteff Sommertrachthonig 500 g",
             "long_description": "",
             "msrp": 8.0,
-            "pu": 0.5,
+            "pu": 1.0,
             "comment": "",
             "id": "GTIN-4270004430233",
             "batches": [
@@ -14,7 +14,7 @@
         },
         {
             "gtin": "GTIN-4270004430226",
-            "description": "BienenSteff Backhonig",
+            "description": "bienensteff Backhonig 500 g",
             "long_description": "",
             "msrp": 2.0,
             "pu": 1.0,
@@ -24,23 +24,24 @@
         },
         {
             "gtin": "GTIN-4270004430219",
-            "description": "BienenSteff Fr\u00fchjahrstrachthonig 500 g",
+            "description": "bienensteff Fr\u00fchjahrstrachthonig 500 g",
             "long_description": "",
             "msrp": 8.0,
-            "pu": 0.5,
+            "pu": 1.0,
             "comment": "",
             "id": "GTIN-4270004430219",
             "batches": [
+                "L-2022-01",
                 "L-2024-01"
             ]
         },
         {
             "gtin": "GTIN-4270004430202",
-            "description": "BienenSteff Honig",
+            "description": "bienensteff Honig ",
             "long_description": "",
             "msrp": 16.0,
             "pu": 1.0,
-            "comment": "",
+            "comment": "unverpackt",
             "id": "GTIN-4270004430202",
             "batches": []
         }
@@ -48,7 +49,7 @@
     "buckets": [
         {
             "id": "E-2022-01",
-            "centrifugation_id": "Z-2022-01",
+            "centrifugation_id": "S-2022-01",
             "batch_id": "L-2022-01",
             "location": "AISEC",
             "weight": 15.5,
@@ -58,7 +59,7 @@
         },
         {
             "id": "E-2022-02",
-            "centrifugation_id": "Z-2022-02",
+            "centrifugation_id": "S-2022-02",
             "batch_id": "L-2022-02",
             "location": "AISEC",
             "weight": 13.0,
@@ -68,7 +69,7 @@
         },
         {
             "id": "E-2023-01",
-            "centrifugation_id": "Z-2023-01",
+            "centrifugation_id": "S-2023-01",
             "batch_id": "L-2023-01",
             "location": "AISEC",
             "weight": 9.5,
@@ -78,7 +79,7 @@
         },
         {
             "id": "E-2023-02",
-            "centrifugation_id": "Z-2023-01",
+            "centrifugation_id": "S-2023-01",
             "batch_id": "L-2023-01",
             "location": "AISEC",
             "weight": 9.6,
@@ -88,7 +89,7 @@
         },
         {
             "id": "E-2023-03",
-            "centrifugation_id": "Z-2023-01",
+            "centrifugation_id": "S-2023-01",
             "batch_id": "L-2023-01",
             "location": "AISEC",
             "weight": 7.5,
@@ -98,7 +99,7 @@
         },
         {
             "id": "E-2023-04",
-            "centrifugation_id": "Z-2023-01",
+            "centrifugation_id": "S-2023-01",
             "batch_id": "L-2023-01",
             "location": "WIEDE",
             "weight": 10.1,
@@ -108,7 +109,7 @@
         },
         {
             "id": "E-2023-05",
-            "centrifugation_id": "Z-2023-01",
+            "centrifugation_id": "S-2023-01",
             "batch_id": "L-2023-01",
             "location": "WIEDE",
             "weight": 6.8,
@@ -118,7 +119,7 @@
         },
         {
             "id": "E-2023-06",
-            "centrifugation_id": "Z-2023-02",
+            "centrifugation_id": "S-2023-02",
             "batch_id": "L-2023-02",
             "location": "WIEDE",
             "weight": 10.1,
@@ -128,7 +129,7 @@
         },
         {
             "id": "E-2023-07",
-            "centrifugation_id": "Z-2023-02",
+            "centrifugation_id": "S-2023-02",
             "batch_id": "L-2023-02",
             "location": "WIEDE",
             "weight": 9.6,
@@ -138,7 +139,7 @@
         },
         {
             "id": "E-2023-08",
-            "centrifugation_id": "Z-2023-02",
+            "centrifugation_id": "S-2023-02",
             "batch_id": "L-2023-02",
             "location": "WIEDE",
             "weight": 9.4,
@@ -148,7 +149,7 @@
         },
         {
             "id": "E-2023-09",
-            "centrifugation_id": "Z-2023-02",
+            "centrifugation_id": "S-2023-02",
             "batch_id": "L-2023-02",
             "location": "WIEDE",
             "weight": 10.8,
@@ -158,7 +159,7 @@
         },
         {
             "id": "E-2023-10",
-            "centrifugation_id": "Z-2023-02",
+            "centrifugation_id": "S-2023-02",
             "batch_id": "L-2023-02",
             "location": "AISEC",
             "weight": 9.9,
@@ -168,7 +169,7 @@
         },
         {
             "id": "E-2023-11",
-            "centrifugation_id": "Z-2023-02",
+            "centrifugation_id": "S-2023-02",
             "batch_id": "L-2023-02",
             "location": "AISEC",
             "weight": 9.6,
@@ -178,7 +179,7 @@
         },
         {
             "id": "E-2024-01",
-            "centrifugation_id": "Z-2024-01",
+            "centrifugation_id": "S-2024-01",
             "batch_id": "L-2024-01",
             "location": "SFG",
             "weight": 14.0,
@@ -188,7 +189,7 @@
         },
         {
             "id": "E-2024-02",
-            "centrifugation_id": "Z-2024-01",
+            "centrifugation_id": "S-2024-01",
             "batch_id": "L-2024-01",
             "location": "SFG",
             "weight": 15.7,
@@ -198,7 +199,7 @@
         },
         {
             "id": "E-2024-03",
-            "centrifugation_id": "Z-2024-01",
+            "centrifugation_id": "S-2024-01",
             "batch_id": "L-2024-01",
             "location": "SFG",
             "weight": 14.0,
@@ -208,7 +209,7 @@
         },
         {
             "id": "E-2024-04",
-            "centrifugation_id": "Z-2024-01",
+            "centrifugation_id": "S-2024-01",
             "batch_id": "L-2024-01",
             "location": "SFG",
             "weight": 14.0,
@@ -218,67 +219,67 @@
         },
         {
             "id": "E-2024-05",
-            "centrifugation_id": "Z-2024-01",
+            "centrifugation_id": "S-2024-01",
             "batch_id": "L-2024-01",
             "location": "SFG",
             "weight": 14.0,
             "moisture": 0.171,
-            "finished": 0,
+            "finished": 1,
             "comment": ""
         },
         {
             "id": "E-2024-06",
-            "centrifugation_id": "Z-2024-01",
+            "centrifugation_id": "S-2024-01",
             "batch_id": "L-2024-01",
             "location": "SFG",
             "weight": 14.2,
             "moisture": 0.17,
-            "finished": 0,
+            "finished": 1,
             "comment": ""
         },
         {
             "id": "E-2024-07",
-            "centrifugation_id": "Z-2024-01",
+            "centrifugation_id": "S-2024-01",
             "batch_id": "L-2024-01",
             "location": "SFG",
             "weight": 13.7,
             "moisture": 0.171,
-            "finished": 0,
+            "finished": 1,
             "comment": ""
         },
         {
             "id": "E-2024-08",
-            "centrifugation_id": "Z-2024-01",
+            "centrifugation_id": "S-2024-01",
             "batch_id": "",
             "location": "SFG",
             "weight": 12.8,
             "moisture": 0.182,
             "finished": 1,
-            "comment": "Gemischt mit Honig aus Z-2024-02"
+            "comment": "Gemischt mit Honig aus S-2024-02"
         },
         {
             "id": "E-2024-09",
-            "centrifugation_id": "Z-2024-02",
+            "centrifugation_id": "S-2024-02",
             "batch_id": "",
             "location": "SFG",
             "weight": 14.8,
             "moisture": 0.215,
             "finished": 1,
-            "comment": "Gemischt mit Honig aus Z-2024-01"
+            "comment": "Gemischt mit Honig aus S-2024-01"
         },
         {
             "id": "E-2024-10",
-            "centrifugation_id": "Z-2024-02",
+            "centrifugation_id": "S-2024-02",
             "batch_id": "",
             "location": "SFG",
             "weight": 14.8,
             "moisture": 0.20199999999999999,
             "finished": 1,
-            "comment": "Gemischt mit Honig aus Z-2024-01"
+            "comment": "Gemischt mit Honig aus S-2024-01"
         },
         {
             "id": "E-2024-11",
-            "centrifugation_id": "Z-2024-02",
+            "centrifugation_id": "S-2024-02",
             "batch_id": "L-2024-02",
             "location": "SFG",
             "weight": 14.5,
@@ -288,7 +289,7 @@
         },
         {
             "id": "E-2024-12",
-            "centrifugation_id": "Z-2024-02",
+            "centrifugation_id": "S-2024-02",
             "batch_id": "L-2024-02",
             "location": "SFG",
             "weight": 13.5,
@@ -298,22 +299,22 @@
         },
         {
             "id": "E-2024-13",
-            "centrifugation_id": "Z-2024-02",
+            "centrifugation_id": "S-2024-02",
             "batch_id": "",
             "location": "SFG",
             "weight": 14.0,
             "moisture": 0.23,
-            "finished": 0,
+            "finished": 1,
             "comment": "wieder verf\u00fcttert"
         },
         {
             "id": "E-2024-14",
-            "centrifugation_id": "Z-2024-02",
+            "centrifugation_id": "S-2024-02",
             "batch_id": "",
             "location": "SFG",
             "weight": 14.0,
             "moisture": 0.23,
-            "finished": 0,
+            "finished": 1,
             "comment": "wieder verf\u00fcttert"
         },
         {
@@ -324,7 +325,7 @@
             "weight": 13.0,
             "moisture": 0.19,
             "finished": 1,
-            "comment": "Mischung aus Z-2024-01 und Z-2024-02 um Wassergehalt zu korrigieren"
+            "comment": "Mischung aus S-2024-01 und S-2024-02 um Wassergehalt zu korrigieren"
         },
         {
             "id": "E-2024-16",
@@ -334,7 +335,7 @@
             "weight": 15.0,
             "moisture": 0.19,
             "finished": 1,
-            "comment": "Mischung aus Z-2024-01 und Z-2024-02 um Wassergehalt zu korrigieren"
+            "comment": "Mischung aus S-2024-01 und S-2024-02 um Wassergehalt zu korrigieren"
         },
         {
             "id": "E-2024-17",
@@ -344,122 +345,122 @@
             "weight": 14.4,
             "moisture": 0.19,
             "finished": 1,
-            "comment": "Mischung aus Z-2024-01 und Z-2024-02 um Wassergehalt zu korrigieren"
+            "comment": "Mischung aus S-2024-01 und S-2024-02 um Wassergehalt zu korrigieren"
         },
         {
             "id": "E-2024-18",
-            "centrifugation_id": "Z-2024-03",
+            "centrifugation_id": "S-2024-03",
             "batch_id": "L-2024-04",
             "location": "SFG",
             "weight": 14.6,
             "moisture": 0.191,
-            "finished": 0,
+            "finished": 1,
             "comment": ""
         },
         {
             "id": "E-2024-19",
-            "centrifugation_id": "Z-2024-03",
+            "centrifugation_id": "S-2024-03",
             "batch_id": "L-2024-04",
             "location": "SFG",
             "weight": 14.5,
             "moisture": 0.182,
-            "finished": 0,
+            "finished": 1,
             "comment": ""
         },
         {
             "id": "E-2024-20",
-            "centrifugation_id": "Z-2024-03",
+            "centrifugation_id": "S-2024-03",
             "batch_id": "L-2024-04",
             "location": "SFG",
             "weight": 14.5,
             "moisture": 0.18100000000000002,
-            "finished": 0,
+            "finished": 1,
             "comment": ""
         },
         {
             "id": "E-2024-21",
-            "centrifugation_id": "Z-2024-03",
+            "centrifugation_id": "S-2024-03",
             "batch_id": "L-2024-04",
             "location": "SFG",
             "weight": 14.5,
             "moisture": 0.188,
-            "finished": 0,
+            "finished": 1,
             "comment": ""
         },
         {
             "id": "E-2024-22",
-            "centrifugation_id": "Z-2024-03",
+            "centrifugation_id": "S-2024-03",
             "batch_id": "L-2024-04",
             "location": "SFG",
             "weight": 14.3,
             "moisture": 0.18,
-            "finished": 0,
+            "finished": 1,
             "comment": ""
         },
         {
             "id": "E-2024-23",
-            "centrifugation_id": "Z-2024-03",
+            "centrifugation_id": "S-2024-03",
             "batch_id": "L-2024-04",
             "location": "SFG",
             "weight": 14.4,
             "moisture": 0.193,
-            "finished": 0,
+            "finished": 1,
             "comment": ""
         },
         {
             "id": "E-2024-24",
-            "centrifugation_id": "Z-2024-03",
+            "centrifugation_id": "S-2024-03",
             "batch_id": "L-2024-04",
             "location": "SFG",
             "weight": 14.7,
             "moisture": 0.182,
-            "finished": 0,
+            "finished": 1,
             "comment": ""
         },
         {
             "id": "E-2024-25",
-            "centrifugation_id": "Z-2024-03",
+            "centrifugation_id": "S-2024-03",
             "batch_id": "L-2024-04",
             "location": "SFG",
             "weight": 14.1,
             "moisture": 0.18899999999999997,
-            "finished": 0,
+            "finished": 1,
             "comment": ""
         },
         {
             "id": "E-2024-26",
-            "centrifugation_id": "Z-2024-03",
+            "centrifugation_id": "S-2024-03",
             "batch_id": "L-2024-04",
             "location": "SFG",
             "weight": 14.4,
             "moisture": 0.185,
-            "finished": 0,
+            "finished": 1,
             "comment": ""
         },
         {
             "id": "E-2024-27",
-            "centrifugation_id": "Z-2024-03",
+            "centrifugation_id": "S-2024-03",
             "batch_id": "L-2024-04",
             "location": "SFG",
             "weight": 14.0,
             "moisture": 0.188,
-            "finished": 0,
+            "finished": 1,
             "comment": ""
         },
         {
             "id": "E-2024-28",
-            "centrifugation_id": "Z-2024-03",
+            "centrifugation_id": "S-2024-03",
             "batch_id": "L-2024-04",
             "location": "SFG",
             "weight": 14.0,
             "moisture": 0.188,
-            "finished": 0,
+            "finished": 1,
             "comment": ""
         }
     ],
     "centrifugations": [
         {
-            "id": "Z-2022-01",
+            "id": "S-2022-01",
             "date": "2022-06-09T00:00:00",
             "weight": 15.5,
             "comment": "Eimer noch nicht getracked",
@@ -471,7 +472,7 @@
             ]
         },
         {
-            "id": "Z-2022-02",
+            "id": "S-2022-02",
             "date": "2022-07-28T00:00:00",
             "weight": 13.0,
             "comment": "Eimer noch nicht getracked",
@@ -483,7 +484,7 @@
             ]
         },
         {
-            "id": "Z-2023-01",
+            "id": "S-2023-01",
             "date": "2023-06-17T00:00:00",
             "weight": 43.5,
             "comment": "",
@@ -499,7 +500,7 @@
             ]
         },
         {
-            "id": "Z-2023-02",
+            "id": "S-2023-02",
             "date": "2023-07-23T00:00:00",
             "weight": 59.4,
             "comment": "",
@@ -516,7 +517,7 @@
             ]
         },
         {
-            "id": "Z-2024-01",
+            "id": "S-2024-01",
             "date": "2024-06-02T00:00:00",
             "weight": 112.4,
             "comment": "",
@@ -535,7 +536,7 @@
             ]
         },
         {
-            "id": "Z-2024-02",
+            "id": "S-2024-02",
             "date": "2024-06-17T00:00:00",
             "weight": 85.6,
             "comment": "Melezitosehonig; teilweise wieder verf\u00fcttert",
@@ -552,7 +553,7 @@
             ]
         },
         {
-            "id": "Z-2024-03",
+            "id": "S-2024-03",
             "date": "2024-08-03T00:00:00",
             "weight": 158.0,
             "comment": "",
@@ -577,7 +578,6 @@
     "batches": [
         {
             "id": "L-2022-01",
-            "closed": false,
             "weight": 15.5,
             "sort": "Fr\u00fchjahrstrachthonig",
             "comment": "Eimer noch nicht getracked",
@@ -585,15 +585,15 @@
                 "E-2022-01"
             ],
             "centrifugations": [
-                "Z-2022-01"
+                "S-2022-01"
             ],
             "articles": [
+                "GTIN-4270004430219",
                 "GTIN-0000000202201"
             ]
         },
         {
             "id": "L-2022-02",
-            "closed": false,
             "weight": 13.0,
             "sort": "Sommertrachthonig",
             "comment": "Eimer noch nicht getracked",
@@ -601,7 +601,7 @@
                 "E-2022-02"
             ],
             "centrifugations": [
-                "Z-2022-02"
+                "S-2022-02"
             ],
             "articles": [
                 "GTIN-0000000202202"
@@ -609,7 +609,6 @@
         },
         {
             "id": "L-2023-01",
-            "closed": false,
             "weight": 43.5,
             "sort": "Fr\u00fchjahrstrachthonig",
             "comment": "AISEC",
@@ -621,7 +620,7 @@
                 "E-2023-05"
             ],
             "centrifugations": [
-                "Z-2023-01"
+                "S-2023-01"
             ],
             "articles": [
                 "GTIN-0000000202201"
@@ -629,7 +628,6 @@
         },
         {
             "id": "L-2023-02",
-            "closed": false,
             "weight": 59.4,
             "sort": "Lindenhonig",
             "comment": "WIEDE",
@@ -642,7 +640,7 @@
                 "E-2023-11"
             ],
             "centrifugations": [
-                "Z-2023-02"
+                "S-2023-02"
             ],
             "articles": [
                 "GTIN-0000000202202"
@@ -650,7 +648,6 @@
         },
         {
             "id": "L-2024-01",
-            "closed": false,
             "weight": 99.6,
             "sort": "Fr\u00fchjahrstrachthonig",
             "comment": "",
@@ -664,16 +661,15 @@
                 "E-2024-07"
             ],
             "centrifugations": [
-                "Z-2024-01"
+                "S-2024-01"
             ],
             "articles": [
-                "GTIN-0000000202201",
-                "GTIN-4270004430219"
+                "GTIN-4270004430219",
+                "GTIN-0000000202201"
             ]
         },
         {
             "id": "L-2024-02",
-            "closed": false,
             "weight": 28.0,
             "sort": "Backhonig",
             "comment": "Melezitosehonig",
@@ -682,13 +678,12 @@
                 "E-2024-12"
             ],
             "centrifugations": [
-                "Z-2024-02"
+                "S-2024-02"
             ],
             "articles": []
         },
         {
             "id": "L-2024-03",
-            "closed": true,
             "weight": 42.4,
             "sort": "Honig",
             "comment": "Nearbees",
@@ -701,7 +696,6 @@
         },
         {
             "id": "L-2024-04",
-            "closed": false,
             "weight": 158.0,
             "sort": "Lindenhonig",
             "comment": "",
@@ -719,7 +713,7 @@
                 "E-2024-28"
             ],
             "centrifugations": [
-                "Z-2024-03"
+                "S-2024-03"
             ],
             "articles": [
                 "GTIN-4270004430233"

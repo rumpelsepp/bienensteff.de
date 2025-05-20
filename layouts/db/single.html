@@ -39,7 +39,7 @@
     {{ $type = "batch" }}
 {{ else if strings.HasPrefix .Params.id "E-" }}
     {{ $type = "bucket" }}
-{{ else if strings.HasPrefix .Params.id "Z-" }}
+{{ else if strings.HasPrefix .Params.id "S-" }}
     {{ $type = "centrifugation" }}
 {{ else }}
     {{ errorf "invalid nummer: %s" .Params.id }}

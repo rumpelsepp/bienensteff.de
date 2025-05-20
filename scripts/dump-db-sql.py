@@ -9,17 +9,16 @@
 import csv
 import json
 import sqlite3
-import sys
 from datetime import date, datetime
 from typing import Any
 
 import httpx
 
-L_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=319545385&single=true&output=csv"
-A_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=321365816&single=true&output=csv"
-E_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=614306566&single=true&output=csv"
-Z_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=424473037&single=true&output=csv"
-STOCK_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=1660941194&single=true&output=csv"
+LOS_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=319545385&single=true&output=csv"
+ARTIClE_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=287358663&single=true&output=csv"
+EIMER_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=614306566&single=true&output=csv"
+SCHLEUDERUNG_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=424473037&single=true&output=csv"
+ABFUELLUNG_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=137162969&single=true&output=csv"
 
 
 def fetch_sheet(url: str) -> list[dict[str, Any]]:
@@ -42,7 +41,6 @@ def init_db(cur: sqlite3.Cursor) -> None:
 
         CREATE TABLE batches (
             id TEXT PRIMARY KEY,
-            closed INTEGER,
             weight REAL,
             sort TEXT,
             comment TEXT
@@ -66,7 +64,7 @@ def init_db(cur: sqlite3.Cursor) -> None:
             comment TEXT
         ) STRICT;
 
-        CREATE TABLE stock_transactions (
+        CREATE TABLE fillings (
             date TEXT,
             best_before TEXT,
             batch_id TEXT,
@@ -84,7 +82,7 @@ def convert_to_float(raw: str, remove: str) -> float:
 
 
 def import_articles(cur: sqlite3.Cursor) -> None:
-    for article in fetch_sheet(A_URL):
+    for article in fetch_sheet(ARTIClE_URL):
         if article["GTIN"].startswith("0000000"):
             continue
         cur.execute(
@@ -110,7 +108,7 @@ def import_articles(cur: sqlite3.Cursor) -> None:
 
 
 def import_buckets(cur: sqlite3.Cursor) -> None:
-    for bucket in fetch_sheet(E_URL):
+    for bucket in fetch_sheet(EIMER_URL):
         cur.execute(
             """
             INSERT INTO buckets(
@@ -131,14 +129,14 @@ def import_buckets(cur: sqlite3.Cursor) -> None:
                 bucket["Standort"],
                 convert_to_float(bucket["Gewicht"], " kg"),
                 convert_to_float(bucket["Wassergehalt"], "%") / 100,
-                bucket["abgefüllt"] == "x",
+                bucket["verwertet"] == "x",
                 bucket["Kommentar"],
             ),
         )
 
 
 def import_centrifugations(cur: sqlite3.Cursor) -> None:
-    for centrifugation in fetch_sheet(Z_URL):
+    for centrifugation in fetch_sheet(SCHLEUDERUNG_URL):
         cur.execute(
             """
             INSERT INTO centrifugations(
@@ -158,20 +156,18 @@ def import_centrifugations(cur: sqlite3.Cursor) -> None:
 
 
 def import_batches(cur: sqlite3.Cursor) -> None:
-    for batch in fetch_sheet(L_URL):
+    for batch in fetch_sheet(LOS_URL):
         cur.execute(
             """
             INSERT INTO batches(
                 id,
-                closed,
                 weight,
                 sort,
                 comment
-            ) VALUES (?, ?, ?, ?, ?);
+            ) VALUES (?, ?, ?, ?);
         """,
             (
                 batch["Nummer"],
-                batch["Closed"] == "x",
                 convert_to_float(batch["Gewicht"], " kg"),
                 batch["Honigsorte"],
                 batch["Kommentar"],
@@ -179,11 +175,11 @@ def import_batches(cur: sqlite3.Cursor) -> None:
         )
 
 
-def import_stock(cur: sqlite3.Cursor) -> None:
-    for transaction in fetch_sheet(STOCK_URL):
+def import_fillings(cur: sqlite3.Cursor) -> None:
+    for transaction in fetch_sheet(ABFUELLUNG_URL):
         cur.execute(
             """
-            INSERT INTO stock_transactions(
+            INSERT INTO fillings(
                 date,
                 best_before,
                 batch_id,
@@ -214,7 +210,7 @@ def gen_json(cur: sqlite3.Cursor) -> str:
     output["articles"] = [dict(row) for row in cur.fetchall()]
     for article in output["articles"]:
         article["id"] = article["gtin"]
-        cur.execute(f"SELECT * from stock_transactions WHERE stock_transactions.gtin = '{article['gtin']}'")
+        cur.execute(f"SELECT * from fillings WHERE fillings.gtin = '{article['gtin']}'")
         if (rows := cur.fetchall()) is not None:
             batches = set()
             for row_raw in rows:
@@ -229,11 +225,11 @@ def gen_json(cur: sqlite3.Cursor) -> str:
     output["centrifugations"] = [dict(row) for row in cur.fetchall()]
     for centrifugation in output["centrifugations"]:
         cur.execute(
-            f"SELECT id FROM buckets WHERE buckets.centrifugation_id = '{centrifugation['id']}'"
+            f"SELECT DISTINCT id FROM buckets WHERE buckets.centrifugation_id = '{centrifugation['id']}'"
         )
         centrifugation["buckets"] = [row["id"] for row in cur.fetchall()]
         cur.execute(
-            f"SELECT batch_id FROM buckets WHERE buckets.centrifugation_id = '{centrifugation['id']}'"
+            f"SELECT DISTINCT batch_id FROM buckets WHERE buckets.centrifugation_id = '{centrifugation['id']}'"
         )
         centrifugation["batches"] = list(
             {row["batch_id"] for row in cur.fetchall() if row["batch_id"] != ""}
@@ -242,13 +238,12 @@ def gen_json(cur: sqlite3.Cursor) -> str:
     cur.execute("SELECT * FROM batches")
     output["batches"] = [dict(row) for row in cur.fetchall()]
     for batch in output["batches"]:
-        batch["closed"] = batch["closed"] == 1
-        cur.execute(f"SELECT id FROM buckets WHERE buckets.batch_id = '{batch['id']}'")
+        cur.execute(f"SELECT DISTINCT id FROM buckets WHERE buckets.batch_id = '{batch['id']}'")
         batch["buckets"] = [row["id"] for row in cur.fetchall()]
         batch["centrifugations"] = []
         for bucket_id in batch["buckets"]:
             cur.execute(
-                f"SELECT centrifugation_id FROM buckets WHERE buckets.id = '{bucket_id}'"
+                f"SELECT DISTINCT centrifugation_id FROM buckets WHERE buckets.id = '{bucket_id}'"
             )
             if (row := cur.fetchone()) is not None:
                 row = dict(row)
@@ -258,7 +253,7 @@ def gen_json(cur: sqlite3.Cursor) -> str:
         if not batch["centrifugations"]:
             del batch["centrifugations"]
 
-        cur.execute(f"SELECT gtin FROM stock_transactions WHERE stock_transactions.batch_id = '{batch['id']}'")
+        cur.execute(f"SELECT DISTINCT gtin FROM fillings WHERE fillings.batch_id = '{batch['id']}'")
         batch["articles"] = list(set([dict(row)["gtin"] for row in cur.fetchall()]))
 
     return json.dumps(output, indent=4)
@@ -283,7 +278,7 @@ def main() -> None:
         import_buckets(cur)
         import_centrifugations(cur)
         import_batches(cur)
-        import_stock(cur)
+        import_fillings(cur)
 
         db.commit()
 
