@@ -37,3 +37,16 @@ clean:
 
 update-db:
     ./scripts/dump-db-sql.py > assets/db/db.json
+
+update-trachtnet:
+    ./scripts/gen-trachtnet.py --from-year $(date -d "last year" +%Y) --name Bayern --region bayern
+    mv -f trachtnet-bayern.svg static/trachtnet/trachtnet-bayern-current.svg
+    
+    ./scripts/gen-trachtnet.py --name Bayern --region bayern
+    mv -f trachtnet-bayern.svg static/trachtnet/trachtnet-bayern.svg
+
+    ./scripts/gen-trachtnet.py --name Oberbayern --region oberbayern
+    mv -f trachtnet-oberbayern.svg static/trachtnet/trachtnet-oberbayern.svg
+    
+    ./scripts/gen-trachtnet.py --station-id 1276 --name "Dr. Gerhard Liebig (Waage 1276)"
+    mv -f trachtnet-dr-gerhard-liebig-waage-1276.svg static/trachtnet/trachtnet-dr-gerhard-liebig-waage-1276.svg

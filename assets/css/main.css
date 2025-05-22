@@ -235,6 +235,11 @@ article.content {
             text-align: center;
         }
     }
+    
+    .max-width {
+        max-width: 100%;
+        margin: auto;
+    }
 
     .info {
         padding: 1rem;
