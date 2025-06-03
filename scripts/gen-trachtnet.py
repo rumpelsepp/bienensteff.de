@@ -477,7 +477,25 @@ class Kreis(enum.Enum):
 
 
 type RegionType = Land | Regierungsbezirk | Kreis
-regions_list = [region.name.lower() for region in Land] + [region.name.lower() for region in Regierungsbezirk] + [region.name.lower() for region in Kreis]
+regions_list = (
+    [region.name.lower() for region in Land]
+    + [region.name.lower() for region in Regierungsbezirk]
+    + [region.name.lower() for region in Kreis]
+)
+
+
+class Record(TypedDict):
+    value: float
+    date: datetime.date
+
+
+class Records(TypedDict):
+    year: int
+    name: str
+    data_key: str
+    records: list[Record]
+    dataframe: pl.DataFrame
+
 
 class TrachtnetClient:
     def __init__(self, base_url: str) -> None:
@@ -489,14 +507,19 @@ class TrachtnetClient:
     def _request(self, method: str, endpoint: str, **kwargs) -> httpx.Response:
         headers = kwargs.pop("headers", {})
         headers["User-Agent"] = self.user_agent
-        resp = httpx.request(
-            method, f"{self.base_url}/{endpoint}", headers=headers, **kwargs
-        )
+        transport = httpx.HTTPTransport(retries=3)
+        with httpx.Client(transport=transport) as client:
+            resp = client.request(
+                method, f"{self.base_url}/{endpoint}", headers=headers, **kwargs,
+            )
         resp.raise_for_status()
         return resp
 
-    def get_data(
-        self, from_year: int, to_year: int, regions: list[RegionType | int]
+    def get_raw_data(
+        self,
+        from_year: int,
+        to_year: int,
+        regions: list[RegionType | int],
     ) -> dict[str, Any]:
         params = {
             "type": "load_chart",
@@ -528,61 +551,95 @@ class TrachtnetClient:
         resp.raise_for_status()
         return resp.json()
 
+    def _parse_german_date(self, date_str: str) -> datetime.date:
+        # Map of German month names (abbreviations with and without dots) to month numbers
+        month_map = {
+            "Jan.": 1,
+            "Feb.": 2,
+            "Mär.": 3,
+            "Apr.": 4,
+            "Mai.": 5,
+            "Jun.": 6,
+            "Jul.": 7,
+            "Aug.": 8,
+            "Sep.": 9,
+            "Okt.": 10,
+            "Nov.": 11,
+            "Dez.": 12,
+            "Jan": 1,
+            "Feb": 2,
+            "Mär": 3,
+            "Apr": 4,
+            "Mai": 4,
+            "Jun": 6,
+            "Jul": 7,
+            "Aug": 8,
+            "Sep": 9,
+            "Okt": 10,
+            "Nov": 11,
+            "Dez": 12,
+        }
 
-def parse_german_date(date_str: str) -> datetime.date:
-    # Map of German month names (abbreviations with and without dots) to month numbers
-    month_map = {
-        "Jan.": 1,
-        "Feb.": 2,
-        "Mär.": 3,
-        "Apr.": 4,
-        "Mai.": 5,
-        "Jun.": 6,
-        "Jul.": 7,
-        "Aug.": 8,
-        "Sep.": 9,
-        "Okt.": 10,
-        "Nov.": 11,
-        "Dez.": 12,
-        "Jan": 1,
-        "Feb": 2,
-        "Mär": 3,
-        "Apr": 4,
-        "Mai": 4,
-        "Jun": 6,
-        "Jul": 7,
-        "Aug": 8,
-        "Sep": 9,
-        "Okt": 10,
-        "Nov": 11,
-        "Dez": 12,
-    }
+        # Remove weekday (e.g., "Donnerstag, ")
+        if "," in date_str:
+            date_str = date_str.split(",")[1].strip()
 
-    # Remove weekday (e.g., "Donnerstag, ")
-    if "," in date_str:
-        date_str = date_str.split(",")[1].strip()
+        # Extract day, month (as string), and year
+        match = re.match(r"(\d{2})\.\s*([A-Za-zäöüÄÖÜß\.]+)\s+(\d{4})", date_str)
+        if not match:
+            raise ValueError(f"Invalid date format: {date_str}")
 
-    # Extract day, month (as string), and year
-    match = re.match(r"(\d{2})\.\s*([A-Za-zäöüÄÖÜß\.]+)\s+(\d{4})", date_str)
-    if not match:
-        raise ValueError(f"Invalid date format: {date_str}")
+        day_str, month_str, year_str = match.groups()
 
-    day_str, month_str, year_str = match.groups()
+        # Convert German month name to month number
+        month = month_map.get(month_str)
+        if not month:
+            raise ValueError(f"Unknown German month name: {month_str}")
 
-    # Convert German month name to month number
-    month = month_map.get(month_str)
-    if not month:
-        raise ValueError(f"Unknown German month name: {month_str}")
+        return datetime.date(int(year_str), month, int(day_str))
 
-    return datetime.date(int(year_str), month, int(day_str))
+    def _lookup_date(self, hashlist: list[dict[str, str]], hash: int) -> datetime.date:
+        for item in hashlist:
+            date_hash = str(hash)
+            if date_hash in item:
+                return self._parse_german_date(item[date_hash])
+        raise ValueError(f"Date not found for hash: {hash}")
 
+    def get_data(
+        self,
+        from_year: int,
+        to_year: int,
+        regions: list[RegionType | int],
+    ) -> list[Records]:
+        raw_data = self.get_raw_data(from_year, to_year, regions)
+        series: list[Records] = []
+        for serie in raw_data["chart_data"]["Series"]:
+            records: list[Record] = []
+            for date_hash, value in serie["data"]:
+                date = self._lookup_date(serie["yCurrentDateHash"], date_hash)
+                records.append(
+                    {
+                        "value": value,
+                        "date": date,
+                    }
+                )
 
-def lookup_date(hashlist: list[dict[str, str]], hash: int) -> datetime.date:
-    for item in hashlist:
-        date_hash = str(hash)
-        if date_hash in item:
-            return parse_german_date(item[date_hash])
-    raise ValueError(f"Date not found for hash: {hash}")
+            dataframe = pl.DataFrame(
+                [
+                    pl.Series("dates", [record["date"] for record in records]),
+                    pl.Series("values", [record["value"] for record in records]),
+                ]
+            )
+            series.append(
+                {
+                    "name": serie["name"],
+                    "data_key": serie["dataKey"],
+                    "year": int(serie["yearId"]),
+                    "records": records,
+                    "dataframe": dataframe,
+                }
+            )
+        return series
 
 
 def choose_queen_color(year: int) -> str:
@@ -601,33 +658,16 @@ def choose_queen_color(year: int) -> str:
             raise ValueError("Invalid year for queen color selection.")
 
 
-class Record(TypedDict):
-    value: float
-    date: datetime.date
-
-
-class Records(TypedDict):
-    year: int
-    name: str
-    data_key: str
-    records: list[Record]
-    dataframe: pl.DataFrame
-
-
-def get_axis_arrays(records: list[Record]) -> tuple[list[float], list[float]]:
-    current_year = datetime.date.today().year
-
-    # TODO: Change these when outside the honey season.
-    min_month = 3
-    max_month = 7
-
+def get_axis_arrays(
+    records: list[Record], year: int, min_month: int, max_month: int
+) -> tuple[list[float], list[float]]:
     x_data = []
     y_data = []
     for record in records:
         if record["date"].month < min_month or record["date"].month > max_month:
             continue
         try:
-            x_data.append(mdates.date2num(record["date"].replace(year=current_year)))
+            x_data.append(mdates.date2num(record["date"].replace(year=year)))
             y_data.append(record["value"])
         except ValueError:
             continue
@@ -635,14 +675,15 @@ def get_axis_arrays(records: list[Record]) -> tuple[list[float], list[float]]:
     return x_data, y_data
 
 
-def plot_data(
-    title: str,
+def plot_honey_yield_progress(
+    data: list[Records],
     suptitle: str,
-    xlabel: str,
-    ylabel: str,
-    series: list[Records],
     filename: str,
+    title: str = "Trachtverlauf im aktuellen Jahr und Vorjahre",
 ) -> None:
+    xlabel = "Monat"
+    ylabel = "Kumulierte korrigierte Gewichtänderung [kg]"
+
     fig, ax = plt.subplots(figsize=(12, 6))
     ax.set_title(title)
     fig.suptitle(suptitle)
@@ -660,15 +701,18 @@ def plot_data(
     ax.yaxis.set_minor_locator(tck.AutoMinorLocator())
 
     today = datetime.date.today()
-    for records in series:
+
+    for records in data:
         year = records["year"]
-        x_data, y_data = get_axis_arrays(records["records"])
+        x_data, y_data = get_axis_arrays(
+            records["records"], year=today.year, min_month=3, max_month=7
+        )
         ax.plot(x_data, y_data, label=year, color=choose_queen_color(year))
 
         df = records["dataframe"]
         min_value = df["values"].min()
         min_date = df["dates"][df["values"].arg_min()]
-        
+
         ax.annotate(
             # min_date.strftime("%d.%m.%Y"),
             "",
@@ -679,7 +723,9 @@ def plot_data(
             bbox=dict(boxstyle="square", fc="w"),
             # rotation=15,
             arrowprops=dict(
-                facecolor="black", arrowstyle="->", connectionstyle="arc3",
+                facecolor="black",
+                arrowstyle="->",
+                connectionstyle="arc3",
             ),
             size=9,
         )
@@ -698,7 +744,9 @@ def plot_data(
             textcoords="offset points",
             bbox=dict(boxstyle="square", fc="w"),
             arrowprops=dict(
-                facecolor="black", arrowstyle="->", connectionstyle="arc3",
+                facecolor="black",
+                arrowstyle="->",
+                connectionstyle="arc3",
             ),
             size=9,
         )
@@ -714,57 +762,259 @@ def plot_data(
     fig.savefig(filename, pad_inches=0, bbox_inches="tight")
 
 
-def fetch_and_plot(
-    from_year: int, to_year: int, regions: list[RegionType | int], name: str
-) -> None:
-    locale.setlocale(locale.LC_ALL, "de_DE.UTF-8")
+def plot_2024_bayern(data: Records) -> None:
+    xlabel = "Monat"
+    ylabel = "Kumulierte korrigierte Gewichtänderung [kg]"
 
-    client = TrachtnetClient(
-        "https://dlr-web-daten1.aspdienste.de/cgi-bin/tdsa/tdsa_client.pl"
+    fig, ax = plt.subplots(figsize=(12, 6))
+    ax.set_title("Bayern 2024")
+    # fig.suptitle(suptitle)
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel(ylabel)
+    ax.grid()
+
+    locator = mdates.AutoDateLocator()
+    formatter = mdates.ConciseDateFormatter(locator)
+    ax.xaxis.set_major_locator(locator)
+    ax.xaxis.set_major_formatter(formatter)
+    ax.xaxis.set_minor_locator(mdates.WeekdayLocator(byweekday=mdates.MO))
+    ax.yaxis.set_minor_locator(tck.AutoMinorLocator())
+
+    df = data["dataframe"]
+    year = data["year"]
+    min_value = df["values"].min()
+    min_date = df["dates"][df["values"].arg_min()]
+    max_value = df["values"].min()
+    max_date = df["dates"][df["values"].arg_max()]
+
+    # NOTE: Peaks were found using the following code:
+    # peaks = df.select(pl.col("values").peak_min())["values"].to_list()
+    #
+    # for index, is_peak in enumerate(peaks):
+    #     if is_peak:
+    #         print(f"index {index}  {df["dates"][index]}")
+    #         print(f"index {index}  {df["values"][index]}")
+
+    x_data, y_data = get_axis_arrays(
+        data["records"], year=year, min_month=3, max_month=8,
+    )
+    ax.plot(
+        x_data, y_data, label=f"Trachtverlauf {year}", color=choose_queen_color(year),
     )
 
-    data = client.get_data(from_year=from_year, to_year=to_year, regions=regions)
-
-    title_text = "Trachtverlauf im aktuellen Jahr und Vorjahre"
-    y_axis_text = "Kumulierte korrigierte Gewichtänderung [kg]"
-
-    series: list[Records] = []
-    for serie in data["chart_data"]["Series"]:
-        records: list[Record] = []
-        for date_hash, value in serie["data"]:
-            date = lookup_date(serie["yCurrentDateHash"], date_hash)
-            records.append(
-                {
-                    "value": value,
-                    "date": date,
-                }
-            )
-
-        dataframe = pl.DataFrame(
-            [
-                pl.Series("dates", [record["date"] for record in records]),
-                pl.Series("values", [record["value"] for record in records]),
-            ]
-        )
-        series.append(
-            {
-                "name": serie["name"],
-                "data_key": serie["dataKey"],
-                "year": int(serie["yearId"]),
-                "records": records,
-                "dataframe": dataframe,
-            }
-        )
-
-    filename = f"trachtnet-{name.lower().replace(' ', '-').replace("(", "").replace(")", "").replace(".", "")}.svg"
-    plot_data(
-        title=title_text,
-        suptitle=name,
-        xlabel="Monat",
-        ylabel=y_axis_text,
-        series=series,
-        filename=filename,
+    ax.annotate(
+        f"Kälteeinbruch ({df['dates'][104].strftime('%d.%m.%Y')})",
+        xy=(mdates.date2num(df["dates"][104]), df["values"][104]),
+        xycoords="data",
+        xytext=(-80, 20),
+        textcoords="offset points",
+        bbox=dict(boxstyle="square", fc="w"),
+        arrowprops=dict(
+            facecolor="black",
+            arrowstyle="->",
+            connectionstyle="arc3",
+        ),
+        size=9,
     )
+    ax.annotate(
+        f"Beginn Melizitosetracht ({df['dates'][162].strftime('%d.%m.%Y')})",
+        xy=(mdates.date2num(df["dates"][162]), df["values"][162]),
+        xycoords="data",
+        xytext=(50, 10),
+        textcoords="offset points",
+        bbox=dict(boxstyle="square", fc="w"),
+        arrowprops=dict(
+            facecolor="black",
+            arrowstyle="->",
+            connectionstyle="arc3",
+        ),
+        size=9,
+    )
+
+    ax.annotate(
+        min_date.strftime("Trachtbeginn (%d.%m.%Y)"),
+        xy=(mdates.date2num(min_date), min_value),
+        xycoords="data",
+        xytext=(-110, 30),
+        textcoords="offset points",
+        bbox=dict(boxstyle="square", fc="w"),
+        # rotation=15,
+        arrowprops=dict(
+            facecolor="black",
+            arrowstyle="->",
+            connectionstyle="arc3",
+        ),
+        size=9,
+    )
+
+    max_value = df["values"].max()
+    max_date = df["dates"][df["values"].arg_max()]
+    ax.annotate(
+        max_date.strftime("Trachtende (%d.%m.%Y)"),
+        xy=(mdates.date2num(max_date), max_value),
+        xycoords="data",
+        xytext=(25, 4),
+        textcoords="offset points",
+        bbox=dict(boxstyle="square", fc="w"),
+        arrowprops=dict(
+            facecolor="black",
+            arrowstyle="->",
+            connectionstyle="arc3",
+        ),
+        size=9,
+    )
+
+    ax.axvline(
+        mdates.date2num(datetime.date(2024, 6, 2)),
+        color="black",
+        linestyle="dotted",
+        label="Schleuderung 01",
+    )
+    ax.annotate(
+        "Schleuderung 01",
+        xy=(mdates.date2num(datetime.date(2024, 6, 2)), -4),
+        xycoords="data",
+        xytext=(-15, 0),
+        color="black",
+        textcoords="offset points",
+        bbox=dict(boxstyle="square", fc="w"),
+        rotation=90,
+        size=9,
+    )
+    ax.axvline(
+        mdates.date2num(datetime.date(2024, 6, 17)),
+        color="black",
+        linestyle="dotted",
+        label="Schleuderung 02",
+    )
+    ax.annotate(
+        "Schleuderung 02",
+        xy=(mdates.date2num(datetime.date(2024, 6, 17)), -4),
+        xycoords="data",
+        xytext=(-15, 0),
+        color="black",
+        textcoords="offset points",
+        bbox=dict(boxstyle="square", fc="w"),
+        rotation=90,
+        size=9,
+    )
+    ax.axvline(
+        mdates.date2num(datetime.date(2024, 8, 3)),
+        color="black",
+        linestyle="dotted",
+        label="Schleuderung 03",
+    )
+    ax.annotate(
+        "Schleuderung 03",
+        xy=(mdates.date2num(datetime.date(2024, 8, 3)), -4),
+        xycoords="data",
+        xytext=(-15, 0),
+        color="black",
+        textcoords="offset points",
+        bbox=dict(boxstyle="square", fc="w"),
+        rotation=90,
+        size=9,
+    )
+
+    ax.axvspan(mdates.date2num(min_date), mdates.date2num(max_date), color="0.95")
+    ax.axvspan(
+        mdates.date2num(df["dates"][162]),
+        mdates.date2num(df["dates"][172]),
+        color="0.9",
+    )
+
+    fig.savefig(
+        "trachtnet-bayern-2024-auswertung.svg", pad_inches=0, bbox_inches="tight"
+    )
+
+
+def plot_2023_bayern_wetter() -> None:
+    # TODO: Maybe this instead: https://meteostat.net There is a json api.
+    df = pl.read_csv("scripts/data/wetter-oberpfaffenhofen-saison-2023.csv").with_columns(
+        pl.col("date").str.strptime(pl.Date, "%Y-%m-%d %H:%M:%S"),
+        pl.col("tavg").ewm_mean(span=8).alias('tavg_ema'),
+        pl.col("prcp").ewm_mean(span=4).alias('prcp_ema')
+    )
+
+    fig, ax = plt.subplots(figsize=(12, 6))
+    ax.plot(
+        list(map(lambda x: mdates.date2num(x), df["date"].to_list())),
+        df["tavg_ema"].to_list(),
+        color="tab:red",
+        label="Temperatur [°C]",
+    )
+    ax2 = ax.twinx()
+    ax2.plot(
+        list(map(lambda x: mdates.date2num(x), df["date"].to_list())),
+        df["prcp_ema"].to_list(),
+        color="tab:blue",
+        label="Niederschlag [mm]",
+    )
+    ax2.set_ylabel("Niederschlag [mm]")
+    ax2.set_ylim(top=150)
+    
+    ax.set_title("Bayern 2023 Wetter")
+    ax.set_xlabel("Monat")
+    ax.set_ylabel("Temperatur [°C]")
+    ax.grid()
+
+    locator = mdates.AutoDateLocator()
+    formatter = mdates.ConciseDateFormatter(locator)
+    ax.xaxis.set_major_locator(locator)
+    ax.xaxis.set_major_formatter(formatter)
+    ax.xaxis.set_minor_locator(mdates.WeekdayLocator(byweekday=mdates.MO))
+    ax.yaxis.set_minor_locator(tck.AutoMinorLocator())
+    fig.legend()
+
+    fig.savefig("bayern-2023-wetter.svg", pad_inches=0, bbox_inches="tight")
+
+
+def plot_2024_bayern_wetter() -> None:
+    # TODO: Maybe this instead: https://meteostat.net There is a json api.
+    df = pl.read_csv("scripts/data/wetter-oberpfaffenhofen-saison-2024.csv").with_columns(
+        pl.col("date").str.strptime(pl.Date, "%Y-%m-%d %H:%M:%S"),
+        pl.col("tavg").ewm_mean(span=8).alias('tavg_ema'),
+        pl.col("prcp").ewm_mean(span=4).alias('prcp_ema')
+    )
+
+    fig, ax = plt.subplots(figsize=(12, 6))
+    ax.plot(
+        list(map(lambda x: mdates.date2num(x), df["date"].to_list())),
+        df["tavg_ema"].to_list(),
+        color="tab:red",
+        label="Temperatur [°C]",
+    )
+    ax2 = ax.twinx()
+    ax2.plot(
+        list(map(lambda x: mdates.date2num(x), df["date"].to_list())),
+        df["prcp_ema"].to_list(),
+        color="tab:blue",
+        label="Niederschlag [mm]",
+    )
+    ax2.set_ylabel("Niederschlag [mm]")
+    ax2.set_ylim(top=150)
+    
+    ax.set_title("Bayern 2024 Wetter")
+    ax.set_xlabel("Monat")
+    ax.set_ylabel("Temperatur [°C]")
+    ax.grid()
+
+    locator = mdates.AutoDateLocator()
+    formatter = mdates.ConciseDateFormatter(locator)
+    ax.xaxis.set_major_locator(locator)
+    ax.xaxis.set_major_formatter(formatter)
+    ax.xaxis.set_minor_locator(mdates.WeekdayLocator(byweekday=mdates.MO))
+    ax.yaxis.set_minor_locator(tck.AutoMinorLocator())
+    fig.legend()
+
+    ax.axvspan(mdates.date2num(datetime.date(2024, 4, 2)), mdates.date2num(datetime.date(2024, 6, 29)), color="0.95")
+    ax.axvspan(
+        mdates.date2num(datetime.date(2024, 6, 11)),
+        mdates.date2num(datetime.date(2024, 6, 21)),
+        color="0.9",
+    )
+
+    fig.savefig("bayern-2024-wetter.svg", pad_inches=0, bbox_inches="tight")
 
 
 def parse_args() -> argparse.Namespace:
@@ -783,21 +1033,20 @@ def parse_args() -> argparse.Namespace:
         default=datetime.date.today().year,
         help="End year for fetching data (default: current year)",
     )
-    
+
     parser.add_argument(
         "--region",
         type=str,
         nargs="+",
         choices=regions_list,
         metavar="REGION",
-        help="Regions to fetch data for (default: bayern)",
+        help="Regions to fetch data for",
     )
     parser.add_argument(
-       "--station-id",
-       type=int,
+        "--station-id",
+        type=int,
         nargs="+",
-         help="Individual station ID", 
-
+        help="Individual station ID",
     )
     parser.add_argument(
         "--name",
@@ -809,12 +1058,36 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Show all available regions and exit",
     )
+    parser.add_argument(
+        "--chosen-evaluations",
+        action="store_true",
+        help="Do chosen evaluations",
+    )
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-    
+
+    locale.setlocale(locale.LC_ALL, "de_DE.UTF-8")
+
+    client = TrachtnetClient(
+        "https://dlr-web-daten1.aspdienste.de/cgi-bin/tdsa/tdsa_client.pl"
+    )
+
+    if args.chosen_evaluations:
+        data = client.get_data(
+            from_year=2024,
+            to_year=2024,
+            regions=[Land.BAYERN],
+        )
+
+        plot_2024_bayern(data[0])
+        plot_2023_bayern_wetter()
+        plot_2024_bayern_wetter()
+
+        sys.exit(0)
+
     if args.show_regions:
         for region in regions_list:
             print(region)
@@ -838,16 +1111,20 @@ def main() -> None:
 
     if args.station_id:
         regions.extend(args.station_id)
-    
+
     if not regions:
         print("No regions specified. Use --region or --station-id to specify regions.")
         sys.exit(1)
 
-    fetch_and_plot(
+    data = client.get_data(
         from_year=args.from_year,
         to_year=args.to_year,
         regions=regions,
-        name=args.name,
+    )
+    plot_honey_yield_progress(
+        data=data,
+        suptitle=args.name,
+        filename=f"trachtnet-{args.name.lower().replace(' ', '-').replace('(', '').replace(')', '').replace('.', '')}.svg",
     )
 
 

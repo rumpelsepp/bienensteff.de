@@ -27,7 +27,7 @@ Nach unserem Verständnis soll Imkern möglichst simpel sein und es muss Spaß m
 Vor allem aber muss es den Bienen gut gehen!
 Das Motto unseres Betriebs lautet daher ganz einfach: „keep it simple“!
 
-{{< fig src="IMG_20230904_182133.jpg" >}}
+{{< fig src="IMG_20250427_144256.jpg" >}}
 
 Imkern ist äußerst abwechslungsreich.
 Jeder Monat bringt neue Herausforderungen, die oft ein gehöriges Maß an Kreativität oder handwerklichem Geschick erfordern.

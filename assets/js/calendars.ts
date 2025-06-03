@@ -16,7 +16,7 @@ function renderBeeCalendar(id: string) {
     initialView: 'dayGridMonth',
     firstDay: 1,
     locale: calDeLocale,
-    weekNumbers: true,
+    // weekNumbers: true,
     validRange: {
       start: dates.startDate.toISO(),
       end: dates.endRange.toISO(),
@@ -134,7 +134,7 @@ function renderTUBCalendar(id: string) {
     initialView: 'dayGridMonth',
     firstDay: 1,
     locale: calDeLocale,
-    weekNumbers: true,
+    // weekNumbers: true,
     validRange: {
       start: dates.startDate.toISO(),
       end: dates.endRange.toISO(),

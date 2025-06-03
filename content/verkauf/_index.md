@@ -17,9 +17,9 @@ Unsere Produkte sind in unserer aktuellen [Preisübersicht]({{< ref "preisliste"
 Als kleine Imkerei betreuen wir ortsfeste Bienenstände und schleudern zweimal im Jahr.
 Je nach Verfügbarkeit haben wir folgende Honigsorten aus eigener Imkerei im Angebot:
 
-* **Frühjahrsblüte**: Blütenhonig aus den Frühjahrsmonaten
-* **Sommerblüte**: Blütenhonig aus den Sommermonaten
-* **Lindenhonig**: Honig aus Nektar und Honigtau von Lindenarten
+* **Blütenhonig**: Sonnig-mild mit dem Duft bunter Blüten.
+* **Waldhonig**: Würzig und reich an Aromen.
+* **Linde**: Aromatisch-blumig mit erfrischender Minznote.
 
 ## Qualität
 
@@ -35,7 +35,7 @@ Die Direktverkaufsstellen werden von uns persönlich betreut; bei diesen am best
 
 | Verkaufsstelle  | Art  | Adresse | Kontakt |
 |-----------------|------|---------| ------- |
-| Haustür | Direktverkauf | [Stefan Tatschner<br>Gräfelfinger Straße 169a<br>81375 München](https://maps.app.goo.gl/CxwePVnqYxZf5y3k8) | Mobil: <a href="tel:+4915124096409">+49 1512 409 6409</a><br>E-Mail: info@bienensteff.de |
+| Haustür | Direktverkauf | [Stefan Tatschner<br>Gräfelfinger Straße 169a<br>81375 München](https://maps.app.goo.gl/CxwePVnqYxZf5y3k8) | Mobil: <a href="tel:+4915124096409">+49 1512 4096409</a><br>E-Mail: info@bienensteff.de |
 | Haustür | Direktverkauf | [Fam. Tatschner<br>Granitweg 20<br>94481 Grafenau](https://maps.app.goo.gl/jTKsPPaF4Zm2bUPV6) | Tel: <a href="tel:+4985523391">+49 8552 3391</a><br>E-Mail: anneliese.tatschner@gmail.com |
 | [Honighäusl](http://honey.floriankreuzer.de/verkaufsstellen/) | SB-Verkaufskasten | [Rambaldistr. 33<br>81929 München](https://maps.app.goo.gl/V2AfBJat9t6mBJ1J7)  | Instagram: [johannesbienen.muenchen](https://www.instagram.com/johannesbienen.muenchen/) |
 <!-- | [s'Fachl München](https://www.fachl.at/de-at/Standorte/Deutschland/s-Fachl-Muenchen) | Einzelhandel | [Hohenzollernstraße 93<br>80796 München](https://maps.app.goo.gl/hyh7hpKtmsmXvNZ48) | Tel: <a href="tel:+491758194156">+49 175 819 4156</a><br>E-Mail: <a href="mailto:muenchen@sFachl.de">muenchen@sFachl.de</a> | -->

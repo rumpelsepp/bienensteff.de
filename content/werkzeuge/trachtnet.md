@@ -37,10 +37,33 @@ Die Graphen werden täglich aktualisiert.
 
 ### Gerhard Liebig
 
-Mehr Infos zu dieser Waage, siehe hier: https://www.immelieb.de/es-honigt/
-
 {{< figure
   src="/trachtnet/trachtnet-dr-gerhard-liebig-waage-1276.svg"
   link="/trachtnet/trachtnet-dr-gerhard-liebig-waage-1276.svg"
+  class="max-width"
+  caption="Mehr Infos zu dieser Waage, siehe hier: https://www.immelieb.de/es-honigt/"
+>}}
+
+
+## Ausgewählte Auswertungen
+### Bayern 2024
+
+{{< figure
+  src="/trachtnet/trachtnet-bayern-2024-auswertung.svg"
+  link="/trachtnet/trachtnet-bayern-2024-auswertung.svg"
+  class="max-width"
+>}}
+
+{{< figure
+  src="/trachtnet/bayern-2024-wetter.svg"
+  link="/trachtnet/bayern-2024-wetter.svg"
+  class="max-width"
+>}}
+
+### Bayern 2023
+
+{{< figure
+  src="/trachtnet/bayern-2023-wetter.svg"
+  link="/trachtnet/bayern-2023-wetter.svg"
   class="max-width"
 >}}

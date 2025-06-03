@@ -59,7 +59,7 @@
       {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
       {{ block "banner" . }}
 
-      {{ with $banner := resources.Get "/img/banner-sticker.jpg" | resources.Fingerprint }}
+      {{ with $banner := resources.Get "/img/banner2.jpg" | resources.Fingerprint }}
         <div class="banner-container">
           <img id="banner" src="{{ $banner.Permalink }}" height="230" width="920">
 

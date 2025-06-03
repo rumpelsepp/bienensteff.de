@@ -62,7 +62,7 @@ description = "Bienen und Honig aus dem Münchner Grüngürtel"
     weight = 60
 
 [imaging]
-  quality = 97
+  quality = 98
 
   [markup.goldmark.renderer]
     unsafe = true
