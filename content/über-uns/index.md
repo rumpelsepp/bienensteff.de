@@ -21,7 +21,7 @@ Und so wurde aus einem Versuch eine Leidenschaft – und aus der Leidenschaft un
 Sie wohnen an mehreren ausgewählten Standorten in und rund um München.
 Der Hauptstandort unserer Imkerei liegt mitten in den Bayerischen Staatsforsten im Münchner Südwesten – ein ruhiges Fleckerl zwischen Wald, Wiesen und alten Obstbäumen.
 
-Besonders die Nähe zu Streuobstwiesen und das reiche Blütenangebot im Wald sorgen dafür, dass unsere Bienen ordentlich was zu tun haben – und wir Jahr für Jahr mit besonders aromatischem Honig belohnt werden. 🍯🐝
+Besonders die Nähe zu Streuobstwiesen und das reiche Angebot im Wald sorgen dafür, dass unsere Bienen ordentlich was zu tun haben – und wir Jahr für Jahr mit besonders aromatischem Honig belohnt werden. 🍯🐝
 
 {{< fig src="IMG_20240708_205828.jpg" >}}
 
