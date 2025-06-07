@@ -2,19 +2,19 @@
 title: "Imkerei Stefan Tatschner 🐝"
 ---
 
-Servus zusammen!
+Servus beinand – und herzlich willkommen bei uns in Großhadern!
 
-Schön, dass ihr den Weg zu uns durch die Untiefen des Internets gefunden habt.
-Wir sind eine [kleine Imkerei]({{<ref "über-uns">}}) aus Großhadern im Münchner Südwesten, im [„Münchner Grüngürtel“](https://stadt.muenchen.de/infos/muenchner-gruenguertel.html).
-Seit 2021 sind wir von unseren Honigbienen und vor allem von ihrem köstlichen Honig begeistert.
-Im Jahr 2024 wurde unsere Imkerei mit der [Goldmedaille]({{<ref "über-uns#auszeichnungen">}}) für hervorragende Leistungen ausgezeichnet.
-Unsere Bienen 🐝 stehen an ausgewählten Standorten in der Natur, wo ein reichhaltiges Angebot an Blühpflanzen vorhanden ist.
-Den Honig 🍯 aus unserer eigenen Imkerei bieten wir in verschiedenen Sorten an und sind bestrebt, ihn in bestmöglicher Qualität zu verarbeiten.
-Unser Betrieb wird unabhängig kontrolliert und ist Mitglied im staatlichen Qualitätsprogramm [Geprüfte Qualität – Bayern](https://www.gq-bayern.de/) für Honig.
-Transparente Rückverfolgbarkeit ist uns wichtig, daher veröffentlichen wir umfassende [Informationen]({{<ref "datenbank">}}) zu unseren Ernten und Honiglosen.
+Schön, dass ihr euch durch die digitalen Wiesen und Wälder des Internets zu uns verirrt habt.
+Wir sind eine [kleine, feine Imkerei]({{< relref "über-uns" >}}) im Münchner Südwesten – mitten im „Münchner Grüngürtel“.
+Seit 2021 summt und brummt es bei uns – und unsere Begeisterung für die Bienen und ihren goldenen Schatz wächst mit jeder Saison.
+2024 durften wir uns besonders freuen: Unsere Imkerei wurde mit der [Goldmedaille]({{< relref "über-uns#auszeichnungen" >}}) für hervorragende Leistungen ausgezeichnet.
+Unsere Bienenvölker 🐝 stehen an ausgewählten, blütenreichen Plätzen – dort, wo die Natur noch ihre ganz eigene Vielfalt zeigt.
+Den Honig 🍯 ernten und verarbeiten wir selbst – sorgfältig, schonend und mit einem hohen Anspruch an Qualität.
+Wir sind Mitglied im Qualitätsprogramm Geprüfte Qualität – Bayern und werden regelmäßig unabhängig geprüft.
+Damit ihr wisst, was genau in eurem Honigglas steckt, veröffentlichen wir alle [Informationen]({{< relref "datenbank" >}}) zu unseren Ernten und Chargen ganz transparent.
 
-Bis bald!
+Schaut’s euch gern um – und vielleicht sehen wir uns ja bald!
 
-Steff
+Euer Steff 🐝
 
 {{< fig src="IMG_20230617_093428-crop.png" size="1000x1000" >}}
