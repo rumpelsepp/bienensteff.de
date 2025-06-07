@@ -13,11 +13,13 @@ Neue Ernte verfügbar ab August 2025.**
 
 ## Gläser
 
+{{< pretty-table table_class="table table-striped table-sm table-bordered" >}}
 | Artikel  | <acronym title="Verkaufseinheit">VKE</acronym> | Preis / Stück |
 |----------| ------- | ------- |
 | Frühjahrstrachthonig* | 500 g Glas | 8 € |
 | Sommertrachthonig | 500 g Glas | 8 €|
 | Lindenhonig* | 500 g Glas | 9 € |
+{{</ pretty-table >}}
 
 Bei einer Abnahme von mindestens vier Gläsern gewähren wir einen Rabatt von 1 € pro Glas.
 
@@ -26,10 +28,12 @@ Bei einer Abnahme von mindestens vier Gläsern gewähren wir einen Rabatt von 1 
 Auf Bestellung füllen wir auch gerne in eigene Gebinde ab.
 Bestellungen für Sonderabfüllungen werden jede Saison bis Anfang September angenommen.
 
+{{< pretty-table table_class="table table-striped table-sm table-bordered" >}}
 | Artikel  | Preis / kg |
 | - | - |
 | Honig (alle Sorten)* | 14 € |
 | Backhonig | 4 € |
+{{</ pretty-table >}}
 
 Honig ist ein Naturprodukt, das in Farbe, Geschmack und Konsistenz variieren kann.
 Abweichungen sind daher möglich und stellen keinen Grund für Reklamationen dar.

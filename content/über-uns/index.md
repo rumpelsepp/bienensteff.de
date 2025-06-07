@@ -8,7 +8,6 @@ Hauptberuflich habe ich die meiste Zeit mit Computern zu tun und suchte lange na
 Aus anfangs einem einzigen Volk sind mittlerweile viele geworden, mit der Tendenz zu mehr!
 Meine Familie unterstützt mich liebevoll, wo sie kann – sei es beim Wachsschmelzen, Honigschleudern oder einfach, indem sie mein pausenloses Bienengelaber mit einem Lächeln erträgt… 😁
 
-<!--{{< fig src="IMG_20230617_093428-crop.png" >}}-->
 {{< fig src="IMG_20240708_195442.jpg" >}}
 
 ## Regionalität
@@ -47,10 +46,11 @@ Die Bienen bedanken sich mit köstlichem Honig, der am besten schmeckt, wenn man
 * 05.02.2024: [Völkervermehrung in vier Schritten mit Dr. Pia Aumeier](/fachkunde/2024-02-05-Völkervermehrung.pdf); Imkerling — Die Akademie für Bienenfreunde
 * 18.07.2022: [Qualitätsanforderungen für Deutschen Honig gemäß den Warenzeichenbestimmungen des Deutschen Imkerbundes e.V.](/fachkunde/2022-07-18-DIB-cert.pdf); Deutscher Imkerbund
 
+## Zertifikate
+
+* **Geprüfte Qualität — Bayern** für Honig in der Stufe „Erzeugung, Erfassung, Lagerung, Vermarktung“
+* Als Münchner Imkerei sind wir berechtigt die Marke [„Münchner Grüngürtel“](gruenguertel-muc.jpg) zu nutzen. Das Münchner Grüngürtel-Projekt ist eine [Initiative](https://stadt.muenchen.de/infos/muenchner-gruenguertel.html) der Stadt München.
+
 ## Mitgliedschaften
 
 Unsere Imkerei ist Mitglied im [Deutschen Imkerbund e.V.](https://deutscherimkerbund.de/), dem [Landesverband Bayerischer Imker e.V.](https://www.lvbi.de/) und dem [Bienenzuchtverein München und Umgebung e.V. (BZVM)](https://bzvm.de/).
-
-## Zertifikate
-
-* 10.04.2024: Als Münchner Imkerei sind wir berechtigt die Marke [„Münchner Grüngürtel“](gruenguertel-muc.jpg) zu nutzen. Das Münchner Grüngürtel-Projekt ist eine [Initiative](https://stadt.muenchen.de/infos/muenchner-gruenguertel.html) der Stadt München.

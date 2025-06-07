@@ -8,7 +8,7 @@ Dazu das Startdatum X auswählen und auf absenden klicken. Der grüne Bereich sy
 Termine mit Stern * sind geschätzt, da der Tag des Hochzeitsflugs und folglich der Start der Eiablage nicht vorhersehbar ist.
 
 ---
-<table>
+<table class="table table-sm table-striped table-bordered">
     <thead>
         <tr>
             <th>Zeitpunkt</th>
@@ -56,7 +56,7 @@ Termine mit Stern * sind geschätzt, da der Tag des Hochzeitsflugs und folglich 
 
 ---
 
-<table>
+<table class="table table-sm table-striped table-bordered">
 <caption>
 Entwicklungsphasen der drei Bienenwesen
 </caption>

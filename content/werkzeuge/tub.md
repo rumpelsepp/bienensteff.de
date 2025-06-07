@@ -7,7 +7,7 @@ TuB ist größtenteils witterungsunabhängig und kann gut nach Zeitplan durchgef
 Die grünen Bereiche im Kalendertool unten symbolisieren die brutfreien Zeiten.
 
 ---
-<table>
+<table class="table table-sm table-striped table-bordered">
     <thead>
         <tr>
             <th>Schritt</th>

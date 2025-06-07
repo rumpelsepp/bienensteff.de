@@ -67,7 +67,7 @@
         </h1>
     </header>
     
-    <table id="honeydb">
+    <table id="honeydb" class="table table-sm table-striped table-bordered">
         {{ if eq $type "article" }}
             <tr><th>Bezeichnung</th><td>{{ .Params.description }}</td></tr>
             <tr><th><abbr title="Global Trade Item Number (vormals EAN)">GTIN</abbr></th> <td><a href="https://www.gs1.org/services/verified-by-gs1/results?gtin={{ strings.TrimPrefix "GTIN-" .Params.gtin }}">{{ strings.TrimPrefix "GTIN-" .Params.gtin }}</a></td></tr>
@@ -178,9 +178,9 @@
     {{ $id := .Params.id }}
     {{ with resources.GetMatch (printf "/db/img/%s.jpg" (strings.ToLower .Params.id)) }}
         <hr>
-        <figure>
-            <img src="{{ .Permalink }}" loading="lazy">
-            <figcaption>
+        <figure class="figure">
+            <img class="figure-img img-fluid rounded" src="{{ .RelPermalink }}" loading="lazy">
+            <figcaption class="figure-caption">
                 {{ $id }}
             </figcaption>
         </figure>

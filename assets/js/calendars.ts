@@ -13,6 +13,7 @@ function renderBeeCalendar(id: string) {
   const calendarEl = document.getElementById(id);
   const calendar = new Calendar(calendarEl, {
     plugins: [calDayGridPlugin, calListPlugin],
+    themeSystem: 'bootstrap5',
     initialView: 'dayGridMonth',
     firstDay: 1,
     locale: calDeLocale,
@@ -132,6 +133,7 @@ function renderTUBCalendar(id: string) {
   const calendar = new Calendar(calendarEl, {
     plugins: [calDayGridPlugin, calListPlugin],
     initialView: 'dayGridMonth',
+    themeSystem: 'bootstrap5',
     firstDay: 1,
     locale: calDeLocale,
     // weekNumbers: true,

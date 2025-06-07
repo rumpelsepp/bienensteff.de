@@ -14,7 +14,6 @@ Die Graphen werden täglich aktualisiert.
 {{< figure
   src="/trachtnet/trachtnet-bayern-current.svg"
   link="/trachtnet/trachtnet-bayern-current.svg"
-  class="max-width"
 >}}
 
 ### Heuer und Vorjahre
@@ -22,7 +21,6 @@ Die Graphen werden täglich aktualisiert.
 {{< figure
   src="/trachtnet/trachtnet-bayern.svg"
   link="/trachtnet/trachtnet-bayern.svg"
-  class="max-width"
 >}}
 
 ## Oberbayern
@@ -30,7 +28,6 @@ Die Graphen werden täglich aktualisiert.
 {{< figure
   src="/trachtnet/trachtnet-oberbayern.svg"
   link="/trachtnet/trachtnet-oberbayern.svg"
-  class="max-width"
 >}}
 
 ## Ausgewählte Waagen
@@ -40,7 +37,6 @@ Die Graphen werden täglich aktualisiert.
 {{< figure
   src="/trachtnet/trachtnet-dr-gerhard-liebig-waage-1276.svg"
   link="/trachtnet/trachtnet-dr-gerhard-liebig-waage-1276.svg"
-  class="max-width"
   caption="Mehr Infos zu dieser Waage, siehe hier: https://www.immelieb.de/es-honigt/"
 >}}
 
@@ -51,13 +47,11 @@ Die Graphen werden täglich aktualisiert.
 {{< figure
   src="/trachtnet/trachtnet-bayern-2024-auswertung.svg"
   link="/trachtnet/trachtnet-bayern-2024-auswertung.svg"
-  class="max-width"
 >}}
 
 {{< figure
   src="/trachtnet/bayern-2024-wetter.svg"
   link="/trachtnet/bayern-2024-wetter.svg"
-  class="max-width"
 >}}
 
 ### Bayern 2023
@@ -65,5 +59,4 @@ Die Graphen werden täglich aktualisiert.
 {{< figure
   src="/trachtnet/bayern-2023-wetter.svg"
   link="/trachtnet/bayern-2023-wetter.svg"
-  class="max-width"
 >}}

@@ -1,19 +1,16 @@
 baseURL = 'https://bienensteff.de'
-languageCode = 'de-de'
+languageCode = 'de-DE'
 title = "Imkerei Stefan Tatschner 🐝"
-enableRobotsTXT = "true"
 timeZone = "Europe/Berlin"
 enableEmoji = "true"
 pluralizelisttitles = "false"
+enableRobotsTXT = "true"
+theme = "bienensteff"
 
 [params]
 description = "Bienen und Honig aus dem Münchner Grüngürtel"
 
 [menus]
-[[menus.main]]
-    name = 'Home'
-    pageRef = '/'
-    weight = 10
 [[menus.main]]
     name = 'Verkauf'
     pageRef = '/verkauf'
@@ -61,26 +58,27 @@ description = "Bienen und Honig aus dem Münchner Grüngürtel"
     pageRef = '/datenschutz'
     weight = 60
 
-[imaging]
-  quality = 98
+[markup.goldmark.renderer]
+unsafe = true
 
-  [markup.goldmark.renderer]
-    unsafe = true
-
-      [markup.goldmark.extensions.typographer]
-        apostrophe = '&rsquo;'
-        disable = false
-        ellipsis = '&hellip;'
-        emDash = '&mdash;'
-        enDash = '&ndash;'
-        leftAngleQuote = '&laquo;'
-        leftDoubleQuote = '„'
-        leftSingleQuote = '‚'
-        rightAngleQuote = '&raquo;'
-        rightDoubleQuote = '”'
-        rightSingleQuote = '‘'
+  [markup.goldmark.extensions.typographer]
+    apostrophe = '&rsquo;'
+    disable = false
+    ellipsis = '&hellip;'
+    emDash = '&mdash;'
+    enDash = '&ndash;'
+    leftAngleQuote = '&laquo;'
+    leftDoubleQuote = '„'
+    leftSingleQuote = '‚'
+    rightAngleQuote = '&raquo;'
+    rightDoubleQuote = '”'
+    rightSingleQuote = '‘'
 
 [privacy]
   [privacy.youtube]
     disable = false
     privacyEnhanced = true
+
+[imaging]
+  quality = 97
+  resampleFilter = "Lanczos"
