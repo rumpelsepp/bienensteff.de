@@ -4,35 +4,41 @@ aliases: ["/über-uns"]
 slug: "/ueber-uns"
 ---
 
-Meine Geschichte, wie ich zum Imkern gekommen bin, ist eher unspektakulär.
-Hauptberuflich habe ich die meiste Zeit mit Computern zu tun und suchte lange nach einem Ausgleich.
-Über die Webseite meines [Imkervereins BZVM](https://bzvm.de/) entdeckte ich 2021 das Konzept „Imkern auf Probe“ und fand so meine Leidenschaft für das Imkern.
-Aus anfangs einem einzigen Volk sind mittlerweile viele geworden, mit der Tendenz zu mehr!
-Meine Familie unterstützt mich liebevoll, wo sie kann – sei es beim Wachsschmelzen, Honigschleudern oder einfach, indem sie mein pausenloses Bienengelaber mit einem Lächeln erträgt… 😁
+**Wie ich zum Imkern gekommen bin? Ganz ehrlich – ziemlich unspektakulär.**
+Hauptberuflich verbringe ich die meiste Zeit vor dem Bildschirm und war lange auf der Suche nach einem echten Ausgleich.
+2021 bin ich dann über die Website meines [Imkervereins (BZVM)](https://bzvm.de/) auf das Konzept „Imkern auf Probe“ gestoßen – und zack: hat's mich erwischt.
+Aus einem einzigen Volk wurden schnell mehrere – und ja, es werden eher mehr als weniger!
+Zum Glück hab ich daheim eine Familie, die das ganze Summen und Schleudern mit viel Geduld (und einer ordentlichen Portion Humor) mitträgt:
+beim Wachsschmelzen, beim Honig rühren oder einfach nur beim stillen Ertragen meines unaufhaltsamen Bienengelabers… 😁
+
+Und so wurde aus einem Versuch eine Leidenschaft – und aus der Leidenschaft unsere kleine Imkerei.
 
 {{< fig src="IMG_20240708_195442.jpg" >}}
 
 ## Regionalität
 
-Unsere Bienen sind an mehreren Standorten in und um München angesiedelt.
-Der Hauptstandort unserer Imkerei befindet sich in den Bayerischen Staatsforsten im Münchner Südwesten.
-Die Nähe zu Streuobstwiesen und insbesondere das umfangreiche Nahrungsangebot im Wald belohnen unsere Arbeit jährlich mit besonders schmackhaftem Honig.
+**Unsere Bienen sind echte Münchner – und echte Naturliebhaber.**
+Sie wohnen an mehreren ausgewählten Standorten in und rund um München.
+Der Hauptstandort unserer Imkerei liegt mitten in den Bayerischen Staatsforsten im Münchner Südwesten – ein ruhiges Fleckerl zwischen Wald, Wiesen und alten Obstbäumen.
+
+Besonders die Nähe zu Streuobstwiesen und das reiche Blütenangebot im Wald sorgen dafür, dass unsere Bienen ordentlich was zu tun haben – und wir Jahr für Jahr mit besonders aromatischem Honig belohnt werden. 🍯🐝
 
 {{< fig src="IMG_20240708_205828.jpg" >}}
 
 ## Philosophie
 
-Die Betriebsweise richtet sich nach dem aktuellen Stand der Bienenwissenschaften.
-Dabei werden regelmäßig Weiterbildungsmaßnahmen besucht und die Betriebsweise entsprechend adaptiert.
-Nach unserem Verständnis soll Imkern möglichst simpel sein und es muss Spaß machen.
-Vor allem aber muss es den Bienen gut gehen!
-Das Motto unseres Betriebs lautet daher ganz einfach: „keep it simple“!
+**Bei uns wird nach dem aktuellen Stand der Bienenwissenschaft gearbeitet – aber immer mit gesundem Hausverstand.**
+Wir bilden uns regelmäßig weiter, passen unsere Betriebsweise laufend an – und bleiben dabei unserem Grundsatz treu:
+
+👉 Imkern soll einfach sein. Es soll Spaß machen. Und vor allem: Den Bienen muss es gut gehen!
+
+Unser Motto lautet deshalb ganz unkompliziert: **„Keep it simple!“**
 
 {{< fig src="IMG_20250427_144256.jpg" >}}
 
-Imkern ist äußerst abwechslungsreich.
-Jeder Monat bringt neue Herausforderungen, die oft ein gehöriges Maß an Kreativität oder handwerklichem Geschick erfordern.
-Die Bienen bedanken sich mit köstlichem Honig, der am besten schmeckt, wenn man das ganze Jahr über dabei war 🐝🍯!
+Imkern ist alles – nur nicht langweilig.
+Monat für Monat warten neue Aufgaben: mal braucht’s Fingerspitzengefühl, mal handwerkliches Geschick, manchmal auch einfach gute Nerven.
+Die Bienen danken’s uns auf ihre Art – mit einem Honig, der nicht nur gut schmeckt, sondern ein ganzes Bienenjahr in sich trägt. 🐝🍯
 
 ## Auszeichnungen
 
