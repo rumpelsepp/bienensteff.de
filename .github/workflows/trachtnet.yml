@@ -44,4 +44,4 @@ jobs:
       - name: Trigger the build
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: deploy.yaml
+          workflow: deploy.yml
