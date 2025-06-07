@@ -40,3 +40,8 @@ jobs:
           git add .
           git commit -m "Daily trachtnet update $(date)"
           git push
+
+      - name: Trigger the build
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: deploy.yaml
