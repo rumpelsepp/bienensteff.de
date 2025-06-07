@@ -12,51 +12,47 @@ description = "Bienen und Honig aus dem Münchner Grüngürtel"
 
 [menus]
 [[menus.main]]
-    name = 'Verkauf'
-    pageRef = '/verkauf'
-    weight = 30
+name = 'Verkauf'
+pageRef = '/verkauf'
+weight = 30
 [[menus.main]]
-    name = 'Datenbank'
-    pageRef = '/datenbank'
-    weight = 40
+name = 'Datenbank'
+pageRef = '/datenbank'
+weight = 40
 [[menus.main]]
-    name = 'Werkzeuge'
-    pageRef = '/werkzeuge'
-    weight = 50
+name = 'Werkzeuge'
+pageRef = '/werkzeuge'
+weight = 50
 [[menus.main]]
-    name = 'Über uns'
-    pageRef = '/über-uns'
-    weight = 60
+name = 'Über uns'
+pageRef = '/über-uns'
+weight = 60
 
 [[menus.footer]]
-    name = '🔗 Flaticon'
-    URL = 'https://www.flaticon.com/free-icons/bee'
-    weight = 10
+name = '🔗 Flaticon'
+URL = 'https://www.flaticon.com/free-icons/bee'
+weight = 10
 
 [[menus.footer]]
-    name = '🔗 Instagram'
-    URL = 'https://www.instagram.com/bienensteff'
-    weight = 20
+pre = '<i class="bi bi-instagram"></i>
+name = 'Instagram'
+URL = 'https://www.instagram.com/bienensteff'
+weight = 20
 
 [[menus.footer]]
-    name = '🔗 Schwarmrettung'
-    URL = 'https://schwarmrettung.de/'
-    weight = 30
-
-# [[menus.footer]]
-#     name = '🔗 Kleinanzeigen'
-#     URL = 'https://www.kleinanzeigen.de/s-bestandsliste.html?userId=138484447'
-#     weight = 40
-#
-[[menus.footer]]
-    name = 'Impressum'
-    pageRef = '/impressum'
-    weight = 50
+name = '🔗 Schwarmrettung'
+URL = 'https://schwarmrettung.de/'
+weight = 30
 
 [[menus.footer]]
-    name = 'Datenschutz'
-    pageRef = '/datenschutz'
-    weight = 60
+name = 'Impressum'
+pageRef = '/impressum'
+weight = 40
+
+[[menus.footer]]
+name = 'Datenschutz'
+pageRef = '/datenschutz'
+weight = 50
 
 [markup.goldmark.renderer]
 unsafe = true
