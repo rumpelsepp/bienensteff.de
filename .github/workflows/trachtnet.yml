@@ -40,3 +40,11 @@ jobs:
           git add .
           git commit -m "Daily trachtnet update $(date)"
           git push
+
+      - name: Trigger Deploy Workflow
+        uses: peter-evans/workflow-dispatch@v1
+        with:
+          workflow: deploy.yml
+          ref: master
+          token: ${{ secrets.GITHUB_TOKEN }}
+
