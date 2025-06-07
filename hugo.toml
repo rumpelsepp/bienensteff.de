@@ -34,7 +34,7 @@ URL = 'https://www.flaticon.com/free-icons/bee'
 weight = 10
 
 [[menus.footer]]
-pre = '<i class="bi bi-instagram"></i>
+pre = '<i class="bi bi-instagram"></i>'
 name = 'Instagram'
 URL = 'https://www.instagram.com/bienensteff'
 weight = 20
