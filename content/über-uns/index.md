@@ -32,7 +32,7 @@ Wir bilden uns regelmäßig weiter, passen unsere Betriebsweise laufend an – u
 
 👉 Imkern soll einfach sein. Es soll Spaß machen. Und vor allem: Den Bienen muss es gut gehen!
 
-Unser Motto lautet deshalb ganz unkompliziert: **„Keep it simple!“**
+Unser Motto lautet deshalb ganz unkompliziert: **„Weniger ist mehr!“**
 
 {{< fig src="IMG_20250427_144256.jpg" >}}
 
