@@ -31,4 +31,4 @@ jobs:
           if_key_exists: fail
       - name: Deploy it
         run: |
-          rsync -avz --delete public/ deploy@almstueberlmusi.at:/srv/http/deploy/bienensteff.de
+          rsync -avz --delete public/ deploy@bienensteff.de:/srv/http/deploy/bienensteff.de
