@@ -1,5 +1,7 @@
 ---
 title: Über uns
+aliases: ["/über-uns"]
+slug: "/ueber-uns"
 ---
 
 Meine Geschichte, wie ich zum Imkern gekommen bin, ist eher unspektakulär.
