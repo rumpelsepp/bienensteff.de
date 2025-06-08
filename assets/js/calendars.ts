@@ -2,7 +2,6 @@ import { Calendar } from '@fullcalendar/core';
 import calDeLocale from '@fullcalendar/core/locales/de';
 import calDayGridPlugin from '@fullcalendar/daygrid'
 import calListPlugin from '@fullcalendar/list';
-import bootstrap5Plugin from '@fullcalendar/bootstrap5';
 
 import { BeeDates, TUBDates } from "./dates";
 import { getDateParam } from "./helpers";
@@ -13,7 +12,7 @@ function renderBeeCalendar(id: string) {
 
   const calendarEl = document.getElementById(id);
   const calendar = new Calendar(calendarEl, {
-    plugins: [calDayGridPlugin, calListPlugin, bootstrap5Plugin],
+    plugins: [calDayGridPlugin, calListPlugin],
     themeSystem: 'bootstrap5',
     initialView: 'dayGridMonth',
     firstDay: 1,
@@ -132,7 +131,7 @@ function renderTUBCalendar(id: string) {
   
   const calendarEl = document.getElementById(id)
   const calendar = new Calendar(calendarEl, {
-    plugins: [calDayGridPlugin, calListPlugin, bootstrap5Plugin],
+    plugins: [calDayGridPlugin, calListPlugin],
     initialView: 'dayGridMonth',
     themeSystem: 'bootstrap5',
     firstDay: 1,

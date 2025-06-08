@@ -15,7 +15,7 @@ kind: page
         <p class="card-text">
             Unser Honig hat 2024 bei der Bayerischen Honigprämierung eine <a href="/auszeichnungen/2024-11-03-honigpraemierung.pdf">Goldmedaille</a> erhalten – darüber gfrein wir uns natürlich narrisch.
             Ein schöner Beleg für echte Qualität aus unserer kleinen Imkerei.
-            Seit 2025 sind wir zudem <a href="/zertifikate/20250523-gq-bayern-zertifikat.pdf">Mitglied</a> im Programm Geprüfte Qualität — Bayern.
+            Seit 2025 sind wir zudem <a href="/static/20250523-gq-bayern-zertifikat.pdf">Mitglied</a> im Programm Geprüfte Qualität — Bayern.
         </p>
     </div>
 </div>
