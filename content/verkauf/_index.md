@@ -5,34 +5,32 @@ kind: page
 ---
 {{< fig src="verkauf-2024.jpg" size="600x600" >}}
 
-**🍯 Gold für unseren Honig!**  
-Bei der **bayerischen Honigprämierung 2024** wurde unser Honig mit einer [Goldmedaille](/auszeichnungen/2024-11-03-honigpraemierung.pdf) ausgezeichnet – ein Zeichen für höchste Qualität und handwerkliche Sorgfalt!
+**Wir wurden auf der bayerischen Honigprämierung 2024 mit einer [Goldmedaille](/auszeichnungen/2024-11-03-honigpraemierung.pdf) ausgezeichnet!**
 
-## 🛒 Preisliste
+## Preisliste
 
-Unsere aktuellen Produkte und Preise (EVP) finden Sie in der [Preisübersicht]({{< ref "preisliste" >}}).
-Transparent, fair – direkt vom Imker.
+Unsere Produkte sind in unserer aktuellen [Preisübersicht]({{< ref "preisliste" >}}) mit Endverbraucherpreisen (EVP) aufgelistet.
 
-## 🌼 Unsere Honigsorten
+## Sorten
 
-Als kleine, familiengeführte Imkerei mit ortsfesten Bienenständen ernten wir zweimal im Jahr.
-Je nach Saison und Blütentracht bieten wir folgende Sorten an:
+Als kleine Imkerei betreuen wir ortsfeste Bienenstände und schleudern zweimal im Jahr.
+Je nach Verfügbarkeit haben wir folgende Honigsorten aus eigener Imkerei im Angebot:
 
-* **Blütenhonig** – mild und sonnig, mit dem feinen Duft von Frühlingswiesen.  
-* **Waldhonig** – kräftig, würzig und vielschichtig im Geschmack.  
-* **Lindenhonig** – aromatisch-blumig mit einer erfrischenden Minznote – ein Sommerklassiker.
+* **Blütenhonig**: Sonnig-mild mit dem Duft bunter Blüten.
+* **Waldhonig**: Würzig und reich an Aromen.
+* **Linde**: Aromatisch-blumig mit erfrischender Minznote.
 
-👉 Alle Sorten stammen zu 100 % aus unserer eigenen Imkerei.
+## Qualität
 
-## ✅ Qualität, auf die Sie sich verlassen können
+Nach den [Leitsätzen](https://www.bmel.de/SharedDocs/Downloads/DE/_Ernaehrung/Lebensmittel-Kennzeichnung/LeitsaetzeHonig.html) des Deutschen Lebensmittelbuchs für Honig entsprechen unsere Honige dem Qualitätskriterium **„Premium“**.
+Weiterführende Informationen zu unseren Honigen können der [Honigdatenbank]({{< relref "datenbank" >}}) anhand der Losnummer entnommen werden.
 
-Unsere Honige erfüllen das Qualitätsmerkmal **„Premium“** nach den [Leitsätzen des Deutschen Lebensmittelbuchs](https://www.bmel.de/SharedDocs/Downloads/DE/_Ernaehrung/Lebensmittel-Kennzeichnung/LeitsaetzeHonig.html).
+<!--Unser Honig wird unter der Marke [Echter Deutscher Honig](https://deutscherimkerbund.de/226-Echter_Deutscher_Honig) vertrieben.-->
 
-Möchten Sie mehr über einen bestimmten Honig erfahren? Mit der Losnummer auf dem Glas finden Sie alle Details in unserer [Honigdatenbank]({{< relref "datenbank" >}}).
+## Verkaufsstellen
 
-## 📍 Verkaufsstellen
-
-Unser Honig ist an folgenden Verkaufsstellen erhältlich – persönlich betreut oder im praktischen SB-Kasten:
+Unser Honig aus eigener Imkerei kann bei folgenden Verkaufsstellen erworben werden.
+Die Direktverkaufsstellen werden von uns persönlich betreut; bei diesen am besten vorab melden.
 
 {{< pretty-table table_class="table table-striped table-sm table-bordered" >}}
 | Verkaufsstelle  | Art  | Adresse | Kontakt |
@@ -40,11 +38,14 @@ Unser Honig ist an folgenden Verkaufsstellen erhältlich – persönlich betreut
 | Haustür | Direktverkauf | [Stefan Tatschner<br>Gräfelfinger Straße 169a<br>81375 München](https://maps.app.goo.gl/CxwePVnqYxZf5y3k8) | Mobil: <a href="tel:+4915124096409">+49 1512 4096409</a><br>E-Mail: info@bienensteff.de |
 | Haustür | Direktverkauf | [Familie Tatschner<br>Granitweg 20<br>94481 Grafenau](https://maps.app.goo.gl/jTKsPPaF4Zm2bUPV6) | Tel: <a href="tel:+4985523391">+49 8552 3391</a><br>E-Mail: anneliese.tatschner@gmail.com |
 | [Honighäusl](http://honey.floriankreuzer.de/verkaufsstellen/) | SB-Verkaufskasten | [Rambaldistr. 33<br>81929 München](https://maps.app.goo.gl/V2AfBJat9t6mBJ1J7)  | Instagram: [johannesbienen.muenchen](https://www.instagram.com/johannesbienen.muenchen/) |
+<!-- | [s'Fachl München](https://www.fachl.at/de-at/Standorte/Deutschland/s-Fachl-Muenchen) | Einzelhandel | [Hohenzollernstraße 93<br>80796 München](https://maps.app.goo.gl/hyh7hpKtmsmXvNZ48) | Tel: <a href="tel:+491758194156">+49 175 819 4156</a><br>E-Mail: <a href="mailto:muenchen@sFachl.de">muenchen@sFachl.de</a> | -->
+<!--| [kleinanzeigen.de](https://www.kleinanzeigen.de/s-bestandsliste.html?userId=138484447) | Online Inserate    | [kleinanzeigen.de/bestandsliste](https://www.kleinanzeigen.de/s-bestandsliste.html?userId=138484447)  | — |-->
+<!--| [etsy.com](https://etsy.com) | Online-Shop | [bienensteff.etsy.com](https://bienensteff.etsy.com) | Mobil: <a href="tel:+4915124096409">+49 1512 409 6409</a><br>E-Mail: info@bienensteff.de |-->
+<!--| [Heimathonig.de](https://heimathonig.de/imker/21835-bienensteff) | Online-Shop     | — | [-> zum Shop](https://heimathonig.de/imker/21835-bienensteff/product_listing)  | -->
 {{</ pretty-table >}}
 
-**Tipp:** Am besten vorher kurz durchrufen oder schreiben, wenn Sie direkt bei uns kaufen möchten.
+## Nachhaltigkeit
 
-## ♻️ Nachhaltigkeit liegt uns am Herzen
-
-Wir freuen uns über zurückgebrachte **500 g Gläser** zur Wiederbefüllung – bitte wenn möglich ohne Etikett 😊.  
-Auch individuelle Wünsche wie **eigene Gläser** oder **größere Mengen im Eimer** erfüllen wir gerne – einfach anfragen!
+500 g Honiggläser werden gerne zur Wiederbefüllung angenommen.
+Wir freuen uns, wenn alte Etiketten vorab entfernt werden 😊.
+Besondere Anfragen, wie z. B. Abfüllung in eigene Gläser oder auch größere Mengen in Honigeimern berücksichtigen wir sehr gerne.
