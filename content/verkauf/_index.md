@@ -3,8 +3,6 @@ title: "Verkauf 💰"
 type: _default
 kind: page
 ---
-{{< fig src="verkauf-2024.jpg" size="600x600" >}}
-
 
 <div class="card mb-4">
     <div class="card-header">
@@ -20,6 +18,8 @@ kind: page
         </p>
     </div>
 </div>
+
+{{< fig src="verkauf-2024.jpg" size="600x600" >}}
 
 ## Unsere Honige
 
