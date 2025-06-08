@@ -9,20 +9,20 @@ layout: single
 Unsere Honigsorten stammen aus eigener Imkerei und sind – je nach Witterung und Trachtverlauf – nicht das ganze Jahr über verfügbar.
 Die Abgabe erfolgt in haushaltsüblichen Mengen und nur solange der Vorrat reicht.
 
-**Hinweis:** Mit * gekennzeichnete Sorten sind derzeit ausverkauft.
-Die frische Ernte gibt’s immer ab August.
-
 ## Honig im Glas
 
 {{< pretty-table table_class="table table-striped table-sm table-bordered" >}}
 | Artikel  | <acronym title="Verkaufseinheit">VKE</acronym> | Preis / Stück |
 |----------|-------------|----------------|
 | Frühjahrstrachthonig* | 500 g Glas | 8 € |
-| Sommertrachthonig     | 500 g Glas | 8 € |
+| Sommertrachthonig*     | 500 g Glas | 8 € |
 | Lindenhonig*          | 500 g Glas | 9 € |
 {{</ pretty-table >}}
 
 Wer gleich **vier Gläser oder mehr** mitnimmt, zahlt pro Glas **1 € weniger**.
+
+**Hinweis:** Mit * gekennzeichnete Sorten sind derzeit ausverkauft.
+Die frische Ernte gibt’s immer ab August.
 
 ## Abfüllung in eigene Gefäße
 
