@@ -29,7 +29,8 @@ pageRef = '/über-uns'
 weight = 60
 
 [[menus.footer]]
-name = '🔗 Flaticon'
+name = 'Flaticon'
+pre = '<i class="bi bi-box-arrow-up-right"></i>'
 URL = 'https://www.flaticon.com/free-icons/bee'
 weight = 10
 
@@ -40,7 +41,8 @@ URL = 'https://www.instagram.com/bienensteff'
 weight = 20
 
 [[menus.footer]]
-name = '🔗 Schwarmrettung'
+name = 'Schwarmrettung'
+pre = '<i class="bi bi-box-arrow-up-right"></i>'
 URL = 'https://schwarmrettung.de/'
 weight = 30
 
