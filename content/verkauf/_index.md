@@ -5,7 +5,10 @@ kind: page
 ---
 {{< fig src="verkauf-2024.jpg" size="600x600" >}}
 
+<div class="text-center">
 **Ausgezeichnet mit Gold – Bayerische Honigprämierung 2024**  
+</div>
+
 Unser Honig hat bei der diesjährigen Prämierung eine [Goldmedaille](/auszeichnungen/2024-11-03-honigpraemierung.pdf) erhalten – darüber gfrein wir uns natürlich narrisch. Ein schöner Beleg für Qualität aus unserer kleinen Imkerei.
 
 ## Preisliste
