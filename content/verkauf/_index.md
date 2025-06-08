@@ -5,15 +5,26 @@ kind: page
 ---
 {{< fig src="verkauf-2024.jpg" size="600x600" >}}
 
-**Ausgezeichnet mit Gold – Bayerische Honigprämierung 2024**  
 
-Unser Honig hat 2024 bei der Bayerischen Honigprämierung eine [Goldmedaille](/auszeichnungen/2024-11-03-honigpraemierung.pdf) erhalten – darüber gfrein wir uns natürlich narrisch.
-Ein schöner Beleg für echte Qualität aus unserer kleinen Imkerei.
+<div class="card mb-4">
+    <div class="card-header">
+        Ausgezeichnet mit Gold
+    </div>
+    <div class="card-body">
+        <h2 class="card-title h5">
+            Bayerische Honigprämierung 2024
+        </h2>
+        <p class="card-text">
+            Unser Honig hat 2024 bei der Bayerischen Honigprämierung eine <a href="/auszeichnungen/2024-11-03-honigpraemierung.pdf">Goldmedaille</a> erhalten – darüber gfrein wir uns natürlich narrisch.
+            Ein schöner Beleg für echte Qualität aus unserer kleinen Imkerei.
+        </p>
+    </div>
+</div>
+
+## Unsere Honige
 
 Was wir gerade im Angebot haben und was’s kostet, steht in der [aktuellen Preisliste]({{< relref "preisliste" >}}).
 Alle Preise sind Endverbraucherpreise.
-
-## Unsere Honige
 
 Wir arbeiten mit ortsfesten Bienenständen im Münchner Grüngürtel.
 Zweimal im Jahr wird geschleudert, je nachdem, was die Bienen eingetragen haben.
