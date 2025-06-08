@@ -30,10 +30,8 @@ Diese Sorten gibt’s (je nach Saison und Vorrat):
 
 Alle Sorten stammen zu 100 % aus unserer eigenen Ernte.
 Wir schleudern schonend und füllen von Hand ab.
-
-## Qualität
-
-Unsere Honige erfüllen die Anforderungen der [Leitsätze für Honig](https://www.bmel.de/SharedDocs/Downloads/DE/_Ernaehrung/Lebensmittel-Kennzeichnung/LeitsaetzeHonig.html) des Deutschen Lebensmittelbuchs. Sie entsprechen der Qualitätsstufe **„Premium“**.
+Unsere Honige erfüllen die Anforderungen der [Leitsätze für Honig](https://www.bmel.de/SharedDocs/Downloads/DE/_Ernaehrung/Lebensmittel-Kennzeichnung/LeitsaetzeHonig.html) des Deutschen Lebensmittelbuchs.
+Sie entsprechen der Qualitätsstufe **„Premium“**.
 
 Wenn’s genau sein soll: In unserer [Honigdatenbank]({{< relref "datenbank" >}}) kann man jede Losnummer nachschauen – da steht alles zum jeweiligen Los.
 
