@@ -10,7 +10,7 @@ Unser Honig hat bei der diesjährigen Prämierung eine [Goldmedaille](/auszeichn
 
 ## Preisliste
 
-Was gerade im Glas ist und wie viel’s kostet, steht in unserer [aktuellen Preisliste]({{< relref "preisliste" >}}).  
+Was gerade im Glas ist und wie viel’s kostet, steht in unserer [aktuellen Preisliste]({{< relref "preisliste" >}}).
 Alle Preise sind Endverbraucherpreise.
 
 ## Unsere Honige
