@@ -39,6 +39,7 @@ Wenn’s genau sein soll: In unserer [Honigdatenbank]({{< relref "datenbank" >}}
 
 Unser Honig kann an folgenden Stellen gekauft werden.
 Beim Direktverkauf am besten vorher kurz anrufen oder schreiben.
+Wir nehmen 500 g Honiggläser gerne gespült zurück – Etikett bitte, wenn möglich, entfernen.
 
 {{< pretty-table table_class="table table-striped table-sm table-bordered" >}}
 | Verkaufsstelle  | Art  | Adresse | Kontakt |
@@ -47,8 +48,3 @@ Beim Direktverkauf am besten vorher kurz anrufen oder schreiben.
 | Haustür | Direktverkauf | [Familie Tatschner<br>Granitweg 20<br>94481 Grafenau](https://maps.app.goo.gl/jTKsPPaF4Zm2bUPV6) | Tel: <a href="tel:+4985523391">+49 8552 3391</a><br>E-Mail: anneliese.tatschner@gmail.com |
 | [Honighäusl](http://honey.floriankreuzer.de/verkaufsstellen/) | SB-Verkaufskasten | [Rambaldistr. 33<br>81929 München](https://maps.app.goo.gl/V2AfBJat9t6mBJ1J7) | Instagram: [johannesbienen.muenchen](https://www.instagram.com/johannesbienen.muenchen/) |
 {{</ pretty-table >}}
-
-## Nachhaltigkeit
-
-Unsere 500 g Gläser nehmen wir gerne gespült zurück – Etikett bitte, wenn möglich, entfernen.
-Wer eigene Gefäße mitbringen oder größere Mengen (z. B. im Eimer) abholen möchte: einfach vorher melden – dann richten wir das her.
