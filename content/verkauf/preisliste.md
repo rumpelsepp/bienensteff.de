@@ -4,7 +4,7 @@ type: _default
 layout: single
 ---
 
-**Gültig ab 01.04.2025**
+**Gültig ab 08.06.2025**
 
 Unsere Honigsorten stammen aus eigener Imkerei und sind – je nach Witterung und Trachtverlauf – nicht das ganze Jahr über verfügbar.
 Die Abgabe erfolgt in haushaltsüblichen Mengen und nur solange der Vorrat reicht.
