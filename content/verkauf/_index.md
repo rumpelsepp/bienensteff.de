@@ -8,14 +8,10 @@ kind: page
 **Ausgezeichnet mit Gold – Bayerische Honigprämierung 2024**  
 Unser Honig hat bei der diesjährigen Prämierung eine [Goldmedaille](/auszeichnungen/2024-11-03-honigpraemierung.pdf) erhalten – darüber gfrein wir uns natürlich narrisch. Ein schöner Beleg für Qualität aus unserer kleinen Imkerei.
 
----
-
 ## Preisliste
 
 Was gerade im Glas ist und wie viel’s kostet, steht in unserer [aktuellen Preisliste]({{< relref "preisliste" >}}).  
 Alle Preise sind Endverbraucherpreise.
-
----
 
 ## Unsere Honige
 
@@ -35,19 +31,15 @@ Diese Sorten gibt’s (je nach Saison und Vorrat):
 Alle Sorten stammen zu 100 % aus unserer eigenen Ernte.
 Wir schleudern schonend und füllen von Hand ab.
 
----
-
 ## Qualität
 
 Unsere Honige erfüllen die Anforderungen der [Leitsätze für Honig](https://www.bmel.de/SharedDocs/Downloads/DE/_Ernaehrung/Lebensmittel-Kennzeichnung/LeitsaetzeHonig.html) des Deutschen Lebensmittelbuchs. Sie entsprechen der Qualitätsstufe **„Premium“**.
 
 Wenn’s genau sein soll: In unserer [Honigdatenbank]({{< relref "datenbank" >}}) kann man jede Losnummer nachschauen – da steht alles zum jeweiligen Los.
 
----
-
 ## Verkaufsstellen
 
-Unser Honig kann an folgenden Stellen gekauft werden. 
+Unser Honig kann an folgenden Stellen gekauft werden.
 Beim Direktverkauf am besten vorher kurz anrufen oder schreiben.
 
 {{< pretty-table table_class="table table-striped table-sm table-bordered" >}}
@@ -58,9 +50,7 @@ Beim Direktverkauf am besten vorher kurz anrufen oder schreiben.
 | [Honighäusl](http://honey.floriankreuzer.de/verkaufsstellen/) | SB-Verkaufskasten | [Rambaldistr. 33<br>81929 München](https://maps.app.goo.gl/V2AfBJat9t6mBJ1J7) | Instagram: [johannesbienen.muenchen](https://www.instagram.com/johannesbienen.muenchen/) |
 {{</ pretty-table >}}
 
----
-
 ## Nachhaltigkeit
 
-Unsere 500 g Gläser nehmen wir gerne gespült zurück – Etikett bitte, wenn möglich, entfernen.  
+Unsere 500 g Gläser nehmen wir gerne gespült zurück – Etikett bitte, wenn möglich, entfernen.
 Wer eigene Gefäße mitbringen oder größere Mengen (z. B. im Eimer) abholen möchte: einfach vorher melden – dann richten wir das her.
