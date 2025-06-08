@@ -2,9 +2,9 @@ baseURL = 'https://bienensteff.de'
 languageCode = 'de-DE'
 title = "Imkerei Stefan Tatschner 🐝"
 timeZone = "Europe/Berlin"
-enableEmoji = "true"
-pluralizelisttitles = "false"
-enableRobotsTXT = "true"
+enableEmoji = true
+pluralizeListTitles = false
+enableRobotsTXT = true
 theme = "bienensteff"
 
 [params]
