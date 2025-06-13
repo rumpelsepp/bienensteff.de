@@ -1,5 +1,5 @@
 <script type="module">
-  import { renderTUBCalendar, getDateParam } from "/js/main.js";
+  import { renderTUBCalendar, getDateParam } from "/bundle.js";
 
   let date = getDateParam();
 
@@ -10,10 +10,12 @@
 
 <div id="widget">
   <form action="" method="get" id="input">
-    <label for="date">Tag X</label>
-    <input name="date" type="date" id="date">
-    <input type="submit">
+    <div class="form-group mb-2">
+      <label for="date">Tag X</label>
+      <input class="form-control form-control-sm" name="date" type="date" id="date">
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
   </form>
 
-  <div id="calendar"></div>
+  <div class="mt-4" id="calendar"></div>
 </div>
