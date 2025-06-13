@@ -1,11 +1,20 @@
 {
   "dependencies": {
-    "fullcalendar": "^7.0.0-rc.0",
-    "luxon": "^3.4.4",
-    "sortable-tablesort": "^3.1.0",
-    "typescript": "^5.7.2"
+    "@fullcalendar/bootstrap5": "^6.1.17",
+    "@fullcalendar/core": "^6.1.17",
+    "@fullcalendar/daygrid": "^6.1.17",
+    "@fullcalendar/list": "^6.1.17",
+    "bootstrap": "^5.3.6",
+    "bootstrap-icons": "^1.13.1",
+    "luxon": "^3.4.4"
   },
   "devDependencies": {
-    "@types/luxon": "^3.4.2"
+    "@types/bootstrap": "^5.2.10",
+    "@types/luxon": "^3.4.2",
+    "esbuild": "^0.25.5",
+    "typescript": "^5.7.2"
+  },
+  "scripts": {
+    "build": "node build.mjs"
   }
 }

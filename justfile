@@ -1,5 +1,6 @@
-deploy: clean
-     podman run \
+build: clean
+    npm run build
+    podman run \
         --net=none \
         --rm \
         --interactive \
@@ -8,17 +9,20 @@ deploy: clean
         --workdir "/mnt/$PWD" \
         --userns keep-id \
         --group-add keep-groups \
-        --log-driver none \\
+        --log-driver none \
         ghcr.io/gohugoio/hugo:latest \
         build \
-        --ignoreCache && \
+        --ignoreCache
+
+deploy: build
      rsync -avz --delete public/ deploy@bienensteff.de:/srv/http/deploy/bienensteff.de
 
 podman-pull:
     podman pull ghcr.io/gohugoio/hugo:latest
 
 serve: clean
-     podman run \
+    npm run build
+    podman run \
         --net=host \
         --rm \
         --interactive \
@@ -27,7 +31,7 @@ serve: clean
         --workdir "/mnt/$PWD" \
         --userns keep-id \
         --group-add keep-groups \
-        --log-driver none \\
+        --log-driver none \
         ghcr.io/gohugoio/hugo:latest \
         server \
         --ignoreCache
