@@ -24,6 +24,10 @@ import matplotlib.ticker as tck
 import polars as pl
 
 
+
+today = datetime.date.today()
+normalized_today = today.replace(year=2000)
+
 class Land(enum.Enum):
     BADEN_WUERTTEMBERG = "08"
     BAYERN = "09"
@@ -658,28 +662,23 @@ def choose_queen_color(year: int) -> str:
             raise ValueError("Invalid year for queen color selection.")
 
 
-def get_axis_arrays(
-    records: list[Record], year: int, min_month: int, max_month: int
-) -> tuple[list[float], list[float]]:
-    x_data = []
-    y_data = []
-    for record in records:
-        if record["date"].month < min_month or record["date"].month > max_month:
-            continue
-        try:
-            x_data.append(mdates.date2num(record["date"].replace(year=year)))
-            y_data.append(record["value"])
-        except ValueError:
-            continue
+def normalize_year(df: pl.DataFrame) -> pl.DataFrame:
+    return df.with_columns(
+        pl.col("dates").dt.replace(year=2000).alias("dates"),
+    )
+    
 
-    return x_data, y_data
+def filter_honeyseason(df: pl.DataFrame, start: int = 3, end: int = 7) -> pl.DataFrame:
+    return df.filter(
+        (pl.col("dates").dt.month() >= start) & (pl.col("dates").dt.month() <= end)
+    )
 
 
 def plot_honey_yield_progress(
     data: list[Records],
     suptitle: str,
     filename: str,
-    title: str = "Trachtverlauf im aktuellen Jahr und Vorjahre",
+    title: str,
 ) -> None:
     xlabel = "Monat"
     ylabel = "Kumulierte korrigierte Gewichtänderung [kg]"
@@ -695,28 +694,36 @@ def plot_honey_yield_progress(
 
     locator = mdates.AutoDateLocator()
     formatter = mdates.ConciseDateFormatter(locator)
+    formatter.offset_formats = [''] * 6  # No offset hints.
     ax.xaxis.set_major_locator(locator)
     ax.xaxis.set_major_formatter(formatter)
     ax.xaxis.set_minor_locator(mdates.WeekdayLocator(byweekday=mdates.MO))
     ax.yaxis.set_minor_locator(tck.AutoMinorLocator())
-
-    today = datetime.date.today()
+    
+    includes_this_year = False
 
     for records in data:
         year = records["year"]
-        x_data, y_data = get_axis_arrays(
-            records["records"], year=today.year, min_month=3, max_month=7
-        )
-        ax.plot(x_data, y_data, label=year, color=choose_queen_color(year))
+        if year == today.year:
+            includes_this_year = True
 
         df = records["dataframe"]
+        df = filter_honeyseason(df)
+        df_normalized = normalize_year(df)
+
+        ax.plot(mdates.date2num(df_normalized["dates"].to_list()), df_normalized["values"].to_list(), label=year, color=choose_queen_color(year))
+
         min_value = df["values"].min()
         min_date = df["dates"][df["values"].arg_min()]
 
+        if len(data) > 1:
+            min_annotation = ""
+        else:
+            min_annotation = f"{min_date.strftime('%d.%m.%Y')}"
+        
         ax.annotate(
-            # min_date.strftime("%d.%m.%Y"),
-            "",
-            xy=(mdates.date2num(min_date.replace(year=today.year)), min_value),
+            min_annotation,
+            xy=(mdates.date2num(min_date.replace(year=normalized_today.year)), min_value),
             xycoords="data",
             xytext=(-20, 40),
             textcoords="offset points",
@@ -731,14 +738,14 @@ def plot_honey_yield_progress(
         )
 
         # Skip the max value for the current year.
-        if records["year"] == today.year:
+        if year == today.year:
             continue
 
         max_value = df["values"].max()
         max_date = df["dates"][df["values"].arg_max()]
         ax.annotate(
             max_date.strftime("%d.%m.%Y"),
-            xy=(mdates.date2num(max_date.replace(year=today.year)), max_value),
+            xy=(mdates.date2num(max_date.replace(year=normalized_today.year)), max_value),
             xycoords="data",
             xytext=(25, 4),
             textcoords="offset points",
@@ -751,12 +758,54 @@ def plot_honey_yield_progress(
             size=9,
         )
 
-    ax.axvline(
-        mdates.date2num(today),
-        color=choose_queen_color(today.year),
-        linestyle="dotted",
-        label=today.strftime("heute (%d.%m.%Y)"),
-    )
+    if includes_this_year:
+        ax.axvline(
+            mdates.date2num(normalized_today),
+            color=choose_queen_color(today.year),
+            linestyle="dotted",
+            label=today.strftime("heute (%d.%m.%Y)"),
+        )
+
+    ax.legend()
+    fig.savefig(filename, pad_inches=0, bbox_inches="tight")
+
+
+def plot_honey_yield_progress_derivative(
+    data: list[Records],
+    suptitle: str,
+    filename: str,
+    title: str,
+) -> None:
+    xlabel = "Monat"
+    ylabel = "Gewichtänderung [kg]"
+
+    fig, ax = plt.subplots(figsize=(12, 6))
+    ax.set_title(title)
+    fig.suptitle(suptitle)
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel(ylabel)
+    ax.grid()
+    # ax.xaxis.set_major_formatter(mdates.DateFormatter('%b'))
+    # ax.xaxis.set_minor_formatter(mdates.DateFormatter('%b'))
+
+    locator = mdates.AutoDateLocator()
+    formatter = mdates.ConciseDateFormatter(locator)
+    formatter.offset_formats = [''] * 6  # No offset hints.
+    ax.xaxis.set_major_locator(locator)
+    ax.xaxis.set_major_formatter(formatter)
+    ax.xaxis.set_minor_locator(mdates.WeekdayLocator(byweekday=mdates.MO))
+    ax.yaxis.set_minor_locator(tck.AutoMinorLocator())
+
+    for records in data:
+        year = records["year"]
+
+        df = normalize_year(records["dataframe"])
+        df = filter_honeyseason(df)
+        df_derivative = df.with_columns(
+            pl.col("values").diff().alias("derivative"),
+        ).drop_nulls(subset=["derivative"])
+
+        ax.bar(mdates.date2num(df_derivative["dates"].to_list()), df_derivative["derivative"].to_list(), label=year, color=choose_queen_color(year))
 
     ax.legend()
     fig.savefig(filename, pad_inches=0, bbox_inches="tight")
@@ -775,6 +824,7 @@ def plot_2024_bayern(data: Records) -> None:
 
     locator = mdates.AutoDateLocator()
     formatter = mdates.ConciseDateFormatter(locator)
+    formatter.offset_formats = [''] * 6  # No offset hints.
     ax.xaxis.set_major_locator(locator)
     ax.xaxis.set_major_formatter(formatter)
     ax.xaxis.set_minor_locator(mdates.WeekdayLocator(byweekday=mdates.MO))
@@ -795,11 +845,9 @@ def plot_2024_bayern(data: Records) -> None:
     #         print(f"index {index}  {df["dates"][index]}")
     #         print(f"index {index}  {df["values"][index]}")
 
-    x_data, y_data = get_axis_arrays(
-        data["records"], year=year, min_month=3, max_month=8,
-    )
+    df_filtered = filter_honeyseason(df, end=8)
     ax.plot(
-        x_data, y_data, label=f"Trachtverlauf {year}", color=choose_queen_color(year),
+        mdates.date2num(df_filtered["dates"].to_list()), df_filtered["values"].to_list(), label=f"Trachtverlauf {year}", color=choose_queen_color(year),
     )
 
     ax.annotate(
@@ -960,6 +1008,7 @@ def plot_2023_bayern_wetter() -> None:
 
     locator = mdates.AutoDateLocator()
     formatter = mdates.ConciseDateFormatter(locator)
+    formatter.offset_formats = [''] * 6  # No offset hints.
     ax.xaxis.set_major_locator(locator)
     ax.xaxis.set_major_formatter(formatter)
     ax.xaxis.set_minor_locator(mdates.WeekdayLocator(byweekday=mdates.MO))
@@ -1001,6 +1050,7 @@ def plot_2024_bayern_wetter() -> None:
 
     locator = mdates.AutoDateLocator()
     formatter = mdates.ConciseDateFormatter(locator)
+    formatter.offset_formats = [''] * 6  # No offset hints.
     ax.xaxis.set_major_locator(locator)
     ax.xaxis.set_major_formatter(formatter)
     ax.xaxis.set_minor_locator(mdates.WeekdayLocator(byweekday=mdates.MO))
@@ -1021,6 +1071,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Fetch and plot Trachtnet data for a given region.",
     )
+    
     parser.add_argument(
         "--from-year",
         type=int,
@@ -1032,6 +1083,11 @@ def parse_args() -> argparse.Namespace:
         type=int,
         default=datetime.date.today().year,
         help="End year for fetching data (default: current year)",
+    )
+    parser.add_argument(
+        "--year",
+        type=int,
+        help="Year for fetching data",
     )
 
     parser.add_argument(
@@ -1052,6 +1108,11 @@ def parse_args() -> argparse.Namespace:
         "--name",
         type=str,
         help="Super title for the plot",
+    )
+    parser.add_argument(
+        "--derivative",
+        action="store_true",
+        help="Plot the derivative of the honey yield progress",
     )
     parser.add_argument(
         "--show-regions",
@@ -1115,17 +1176,51 @@ def main() -> None:
     if not regions:
         print("No regions specified. Use --region or --station-id to specify regions.")
         sys.exit(1)
+        
+    if args.year:
+        from_year = args.year
+        to_year = args.year
+    else:
+        from_year = args.from_year
+        to_year = args.to_year
 
     data = client.get_data(
-        from_year=args.from_year,
-        to_year=args.to_year,
+        from_year=from_year,
+        to_year=to_year,
         regions=regions,
     )
-    plot_honey_yield_progress(
-        data=data,
-        suptitle=args.name,
-        filename=f"trachtnet-{args.name.lower().replace(' ', '-').replace('(', '').replace(')', '').replace('.', '')}.svg",
-    )
+    
+    if args.derivative:
+        if args.year:
+            title = f"Trachtänderung in {args.year}"
+        else:
+            if args.from_year != datetime.date.today().year:
+                title = f"Trachtänderung im aktuellen Jahr und Vorjahre (ab {args.from_year})"
+            else:
+                title = "Trachtänderung im aktuellen Jahr"
+
+        plot_honey_yield_progress_derivative(
+            data=data,
+            title=title,
+            suptitle=args.name,
+            filename=f"trachtnet-{args.name.lower().replace(' ', '-').replace('(', '').replace(')', '').replace('.', '')}-derivative.svg",
+        )
+        return
+    else:
+        if args.year:
+            title = f"Trachtverlauf in {args.year}"
+        else:
+            if args.from_year != datetime.date.today().year:
+                title = f"Trachtverlauf im aktuellen Jahr und Vorjahre (ab {args.from_year})"
+            else:
+                title = "Trachtverlauf im aktuellen Jahr"
+
+        plot_honey_yield_progress(
+            data=data,
+            title=title,
+            suptitle=args.name,
+            filename=f"trachtnet-{args.name.lower().replace(' ', '-').replace('(', '').replace(')', '').replace('.', '')}.svg",
+        )
 
 
 if __name__ == "__main__":

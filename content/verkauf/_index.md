@@ -1,12 +1,12 @@
 ---
-title: "Verkauf 💰"
+title: "Verkauf 🍯"
 type: _default
 kind: page
 ---
 
 <div class="card mb-4">
     <div class="card-header">
-        Ausgezeichnet mit Gold
+        Ausgezeichnet mit Gold 🥇
     </div>
     <div class="card-body">
         <h2 class="card-title h5">

@@ -45,6 +45,8 @@ update-db:
 update-trachtnet:
     ./scripts/gen-trachtnet.py --from-year $(date -d "last year" +%Y) --name Bayern --region bayern
     mv -f trachtnet-bayern.svg static/trachtnet/trachtnet-bayern-current.svg
+    ./scripts/gen-trachtnet.py --from-year $(date +%Y) --name Bayern --region bayern --derivative
+    mv -f trachtnet-bayern-derivative.svg static/trachtnet/trachtnet-bayern-current-derivative.svg
     
     ./scripts/gen-trachtnet.py --name Bayern --region bayern
     ./scripts/gen-trachtnet.py --name Oberbayern --region oberbayern
