@@ -2,11 +2,11 @@
 /node_modules
 /resources
 /.hugo_build.lock
-/assets/*.js
-/assets/*.map
-/assets/*.css
-/assets/*.woff
-/assets/*.woff2
+/static/*.js
+/static/*.map
+/static/*.css
+/static/*.woff
+/static/*.woff2
 
 .mypy_cache
 .ruff_cache
