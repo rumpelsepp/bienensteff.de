@@ -1795,15 +1795,15 @@ def main() -> None:
     client = TrachtnetClient()
 
     for year in year_list:
-        # for state in Land:
-        #     print(f"Dumping {year} {state.name}")
-        #     client.dump_data(year, state, args.outdir)
-        # for county in Regierungsbezirk:
-        #     print(f"Dumping {year} {county.name}")
-        #     client.dump_data(year, county, args.outdir)
-        # for landkreis in Kreis:
-        #     print(f"Dumping {year} {landkreis.name}")
-        #     client.dump_data(year, landkreis, args.outdir)
+        for state in Land:
+            print(f"Dumping {year} {state.name}")
+            client.dump_data(year, state, args.outdir)
+        for county in Regierungsbezirk:
+            print(f"Dumping {year} {county.name}")
+            client.dump_data(year, county, args.outdir)
+        for landkreis in Kreis:
+            print(f"Dumping {year} {landkreis.name}")
+            client.dump_data(year, landkreis, args.outdir)
         for wid in waagen_ids:
             print(f"Dumping {year} wid {wid}")
             client.dump_data(year, wid, args.outdir)
