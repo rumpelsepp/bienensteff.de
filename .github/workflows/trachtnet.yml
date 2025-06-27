@@ -23,16 +23,9 @@ jobs:
       - name: Install just
         uses: extractions/setup-just@v3
 
-      - name: Install German locale
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y locales
-          sudo locale-gen de_DE.UTF-8
-          sudo update-locale LANG=de_DE.UTF-8
-
       - name: Update Trachtnet svgs
         run: |
-          LANG=de_DE.UTF-8 LC_ALL=de_DE.UTF-8 just update-trachtnet
+          just update-trachtnet
 
       - name: Commit and Push Changes
         run: |

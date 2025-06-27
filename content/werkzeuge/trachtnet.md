@@ -9,43 +9,28 @@ Die Pfeile markieren jeweils Trachtbeginn und Ende.
 Die Graphen werden täglich aktualisiert.
 Die Daten zu „heute“ und „gestern“ sind jeweils ungenau, da das Trachtnet Netzwerk die Datensätze mit einer gewissen Verzögerung aktualisiert.
 
+
 ## Bayern
-### Heuer und letztes Jahr
 
-{{< figure
-  src="/trachtnet/trachtnet-bayern-current-derivative.svg"
-  link="/trachtnet/trachtnet-bayern-current-derivative.svg"
->}}
+{{< trachtnet-derivative region="Bayern" >}}
 
-{{< figure
-  src="/trachtnet/trachtnet-bayern-current.svg"
-  link="/trachtnet/trachtnet-bayern-current.svg"
->}}
+{{< trachtnet region="Bayern" >}}
 
-### Heuer und Vorjahre
+### Oberbayern
 
-{{< figure
-  src="/trachtnet/trachtnet-bayern.svg"
-  link="/trachtnet/trachtnet-bayern.svg"
->}}
+{{< trachtnet region="Oberbayern" >}}
 
-## Oberbayern
+### Niederbayern
 
-{{< figure
-  src="/trachtnet/trachtnet-oberbayern.svg"
-  link="/trachtnet/trachtnet-oberbayern.svg"
->}}
+{{< trachtnet region="Niederbayern" >}}
 
 ## Ausgewählte Waagen
 
 ### Gerhard Liebig
 
-{{< figure
-  src="/trachtnet/trachtnet-dr-gerhard-liebig-waage-1276.svg"
-  link="/trachtnet/trachtnet-dr-gerhard-liebig-waage-1276.svg"
-  caption="Mehr Infos zu dieser Waage, siehe hier: https://www.immelieb.de/es-honigt/"
->}}
+{{< trachtnet region="1276" >}}
 
+Mehr Infos zu dieser Waage, siehe hier: https://www.immelieb.de/es-honigt/
 
 ## Ausgewählte Auswertungen
 ### Bayern 2024
@@ -58,11 +43,4 @@ Die Daten zu „heute“ und „gestern“ sind jeweils ungenau, da das Trachtne
 {{< figure
   src="/trachtnet/bayern-2024-wetter.svg"
   link="/trachtnet/bayern-2024-wetter.svg"
->}}
-
-### Bayern 2023
-
-{{< figure
-  src="/trachtnet/bayern-2023-wetter.svg"
-  link="/trachtnet/bayern-2023-wetter.svg"
 >}}
