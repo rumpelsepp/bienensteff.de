@@ -45,7 +45,7 @@ update-db:
     ./scripts/dump-db-sql.py > assets/db/db.json
 
 update-trachtnet:
-    ./scripts/dump-trachtnet.py --year $(date +%Y)
+    ./scripts/dump-trachtnet.py --year $(date +%Y) --outdir static/trachtnet-dump
     
 update-trachtnet-chosen:
     ./scripts/gen-trachtnet.py --chosen-evaluations
