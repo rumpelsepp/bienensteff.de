@@ -15,6 +15,8 @@ Die Daten zu „heute“ und „gestern“ sind jeweils ungenau, da das Trachtne
 
 {{< trachtnet region="Bayern" >}}
 
+{{< trachtnet-evaluation region="Bayern" >}}
+
 ### Oberbayern
 
 {{< trachtnet region="Oberbayern" >}}
