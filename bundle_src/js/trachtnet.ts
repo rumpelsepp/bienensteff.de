@@ -217,14 +217,17 @@ function metaDataOfYear(year: number, rawData: YearlyData): MetaData {
     }
 }
 
-// TODO: Format floats localized.
 function renderMetaData(data: MetaData): string {
+    const formatterDE = new Intl.NumberFormat("de-DE", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
     let out = `<table class="table table-bordered table-striped table-sm">
   <tbody>
     <tr><td>Beste Tage</td><td>${data.bestDays.map(d => d.toLocaleDateString("de-DE")).join(", ")}</td></tr>
     <tr><td>Saisonstart</td><td>${data.seasonStart ? data.seasonStart.toLocaleDateString("de-DE") : "N/A"}</td></tr>
     <tr><td>Saisonende</td><td>${data.seasonEnd ? data.seasonEnd.toLocaleDateString("de-DE") : "N/A"}</td></tr>
-    <tr><td>Größte Schwankung</td><td>${data.maxDelta.toFixed(2)}</td></tr>
+    <tr><td>Größte Schwankung</td><td>Δ ${formatterDE.format(data.maxDelta)} kg</td></tr>
   </tbody>
 </table>`;
     return out;
