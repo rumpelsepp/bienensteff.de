@@ -1,0 +1,18 @@
+{{ $region := .Get "region" | default "Bayern" }}
+{{ $year := .Get "year" | default (now | dateFormat "2006") }}
+
+<script type="module">
+  import { LineChart, fetchTrachtnetData, metaDataOfYear, renderMetaData  } from "/bundle.js";
+
+  const year = parseInt("{{ $year }}");
+  const dom = document.getElementById("{{ $region }}-{{ $year }}-evaluation");
+  const data = await fetchTrachtnetData([year], "{{ $region }}", true);
+
+  const metaData = metaDataOfYear(year, data);
+  const table = renderMetaData(metaData);
+
+  document.getElementById("{{ $region }}-{{ $year }}-evaluation").innerHTML = table;
+
+</script>
+
+<div id="{{ $region }}-{{ $year }}-evaluation" class="mb-4"></div>

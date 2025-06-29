@@ -3,6 +3,7 @@ import type { ECharts } from 'echarts';
 
 import { Land, Regierungsbezirk, Kreis } from './regions.js';
 
+// TODO: Make the record a dict. Makes the code more readable and allows for better type checking.
 type Record = [Date, number, number, number | null];
 type YearlyData = {
     [year: number]: Record[]
@@ -153,47 +154,11 @@ async function getTrachtnetSeries(year: number | number[], region: string, norma
                     { xAxis: new Date().toISOString() }
                 ]
             }
-
-            //     entry.markPoint = {
-            //         data: [
-            //             { type: 'max', name: 'Maximum' },
-            //         ],
-            //         label: {
-            //             formatter: (params) => {
-            //                 const datum = new Date(params.data.coord[0]).toLocaleDateString("de-DE");
-            //                 return `📍 ${datum}`;
-            //             },
-            //             fontSize: 12,
-            //             fontWeight: 'bold'
-            //         },
-            //     }
         }
         out.push(entry);
     }
 
     return out;
-
-    // NOTE: Zum hervorheben des aktuellen Jahres:
-    // const currentYear = new Date().getFullYear();
-    //   const isCurrent = yearNum === currentYear;
-
-    //   return {
-    //     name: jahr,
-    //     type: "line",
-    //     showSymbol: false,
-    //     data: eintraege,
-    //     lineStyle: {
-    //       color,
-    //       width: isCurrent ? 3 : 1.5
-    //     },
-    //     areaStyle: {
-    //       color: isCurrent ? color + "40" : color + "20"
-    //     },
-    //     emphasis: {
-    //       focus: "series"
-    //     },
-    //     z: isCurrent ? 10 : 1
-    //   };
 }
 
 async function getTrachtnetDerivative(year: number, region: string): Promise<echarts.BarSeriesOption> {
@@ -203,10 +168,10 @@ async function getTrachtnetDerivative(year: number, region: string): Promise<ech
     let entry: echarts.BarSeriesOption = {
         name: year.toString(),
         type: "bar",
-        data: data.map(([date, values, nWaagen, delta]) => {
+        data: data.map(([date, value, nWaagen, delta]) => {
             let color = delta! >= 0 ? QueenColor.Green.toString() : QueenColor.Red.toString();
-            return { value: [date, delta, values, nWaagen], itemStyle: { color: color } };
-        }),
+            return { value: [date, delta, value, nWaagen], itemStyle: { color: color } };
+        }).filter(d => d.value[3] !== null),
     };
 
     return entry;
@@ -221,6 +186,48 @@ function buildLegendSelected(allYears: number[]): { [key: string]: boolean } {
         selected[year.toString()] = activeYears.includes(year);
     }
     return selected;
+}
+
+type MetaData = {
+    maxDelta: number;
+    bestDays: Date[];
+    seasonStart: Date | null;
+    seasonEnd: Date | null;
+};
+
+function metaDataOfYear(year: number, rawData: YearlyData): MetaData {
+    let data = rawData[year];
+    const maxDelta = Math.max(...data.map(d => d[3]));
+    const bestDays = data
+        .filter(d => d![3] === maxDelta)
+        .map(d => d![0]);
+
+    const minValue = Math.min(...data.map(d => d![1]));
+    const seasonStart = data.find(d => d![1] === minValue)?.[0] ?? null;
+
+    // TODO: consider that the maxValue might not be the last value in the year.
+    const maxValue = Math.max(...data.map(d => d![1]));
+    const seasonEnd = data.find(d => d![1] === maxValue)?.[0] ?? null;
+
+    return {
+        maxDelta: maxDelta,
+        bestDays: bestDays,
+        seasonStart: seasonStart,
+        seasonEnd: seasonEnd
+    }
+}
+
+// TODO: Format floats localized.
+function renderMetaData(data: MetaData): string {
+    let out = `<table class="table table-bordered table-striped table-sm">
+  <tbody>
+    <tr><td>Beste Tage</td><td>${data.bestDays.map(d => d.toLocaleDateString("de-DE")).join(", ")}</td></tr>
+    <tr><td>Saisonstart</td><td>${data.seasonStart ? data.seasonStart.toLocaleDateString("de-DE") : "N/A"}</td></tr>
+    <tr><td>Saisonende</td><td>${data.seasonEnd ? data.seasonEnd.toLocaleDateString("de-DE") : "N/A"}</td></tr>
+    <tr><td>Größte Schwankung</td><td>${data.maxDelta.toFixed(2)}</td></tr>
+  </tbody>
+</table>`;
+    return out;
 }
 
 class LineChart {
@@ -524,4 +531,4 @@ class BarChart {
     }
 }
 
-export { BarChart, LineChart, getTrachtnetSeries, getTrachtnetDerivative };
+export { BarChart, LineChart, fetchTrachtnetData, getTrachtnetSeries, getTrachtnetDerivative, metaDataOfYear, renderMetaData };
