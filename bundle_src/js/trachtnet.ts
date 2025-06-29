@@ -9,11 +9,11 @@ type YearlyData = {
 }
 
 function normalizeYear(records: Record[]): Record[] {
-    return records.map(([date, value, n_waagen, delta]) => {
+    return records.map(([date, value, nWaagen, delta]) => {
         let today = new Date();
         let recordDate = new Date(date);
         recordDate.setFullYear(today.getFullYear());
-        return [recordDate, value, n_waagen, delta];
+        return [recordDate, value, nWaagen, delta];
     });
 }
 
@@ -203,9 +203,9 @@ async function getTrachtnetDerivative(year: number, region: string): Promise<ech
     let entry: echarts.BarSeriesOption = {
         name: year.toString(),
         type: "bar",
-        data: data.map(([date, values, n_waagen, delta]) => {
+        data: data.map(([date, values, nWaagen, delta]) => {
             let color = delta! >= 0 ? QueenColor.Green.toString() : QueenColor.Red.toString();
-            return { value: [date, delta, values, n_waagen], itemStyle: { color: color } };
+            return { value: [date, delta, values, nWaagen], itemStyle: { color: color } };
         }),
     };
 
@@ -450,9 +450,9 @@ class BarChart {
                     let out = "";
                     for (const p of params) {
                         const date = new Date(p.value[0]);
-                        const n_waagen = p.value[3];
+                        const nWaagen = p.value[3];
                         const prefix = `<b>${date.toLocaleDateString("de-DE")}</b>`;
-                        out += `${prefix}: Δ ${formatterDE.format(p.value[1])} kg (${n_waagen} Waagen)<br>`;
+                        out += `${prefix}: Δ ${formatterDE.format(p.value[1])} kg (${nWaagen} Waagen)<br>`;
                     }
                     return out;
                 }
