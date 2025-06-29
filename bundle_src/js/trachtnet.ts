@@ -224,10 +224,9 @@ function renderMetaData(data: MetaData): string {
     });
     let out = `<table class="table table-bordered table-striped table-sm">
   <tbody>
-    <tr><td>Beste Tage</td><td>${data.bestDays.map(d => d.toLocaleDateString("de-DE")).join(", ")}</td></tr>
     <tr><td>Saisonstart</td><td>${data.seasonStart ? data.seasonStart.toLocaleDateString("de-DE") : "N/A"}</td></tr>
     <tr><td>Saisonende</td><td>${data.seasonEnd ? data.seasonEnd.toLocaleDateString("de-DE") : "N/A"}</td></tr>
-    <tr><td>Größte Schwankung</td><td>Δ ${formatterDE.format(data.maxDelta)} kg</td></tr>
+    <tr><td>Bester Tag</td><td>${data.bestDays.map(d => d.toLocaleDateString("de-DE")).join(", ")} (Δ ${formatterDE.format(data.maxDelta)} kg)</td></tr>
   </tbody>
 </table>`;
     return out;
