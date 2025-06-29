@@ -205,7 +205,7 @@ async function getTrachtnetDerivative(year: number, region: string): Promise<ech
         type: "bar",
         data: data.map(([date, values, n_waagen, delta]) => {
             let color = delta! >= 0 ? QueenColor.Green.toString() : QueenColor.Red.toString();
-            return { value: [date, delta], itemStyle: { color: color } };
+            return { value: [date, delta, values, n_waagen], itemStyle: { color: color } };
         }),
     };
 
@@ -450,8 +450,9 @@ class BarChart {
                     let out = "";
                     for (const p of params) {
                         const date = new Date(p.value[0]);
+                        const n_waagen = p.value[3];
                         const prefix = `<b>${date.toLocaleDateString("de-DE")}</b>`;
-                        out += `${prefix}: Δ ${formatterDE.format(p.value[1])} kg<br>`;
+                        out += `${prefix}: Δ ${formatterDE.format(p.value[1])} kg (${n_waagen} Waagen)<br>`;
                     }
                     return out;
                 }
