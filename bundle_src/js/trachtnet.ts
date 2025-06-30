@@ -549,7 +549,10 @@ class BarChart {
                     }
                 },
                 axisLabel: {
-                    formatter: val => Math.trunc(val) + " kg"
+                    formatter: val => Intl.NumberFormat("de-DE", {
+                        minimumFractionDigits: 1,
+                        maximumFractionDigits: 1
+                    }).format(val) + " kg"
                 },
                 axisTick: {
                     show: true,
