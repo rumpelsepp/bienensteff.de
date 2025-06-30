@@ -3,19 +3,42 @@ import type { ECharts } from 'echarts';
 
 import { Land, Regierungsbezirk, Kreis } from './regions.js';
 
-// TODO: Make the record a dict. Makes the code more readable and allows for better type checking.
-type Record = [Date, number, number, number | null];
+type Record = {
+    date: Date,
+    value: number,
+    nWaagen: number,
+    delta: number | null
+}
 type YearlyData = {
     [year: number]: Record[]
 }
+type TrachtNetData = {
+    [region: string]: YearlyData,
+}
+type TrachtNetRawData = {
+    dates: string,
+    values: number | null,
+    n_waagen: number | null,
+}
 
 function normalizeYear(records: Record[]): Record[] {
-    return records.map(([date, value, nWaagen, delta]) => {
+    return records.map(r => {
         let today = new Date();
-        let recordDate = new Date(date);
+        let recordDate = new Date(r.date);
         recordDate.setFullYear(today.getFullYear());
-        return [recordDate, value, nWaagen, delta];
+        return {
+            date: recordDate,
+            value: r.value,
+            nWaagen: r.nWaagen,
+            delta: r.delta
+        };
     });
+}
+
+function toTitleCase(text: string): string {
+  return text.replace(/\w\S*/g, (wort) =>
+    wort.charAt(0).toUpperCase() + wort.slice(1).toLowerCase()
+  );
 }
 
 enum QueenColor {
@@ -80,7 +103,7 @@ async function fetchRegion(year: number, region: string): Promise<any> {
     }
 }
 
-async function fetchTrachtnetData(years: number | number[], region: string): Promise<YearlyData> {
+async function fetchTrachtnetData(years: number | number[], region: string): Promise<TrachtNetData> {
     if (!isInteger(years) && !isIntegerArray(years)) {
         throw new Error("Year must be an integer or an array of integers.");
     }
@@ -92,7 +115,8 @@ async function fetchTrachtnetData(years: number | number[], region: string): Pro
         years = [... new Set(years.sort((a, b) => a - b))];
     }
 
-    let out: YearlyData = {};
+    let out: TrachtNetData = {};
+    let yearlyData: YearlyData = out[region] = {};
     for (const y of years) {
         if (!isInteger(y) || y < 2011 || y > new Date().getFullYear()) {
             throw new Error(`Invalid year: ${y}. Trachtnet only has data from 2011 to the current year.`);
@@ -107,13 +131,18 @@ async function fetchTrachtnetData(years: number | number[], region: string): Pro
         }
 
         let prev: number | null = null;
-        out[y] = json_data.map(d => {
-            let delta = prev === null ? null : d.values - prev;
+        yearlyData[y] = json_data.map((d: TrachtNetRawData) => {
+            let delta = prev === null ? null : d.values! - prev;
             if (d.values === null) {
                 delta = 0;
             }
             prev = d.values;
-            return [new Date(d.dates), d.values, d.n_waagen, delta];
+            return {
+                date: new Date(d.dates),
+                value: d.values,
+                nWaagen: d.n_waagen,
+                delta: delta
+            };
         });
     }
 
@@ -124,16 +153,25 @@ async function getTrachtnetSeries(year: number | number[], region: string, norma
     const data = await fetchTrachtnetData(year, region);
     let out: echarts.LineSeriesOption[] = [];
 
-    for (const [year, records] of Object.entries(data)) {
+    for (const [year, records] of Object.entries(data[region])) {
         if (!isInteger(+year)) {
             throw new Error(`Invalid year in data: ${year}`);
         }
+        
+        let seriesData = (normalize ? normalizeYear(records) : records).map(r => {
+            return [
+                r.date,
+                r.value,
+                r.nWaagen,
+                r.delta
+            ];
+        });
 
         let entry: echarts.LineSeriesOption = {
             name: year.toString(),
             type: "line",
             showSymbol: false,
-            data: normalize ? normalizeYear(records) : records,
+            data: seriesData,
             lineStyle: {
                 color: chooseQueenColor(+year),
             },
@@ -163,15 +201,21 @@ async function getTrachtnetSeries(year: number | number[], region: string, norma
 
 async function getTrachtnetDerivative(year: number, region: string): Promise<echarts.BarSeriesOption> {
     const rawData = await fetchTrachtnetData(year, region);
-    let data = rawData[year];
+    let data = rawData[region][year];
+    let lastIndex = data.findLastIndex(r => r.nWaagen !== null);
+    
+    // Slice the data to only include entries with valid nWaagen.
+    data = lastIndex === -1 ? data : data.slice(0, lastIndex + 1);
+
+    let seriesData = data.map(r => {
+            let color = r.delta! >= 0 ? QueenColor.Green.toString() : QueenColor.Red.toString();
+            return { value: [r.date, r.delta, r.value, r.nWaagen], itemStyle: { color: color } };
+        });
 
     let entry: echarts.BarSeriesOption = {
         name: year.toString(),
         type: "bar",
-        data: data.map(([date, value, nWaagen, delta]) => {
-            let color = delta! >= 0 ? QueenColor.Green.toString() : QueenColor.Red.toString();
-            return { value: [date, delta, value, nWaagen], itemStyle: { color: color } };
-        }).filter(d => d.value[3] !== null),
+        data: seriesData,
     };
 
     return entry;
@@ -181,7 +225,7 @@ function buildLegendSelected(allYears: number[]): { [key: string]: boolean } {
     const currentYear = new Date().getFullYear();
     const activeYears = [currentYear, currentYear - 1];
 
-    const selected = {};
+    const selected: { [key: string]: boolean } = {};
     for (const year of allYears) {
         selected[year.toString()] = activeYears.includes(year);
     }
@@ -189,31 +233,40 @@ function buildLegendSelected(allYears: number[]): { [key: string]: boolean } {
 }
 
 type MetaData = {
-    maxDelta: number;
+    year: number;
+    region: string;
+    globalMax: { value: number, date: Date } ;
+    globalMin: { value: number, date: Date } ;
+    maxDelta: { value: number; dates: Date[] } ;
     bestDays: Date[];
-    seasonStart: Date | null;
-    seasonEnd: Date | null;
 };
 
-function metaDataOfYear(year: number, rawData: YearlyData): MetaData {
-    let data = rawData[year];
-    const maxDelta = Math.max(...data.map(d => d[3]));
+function metaDataOfYear(year: number, region: string, rawData: TrachtNetData): MetaData | null{
+    let data = rawData[region][year];
+    const maxDelta = Math.max(...data.filter(r => r.delta !== null).map(r => r.delta!));
     const bestDays = data
-        .filter(d => d![3] === maxDelta)
-        .map(d => d![0]);
+        .filter(r => r.delta === maxDelta)
+        .map(r => r.date);
 
-    const minValue = Math.min(...data.map(d => d![1]));
-    const seasonStart = data.find(d => d![1] === minValue)?.[0] ?? null;
+    const minValue = Math.min(...data.map(r => r.value));
+    const minDate = data.find(r => r.value === minValue)?.date ?? null;
 
-    // TODO: consider that the maxValue might not be the last value in the year.
-    const maxValue = Math.max(...data.map(d => d![1]));
-    const seasonEnd = data.find(d => d![1] === maxValue)?.[0] ?? null;
-
+    const maxValue = Math.max(...data.map(d => d.value));
+    const maxDate = data.find(r => r.value === maxValue)?.date ?? null;
+    
+    if (!minDate || !maxDate) {
+        return null; // No valid data for min or max
+    }
+    
     return {
-        maxDelta: maxDelta,
+        year: year,
+        // TODO: Capitalize the first letter of the region name.
+        // This assumes that the region is a string and not an enum.
+        region: toTitleCase(region),
+        globalMax: { value: maxValue, date: maxDate },
+        globalMin: { value: minValue, date: minDate },
+        maxDelta: { value: maxDelta, dates: bestDays },
         bestDays: bestDays,
-        seasonStart: seasonStart,
-        seasonEnd: seasonEnd
     }
 }
 
@@ -223,10 +276,11 @@ function renderMetaData(data: MetaData): string {
         maximumFractionDigits: 2
     });
     let out = `<table class="table table-bordered table-striped table-sm">
+  <caption>Auswertung von ${data.region} (${data.year})</caption>
   <tbody>
-    <tr><td>Saisonstart</td><td>${data.seasonStart ? data.seasonStart.toLocaleDateString("de-DE") : "N/A"}</td></tr>
-    <tr><td>Saisonende</td><td>${data.seasonEnd ? data.seasonEnd.toLocaleDateString("de-DE") : "N/A"}</td></tr>
-    <tr><td>Bester Tag</td><td>${data.bestDays.map(d => d.toLocaleDateString("de-DE")).join(", ")} (Δ ${formatterDE.format(data.maxDelta)} kg)</td></tr>
+    <tr><th scope="row">Jahresminimum</th><td>${data.globalMin.date.toLocaleDateString("de-DE")} (${formatterDE.format(data.globalMin.value)} kg)</td></tr>
+    <tr><th scope="row">Jahresmaximum</th><td>${data.globalMax.date.toLocaleDateString("de-DE")} (${formatterDE.format(data.globalMax.value)} kg)</td></tr>
+    <tr><th scope="row">Bester Tag</th><td>${data.maxDelta.dates.map(d => d.toLocaleDateString("de-DE")).join(", ")} (Δ ${formatterDE.format(data.maxDelta.value)} kg)</td></tr>
   </tbody>
 </table>`;
     return out;
@@ -293,7 +347,8 @@ class LineChart {
                 extraCssText: "box-shadow: none; padding: 0.3rem 0.4rem",
                 formatter: params => {
                     let out = "";
-                    for (const p of params) {
+                    // @ts-expect-error
+                    for (const p of params) {  
                         const prefix = `${p.marker} <b>${p.seriesName}</b>`;
                         const waagen = p.value[2];
                         if (waagen === null) {
@@ -533,4 +588,4 @@ class BarChart {
     }
 }
 
-export { BarChart, LineChart, fetchTrachtnetData, getTrachtnetSeries, getTrachtnetDerivative, metaDataOfYear, renderMetaData };
+export { BarChart, LineChart, fetchTrachtnetData, getTrachtnetSeries, getTrachtnetDerivative, metaDataOfYear, renderMetaData, toTitleCase };
