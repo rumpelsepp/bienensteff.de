@@ -36,9 +36,9 @@ function normalizeYear(records: Record[]): Record[] {
 }
 
 function toTitleCase(text: string): string {
-  return text.replace(/\w\S*/g, (wort) =>
-    wort.charAt(0).toUpperCase() + wort.slice(1).toLowerCase()
-  );
+    return text.replace(/\w\S*/g, (wort) =>
+        wort.charAt(0).toUpperCase() + wort.slice(1).toLowerCase()
+    );
 }
 
 enum QueenColor {
@@ -157,7 +157,7 @@ async function getTrachtnetSeries(year: number | number[], region: string, norma
         if (!isInteger(+year)) {
             throw new Error(`Invalid year in data: ${year}`);
         }
-        
+
         let seriesData = (normalize ? normalizeYear(records) : records).map(r => {
             return [
                 r.date,
@@ -199,31 +199,61 @@ async function getTrachtnetSeries(year: number | number[], region: string, norma
     return out;
 }
 
-async function getTrachtnetDerivative(year: number, region: string): Promise<echarts.BarSeriesOption> {
-    const rawData = await fetchTrachtnetData(year, region);
-    let data = rawData[region][year];
-    let lastIndex = data.findLastIndex(r => r.nWaagen !== null);
-    
-    // Slice the data to only include entries with valid nWaagen.
-    data = lastIndex === -1 ? data : data.slice(0, lastIndex + 1);
+async function getTrachtnetDerivative(years: number | number[], region: string): Promise<echarts.BarSeriesOption[]> {
+    if (!isInteger(years) && !isIntegerArray(years)) {
+        throw new Error("Year must be an integer or an array of integers.");
+    }
 
-    let seriesData = data.map(r => {
+    if (isInteger(years)) {
+        years = [years];
+    } else {
+        // Sort and remove duplicates.
+        years = [... new Set(years.sort((a, b) => a - b))];
+    }
+
+    const rawData = await fetchTrachtnetData(years, region);
+
+    let entries: echarts.BarSeriesOption[] = [];
+    years.forEach(y => {
+        let data = rawData[region][y];
+        let lastIndex = data.findLastIndex(r => r.nWaagen !== null);
+
+        // Slice the data to only include entries with valid nWaagen.
+        data = lastIndex === -1 ? data : data.slice(0, lastIndex + 1);
+
+        let seriesData = data.map(r => {
             let color = r.delta! >= 0 ? QueenColor.Green.toString() : QueenColor.Red.toString();
             return { value: [r.date, r.delta, r.value, r.nWaagen], itemStyle: { color: color } };
         });
 
-    let entry: echarts.BarSeriesOption = {
-        name: year.toString(),
-        type: "bar",
-        data: seriesData,
-    };
+        console.log(seriesData);
 
-    return entry;
+        let entry: echarts.BarSeriesOption = {
+            name: y.toString(),
+            type: "bar",
+            data: seriesData,
+        };
+
+        entries.push(entry);
+    });
+
+    return entries;
 }
 
-function buildLegendSelected(allYears: number[]): { [key: string]: boolean } {
+function buildLegendSelectedCurPrev(allYears: number[]): { [key: string]: boolean } {
     const currentYear = new Date().getFullYear();
     const activeYears = [currentYear, currentYear - 1];
+
+    const selected: { [key: string]: boolean } = {};
+    for (const year of allYears) {
+        selected[year.toString()] = activeYears.includes(year);
+    }
+    return selected;
+}
+
+function buildLegendSelectedCur(allYears: number[]): { [key: string]: boolean } {
+    const currentYear = new Date().getFullYear();
+    const activeYears = [currentYear];
 
     const selected: { [key: string]: boolean } = {};
     for (const year of allYears) {
@@ -235,13 +265,13 @@ function buildLegendSelected(allYears: number[]): { [key: string]: boolean } {
 type MetaData = {
     year: number;
     region: string;
-    globalMax: { value: number, date: Date } ;
-    globalMin: { value: number, date: Date } ;
-    maxDelta: { value: number; dates: Date[] } ;
+    globalMax: { value: number, date: Date };
+    globalMin: { value: number, date: Date };
+    maxDelta: { value: number; dates: Date[] };
     bestDays: Date[];
 };
 
-function metaDataOfYear(year: number, region: string, rawData: TrachtNetData): MetaData | null{
+function metaDataOfYear(year: number, region: string, rawData: TrachtNetData): MetaData | null {
     let data = rawData[region][year];
     const maxDelta = Math.max(...data.filter(r => r.delta !== null).map(r => r.delta!));
     const bestDays = data
@@ -253,11 +283,11 @@ function metaDataOfYear(year: number, region: string, rawData: TrachtNetData): M
 
     const maxValue = Math.max(...data.map(d => d.value));
     const maxDate = data.find(r => r.value === maxValue)?.date ?? null;
-    
+
     if (!minDate || !maxDate) {
         return null; // No valid data for min or max
     }
-    
+
     return {
         year: year,
         // TODO: Capitalize the first letter of the region name.
@@ -348,7 +378,7 @@ class LineChart {
                 formatter: params => {
                     let out = "";
                     // @ts-expect-error
-                    for (const p of params) {  
+                    for (const p of params) {
                         const prefix = `${p.marker} <b>${p.seriesName}</b>`;
                         const waagen = p.value[2];
                         if (waagen === null) {
@@ -367,7 +397,7 @@ class LineChart {
             legend: {
                 show: true,
                 top: "bottom",
-                selected: buildLegendSelected(this.seriesData.map(s => {
+                selected: buildLegendSelectedCurPrev(this.seriesData.map(s => {
                     return parseInt(typeof s.name === "string" ? s.name : "");
                 })),
             },
@@ -451,12 +481,13 @@ class LineChart {
 }
 
 class BarChart {
-    private seriesData: echarts.LineSeriesOption[];
+    private seriesData: echarts.BarSeriesOption[];
     private title: string;
     private subTitle: string;
     private chart?: ECharts;
 
-    constructor(rawData: echarts.LineSeriesOption[], title: string) {
+    constructor(rawData: echarts.BarSeriesOption[], title: string) {
+        console.log("BarChart constructor called with rawData:", rawData);
         this.seriesData = rawData;
         this.title = title;
         this.subTitle = "Datenquelle: TrachtNet";
@@ -476,7 +507,7 @@ class BarChart {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
         });
-
+        
         const option: echarts.EChartsOption = {
             title: {
                 text: this.title,
@@ -498,6 +529,13 @@ class BarChart {
                 feature: {
                     saveAsImage: {}
                 }
+            },
+            legend: {
+                show: true,
+                top: "bottom",
+                selected: buildLegendSelectedCur(this.seriesData.map(s => {
+                    return parseInt(typeof s.name === "string" ? s.name : "");
+                }))
             },
             tooltip: {
                 trigger: "axis",

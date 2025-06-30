@@ -1,17 +1,19 @@
 {{ $region := .Get "region" | default "Bayern" }}
-{{ $cssID := printf "%sChartDerivative" $region }}
+{{ $year := .Get "year" | default (now | dateFormat "2006") }}
+{{ $cssID := printf "%s-%s-trachtnet-derivative" $region $year }}
 
 <script type="module">
   import { BarChart, getTrachtnetDerivative, toTitleCase } from "/bundle.js";
 
-  const thisYear = new Date().getFullYear();
+  const year = parseInt("{{ $year }}");
+  const years = Array.from({ length: 4 }, (_, i) => year - i).reverse();
   const region = "{{ $region }}";
   const cssID = "{{ $cssID }}";
 
   const dom = document.getElementById(cssID);
-  const data = await getTrachtnetDerivative(thisYear, region);
+  const data = await getTrachtnetDerivative(years, region);
 
-  const chart = new BarChart(data, `Trachtverlaufänderungen ${toTitleCase(region)}`);
+  const chart = new BarChart(data, `Trachtänderungen ${toTitleCase(region)}`);
   chart.render(cssID);
 </script>
 

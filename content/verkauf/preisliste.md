@@ -9,7 +9,7 @@ layout: single
 Mit * gekennzeichnete Sorten sind derzeit ausverkauft.
 Die frische Ernte gibt’s immer ab August.
 
-## Honig im Glas 🫙
+## Honig im Glas
 
 {{< pretty-table table_class="table table-striped table-sm table-bordered" >}}
 | Artikel  | <acronym title="Verkaufseinheit">VKE</acronym> | Preis / Stück |
@@ -21,7 +21,7 @@ Die frische Ernte gibt’s immer ab August.
 
 Wer gleich **vier Gläser oder mehr** mitnimmt, zahlt pro Glas **1 € weniger**.
 
-## Abfüllung in eigene Gefäße 🪣
+## Abfüllung in eigene Gefäße
 
 Auf Wunsch füllen wir den Honig auch in mitgebrachte Gläser oder Eimer ab.
 Sonderabfüllungen bitte **bis Anfang September** anfragen – dann können wir’s passend zur Abfüllung einplanen.
