@@ -9,18 +9,18 @@ function formatDate(date: DateTime): string {
   });
 }
 
-function getParam(name: string): string {
+function getParam(name: string): string | null {
   const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get(name) || "";
+  return urlParams.get(name);
 }
 
 function getDateParam(): DateTime {
   const dateParam = getParam("date");
 
-  if (dateParam != null) {
-    return DateTime.fromISO(dateParam).toLocal();
+  if (dateParam === null) {
+    return DateTime.now().toLocal();
   }
-  return DateTime.now().toLocal();
+  return DateTime.fromISO(dateParam).toLocal();
 }
 
 export { getParam, getDateParam };
