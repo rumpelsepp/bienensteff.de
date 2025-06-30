@@ -1,18 +1,21 @@
-{{ $region := .Get "region" | default "Bayern" }}
-{{ $cssID := printf "%sChart" $region }}
+{{ $region := lower (.Get "region") }}
+{{ $year := .Get "year" | default (now | dateFormat "2006") }}
+{{ $cssID := printf "%s-%s-trachtnet-graph" $region $year }}
 
 <script type="module">
-  import { LineChart, getTrachtnetSeries } from "/bundle.js";
-  let thisYear = new Date().getFullYear();
-  let years = Array.from({ length: 4 }, (_, i) => thisYear - i).reverse();
+  import { LineChart, getTrachtnetSeries, toTitleCase } from "/bundle.js";
 
-  window.addEventListener("load", async () => {
-      const dom = document.getElementById("{{ $cssID }}");
-      const data = await getTrachtnetSeries(years, "{{ $region }}", true);
+  const region = "{{ $region }}";
+  const cssID = "{{ $cssID }}";
 
-      const chart = new LineChart(data, "Trachtverlauf {{ $region }}");
-      chart.render("{{ $cssID }}");
-  });
+  const thisYear = new Date("{{ $year }}").getFullYear();
+  const years = Array.from({ length: 4 }, (_, i) => thisYear - i).reverse();
+
+  const dom = document.getElementById(cssID);
+  const data = await getTrachtnetSeries(years, region, true);
+
+  const chart = new LineChart(data, `Trachtverlauf ${toTitleCase(region)}`);
+  chart.render(cssID);
 </script>
 
 <div class="chart-container mb-4">

@@ -2,16 +2,17 @@
 {{ $cssID := printf "%sChartDerivative" $region }}
 
 <script type="module">
-  import { BarChart, getTrachtnetDerivative } from "/bundle.js";
-  let thisYear = new Date().getFullYear();
+  import { BarChart, getTrachtnetDerivative, toTitleCase } from "/bundle.js";
 
-  window.addEventListener("load", async () => {
-      const dom = document.getElementById("{{ $cssID }}");
-      const data = await getTrachtnetDerivative(thisYear, "{{ $region }}");
+  const thisYear = new Date().getFullYear();
+  const region = "{{ $region }}";
+  const cssID = "{{ $cssID }}";
 
-      const chart = new BarChart(data, "Trachtverlaufänderungen {{ $region }}");
-      chart.render("{{ $cssID }}");
-  });
+  const dom = document.getElementById(cssID);
+  const data = await getTrachtnetDerivative(thisYear, region);
+
+  const chart = new BarChart(data, `Trachtverlaufänderungen ${toTitleCase(region)}`);
+  chart.render(cssID);
 </script>
 
 <div class="chart-container mb-4">

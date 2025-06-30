@@ -1,18 +1,20 @@
-{{ $region := .Get "region" | default "Bayern" }}
+{{ $region := lower (.Get "region") }}
 {{ $year := .Get "year" | default (now | dateFormat "2006") }}
+{{ $cssID := printf "%s-%s-trachtnet-evaluation" $region $year }}
 
 <script type="module">
-  import { LineChart, fetchTrachtnetData, metaDataOfYear, renderMetaData  } from "/bundle.js";
+  import { LineChart, fetchTrachtnetData, metaDataOfYear, renderMetaData } from "/bundle.js";
 
+  const region = "{{ $region }}";
+  const cssID = "{{ $cssID }}";
   const year = parseInt("{{ $year }}");
-  const dom = document.getElementById("{{ $region }}-{{ $year }}-evaluation");
-  const data = await fetchTrachtnetData([year], "{{ $region }}", true);
+  const dom = document.getElementById(cssID);
+  const data = await fetchTrachtnetData([year], region, true);
 
-  const metaData = metaDataOfYear(year, data);
+  const metaData = metaDataOfYear(year, region, data);
   const table = renderMetaData(metaData);
 
-  document.getElementById("{{ $region }}-{{ $year }}-evaluation").innerHTML = table;
-
+  document.getElementById(cssID).innerHTML = table;
 </script>
 
-<div id="{{ $region }}-{{ $year }}-evaluation" class="mb-4"></div>
+<div id="{{ $cssID }}" class="mb-4"></div>

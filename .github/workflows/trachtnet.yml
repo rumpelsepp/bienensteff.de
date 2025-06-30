@@ -23,7 +23,7 @@ jobs:
       - name: Install just
         uses: extractions/setup-just@v3
 
-      - name: Update Trachtnet svgs
+      - name: Update Trachtnet data
         run: |
           just update-trachtnet
 
