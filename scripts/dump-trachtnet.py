@@ -13,6 +13,7 @@ import enum
 import re
 import datetime
 import http
+import time
 from typing import Any, Literal, TypedDict
 from pathlib import Path
 from urllib.parse import urljoin
@@ -1604,14 +1605,14 @@ class TrachtnetClient:
                     raise ValueError(f"Invalid region type: {region}")
 
         max_retries = 5
-        attempts = 0
-        while attempts < max_retries:
+        for _ in range(max_retries):
             try:
                 resp = self._request(
                     http.HTTPMethod.GET,
                     "cgi-bin/tdsa/tdsa_client.pl",
                     params=params,
                 )
+                return resp.json()
             except httpx.HTTPStatusError as e:
                 if e.response.status_code == http.HTTPStatus.INTERNAL_SERVER_ERROR:
                     print(f"Internal server error for {regions}. Returning empty data.")
@@ -1619,11 +1620,12 @@ class TrachtnetClient:
                 else:
                     raise e
             except httpx.ReadTimeout:
-                attempts += 1
                 print("ReadTimeout, trying again…")
+                time.sleep(2)
                 continue
 
-        return resp.json()
+        print("unknown problem, no data gathered")
+        return {}
 
     def _parse_german_date(self, date_str: str) -> datetime.date:
         # Map of German month names (abbreviations with and without dots) to month numbers
