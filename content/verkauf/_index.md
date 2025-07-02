@@ -20,7 +20,7 @@ kind: page
     </div>
 </div>
 
-{{< fig src="verkauf-2024.jpg" size="600x600" >}}
+{{< fig src="verkauf-2024.jpg" >}}
 
 ## Unsere Honige
 

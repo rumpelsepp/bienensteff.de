@@ -17,4 +17,4 @@ Schaut’s euch gern um – und vielleicht sehen wir uns ja bald!
 
 Euer Steff 🐝
 
-{{< fig src="IMG_20230617_093428-crop.png" size="1000x1000" >}}
+{{< fig src="IMG_20230617_093428-crop.png" >}}
