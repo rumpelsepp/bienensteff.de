@@ -1603,18 +1603,26 @@ class TrachtnetClient:
                 case _:
                     raise ValueError(f"Invalid region type: {region}")
 
-        try:
-            resp = self._request(
-                http.HTTPMethod.GET,
-                "cgi-bin/tdsa/tdsa_client.pl",
-                params=params,
-            )
-        except httpx.HTTPStatusError as e:
-            if e.response.status_code == http.HTTPStatus.INTERNAL_SERVER_ERROR:
-                print(f"Internal server error for {regions}. Returning empty data.")
-                return {}
-            else:
-                raise e
+        max_retries = 5
+        attempts = 0
+        while attempts < max_retries:
+            try:
+                resp = self._request(
+                    http.HTTPMethod.GET,
+                    "cgi-bin/tdsa/tdsa_client.pl",
+                    params=params,
+                )
+            except httpx.HTTPStatusError as e:
+                if e.response.status_code == http.HTTPStatus.INTERNAL_SERVER_ERROR:
+                    print(f"Internal server error for {regions}. Returning empty data.")
+                    return {}
+                else:
+                    raise e
+            except httpx.ReadTimeout:
+                attempts += 1
+                print("ReadTimeout, trying again…")
+                continue
+
         return resp.json()
 
     def _parse_german_date(self, date_str: str) -> datetime.date:
