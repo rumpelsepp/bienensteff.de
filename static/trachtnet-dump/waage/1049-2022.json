@@ -1,1 +1,1827 @@
-[{"dates":"2022-01-01","values":0.13,"n_waagen":1},{"dates":"2022-01-02","values":1.16,"n_waagen":1},{"dates":"2022-01-03","values":0.17,"n_waagen":1},{"dates":"2022-01-04","values":-0.57,"n_waagen":1},{"dates":"2022-01-05","values":0.41,"n_waagen":1},{"dates":"2022-01-06","values":0.19,"n_waagen":1},{"dates":"2022-01-07","values":-0.65,"n_waagen":1},{"dates":"2022-01-08","values":-1.63,"n_waagen":1},{"dates":"2022-01-09","values":-2.55,"n_waagen":1},{"dates":"2022-01-10","values":-1.5,"n_waagen":1},{"dates":"2022-01-11","values":-2.65,"n_waagen":1},{"dates":"2022-01-12","values":-1.64,"n_waagen":1},{"dates":"2022-01-13","values":-3.06,"n_waagen":1},{"dates":"2022-01-14","values":-4.29,"n_waagen":1},{"dates":"2022-01-15","values":-3.87,"n_waagen":1},{"dates":"2022-01-16","values":-4.11,"n_waagen":1},{"dates":"2022-01-17","values":-4.1,"n_waagen":1},{"dates":"2022-01-18","values":-3.42,"n_waagen":1},{"dates":"2022-01-19","values":-3.77,"n_waagen":1},{"dates":"2022-01-20","values":-3.26,"n_waagen":1},{"dates":"2022-01-21","values":-2.73,"n_waagen":1},{"dates":"2022-01-22","values":-2.76,"n_waagen":1},{"dates":"2022-01-23","values":-2.44,"n_waagen":1},{"dates":"2022-01-24","values":-1.98,"n_waagen":1},{"dates":"2022-01-25","values":-2.59,"n_waagen":1},{"dates":"2022-01-26","values":-2.82,"n_waagen":1},{"dates":"2022-01-27","values":-3.35,"n_waagen":1},{"dates":"2022-01-28","values":-3.42,"n_waagen":1},{"dates":"2022-01-29","values":-4.04,"n_waagen":1},{"dates":"2022-01-30","values":-3.31,"n_waagen":1},{"dates":"2022-01-31","values":-2.72,"n_waagen":1},{"dates":"2022-02-01","values":-3.34,"n_waagen":1},{"dates":"2022-02-02","values":-3.48,"n_waagen":1},{"dates":"2022-02-03","values":-3.83,"n_waagen":1},{"dates":"2022-02-04","values":-4.12,"n_waagen":1},{"dates":"2022-02-05","values":-4.12,"n_waagen":1},{"dates":"2022-02-06","values":-5.21,"n_waagen":1},{"dates":"2022-02-07","values":-5.1,"n_waagen":1},{"dates":"2022-02-08","values":-5.58,"n_waagen":1},{"dates":"2022-02-09","values":-5.11,"n_waagen":1},{"dates":"2022-02-10","values":-5.73,"n_waagen":1},{"dates":"2022-02-11","values":-6.08,"n_waagen":1},{"dates":"2022-02-12","values":-5.92,"n_waagen":1},{"dates":"2022-02-13","values":-6.1,"n_waagen":1},{"dates":"2022-02-14","values":-5.8,"n_waagen":1},{"dates":"2022-02-15","values":-5.37,"n_waagen":1},{"dates":"2022-02-16","values":-5.84,"n_waagen":1},{"dates":"2022-02-17","values":-5.07,"n_waagen":1},{"dates":"2022-02-18","values":-5.85,"n_waagen":1},{"dates":"2022-02-19","values":-5.22,"n_waagen":1},{"dates":"2022-02-20","values":-6.04,"n_waagen":1},{"dates":"2022-02-21","values":-7.11,"n_waagen":1},{"dates":"2022-02-22","values":-7.32,"n_waagen":1},{"dates":"2022-02-23","values":-6.93,"n_waagen":1},{"dates":"2022-02-24","values":-6.95,"n_waagen":1},{"dates":"2022-02-25","values":-7.1,"n_waagen":1},{"dates":"2022-02-26","values":-6.61,"n_waagen":1},{"dates":"2022-02-27","values":-5.68,"n_waagen":1},{"dates":"2022-02-28","values":-5.66,"n_waagen":1},{"dates":"2022-03-01","values":-5.87,"n_waagen":1},{"dates":"2022-03-02","values":-5.86,"n_waagen":1},{"dates":"2022-03-03","values":-5.89,"n_waagen":1},{"dates":"2022-03-04","values":-6.1,"n_waagen":1},{"dates":"2022-03-05","values":-6.05,"n_waagen":1},{"dates":"2022-03-06","values":-6.38,"n_waagen":1},{"dates":"2022-03-07","values":-6.87,"n_waagen":1},{"dates":"2022-03-08","values":-7.25,"n_waagen":1},{"dates":"2022-03-09","values":-7.3,"n_waagen":1},{"dates":"2022-03-10","values":-7.13,"n_waagen":1},{"dates":"2022-03-11","values":-7.69,"n_waagen":1},{"dates":"2022-03-12","values":-7.51,"n_waagen":1},{"dates":"2022-03-13","values":-6.94,"n_waagen":1},{"dates":"2022-03-14","values":-7.46,"n_waagen":1},{"dates":"2022-03-15","values":-7.21,"n_waagen":1},{"dates":"2022-03-16","values":-7.36,"n_waagen":1},{"dates":"2022-03-17","values":-7.52,"n_waagen":1},{"dates":"2022-03-18","values":-6.7,"n_waagen":1},{"dates":"2022-03-19","values":-6.6,"n_waagen":1},{"dates":"2022-03-20","values":-6.63,"n_waagen":1},{"dates":"2022-03-21","values":-3.48,"n_waagen":1},{"dates":"2022-03-22","values":-1.9,"n_waagen":1},{"dates":"2022-03-23","values":0.34,"n_waagen":1},{"dates":"2022-03-24","values":2.11,"n_waagen":1},{"dates":"2022-03-25","values":2.52,"n_waagen":1},{"dates":"2022-03-26","values":2.88,"n_waagen":1},{"dates":"2022-03-27","values":4.25,"n_waagen":1},{"dates":"2022-03-28","values":5.06,"n_waagen":1},{"dates":"2022-03-29","values":5.04,"n_waagen":1},{"dates":"2022-03-30","values":4.4,"n_waagen":1},{"dates":"2022-03-31","values":4.72,"n_waagen":1},{"dates":"2022-04-01","values":4.55,"n_waagen":1},{"dates":"2022-04-02","values":4.12,"n_waagen":1},{"dates":"2022-04-03","values":4.68,"n_waagen":1},{"dates":"2022-04-04","values":5.31,"n_waagen":1},{"dates":"2022-04-05","values":4.47,"n_waagen":1},{"dates":"2022-04-06","values":4.74,"n_waagen":1},{"dates":"2022-04-07","values":4.64,"n_waagen":1},{"dates":"2022-04-08","values":3.66,"n_waagen":1},{"dates":"2022-04-09","values":3.82,"n_waagen":1},{"dates":"2022-04-10","values":3.15,"n_waagen":1},{"dates":"2022-04-11","values":4.13,"n_waagen":1},{"dates":"2022-04-12","values":5.31,"n_waagen":1},{"dates":"2022-04-13","values":7.1,"n_waagen":1},{"dates":"2022-04-14","values":7.92,"n_waagen":1},{"dates":"2022-04-15","values":9.46,"n_waagen":1},{"dates":"2022-04-16","values":9.73,"n_waagen":1},{"dates":"2022-04-17","values":10.37,"n_waagen":1},{"dates":"2022-04-18","values":11.34,"n_waagen":1},{"dates":"2022-04-19","values":14.06,"n_waagen":1},{"dates":"2022-04-20","values":13.17,"n_waagen":1},{"dates":"2022-04-21","values":13.94,"n_waagen":1},{"dates":"2022-04-22","values":14.86,"n_waagen":1},{"dates":"2022-04-23","values":14.93,"n_waagen":1},{"dates":"2022-04-24","values":15.18,"n_waagen":1},{"dates":"2022-04-25","values":15.39,"n_waagen":1},{"dates":"2022-04-26","values":15.11,"n_waagen":1},{"dates":"2022-04-27","values":17.17,"n_waagen":1},{"dates":"2022-04-28","values":20.91,"n_waagen":1},{"dates":"2022-04-29","values":23.05,"n_waagen":1},{"dates":"2022-04-30","values":21.86,"n_waagen":1},{"dates":"2022-05-01","values":24.11,"n_waagen":1},{"dates":"2022-05-02","values":27.34,"n_waagen":1},{"dates":"2022-05-03","values":29.19,"n_waagen":1},{"dates":"2022-05-04","values":31.06,"n_waagen":1},{"dates":"2022-05-05","values":32.24,"n_waagen":1},{"dates":"2022-05-06","values":33.98,"n_waagen":1},{"dates":"2022-05-07","values":35.41,"n_waagen":1},{"dates":"2022-05-08","values":35.74,"n_waagen":1},{"dates":"2022-05-09","values":37.38,"n_waagen":1},{"dates":"2022-05-10","values":39.0,"n_waagen":1},{"dates":"2022-05-11","values":39.14,"n_waagen":1},{"dates":"2022-05-12","values":39.02,"n_waagen":1},{"dates":"2022-05-13","values":38.73,"n_waagen":1},{"dates":"2022-05-14","values":39.64,"n_waagen":1},{"dates":"2022-05-15","values":40.07,"n_waagen":1},{"dates":"2022-05-16","values":38.62,"n_waagen":1},{"dates":"2022-05-17","values":39.66,"n_waagen":1},{"dates":"2022-05-18","values":40.94,"n_waagen":1},{"dates":"2022-05-19","values":43.38,"n_waagen":1},{"dates":"2022-05-20","values":44.07,"n_waagen":1},{"dates":"2022-05-21","values":44.29,"n_waagen":1},{"dates":"2022-05-22","values":47.13,"n_waagen":1},{"dates":"2022-05-23","values":47.75,"n_waagen":1},{"dates":"2022-05-24","values":46.29,"n_waagen":1},{"dates":"2022-05-25","values":46.99,"n_waagen":1},{"dates":"2022-05-26","values":47.01,"n_waagen":1},{"dates":"2022-05-27","values":46.15,"n_waagen":1},{"dates":"2022-05-28","values":46.11,"n_waagen":1},{"dates":"2022-05-29","values":46.42,"n_waagen":1},{"dates":"2022-05-30","values":46.55,"n_waagen":1},{"dates":"2022-05-31","values":46.62,"n_waagen":1},{"dates":"2022-06-01","values":47.14,"n_waagen":1},{"dates":"2022-06-02","values":47.13,"n_waagen":1},{"dates":"2022-06-03","values":48.09,"n_waagen":1},{"dates":"2022-06-04","values":49.32,"n_waagen":1},{"dates":"2022-06-05","values":48.58,"n_waagen":1},{"dates":"2022-06-06","values":48.65,"n_waagen":1},{"dates":"2022-06-07","values":48.5,"n_waagen":1},{"dates":"2022-06-08","values":47.53,"n_waagen":1},{"dates":"2022-06-09","values":47.3,"n_waagen":1},{"dates":"2022-06-10","values":48.46,"n_waagen":1},{"dates":"2022-06-11","values":50.09,"n_waagen":1},{"dates":"2022-06-12","values":50.95,"n_waagen":1},{"dates":"2022-06-13","values":50.69,"n_waagen":1},{"dates":"2022-06-14","values":51.0,"n_waagen":1},{"dates":"2022-06-15","values":52.79,"n_waagen":1},{"dates":"2022-06-16","values":53.64,"n_waagen":1},{"dates":"2022-06-17","values":55.2,"n_waagen":1},{"dates":"2022-06-18","values":58.29,"n_waagen":1},{"dates":"2022-06-19","values":58.93,"n_waagen":1},{"dates":"2022-06-20","values":56.3,"n_waagen":1},{"dates":"2022-06-21","values":58.33,"n_waagen":1},{"dates":"2022-06-22","values":58.94,"n_waagen":1},{"dates":"2022-06-23","values":60.48,"n_waagen":1},{"dates":"2022-06-24","values":59.16,"n_waagen":1},{"dates":"2022-06-25","values":58.75,"n_waagen":1},{"dates":"2022-06-26","values":57.96,"n_waagen":1},{"dates":"2022-06-27","values":57.74,"n_waagen":1},{"dates":"2022-06-28","values":58.05,"n_waagen":1},{"dates":"2022-06-29","values":58.78,"n_waagen":1},{"dates":"2022-06-30","values":58.16,"n_waagen":1},{"dates":"2022-07-01","values":57.74,"n_waagen":1},{"dates":"2022-07-02","values":57.22,"n_waagen":1},{"dates":"2022-07-03","values":56.84,"n_waagen":1},{"dates":"2022-07-04","values":56.39,"n_waagen":1},{"dates":"2022-07-05","values":56.3,"n_waagen":1},{"dates":"2022-07-06","values":55.62,"n_waagen":1},{"dates":"2022-07-07","values":55.09,"n_waagen":1},{"dates":"2022-07-08","values":55.35,"n_waagen":1},{"dates":"2022-07-09","values":55.29,"n_waagen":1},{"dates":"2022-07-10","values":55.08,"n_waagen":1},{"dates":"2022-07-11","values":54.72,"n_waagen":1},{"dates":"2022-07-12","values":54.77,"n_waagen":1},{"dates":"2022-07-13","values":54.94,"n_waagen":1},{"dates":"2022-07-14","values":54.68,"n_waagen":1},{"dates":"2022-07-15","values":54.05,"n_waagen":1},{"dates":"2022-07-16","values":53.88,"n_waagen":1},{"dates":"2022-07-17","values":53.31,"n_waagen":1},{"dates":"2022-07-18","values":54.04,"n_waagen":1},{"dates":"2022-07-19","values":53.78,"n_waagen":1},{"dates":"2022-07-20","values":53.35,"n_waagen":1},{"dates":"2022-07-21","values":53.36,"n_waagen":1},{"dates":"2022-07-22","values":53.69,"n_waagen":1},{"dates":"2022-07-23","values":53.36,"n_waagen":1},{"dates":"2022-07-24","values":52.0,"n_waagen":1},{"dates":"2022-07-25","values":51.28,"n_waagen":1},{"dates":"2022-07-26","values":51.05,"n_waagen":1},{"dates":"2022-07-27","values":50.67,"n_waagen":1},{"dates":"2022-07-28","values":50.69,"n_waagen":1},{"dates":"2022-07-29","values":50.19,"n_waagen":1},{"dates":"2022-07-30","values":49.97,"n_waagen":1},{"dates":"2022-07-31","values":49.85,"n_waagen":1},{"dates":"2022-08-01","values":48.27,"n_waagen":1},{"dates":"2022-08-02","values":48.1,"n_waagen":1},{"dates":"2022-08-03","values":48.62,"n_waagen":1},{"dates":"2022-08-04","values":49.88,"n_waagen":1},{"dates":"2022-08-05","values":48.44,"n_waagen":1},{"dates":"2022-08-06","values":49.0,"n_waagen":1},{"dates":"2022-08-07","values":49.07,"n_waagen":1},{"dates":"2022-08-08","values":48.04,"n_waagen":1},{"dates":"2022-08-09","values":47.72,"n_waagen":1},{"dates":"2022-08-10","values":47.03,"n_waagen":1},{"dates":"2022-08-11","values":46.35,"n_waagen":1},{"dates":"2022-08-12","values":45.72,"n_waagen":1},{"dates":"2022-08-13","values":45.55,"n_waagen":1},{"dates":"2022-08-14","values":45.48,"n_waagen":1},{"dates":"2022-08-15","values":45.44,"n_waagen":1},{"dates":"2022-08-16","values":45.34,"n_waagen":1},{"dates":"2022-08-17","values":45.53,"n_waagen":1},{"dates":"2022-08-18","values":45.69,"n_waagen":1},{"dates":"2022-08-19","values":45.88,"n_waagen":1},{"dates":"2022-08-20","values":45.67,"n_waagen":1},{"dates":"2022-08-21","values":45.82,"n_waagen":1},{"dates":"2022-08-22","values":45.7,"n_waagen":1},{"dates":"2022-08-23","values":45.38,"n_waagen":1},{"dates":"2022-08-24","values":45.1,"n_waagen":1},{"dates":"2022-08-25","values":45.04,"n_waagen":1},{"dates":"2022-08-26","values":45.13,"n_waagen":1},{"dates":"2022-08-27","values":45.41,"n_waagen":1},{"dates":"2022-08-28","values":45.19,"n_waagen":1},{"dates":"2022-08-29","values":45.15,"n_waagen":1},{"dates":"2022-08-30","values":44.95,"n_waagen":1},{"dates":"2022-08-31","values":45.64,"n_waagen":1},{"dates":"2022-09-01","values":45.41,"n_waagen":1},{"dates":"2022-09-02","values":45.77,"n_waagen":1},{"dates":"2022-09-03","values":45.84,"n_waagen":1},{"dates":"2022-09-04","values":46.09,"n_waagen":1},{"dates":"2022-09-05","values":46.42,"n_waagen":1},{"dates":"2022-09-06","values":46.26,"n_waagen":1},{"dates":"2022-09-07","values":46.39,"n_waagen":1},{"dates":"2022-09-08","values":45.68,"n_waagen":1},{"dates":"2022-09-09","values":46.03,"n_waagen":1},{"dates":"2022-09-10","values":45.0,"n_waagen":1},{"dates":"2022-09-11","values":44.59,"n_waagen":1},{"dates":"2022-09-12","values":45.09,"n_waagen":1},{"dates":"2022-09-13","values":45.81,"n_waagen":1},{"dates":"2022-09-14","values":46.12,"n_waagen":1},{"dates":"2022-09-15","values":46.11,"n_waagen":1},{"dates":"2022-09-16","values":46.62,"n_waagen":1},{"dates":"2022-09-17","values":46.6,"n_waagen":1},{"dates":"2022-09-18","values":47.07,"n_waagen":1},{"dates":"2022-09-19","values":47.67,"n_waagen":1},{"dates":"2022-09-20","values":48.13,"n_waagen":1},{"dates":"2022-09-21","values":48.01,"n_waagen":1},{"dates":"2022-09-22","values":48.38,"n_waagen":1},{"dates":"2022-09-23","values":48.57,"n_waagen":1},{"dates":"2022-09-24","values":48.96,"n_waagen":1},{"dates":"2022-09-25","values":48.91,"n_waagen":1},{"dates":"2022-09-26","values":49.0,"n_waagen":1},{"dates":"2022-09-27","values":48.32,"n_waagen":1},{"dates":"2022-09-28","values":48.85,"n_waagen":1},{"dates":"2022-09-29","values":48.5,"n_waagen":1},{"dates":"2022-09-30","values":48.78,"n_waagen":1},{"dates":"2022-10-01","values":47.99,"n_waagen":1},{"dates":"2022-10-02","values":46.76,"n_waagen":1},{"dates":"2022-10-03","values":46.83,"n_waagen":1},{"dates":"2022-10-04","values":47.42,"n_waagen":1},{"dates":"2022-10-05","values":48.46,"n_waagen":1},{"dates":"2022-10-06","values":49.1,"n_waagen":1},{"dates":"2022-10-07","values":49.55,"n_waagen":1},{"dates":"2022-10-08","values":49.64,"n_waagen":1},{"dates":"2022-10-09","values":50.07,"n_waagen":1},{"dates":"2022-10-10","values":50.61,"n_waagen":1},{"dates":"2022-10-11","values":50.53,"n_waagen":1},{"dates":"2022-10-12","values":50.64,"n_waagen":1},{"dates":"2022-10-13","values":50.74,"n_waagen":1},{"dates":"2022-10-14","values":50.11,"n_waagen":1},{"dates":"2022-10-15","values":49.97,"n_waagen":1},{"dates":"2022-10-16","values":49.83,"n_waagen":1},{"dates":"2022-10-17","values":50.37,"n_waagen":1},{"dates":"2022-10-18","values":50.22,"n_waagen":1},{"dates":"2022-10-19","values":50.3,"n_waagen":1},{"dates":"2022-10-20","values":50.63,"n_waagen":1},{"dates":"2022-10-21","values":49.97,"n_waagen":1},{"dates":"2022-10-22","values":50.33,"n_waagen":1},{"dates":"2022-10-23","values":49.85,"n_waagen":1},{"dates":"2022-10-24","values":50.08,"n_waagen":1},{"dates":"2022-10-25","values":49.66,"n_waagen":1},{"dates":"2022-10-26","values":49.95,"n_waagen":1},{"dates":"2022-10-27","values":49.99,"n_waagen":1},{"dates":"2022-10-28","values":50.19,"n_waagen":1},{"dates":"2022-10-29","values":50.15,"n_waagen":1},{"dates":"2022-10-30","values":50.08,"n_waagen":1},{"dates":"2022-10-31","values":50.86,"n_waagen":1},{"dates":"2022-11-01","values":50.35,"n_waagen":1},{"dates":"2022-11-02","values":50.52,"n_waagen":1},{"dates":"2022-11-03","values":49.57,"n_waagen":1},{"dates":"2022-11-04","values":48.47,"n_waagen":1},{"dates":"2022-11-05","values":48.26,"n_waagen":1},{"dates":"2022-11-06","values":48.87,"n_waagen":1},{"dates":"2022-11-07","values":49.04,"n_waagen":1},{"dates":"2022-11-08","values":49.77,"n_waagen":1},{"dates":"2022-11-09","values":48.82,"n_waagen":1},{"dates":"2022-11-10","values":48.58,"n_waagen":1},{"dates":"2022-11-11","values":48.24,"n_waagen":1},{"dates":"2022-11-12","values":48.09,"n_waagen":1},{"dates":"2022-11-13","values":48.42,"n_waagen":1},{"dates":"2022-11-14","values":48.66,"n_waagen":1},{"dates":"2022-11-15","values":48.58,"n_waagen":1},{"dates":"2022-11-16","values":48.29,"n_waagen":1},{"dates":"2022-11-17","values":47.57,"n_waagen":1},{"dates":"2022-11-18","values":47.3,"n_waagen":1},{"dates":"2022-11-19","values":47.4,"n_waagen":1},{"dates":"2022-11-20","values":47.41,"n_waagen":1},{"dates":"2022-11-21","values":47.32,"n_waagen":1},{"dates":"2022-11-22","values":47.77,"n_waagen":1},{"dates":"2022-11-23","values":47.88,"n_waagen":1},{"dates":"2022-11-24","values":47.62,"n_waagen":1},{"dates":"2022-11-25","values":47.32,"n_waagen":1},{"dates":"2022-11-26","values":47.31,"n_waagen":1},{"dates":"2022-11-27","values":47.79,"n_waagen":1},{"dates":"2022-11-28","values":47.64,"n_waagen":1},{"dates":"2022-11-29","values":47.52,"n_waagen":1},{"dates":"2022-11-30","values":47.82,"n_waagen":1},{"dates":"2022-12-01","values":47.91,"n_waagen":1},{"dates":"2022-12-02","values":47.59,"n_waagen":1},{"dates":"2022-12-03","values":47.64,"n_waagen":1},{"dates":"2022-12-04","values":48.26,"n_waagen":1},{"dates":"2022-12-05","values":47.46,"n_waagen":1},{"dates":"2022-12-06","values":47.34,"n_waagen":1},{"dates":"2022-12-07","values":47.42,"n_waagen":1},{"dates":"2022-12-08","values":47.32,"n_waagen":1},{"dates":"2022-12-09","values":47.76,"n_waagen":1},{"dates":"2022-12-10","values":47.93,"n_waagen":1},{"dates":"2022-12-11","values":47.77,"n_waagen":1},{"dates":"2022-12-12","values":47.9,"n_waagen":1},{"dates":"2022-12-13","values":47.76,"n_waagen":1},{"dates":"2022-12-14","values":47.87,"n_waagen":1},{"dates":"2022-12-15","values":47.49,"n_waagen":1},{"dates":"2022-12-16","values":47.08,"n_waagen":1},{"dates":"2022-12-17","values":47.0,"n_waagen":1},{"dates":"2022-12-18","values":46.97,"n_waagen":1},{"dates":"2022-12-19","values":47.87,"n_waagen":1},{"dates":"2022-12-20","values":48.27,"n_waagen":1},{"dates":"2022-12-21","values":47.43,"n_waagen":1},{"dates":"2022-12-22","values":48.26,"n_waagen":1},{"dates":"2022-12-23","values":47.78,"n_waagen":1},{"dates":"2022-12-24","values":47.54,"n_waagen":1},{"dates":"2022-12-25","values":47.71,"n_waagen":1},{"dates":"2022-12-26","values":47.22,"n_waagen":1},{"dates":"2022-12-27","values":47.45,"n_waagen":1},{"dates":"2022-12-28","values":48.24,"n_waagen":1},{"dates":"2022-12-29","values":48.16,"n_waagen":1},{"dates":"2022-12-30","values":48.49,"n_waagen":1},{"dates":"2022-12-31","values":48.25,"n_waagen":1}]
+[
+  {
+    "dates": "2022-01-01",
+    "values": 0.13,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-02",
+    "values": 1.16,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-03",
+    "values": 0.17,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-04",
+    "values": -0.57,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-05",
+    "values": 0.41,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-06",
+    "values": 0.19,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-07",
+    "values": -0.65,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-08",
+    "values": -1.63,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-09",
+    "values": -2.55,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-10",
+    "values": -1.5,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-11",
+    "values": -2.65,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-12",
+    "values": -1.64,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-13",
+    "values": -3.06,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-14",
+    "values": -4.29,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-15",
+    "values": -3.87,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-16",
+    "values": -4.11,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-17",
+    "values": -4.1,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-18",
+    "values": -3.42,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-19",
+    "values": -3.77,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-20",
+    "values": -3.26,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-21",
+    "values": -2.73,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-22",
+    "values": -2.76,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-23",
+    "values": -2.44,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-24",
+    "values": -1.98,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-25",
+    "values": -2.59,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-26",
+    "values": -2.82,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-27",
+    "values": -3.35,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-28",
+    "values": -3.42,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-29",
+    "values": -4.04,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-30",
+    "values": -3.31,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-01-31",
+    "values": -2.72,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-01",
+    "values": -3.34,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-02",
+    "values": -3.48,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-03",
+    "values": -3.83,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-04",
+    "values": -4.12,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-05",
+    "values": -4.12,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-06",
+    "values": -5.21,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-07",
+    "values": -5.1,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-08",
+    "values": -5.58,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-09",
+    "values": -5.11,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-10",
+    "values": -5.73,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-11",
+    "values": -6.08,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-12",
+    "values": -5.92,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-13",
+    "values": -6.1,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-14",
+    "values": -5.8,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-15",
+    "values": -5.37,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-16",
+    "values": -5.84,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-17",
+    "values": -5.07,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-18",
+    "values": -5.85,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-19",
+    "values": -5.22,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-20",
+    "values": -6.04,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-21",
+    "values": -7.11,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-22",
+    "values": -7.32,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-23",
+    "values": -6.93,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-24",
+    "values": -6.95,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-25",
+    "values": -7.1,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-26",
+    "values": -6.61,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-27",
+    "values": -5.68,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-02-28",
+    "values": -5.66,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-01",
+    "values": -5.87,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-02",
+    "values": -5.86,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-03",
+    "values": -5.89,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-04",
+    "values": -6.1,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-05",
+    "values": -6.05,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-06",
+    "values": -6.38,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-07",
+    "values": -6.87,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-08",
+    "values": -7.25,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-09",
+    "values": -7.3,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-10",
+    "values": -7.13,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-11",
+    "values": -7.69,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-12",
+    "values": -7.51,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-13",
+    "values": -6.94,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-14",
+    "values": -7.46,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-15",
+    "values": -7.21,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-16",
+    "values": -7.36,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-17",
+    "values": -7.52,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-18",
+    "values": -6.7,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-19",
+    "values": -6.6,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-20",
+    "values": -6.63,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-21",
+    "values": -3.48,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-22",
+    "values": -1.9,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-23",
+    "values": 0.34,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-24",
+    "values": 2.11,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-25",
+    "values": 2.52,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-26",
+    "values": 2.88,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-27",
+    "values": 4.25,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-28",
+    "values": 5.06,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-29",
+    "values": 5.04,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-30",
+    "values": 4.4,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-03-31",
+    "values": 4.72,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-01",
+    "values": 4.55,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-02",
+    "values": 4.12,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-03",
+    "values": 4.68,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-04",
+    "values": 5.31,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-05",
+    "values": 4.47,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-06",
+    "values": 4.74,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-07",
+    "values": 4.64,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-08",
+    "values": 3.66,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-09",
+    "values": 3.82,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-10",
+    "values": 3.15,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-11",
+    "values": 4.13,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-12",
+    "values": 5.31,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-13",
+    "values": 7.1,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-14",
+    "values": 7.92,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-15",
+    "values": 9.46,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-16",
+    "values": 9.73,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-17",
+    "values": 10.37,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-18",
+    "values": 11.34,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-19",
+    "values": 14.06,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-20",
+    "values": 13.17,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-21",
+    "values": 13.94,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-22",
+    "values": 14.86,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-23",
+    "values": 14.93,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-24",
+    "values": 15.18,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-25",
+    "values": 15.39,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-26",
+    "values": 15.11,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-27",
+    "values": 17.17,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-28",
+    "values": 20.91,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-29",
+    "values": 23.05,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-04-30",
+    "values": 21.86,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-01",
+    "values": 24.11,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-02",
+    "values": 27.34,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-03",
+    "values": 29.19,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-04",
+    "values": 31.06,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-05",
+    "values": 32.24,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-06",
+    "values": 33.98,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-07",
+    "values": 35.41,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-08",
+    "values": 35.74,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-09",
+    "values": 37.38,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-10",
+    "values": 39.0,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-11",
+    "values": 39.14,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-12",
+    "values": 39.02,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-13",
+    "values": 38.73,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-14",
+    "values": 39.64,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-15",
+    "values": 40.07,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-16",
+    "values": 38.62,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-17",
+    "values": 39.66,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-18",
+    "values": 40.94,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-19",
+    "values": 43.38,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-20",
+    "values": 44.07,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-21",
+    "values": 44.29,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-22",
+    "values": 47.13,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-23",
+    "values": 47.75,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-24",
+    "values": 46.29,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-25",
+    "values": 46.99,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-26",
+    "values": 47.01,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-27",
+    "values": 46.15,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-28",
+    "values": 46.11,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-29",
+    "values": 46.42,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-30",
+    "values": 46.55,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-05-31",
+    "values": 46.62,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-01",
+    "values": 47.14,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-02",
+    "values": 47.13,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-03",
+    "values": 48.09,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-04",
+    "values": 49.32,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-05",
+    "values": 48.58,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-06",
+    "values": 48.65,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-07",
+    "values": 48.5,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-08",
+    "values": 47.53,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-09",
+    "values": 47.3,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-10",
+    "values": 48.46,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-11",
+    "values": 50.09,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-12",
+    "values": 50.95,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-13",
+    "values": 50.69,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-14",
+    "values": 51.0,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-15",
+    "values": 52.79,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-16",
+    "values": 53.64,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-17",
+    "values": 55.2,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-18",
+    "values": 58.29,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-19",
+    "values": 58.93,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-20",
+    "values": 56.3,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-21",
+    "values": 58.33,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-22",
+    "values": 58.94,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-23",
+    "values": 60.48,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-24",
+    "values": 59.16,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-25",
+    "values": 58.75,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-26",
+    "values": 57.96,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-27",
+    "values": 57.74,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-28",
+    "values": 58.05,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-29",
+    "values": 58.78,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-06-30",
+    "values": 58.16,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-01",
+    "values": 57.74,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-02",
+    "values": 57.22,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-03",
+    "values": 56.84,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-04",
+    "values": 56.39,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-05",
+    "values": 56.3,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-06",
+    "values": 55.62,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-07",
+    "values": 55.09,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-08",
+    "values": 55.35,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-09",
+    "values": 55.29,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-10",
+    "values": 55.08,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-11",
+    "values": 54.72,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-12",
+    "values": 54.77,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-13",
+    "values": 54.94,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-14",
+    "values": 54.68,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-15",
+    "values": 54.05,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-16",
+    "values": 53.88,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-17",
+    "values": 53.31,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-18",
+    "values": 54.04,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-19",
+    "values": 53.78,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-20",
+    "values": 53.35,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-21",
+    "values": 53.36,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-22",
+    "values": 53.69,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-23",
+    "values": 53.36,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-24",
+    "values": 52.0,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-25",
+    "values": 51.28,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-26",
+    "values": 51.05,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-27",
+    "values": 50.67,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-28",
+    "values": 50.69,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-29",
+    "values": 50.19,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-30",
+    "values": 49.97,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-07-31",
+    "values": 49.85,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-01",
+    "values": 48.27,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-02",
+    "values": 48.1,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-03",
+    "values": 48.62,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-04",
+    "values": 49.88,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-05",
+    "values": 48.44,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-06",
+    "values": 49.0,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-07",
+    "values": 49.07,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-08",
+    "values": 48.04,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-09",
+    "values": 47.72,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-10",
+    "values": 47.03,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-11",
+    "values": 46.35,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-12",
+    "values": 45.72,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-13",
+    "values": 45.55,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-14",
+    "values": 45.48,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-15",
+    "values": 45.44,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-16",
+    "values": 45.34,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-17",
+    "values": 45.53,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-18",
+    "values": 45.69,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-19",
+    "values": 45.88,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-20",
+    "values": 45.67,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-21",
+    "values": 45.82,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-22",
+    "values": 45.7,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-23",
+    "values": 45.38,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-24",
+    "values": 45.1,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-25",
+    "values": 45.04,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-26",
+    "values": 45.13,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-27",
+    "values": 45.41,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-28",
+    "values": 45.19,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-29",
+    "values": 45.15,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-30",
+    "values": 44.95,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-08-31",
+    "values": 45.64,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-01",
+    "values": 45.41,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-02",
+    "values": 45.77,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-03",
+    "values": 45.84,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-04",
+    "values": 46.09,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-05",
+    "values": 46.42,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-06",
+    "values": 46.26,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-07",
+    "values": 46.39,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-08",
+    "values": 45.68,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-09",
+    "values": 46.03,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-10",
+    "values": 45.0,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-11",
+    "values": 44.59,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-12",
+    "values": 45.09,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-13",
+    "values": 45.81,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-14",
+    "values": 46.12,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-15",
+    "values": 46.11,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-16",
+    "values": 46.62,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-17",
+    "values": 46.6,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-18",
+    "values": 47.07,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-19",
+    "values": 47.67,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-20",
+    "values": 48.13,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-21",
+    "values": 48.01,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-22",
+    "values": 48.38,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-23",
+    "values": 48.57,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-24",
+    "values": 48.96,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-25",
+    "values": 48.91,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-26",
+    "values": 49.0,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-27",
+    "values": 48.32,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-28",
+    "values": 48.85,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-29",
+    "values": 48.5,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-09-30",
+    "values": 48.78,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-01",
+    "values": 47.99,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-02",
+    "values": 46.76,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-03",
+    "values": 46.83,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-04",
+    "values": 47.42,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-05",
+    "values": 48.46,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-06",
+    "values": 49.1,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-07",
+    "values": 49.55,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-08",
+    "values": 49.64,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-09",
+    "values": 50.07,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-10",
+    "values": 50.61,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-11",
+    "values": 50.53,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-12",
+    "values": 50.64,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-13",
+    "values": 50.74,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-14",
+    "values": 50.11,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-15",
+    "values": 49.97,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-16",
+    "values": 49.83,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-17",
+    "values": 50.37,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-18",
+    "values": 50.22,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-19",
+    "values": 50.3,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-20",
+    "values": 50.63,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-21",
+    "values": 49.97,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-22",
+    "values": 50.33,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-23",
+    "values": 49.85,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-24",
+    "values": 50.08,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-25",
+    "values": 49.66,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-26",
+    "values": 49.95,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-27",
+    "values": 49.99,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-28",
+    "values": 50.19,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-29",
+    "values": 50.15,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-30",
+    "values": 50.08,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-10-31",
+    "values": 50.86,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-01",
+    "values": 50.35,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-02",
+    "values": 50.52,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-03",
+    "values": 49.57,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-04",
+    "values": 48.47,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-05",
+    "values": 48.26,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-06",
+    "values": 48.87,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-07",
+    "values": 49.04,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-08",
+    "values": 49.77,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-09",
+    "values": 48.82,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-10",
+    "values": 48.58,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-11",
+    "values": 48.24,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-12",
+    "values": 48.09,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-13",
+    "values": 48.42,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-14",
+    "values": 48.66,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-15",
+    "values": 48.58,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-16",
+    "values": 48.29,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-17",
+    "values": 47.57,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-18",
+    "values": 47.3,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-19",
+    "values": 47.4,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-20",
+    "values": 47.41,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-21",
+    "values": 47.32,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-22",
+    "values": 47.77,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-23",
+    "values": 47.88,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-24",
+    "values": 47.62,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-25",
+    "values": 47.32,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-26",
+    "values": 47.31,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-27",
+    "values": 47.79,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-28",
+    "values": 47.64,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-29",
+    "values": 47.52,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-11-30",
+    "values": 47.82,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-01",
+    "values": 47.91,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-02",
+    "values": 47.59,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-03",
+    "values": 47.64,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-04",
+    "values": 48.26,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-05",
+    "values": 47.46,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-06",
+    "values": 47.34,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-07",
+    "values": 47.42,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-08",
+    "values": 47.32,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-09",
+    "values": 47.76,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-10",
+    "values": 47.93,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-11",
+    "values": 47.77,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-12",
+    "values": 47.9,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-13",
+    "values": 47.76,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-14",
+    "values": 47.87,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-15",
+    "values": 47.49,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-16",
+    "values": 47.08,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-17",
+    "values": 47.0,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-18",
+    "values": 46.97,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-19",
+    "values": 47.87,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-20",
+    "values": 48.27,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-21",
+    "values": 47.43,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-22",
+    "values": 48.26,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-23",
+    "values": 47.78,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-24",
+    "values": 47.54,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-25",
+    "values": 47.71,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-26",
+    "values": 47.22,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-27",
+    "values": 47.45,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-28",
+    "values": 48.24,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-29",
+    "values": 48.16,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-30",
+    "values": 48.49,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2022-12-31",
+    "values": 48.25,
+    "n_waagen": 1
+  }
+]
