@@ -44,7 +44,15 @@ clean:
 update-db:
     ./scripts/dump-db-sql.py > assets/db/db.json
 
-update-trachtnet:
+format-trachtnet:
+    #!/usr/bin/env bash
+
+    for f in "$PWD/static/trachtnet-dump"/**/*.json; do
+        jq < "$f" > "$f".pretty
+        mv "$f".pretty "$f"
+    done
+
+update-trachtnet: && format-trachtnet
     ./scripts/dump-trachtnet.py --year $(date +%Y) --outdir static/trachtnet-dump
     
 update-trachtnet-chosen:

@@ -1,1 +1,452 @@
-[{"dates":"2015-01-01","values":-0.14,"n_waagen":9},{"dates":"2015-01-02","values":-0.31,"n_waagen":9},{"dates":"2015-01-03","values":-0.37,"n_waagen":9},{"dates":"2015-01-04","values":-0.47,"n_waagen":9},{"dates":"2015-01-05","values":-0.54,"n_waagen":9},{"dates":"2015-01-06","values":-0.63,"n_waagen":9},{"dates":"2015-01-07","values":-0.69,"n_waagen":9},{"dates":"2015-01-08","values":-0.63,"n_waagen":9},{"dates":"2015-01-09","values":-0.68,"n_waagen":9},{"dates":"2015-01-10","values":-0.94,"n_waagen":9},{"dates":"2015-01-11","values":-1.15,"n_waagen":9},{"dates":"2015-01-12","values":-1.24,"n_waagen":9},{"dates":"2015-01-13","values":-1.33,"n_waagen":10},{"dates":"2015-01-14","values":-1.39,"n_waagen":10},{"dates":"2015-01-15","values":-1.53,"n_waagen":10},{"dates":"2015-01-16","values":-1.73,"n_waagen":10},{"dates":"2015-01-17","values":-1.78,"n_waagen":10},{"dates":"2015-01-18","values":-1.85,"n_waagen":10},{"dates":"2015-01-19","values":-1.89,"n_waagen":11},{"dates":"2015-01-20","values":-1.98,"n_waagen":11},{"dates":"2015-01-21","values":-2.18,"n_waagen":11},{"dates":"2015-01-22","values":-2.24,"n_waagen":11},{"dates":"2015-01-23","values":-2.25,"n_waagen":11},{"dates":"2015-01-24","values":-1.95,"n_waagen":11},{"dates":"2015-01-25","values":-2.1,"n_waagen":11},{"dates":"2015-01-26","values":-2.04,"n_waagen":11},{"dates":"2015-01-27","values":-2.16,"n_waagen":11},{"dates":"2015-01-28","values":-2.14,"n_waagen":10},{"dates":"2015-01-29","values":-2.16,"n_waagen":10},{"dates":"2015-01-30","values":-1.88,"n_waagen":10},{"dates":"2015-01-31","values":-2.17,"n_waagen":10},{"dates":"2015-02-01","values":-2.29,"n_waagen":10},{"dates":"2015-02-02","values":-2.29,"n_waagen":10},{"dates":"2015-02-03","values":-2.32,"n_waagen":10},{"dates":"2015-02-04","values":-2.21,"n_waagen":10},{"dates":"2015-02-05","values":-2.15,"n_waagen":10},{"dates":"2015-02-06","values":-2.19,"n_waagen":10},{"dates":"2015-02-07","values":-2.56,"n_waagen":10},{"dates":"2015-02-08","values":-2.8,"n_waagen":10},{"dates":"2015-02-09","values":-2.73,"n_waagen":10},{"dates":"2015-02-10","values":-2.8,"n_waagen":10},{"dates":"2015-02-11","values":-2.86,"n_waagen":10},{"dates":"2015-02-12","values":-2.9,"n_waagen":10},{"dates":"2015-02-13","values":-2.95,"n_waagen":11},{"dates":"2015-02-14","values":-3.17,"n_waagen":11},{"dates":"2015-02-15","values":-3.22,"n_waagen":11},{"dates":"2015-02-16","values":-3.32,"n_waagen":11},{"dates":"2015-02-17","values":-3.33,"n_waagen":11},{"dates":"2015-02-18","values":-3.49,"n_waagen":11},{"dates":"2015-02-19","values":-3.52,"n_waagen":10},{"dates":"2015-02-20","values":-3.49,"n_waagen":10},{"dates":"2015-02-21","values":-3.6,"n_waagen":10},{"dates":"2015-02-22","values":-3.67,"n_waagen":10},{"dates":"2015-02-23","values":-3.64,"n_waagen":10},{"dates":"2015-02-24","values":-3.71,"n_waagen":9},{"dates":"2015-02-25","values":-3.82,"n_waagen":9},{"dates":"2015-02-26","values":-3.89,"n_waagen":9},{"dates":"2015-02-27","values":-3.81,"n_waagen":9},{"dates":"2015-02-28","values":-3.96,"n_waagen":9},{"dates":"2015-03-01","values":-4.3,"n_waagen":9},{"dates":"2015-03-02","values":-5.1,"n_waagen":9},{"dates":"2015-03-03","values":-5.6,"n_waagen":9},{"dates":"2015-03-04","values":-6.03,"n_waagen":9},{"dates":"2015-03-05","values":-6.32,"n_waagen":9},{"dates":"2015-03-06","values":-6.49,"n_waagen":9},{"dates":"2015-03-07","values":-6.9,"n_waagen":9},{"dates":"2015-03-08","values":-7.48,"n_waagen":8},{"dates":"2015-03-09","values":-7.79,"n_waagen":8},{"dates":"2015-03-10","values":-7.99,"n_waagen":8},{"dates":"2015-03-11","values":-8.18,"n_waagen":10},{"dates":"2015-03-12","values":-8.4,"n_waagen":10},{"dates":"2015-03-13","values":-8.67,"n_waagen":10},{"dates":"2015-03-14","values":-8.89,"n_waagen":10},{"dates":"2015-03-15","values":-9.26,"n_waagen":10},{"dates":"2015-03-16","values":-9.62,"n_waagen":10},{"dates":"2015-03-17","values":-9.88,"n_waagen":10},{"dates":"2015-03-18","values":-10.09,"n_waagen":9},{"dates":"2015-03-19","values":-10.28,"n_waagen":4},{"dates":"2015-03-20","values":-10.41,"n_waagen":4},{"dates":"2015-03-21","values":-10.56,"n_waagen":3},{"dates":"2015-03-22","values":-10.65,"n_waagen":3},{"dates":"2015-03-23","values":-10.84,"n_waagen":4},{"dates":"2015-03-24","values":-10.96,"n_waagen":4},{"dates":"2015-03-25","values":-11.06,"n_waagen":4},{"dates":"2015-03-26","values":-11.12,"n_waagen":4},{"dates":"2015-03-27","values":-11.16,"n_waagen":4},{"dates":"2015-03-28","values":-11.2,"n_waagen":4},{"dates":"2015-03-29","values":-11.26,"n_waagen":4},{"dates":"2015-03-30","values":-11.27,"n_waagen":4},{"dates":"2015-03-31","values":null,"n_waagen":null}]
+[
+  {
+    "dates": "2015-01-01",
+    "values": -0.14,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-01-02",
+    "values": -0.31,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-01-03",
+    "values": -0.37,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-01-04",
+    "values": -0.47,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-01-05",
+    "values": -0.54,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-01-06",
+    "values": -0.63,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-01-07",
+    "values": -0.69,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-01-08",
+    "values": -0.63,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-01-09",
+    "values": -0.68,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-01-10",
+    "values": -0.94,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-01-11",
+    "values": -1.15,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-01-12",
+    "values": -1.24,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-01-13",
+    "values": -1.33,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-01-14",
+    "values": -1.39,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-01-15",
+    "values": -1.53,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-01-16",
+    "values": -1.73,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-01-17",
+    "values": -1.78,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-01-18",
+    "values": -1.85,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-01-19",
+    "values": -1.89,
+    "n_waagen": 11
+  },
+  {
+    "dates": "2015-01-20",
+    "values": -1.98,
+    "n_waagen": 11
+  },
+  {
+    "dates": "2015-01-21",
+    "values": -2.18,
+    "n_waagen": 11
+  },
+  {
+    "dates": "2015-01-22",
+    "values": -2.24,
+    "n_waagen": 11
+  },
+  {
+    "dates": "2015-01-23",
+    "values": -2.25,
+    "n_waagen": 11
+  },
+  {
+    "dates": "2015-01-24",
+    "values": -1.95,
+    "n_waagen": 11
+  },
+  {
+    "dates": "2015-01-25",
+    "values": -2.1,
+    "n_waagen": 11
+  },
+  {
+    "dates": "2015-01-26",
+    "values": -2.04,
+    "n_waagen": 11
+  },
+  {
+    "dates": "2015-01-27",
+    "values": -2.16,
+    "n_waagen": 11
+  },
+  {
+    "dates": "2015-01-28",
+    "values": -2.14,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-01-29",
+    "values": -2.16,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-01-30",
+    "values": -1.88,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-01-31",
+    "values": -2.17,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-02-01",
+    "values": -2.29,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-02-02",
+    "values": -2.29,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-02-03",
+    "values": -2.32,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-02-04",
+    "values": -2.21,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-02-05",
+    "values": -2.15,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-02-06",
+    "values": -2.19,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-02-07",
+    "values": -2.56,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-02-08",
+    "values": -2.8,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-02-09",
+    "values": -2.73,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-02-10",
+    "values": -2.8,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-02-11",
+    "values": -2.86,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-02-12",
+    "values": -2.9,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-02-13",
+    "values": -2.95,
+    "n_waagen": 11
+  },
+  {
+    "dates": "2015-02-14",
+    "values": -3.17,
+    "n_waagen": 11
+  },
+  {
+    "dates": "2015-02-15",
+    "values": -3.22,
+    "n_waagen": 11
+  },
+  {
+    "dates": "2015-02-16",
+    "values": -3.32,
+    "n_waagen": 11
+  },
+  {
+    "dates": "2015-02-17",
+    "values": -3.33,
+    "n_waagen": 11
+  },
+  {
+    "dates": "2015-02-18",
+    "values": -3.49,
+    "n_waagen": 11
+  },
+  {
+    "dates": "2015-02-19",
+    "values": -3.52,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-02-20",
+    "values": -3.49,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-02-21",
+    "values": -3.6,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-02-22",
+    "values": -3.67,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-02-23",
+    "values": -3.64,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-02-24",
+    "values": -3.71,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-02-25",
+    "values": -3.82,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-02-26",
+    "values": -3.89,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-02-27",
+    "values": -3.81,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-02-28",
+    "values": -3.96,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-03-01",
+    "values": -4.3,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-03-02",
+    "values": -5.1,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-03-03",
+    "values": -5.6,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-03-04",
+    "values": -6.03,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-03-05",
+    "values": -6.32,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-03-06",
+    "values": -6.49,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-03-07",
+    "values": -6.9,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-03-08",
+    "values": -7.48,
+    "n_waagen": 8
+  },
+  {
+    "dates": "2015-03-09",
+    "values": -7.79,
+    "n_waagen": 8
+  },
+  {
+    "dates": "2015-03-10",
+    "values": -7.99,
+    "n_waagen": 8
+  },
+  {
+    "dates": "2015-03-11",
+    "values": -8.18,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-03-12",
+    "values": -8.4,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-03-13",
+    "values": -8.67,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-03-14",
+    "values": -8.89,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-03-15",
+    "values": -9.26,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-03-16",
+    "values": -9.62,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-03-17",
+    "values": -9.88,
+    "n_waagen": 10
+  },
+  {
+    "dates": "2015-03-18",
+    "values": -10.09,
+    "n_waagen": 9
+  },
+  {
+    "dates": "2015-03-19",
+    "values": -10.28,
+    "n_waagen": 4
+  },
+  {
+    "dates": "2015-03-20",
+    "values": -10.41,
+    "n_waagen": 4
+  },
+  {
+    "dates": "2015-03-21",
+    "values": -10.56,
+    "n_waagen": 3
+  },
+  {
+    "dates": "2015-03-22",
+    "values": -10.65,
+    "n_waagen": 3
+  },
+  {
+    "dates": "2015-03-23",
+    "values": -10.84,
+    "n_waagen": 4
+  },
+  {
+    "dates": "2015-03-24",
+    "values": -10.96,
+    "n_waagen": 4
+  },
+  {
+    "dates": "2015-03-25",
+    "values": -11.06,
+    "n_waagen": 4
+  },
+  {
+    "dates": "2015-03-26",
+    "values": -11.12,
+    "n_waagen": 4
+  },
+  {
+    "dates": "2015-03-27",
+    "values": -11.16,
+    "n_waagen": 4
+  },
+  {
+    "dates": "2015-03-28",
+    "values": -11.2,
+    "n_waagen": 4
+  },
+  {
+    "dates": "2015-03-29",
+    "values": -11.26,
+    "n_waagen": 4
+  },
+  {
+    "dates": "2015-03-30",
+    "values": -11.27,
+    "n_waagen": 4
+  },
+  {
+    "dates": "2015-03-31",
+    "values": null,
+    "n_waagen": null
+  }
+]
