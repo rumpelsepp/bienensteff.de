@@ -916,23 +916,23 @@
   },
   {
     "dates": "2025-07-03",
-    "values": 46.3,
+    "values": 46.28,
     "n_waagen": 107
   },
   {
     "dates": "2025-07-04",
-    "values": 46.13,
-    "n_waagen": 34
+    "values": 45.99,
+    "n_waagen": 105
   },
   {
     "dates": "2025-07-05",
-    "values": 46.12,
-    "n_waagen": 2
+    "values": 45.85,
+    "n_waagen": 35
   },
   {
     "dates": "2025-07-06",
-    "values": null,
-    "n_waagen": null
+    "values": 45.83,
+    "n_waagen": 2
   },
   {
     "dates": "2025-07-07",
