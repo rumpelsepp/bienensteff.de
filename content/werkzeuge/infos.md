@@ -25,7 +25,7 @@ Infos entnommen aus [piaaumeier.de](https://piaaumeier.de).
 
 Die Anzahl der Milben im Volk als Abschätzung berechnet sich aus dem Produkt des natürlichen Milbenfalls pro Tag und dem Umrechungsfaktor aus der unten stehenden Tabelle.
 
-<table>
+<table class="table table-striped table-sm table-bordered">
     <thead>
         <tr>
             <th>Im Zeitraum</th>
