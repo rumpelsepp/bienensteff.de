@@ -1,20 +1,19 @@
 <script type="module">
-  import { renderBeeCalendar, getDateParam } from "/bundle.js";
+  import { getDateParam, DateTime, BeeStatesCalendar } from "/bundle.js";
 
   let date = getDateParam();
+  document.querySelector("#beestates-calendar-widget #date-form #date-input").value = date.toISODate();
 
-  // Fill date picker with today default.
-  document.querySelector("#widget #input #date").value = date.toISODate();
-  
-
-  renderBeeCalendar("calendar");
+  let cal = new BeeStatesCalendar("beestates-calendar-widget");
+  cal.render();
+  cal.registerSubmitHandler();
 </script>
 
-<div id="widget">
-  <form action="" method="get" id="input">
+<div id="beestates-calendar-widget" class="mb-4">
+  <form id="date-form" action="" method="get" id="input">
     <div class="form-group mb-2">
       <label for="date">Tag X</label>
-      <input class="form-control form-control-sm" name="date" type="date" id="date">
+      <input class="form-control form-control-sm" name="date" type="date" id="date-input">
     </div>
     <button class="btn btn-primary" type="submit">Submit</button>
   </form>
