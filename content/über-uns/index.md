@@ -56,7 +56,7 @@ Die Bienen danken’s uns auf ihre Art – mit einem Honig, der nicht nur gut sc
 
 ## Zertifikate
 
-* [**Geprüfte Qualität — Bayern**](/zertifikate/20250523-gq-zertifikat.pdf) für Honig in der Stufe „Erzeugung, Erfassung, Lagerung, Vermarktung“
+* [**Geprüfte Qualität — Bayern für Honig**](/zertifikate/20250523-gq-zertifikat.pdf) für Honig in der Stufe „Erzeugung, Erfassung, Lagerung, Vermarktung“
 * [Münchner Grüngürtel](gruenguertel-muc.jpg): Als Münchner Imkerei sind wir berechtigt die Marke „Münchner Grüngürtel“ zu nutzen. Das Münchner Grüngürtel-Projekt ist eine [Initiative](https://stadt.muenchen.de/infos/muenchner-gruenguertel.html) der Stadt München.
 
 ## Mitgliedschaften

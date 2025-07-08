@@ -8,7 +8,7 @@ enableRobotsTXT = true
 theme = "bienensteff"
 
 [params]
-description = "Bienen und Honig aus dem Münchner Grüngürtel"
+description = "Honig und Bienen aus dem Münchner Grüngürtel"
 
 [menus]
 [[menus.main]]
@@ -56,21 +56,28 @@ name = 'Datenschutz'
 pageRef = '/datenschutz'
 weight = 50
 
-[markup.goldmark.renderer]
-unsafe = true
 
-  [markup.goldmark.extensions.typographer]
-    apostrophe = '&rsquo;'
-    disable = false
-    ellipsis = '&hellip;'
-    emDash = '&mdash;'
-    enDash = '&ndash;'
-    leftAngleQuote = '&laquo;'
-    leftDoubleQuote = '„'
-    leftSingleQuote = '‚'
-    rightAngleQuote = '&raquo;'
-    rightDoubleQuote = '”'
-    rightSingleQuote = '‘'
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.parser]
+      [markup.goldmark.parser.attribute]
+        block = true
+        title = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.typographer]
+        apostrophe = '&rsquo;'
+        disable = false
+        ellipsis = '&hellip;'
+        emDash = '&mdash;'
+        enDash = '&ndash;'
+        leftAngleQuote = '&laquo;'
+        leftDoubleQuote = '„'
+        leftSingleQuote = '‚'
+        rightAngleQuote = '&raquo;'
+        rightDoubleQuote = '”'
+        rightSingleQuote = '‘' 
 
 [privacy]
   [privacy.youtube]
