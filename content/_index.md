@@ -10,6 +10,7 @@ Wir als Imkerei dürfen da leider nix machen und auch keine Nester entfernen.
 Ganz wichtig: **So a Nest darf nur mit Erlaubnis von der Unteren Naturschutzbehörde entfernt werden!**
 
 Mehr Infos gibt's bei der [Stadt München](https://stadt.muenchen.de/infos/wespen-hornissen-muenchen.html).
+Die Stadt München stellt ein [Online Formular](https://service.muenchen.de/intelliform/forms/01/09/09/meldung_insektennest/index) zur Meldung von Wespen und Hornissen sowie deren Nestern bereit.
 {{</ box >}}
 
 **Servus beinand – und herzlich willkommen bei uns in Großhadern!**
