@@ -17,10 +17,10 @@ Termine in _kursiv_ bzw. mit Stern * sind geschätzt, da der Tag des Hochzeitsfl
 | **0**   | **Startzeitpunkt**              | Tag, an dem die Königin aus dem Volk entfernt wurde, z. B. durch Teilung. |
 | **11**  | **Königin schlüpft**            | Nachschaffungskönigin schlüpft nach elf Tagen, da zur Aufzucht Larven mit einem Alter von ca. zwei Tagen verwendet werden. |
 | **18**  | **Königin geschlechtsreif**     | Sieben Tage nach Schlupf ist die Jungkönigin geschlechtsreif. |
-| _19*_   | _Königin in Eilage_             | Hochzeitsflug bei gutem Wetter (T ≥ 18°C); Eiablage beginnt meist acht Tage nach Schlupf. Wetterbedingt kann die Eiablage später einsetzen. |
+| _19*_   | _Königin in Eilage_             | _Hochzeitsflug bei gutem Wetter (T ≥ 18°C); Eiablage beginnt meist acht Tage nach Schlupf. Wetterbedingt kann die Eiablage später einsetzen._ |
 | **21**  | **Volk ist brutfrei**           | Sämtliche Arbeiterinnenbrut ist geschlüpft; drei Tage später (Tag X + 24) ist sämtliche Drohnenbrut geschlüpft. |
-| _28*_   | _Brut ist verdeckelt_           | Brutzellen sind neun Tage nach Eiablage verdeckelt. |
-| _39*_   | _Schlupf der ersten Jungbienen_ | Jungbienen schlüpfen 21 Tage nach Eiablage. |
+| _28*_   | _Brut ist verdeckelt_           | _Brutzellen sind neun Tage nach Eiablage verdeckelt._ |
+| _39*_   | _Schlupf der ersten Jungbienen_ | _Jungbienen schlüpfen 21 Tage nach Eiablage._ |
 {.table .table-striped .table-sm .table-bordered}
 
 {{< calendar >}}
