@@ -5,6 +5,28 @@ description: "Übersicht und Webtool zum Berechnen von Schlupfterminen von Köni
 
 Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://piaaumeier.de) veröffentlich wurden.
 
+## Nachschaffungskönigin
+
+Mit diesem Webtool können interaktiv die Schlupftermine von *Nachschaffungskönigin* und eine *Abschätzung* für Jungbienen berechnet werden.
+Diese Termine sind sinnvoll für die Planung von Brutwaben- oder Sammelbrutablegern.
+Dazu das Startdatum X auswählen und auf absenden klicken. Der grüne Bereich symbolisiert die brutfreie Zeit.
+Termine in _kursiv_ bzw. mit Stern * sind geschätzt, da der Tag des Hochzeitsflugs und folglich der Start der Eiablage nicht vorhersehbar ist.
+
+| Tag X + | Ereignis                        | Beschreibung |
+|---------|---------------------------------|--------------|
+| **0**   | **Startzeitpunkt**              | Tag, an dem die Königin aus dem Volk entfernt wurde, z. B. durch Teilung. |
+| **11**  | **Königin schlüpft**            | Nachschaffungskönigin schlüpft nach elf Tagen, da zur Aufzucht Larven mit einem Alter von ca. zwei Tagen verwendet werden. |
+| **18**  | **Königin geschlechtsreif**     | Sieben Tage nach Schlupf ist die Jungkönigin geschlechtsreif. |
+| _19*_   | _Königin in Eilage_             | Hochzeitsflug bei gutem Wetter (T ≥ 18°C); Eiablage beginnt meist acht Tage nach Schlupf. Wetterbedingt kann die Eiablage später einsetzen. |
+| **21**  | **Volk ist brutfrei**           | Sämtliche Arbeiterinnenbrut ist geschlüpft; drei Tage später (Tag X + 24) ist sämtliche Drohnenbrut geschlüpft. |
+| _28*_   | _Brut ist verdeckelt_           | Brutzellen sind neun Tage nach Eiablage verdeckelt. |
+| _39*_   | _Schlupf der ersten Jungbienen_ | Jungbienen schlüpfen 21 Tage nach Eiablage. |
+{.table .table-striped .table-sm .table-bordered}
+
+{{< calendar >}}
+
+## Allgemeine Infos
+
 <table class="table table-sm table-striped table-bordered">
 <caption>
 Entwicklungsphasen der drei Bienenwesen
@@ -159,23 +181,3 @@ Entwicklungsphasen der drei Bienenwesen
     </tr>
 </tfoot>
 </table>
-
-## Nachschaffungskönigin
-
-Mit diesem Webtool können interaktiv die Schlupftermine von *Nachschaffungskönigin* und eine *Abschätzung* für Jungbienen berechnet werden.
-Diese Termine sind sinnvoll für die Planung von Brutwaben- oder Sammelbrutablegern.
-Dazu das Startdatum X auswählen und auf absenden klicken. Der grüne Bereich symbolisiert die brutfreie Zeit.
-Termine in _kursiv_ bzw. mit Stern * sind geschätzt, da der Tag des Hochzeitsflugs und folglich der Start der Eiablage nicht vorhersehbar ist.
-
-| Tag X + | Ereignis                        | Beschreibung |
-|---------|---------------------------------|--------------|
-| **0**   | **Startzeitpunkt**              | Tag, an dem die Königin aus dem Volk entfernt wurde, z. B. durch Teilung. |
-| **11**  | **Königin schlüpft**            | Nachschaffungskönigin schlüpft nach elf Tagen, da zur Aufzucht Larven mit einem Alter von ca. zwei Tagen verwendet werden. |
-| **18**  | **Königin geschlechtsreif**     | Sieben Tage nach Schlupf ist die Jungkönigin geschlechtsreif. |
-| _19*_   | _Königin in Eilage_             | Hochzeitsflug bei gutem Wetter (T ≥ 18°C); Eiablage beginnt meist acht Tage nach Schlupf. Wetterbedingt kann die Eiablage später einsetzen. |
-| **21**  | **Volk ist brutfrei**           | Sämtliche Arbeiterinnenbrut ist geschlüpft; drei Tage später (Tag X + 24) ist sämtliche Drohnenbrut geschlüpft. |
-| _28*_   | _Brut ist verdeckelt_           | Brutzellen sind neun Tage nach Eiablage verdeckelt. |
-| _39*_   | _Schlupf der ersten Jungbienen_ | Jungbienen schlüpfen 21 Tage nach Eiablage. |
-{.table .table-striped .table-sm .table-bordered}
-
-{{< calendar >}}
