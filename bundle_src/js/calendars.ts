@@ -82,6 +82,7 @@ class BeeStatesCalendar extends BaseCalendar {
         start: dates.eilageDate.toISODate()!,
         allDay: true,
         color: "gray",
+        classNames: ["fst-italic"]
       },
       {
         title: 'brutfrei (X+21)',
@@ -93,12 +94,14 @@ class BeeStatesCalendar extends BaseCalendar {
         start: dates.verdeckeltDate.toISODate()!,
         allDay: true,
         color: "gray",
+        classNames: ["fst-italic"]
       },
       {
         title: 'Jungbienen (X+39)',
         start: dates.jungbienenDate.toISODate()!,
         allDay: true,
         color: "gray",
+        classNames: ["fst-italic"]
       },
       {
         start: dates.brutfreiDate.toISODate()!,

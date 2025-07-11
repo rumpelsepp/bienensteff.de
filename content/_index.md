@@ -1,5 +1,6 @@
 ---
 title: "Imkerei Stefan Tatschner 🐝"
+description: "Bienen und Honig aus dem Münchner Grüngürtel"
 ---
 
 {{< box header="❗ Hinweis zu aktuellen Anfragen wegen „Bienennestern“ ❗" >}}

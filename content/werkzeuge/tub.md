@@ -1,5 +1,6 @@
 ---
 title: Teilen und Behandeln
+description: "Übersicht und Webtool zum Berechnen der Termine für Teilen und Behandeln (TuB)"
 ---
 
 [Teilen und Behandeln (TuB)](https://www.laves.niedersachsen.de/startseite/tiere/bienenkunde/informationsmaterial/varroa-bekampfungskonzept-teilen-und-behandeln-234443.html) ist ein modernes Konzept zur gleichzeitigen Varroabekämpfung, Wabenhygiene und Königinnenverjüngung.
@@ -7,7 +8,7 @@ TuB ist größtenteils witterungsunabhängig und kann gut nach Zeitplan durchgef
 Die grünen Bereiche im Kalendertool unten symbolisieren die brutfreien Zeiten.
 
 ---
-<table class="table table-sm table-striped table-bordered">
+<table class="table table-sm table-bordered table-striped">
     <thead>
         <tr>
             <th>Schritt</th>
@@ -17,47 +18,47 @@ Die grünen Bereiche im Kalendertool unten symbolisieren die brutfreien Zeiten.
     </thead>
     <tbody>
         <tr>
-            <td>Schritt 1</td>
-            <td>X</td>
-            <td>Startzeitpunkt von TuB durch Teilung des Volkes (optimal Mitte Juli bis Mitte August)</td>
+            <td class="align-middle">Schritt 1</td>
+            <td class="align-middle">X</td>
+            <td class="align-middle">Startzeitpunkt von TuB durch Teilung des Volkes (optimal Mitte Juli bis Mitte August)</td>
         </tr>
         <tr>
-            <td>Schritt 2</td>
-            <td>X + 2</td>
-            <td>Flugling hat sich gebildet und kann behandelt sowie gefüttert werden</td>
+            <td class="align-middle">Schritt 2</td>
+            <td class="align-middle">X + 2</td>
+            <td class="align-middle">Flugling hat sich gebildet und kann behandelt sowie gefüttert werden</td>
         </tr>
         <tr>
-            <td></td>
-            <td>X + 9</td>
-            <td>Flugling ist verdeckelt. Wirkungsgrad der Behandlung ab jetzt geringer.</td>
+            <td class="align-middle"></td>
+            <td class="align-middle">X + 9</td>
+            <td class="align-middle">Flugling ist verdeckelt. Wirkungsgrad der Behandlung ab jetzt geringer.</td>
         </tr>
         <tr>
-            <td>Schritt 3(a)</td>
-            <td>X + 21</td>
+            <td class="align-middle">Schritt 3(a)</td>
+            <td class="align-middle">X + 21</td>
             <td>Das Brutvolk ist brutfrei und kann behandelt werden. Das Brutvolk unter Beachtung der Wabenhygiene auf eine Zarge einengen. Prüfen auf Weiselrichtigkeit. Nachdem sich die Bienen beruhigt haben eine Sprüh-Behandlung mit Oxalsäure durchführen und füttern.</td>
         </tr>
         <tr>
-            <td>Schritt 3(b)</td>
-            <td rowspan="2">X + 27—30</td>
-            <td>Bei starkem Varroabefall erneut mit Oxalsäure behandeln. Starker Befall bei 3000 gefallenen Milben innerhalb der ersten vier Tagen nach Behandlung.</td>
+            <td class="align-middle">Schritt 3(b)</td>
+            <td rowspan="2" class="align-middle">X + 27-30</td>
+            <td class="align-middle">Bei starkem Varroabefall erneut mit Oxalsäure behandeln. Starker Befall bei 3000 gefallenen Milben innerhalb der ersten vier Tagen nach Behandlung.</td>
         </tr>
         <tr>
-            <td>Schritt 3(c)</td>
-            <td>Bei weisellosem Brutvolk dieses auflösen oder neu mit einer Königing aus einem Jungvolk beweiseln (in ca. 10% der Fälle notwendig).</td>
+            <td class="align-middle">Schritt 3(c)</td>
+            <td class="align-middle">Bei weisellosem Brutvolk dieses auflösen oder neu mit einer Königing aus einem Jungvolk beweiseln (in ca. 10% der Fälle notwendig).</td>
         </tr>
         <tr>
-            <td></td>
-            <td>X + 28</td>
-            <td>Das Brutvolk hat die erste verdeckelte Brut. Wirkungsgrad der Behandlung ab jetzt geringer.</td>
+            <td class="align-middle"></td>
+            <td class="align-middle">X + 28</td>
+            <td class="align-middle">Das Brutvolk hat die erste verdeckelte Brut. Wirkungsgrad der Behandlung ab jetzt geringer.</td>
         </tr>
         <tr>
-            <td rowspan="2">Ausblick</td>
-            <td>September</td>
-            <td>Flugling und Brutvolk füttern.</td>
+            <td class="align-middle" rowspan="2">Ausblick</td>
+            <td class="align-middle">September</td>
+            <td class="align-middle">Flugling und Brutvolk füttern.</td>
         </tr>
         <tr>
-            <td>Oktober (optional)</td>
-            <td>Beide Volksteile wiedervereinigen.</td>
+            <td class="align-middle">Oktober (optional)</td>
+            <td class="align-middle">Beide Volksteile wiedervereinigen.</td>
         </tr>
     </tbody>
 </table>
