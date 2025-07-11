@@ -4,7 +4,7 @@ title: "Imkerei Stefan Tatschner 🐝"
 
 {{< box header="❗ Hinweis zu aktuellen Anfragen wegen „Bienennestern“ ❗" >}}
 Zurzeit kriegen wir recht viele Meldungen wegen „Bienennestern“, zum Beispiel unterm Balkon, in der Mülltonnenbox oder am Gartenhäusl.
-Aber: Die Schwarmzeit für Honigbienen ist heuer (2025) schon vorbei. In den allermeisten Fällen san's keine Bienen, sondern Wespen und die steh’n unter strengem Naturschutz.
+Aber: Die Schwarmzeit für Honigbienen ist heuer (2025) schon vorbei. In den allermeisten Fällen san's keine Bienen, sondern Wespen und die steh’n unter [strengem Naturschutz](https://www.bussgeldkatalog.org/news/wespen-vertreiben-was-ist-erlaubt-was-nicht-2836604/).
 
 Wir als Imkerei dürfen da leider nix machen und auch keine Nester entfernen.
 Ganz wichtig: **So a Nest darf nur mit Erlaubnis von der Unteren Naturschutzbehörde entfernt werden!**
@@ -13,7 +13,7 @@ Mehr Infos gibt's bei der [Stadt München](https://stadt.muenchen.de/infos/wespe
 Die Stadt München stellt ein [Online Formular](https://service.muenchen.de/intelliform/forms/01/09/09/meldung_insektennest/index) zur Meldung von Wespen und Hornissen sowie deren Nestern bereit.
 {{</ box >}}
 
-**Servus beinand – und herzlich willkommen bei uns in Großhadern!**
+## Servus beinand – und herzlich willkommen bei uns in Großhadern! {.h4 .mt-4 .mb-3}
 
 Schön, dass ihr euch durch die digitalen Wiesen und Wälder des Internets zu uns verirrt habt.
 Wir sind eine [kleine, feine Imkerei]({{< relref "über-uns" >}}) im Münchner Südwesten – mitten im „Münchner Grüngürtel“.
