@@ -967,17 +967,17 @@
   {
     "dates": "2025-07-13",
     "values": 59.51,
-    "n_waagen": 27
+    "n_waagen": 35
   },
   {
     "dates": "2025-07-14",
-    "values": 59.54,
-    "n_waagen": 2
+    "values": 59.3,
+    "n_waagen": 19
   },
   {
     "dates": "2025-07-15",
-    "values": null,
-    "n_waagen": null
+    "values": 59.31,
+    "n_waagen": 2
   },
   {
     "dates": "2025-07-16",

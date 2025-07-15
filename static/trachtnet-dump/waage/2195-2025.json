@@ -961,18 +961,18 @@
   },
   {
     "dates": "2025-07-12",
-    "values": 51.3,
+    "values": 51.29,
     "n_waagen": 1
   },
   {
     "dates": "2025-07-13",
-    "values": null,
-    "n_waagen": null
+    "values": 51.09,
+    "n_waagen": 1
   },
   {
     "dates": "2025-07-14",
-    "values": null,
-    "n_waagen": null
+    "values": 50.71,
+    "n_waagen": 1
   },
   {
     "dates": "2025-07-15",
