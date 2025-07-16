@@ -971,13 +971,38 @@
   },
   {
     "dates": "2025-07-14",
+    "values": 34.24,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2025-07-15",
+    "values": 33.67,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2025-07-10",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-07-11",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-07-12",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-07-13",
     "values": null,
     "n_waagen": null
   },
   {
     "dates": "2025-07-15",
-    "values": null,
-    "n_waagen": null
+    "values": 33.67,
+    "n_waagen": 1
   },
   {
     "dates": "2025-07-16",
