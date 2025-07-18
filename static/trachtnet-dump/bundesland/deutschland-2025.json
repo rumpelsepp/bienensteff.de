@@ -967,32 +967,32 @@
   {
     "dates": "2025-07-13",
     "values": 38.34,
-    "n_waagen": 878
+    "n_waagen": 880
   },
   {
     "dates": "2025-07-14",
     "values": 38.21,
-    "n_waagen": 878
+    "n_waagen": 879
   },
   {
     "dates": "2025-07-15",
-    "values": 37.94,
+    "values": 37.93,
     "n_waagen": 879
   },
   {
     "dates": "2025-07-16",
-    "values": 37.91,
-    "n_waagen": 697
+    "values": 37.81,
+    "n_waagen": 879
   },
   {
     "dates": "2025-07-17",
-    "values": 37.89,
-    "n_waagen": 11
+    "values": 37.64,
+    "n_waagen": 798
   },
   {
     "dates": "2025-07-18",
-    "values": null,
-    "n_waagen": null
+    "values": 37.65,
+    "n_waagen": 2
   },
   {
     "dates": "2025-07-19",
