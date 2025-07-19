@@ -7,7 +7,7 @@ layout: single
 **Gültig ab 08.06.2025**
 
 Durchgestrichene Sorten sind derzeit ausverkauft.
-Die frische Ernte gibt’s immer ab August.
+Die frische Ernte gibt’s immer ab September.
 
 ## Honig im Glas
 
