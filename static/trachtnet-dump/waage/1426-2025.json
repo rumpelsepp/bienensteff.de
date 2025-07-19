@@ -975,14 +975,24 @@
     "n_waagen": 1
   },
   {
+    "dates": "2025-07-15",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-07-16",
+    "values": null,
+    "n_waagen": null
+  },
+  {
     "dates": "2025-07-17",
-    "values": 19.64,
+    "values": 19.61,
     "n_waagen": 1
   },
   {
     "dates": "2025-07-18",
-    "values": null,
-    "n_waagen": null
+    "values": 19.11,
+    "n_waagen": 1
   },
   {
     "dates": "2025-07-19",
