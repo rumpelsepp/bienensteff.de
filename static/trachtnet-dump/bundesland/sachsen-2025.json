@@ -1012,12 +1012,12 @@
   {
     "dates": "2025-07-22",
     "values": 55.48,
-    "n_waagen": 15
+    "n_waagen": 16
   },
   {
     "dates": "2025-07-23",
-    "values": null,
-    "n_waagen": null
+    "values": 55.24,
+    "n_waagen": 15
   },
   {
     "dates": "2025-07-24",

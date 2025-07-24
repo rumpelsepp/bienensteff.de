@@ -997,27 +997,27 @@
   {
     "dates": "2025-07-19",
     "values": 33.57,
-    "n_waagen": 45
+    "n_waagen": 46
   },
   {
     "dates": "2025-07-20",
     "values": 33.57,
-    "n_waagen": 44
+    "n_waagen": 45
   },
   {
     "dates": "2025-07-21",
-    "values": 33.48,
-    "n_waagen": 44
+    "values": 33.49,
+    "n_waagen": 45
   },
   {
     "dates": "2025-07-22",
-    "values": 33.36,
-    "n_waagen": 37
+    "values": 33.32,
+    "n_waagen": 45
   },
   {
     "dates": "2025-07-23",
-    "values": null,
-    "n_waagen": null
+    "values": 33.17,
+    "n_waagen": 13
   },
   {
     "dates": "2025-07-24",
