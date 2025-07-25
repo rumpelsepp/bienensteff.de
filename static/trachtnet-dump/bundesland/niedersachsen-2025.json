@@ -1012,17 +1012,17 @@
   {
     "dates": "2025-07-22",
     "values": 28.17,
-    "n_waagen": 22
+    "n_waagen": 23
   },
   {
     "dates": "2025-07-23",
     "values": 27.95,
-    "n_waagen": 5
+    "n_waagen": 23
   },
   {
     "dates": "2025-07-24",
-    "values": null,
-    "n_waagen": null
+    "values": 27.6,
+    "n_waagen": 11
   },
   {
     "dates": "2025-07-25",
