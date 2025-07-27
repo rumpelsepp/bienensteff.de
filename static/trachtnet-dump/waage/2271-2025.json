@@ -1015,14 +1015,24 @@
     "n_waagen": 1
   },
   {
+    "dates": "2025-07-23",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-07-24",
+    "values": null,
+    "n_waagen": null
+  },
+  {
     "dates": "2025-07-25",
-    "values": 12.23,
+    "values": 12.08,
     "n_waagen": 1
   },
   {
     "dates": "2025-07-26",
-    "values": null,
-    "n_waagen": null
+    "values": 12.07,
+    "n_waagen": 1
   },
   {
     "dates": "2025-07-27",
