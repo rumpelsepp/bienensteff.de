@@ -1041,22 +1041,22 @@
   },
   {
     "dates": "2025-07-28",
-    "values": 16.02,
-    "n_waagen": 8
+    "values": 16.04,
+    "n_waagen": 9
   },
   {
     "dates": "2025-07-29",
-    "values": 15.74,
-    "n_waagen": 8
+    "values": 15.78,
+    "n_waagen": 9
   },
   {
     "dates": "2025-07-30",
-    "values": 15.75,
-    "n_waagen": 7
+    "values": 15.74,
+    "n_waagen": 9
   },
   {
     "dates": "2025-07-31",
-    "values": null,
-    "n_waagen": null
+    "values": 15.65,
+    "n_waagen": 9
   }
 ]

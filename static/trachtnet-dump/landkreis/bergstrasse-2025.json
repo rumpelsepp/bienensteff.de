@@ -1046,17 +1046,17 @@
   },
   {
     "dates": "2025-07-29",
-    "values": 19.05,
+    "values": 19.07,
     "n_waagen": 4
   },
   {
     "dates": "2025-07-30",
-    "values": 19.02,
-    "n_waagen": 2
+    "values": 18.91,
+    "n_waagen": 4
   },
   {
     "dates": "2025-07-31",
-    "values": null,
-    "n_waagen": null
+    "values": 18.7,
+    "n_waagen": 4
   }
 ]
