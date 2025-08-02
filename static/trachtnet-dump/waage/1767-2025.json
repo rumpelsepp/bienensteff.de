@@ -1051,12 +1051,12 @@
   },
   {
     "dates": "2025-07-30",
-    "values": -8.53,
+    "values": -8.54,
     "n_waagen": 1
   },
   {
     "dates": "2025-07-31",
-    "values": null,
-    "n_waagen": null
+    "values": -8.53,
+    "n_waagen": 1
   }
 ]
