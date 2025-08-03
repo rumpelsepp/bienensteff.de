@@ -1056,18 +1056,18 @@
   },
   {
     "dates": "2025-07-31",
-    "values": 8.54,
+    "values": 8.57,
     "n_waagen": 4
   },
   {
     "dates": "2025-08-01",
-    "values": 8.74,
-    "n_waagen": 1
+    "values": 8.43,
+    "n_waagen": 4
   },
   {
     "dates": "2025-08-02",
-    "values": null,
-    "n_waagen": null
+    "values": 8.4,
+    "n_waagen": 2
   },
   {
     "dates": "2025-08-03",
