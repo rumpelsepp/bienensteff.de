@@ -1102,22 +1102,22 @@
   {
     "dates": "2025-08-09",
     "values": 38.77,
-    "n_waagen": 100
+    "n_waagen": 101
   },
   {
     "dates": "2025-08-10",
-    "values": 38.51,
-    "n_waagen": 72
+    "values": 38.64,
+    "n_waagen": 100
   },
   {
     "dates": "2025-08-11",
-    "values": 38.55,
-    "n_waagen": 2
+    "values": 38.44,
+    "n_waagen": 82
   },
   {
     "dates": "2025-08-12",
-    "values": null,
-    "n_waagen": null
+    "values": 38.44,
+    "n_waagen": 2
   },
   {
     "dates": "2025-08-13",
