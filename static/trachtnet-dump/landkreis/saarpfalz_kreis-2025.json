@@ -1101,18 +1101,18 @@
   },
   {
     "dates": "2025-08-09",
-    "values": 28.24,
+    "values": 28.18,
     "n_waagen": 2
   },
   {
     "dates": "2025-08-10",
-    "values": 28.08,
-    "n_waagen": 1
+    "values": 28.03,
+    "n_waagen": 2
   },
   {
     "dates": "2025-08-11",
-    "values": null,
-    "n_waagen": null
+    "values": 28.02,
+    "n_waagen": 1
   },
   {
     "dates": "2025-08-12",
