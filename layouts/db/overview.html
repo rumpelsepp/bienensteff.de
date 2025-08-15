@@ -21,8 +21,8 @@
             <tr>
                 <th>Artikelnummer</th>
                 <th>GTIN</th>
-                <th>Marke</th>
                 <th>Produktname</th>
+                <th>Marke</th>
             </tr>
         </thead>
         <tbody>
@@ -31,8 +31,8 @@
             <tr>
                 <td>{{ partial "db/crosslink.html" (dict "id" .id "text" .sku) }}</td>
                 <td>{{ partial "db/link_gtin.html" (dict "gtin" .gtin) }}</td>
-            <td>{{ .brand }}</td>
-            <td>{{ .name }} {{ .filling_quantity }}</td>
+                <td>{{ .name }} {{ .filling_quantity }} {{ .filling_unit }}</td>
+                <td>{{ .brand }}</td>
             </tr>
         {{ end }}
 
