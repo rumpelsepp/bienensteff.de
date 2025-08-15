@@ -1,7 +1,7 @@
 #!/usr/bin/env -S uv run -qs
 
 # /// script
-# requires-python = ">=3.12"
+# requires-python = ">=3.13"
 # dependencies = [
 #     "httpx",
 # ]
@@ -16,7 +16,7 @@ from typing import Any
 import httpx
 
 LOS_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=319545385&single=true&output=csv"
-ARTIClE_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=287358663&single=true&output=csv"
+ARTICLE_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=287358663&single=true&output=csv"
 EIMER_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=614306566&single=true&output=csv"
 SCHLEUDERUNG_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=424473037&single=true&output=csv"
 ABFUELLUNG_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=137162969&single=true&output=csv"
@@ -32,12 +32,19 @@ def fetch_sheet(url: str) -> list[dict[str, Any]]:
 def init_db(cur: sqlite3.Cursor) -> None:
     cur.executescript("""
         CREATE TABLE articles (
+            sku TEXT PRIMARY KEY,
             gtin TEXT,
+            name TEXT,
+            type TEXT,
+            label TEXT,
+            brand TEXT,
+            brand_short TEXT,
             description TEXT,
-            long_description TEXT,
-            msrp REAL,
-            pu REAL,
-            comment TEXT
+            hint TEXT,
+            marketing_note TEXT,
+            brand_owner TEXT,
+            comment TEXT,
+            filling_quantity TEXT
         ) STRICT;
 
         CREATE TABLE batches (
@@ -66,10 +73,11 @@ def init_db(cur: sqlite3.Cursor) -> None:
         ) STRICT;
 
         CREATE TABLE fillings (
+            id TEXT PRIMARY KEY,
             date TEXT,
             best_before TEXT,
             batch_id TEXT,
-            gtin TEXT,
+            sku TEXT,
             weight REAL,
             quantity REAL,
             comment TEXT,
@@ -83,27 +91,39 @@ def convert_to_float(raw: str, remove: str) -> float:
 
 
 def import_articles(cur: sqlite3.Cursor) -> None:
-    for article in fetch_sheet(ARTIClE_URL):
-        if article["GTIN"].startswith("0000000"):
-            continue
+    for article in fetch_sheet(ARTICLE_URL):
         cur.execute(
             """
             INSERT INTO articles(
+                sku,
                 gtin,
+                name,
+                type,
+                label,
+                brand,
+                brand_short,
                 description,
-                long_description,
-                msrp,
-                pu,
-                comment
-            ) VALUES (?, ?, ?, ?, ?, ?);
+                hint,
+                marketing_note,
+                brand_owner,
+                comment,
+                filling_quantity
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
         """,
             (
-                f"GTIN-{article['GTIN']}",
+                article["SKU"],
+                article["GTIN"],
+                article["Produktname"],
+                article["Produktart"],
                 article["Bezeichnung"],
-                article["Artikelbeschreibung"],
-                convert_to_float(article["UVP"], " €"),
-                convert_to_float(article["VPE"], " kg"),
+                article["Marke"],
+                article["Marke (kurz)"],
+                article["Beschreibung"],
+                article["Produkthinweis"],
+                article["Marketingbotschaft"],
+                article["Markeninhaber"],
                 article["Kommentar"],
+                article["Nettofüllmenge"],
             ),
         )
 
@@ -177,29 +197,31 @@ def import_batches(cur: sqlite3.Cursor) -> None:
 
 
 def import_fillings(cur: sqlite3.Cursor) -> None:
-    for transaction in fetch_sheet(ABFUELLUNG_URL):
+    for filling in fetch_sheet(ABFUELLUNG_URL):
         cur.execute(
             """
             INSERT INTO fillings(
+                id,
                 date,
                 best_before,
                 batch_id,
-                gtin,
+                sku,
                 weight,
                 quantity,
                 comment,
                 dib_field
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
         """,
             (
-                datetime.strptime(transaction["Datum"], "%d.%m.%Y"),
-                datetime.strptime(transaction["MHD"], "%d.%m.%Y"),
-                transaction["Los"],
-                f"GTIN-{transaction['GTIN']}",
-                convert_to_float(transaction["Gesamt"], " kg"),
-                int(transaction["Stück"]),
-                transaction["Kommentar"],
-                transaction["DIB"],
+                filling["Nummer"],
+                datetime.strptime(filling["Datum"], "%d.%m.%Y"),
+                datetime.strptime(filling["MHD"], "%d.%m.%Y"),
+                filling["Los"],
+                filling["SKU"],
+                convert_to_float(filling["Gesamt"], " kg"),
+                int(filling["Stück"]),
+                filling["Kommentar"],
+                filling["DIB"],
             ),
         )
 
@@ -208,54 +230,67 @@ def gen_json(cur: sqlite3.Cursor) -> str:
     output: dict[str, Any] = {}
 
     cur.execute("SELECT * FROM articles")
-    output["articles"] = [dict(row) for row in cur.fetchall()]
-    for article in output["articles"]:
-        article["id"] = article["gtin"]
-        cur.execute(f"SELECT * from fillings WHERE fillings.gtin = '{article['gtin']}'")
-        if (rows := cur.fetchall()) is not None:
-            batches = set()
-            for row_raw in rows:
-                row = dict(row_raw)
-                batches.add(row["batch_id"])
-            article["batches"] = list(batches)
 
+    res = []
+    for article in [dict(row) for row in cur.fetchall()]:
+        article["id"] = f"SKU-{article['sku']}"
+
+        cur.execute(f"SELECT * from fillings WHERE fillings.sku = '{article['sku']}'")
+        if (rows := cur.fetchall()) is not None:
+            fillings = []
+            for row_raw in rows:
+                fillings.append(dict(row_raw))
+            article["fillings"] = fillings
+        res.append(article)
+    
+    res = list(filter(lambda a: ("fillings" in a and a["fillings"]), res))
+    output["articles"] = res
+    
     cur.execute("SELECT * FROM buckets")
-    output["buckets"] = [dict(row) for row in cur.fetchall()]
+    res = []
+    for bucket in [dict(row) for row in cur.fetchall()]:
+        cur.execute(f"SELECT * FROM centrifugations WHERE centrifugations.id = '{bucket['centrifugation_id']}'")
+        if centrifugations := [dict(row) for row in cur.fetchall()]:
+            bucket["centrifugation"] = centrifugations[0]
+        cur.execute(f"SELECT * FROM batches WHERE batches.id = '{bucket['batch_id']}'")
+        if batches := [dict(row) for row in cur.fetchall()]:
+            bucket["batch"] = batches[0]
+        res.append(bucket)
+    output["buckets"] = res
 
     cur.execute("SELECT * FROM centrifugations")
-    output["centrifugations"] = [dict(row) for row in cur.fetchall()]
-    for centrifugation in output["centrifugations"]:
+    res = []
+    for centrifugation in [dict(row) for row in cur.fetchall()]:
         cur.execute(
-            f"SELECT DISTINCT id FROM buckets WHERE buckets.centrifugation_id = '{centrifugation['id']}'"
+            f"SELECT DISTINCT * FROM buckets WHERE buckets.centrifugation_id = '{centrifugation['id']}'"
         )
-        centrifugation["buckets"] = [row["id"] for row in cur.fetchall()]
-        cur.execute(
-            f"SELECT DISTINCT batch_id FROM buckets WHERE buckets.centrifugation_id = '{centrifugation['id']}'"
-        )
-        centrifugation["batches"] = list(
-            {row["batch_id"] for row in cur.fetchall() if row["batch_id"] != ""}
-        )
+        centrifugation["buckets"] = [dict(row) for row in cur.fetchall()]
+        res.append(centrifugation)
+
+    output["centrifugations"] = res
 
     cur.execute("SELECT * FROM batches")
-    output["batches"] = [dict(row) for row in cur.fetchall()]
-    for batch in output["batches"]:
-        cur.execute(f"SELECT DISTINCT id FROM buckets WHERE buckets.batch_id = '{batch['id']}'")
-        batch["buckets"] = [row["id"] for row in cur.fetchall()]
-        batch["centrifugations"] = []
-        for bucket_id in batch["buckets"]:
-            cur.execute(
-                f"SELECT DISTINCT centrifugation_id FROM buckets WHERE buckets.id = '{bucket_id}'"
-            )
-            if (row := cur.fetchone()) is not None:
-                row = dict(row)
-                if "centrifugation_id" in row and row["centrifugation_id"]:
-                    batch["centrifugations"].append(row["centrifugation_id"])
-        batch["centrifugations"] = list(set(batch["centrifugations"]))
-        if not batch["centrifugations"]:
-            del batch["centrifugations"]
+    res = []
+    for batch in [dict(row) for row in cur.fetchall()]:
+        cur.execute(
+            f"SELECT DISTINCT * FROM buckets WHERE buckets.batch_id = '{batch['id']}'"
+        )
+        batch["buckets"] = [dict(row) for row in cur.fetchall()]
 
-        cur.execute(f"SELECT DISTINCT gtin FROM fillings WHERE fillings.batch_id = '{batch['id']}'")
-        batch["articles"] = list(set([dict(row)["gtin"] for row in cur.fetchall()]))
+        cur.execute(
+            f"SELECT DISTINCT * FROM fillings WHERE fillings.batch_id = '{batch['id']}'"
+        )
+        batch["fillings"] = [dict(row) for row in cur.fetchall()]
+        res.append(batch)
+    
+    output["batches"] = res
+
+    cur.execute("SELECT * FROM fillings")
+    res = []
+    for filling in [dict(row) for row in cur.fetchall()]:
+        res.append(filling)
+
+    output["fillings"] = res
 
     return json.dumps(output, indent=4)
 

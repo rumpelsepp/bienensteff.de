@@ -1,0 +1,33 @@
+<tr><th><abbr title="Stock Keeping Unit">SKU</abbr></th><td>{{ .Params.sku }}</td></tr>
+{{ with .Params.gtin }}
+    <tr><th><abbr title="Global Trade Item Number (vormals EAN)">GTIN</abbr></th><td>{{ partial "db/link_gtin.html" (dict "gtin" .) }}</td></tr>
+{{ end }}
+<tr><th>Marke</th><td>{{ .Params.brand }}</td></tr>
+<tr><th>Beschreibung</th><td>{{ .Params.description }}</td></tr>
+{{ with .Params.hint }}
+    <tr><th>Produkthinweis</th><td>{{ . }}</td></tr>
+{{ end }}
+{{ with .Params.marketing_note }}
+    <tr><th>Marketingbotschaft</th><td>{{ . }}</td></tr>
+{{ end }}
+{{ with .Params.fillings }}
+    <tr><th>Abfüllungen</th>
+        <td>
+            <ul>
+                {{ range . }}
+                    <li>
+                        <a href="{{ absURL (urls.JoinPath "datenbank" "q" (strings.ToLower .id)) }}">{{ .id }}</a>
+                        <ul>
+                            <li><strong>Abfülldatum</strong>: {{ partial "db/date" (dict "date" .date) }}</li>
+                            <li><strong>MHD</strong>: {{ partial "db/date" (dict "date" .best_before) }}</li>
+                            <li><strong>Los</strong>: {{ partial "db/crosslink" (dict "id" .batch_id) }}</li>
+                            {{ with .dib_field }}
+                                <li><strong>DIB Kontrollnummer</strong>: {{ . }}</li>
+                            {{ end }}
+                        </ul>
+                    </li>
+                {{ end }}
+            </ul>
+        </td>
+    </tr>
+{{ end }}

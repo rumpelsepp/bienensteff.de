@@ -33,7 +33,7 @@
 {{ end }}
 
 {{ $type := "" }}
-{{ if strings.HasPrefix .Params.id "GTIN-" }}
+{{ if strings.HasPrefix .Params.id "SKU-" }}
     {{ $type = "article" }}
 {{ else if strings.HasPrefix .Params.id "L-" }}
     {{ $type = "batch" }}
@@ -41,6 +41,8 @@
     {{ $type = "bucket" }}
 {{ else if strings.HasPrefix .Params.id "S-" }}
     {{ $type = "centrifugation" }}
+{{ else if strings.HasPrefix .Params.id "A-" }}
+    {{ $type = "filling" }}
 {{ else }}
     {{ errorf "invalid nummer: %s" .Params.id }}
 {{ end }}
@@ -53,7 +55,7 @@
     <header>
         <h1>
             {{ if eq $type "article" }}
-                {{ .Params.description }}
+                {{ .Params.label }}
             {{ else if eq $type "batch" }}
                 {{ $.Title }}
                 (Los)
@@ -63,117 +65,46 @@
             {{ else if eq $type "centrifugation" }}
                 {{ $.Title }}
                 (Schleuderung)
+            {{ else if eq $type "filling" }}
+                {{ $.Title }}
+                (Abfüllung)
             {{ end }}
         </h1>
     </header>
     
     <table id="honeydb" class="table table-sm table-striped table-bordered">
         {{ if eq $type "article" }}
-            <tr><th>Bezeichnung</th><td>{{ .Params.description }}</td></tr>
-            <tr><th><abbr title="Global Trade Item Number (vormals EAN)">GTIN</abbr></th> <td><a href="https://www.gs1.org/services/verified-by-gs1/results?gtin={{ strings.TrimPrefix "GTIN-" .Params.gtin }}">{{ strings.TrimPrefix "GTIN-" .Params.gtin }}</a></td></tr>
-            <tr><th>Artikelbeschreibung</th><td>{{ .Params.long_description }}</td></tr>
-            {{ with .Params.batches }}
-                <tr><th>Honiglose</th>
-                <td>
-                    <ul>
-                        {{ range . }}
-                            <li><a href="{{ absURL (urls.JoinPath "datenbank" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
-                        {{ end }}
-                    </ul>
-                </td></tr>
-            {{ end }}
+            {{ partial "db/single_article.html" . }}
             {{ partial "inline-permalink.html" . }}
         {{ end }}
         {{ if eq $type "batch" }}
-            <tr><th>Losnummer</th><td>{{ .Params.id }}</td></tr>
-            <tr><th>Sortenempfehlung</th><td>{{ .Params.sort }}</td></tr>
-            <tr><th>Gewicht</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.weight) "." "," }}</td></tr>
-            {{ with .Params.articles }}
-                <tr><th>Artikel</th>
-                <td>
-                    <ul>
-                        {{ range . }}
-                            {{ if strings.HasPrefix . "GTIN-0000000" }}{{ continue }}{{ end }}
-                            <li><a href="{{ absURL (urls.JoinPath "datenbank" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
-                        {{ end }}
-                    </ul>
-                </td></tr>
-            {{ end }}
-            {{ with .Params.fillings }}
-                <tr><th>Abfüllungen</th>
-                <td>
-                    <ul>
-                        {{ range . }}
-                            <li><a href="{{ absURL (urls.JoinPath "datenbank" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
-                        {{ end }}
-                    </ul>
-                </td></tr>
-            {{ end }}
-            {{ with .Params.centrifugations }}
-                <tr><th>Schleuderungen</th>
-                <td>
-                    <ul>
-                        {{ range . }}
-                            <li><a href="{{ absURL (urls.JoinPath "datenbank" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
-                        {{ end }}
-                    </ul>
-                </td></tr>
-            {{ end }}
-            {{ with .Params.buckets }}
-                <tr><th>Eimer</th><td>
-                    <ul>
-                        {{ range . }}
-                            <li><a href="{{ absURL (urls.JoinPath "datenbank" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
-                        {{ end }}
-                    </ul>
-                </td></tr>
-            {{ end }}
+            {{ partial "db/single_batch.html" . }}
             {{ partial "inline-analysis-permalink.html" .Params.id }}
             {{ partial "inline-permalink.html" . }}
         {{ else if eq $type "bucket" }}
-            <tr><th>Eimernummer</th><td>{{ .Params.id }}</td></tr>
-            {{ with .Params.extraction_id }}
-                <tr><th>Schleuderungsnummer</th><td><a href="{{ absURL (urls.JoinPath "datenbank" "q" (strings.ToLower .)) }}">{{ . }}</a></td></tr>
-            {{ end }}
-            {{ with .Params.batch_id }}
-                <tr><th>Losnummer</th><td><a href="{{ absURL (urls.JoinPath "datenbank" "q" (strings.ToLower .)) }}">{{ . }}</a></td></tr>
-            {{ end }}
-            <tr><th>Wassergehalt</th><td>{{ strings.Replace (fmt.Printf "%.2f %%" (math.Mul .Params.moisture 100)) "." "," }}</td></tr>
-            <tr><th>Gewicht</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.weight) "." "," }}</td></tr>
-            {{ with .Params.comment }}
-                <tr><th>Kommentar</th><td>{{ . }}</td></tr>
-            {{ end }}
+            {{ partial "db/single_bucket.html" . }}
             {{ partial "inline-permalink.html" . }}
         {{ else if eq $type "centrifugation" }}
-            <tr><th>Schleuderungsnummer</th><td>{{ .Params.id }}</td></tr>
-            <tr><th>Schleuderdatum</th><td><time datetime="{{ (time.AsTime .Params.date).Format "2006-01-02" }}">{{ (time.AsTime .Params.date).Format "02.01.2006" }}</time></td></tr>
-            <tr><th>Gewicht</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.weight) "." "," }}</td></tr>
-            {{ with .Params.batches }}
-                <tr><th>Honiglose</th>
-                <td>
-                    <ul>
-                        {{ range . }}
-                            <li><a href="{{ absURL (urls.JoinPath "datenbank" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
-                        {{ end }}
-                    </ul>
-                </td></tr>
-            {{ end }}
-            {{ with .Params.buckets }}
-                <tr><th>Eimer</th>
-                <td>
-                    <ul>
-                        {{ range . }}
-                            <li><a href="{{ absURL (urls.JoinPath "datenbank" "q" (strings.ToLower .)) }}">{{ . }}</a></li>
-                        {{ end }}
-                    </ul>
-                </td></tr>
-            {{ end }}
-            {{ with .Params.comment }}
-                <tr><th>Kommentar</th><td>{{ . }}</td></tr>
-            {{ end }}
+            {{ partial "db/single_centrifugation.html" . }}
+            {{ partial "inline-permalink.html" . }}
+        {{ else if eq $type "filling" }}
+            {{ partial "db/single_filling.html" . }}
             {{ partial "inline-permalink.html" . }}
         {{ end }}
     </table>
+
+    {{ if or (eq $type "batch") (eq $type "bucket") }}
+        <div class="card">
+            <div class="card-header">Hinweis zum Wassergehalt 💡🤔</div>
+            <div class="card-body">
+                Die angegebenen Werte entsprechen einer Eigenmessung basierend auf einer zufälligen Stichprobe.
+                Diese Werte geben einen groben Anhaltspunkt, stellen aber keine verlässliche Aussage über den tatsächlichen Wassergehalt dar.
+                Der verlässlichste Wert ist der Laborwert einer Probe die aus einem homogenisierten Los stammt.
+                Zur Homogenisierung orientieren wir uns an den <a href="https://www.lwg.bayern.de/mam/cms06/bienen/dateien/qualit%C3%A4tskontrolle_honig_und_probennahme_tgd_2021.pdf">Richtlinien</a> des Tiergesundheitsdienst Bayern.
+                Sofern vorhanden, sind die jeweiligen Analysen in der obigen Tabelle verlinkt.
+            </div>
+        </div>
+    {{ end }}
     
     {{ $id := .Params.id }}
     {{ with resources.GetMatch (printf "/db/img/%s.jpg" (strings.ToLower .Params.id)) }}

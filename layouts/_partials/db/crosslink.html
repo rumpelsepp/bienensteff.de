@@ -1,0 +1,10 @@
+{{ $text := .id}}
+{{ with .text }}
+    {{ $text = . }}
+{{ end }}
+
+{{ if hugo.IsDevelopment }}
+    <a href="{{ relURL (urls.JoinPath "datenbank" "q" (strings.ToLower .id)) }}">{{ $text }}</a>
+{{ else }}
+    <a href="https://db.bienensteff.de/?q={{ (strings.ToLower .id) }}">{{ $text }}</a>
+{{ end }}

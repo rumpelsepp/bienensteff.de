@@ -19,8 +19,6 @@ kind: "page"
     </div>
 </div>
 
-{{< fig src="verkauf-2024.jpg" >}}
-
 ## Unsere Honige
 
 Was wir gerade im Angebot haben und was’s kostet, steht in der [aktuellen Preisliste]({{< relref "preisliste" >}}).
