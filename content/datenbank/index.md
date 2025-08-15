@@ -5,8 +5,10 @@ layout: overview
 ---
 
 Diese Tabelle ist der Startpunkt zu unserer Rückverfolgbarkeits-Datenbank.
+Wenn unsere Gläser einen QR-Code haben, könnt ihr diesen scannen und ihr gelangt direkt zur richtigen Seite.
 Damit könnt ihr genau nachvollziehen, wie unser Honig verarbeitet wurde – natürlich streng nach den Qualitäts­vorgaben des Programms „Geprüfte Qualität — Bayern für Honig“.
-Wir finden: _Wer Honig kauft, darf auch wissen, wo er herkommt._ Deshalb machen wir das für euch ganz transparent.
+Wir finden: _Wer Honig kauft, darf auch wissen, wo er herkommt._
+Deshalb machen wir das für euch ganz transparent.
 
 Aber mal ehrlich – wenn ihr einfach nur Lust auf guten Honig habt, dann schaut lieber gleich auf unserer [Verkaufsseite]({{< relref "verkauf" >}}) vorbei oder stöbert in unserer [Preisliste]({{< relref "preisliste" >}}).
 
