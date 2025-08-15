@@ -1139,9 +1139,9 @@
             },
             "batch": {
                 "id": "L-2025-02",
-                "weight": 52.9,
+                "weight": 23.4,
                 "sort": "Honig",
-                "comment": ""
+                "comment": "GQ-Bayern"
             }
         },
         {
@@ -1161,9 +1161,9 @@
             },
             "batch": {
                 "id": "L-2025-02",
-                "weight": 52.9,
+                "weight": 23.4,
                 "sort": "Honig",
-                "comment": ""
+                "comment": "GQ-Bayern"
             }
         },
         {
@@ -1235,7 +1235,7 @@
         {
             "id": "E-2025-10",
             "centrifugation_id": "S-2025-01",
-            "batch_id": "L-2025-02",
+            "batch_id": "L-2025-03",
             "location": "SFG",
             "weight": 15.8,
             "moisture": 0.19,
@@ -1248,8 +1248,8 @@
                 "comment": ""
             },
             "batch": {
-                "id": "L-2025-02",
-                "weight": 52.9,
+                "id": "L-2025-03",
+                "weight": 29.5,
                 "sort": "Honig",
                 "comment": ""
             }
@@ -1257,7 +1257,7 @@
         {
             "id": "E-2025-11",
             "centrifugation_id": "S-2025-01",
-            "batch_id": "L-2025-02",
+            "batch_id": "L-2025-03",
             "location": "SFG",
             "weight": 13.7,
             "moisture": 0.185,
@@ -1270,8 +1270,8 @@
                 "comment": ""
             },
             "batch": {
-                "id": "L-2025-02",
-                "weight": 52.9,
+                "id": "L-2025-03",
+                "weight": 29.5,
                 "sort": "Honig",
                 "comment": ""
             }
@@ -1773,7 +1773,7 @@
                 {
                     "id": "E-2025-10",
                     "centrifugation_id": "S-2025-01",
-                    "batch_id": "L-2025-02",
+                    "batch_id": "L-2025-03",
                     "location": "SFG",
                     "weight": 15.8,
                     "moisture": 0.19,
@@ -1783,7 +1783,7 @@
                 {
                     "id": "E-2025-11",
                     "centrifugation_id": "S-2025-01",
-                    "batch_id": "L-2025-02",
+                    "batch_id": "L-2025-03",
                     "location": "SFG",
                     "weight": 13.7,
                     "moisture": 0.185,
@@ -2439,9 +2439,9 @@
         },
         {
             "id": "L-2025-02",
-            "weight": 52.9,
+            "weight": 23.4,
             "sort": "Honig",
-            "comment": "",
+            "comment": "GQ-Bayern",
             "buckets": [
                 {
                     "id": "E-2025-03",
@@ -2462,26 +2462,6 @@
                     "moisture": 0.182,
                     "finished": 0,
                     "comment": "Eimer wurden vor Ort gemischt zur Feuchtigkeitskorrektur"
-                },
-                {
-                    "id": "E-2025-10",
-                    "centrifugation_id": "S-2025-01",
-                    "batch_id": "L-2025-02",
-                    "location": "SFG",
-                    "weight": 15.8,
-                    "moisture": 0.19,
-                    "finished": 0,
-                    "comment": "Eimer wurden vor Ort gemischt zur Feuchtigkeitskorrektur"
-                },
-                {
-                    "id": "E-2025-11",
-                    "centrifugation_id": "S-2025-01",
-                    "batch_id": "L-2025-02",
-                    "location": "SFG",
-                    "weight": 13.7,
-                    "moisture": 0.185,
-                    "finished": 0,
-                    "comment": "Eimer wurden vor Ort gemischt zur Feuchtigkeitskorrektur"
                 }
             ],
             "fillings": [
@@ -2497,6 +2477,35 @@
                     "dib_field": "WW 0884503 \u2014 00884516"
                 }
             ]
+        },
+        {
+            "id": "L-2025-03",
+            "weight": 29.5,
+            "sort": "Honig",
+            "comment": "",
+            "buckets": [
+                {
+                    "id": "E-2025-10",
+                    "centrifugation_id": "S-2025-01",
+                    "batch_id": "L-2025-03",
+                    "location": "SFG",
+                    "weight": 15.8,
+                    "moisture": 0.19,
+                    "finished": 0,
+                    "comment": "Eimer wurden vor Ort gemischt zur Feuchtigkeitskorrektur"
+                },
+                {
+                    "id": "E-2025-11",
+                    "centrifugation_id": "S-2025-01",
+                    "batch_id": "L-2025-03",
+                    "location": "SFG",
+                    "weight": 13.7,
+                    "moisture": 0.185,
+                    "finished": 0,
+                    "comment": "Eimer wurden vor Ort gemischt zur Feuchtigkeitskorrektur"
+                }
+            ],
+            "fillings": []
         }
     ],
     "fillings": [
