@@ -1,4 +1,5 @@
 <tr><th>Abfüllnummer</th><td>{{ .Params.id }}</td></tr>
+<tr><th>Artikelnummer</th><td>{{ partial "db/crosslink" (dict "id" (printf "SKU-%s" .Params.sku) "text" .Params.sku) }}</td></tr>
 <tr><th>Abfülldatum</th><td>{{ partial "db/date" (dict "date" .Params.date) }}</td></tr>
 <tr><th><abbr title="Mindesthaltbarkeitsdatum">MHD</abbr></th><td>{{ partial "db/date" (dict "date" .Params.best_before) }}</td></tr>
 <tr><th>Losnummer</th><td>{{ partial "db/crosslink" (dict "id" .Params.batch_id) }}</td></tr>

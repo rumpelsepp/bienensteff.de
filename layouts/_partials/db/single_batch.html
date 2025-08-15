@@ -8,6 +8,7 @@
             {{ range . }}
                 <li>{{ partial "db/crosslink" (dict "id" .id) }}</li>
                     <ul>
+                        <li><strong>Artikelnummer</strong>: {{ partial "db/crosslink" (dict "id" (printf "SKU-%s" .sku) "text" .sku) }}</li>
                         <li><strong>Abfülldatum</strong>: {{ partial "db/date" (dict "date" .date) }}</li>
                         <li><strong>MHD</strong>: {{ partial "db/date" (dict "date" .best_before) }}</li>
                         {{ with .dib_field }}
