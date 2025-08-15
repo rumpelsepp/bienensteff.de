@@ -1,0 +1,34 @@
+<tr><th>Losnummer</th><td>{{ .Params.id }}</td></tr>
+<tr><th>Sortenempfehlung</th><td>{{ .Params.sort }}</td></tr>
+<tr><th>Gewicht</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.weight) "." "," }}</td></tr>
+{{ with .Params.fillings }}
+    <tr><th>Abfüllungen</th>
+    <td>
+        <ul>
+            {{ range . }}
+                <li>{{ partial "db/crosslink" (dict "id" .id) }}</li>
+                    <ul>
+                        <li><strong>Abfülldatum</strong>: {{ partial "db/date" (dict "date" .date) }}</li>
+                        <li><strong>MHD</strong>: {{ partial "db/date" (dict "date" .best_before) }}</li>
+                        {{ with .dib_field }}
+                            <li><strong>DIB Kontrollnummer</strong>: {{ . }}</li>
+                        {{ end }}
+                    </ul>
+            {{ end }}
+        </ul>
+    </td></tr>
+{{ end }}
+{{ with .Params.buckets }}
+    <tr><th>Eimer</th><td>
+        <ul>
+            {{ range . }}
+                <li>{{ partial "db/crosslink" (dict "id" .id) }}</li>
+                    <ul>
+                        <li><strong>Wassergehalt</strong>: {{ strings.Replace (fmt.Printf "%.2f %%" (math.Mul .moisture 100)) "." "," }}</li>
+                        <li><strong>Gewicht</strong>: {{ strings.Replace (fmt.Printf "%.2f kg" .weight) "." "," }}</li>
+                        <li><strong>Schleuderung</strong>: {{ partial "db/crosslink" (dict "id" .centrifugation_id) }}</li>
+                    </ul>
+            {{ end }}
+        </ul>
+    </td></tr>
+{{ end }}

@@ -1,0 +1,12 @@
+<tr><th>Eimernummer</th><td>{{ .Params.id }}</td></tr>
+{{ with .Params.centrifugation }}
+    <tr><th>Schleuderungsnummer</th><td>{{ partial "db/crosslink" (dict "id" .id) }}</td></tr>
+{{ end }}
+{{ with .Params.batch }}
+    <tr><th>Losnummer</th><td>{{ partial "db/crosslink" (dict "id" .id) }}</td></tr>
+{{ end }}
+<tr><th>Wassergehalt</th><td>{{ strings.Replace (fmt.Printf "%.2f %%" (math.Mul .Params.moisture 100)) "." "," }}</td></tr>
+<tr><th>Gewicht</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.weight) "." "," }}</td></tr>
+{{ with .Params.comment }}
+    <tr><th>Kommentar</th><td>{{ . }}</td></tr>
+{{ end }}

@@ -13,27 +13,26 @@
         
 {{ with resources.Get "/db/db.json" }}
     {{ with . | transform.Unmarshal }}
-        {{ $data := .batches }}
+        {{ $data := sort .articles "sku" }}
 
         <div id="beetable">
         <table id="honeydb" class="table table-sm table-striped table-bordered">
         <thead>
             <tr>
-                <th>Honiglos</th>
-                <th>Sortenempfehlung</th>
+                <th>Artikelnummer</th>
+                <th>GTIN</th>
+                <th>Marke</th>
+                <th>Produktname</th>
             </tr>
         </thead>
         <tbody>
 
         {{ range $data }}
-        {{ if .closed }}{{ continue }}{{ end }}
             <tr>
-            {{ if hugo.IsDevelopment }}
-                <td><a href="{{ urls.AbsURL (urls.JoinPath "datenbank" "q" (strings.ToLower .id)) }}">{{ .id }}</a></td>
-            {{ else }}
-                <td><a href="https://db.bienensteff.de/?q={{ (strings.ToLower .id) }}">{{ .id }}</a></td>
-            {{ end }}
-                <td>{{ .sort }}</td>
+                <td>{{ partial "db/crosslink.html" (dict "id" .id "text" .sku) }}</td>
+                <td>{{ partial "db/link_gtin.html" (dict "gtin" .gtin) }}</td>
+            <td>{{ .brand }}</td>
+            <td>{{ .name }} {{ .filling_quantity }}</td>
             </tr>
         {{ end }}
 
