@@ -35,7 +35,6 @@ def init_db(cur: sqlite3.Cursor) -> None:
             sku TEXT PRIMARY KEY,
             gtin TEXT,
             name TEXT,
-            type TEXT,
             label TEXT,
             brand TEXT,
             brand_short TEXT,
@@ -44,7 +43,8 @@ def init_db(cur: sqlite3.Cursor) -> None:
             marketing_note TEXT,
             brand_owner TEXT,
             comment TEXT,
-            filling_quantity TEXT
+            filling_quantity TEXT,
+            filling_unit TEXT
         ) STRICT;
 
         CREATE TABLE batches (
@@ -98,7 +98,6 @@ def import_articles(cur: sqlite3.Cursor) -> None:
                 sku,
                 gtin,
                 name,
-                type,
                 label,
                 brand,
                 brand_short,
@@ -107,15 +106,15 @@ def import_articles(cur: sqlite3.Cursor) -> None:
                 marketing_note,
                 brand_owner,
                 comment,
-                filling_quantity
+                filling_quantity,
+                filling_unit
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
         """,
             (
                 article["SKU"],
                 article["GTIN"],
                 article["Produktname"],
-                article["Produktart"],
-                article["Bezeichnung"],
+                article["Label"],
                 article["Marke"],
                 article["Marke (kurz)"],
                 article["Beschreibung"],
@@ -124,6 +123,7 @@ def import_articles(cur: sqlite3.Cursor) -> None:
                 article["Markeninhaber"],
                 article["Kommentar"],
                 article["Nettofüllmenge"],
+                article["Einheit"],
             ),
         )
 
