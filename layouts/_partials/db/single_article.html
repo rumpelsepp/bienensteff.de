@@ -16,7 +16,7 @@
             <ul>
                 {{ range . }}
                     <li>
-                        <a href="{{ absURL (urls.JoinPath "datenbank" "q" (strings.ToLower .id)) }}">{{ .id }}</a>
+                        {{ partial "db/crosslink" (dict "id" .id) }}
                         <ul>
                             <li><strong>Abfülldatum</strong>: {{ partial "db/date" (dict "date" .date) }}</li>
                             <li><strong>MHD</strong>: {{ partial "db/date" (dict "date" .best_before) }}</li>
