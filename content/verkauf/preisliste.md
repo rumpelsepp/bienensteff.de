@@ -20,7 +20,7 @@ Wir sind nach §19 UStG als Kleinbetrieb umsatzsteuerbefreit – es wird keine M
 | HDB250K6 | Blütenhonig | Echter Deutscher Honig® | 250 g | 6 | 24,00 € | 16,00 € |
 | HN500E | Honig | bienensteff (Hausmarke) | 500 g | 1 | 9,00 € | 18,00 € |
 | HN500K6 | Honig | bienensteff (Hausmarke) | 500 g | 6 | 48,00 € | 16,00 € |
-| HU | Honig unverpackt | bienensteff (Hausmarke) | 1000 g | 1 | 14,00 € | 14,00 € |
+| HU | Honig unverpackt | bienensteff (Hausmarke) | | | | 14,00 € |
 {.table .table-striped .table-sm .table-bordered}
 
 Wer gleich **sechs Gläser oder mehr** mitnimmt, zahlt a bissal weniger. 🙂
