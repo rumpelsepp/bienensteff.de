@@ -32,7 +32,10 @@ def main() -> None:
     for article in sorted(articles, key=lambda x: x["SKU"]):
         if article["Preis"] == "":
             continue
-        print(f"| {article['SKU']} | {article['Produktname']} | {article['Marke']} | {article['Nettofüllmenge']} {article['Einheit']} | {article['VPE']} | {article['Preis']} | {article['Preis / kg']} |")
+        if article["SKU"] == "HU":
+            print(f"| {article['SKU']} | {article['Produktname']} | {article['Marke']}| | | | {article['Preis']} |")
+        else:
+            print(f"| {article['SKU']} | {article['Produktname']} | {article['Marke']} | {article['Nettofüllmenge']} {article['Einheit']} Glas | {article['VPE']} | {article['Preis']} | {article['Preis / kg']} |")
 
 
 if __name__ == "__main__":
