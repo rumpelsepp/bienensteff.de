@@ -19,7 +19,7 @@ Infos entnommen aus [piaaumeier.de](https://piaaumeier.de).
 
 Grobe Anhaltspunkte (cf. Einfach Imkern, 4. Auflage, Seite 97):
 
-| Monat 1  Futterverbrauch pro Monat |
+| Monat |  Futterverbrauch pro Monat |
 | --- | --- |
 | November | 1 kg |
 | Dezember | 1 kg |
