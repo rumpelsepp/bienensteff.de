@@ -15,6 +15,22 @@ Infos entnommen aus [piaaumeier.de](https://piaaumeier.de).
 * TODO: https://bees-online.at/futterbedarf-der-voelker/
 * [Poster Überwinterung](/poster_ueberwinterung.pdf)
 
+#### Winterzehrung
+
+Grobe Anhaltspunkte (cf. Einfach Imkern, 4. Auflage, Seite 97):
+
+| Monat 1  Futterverbrauch pro Monat |
+| --- | --- |
+| November | 1 kg |
+| Dezember | 1 kg |
+| Januar | 1 kg |
+| Februar | 1 bis 2 kg |
+| März | 3 bis 5 kg |
+| April | 3 bis 5 kg |
+{.table .table-striped .table-sm .table-bordered}
+
+In Summe, je nach Volksstärke: 14 bis 23 kg
+
 ### Varroose
 
 #### Varroafahrplan
@@ -25,36 +41,12 @@ Infos entnommen aus [piaaumeier.de](https://piaaumeier.de).
 
 Die Anzahl der Milben im Volk als Abschätzung berechnet sich aus dem Produkt des natürlichen Milbenfalls pro Tag und dem Umrechungsfaktor aus der unten stehenden Tabelle.
 
-<table class="table table-striped table-sm table-bordered">
-    <thead>
-        <tr>
-            <th>Im Zeitraum</th>
-            <th>Umrechungsfaktor</th>
-            <th>Schwellwert Jungvolk</th>
-            <th>Schwellwert Wirtschaftsvolk</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Juli/August</td>
-            <td>150</td>
-            <td>> 5 Milben / Tag</td>
-            <td>> 10 Milben / Tag</td>
-        </tr>
-        <tr>
-            <td>September/Oktober</td>
-            <td>300</td>
-            <td>> 1 Milben / Tag</td>
-            <td>> 5 Milben / Tag</td>
-        </tr>
-        <tr>
-            <td>November/Dezember</td>
-            <td>500</td>
-            <td>> 1 Milben / Tag</td>
-            <td>> 1 Milben / Tag</td>
-        </tr>
-    </tbody>
-</table>
+| Im Zeitraum         | Umrechungsfaktor | Schwellwert Jungvolk      | Schwellwert Wirtschaftsvolk   |
+|---------------------|------------------|---------------------------|------------------------------|
+| Juli/August         | 150              | > 5 Milben / Tag          | > 10 Milben / Tag            |
+| September/Oktober   | 300              | > 1 Milben / Tag          | > 5 Milben / Tag             |
+| November/Dezember   | 500              | > 1 Milben / Tag          | > 1 Milben / Tag             |
+{.table .table-striped .table-sm .table-bordered}
 
 #### Ameisensäure Liebig Dispenser
 
@@ -82,4 +74,3 @@ Wenn mehr als 3000 Milben in der Windeln liegen, muss die Behandlung wiederholt 
 ### Datums Rechner
 
 Tools zum Rechnen mit Zeiträumen und Daten: https://www.timeanddate.de/datum/datumsrechner
-
