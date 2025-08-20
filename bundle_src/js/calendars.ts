@@ -163,6 +163,11 @@ class TUBCalendar extends BaseCalendar {
         allDay: true,
       },
       {
+        title: 'BV Kö schlüpft (X+11)',
+        start: dates.bSchlupfDate.toISODate()!,
+        allDay: true,
+      },
+      {
         title: 'BV brutfrei (X+21)',
         start: dates.bBrutfreiDate.toISODate()!,
         allDay: true,
