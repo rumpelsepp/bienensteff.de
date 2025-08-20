@@ -5,7 +5,8 @@ description: "Übersicht und Webtool zum Berechnen der Termine für Teilen und B
 
 [Teilen und Behandeln (TuB)](https://www.laves.niedersachsen.de/startseite/tiere/bienenkunde/informationsmaterial/varroa-bekampfungskonzept-teilen-und-behandeln-234443.html) ist ein modernes Konzept zur gleichzeitigen Varroabekämpfung, Wabenhygiene und Königinnenverjüngung.
 TuB ist größtenteils witterungsunabhängig und kann gut nach Zeitplan durchgeführt werden.
-Die grünen Bereiche im Kalendertool unten symbolisieren die brutfreien Zeiten.
+Der grüne Bereich symbolisiert die brutfreie Zeit.
+Termine in kursiv bzw. mit Stern * sind geschätzt, da der Tag des Hochzeitsflugs und folglich der Start der Eiablage nicht vorhersehbar ist.
 
 ---
 <table class="table table-sm table-bordered table-striped">
