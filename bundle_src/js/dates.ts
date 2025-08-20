@@ -37,6 +37,7 @@ class BeeDates extends BeeDatesBase {
 class TUBDates extends BeeDatesBase {
   fBehandelnDate: DateTime;
   fVerdeckelt: DateTime;
+  bSchlupfDate: DateTime;
   bBrutfreiDate: DateTime;
   bVerdeckeltDate: DateTime;
 
@@ -45,6 +46,7 @@ class TUBDates extends BeeDatesBase {
     
     this.fBehandelnDate = date.plus({days: 2});
     this.fVerdeckelt = date.plus({days: 9});
+    this.bSchlupfDate = this.startDate.plus({days: 11});;
     this.bBrutfreiDate = date.plus({days: 21});
     this.bVerdeckeltDate = date.plus({days: 28});
     this.endRange = date.plus({days: 29});
