@@ -171,13 +171,13 @@ class TUBCalendar extends BaseCalendar {
         title: 'BV brutfrei (X+21)',
         start: dates.bBrutfreiDate.toISODate()!,
         allDay: true,
-        color: "gray",
-        classNames: ["fst-italic"]
       },
       {
         title: 'BV verdeckelt (X+28)',
         start: dates.bVerdeckeltDate.toISODate()!,
         allDay: true,
+        color: "gray",
+        classNames: ["fst-italic"]
       },
       {
         title: 'Fl brutfrei',
