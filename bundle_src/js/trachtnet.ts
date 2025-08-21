@@ -226,8 +226,6 @@ async function getTrachtnetDerivative(years: number | number[], region: string):
             return { value: [r.date, r.delta, r.value, r.nWaagen], itemStyle: { color: color } };
         });
 
-        console.log(seriesData);
-
         let entry: echarts.BarSeriesOption = {
             name: y.toString(),
             type: "bar",
@@ -316,6 +314,21 @@ function renderMetaData(data: MetaData): string {
     return out;
 }
 
+function getXLimits(): [Date, Date] {
+    const currentDate = new Date();
+    let startDate: Date;
+    let endDate: Date;
+    if ((currentDate.getMonth() < 3) || (currentDate.getMonth() > 6)) {
+        startDate = new Date(new Date().getFullYear(), 0);
+        endDate = new Date(new Date().getFullYear(), 11);
+    } else {
+        startDate = new Date(new Date().getFullYear(), 3);
+        endDate = new Date(new Date().getFullYear(), 7);
+    }
+
+    return [startDate, endDate];
+}
+
 class LineChart {
     private seriesData: echarts.LineSeriesOption[];
     private title: string;
@@ -342,6 +355,8 @@ class LineChart {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
         });
+        
+        const [startDate, endDate] = getXLimits();
 
         const option: echarts.EChartsOption = {
             title: {
@@ -465,8 +480,8 @@ class LineChart {
                     type: "inside",
                     xAxisIndex: 0,
                     filterMode: 'none',
-                    startValue: new Date(new Date().getFullYear(), 3),
-                    endValue: new Date(new Date().getFullYear(), 7),
+                    startValue: startDate,
+                    endValue: endDate,
                 }
             ],
             series: this.seriesData
@@ -487,7 +502,6 @@ class BarChart {
     private chart?: ECharts;
 
     constructor(rawData: echarts.BarSeriesOption[], title: string) {
-        console.log("BarChart constructor called with rawData:", rawData);
         this.seriesData = rawData;
         this.title = title;
         this.subTitle = "Datenquelle: TrachtNet";
@@ -507,6 +521,8 @@ class BarChart {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
         });
+
+        const [startDate, endDate] = getXLimits();
         
         const option: echarts.EChartsOption = {
             title: {
@@ -614,8 +630,8 @@ class BarChart {
                     type: "inside",
                     xAxisIndex: 0,
                     filterMode: 'none',
-                    startValue: new Date(new Date().getFullYear(), 3),
-                    endValue: new Date(new Date().getFullYear(), 7),
+                    startValue: startDate,
+                    endValue: endDate,
                 }
             ],
             series: this.seriesData
