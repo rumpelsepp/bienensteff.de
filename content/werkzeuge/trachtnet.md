@@ -19,17 +19,29 @@ Die Daten zu „heute“ und „gestern“ sind jeweils ungenau, da das Trachtne
 
 ### Oberbayern
 
+{{< trachtnet-derivative region="Oberbayern" >}}
+
 {{< trachtnet region="Oberbayern" >}}
+
+{{< trachtnet-evaluation region="Oberbayern" >}}
 
 ### Niederbayern
 
+{{< trachtnet-derivative region="Niederbayern" >}}
+
 {{< trachtnet region="Niederbayern" >}}
+
+{{< trachtnet-evaluation region="Niederbayern" >}}
 
 ## Ausgewählte Waagen
 
 ### Gerhard Liebig
 
+{{< trachtnet-derivative region="1276" >}}
+
 {{< trachtnet region="1276" >}}
+
+{{< trachtnet-evaluation region="1276" >}}
 
 Mehr Infos zu dieser Waage, siehe hier: https://www.immelieb.de/es-honigt/
 
