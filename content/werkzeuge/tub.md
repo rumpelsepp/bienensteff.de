@@ -9,7 +9,7 @@ Der grüne Bereich symbolisiert die brutfreie Zeit.
 Termine in kursiv bzw. mit Stern * sind geschätzt, da der Tag des Hochzeitsflugs und folglich der Start der Eiablage nicht vorhersehbar ist.
 
 ---
-<table class="table table-sm table-bordered table-striped">
+<table class="table table-sm">
     <thead>
         <tr>
             <th>Schritt</th>
@@ -17,7 +17,7 @@ Termine in kursiv bzw. mit Stern * sind geschätzt, da der Tag des Hochzeitsflug
             <th>Völkerführung und Varroabehandlung</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="table-group-divider">
         <tr>
             <td class="align-middle">Schritt 1</td>
             <td class="align-middle">X</td>
@@ -34,7 +34,11 @@ Termine in kursiv bzw. mit Stern * sind geschätzt, da der Tag des Hochzeitsflug
             <td class="align-middle">Flugling ist verdeckelt. Wirkungsgrad der Behandlung ab jetzt geringer.</td>
         </tr>
         <tr>
-            <td class="align-middle">Schritt 3(a)</td>
+            <td class="align-middle" rowspan="2">Schritt 3(a)</td>
+            <td class="align-middle">X + 11</td>
+            <td>Nachschaffungskönigin des Brutvolkes schlüpft.</td>
+        </tr>
+        <tr>
             <td class="align-middle">X + 21</td>
             <td>Das Brutvolk ist brutfrei und kann behandelt werden. Das Brutvolk unter Beachtung der Wabenhygiene auf eine Zarge einengen. Prüfen auf Weiselrichtigkeit. Nachdem sich die Bienen beruhigt haben eine Sprüh-Behandlung mit Oxalsäure durchführen und füttern.</td>
         </tr>
@@ -49,8 +53,8 @@ Termine in kursiv bzw. mit Stern * sind geschätzt, da der Tag des Hochzeitsflug
         </tr>
         <tr>
             <td class="align-middle"></td>
-            <td class="align-middle">X + 28</td>
-            <td class="align-middle">Das Brutvolk hat die erste verdeckelte Brut. Wirkungsgrad der Behandlung ab jetzt geringer.</td>
+            <td class="align-middle"><em>X + 28</em></td>
+            <td class="align-middle"><em>Das Brutvolk hat die erste verdeckelte Brut. Wirkungsgrad der Behandlung ab jetzt geringer.</em></td>
         </tr>
         <tr>
             <td class="align-middle" rowspan="2">Ausblick</td>
