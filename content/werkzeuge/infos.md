@@ -27,7 +27,7 @@ Grobe Anhaltspunkte (cf. Einfach Imkern, 4. Auflage, Seite 97):
 | Februar | 1 bis 2 kg |
 | März | 3 bis 5 kg |
 | April | 3 bis 5 kg |
-{.table .table-striped .table-sm .table-bordered}
+{.table .table-striped .table-sm}
 
 In Summe, je nach Volksstärke: 14 bis 23 kg
 
@@ -46,7 +46,7 @@ Die Anzahl der Milben im Volk als Abschätzung berechnet sich aus dem Produkt de
 | Juli/August         | 150              | > 5 Milben / Tag          | > 10 Milben / Tag            |
 | September/Oktober   | 300              | > 1 Milben / Tag          | > 5 Milben / Tag             |
 | November/Dezember   | 500              | > 1 Milben / Tag          | > 1 Milben / Tag             |
-{.table .table-striped .table-sm .table-bordered}
+{.table .table-striped .table-sm}
 
 #### Ameisensäure Liebig Dispenser
 

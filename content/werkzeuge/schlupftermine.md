@@ -12,22 +12,58 @@ Diese Termine sind sinnvoll für die Planung von Brutwaben- oder Sammelbrutableg
 Dazu das Startdatum X auswählen und auf absenden klicken. Der grüne Bereich symbolisiert die brutfreie Zeit.
 Termine in _kursiv_ bzw. mit Stern * sind geschätzt, da der Tag des Hochzeitsflugs und folglich der Start der Eiablage nicht vorhersehbar ist.
 
-| Tag X + | Ereignis                        | Beschreibung |
-|---------|---------------------------------|--------------|
-| **0**   | **Startzeitpunkt**              | Tag, an dem die Königin aus dem Volk entfernt wurde, z. B. durch Teilung. |
-| **11**  | **Königin schlüpft**            | Nachschaffungskönigin schlüpft nach elf Tagen, da zur Aufzucht Larven mit einem Alter von ca. zwei Tagen verwendet werden. |
-| **18**  | **Königin geschlechtsreif**     | Sieben Tage nach Schlupf ist die Jungkönigin geschlechtsreif. |
-| _19*_   | _Königin in Eilage_             | _Hochzeitsflug bei gutem Wetter (T ≥ 18°C); Eiablage beginnt meist acht Tage nach Schlupf. Wetterbedingt kann die Eiablage später einsetzen._ |
-| **21**  | **Volk ist brutfrei**           | Sämtliche Arbeiterinnenbrut ist geschlüpft; drei Tage später (Tag X + 24) ist sämtliche Drohnenbrut geschlüpft. |
-| _28*_   | _Brut ist verdeckelt_           | _Brutzellen sind neun Tage nach Eiablage verdeckelt._ |
-| _39*_   | _Schlupf der ersten Jungbienen_ | _Jungbienen schlüpfen 21 Tage nach Eiablage._ |
-{.table .table-striped .table-sm .table-bordered}
+<table class="table table-sm table-striped">
+    <thead>
+        <tr>
+            <th>Zeitpunkt</th>
+            <th>Ereignis</th>
+            <th>Beschreibung</th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        <tr>
+            <td><strong>X + 0</strong></td>
+            <td><strong>Startzeitpunkt</strong></td>
+            <td>Tag, an dem die Königin aus dem Volk entfernt wurde, z. B. durch Teilung.</td>
+        </tr>
+        <tr>
+            <td><strong>X + 11</strong></td>
+            <td><strong>Königin schlüpft</strong></td>
+            <td>Nachschaffungskönigin schlüpft nach elf Tagen, da zur Aufzucht Larven mit einem Alter von ca. zwei Tagen verwendet werden.</td>
+        </tr>
+        <tr>
+            <td><strong>X + 18</strong></td>
+            <td><strong>Königin geschlechtsreif</strong></td>
+            <td>Sieben Tage nach Schlupf ist die Jungkönigin geschlechtsreif.</td>
+        </tr>
+        <tr>
+            <td><em>X + 19*</em></td>
+            <td><em>Königin in Eilage</em></td>
+            <td><em>Hochzeitsflug bei gutem Wetter (T ≥ 18°C); Eiablage beginnt meist acht Tage nach Schlupf. Wetterbedingt kann die Eiablage später einsetzen.</em></td>
+        </tr>
+        <tr>
+            <td><strong>X + 21</strong></td>
+            <td><strong>Volk ist brutfrei</strong></td>
+            <td>Sämtliche Arbeiterinnenbrut ist geschlüpft; drei Tage später (Tag X + 24) ist sämtliche Drohnenbrut geschlüpft.</td>
+        </tr>
+        <tr>
+            <td><em>X + 28*</em></td>
+            <td><em>Brut ist verdeckelt</em></td>
+            <td><em>Brutzellen sind neun Tage nach Eiablage verdeckelt.</em></td>
+        </tr>
+        <tr>
+            <td><em>X + 39*</em></td>
+            <td><em>Schlupf der ersten Jungbienen</em></td>
+            <td><em>Jungbienen schlüpfen 21 Tage nach Eiablage.</em></td>
+        </tr>
+    </tbody>
+</table>
 
 {{< calendar >}}
 
 ## Allgemeine Infos
 
-<table class="table table-sm table-striped table-bordered">
+<table class="table table-sm table-striped">
 <caption>
 Entwicklungsphasen der drei Bienenwesen
 </caption>
@@ -44,7 +80,7 @@ Entwicklungsphasen der drei Bienenwesen
         </th>
     </tr>
 </thead>
-<tbody>
+<tbody class="table-group-divider">
     <tr>
         <th>
             Anzahl pro Volk
@@ -158,7 +194,7 @@ Entwicklungsphasen der drei Bienenwesen
         </td>
     </tr>
 </tbody>
-<tfoot>
+<tfoot class="table-group-divider">
     <tr>
         <th>
             Gesamt
