@@ -1216,18 +1216,18 @@
   },
   {
     "dates": "2025-09-01",
-    "values": 47.16,
+    "values": 47.15,
     "n_waagen": 22
   },
   {
     "dates": "2025-09-02",
-    "values": 47.06,
-    "n_waagen": 10
+    "values": 47.08,
+    "n_waagen": 22
   },
   {
     "dates": "2025-09-03",
-    "values": null,
-    "n_waagen": null
+    "values": 46.87,
+    "n_waagen": 18
   },
   {
     "dates": "2025-09-04",
