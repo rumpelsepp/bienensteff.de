@@ -15,7 +15,6 @@ Wir sind nach §19 UStG als Kleinbetrieb umsatzsteuerbefreit – es wird keine M
 
 | Artikelnummer | Produkt | Marke | <acronym title="Verkaufseinheit">VKE</acronym> | <acronym title="Verpackungseinheit">VPE</acronym> | Preis | Preis / kg |
 |----------|-------------|----------------| -- | -- | -- | -- |
-| HD500E | Honig | Echter Deutscher Honig® | 500 g Glas | 1 | 9,00 € | 18,00 € |
 | HDB250E | Blütenhonig | Echter Deutscher Honig® | 250 g Glas | 1 | 5,00 € | 20,00 € |
 | HDB250K6 | Blütenhonig | Echter Deutscher Honig® | 250 g Glas | 6 | 24,00 € | 16,00 € |
 | HN500E | Honig | bienensteff (Hausmarke) | 500 g Glas | 1 | 9,00 € | 18,00 € |
