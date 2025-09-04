@@ -15,6 +15,16 @@ import httpx
 ARTICLE_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRf8WK6ia2ziMOZPu6bQes8lMp95AMb0hnK5uzHo9OhhGkHdnQCN4lGkCByWSnzgyaIOM2rad8Dv0R2/pub?gid=287358663&single=true&output=csv"
 
 
+def to_bool(s: str) -> bool:
+    match s.strip().lower():
+        case "true":
+            return True
+        case "false":
+            return False
+        case _:
+            raise ValueError(f"invalid boolstring {s}")
+
+
 def fetch_sheet(url: str) -> list[dict[str, Any]]:
     with httpx.Client(follow_redirects=True) as client:
         r = client.get(url)
@@ -30,7 +40,8 @@ def main() -> None:
 |----------|-------------|----------------| -- | -- | -- | -- |
     """.strip())
     for article in sorted(articles, key=lambda x: x["SKU"]):
-        if article["Preis"] == "":
+        public = to_bool(article["public"])
+        if article["Preis"] == "" or not public:
             continue
         if article["SKU"] == "HU":
             print(f"| {article['SKU']} | {article['Produktname']} | {article['Marke']}| | | | {article['Preis']} |")
