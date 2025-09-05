@@ -15,10 +15,10 @@ description = "Honig und Bienen aus dem Münchner Grüngürtel"
 name = 'Verkauf'
 pageRef = '/verkauf'
 weight = 30
-[[menus.main]]
-name = 'Datenbank'
-pageRef = '/datenbank'
-weight = 40
+# [[menus.main]]
+# name = 'Datenbank'
+# pageRef = '/datenbank'
+# weight = 40
 [[menus.main]]
 name = 'Werkzeuge'
 pageRef = '/werkzeuge'
