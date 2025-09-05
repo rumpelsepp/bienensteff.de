@@ -10,7 +10,7 @@ Damit könnt ihr genau nachvollziehen, wie unser Honig verarbeitet wurde – nat
 Wir finden: _Wer Honig kauft, darf auch wissen, wo er herkommt._
 Deshalb machen wir das für euch ganz transparent.
 
-Aber mal ehrlich – wenn ihr einfach nur Lust auf guten Honig habt, dann schaut lieber gleich auf unserer [Verkaufsseite]({{< relref "verkauf" >}}) vorbei oder stöbert in unserer [Preisliste]({{< relref "preisliste" >}}).
+Aber mal ehrlich – wenn ihr einfach nur Lust auf guten Honig habt, dann schaut lieber gleich auf unserer [Verkaufsseite]({{< relref "verkauf" >}}) vorbei oder stöbert in unserer [Preisliste]({{< relref "verkauf#preisliste" >}}).
 
 Falls ihr noch tiefer ins Thema einsteigen wollt:
 
