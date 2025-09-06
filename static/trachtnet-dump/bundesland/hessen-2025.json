@@ -1217,32 +1217,32 @@
   {
     "dates": "2025-09-01",
     "values": 35.58,
-    "n_waagen": 102
+    "n_waagen": 103
   },
   {
     "dates": "2025-09-02",
     "values": 35.4,
-    "n_waagen": 102
+    "n_waagen": 103
   },
   {
     "dates": "2025-09-03",
     "values": 35.29,
-    "n_waagen": 102
+    "n_waagen": 103
   },
   {
     "dates": "2025-09-04",
     "values": 35.25,
-    "n_waagen": 31
+    "n_waagen": 103
   },
   {
     "dates": "2025-09-05",
-    "values": 35.23,
-    "n_waagen": 2
+    "values": 35.16,
+    "n_waagen": 87
   },
   {
     "dates": "2025-09-06",
-    "values": null,
-    "n_waagen": null
+    "values": 35.18,
+    "n_waagen": 2
   },
   {
     "dates": "2025-09-07",
