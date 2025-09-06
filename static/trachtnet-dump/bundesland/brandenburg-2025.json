@@ -1226,18 +1226,18 @@
   },
   {
     "dates": "2025-09-03",
-    "values": 34.64,
+    "values": 34.63,
     "n_waagen": 24
   },
   {
     "dates": "2025-09-04",
-    "values": 34.54,
-    "n_waagen": 23
+    "values": 34.37,
+    "n_waagen": 24
   },
   {
     "dates": "2025-09-05",
-    "values": null,
-    "n_waagen": null
+    "values": 34.23,
+    "n_waagen": 23
   },
   {
     "dates": "2025-09-06",

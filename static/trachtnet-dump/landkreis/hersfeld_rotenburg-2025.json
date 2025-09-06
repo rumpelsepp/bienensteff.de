@@ -1216,28 +1216,28 @@
   },
   {
     "dates": "2025-09-01",
-    "values": 62.08,
-    "n_waagen": 3
+    "values": 62.07,
+    "n_waagen": 4
   },
   {
     "dates": "2025-09-02",
     "values": 61.89,
-    "n_waagen": 3
+    "n_waagen": 4
   },
   {
     "dates": "2025-09-03",
-    "values": 61.78,
-    "n_waagen": 3
+    "values": 61.75,
+    "n_waagen": 4
   },
   {
     "dates": "2025-09-04",
-    "values": null,
-    "n_waagen": null
+    "values": 61.64,
+    "n_waagen": 4
   },
   {
     "dates": "2025-09-05",
-    "values": null,
-    "n_waagen": null
+    "values": 61.68,
+    "n_waagen": 4
   },
   {
     "dates": "2025-09-06",
