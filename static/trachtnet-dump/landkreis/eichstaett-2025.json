@@ -1231,18 +1231,18 @@
   },
   {
     "dates": "2025-09-04",
-    "values": 19.13,
+    "values": 19.12,
     "n_waagen": 7
   },
   {
     "dates": "2025-09-05",
     "values": 19.01,
-    "n_waagen": 5
+    "n_waagen": 7
   },
   {
     "dates": "2025-09-06",
-    "values": null,
-    "n_waagen": null
+    "values": 18.86,
+    "n_waagen": 2
   },
   {
     "dates": "2025-09-07",

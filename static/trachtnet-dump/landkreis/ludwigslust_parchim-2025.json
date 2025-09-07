@@ -1237,12 +1237,12 @@
   {
     "dates": "2025-09-05",
     "values": 25.44,
-    "n_waagen": 1
+    "n_waagen": 2
   },
   {
     "dates": "2025-09-06",
-    "values": null,
-    "n_waagen": null
+    "values": 25.33,
+    "n_waagen": 1
   },
   {
     "dates": "2025-09-07",
