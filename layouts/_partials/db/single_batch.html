@@ -25,7 +25,7 @@
             {{ range . }}
                 <li>{{ partial "db/crosslink" (dict "id" .id) }}</li>
                     <ul>
-                        <li><strong>Wassergehalt</strong>: {{ strings.Replace (fmt.Printf "%.2f %%" (math.Mul .moisture 100)) "." "," }}</li>
+                        <li><strong>Wassergehalt (Stichprobe)</strong>: {{ strings.Replace (fmt.Printf "%.2f %%" (math.Mul .moisture 100)) "." "," }}</li>
                         <li><strong>Gewicht</strong>: {{ strings.Replace (fmt.Printf "%.2f kg" .weight) "." "," }}</li>
                         <li><strong>Schleuderung</strong>: {{ partial "db/crosslink" (dict "id" .centrifugation_id) }}</li>
                     </ul>
