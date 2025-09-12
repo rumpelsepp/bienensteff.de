@@ -60,7 +60,7 @@ Wir nehmen 500 g Honiggläser gerne gespült zurück – Etikett bitte, wenn m
 
 ## Preisliste
 
-**Gültig ab 22.09.2025**
+**Gültig ab 12.09.2025**
 
 Durchgestrichene Sorten sind derzeit ausverkauft.
 Die frische Ernte gibt’s immer ab September.
