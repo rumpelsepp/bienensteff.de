@@ -14,6 +14,7 @@ title: "Verkauf 🍯"
             Unser Honig hat 2024 bei der Bayerischen Honigprämierung eine <a href="/auszeichnungen/2024-11-03-honigpraemierung.pdf">Goldmedaille</a> erhalten – darüber gfrein wir uns natürlich narrisch.
             Ein schöner Beleg für echte Qualität aus unserer kleinen Imkerei.
             Seit 2025 sind wir zudem <a href="/zertifikate/20250523-gq-zertifikat.pdf">Mitglied</a> im Programm Geprüfte Qualität — Bayern.
+            Honige aus unserer Imkerei, die den Qualitätsstandard Geprüfte Qualität — Bayern für Honig erfüllen, vertreiben wir unter der Marke <a href="https://deutscherimkerbund.de/warum-unser-honig/">Echter Deutscher Honig®</a>.
         </p>
     </div>
 </div>
@@ -49,7 +50,7 @@ Wenn du ihn wieder flüssig magst, einfach ins warme Wasserbad stellen (bitte ne
 
 Unser Honig kann an folgenden Stellen gekauft werden.
 Beim Direktverkauf am besten vorher kurz anrufen oder schreiben.
-Wir nehmen 500 g Honiggläser gerne gespült zurück – Etikett bitte, wenn möglich, entfernen.
+Wir nehmen Honiggläser gerne gespült zurück – Etikett bitte, wenn möglich, entfernen.
 
 | Verkaufsstelle  | Art  | Adresse | Kontakt |
 |-----------------|------|---------| ------- |
@@ -62,17 +63,19 @@ Wir nehmen 500 g Honiggläser gerne gespült zurück – Etikett bitte, wenn m
 
 **Gültig ab 12.09.2025**
 
-Durchgestrichene Sorten sind derzeit ausverkauft.
-Die frische Ernte gibt’s immer ab September.
+<img class="img-fluid img-thumbnail" height=300 width=300 src="IMG_20250912_200135.jpg">
+<img class="img-fluid img-thumbnail" height=300 width=300 src="IMG_20250905_145318.jpg">
 
 Alle Preise sind Endverbraucherpreise (EVP) im Direktverkauf.
 Die Abgabe erfolgt in haushaltsüblichen Mengen und nur solange der Vorrat reicht.
 Wir sind nach §19 UStG als Kleinbetrieb umsatzsteuerbefreit – es wird keine Mehrwertsteuer ausgewiesen.
+Durchgestrichene Sorten sind derzeit ausverkauft.
+Die frische Ernte gibt’s immer ab September.
 
 | Artikelnummer | Produkt | Marke | <acronym title="Verkaufseinheit">VKE</acronym> | <acronym title="Verpackungseinheit">VPE</acronym> | Preis | Preis / kg |
 |----------|-------------|----------------| -- | -- | -- | -- |
 | HDB250E | Blütenhonig | Echter Deutscher Honig® | 250 g Glas | 1 | 5,00 € | 20,00 € |
-| HDB250K6 | Blütenhonig | Echter Deutscher Honig® | 250 g Glas | 6 | 24,00 € | 16,00 € |
+| HDB250K6 | Blütenhonig | Echter Deutscher Honig® | 250 g Glas | 6 | 25,00 € | 16,67 € |
 | HNB500E | Blütenhonig | bienensteff (Hausmarke) | 500 g Glas | 1 | 9,00 € | 18,00 € |
 | HNB500K6 | Blütenhonig | bienensteff (Hausmarke) | 500 g Glas | 6 | 48,00 € | 16,00 € |
 {.table .table-striped .table-sm .table-bordered}
