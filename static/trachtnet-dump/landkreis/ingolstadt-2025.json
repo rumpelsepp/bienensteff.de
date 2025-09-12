@@ -1261,13 +1261,13 @@
   },
   {
     "dates": "2025-09-10",
-    "values": 33.95,
+    "values": 33.93,
     "n_waagen": 2
   },
   {
     "dates": "2025-09-11",
-    "values": null,
-    "n_waagen": null
+    "values": 33.89,
+    "n_waagen": 1
   },
   {
     "dates": "2025-09-12",
