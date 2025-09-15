@@ -1272,17 +1272,17 @@
   {
     "dates": "2025-09-12",
     "values": 48.1,
-    "n_waagen": 46
+    "n_waagen": 47
   },
   {
     "dates": "2025-09-13",
-    "values": 48.1,
-    "n_waagen": 46
+    "values": 48.21,
+    "n_waagen": 47
   },
   {
     "dates": "2025-09-14",
-    "values": null,
-    "n_waagen": null
+    "values": 48.2,
+    "n_waagen": 46
   },
   {
     "dates": "2025-09-15",
