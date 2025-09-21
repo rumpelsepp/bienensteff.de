@@ -13,27 +13,30 @@ Honige aus unserer Imkerei, die den Qualitätsstandard Geprüfte Qualität — B
 
 ## Unsere Honige 2025
 
-Heuer hatten wir eine sehr wechselhafte Witterung.
-Unser diesjähriger **Blütenhonig** 🍯🌸 trägt das ganze Bienenjahr in sich und schmeckt darum besonders lecker 🤤.
-Probiert einfach!
 Was wir gerade im Angebot haben und was es kostet, steht in der [aktuellen Preisliste]({{< relref "verkauf#preisliste" >}}).
+Dieses Jahr war die Witterung sehr wechselhaft.
+Unser diesjähriger **Blütenhonig** 🍯🌸 vereint das ganze Bienenjahr in sich – und schmeckt daher besonders aromatisch 🤤.
+Probiert ihn einfach selbst!
+
+Was aktuell im Angebot ist und welche Preise gelten, findet ihr in der [aktuellen Preisliste]({{< relref "verkauf#preisliste" >}}).
 
 <div class="mb-2 text-center">
     <img class="img-fluid img-thumbnail" height=300 width=300 src="IMG_20250912_200135.jpg">
     <img class="img-fluid img-thumbnail" height=300 width=300 src="IMG_20250905_145318.jpg">
 </div>
 
-**Dieses Jahr neu im Angebot**: Unser Honig im kleineren Glas eignet sich hervorragend als Geschenk!
+**Neu in diesem Jahr**: Honig im kleineren Glas – perfekt als Geschenk! 🎁
 
-Wir arbeiten mit ortsfesten Bienenständen im Münchner Grüngürtel und mehrmals im Jahr wird geschleudert.
-Alle Sorten stammen zu 100 % aus unserer eigenen Ernte.
-Wir schleudern schonend und füllen von Hand ab.
-Die frische Ernte gibt’s immer ab September.
-In unserer [Honigdatenbank]({{< relref "datenbank" >}}) kann man jede Losnummer bis zum Erntedatum zurückverfolgen.
+Unsere Bienen stehen ganzjährig an festen Standorten im Münchner Grüngürtel.
+Mehrmals im Jahr wird geerntet, schonend geschleudert und von Hand ins Glas gefüllt.
+Alle Sorten stammen zu 100 % aus unserer eigenen Imkerei.
+Die frische Ernte gibt es jedes Jahr ab September.
+In unserer [Honigdatenbank]({{< relref "datenbank" >}}) lässt sich jede Losnummer bis zum Erntedatum zurückverfolgen.
 Bei Fragen sprecht uns gerne an!
 
-Wer neugierig ist 🎓 und gerne mehr über Honig herausfinden möchte, findet allgemeine Informationen zu Honig auf der [Webseite](https://deutscherimkerbund.de/honig/) des Deutschen Imkerbundes.
-Detailliertere Infos finden sich in den [Leitsätze für Honig](https://www.bmel.de/SharedDocs/Downloads/DE/_Ernaehrung/Lebensmittel-Kennzeichnung/LeitsaetzeHonig.html) des Deutschen Lebensmittelbuchs oder in dem Dokument [Honigsorten-Bezeichnungen](https://deutscherimkerbund.de/wp-content/uploads/2025/02/34-honigsorten-bezeichnungen-2021.pdf) vom Deutschen Imkerbund.
+Wer tiefer eintauchen möchte 🎓:
+Allgemeine Informationen rund um Honig gibt es auf der [Webseite](https://deutscherimkerbund.de/honig/) des Deutschen Imkerbundes.
+Detailliertere Informationen findet ihr in den [Leitsätzen für Honig](https://www.bmel.de/SharedDocs/Downloads/DE/_Ernaehrung/Lebensmittel-Kennzeichnung/LeitsaetzeHonig.html) des Deutschen Lebensmittelbuchs oder in den [Honigsorten-Bezeichnungen](https://deutscherimkerbund.de/wp-content/uploads/2025/02/34-honigsorten-bezeichnungen-2021.pdf) vom Deutschen Imkerbund.
 
 ### Kristallisation 💡
 
