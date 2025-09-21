@@ -4,9 +4,9 @@ title: Bienenschwärme und -nester
 
 ## Bienenschwärme
 
-Ein Bienenschwarm im Garten ist für alle Beteiligten ein besonderes Erlebnis.  
-In Bayern haben solche Schwärme jedoch leider keine Überlebenschance: Durch die [Varroamilbe](https://www.landwirtschaft.de/tier-und-pflanze/tier/bienen/die-varroamilbe-der-schlimmste-feind-der-honigbiene) würden sie den folgenden Winter nicht überstehen. 
-Wenn ihr einen Schwarm entdeckt, erreicht ihr uns unter der Handynummer [+49 1512 4096409](tel:+4915124096409).  
+Ein Bienenschwarm im Garten ist für alle Beteiligten ein besonderes Erlebnis.
+In Bayern haben solche Schwärme jedoch leider keine Überlebenschance: Durch die [Varroamilbe](https://www.landwirtschaft.de/tier-und-pflanze/tier/bienen/die-varroamilbe-der-schlimmste-feind-der-honigbiene) würden sie den folgenden Winter nicht überstehen.
+Wenn ihr einen Schwarm entdeckt, erreicht ihr uns unter der Handynummer [+49 1512 4096409](tel:+4915124096409).
 Sollte gerade niemand verfügbar sein oder wir keine Kapazitäten haben, findet ihr auf [schwarmrettung.de](https://schwarmrettung.de/) weitere Kontakte zu Imkern in eurer Nähe.  
 
 {{< fig src="bienenschwarm2.jpg" caption="Schwarm der [Westlichen Honigbiene](https://de.wikipedia.org/wiki/Westliche_Honigbiene)." >}}
