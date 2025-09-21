@@ -11,34 +11,31 @@ Seit 2025 sind wir zudem [Mitglied](/zertifikate/20250523-gq-zertifikat.pdf) im 
 Honige aus unserer Imkerei, die den Qualitätsstandard Geprüfte Qualität — Bayern für Honig erfüllen, vertreiben wir unter der Marke [Echter Deutscher Honig®](https://deutscherimkerbund.de/warum-unser-honig/).
 {{</ box >}}
 
-## Unsere Honige
+## Unsere Honige 2025
 
-Was wir gerade im Angebot haben und was es kostet, steht in der [aktuellen Preisliste]({{< relref "verkauf#preisliste" >}}).
-
-{{< box header="Honigsorten 2025" >}}
-Heuer haben wir aufgrund der sehr wechselhaften Witterung eine Honigsorte im Angebot.
+Heuer hatten wir eine sehr wechselhafte Witterung.
 Unser diesjähriger **Blütenhonig** 🍯🌸 trägt das ganze Bienenjahr in sich und schmeckt darum besonders lecker 🤤.
 Probiert einfach!
-{{</ box >}}
+Was wir gerade im Angebot haben und was es kostet, steht in der [aktuellen Preisliste]({{< relref "verkauf#preisliste" >}}).
 
 <div class="mb-2 text-center">
     <img class="img-fluid img-thumbnail" height=300 width=300 src="IMG_20250912_200135.jpg">
     <img class="img-fluid img-thumbnail" height=300 width=300 src="IMG_20250905_145318.jpg">
 </div>
 
-**Dieses Jahr neu im Angebot**: Unser Blütenhonig im 250 Gramm Glas DIB Glas eignet sich hervorragend als Geschenk.
+**Dieses Jahr neu im Angebot**: Unser Honig im kleineren Glas eignet sich hervorragend als Geschenk!
 
 Wir arbeiten mit ortsfesten Bienenständen im Münchner Grüngürtel und mehrmals im Jahr wird geschleudert.
 Alle Sorten stammen zu 100 % aus unserer eigenen Ernte.
 Wir schleudern schonend und füllen von Hand ab.
 Die frische Ernte gibt’s immer ab September.
 In unserer [Honigdatenbank]({{< relref "datenbank" >}}) kann man jede Losnummer bis zum Erntedatum zurückverfolgen.
-Bei Fragen sprecht uns gerne an.
+Bei Fragen sprecht uns gerne an!
 
-Wer neugierig 🎓 ist und gerne mehr über Honig herausfinden möchte, findet allgemeine Informationen zu Honig auf der [Webseite](https://deutscherimkerbund.de/honig/) des Deutschen Imkerbundes.
+Wer neugierig ist 🎓 und gerne mehr über Honig herausfinden möchte, findet allgemeine Informationen zu Honig auf der [Webseite](https://deutscherimkerbund.de/honig/) des Deutschen Imkerbundes.
 Detailliertere Infos finden sich in den [Leitsätze für Honig](https://www.bmel.de/SharedDocs/Downloads/DE/_Ernaehrung/Lebensmittel-Kennzeichnung/LeitsaetzeHonig.html) des Deutschen Lebensmittelbuchs oder in dem Dokument [Honigsorten-Bezeichnungen](https://deutscherimkerbund.de/wp-content/uploads/2025/02/34-honigsorten-bezeichnungen-2021.pdf) vom Deutschen Imkerbund.
 
-### Gut zu wissen 💡
+### Kristallisation 💡
 
 *Echter Honig kristallisiert – ganz normal.*
 
@@ -58,20 +55,20 @@ Wir nehmen Honiggläser gerne gespült zurück – Etikett bitte, wenn möglich,
 |-----------------|------|---------| ------- |
 | Haustür | Direktverkauf | [Stefan Tatschner<br>Gräfelfinger Straße 169a<br>81375 München](https://maps.app.goo.gl/CxwePVnqYxZf5y3k8) | Mobil: <a href="tel:+4915124096409">+49 1512 4096409</a><br>E-Mail: info@bienensteff.de |
 | Haustür | Direktverkauf | [Familie Tatschner<br>Granitweg 20<br>94481 Grafenau](https://maps.app.goo.gl/jTKsPPaF4Zm2bUPV6) | Tel: <a href="tel:+4985523391">+49 8552 3391</a><br>E-Mail: anneliese.tatschner@gmail.com |
-| [Honighäusl](http://honey.floriankreuzer.de/verkaufsstellen/) | SB-Verkaufskasten | [Rambaldistr. 33<br>81929 München](https://maps.app.goo.gl/V2AfBJat9t6mBJ1J7) | Instagram: [johannesbienen.muenchen](https://www.instagram.com/johannesbienen.muenchen/) |
-{.table .table-striped}
+| [Honighäusl](http://honey.floriankreuzer.de/verkaufsstellen/) | SB-Verkauf | [Rambaldistr. 33<br>81929 München](https://maps.app.goo.gl/V2AfBJat9t6mBJ1J7) |[johannesbienen.muenchen](https://www.instagram.com/johannesbienen.muenchen/) |
+{.table .table-striped .table-bordered}
 
 ## Preisliste
 
 **Gültig ab 12.09.2025**
 
-| Artikelnummer | Produkt | Marke | <acronym title="Verkaufseinheit">VKE</acronym> | <acronym title="Verpackungseinheit">VPE</acronym> | Preis | Preis / kg |
+| Art.-Nr. | Produkt | Marke | <acronym title="Verkaufseinheit">VKE</acronym> | <acronym title="Verpackungseinheit">VPE</acronym> | Preis | Preis / kg |
 |----------|-------------|----------------| -- | -- | -- | -- |
-| HDB250E | Blütenhonig | Echter Deutscher Honig® | 250 g Glas | 1 | 5,00 € | 20,00 € |
-| HDB250K6 | Blütenhonig | Echter Deutscher Honig® | 250 g Glas | 6 | 25,00 € | 16,67 € |
-| HNB500E | Blütenhonig | bienensteff (Hausmarke) | 500 g Glas | 1 | 9,00 € | 18,00 € |
-| HNB500K6 | Blütenhonig | bienensteff (Hausmarke) | 500 g Glas | 6 | 48,00 € | 16,00 € |
-{.table .table-striped}
+| <small>HDB250E</small> | Blütenhonig | Echter Deutscher Honig® | 250 g Glas | 1 | 5,00 € | 20,00 € |
+| <small>HDB250K6</small> | Blütenhonig | Echter Deutscher Honig® | 250 g Glas | 6 | 25,00 € | 16,67 € |
+| <small>HNB500E</small> | Blütenhonig | bienensteff (Hausmarke) | 500 g Glas | 1 | 9,00 € | 18,00 € |
+| <small>HNB500K6</small> | Blütenhonig | bienensteff (Hausmarke) | 500 g Glas | 6 | 48,00 € | 16,00 € |
+{.table .table-striped .table-bordered}
 
 Wer gleich **sechs Gläser oder mehr** mitnimmt, zahlt a bissal weniger. 🙂
 Auf Wunsch füllen wir den Honig auch in mitgebrachte Gläser oder auch Eimer ab.

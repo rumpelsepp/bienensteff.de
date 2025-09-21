@@ -35,6 +35,11 @@ description = "Honig und Bienen aus dem Münchner Grüngürtel"
   parent = "Internes"
   pageRef = '/werkzeuge'
 
+  [[menus.main]]
+  name = 'Datenbank'
+  parent = "Internes"
+  pageRef = '/datenbank'
+
 [[menus.footer]]
 name = 'Flaticon'
 pre = '<i class="bi bi-box-arrow-up-right"></i>'

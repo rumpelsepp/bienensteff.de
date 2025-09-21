@@ -9,8 +9,8 @@ In Bayern sind solche Schwärme leider dem Untergang geweiht, da sie aufgrund de
 Habt ihr einen Schwarm entdeckt, Fall könnt ihr uns unter der Handynummer [+49 1512 4096409](tel:+4915124096409) erreichen.
 Falls niemand verfügbar oder keine Kapazitäten vorhanden sind, könnt ihr auf [schwarmrettung.de](https://schwarmrettung.de/) weitere Telefonnummern von Imkern in der Nähe herausfinden.
 
-{{< fig src="bienenschwarm2.jpg" >}}
-{{< fig src="bienenschwarm.jpg" >}}
+{{< fig src="bienenschwarm2.jpg" caption="Schwarm der [Westlichen Honigbiene](https://de.wikipedia.org/wiki/Westliche_Honigbiene)." >}}
+{{< fig src="bienenschwarm.jpg" caption="Schwarm der [Westlichen Honigbiene](https://de.wikipedia.org/wiki/Westliche_Honigbiene)." >}}
 
 ## „Bienennester”
 
@@ -32,6 +32,8 @@ Die Stadt München stellt ein [Online Formular](https://service.muenchen.de/inte
 #### Wespe
 
 {{< fig src="wespe.jpg" caption="[Deutsche Wespe](https://de.wikipedia.org/wiki/Deutsche_Wespe). Bild von [Zdeněk Krejčí](https://pixabay.com/de/users/zkrej-9506069/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4977991) auf [Pixabay](https://pixabay.com/de//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4977991)." >}}
+
+{{< fig src="wespennest.jpg" caption="Nest der [Gemeinen Wespe](https://de.wikipedia.org/wiki/Gemeine_Wespe). Bild von [David Hablützel](https://pixabay.com/de/users/umsiedlungen-8315758/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3430995) auf [Pixabay](https://pixabay.com/de//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3430995)." >}}
 
 #### Hornisse
 
