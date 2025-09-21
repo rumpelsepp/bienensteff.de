@@ -1,19 +1,11 @@
 ---
 title: "Imkerei Stefan Tatschner 🐝"
 description: "Bienen und Honig aus dem Münchner Grüngürtel"
+params:
+    images: [IMG_20230617_093428-crop.png]
 ---
 
-{{< box header="❗ Hinweis zu aktuellen Anfragen wegen „Bienennestern“ ❗" >}}
-Zurzeit kriegen wir recht viele Meldungen wegen „Bienennestern“, zum Beispiel unterm Balkon, in der Mülltonnenbox oder am Gartenhäusl.
-Aber: Die Schwarmzeit für Honigbienen ist heuer (2025) schon vorbei. In den allermeisten Fällen san's keine Bienen, sondern Wespen und die steh’n unter [strengem Naturschutz](https://www.bussgeldkatalog.org/news/wespen-vertreiben-was-ist-erlaubt-was-nicht-2836604/).
-
-Wir als Imkerei dürfen da leider nix machen und auch keine Nester entfernen.
-Ganz wichtig: **So a Nest darf nur mit Erlaubnis von der Unteren Naturschutzbehörde entfernt werden!**
-Die offizielle Handlungsempfehlung der Stadt München ist die Saison mit den Wespen zu koexistieren.
-
-Mehr Infos gibt's bei der [Stadt München](https://stadt.muenchen.de/infos/wespen-hornissen-muenchen.html).
-Die Stadt München stellt ein [Online Formular](https://service.muenchen.de/intelliform/forms/01/09/09/meldung_insektennest/index) zur Meldung von Wespen und Hornissen sowie deren Nestern bereit.
-{{</ box >}}
+{{< fig src="IMG_20230617_093428-crop.png" >}}
 
 ## Servus beinand – und herzlich willkommen bei uns in Großhadern! {.h4 .mt-4 .mb-3}
 
@@ -25,9 +17,10 @@ Unsere Bienenvölker 🐝 stehen an ausgewählten, blütenreichen Plätzen – d
 Den Honig 🍯 ernten und verarbeiten wir selbst – sorgfältig, schonend und mit einem hohen Anspruch an Qualität.
 Wir sind Mitglied im Qualitätsprogramm [Geprüfte Qualität – Bayern für Honig](https://www.gq-bayern.de/) und werden regelmäßig unabhängig geprüft.
 Damit ihr wisst, was genau in eurem Honigglas steckt, veröffentlichen wir alle [Informationen]({{< relref "datenbank" >}}) zu unseren Ernten und Chargen ganz transparent.
+{.lead}
 
 Schaut’s euch gern um – und vielleicht sehen wir uns ja bald!
+{.lead}
 
 Euer Steff 🐝
-
-{{< fig src="IMG_20230617_093428-crop.png" >}}
+{.lead}

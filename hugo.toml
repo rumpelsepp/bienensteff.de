@@ -11,22 +11,29 @@ theme = "bienensteff"
 description = "Honig und Bienen aus dem Münchner Grüngürtel"
 
 [menus]
-[[menus.main]]
-name = 'Verkauf'
-pageRef = '/verkauf'
-weight = 30
-# [[menus.main]]
-# name = 'Datenbank'
-# pageRef = '/datenbank'
-# weight = 40
-[[menus.main]]
-name = 'Werkzeuge'
-pageRef = '/werkzeuge'
-weight = 50
-[[menus.main]]
-name = 'Über uns'
-pageRef = '/über-uns'
-weight = 60
+  [[menus.main]]
+  name = 'Verkauf'
+  pageRef = '/verkauf'
+  weight = 30
+
+  [[menus.main]]
+  name = 'Schwarm/Nest'
+  pageRef = '/schwarm-und-nest'
+  weight = 40
+
+  [[menus.main]]
+  name = 'Über uns'
+  pageRef = '/über-uns'
+  weight = 60
+
+  [[menus.main]]
+  name = 'Internes'
+  weight = 99
+
+  [[menus.main]]
+  name = 'Werkzeuge'
+  parent = "Internes"
+  pageRef = '/werkzeuge'
 
 [[menus.footer]]
 name = 'Flaticon'
