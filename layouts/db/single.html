@@ -72,7 +72,7 @@
         </h1>
     </header>
     
-    <table id="honeydb" class="table table-sm table-striped table-bordered">
+    <table id="honeydb" class="table table-striped">
         {{ if eq $type "article" }}
             {{ partial "db/single_article.html" . }}
             {{ partial "inline-permalink.html" . }}
