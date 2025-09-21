@@ -17,8 +17,8 @@ description = "Honig und Bienen aus dem Münchner Grüngürtel"
   weight = 30
 
   [[menus.main]]
-  name = 'Schwarm/Nest'
-  pageRef = '/schwarm-und-nest'
+  name = 'Schwärme/Nester'
+  pageRef = '/schwaerme-und-nester'
   weight = 40
 
   [[menus.main]]
