@@ -42,7 +42,7 @@ Die Bienen danken’s uns auf ihre Art – mit einem Honig, der nicht nur gut sc
 
 ## Auszeichnungen
 
-* 03.11.2024: [Medaille für hervorragende Leistungen in **Gold**](/auszeichnungen/2024-11-03-honigpraemierung.pdf); Bienenwirtschtliche Ausstellung „Honigprämierung“ beim 10. Bayerischen Honigfest; Hauzenberg (Niederbayern)
+* 03.11.2024: [Medaille für hervorragende Leistungen in **Gold**](/auszeichnungen/2024-11-03-honigpraemierung.pdf); Bienenwirtschaftliche Ausstellung „Honigprämierung“ beim 10. Bayerischen Honigfest; Hauzenberg (Niederbayern)
 
 ## Fachkundenachweise
 
