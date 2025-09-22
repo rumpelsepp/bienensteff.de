@@ -13,11 +13,9 @@ Honige aus unserer Imkerei, die den Qualitätsstandard Geprüfte Qualität — B
 
 ## Unsere Honige 2025
 
-Was wir gerade im Angebot haben und was es kostet, steht in der [aktuellen Preisliste]({{< relref "verkauf#preisliste" >}}).
 Dieses Jahr war die Witterung sehr wechselhaft.
 Unser diesjähriger **Blütenhonig** 🍯🌸 vereint das ganze Bienenjahr in sich – und schmeckt daher besonders aromatisch 🤤.
 Probiert ihn einfach selbst!
-
 Was aktuell im Angebot ist und welche Preise gelten, findet ihr in der [aktuellen Preisliste]({{< relref "verkauf#preisliste" >}}).
 
 <div class="mb-2 text-center">
