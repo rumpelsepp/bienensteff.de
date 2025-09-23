@@ -1,5 +1,14 @@
 ---
 title: "Verkauf 🍯"
+description: |
+    Unser Honig hat 2024 bei der Bayerischen Honigprämierung eine Goldmedaille erhalten – darüber gfrein wir uns natürlich narrisch.
+    Ein schöner Beleg für echte Qualität aus unserer kleinen Imkerei.
+    Seit 2025 sind wir zudem Mitglied im Programm Geprüfte Qualität — Bayern.
+    Honige aus unserer Imkerei, die den Qualitätsstandard Geprüfte Qualität — Bayern für Honig erfüllen, vertreiben wir unter der Marke Echter Deutscher Honig®.
+
+    Dieses Jahr war die Witterung sehr wechselhaft.
+    Unser diesjähriger Blütenhonig 🍯🌸 vereint das ganze Bienenjahr in sich – und schmeckt daher besonders aromatisch 🤤.
+    Probiert ihn einfach selbst!
 ---
 
 {{< box header="Ausgezeichnet mit Gold 🥇" >}}
