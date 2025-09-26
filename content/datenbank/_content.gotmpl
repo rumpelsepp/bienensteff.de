@@ -1,14 +1,19 @@
+{{ $dbBaseURL := "https://db.bienensteff.de" }}
+
 {{ with resources.Get "/db/db.json" }}
     {{ with . | transform.Unmarshal }}
         {{ range $k, $v := . }}
             {{ range $row := $v }}
+                {{ $id := (strings.ToLower .id)}}
+                {{ $path := (urls.JoinPath "q" $id)}}
+                {{ $params := merge $row (dict "canonicalURL" ( printf "%s/?q=%s" $dbBaseURL $id))}}
                 {{ $page := dict
                     "kind" "page"
                     "layout" "single"
                     "type" "db"
                     "outputs" (slice "html")
-                    "params" $row
-                    "path" (urls.JoinPath "q" .id)
+                    "params" $params
+                    "path" $path
                     "title" .id
                 }}
                 {{ $.AddPage $page }}
