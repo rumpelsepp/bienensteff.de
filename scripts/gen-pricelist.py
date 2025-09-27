@@ -36,8 +36,8 @@ def main() -> None:
     articles = fetch_sheet(ARTICLE_URL)
     
     print("""
-| Artikelnummer | Produkt | Marke | <acronym title="Verkaufseinheit">VKE</acronym> | <acronym title="Verpackungseinheit">VPE</acronym> | Preis | Preis / kg |
-|----------|-------------|----------------| -- | -- | -- | -- |
+| Art.-Nr. | Produkt | Marke | <acronym title="Verkaufseinheit">VKE</acronym> | <acronym title="Verpackungseinheit">VPE</acronym> | Preis | Preis / kg |
+|----------| --------|----------------| -- | -- | -- | -- |
     """.strip())
     for article in sorted(articles, key=lambda x: x["SKU"]):
         public = to_bool(article["public"])
