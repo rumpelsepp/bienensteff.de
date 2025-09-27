@@ -42,18 +42,24 @@ Dieses Jahr war das Wetter ziemlich launisch – darum gibt es heuer nur eine So
 Aber dafür ist unser Blütenhonig 🍯🌸 etwas ganz Besonderes: Er vereint das ganze Bienenjahr in einem Glas und überrascht mit einem intensiven, aromatischen Geschmack 🤤.
 Probiert ihn aus!
 
-<div class="d-flex gap-1 mb-4">
+<div class="row mb-4">
+<div class="col-sm-6">
+
 {{< card title="Blütenhonig 250 g" subtitle="Art.-Nr.: HDB250E" image="IMG_20250905_145318.jpg" >}}
 Echter deutscher Honig® aus den Blütenvielfalt unserer bayerischen Wiesen und Wälder – aromatisch, blumig und unverfälscht.
 
 <strong>Neu in diesem Jahr:</strong> Jetzt im kleineren Glas – das perfekte Geschenk für Freunde, Familie! 🎁
 {{</ card >}}
 
+</div>
+
+<div class="col-sm-6">
 {{< card title="Blütenhonig 500 g" subtitle="Art.-Nr.: HNB500E" image="IMG_20250912_200135.jpg" >}}
 Unser Blütenhonig wird von Bienen aus einer bunten Vielfalt regionaler Blüten gesammelt. Mild, aromatisch und blumig – ein Genuss, der die Natur Bayerns ins Glas bringt.
 Hergestellt in unserer eigenen Imkerei, vermarktet unter unserer Hausmarke.
 {{</ card >}}
 
+</div>
 </div>
 
 ### Kristallisation 💡
