@@ -1140,77 +1140,27 @@
     "n_waagen": 1
   },
   {
-    "dates": "2025-08-17",
+    "dates": "2025-09-26",
+    "values": 14.47,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2025-09-27",
     "values": null,
     "n_waagen": null
   },
   {
-    "dates": "2025-08-18",
+    "dates": "2025-09-28",
     "values": null,
     "n_waagen": null
   },
   {
-    "dates": "2025-08-19",
+    "dates": "2025-09-29",
     "values": null,
     "n_waagen": null
   },
   {
-    "dates": "2025-08-20",
-    "values": null,
-    "n_waagen": null
-  },
-  {
-    "dates": "2025-08-21",
-    "values": null,
-    "n_waagen": null
-  },
-  {
-    "dates": "2025-08-22",
-    "values": null,
-    "n_waagen": null
-  },
-  {
-    "dates": "2025-08-23",
-    "values": null,
-    "n_waagen": null
-  },
-  {
-    "dates": "2025-08-24",
-    "values": null,
-    "n_waagen": null
-  },
-  {
-    "dates": "2025-08-25",
-    "values": null,
-    "n_waagen": null
-  },
-  {
-    "dates": "2025-08-26",
-    "values": null,
-    "n_waagen": null
-  },
-  {
-    "dates": "2025-08-27",
-    "values": null,
-    "n_waagen": null
-  },
-  {
-    "dates": "2025-08-28",
-    "values": null,
-    "n_waagen": null
-  },
-  {
-    "dates": "2025-08-29",
-    "values": null,
-    "n_waagen": null
-  },
-  {
-    "dates": "2025-08-30",
-    "values": null,
-    "n_waagen": null
-  },
-  {
-    "dates": "2025-08-31",
+    "dates": "2025-09-30",
     "values": null,
     "n_waagen": null
   }
