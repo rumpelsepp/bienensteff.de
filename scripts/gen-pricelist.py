@@ -8,6 +8,7 @@
 # ///
 
 import csv
+import json
 from typing import Any
 
 import httpx
@@ -34,19 +35,26 @@ def fetch_sheet(url: str) -> list[dict[str, Any]]:
 
 def main() -> None:
     articles = fetch_sheet(ARTICLE_URL)
+    articles = sorted(articles, key=lambda x: x["SKU"])
+    out = []
     
-    print("""
-| Art.-Nr. | Produkt | Marke | <acronym title="Verkaufseinheit">VKE</acronym> | <acronym title="Verpackungseinheit">VPE</acronym> | Preis | Preis / kg |
-|----------| --------|----------------| -- | -- | -- | -- |
-    """.strip())
-    for article in sorted(articles, key=lambda x: x["SKU"]):
-        public = to_bool(article["public"])
-        if article["Preis"] == "" or not public:
+    for article in articles:
+        if not article["public"].strip().lower() == "true":
             continue
-        if article["SKU"] == "HU":
-            print(f"| {article['SKU']} | {article['Produktname']} | {article['Marke']}| | | | {article['Preis']} |")
-        else:
-            print(f"| {article['SKU']} | {article['Produktname']} | {article['Marke']} | {article['Nettofüllmenge']} {article['Einheit']} Glas | {article['VPE']} | {article['Preis']} | {article['Preis / kg']} |")
+
+        item = {
+            "sku": article["SKU"],
+            "label": article["Label"],
+            "brand": article["Marke"],
+            "product_name": article["Produktname"],
+            "price": article["Preis"],
+            "price_per_kg": article["Preis / kg"],
+            "vke": article["VKE"],
+            "vpe": article["VPE"],
+        }
+        out.append(item)
+
+    print(json.dumps(out, indent=2, ensure_ascii=False))
 
 
 if __name__ == "__main__":

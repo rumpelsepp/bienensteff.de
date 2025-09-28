@@ -1,0 +1,14 @@
+figure .blockquote {
+    border-left: 4px solid var(--bs-body-color);
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-right: 1rem;
+    margin-left: 0;
+    font-size: 1rem;
+    background-color: var(--bs-gray-100);
+}
+
+figure .blockquote-footer {
+    margin-left: 1.5rem;
+}

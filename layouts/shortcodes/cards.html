@@ -1,0 +1,10 @@
+{{ $datasetName := .Get "dataset" }}
+
+<div class="row">
+  {{- range index .Page.Site.Data $datasetName -}}
+    <div class="col-sm-6 mb-4">
+      {{ $params := merge . (dict "content" (.content | markdownify)) }}
+      {{- partial "card.html" $params }}
+    </div>
+  {{- end -}}
+</div>

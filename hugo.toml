@@ -17,9 +17,14 @@ description = "Honig und Bienen aus dem Münchner Grüngürtel"
   weight = 30
 
   [[menus.main]]
+  name = 'Honigkunde'
+  pageRef = '/honigkunde'
+  weight = 40
+
+  [[menus.main]]
   name = 'Schwärme/Nester'
   pageRef = '/schwaerme-und-nester'
-  weight = 40
+  weight = 50
 
   [[menus.main]]
   name = 'Über uns'
@@ -27,17 +32,17 @@ description = "Honig und Bienen aus dem Münchner Grüngürtel"
   weight = 60
 
   [[menus.main]]
-  name = 'Internes'
+  name = 'Mehr'
   weight = 99
 
   [[menus.main]]
   name = 'Werkzeuge'
-  parent = "Internes"
+  parent = "Mehr"
   pageRef = '/werkzeuge'
 
   [[menus.main]]
   name = 'Datenbank'
-  parent = "Internes"
+  parent = "Mehr"
   pageRef = '/datenbank'
 
 [[menus.footer]]
@@ -99,3 +104,6 @@ weight = 50
 [imaging]
   quality = 97
   resampleFilter = "Lanczos"
+
+[security]
+  enableInlineShortcodes = true

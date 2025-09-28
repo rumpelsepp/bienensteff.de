@@ -51,6 +51,9 @@ format-trachtnet:
         jq < "$f" > "$f".pretty
         mv "$f".pretty "$f"
     done
+    
+update-pricelist:
+    ./scripts/gen-pricelist.py > data/preisliste/preisliste.json
 
 update-trachtnet: && format-trachtnet
     ./scripts/dump-trachtnet.py --year $(date +%Y) --outdir static/trachtnet-dump

@@ -7,7 +7,7 @@ params:
 
 {{< fig src="IMG_20230617_093428-crop.png" >}}
 
-## Servus beinand – und herzlich willkommen bei uns in Großhadern! {.h4 .mt-4 .mb-3}
+## Servus beinand – und herzlich willkommen! {.h4 .mt-4 .mb-3}
 
 Schön, dass ihr euch durch die digitalen Wiesen und Wälder des Internets zu uns verirrt habt.
 Wir sind eine [kleine, feine Imkerei]({{< relref "über-uns" >}}) im Münchner Südwesten – mitten im „Münchner Grüngürtel“.
