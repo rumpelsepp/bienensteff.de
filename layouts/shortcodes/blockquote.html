@@ -1,0 +1,10 @@
+<figure>
+    <blockquote class="blockquote">
+        {{ .Inner }}
+    </blockquote>
+    {{ with .Get "caption" }}
+    <figcaption class="blockquote-footer">
+        {{ . | markdownify }}
+    </figcaption>
+    {{ end }}
+</figure>

@@ -1,0 +1,42 @@
+[
+  {
+    "sku": "HDB250E",
+    "label": "EDH Blütenhonig 250 g",
+    "brand": "Echter Deutscher Honig®",
+    "product_name": "Blütenhonig",
+    "price": "5,00 €",
+    "price_per_kg": "20,00 €",
+    "vke": "250 g Glas",
+    "vpe": "1"
+  },
+  {
+    "sku": "HDB250K6",
+    "label": "EDH Blütenhonig 250 g",
+    "brand": "Echter Deutscher Honig®",
+    "product_name": "Blütenhonig",
+    "price": "25,00 €",
+    "price_per_kg": "16,67 €",
+    "vke": "250 g Glas",
+    "vpe": "6"
+  },
+  {
+    "sku": "HNB500E",
+    "label": "Blütenhonig 500 g",
+    "brand": "bienensteff (Hausmarke)",
+    "product_name": "Blütenhonig",
+    "price": "9,00 €",
+    "price_per_kg": "18,00 €",
+    "vke": "500 g Glas",
+    "vpe": "1"
+  },
+  {
+    "sku": "HNB500K6",
+    "label": "Blütenhonig 500 g",
+    "brand": "bienensteff (Hausmarke)",
+    "product_name": "Blütenhonig",
+    "price": "48,00 €",
+    "price_per_kg": "16,00 €",
+    "vke": "500 g Glas",
+    "vpe": "6"
+  }
+]
