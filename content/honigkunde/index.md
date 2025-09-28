@@ -10,7 +10,7 @@ Weiterführende Seiten oder Dokumente werden nach Möglichkeit verlinkt.
 ## Gesetzliche Grundlagen
 
 In der ["Honigverordnung vom 16. Januar 2004 (BGBl. I S. 92)"](https://www.gesetze-im-internet.de/honigv_2004/BJNR009200004.html) ist die Definition von Honig gesetzlich genau geregelt.
-Im Gesetzt ist Honig wie folgt definiert:
+Im Gesetz ist Honig wie folgt definiert:
 
 {{< blockquote caption="Honigverordnung vom 16. Januar 2004 (BGBl. I S. 92), die zuletzt durch Artikel 10 der Verordnung vom 5. Juli 2017 (BGBl. I S. 2272) geändert worden ist">}}
 Honig ist der natursüße Stoff, der von Honigbienen erzeugt wird, indem die Bienen Nektar von Pflanzen oder Sekrete lebender Pflanzenteile oder sich auf den lebenden Pflanzenteilen befindende Exkrete von an Pflanzen saugenden Insekten aufnehmen, durch Kombination mit eigenen spezifischen Stoffen umwandeln, einlagern, dehydratisieren und in den Waben des Bienenstocks speichern und reifen lassen.
@@ -26,9 +26,9 @@ Detailliertere Informationen findet ihr in den [Leitsätzen für Honig](https://
 ## Qualitätskriterien
 
 Auf den Honiggläsern des Deutschen Imkerbundes findet sich der Hinweis "kühl, trocken, dunkel lagern".
-Der allgemeine Hintergrund dieses Hinweis ist die Erhaltung des typischen Geschmacks, sowie der wertvollen Inhaltsstoffe.
+Der allgemeine Hintergrund dieses Hinweises ist die Erhaltung des typischen Geschmacks, sowie der wertvollen Inhaltsstoffe.
 Generell gilt, dass Honig ohne große Qualitätseinbußen mehrere Jahre lang haltbar ist — sofern er richtig gelagert wird.
-Lasst uns dazu den Lagerhinweis und dessen Hintergrund mal etwas genauer anschaun.
+Lasst uns dazu den Lagerhinweis und dessen Hintergrund mal etwas genauer anschauen.
 
 ### Wassergehalt
 
@@ -52,14 +52,14 @@ Zwischen Honig und Deckel bildet sich ein Überdruck, der beim Öffnen des Gefä
 Gärender Honig riecht sauer. Da lebende Hefezellen Durchfall erzeugen, soll gärender Honig nur erhitzt, als Backhonig, verzehrt werden. 
 {{</ blockquote >}}
 
-### Invertase (auch: Saccherase)
+### Invertase (auch: Saccharase)
 
 Die Bienen fügen dem Honig bei dessen Bereitung eine ganze Reihe körpereigener Enzyme bei. 
 Diese Enzyme haben verschiedene Effekte auf den Honig, wie z.B. eine antibakterielle Wirkung.
 Viele Enzyme sind wärme- und/oder lichtempfindlich.
 In einer Honiganalyse wird üblicherweise das Enzym Invertase geprüft.
 
-Das Niedersächsisches Landesinstitut für Bienenkunde hat folgende Informationen über das Enzym Invertase veröffentlicht:
+Das Niedersächsische Landesinstitut für Bienenkunde hat folgende Informationen über das Enzym Invertase veröffentlicht:
 
 {{< blockquote caption="Quelle: [laves.niedersachsen.de](https://www.laves.niedersachsen.de/download/40999/Invertase-Aktivitaet_ein_Qualitaetsmerkmal_fuer_Honig.pdf)" >}}
 Das im Honig vorhandene Enzym Invertase wird zum überwiegenden Teil von den Bienen bei der Honigbereitung mit dem Speichel zugefügt.
@@ -69,12 +69,12 @@ Die Invertase-Aktivität wird als Maß für die Naturbelassenheit gewertet, und 
 Dieses Enzym ist wesentlich empfindlicher gegenüber Erwärmungen über 40 °C als das ebenfalls im Honig enthaltene und in der Honigverordnung genannte Enzym Diastase.
 {{</ blockquote >}}
 
-Des Fachzentrum für Imkerei schreibt ferner:
+Das Fachzentrum für Imkerei schreibt ferner:
 
 {{< blockquote caption="Quelle: [bienenkunde.rlp.de](https://www.bienenkunde.rlp.de/Bienenkunde/Honig/Allgemeine-Informationen/DieSaccharase-AktivitaetimHonig)">}}
 Enzyme sind Eiweißmoleküle, die meist sehr wärmeempfindlich sind. Bei Temperaturen über 40 °C denaturieren diese und verlieren ihre katalytischen Eigenschaften.
 Sie können den chemischen Prozess also nicht mehr umsetzen.
-Somit lassen sich über die Aktivität von Enymen - im Honig v.a. über die Saccharase-Aktivität - Wärmeeinwirkungen oder Hitzeschäden nachweisen.
+Somit lassen sich über die Aktivität von Enzymen - im Honig v.a. über die Saccharase-Aktivität - Wärmeeinwirkungen oder Hitzeschäden nachweisen.
 Auch falsche oder lange Lagerung des Honigs führt zu einer Abnahme der Saccharase-Aktivität. 
 {{</ blockquote >}}
 
@@ -97,7 +97,7 @@ Lagerung bei Zimmertemperatur (21 °C) kann den HMF-Gehalt in einem Jahr bereits
 Ein hoher 5-HMF-Wert des Honigs weist auf länger anhaltende Lagerung oder Erwärmung hin.
 {{</ blockquote >}}
 
-Das Bundestinstitut für Risikobewertung hat eine Stellungname zur Toxizität beim Menschen veröffentlicht.
+Das Bundesinstitut für Risikobewertung hat eine Stellungnahme zur Toxizität beim Menschen veröffentlicht.
 Das Ergebnis lautet wie folgt:
 
 {{< blockquote caption="Quelle: [bfr.bund.de](https://www.bfr.bund.de/cm/343/5_hmf_gehalte_in_lebensmitteln_sind_nach_derzeitigem_wissenschaftlichen_kenntnisstand_gesundheitlich_unproblematisch.pdf)">}}
