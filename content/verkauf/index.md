@@ -38,9 +38,9 @@ Probiert ihn aus!
 
 Alle Produkte und unsere attraktiven Mengenrabatte findet ihr in der [aktuellen Preisliste]({{< relref "verkauf#preisliste" >}}).
 Je nach Blüten und Jahreszeit kann der Honig a bisserl anders schmecken oder ausschauen – so wie’s die Natur vorgibt.
-Mit der Zeit wird er fester bzw. [kristallisiert](https://bienen.info/honig-kristallisiert-biologin-klaert-auf/) – des is a ganz natürlicher Vorgang und zeigt, dass er unbehandelt is.
+Mit der Zeit wird er fester bzw. [kristallisiert]({{< relref "honigkunde#kristallisation" >}}) – des is a ganz natürlicher Vorgang und zeigt, dass er unbehandelt is.
 
-Wenn du ihn wieder flüssig magst, einfach ins warme Wasserbad stellen (bitte ned über 40 Grad).
+Wenn du ihn wieder flüssig magst, einfach ins warme Wasserbad stellen (bitte [nicht über 40 Grad]({{< relref "honigkunde#zusammenfassung" >}})).
 
 ## Verkaufsstellen
 
