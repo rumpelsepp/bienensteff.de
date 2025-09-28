@@ -3,19 +3,19 @@ title: "Verkauf 🍯"
 description: |
     Unser Honig hat 2024 bei der Bayerischen Honigprämierung eine Goldmedaille erhalten – darüber gfrein wir uns natürlich narrisch.
     Ein schöner Beleg für echte Qualität aus unserer kleinen Imkerei.
-    Seit 2025 tragen wir zudem das Siegel Programm Geprüfte Qualität — Bayern.
+    Seit 2025 tragen wir zudem das Siegel Programm Geprüfte Qualität – Bayern.
 
     Dieses Jahr war das Wetter ziemlich launisch – darum gibt es heuer nur eine Sorte.
     Aber dafür ist unser Blütenhonig 🍯🌸 etwas ganz Besonderes: Er vereint das ganze Bienenjahr in einem Glas und überrascht mit einem intensiven, aromatischen Geschmack 🤤.
     Probiert ihn aus!
 ---
 
-## Unsere Honige 
-
-Unser Honig hat 2024 bei der Bayerischen Honigprämierung eine [Goldmedaille](/auszeichnungen/2024-11-03-honigpraemierung.pdf) erhalten – darüber gfrein wir uns natürlich narrisch.
+Unser Honig hat 2024 bei der Bayerischen Honigprämierung eine [Goldmedaille](/auszeichnungen/2024-11-03-honigpraemierung.pdf) erhalten :w
+ darüber gfrein wir uns natürlich narrisch.
 Seit 2025 tragen wir zudem das Siegel [Geprüfte Qualität — Bayern](/zertifikate/20250523-gq-zertifikat.pdf).
 Ein schöner Beleg für echte Qualität aus unserer kleinen Imkerei.
 Unser Honig wird zu 100 % in Bayern erzeugt, gelagert und liebevoll verarbeitet.
+{.lead}
 
 Unsere Bienen stehen ganzjährig an festen Standorten im Münchner Grüngürtel.
 Mehrmals im Jahr wird geerntet, schonend geschleudert und von Hand ins Glas gefüllt.
@@ -23,10 +23,12 @@ Unser Honig kommt direkt aus unserer eigenen Imkerei und wird weder erhitzt noch
 Die frische Ernte gibt es jedes Jahr ab September.
 In unserer [Honigdatenbank]({{< relref "datenbank" >}}) lässt sich jedes Honiglos bis zum Erntedatum zurückverfolgen.
 Bei Fragen sprecht uns gerne an!
+{.lead}
 
 Wer sich besonders für Honig interessiert, kann in unsere [Honigkunde]({{< relref "honigkunde" >}}) eintauchen 🧑‍🎓.
+{.lead}
 
-### Unser Sortiment 2025
+## Unser Sortiment 2025
 
 Dieses Jahr war das Wetter ziemlich launisch – darum gibt es heuer nur eine Sorte.
 Aber dafür ist unser Blütenhonig 🍯🌸 etwas ganz Besonderes: Er vereint das ganze Bienenjahr in einem Glas und überrascht mit einem intensiven, aromatischen Geschmack 🤤.
