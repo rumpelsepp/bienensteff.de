@@ -10,8 +10,10 @@ Hauptberuflich verbringe ich die meiste Zeit vor dem Bildschirm und war lange au
 Aus einem einzigen Volk wurden schnell mehrere – und ja, es werden eher mehr als weniger!
 Zum Glück hab ich daheim eine Familie, die das ganze Summen und Schleudern mit viel Geduld (und einer ordentlichen Portion Humor) mitträgt:
 beim Wachsschmelzen, beim Honig rühren oder einfach nur beim stillen Ertragen meines unaufhaltsamen Bienengelabers… 😁
+{.lead}
 
 Und so wurde aus einem Versuch eine Leidenschaft – und aus der Leidenschaft unsere kleine Imkerei.
+{.lead}
 
 {{< fig src="IMG_20240708_195442.jpg" >}}
 
