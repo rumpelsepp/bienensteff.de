@@ -25,7 +25,7 @@ Reicht locker für 4 Brotzeitportionen.
 ### So wird's g'macht
 
 1. Milch im Topf aufkochen und den Essig dazugeben. Rühren, bis sich die Molke vom Frischkäse trennt.
-2. Durch ein Sieb abgießen. Die Molke kannst aufheben, der Frischkäse sollt erst abkühlen.
+2. Durch ein Sieb abgießen. Die Molke kannst optional weiterverarbeiten, der Frischkäse sollt erst abkühlen.
 3. Tomaten, Kräuter, Öl, Honig und Gewürze in den Mixer (oder in a Schüssel mit Pürierstab) geben und fein zerkleinern.
 4. Den Frischkäse dazu, nochmal mixen – fertig is a cremiger Aufstrich.
 
