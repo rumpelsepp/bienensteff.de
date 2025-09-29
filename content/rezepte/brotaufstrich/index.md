@@ -14,6 +14,7 @@ title: Selbst gemachter Frischkäse-Brotaufstrich
 ### Aufstrich
 
 * Frischkäse aus Grundrezept
+* 🍯 1 bis 2 EL von [unserem Honig]({{< relref "verkauf" >}}) 🍯
 * 4 EL Olivenöl
 * 2 bis 4 Cocktailtomaten
 * getrocknete Tomaten
