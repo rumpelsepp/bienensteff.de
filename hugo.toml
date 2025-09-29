@@ -17,19 +17,24 @@ description = "Honig und Bienen aus dem Münchner Grüngürtel"
   weight = 30
 
   [[menus.main]]
+  name = 'Rezepte'
+  pageRef = '/rezepte'
+  weight = 40
+
+  [[menus.main]]
   name = 'Honigkunde'
   pageRef = '/honigkunde'
-  weight = 40
+  weight = 50
 
   [[menus.main]]
   name = 'Schwärme/Nester'
   pageRef = '/schwaerme-und-nester'
-  weight = 50
+  weight = 60
 
   [[menus.main]]
   name = 'Über uns'
   pageRef = '/über-uns'
-  weight = 60
+  weight = 70
 
   [[menus.main]]
   name = 'Mehr'
