@@ -10,8 +10,7 @@ description: |
     Probiert ihn aus!
 ---
 
-Unser Honig hat 2024 bei der Bayerischen Honigprämierung eine [Goldmedaille](/auszeichnungen/2024-11-03-honigpraemierung.pdf) erhalten :w
- darüber gfrein wir uns natürlich narrisch.
+Unser Honig hat 2024 bei der Bayerischen Honigprämierung eine [Goldmedaille](/auszeichnungen/2024-11-03-honigpraemierung.pdf) erhalten darüber gfrein wir uns natürlich narrisch.
 Seit 2025 tragen wir zudem das Siegel [Geprüfte Qualität — Bayern](/zertifikate/20250523-gq-zertifikat.pdf).
 Ein schöner Beleg für echte Qualität aus unserer kleinen Imkerei.
 Unser Honig wird zu 100 % in Bayern erzeugt, gelagert und liebevoll verarbeitet.
@@ -28,13 +27,26 @@ Bei Fragen sprecht uns gerne an!
 Wer sich besonders für Honig interessiert, kann in unsere [Honigkunde]({{< relref "honigkunde" >}}) eintauchen 🧑‍🎓.
 {.lead}
 
-## Unser Sortiment 2025
+## Sortiment 2025 {#sortiment}
 
 Dieses Jahr war das Wetter ziemlich launisch – darum gibt es heuer nur eine Sorte.
 Aber dafür ist unser Blütenhonig 🍯🌸 etwas ganz Besonderes: Er vereint das ganze Bienenjahr in einem Glas und überrascht mit einem intensiven, aromatischen Geschmack 🤤.
 Probiert ihn aus!
 
-{{< cards dataset="sortiment" >}}
+{{< sortiment.inline dataset="sortiment" >}}
+{{ $datasetName := .Get "dataset" }}
+
+<div class="row">
+  {{- range index .Page.Site.Data $datasetName -}}
+    {{ if .active }}
+    <div class="col-sm-6 mb-4">
+      {{ $params := merge . (dict "content" (.content | markdownify) "footer" (.footer | markdownify) "cardClass" "me-2") }}
+      {{- partial "card.html" $params -}}
+    </div>
+    {{ end }}
+  {{- end -}}
+</div>
+{{</ sortiment.inline >}}
 
 Alle Produkte und unsere attraktiven Mengenrabatte findet ihr in der [aktuellen Preisliste]({{< relref "verkauf#preisliste" >}}).
 Je nach Blüten und Jahreszeit kann der Honig a bisserl anders schmecken oder ausschauen – so wie’s die Natur vorgibt.
@@ -101,7 +113,6 @@ Wir nehmen Honiggläser gerne gespült zurück – Etikett bitte, wenn möglich,
                 <td>{{ .price }}</td>
                 <td>{{ .price_per_kg }}</td>
             </tr>
-
           {{- end -}}
         </tbody>
     </table>

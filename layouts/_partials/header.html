@@ -1,9 +1,9 @@
 {{ block "banner" . }}
-   {{ with $banner := resources.Get "/img/banner2.jpg" | resources.Fingerprint }}
+   {{ with $banner := resources.Get "/img/banner.jpg" | resources.Fingerprint }}
      <div class="banner-container">
        <img id="banner" src="{{ $banner.RelPermalink }}" height="230" width="968">
 
-     {{ with $logo := resources.Get "/img/logo.png" | resources.Fingerprint }}
+     {{ with $logo := resources.Get "/img/logo.svg" }}
        <div class="overlay">
          <a href="{{ "" | relURL }}"><img id="logo" src="{{ $logo.RelPermalink }}" width="100" height="100"></a>
          <div id="logo-text" style="text-align: center; color: white;">bienensteff</div>

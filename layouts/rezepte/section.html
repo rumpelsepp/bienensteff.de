@@ -1,0 +1,39 @@
+{{- define "_partials/inline/rezepte/card-content.html" }}
+  <p class="card-text">{{ .Params.description }}</p>
+  <a href="{{ .RelPermalink }}" class="btn btn-primary">Zum Rezept</a>
+{{- end }}
+
+{{ define "main" }}
+<article class="content">
+  <header>
+    <h1>{{ .Title }}</h1>
+  </header>
+  
+  <p class="lead">
+    {{ .Params.Description }}
+  </p>
+
+  {{ .Content }}
+
+  {{ range $i, $p := .Pages }}
+  
+    {{ if eq (mod $i 3) 0 }}
+      <div class="row">
+    {{ end }}
+
+    <div class="col-md-4">
+      {{ $context := dict
+          "cardClass" "mb-3"
+          "title" $p.Title
+          "image" (urls.JoinPath $p.Path ($p.Param "image"))
+          "content" (partial "inline/rezepte/card-content.html" $p)
+      }}
+      {{ partial "card.html" $context }}
+    </div>
+
+    {{ if eq (mod $i 3) 0 }}
+      </div>
+    {{ end }}
+  {{ end }}
+</article>
+{{ end }}
