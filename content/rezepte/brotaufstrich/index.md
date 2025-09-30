@@ -1,10 +1,12 @@
 ---
 title: Pikanter Frischkäs-Aufstrich
+params: 
+    images: [IMG_20250607_192212.jpg]
+image: IMG_20250607_192212.jpg
+description: |
+    Herzhaft, cremig und mit einer feinen Schärfe – unser pikanter Frischkäs-Aufstrich passt ideal zu einer reschen Brezn oder frischem Bauernbrot.
+    Perfekt zur bayerischen Brotzeit: so schmeckt’s richtig guad!
 ---
-
-Herzhaft, cremig und mit einer feinen Schärfe – unser pikanter Frischkäs-Aufstrich passt ideal zu einer reschen Brezn oder frischem Bauernbrot.
-Perfekt zur bayerischen Brotzeit: so schmeckt’s richtig guad!
-{.lead}
 
 {{< fig src="IMG_20250607_192212.jpg" >}}
 
@@ -14,7 +16,7 @@ Reicht locker für 4 Brotzeitportionen.
 
 * 1 l frische Milch
 * 1 EL Essig (Essig-Essenz oder Branntweinessig reicht völlig)
-* 1-2 EL von [unserm Honig]({{< relref "verkauf" >}}) 🍯
+* 1-2 EL von [unserm Honig]({{< relref "verkauf#sortiment" >}}) 🍯
 * 4 EL Olivenöl
 * 2-4 Cocktailtomaten
 * a paar getrocknete Tomaten

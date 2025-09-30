@@ -24,3 +24,5 @@ Schaut’s euch gern um – und vielleicht sehen wir uns ja bald!
 
 Euer Steff 🐝
 {.lead}
+
+<a href="https://www.gq-bayern.de" rel="noopener noreferrer" target="_blank"><img width="120" src="/GQB-Logo.svg" loading="lazy"></a>

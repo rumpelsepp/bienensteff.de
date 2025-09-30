@@ -5,7 +5,9 @@
     Echter deutscher Honig® aus der Blütenvielfalt unserer bayerischen Wiesen und Wälder – aromatisch, blumig und unverfälscht.
     **Neu in diesem Jahr:** Jetzt im kleineren Glas – das perfekte Geschenk für Freunde, Familie! 🎁
   footer: |
+    <a href="https://www.gq-bayern.de" rel="noopener noreferrer" target="_blank"><img class="me-2" height="40" src="/GQB-Logo-ohne-txt.svg" loading="lazy"></a>
     Einzelpreis: 5,00 € (20 € / kg)
+  active: true
 
 - title: "Blütenhonig 500 g"
   subtitle: "Art.-Nr.: HNB500E"
@@ -14,4 +16,6 @@
     Unser Blütenhonig wird von Bienen aus einer bunten Vielfalt regionaler Blüten gesammelt. Mild, aromatisch und blumig – ein Genuss, der die Natur Bayerns ins Glas bringt.
     Hergestellt in unserer eigenen Imkerei, vermarktet unter unserer Hausmarke.
   footer: |
+    <a href="/"><img class="me-2" width="40" src="/img/logo.svg" loading="lazy"></a>
     Einzelpreis: 9,00 € (18 € / kg)
+  active: true
