@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h6>Externe Links</h6>
+            {{ partial "menu-stock.html" (dict "menuID" "footerexternallinks" "page" .) }}
+        </div>
+        <div class="col">
+            <h6>Rechtliches</h6>
+            {{ partial "menu-stock.html" (dict "menuID" "footerlegal" "page" .) }}
+        </div>
+        <div class="col">
+            <h6>Kontakt</h6>
+            <address>{{ .Site.Params.contact | markdownify }}</address>
+        </div>
+    </div>
+    <div class="row text-center mt-4">
+        <div class="col">
+            <a href="https://www.gq-bayern.de" rel="noopener noreferrer" target="_blank"><img height="120" src="/GQB-Logo.svg" loading="lazy"></a>
+        </div>
+        <div class="col">
+            <a href="https://stadt.muenchen.de/infos/muenchner-gruenguertel.html" rel="noopener noreferrer" target="_blank"><img height="120" src="/Grüngürtel_Logo.svg" loading="lazy"></a>
+        </div>
+    </div>
+</div>
