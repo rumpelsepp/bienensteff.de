@@ -1342,26 +1342,181 @@
   {
     "dates": "2025-09-26",
     "values": 28.48,
-    "n_waagen": 841
+    "n_waagen": 842
   },
   {
     "dates": "2025-09-27",
     "values": 28.36,
-    "n_waagen": 841
+    "n_waagen": 842
   },
   {
     "dates": "2025-09-28",
     "values": 28.3,
-    "n_waagen": 842
+    "n_waagen": 843
   },
   {
     "dates": "2025-09-29",
-    "values": 28.23,
-    "n_waagen": 759
+    "values": 28.2,
+    "n_waagen": 844
   },
   {
     "dates": "2025-09-30",
+    "values": 28.2,
+    "n_waagen": 633
+  },
+  {
+    "dates": "2025-10-01",
     "values": 28.21,
-    "n_waagen": 10
+    "n_waagen": 2
+  },
+  {
+    "dates": "2025-10-02",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-03",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-04",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-05",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-06",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-07",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-08",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-09",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-10",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-11",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-12",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-13",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-14",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-15",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-16",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-17",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-18",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-19",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-20",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-21",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-22",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-23",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-24",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-25",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-26",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-27",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-28",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-29",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-30",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-10-31",
+    "values": null,
+    "n_waagen": null
   }
 ]

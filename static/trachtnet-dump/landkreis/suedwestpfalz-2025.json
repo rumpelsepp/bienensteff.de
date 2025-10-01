@@ -1356,12 +1356,12 @@
   },
   {
     "dates": "2025-09-29",
-    "values": 11.95,
+    "values": 11.85,
     "n_waagen": 6
   },
   {
     "dates": "2025-09-30",
-    "values": null,
-    "n_waagen": null
+    "values": 11.86,
+    "n_waagen": 6
   }
 ]

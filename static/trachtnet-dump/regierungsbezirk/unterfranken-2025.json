@@ -1342,26 +1342,26 @@
   {
     "dates": "2025-09-26",
     "values": 15.39,
-    "n_waagen": 27
+    "n_waagen": 28
   },
   {
     "dates": "2025-09-27",
     "values": 15.32,
-    "n_waagen": 27
+    "n_waagen": 28
   },
   {
     "dates": "2025-09-28",
     "values": 15.26,
-    "n_waagen": 27
+    "n_waagen": 28
   },
   {
     "dates": "2025-09-29",
-    "values": 15.21,
-    "n_waagen": 27
+    "values": 15.26,
+    "n_waagen": 28
   },
   {
     "dates": "2025-09-30",
-    "values": null,
-    "n_waagen": null
+    "values": 15.25,
+    "n_waagen": 28
   }
 ]
