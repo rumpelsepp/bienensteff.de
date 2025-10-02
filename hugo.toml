@@ -77,13 +77,13 @@ Gräfelfinger Str. 169a
   weight = 30
 
   [[menus.footerExternalLinks]]
-  name = 'Landesverband Bayerischer Imker e.V.'
+  name = 'LV Bayerischer Imker e.V.'
   pre = '<i class="bi bi-box-arrow-up-right"></i>'
   URL = 'https://lvbi.de/'
   weight = 40
 
   [[menus.footerExternalLinks]]
-  name = 'Bienenzuchtverein München und Umgebung e.V.'
+  name = 'BZV München und Umgebung e.V.'
   pre = '<i class="bi bi-box-arrow-up-right"></i>'
   URL = 'https://bzvm.de/'
   weight = 60
