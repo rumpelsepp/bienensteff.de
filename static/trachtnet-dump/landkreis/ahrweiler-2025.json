@@ -1366,13 +1366,13 @@
   },
   {
     "dates": "2025-10-01",
-    "values": 44.16,
+    "values": 44.5,
     "n_waagen": 10
   },
   {
     "dates": "2025-10-02",
-    "values": null,
-    "n_waagen": null
+    "values": 44.43,
+    "n_waagen": 8
   },
   {
     "dates": "2025-10-03",

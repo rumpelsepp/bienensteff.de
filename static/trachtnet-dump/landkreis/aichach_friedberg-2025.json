@@ -1361,18 +1361,18 @@
   },
   {
     "dates": "2025-09-30",
-    "values": 1.59,
+    "values": 1.64,
     "n_waagen": 3
   },
   {
     "dates": "2025-10-01",
-    "values": 1.61,
-    "n_waagen": 2
+    "values": 1.57,
+    "n_waagen": 3
   },
   {
     "dates": "2025-10-02",
-    "values": null,
-    "n_waagen": null
+    "values": 1.56,
+    "n_waagen": 2
   },
   {
     "dates": "2025-10-03",
