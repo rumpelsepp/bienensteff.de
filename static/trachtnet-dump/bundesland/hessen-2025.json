@@ -1382,17 +1382,17 @@
   {
     "dates": "2025-10-04",
     "values": 32.66,
-    "n_waagen": 28
+    "n_waagen": 87
   },
   {
     "dates": "2025-10-05",
-    "values": 32.67,
-    "n_waagen": 2
+    "values": 32.61,
+    "n_waagen": 80
   },
   {
     "dates": "2025-10-06",
-    "values": null,
-    "n_waagen": null
+    "values": 32.59,
+    "n_waagen": 2
   },
   {
     "dates": "2025-10-07",
