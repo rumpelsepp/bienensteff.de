@@ -1402,27 +1402,27 @@
   {
     "dates": "2025-10-08",
     "values": 20.4,
-    "n_waagen": 21
+    "n_waagen": 24
   },
   {
     "dates": "2025-10-09",
-    "values": 20.22,
-    "n_waagen": 21
+    "values": 20.24,
+    "n_waagen": 24
   },
   {
     "dates": "2025-10-10",
-    "values": 20.15,
-    "n_waagen": 3
+    "values": 20.09,
+    "n_waagen": 24
   },
   {
     "dates": "2025-10-11",
-    "values": null,
-    "n_waagen": null
+    "values": 19.97,
+    "n_waagen": 23
   },
   {
     "dates": "2025-10-12",
-    "values": null,
-    "n_waagen": null
+    "values": 19.9,
+    "n_waagen": 6
   },
   {
     "dates": "2025-10-13",
