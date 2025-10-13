@@ -1402,32 +1402,32 @@
   {
     "dates": "2025-10-08",
     "values": 47.18,
-    "n_waagen": 28
+    "n_waagen": 33
   },
   {
     "dates": "2025-10-09",
-    "values": 47.0,
-    "n_waagen": 28
+    "values": 47.01,
+    "n_waagen": 33
   },
   {
     "dates": "2025-10-10",
-    "values": 46.92,
-    "n_waagen": 5
+    "values": 46.91,
+    "n_waagen": 33
   },
   {
     "dates": "2025-10-11",
-    "values": null,
-    "n_waagen": null
+    "values": 46.87,
+    "n_waagen": 34
   },
   {
     "dates": "2025-10-12",
-    "values": null,
-    "n_waagen": null
+    "values": 46.83,
+    "n_waagen": 11
   },
   {
     "dates": "2025-10-13",
-    "values": null,
-    "n_waagen": null
+    "values": 46.82,
+    "n_waagen": 2
   },
   {
     "dates": "2025-10-14",
