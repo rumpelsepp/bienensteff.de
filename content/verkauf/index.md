@@ -57,7 +57,6 @@ Wenn du ihn wieder flüssig magst, einfach ins warme Wasserbad stellen (bitte [n
 ## Verkaufsstellen
 
 Unser Honig kann an folgenden Stellen gekauft werden.
-Beim Direktverkauf am besten vorher kurz anrufen oder schreiben.
 Wir nehmen Honiggläser gerne gespült zurück – Etikett bitte, wenn möglich, entfernen.
 
 {{< verkaufsstellen.inline >}}
@@ -84,6 +83,12 @@ Wir nehmen Honiggläser gerne gespült zurück – Etikett bitte, wenn möglich,
         </tbody>
     </table>
 {{</ verkaufsstellen.inline >}}
+
+### Öffnungszeiten
+
+Wir führen kein klassisches Ladengeschäft mit Öffnungszeiten.
+Beim Direktverkauf am besten vorher kurz anrufen oder schreiben.
+In München ist tendentiell immer an Montagen tagsüber jemand zu Hause (ganz unverbindliche Info).
 
 ## Preisliste
 
