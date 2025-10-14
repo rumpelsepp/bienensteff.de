@@ -1407,32 +1407,32 @@
   {
     "dates": "2025-10-09",
     "values": 27.31,
-    "n_waagen": 836
+    "n_waagen": 837
   },
   {
     "dates": "2025-10-10",
     "values": 27.23,
-    "n_waagen": 836
+    "n_waagen": 837
   },
   {
     "dates": "2025-10-11",
     "values": 27.13,
-    "n_waagen": 835
+    "n_waagen": 837
   },
   {
     "dates": "2025-10-12",
-    "values": 27.11,
-    "n_waagen": 632
+    "values": 27.02,
+    "n_waagen": 837
   },
   {
     "dates": "2025-10-13",
-    "values": 27.11,
-    "n_waagen": 10
+    "values": 26.99,
+    "n_waagen": 748
   },
   {
     "dates": "2025-10-14",
-    "values": null,
-    "n_waagen": null
+    "values": 26.99,
+    "n_waagen": 13
   },
   {
     "dates": "2025-10-15",
