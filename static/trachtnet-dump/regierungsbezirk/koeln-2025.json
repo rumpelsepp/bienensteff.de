@@ -1427,12 +1427,12 @@
   {
     "dates": "2025-10-13",
     "values": 32.08,
-    "n_waagen": 30
+    "n_waagen": 31
   },
   {
     "dates": "2025-10-14",
-    "values": null,
-    "n_waagen": null
+    "values": 32.09,
+    "n_waagen": 2
   },
   {
     "dates": "2025-10-15",
