@@ -1421,13 +1421,13 @@
   },
   {
     "dates": "2025-10-12",
-    "values": 11.1,
+    "values": 11.12,
     "n_waagen": 1
   },
   {
     "dates": "2025-10-13",
-    "values": null,
-    "n_waagen": null
+    "values": 10.96,
+    "n_waagen": 1
   },
   {
     "dates": "2025-10-14",
