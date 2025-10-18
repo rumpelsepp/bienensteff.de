@@ -1437,17 +1437,17 @@
   {
     "dates": "2025-10-15",
     "values": 43.42,
-    "n_waagen": 16
+    "n_waagen": 17
   },
   {
     "dates": "2025-10-16",
     "values": 43.42,
-    "n_waagen": 7
+    "n_waagen": 16
   },
   {
     "dates": "2025-10-17",
-    "values": null,
-    "n_waagen": null
+    "values": 43.43,
+    "n_waagen": 13
   },
   {
     "dates": "2025-10-18",
