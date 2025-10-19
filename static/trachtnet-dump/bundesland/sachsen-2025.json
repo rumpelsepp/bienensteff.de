@@ -1447,12 +1447,12 @@
   {
     "dates": "2025-10-17",
     "values": 43.5,
-    "n_waagen": 12
+    "n_waagen": 13
   },
   {
     "dates": "2025-10-18",
-    "values": null,
-    "n_waagen": null
+    "values": 43.32,
+    "n_waagen": 11
   },
   {
     "dates": "2025-10-19",
