@@ -29,7 +29,7 @@ Grobe Anhaltspunkte (cf. Einfach Imkern, 4. Auflage, Seite 97):
 | April | 3 bis 5 kg |
 {.table .table-striped .table-sm}
 
-In Summe, je nach Volksstärke: 14 bis 23 kg
+In Summe, je nach Volksstärke: 10 bis 15 kg
 
 ### Varroose
 
