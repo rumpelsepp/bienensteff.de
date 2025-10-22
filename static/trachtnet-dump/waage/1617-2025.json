@@ -1456,18 +1456,18 @@
   },
   {
     "dates": "2025-10-19",
-    "values": 64.04,
+    "values": 64.03,
     "n_waagen": 1
   },
   {
     "dates": "2025-10-20",
-    "values": null,
-    "n_waagen": null
+    "values": 64.03,
+    "n_waagen": 1
   },
   {
     "dates": "2025-10-21",
-    "values": null,
-    "n_waagen": null
+    "values": 64.02,
+    "n_waagen": 1
   },
   {
     "dates": "2025-10-22",
