@@ -1512,11 +1512,11 @@
   {
     "dates": "2025-10-30",
     "values": 45.73,
-    "n_waagen": 1
+    "n_waagen": 2
   },
   {
     "dates": "2025-10-31",
-    "values": null,
-    "n_waagen": null
+    "values": 45.73,
+    "n_waagen": 1
   }
 ]
