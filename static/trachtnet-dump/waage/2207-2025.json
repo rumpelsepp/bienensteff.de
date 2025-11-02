@@ -1516,7 +1516,157 @@
   },
   {
     "dates": "2025-10-31",
-    "values": 29.08,
+    "values": 28.94,
     "n_waagen": 1
+  },
+  {
+    "dates": "2025-11-01",
+    "values": 28.95,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2025-11-02",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-03",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-04",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-05",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-06",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-07",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-08",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-09",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-10",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-11",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-12",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-13",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-14",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-15",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-16",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-17",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-18",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-19",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-20",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-21",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-22",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-23",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-24",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-25",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-26",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-27",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-28",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-29",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-30",
+    "values": null,
+    "n_waagen": null
   }
 ]
