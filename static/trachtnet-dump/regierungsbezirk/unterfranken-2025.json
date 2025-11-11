@@ -1562,12 +1562,12 @@
   {
     "dates": "2025-11-09",
     "values": 12.11,
-    "n_waagen": 20
+    "n_waagen": 27
   },
   {
     "dates": "2025-11-10",
-    "values": null,
-    "n_waagen": null
+    "values": 12.09,
+    "n_waagen": 26
   },
   {
     "dates": "2025-11-11",
