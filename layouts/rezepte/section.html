@@ -1,6 +1,5 @@
 {{- define "_partials/inline/rezepte/card-content.html" }}
   <p class="card-text">{{ .Params.description }}</p>
-  <a href="{{ .RelPermalink }}" class="btn btn-primary">Zum Rezept</a>
 {{- end }}
 
 {{ define "main" }}
@@ -27,6 +26,7 @@
           "title" $p.Title
           "image" (urls.JoinPath $p.Path ($p.Param "image"))
           "content" (partial "inline/rezepte/card-content.html" $p)
+          "url" $p.RelPermalink
       }}
       {{ partial "card.html" $context }}
     </div>
