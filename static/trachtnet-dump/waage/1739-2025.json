@@ -1490,32 +1490,87 @@
     "n_waagen": 1
   },
   {
-    "dates": "2025-10-26",
+    "dates": "2025-11-14",
+    "values": 95.11,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2025-11-15",
     "values": null,
     "n_waagen": null
   },
   {
-    "dates": "2025-10-27",
+    "dates": "2025-11-16",
     "values": null,
     "n_waagen": null
   },
   {
-    "dates": "2025-10-28",
+    "dates": "2025-11-17",
     "values": null,
     "n_waagen": null
   },
   {
-    "dates": "2025-10-29",
+    "dates": "2025-11-18",
     "values": null,
     "n_waagen": null
   },
   {
-    "dates": "2025-10-30",
+    "dates": "2025-11-19",
     "values": null,
     "n_waagen": null
   },
   {
-    "dates": "2025-10-31",
+    "dates": "2025-11-20",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-21",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-22",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-23",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-24",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-25",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-26",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-27",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-28",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-29",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-30",
     "values": null,
     "n_waagen": null
   }
