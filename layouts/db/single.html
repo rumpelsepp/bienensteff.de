@@ -83,6 +83,7 @@
             {{ partial "inline/db/permalink.html" . }}
         {{ else if eq $type "bucket" }}
             {{ partial "db/single_bucket.html" . }}
+            {{ partial "inline/db/analysis-permalink.html" .Params.id }}
             {{ partial "inline/db/permalink.html" . }}
         {{ else if eq $type "centrifugation" }}
             {{ partial "db/single_centrifugation.html" . }}
