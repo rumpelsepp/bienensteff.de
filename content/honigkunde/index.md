@@ -1,5 +1,6 @@
 ---
 title: Honigkunde
+toc: true
 ---
 
 Auf dieser Seite stellen wir euch die wichtigsten Infos über Honig als groben Überblick zusammen.
