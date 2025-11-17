@@ -7,6 +7,7 @@ description: "Übersicht und Webtool zum Berechnen der Termine für Teilen und B
 TuB ist größtenteils witterungsunabhängig und kann gut nach Zeitplan durchgeführt werden.
 Der grüne Bereich symbolisiert die brutfreie Zeit.
 Termine in kursiv bzw. mit Stern * sind geschätzt, da der Tag des Hochzeitsflugs und folglich der Start der Eiablage nicht vorhersehbar ist.
+{.lead}
 
 ---
 <table class="table table-sm">
