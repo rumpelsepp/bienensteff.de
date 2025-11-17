@@ -1,4 +1,4 @@
-{{ define "partials/inline-permalink.html" }}
+{{ define "_partials/inline/db/permalink.html" }}
     <tr><th>Permalink</th>
         <td>
             {{ if hugo.IsDevelopment }}
@@ -10,7 +10,7 @@
     </tr>
 {{ end }}
 
-{{ define "partials/inline-analysis-permalink.html" }}
+{{ define "_partials/inline/db/analysis-permalink.html" }}
     {{ with resources.GetMatch (printf "/db/analysen/an-%s.pdf" (strings.ToLower .)) }}
     <tr>
         <th>Laboranalyse</th>
@@ -75,21 +75,22 @@
     <table id="honeydb" class="table table-striped">
         {{ if eq $type "article" }}
             {{ partial "db/single_article.html" . }}
-            {{ partial "inline-permalink.html" . }}
+            {{ partial "inline/db/permalink.html" . }}
         {{ end }}
         {{ if eq $type "batch" }}
             {{ partial "db/single_batch.html" . }}
-            {{ partial "inline-analysis-permalink.html" .Params.id }}
-            {{ partial "inline-permalink.html" . }}
+            {{ partial "inline/db/analysis-permalink.html" .Params.id }}
+            {{ partial "inline/db/permalink.html" . }}
         {{ else if eq $type "bucket" }}
             {{ partial "db/single_bucket.html" . }}
-            {{ partial "inline-permalink.html" . }}
+            {{ partial "inline/db/permalink.html" . }}
         {{ else if eq $type "centrifugation" }}
             {{ partial "db/single_centrifugation.html" . }}
-            {{ partial "inline-permalink.html" . }}
+            {{ partial "inline/db/analysis-permalink.html" .Params.id }}
+            {{ partial "inline/db/permalink.html" . }}
         {{ else if eq $type "filling" }}
             {{ partial "db/single_filling.html" . }}
-            {{ partial "inline-permalink.html" . }}
+            {{ partial "inline/db/permalink.html" . }}
         {{ end }}
     </table>
 

@@ -1,5 +1,5 @@
 <tr><th>Schleuderungsnummer</th><td>{{ .Params.id }}</td></tr>
-<tr><th>Schleuderdatum</th><td><time datetime="{{ (time.AsTime .Params.date).Format "2006-01-02" }}">{{ (time.AsTime .Params.date).Format "02.01.2006" }}</time></td></tr>
+<tr><th>Schleuderdatum</th><td>{{ partial "db/date" (dict "date" .Params.date) }}</td></tr>
 <tr><th>Gewicht</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.weight) "." "," }}</td></tr>
 {{ with .Params.batches }}
     <tr><th>Honiglose</th>
