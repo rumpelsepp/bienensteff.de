@@ -1,16 +1,17 @@
 ---
 title: "Verkauf 🍯"
 description: |
-    Unser Honig hat 2024 bei der Bayerischen Honigprämierung eine Goldmedaille erhalten – darüber gfrein wir uns natürlich narrisch.
+    Unser Honig wurde mehrfach bei der Bayerischen Honigprämierung ausgezeichnet – darüber gfrein wir uns natürlich narrisch.
     Ein schöner Beleg für echte Qualität aus unserer kleinen Imkerei.
-    Seit 2025 tragen wir zudem das Siegel Programm Geprüfte Qualität – Bayern.
+    Seit 2025 tragen wir zudem das Siegel Geprüfte Qualität – Bayern für Honig.
 
     Dieses Jahr war das Wetter ziemlich launisch – darum gibt es heuer nur eine Sorte.
     Aber dafür ist unser Blütenhonig 🍯🌸 etwas ganz Besonderes: Er vereint das ganze Bienenjahr in einem Glas und überrascht mit einem intensiven, aromatischen Geschmack 🤤.
     Probiert ihn aus!
 ---
 
-Unser Honig hat 2024 bei der Bayerischen Honigprämierung eine [Goldmedaille](/auszeichnungen/2024-11-03-honigpraemierung.pdf) erhalten darüber gfrein wir uns natürlich narrisch.
+Unser Honig wurde mehrfach bei der Bayerischen Honigprämierung [ausgezeichnet]({{< relref "über-uns#auszeichnungen" >}}).
+Darüber gfrein wir uns natürlich narrisch!
 Seit 2025 tragen wir zudem das Siegel [Geprüfte Qualität — Bayern](/zertifikate/20250523-gq-zertifikat.pdf).
 Ein schöner Beleg für echte Qualität aus unserer kleinen Imkerei.
 Unser Honig wird zu 100 % in Bayern erzeugt, gelagert und liebevoll verarbeitet.
@@ -25,6 +26,7 @@ Bei Fragen sprecht uns gerne an!
 {.lead}
 
 Wer sich besonders für Honig interessiert, kann in unsere [Honigkunde]({{< relref "honigkunde" >}}) eintauchen 🧑‍🎓.
+Aufgrund vermehrter Rückfragen verweisen wir gerne auf den Punkt [Kristallisation]({{< relref "honigkunde#kristallisation" >}}).
 {.lead}
 
 ## Sortiment 2025 {#sortiment}

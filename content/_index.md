@@ -12,7 +12,7 @@ params:
 Schön, dass ihr euch durch die digitalen Wiesen und Wälder des Internets zu uns verirrt habt.
 Wir sind eine [kleine, feine Imkerei]({{< relref "über-uns" >}}) im Münchner Südwesten – mitten im „Münchner Grüngürtel“.
 Seit 2021 summt und brummt es bei uns – und unsere Begeisterung für die Bienen und ihren goldenen Schatz wächst mit jeder Saison.
-2024 durften wir uns besonders freuen: Unsere Imkerei wurde mit der [Goldmedaille]({{< relref "über-uns#auszeichnungen" >}}) für hervorragende Leistungen ausgezeichnet.
+2024 durften wir uns besonders freuen: Unsere Imkerei wurde mehrfach für hervorragende Leistungen [ausgezeichnet]({{< relref "über-uns#auszeichnungen" >}}).
 Unsere Bienenvölker 🐝 stehen an ausgewählten, blütenreichen Plätzen – dort, wo die Natur noch ihre ganz eigene Vielfalt zeigt.
 Den Honig 🍯 ernten und verarbeiten wir selbst – sorgfältig, schonend und mit einem hohen Anspruch an Qualität.
 Wir sind Mitglied im Qualitätsprogramm [Geprüfte Qualität – Bayern für Honig](https://www.gq-bayern.de/) und werden regelmäßig unabhängig geprüft.
