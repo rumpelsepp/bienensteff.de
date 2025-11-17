@@ -186,7 +186,7 @@
             "sku": "HNB500E",
             "gtin": "",
             "name": "Bl\u00fctenhonig",
-            "label": "bienensteff Bl\u00fctenhonig 500 g",
+            "label": "Bl\u00fctenhonig 500 g",
             "brand": "bienensteff (Hausmarke)",
             "brand_short": "bienensteff",
             "description": "Bl\u00fctenhonig im 500 g Neutralglas.",
@@ -215,7 +215,7 @@
             "sku": "HNFT500E",
             "gtin": "",
             "name": "Fr\u00fchjahrstrachthonig",
-            "label": "bienensteff Fr\u00fchjahrstrachthonig 500 g",
+            "label": "Fr\u00fchjahrstrachthonig 500 g",
             "brand": "bienensteff (Hausmarke)",
             "brand_short": "bienensteff",
             "description": "Honig vom Fr\u00fchjahr im 500 g Neutralglas, lieblich s\u00fc\u00df.",
@@ -266,7 +266,7 @@
             "sku": "HNST500E",
             "gtin": "",
             "name": "Sommertrachthonig",
-            "label": "bienensteff Sommertrachthonig 500 g",
+            "label": "Sommertrachthonig 500 g",
             "brand": "bienensteff (Hausmarke)",
             "brand_short": "bienensteff",
             "description": "Honig vom Sommer im 500 g Neutralglas, aromatisch, fein-w\u00fcrzig.",
@@ -1193,7 +1193,7 @@
                 "id": "S-2025-01",
                 "date": "2025-07-27T00:00:00",
                 "weight": 99.1,
-                "comment": ""
+                "comment": "Stichprobe f\u00fcr Labor zuf\u00e4llig aus Schleuder entnommen"
             },
             "batch": {
                 "id": "L-2025-02",
@@ -1215,7 +1215,7 @@
                 "id": "S-2025-01",
                 "date": "2025-07-27T00:00:00",
                 "weight": 99.1,
-                "comment": ""
+                "comment": "Stichprobe f\u00fcr Labor zuf\u00e4llig aus Schleuder entnommen"
             },
             "batch": {
                 "id": "L-2025-02",
@@ -1237,7 +1237,7 @@
                 "id": "S-2025-01",
                 "date": "2025-07-27T00:00:00",
                 "weight": 99.1,
-                "comment": ""
+                "comment": "Stichprobe f\u00fcr Labor zuf\u00e4llig aus Schleuder entnommen"
             },
             "batch": {
                 "id": "L-2025-01",
@@ -1259,7 +1259,7 @@
                 "id": "S-2025-01",
                 "date": "2025-07-27T00:00:00",
                 "weight": 99.1,
-                "comment": ""
+                "comment": "Stichprobe f\u00fcr Labor zuf\u00e4llig aus Schleuder entnommen"
             },
             "batch": {
                 "id": "L-2025-01",
@@ -1281,7 +1281,7 @@
                 "id": "S-2025-01",
                 "date": "2025-07-27T00:00:00",
                 "weight": 99.1,
-                "comment": ""
+                "comment": "Stichprobe f\u00fcr Labor zuf\u00e4llig aus Schleuder entnommen"
             },
             "batch": {
                 "id": "L-2025-01",
@@ -1303,7 +1303,7 @@
                 "id": "S-2025-01",
                 "date": "2025-07-27T00:00:00",
                 "weight": 99.1,
-                "comment": ""
+                "comment": "Stichprobe f\u00fcr Labor zuf\u00e4llig aus Schleuder entnommen"
             },
             "batch": {
                 "id": "L-2025-03",
@@ -1325,7 +1325,7 @@
                 "id": "S-2025-01",
                 "date": "2025-07-27T00:00:00",
                 "weight": 99.1,
-                "comment": ""
+                "comment": "Stichprobe f\u00fcr Labor zuf\u00e4llig aus Schleuder entnommen"
             },
             "batch": {
                 "id": "L-2025-03",
@@ -1776,7 +1776,7 @@
             "id": "S-2025-01",
             "date": "2025-07-27T00:00:00",
             "weight": 99.1,
-            "comment": "",
+            "comment": "Stichprobe f\u00fcr Labor zuf\u00e4llig aus Schleuder entnommen",
             "buckets": [
                 {
                     "id": "E-2025-03",
