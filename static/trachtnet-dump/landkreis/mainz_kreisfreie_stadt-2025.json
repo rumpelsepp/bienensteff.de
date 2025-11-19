@@ -1596,18 +1596,18 @@
   },
   {
     "dates": "2025-11-16",
-    "values": 35.84,
+    "values": 35.82,
     "n_waagen": 4
   },
   {
     "dates": "2025-11-17",
-    "values": 35.84,
-    "n_waagen": 3
+    "values": 35.83,
+    "n_waagen": 4
   },
   {
     "dates": "2025-11-18",
-    "values": null,
-    "n_waagen": null
+    "values": 35.84,
+    "n_waagen": 3
   },
   {
     "dates": "2025-11-19",
