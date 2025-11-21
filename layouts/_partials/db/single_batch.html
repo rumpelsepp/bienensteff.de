@@ -1,6 +1,13 @@
 <tr><th>Losnummer</th><td>{{ .Params.id }}</td></tr>
 <tr><th>Sortenempfehlung</th><td>{{ .Params.sort }}</td></tr>
 <tr><th>Gewicht</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.weight) "." "," }}</td></tr>
+<tr><th>Geprüfte Qualität Bayern</th><td>
+    {{ if .Params.certified }}
+        ja
+    {{ else }}
+        nein
+    {{ end }}
+</td></tr>
 {{ with .Params.fillings }}
     <tr><th>Abfüllungen</th>
     <td>
@@ -8,6 +15,7 @@
             {{ range . }}
                 <li>{{ partial "db/crosslink" (dict "id" .id) }}</li>
                     <ul>
+                        <li><strong>Bezeichnung</strong>: {{ partial "db/crosslink" (dict "id" (printf "SKU-%s" .sku) "text" .label) }}</li>
                         <li><strong>Artikelnummer</strong>: {{ partial "db/crosslink" (dict "id" (printf "SKU-%s" .sku) "text" .sku) }}</li>
                         <li><strong>Abfülldatum</strong>: {{ partial "db/date" (dict "date" .date) }}</li>
                         <li><strong>MHD</strong>: {{ partial "db/date" (dict "date" .best_before) }}</li>

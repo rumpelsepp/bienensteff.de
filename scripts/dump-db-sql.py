@@ -1,7 +1,7 @@
 #!/usr/bin/env -S uv run -qs
 
 # /// script
-# requires-python = ">=3.13"
+# requires-python = ">=3.14"
 # dependencies = [
 #     "httpx",
 # ]
@@ -40,6 +40,7 @@ def init_db(cur: sqlite3.Cursor) -> None:
             brand_short TEXT,
             description TEXT,
             hint TEXT,
+            certified TEXT,
             marketing_note TEXT,
             brand_owner TEXT,
             comment TEXT,
@@ -51,6 +52,7 @@ def init_db(cur: sqlite3.Cursor) -> None:
             id TEXT PRIMARY KEY,
             weight REAL,
             sort TEXT,
+            certified TEXT,
             comment TEXT
         ) STRICT;
 
@@ -78,6 +80,7 @@ def init_db(cur: sqlite3.Cursor) -> None:
             best_before TEXT,
             batch_id TEXT,
             sku TEXT,
+            label TEXT,
             weight REAL,
             quantity REAL,
             comment TEXT,
@@ -103,12 +106,13 @@ def import_articles(cur: sqlite3.Cursor) -> None:
                 brand_short,
                 description,
                 hint,
+                certified,
                 marketing_note,
                 brand_owner,
                 comment,
                 filling_quantity,
                 filling_unit
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
         """,
             (
                 article["SKU"],
@@ -119,6 +123,7 @@ def import_articles(cur: sqlite3.Cursor) -> None:
                 article["Marke (kurz)"],
                 article["Beschreibung"],
                 article["Produkthinweis"],
+                article["GQB"] == "TRUE",
                 article["Marketingbotschaft"],
                 article["Markeninhaber"],
                 article["Kommentar"],
@@ -184,13 +189,15 @@ def import_batches(cur: sqlite3.Cursor) -> None:
                 id,
                 weight,
                 sort,
+                certified,
                 comment
-            ) VALUES (?, ?, ?, ?);
+            ) VALUES (?, ?, ?, ?, ?);
         """,
             (
                 batch["Nummer"],
                 convert_to_float(batch["Gewicht"], " kg"),
                 batch["Honigsorte"],
+                batch["GQB"] == "TRUE",
                 batch["Kommentar"],
             ),
         )
@@ -206,11 +213,12 @@ def import_fillings(cur: sqlite3.Cursor) -> None:
                 best_before,
                 batch_id,
                 sku,
+                label,
                 weight,
                 quantity,
                 comment,
                 dib_field
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
         """,
             (
                 filling["Nummer"],
@@ -218,6 +226,7 @@ def import_fillings(cur: sqlite3.Cursor) -> None:
                 datetime.strptime(filling["MHD"], "%d.%m.%Y"),
                 filling["Los"],
                 filling["SKU"],
+                filling["Bezeichnung"],
                 convert_to_float(filling["Gesamt"], " kg"),
                 int(filling["Stück"]),
                 filling["Kommentar"],
@@ -234,6 +243,7 @@ def gen_json(cur: sqlite3.Cursor) -> str:
     res = []
     for article in [dict(row) for row in cur.fetchall()]:
         article["id"] = f"SKU-{article['sku']}"
+        article["certified"] = article["certified"] == "1"
 
         cur.execute(f"SELECT * from fillings WHERE fillings.sku = '{article['sku']}'")
         if (rows := cur.fetchall()) is not None:
@@ -255,6 +265,7 @@ def gen_json(cur: sqlite3.Cursor) -> str:
         cur.execute(f"SELECT * FROM batches WHERE batches.id = '{bucket['batch_id']}'")
         if batches := [dict(row) for row in cur.fetchall()]:
             bucket["batch"] = batches[0]
+            bucket["batch"]["certified"] = bucket["batch"]["certified"] == "1"
         res.append(bucket)
     output["buckets"] = res
 
@@ -272,6 +283,7 @@ def gen_json(cur: sqlite3.Cursor) -> str:
     cur.execute("SELECT * FROM batches")
     res = []
     for batch in [dict(row) for row in cur.fetchall()]:
+        batch["certified"] = batch["certified"] == "1"
         cur.execute(
             f"SELECT DISTINCT * FROM buckets WHERE buckets.batch_id = '{batch['id']}'"
         )

@@ -101,15 +101,15 @@
             <div class="card-body">
                 Die angegebenen Werte entsprechen einer Eigenmessung basierend auf einer zufälligen Stichprobe.
                 Diese Werte geben einen groben Anhaltspunkt, stellen aber keine verlässliche Aussage über den tatsächlichen Wassergehalt dar.
-                Der verlässlichste Wert ist der Laborwert einer Probe die aus einem homogenisierten Los stammt.
+                Das verlässlichste Ergebnis stellt die Vermessung einer homogenisierten Probe unter Laborbedingungen dar.
                 Zur Homogenisierung orientieren wir uns an den <a href="https://www.lwg.bayern.de/mam/cms06/bienen/dateien/qualit%C3%A4tskontrolle_honig_und_probennahme_tgd_2021.pdf">Richtlinien</a> des Tiergesundheitsdienst Bayern.
-                Sofern vorhanden, sind die jeweiligen Analysen in der obigen Tabelle verlinkt.
+                Sofern vorhanden, sind die Berichte der jeweiligen Laboranalysen in der obigen Tabelle verlinkt.
             </div>
         </div>
     {{ end }}
     
     {{ $id := .Params.id }}
-    {{ with resources.GetMatch (printf "/db/img/%s.jpg" (strings.ToLower .Params.id)) }}
+    {{ with resources.GetMatch (printf "/db/img/%s.{jpg,png}" (strings.ToLower .Params.id)) }}
         <hr>
         <figure class="figure">
             <img class="figure-img img-fluid rounded" src="{{ .RelPermalink }}" loading="lazy">
