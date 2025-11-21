@@ -9,6 +9,7 @@
             "brand_short": "EDH",
             "description": "Echter Deutscher Honig im 500 g Glas.",
             "hint": "Honig zu 100% in Bayern erzeugt, gelagert und verarbeitet.",
+            "certified": false,
             "marketing_note": "Echter Deutscher Honig ist die Verbandsmarke des Deutschen Imkerbund e.V. Seit 1925 steht sie f\u00fcr h\u00f6chste Qualit\u00e4t und Naturbelassenheit. \u00dcber 99 % unserer Mitglieder sind Freizeitimkerinnen und -imker, die ihrem Hobby mit viel Herzblut nachgehen. Diese Liebe schmeckt man in jedem Glas Echten Deutschen Honigs.",
             "brand_owner": "Deutscher Imkerbund e.V.",
             "comment": "",
@@ -22,6 +23,7 @@
                     "best_before": "2024-08-20T00:00:00",
                     "batch_id": "L-2022-01",
                     "sku": "HD500E",
+                    "label": "EDH Honig 500 g",
                     "weight": 9.0,
                     "quantity": 18.0,
                     "comment": "Blankoetiketten, Fr\u00fchjahrstracht",
@@ -33,6 +35,7 @@
                     "best_before": "2024-09-11T00:00:00",
                     "batch_id": "L-2022-02",
                     "sku": "HD500E",
+                    "label": "EDH Honig 500 g",
                     "weight": 9.5,
                     "quantity": 19.0,
                     "comment": "Blankoetiketten, Sommertracht",
@@ -44,6 +47,7 @@
                     "best_before": "2027-08-02T00:00:00",
                     "batch_id": "L-2025-02",
                     "sku": "HD500E",
+                    "label": "EDH Honig 500 g",
                     "weight": 7.0,
                     "quantity": 14.0,
                     "comment": "Blankoetiketten, Honig",
@@ -60,6 +64,7 @@
             "brand_short": "EDH",
             "description": "Echter Deutscher Honig von gemischten Bl\u00fchpflanzen im 250 g Glas, aromatisch, blumig.",
             "hint": "In unserer Imkerei seit 2025 \u201eGepr\u00fcfte Qualit\u00e4t \u2013 Bayern\u201c zertifiziert. Honig zu 100% in Bayern erzeugt, gelagert und verarbeitet.",
+            "certified": true,
             "marketing_note": "Echter Deutscher Honig ist die Verbandsmarke des Deutschen Imkerbund e.V. Seit 1925 steht sie f\u00fcr h\u00f6chste Qualit\u00e4t und Naturbelassenheit. \u00dcber 99 % unserer Mitglieder sind Freizeitimkerinnen und -imker, die ihrem Hobby mit viel Herzblut nachgehen. Diese Liebe schmeckt man in jedem Glas Echten Deutschen Honigs.",
             "brand_owner": "Deutscher Imkerbund e.V.",
             "comment": "",
@@ -73,6 +78,7 @@
                     "best_before": "2027-09-05T00:00:00",
                     "batch_id": "L-2025-02",
                     "sku": "HDB250E",
+                    "label": "EDH Bl\u00fctenhonig 250 g",
                     "weight": 18.0,
                     "quantity": 72.0,
                     "comment": "Etikett 55 beim Aufkleben besch\u00e4digt",
@@ -89,6 +95,7 @@
             "brand_short": "EDH",
             "description": "Echter Deutscher Honig vom Fr\u00fchjahr im 500 g Glas, lieblich s\u00fc\u00df.",
             "hint": "In unserer Imkerei seit 2025 \u201eGepr\u00fcfte Qualit\u00e4t \u2013 Bayern\u201c zertifiziert. Honig zu 100% in Bayern erzeugt, gelagert und verarbeitet.",
+            "certified": false,
             "marketing_note": "Echter Deutscher Honig ist die Verbandsmarke des Deutschen Imkerbund e.V. Seit 1925 steht sie f\u00fcr h\u00f6chste Qualit\u00e4t und Naturbelassenheit. \u00dcber 99 % unserer Mitglieder sind Freizeitimkerinnen und -imker, die ihrem Hobby mit viel Herzblut nachgehen. Diese Liebe schmeckt man in jedem Glas Echten Deutschen Honigs.",
             "brand_owner": "Deutscher Imkerbund e.V.",
             "comment": "",
@@ -102,6 +109,7 @@
                     "best_before": "2025-06-25T00:00:00",
                     "batch_id": "L-2023-01",
                     "sku": "HDFT500E",
+                    "label": "EDH Fr\u00fchjahrstrachthonig 500 g",
                     "weight": 28.0,
                     "quantity": 56.0,
                     "comment": "",
@@ -113,6 +121,7 @@
                     "best_before": "2025-11-19T00:00:00",
                     "batch_id": "L-2023-01",
                     "sku": "HDFT500E",
+                    "label": "EDH Fr\u00fchjahrstrachthonig 500 g",
                     "weight": 9.0,
                     "quantity": 18.0,
                     "comment": "",
@@ -124,6 +133,7 @@
                     "best_before": "2026-06-22T00:00:00",
                     "batch_id": "L-2024-01",
                     "sku": "HDFT500E",
+                    "label": "EDH Fr\u00fchjahrstrachthonig 500 g",
                     "weight": 47.5,
                     "quantity": 95.0,
                     "comment": "",
@@ -140,6 +150,7 @@
             "brand_short": "EDH",
             "description": "Echter Deutscher Honig vom Sommer im 500 g Glas, aromatisch, fein-w\u00fcrzig.",
             "hint": "In unserer Imkerei seit 2025 \u201eGepr\u00fcfte Qualit\u00e4t \u2013 Bayern\u201c zertifiziert. Honig zu 100% in Bayern erzeugt, gelagert und verarbeitet.",
+            "certified": false,
             "marketing_note": "Echter Deutscher Honig ist die Verbandsmarke des Deutschen Imkerbund e.V. Seit 1925 steht sie f\u00fcr h\u00f6chste Qualit\u00e4t und Naturbelassenheit. \u00dcber 99 % unserer Mitglieder sind Freizeitimkerinnen und -imker, die ihrem Hobby mit viel Herzblut nachgehen. Diese Liebe schmeckt man in jedem Glas Echten Deutschen Honigs.",
             "brand_owner": "Deutscher Imkerbund e.V.",
             "comment": "",
@@ -153,6 +164,7 @@
                     "best_before": "2025-07-23T00:00:00",
                     "batch_id": "L-2023-02",
                     "sku": "HDST500E",
+                    "label": "EDH Sommertrachthonig 500 g",
                     "weight": 1.5,
                     "quantity": 3.0,
                     "comment": "",
@@ -164,6 +176,7 @@
                     "best_before": "2025-09-16T00:00:00",
                     "batch_id": "L-2023-02",
                     "sku": "HDST500E",
+                    "label": "EDH Sommertrachthonig 500 g",
                     "weight": 37.0,
                     "quantity": 74.0,
                     "comment": "",
@@ -175,6 +188,7 @@
                     "best_before": "2025-11-19T00:00:00",
                     "batch_id": "L-2023-02",
                     "sku": "HDST500E",
+                    "label": "EDH Sommertrachthonig 500 g",
                     "weight": 13.0,
                     "quantity": 26.0,
                     "comment": "",
@@ -191,6 +205,7 @@
             "brand_short": "bienensteff",
             "description": "Bl\u00fctenhonig im 500 g Neutralglas.",
             "hint": "Honig zu 100% in Bayern erzeugt, gelagert und verarbeitet.",
+            "certified": false,
             "marketing_note": "",
             "brand_owner": "",
             "comment": "",
@@ -204,6 +219,7 @@
                     "best_before": "2027-09-05T00:00:00",
                     "batch_id": "L-2025-03",
                     "sku": "HNB500E",
+                    "label": "Bl\u00fctenhonig 500 g",
                     "weight": 21.5,
                     "quantity": 43.0,
                     "comment": "",
@@ -220,6 +236,7 @@
             "brand_short": "bienensteff",
             "description": "Honig vom Fr\u00fchjahr im 500 g Neutralglas, lieblich s\u00fc\u00df.",
             "hint": "Honig zu 100% in Bayern erzeugt, gelagert und verarbeitet.",
+            "certified": false,
             "marketing_note": "",
             "brand_owner": "",
             "comment": "",
@@ -233,6 +250,7 @@
                     "best_before": "2026-12-31T00:00:00",
                     "batch_id": "L-2024-01",
                     "sku": "HNFT500E",
+                    "label": "Fr\u00fchjahrstrachthonig 500 g",
                     "weight": 22.0,
                     "quantity": 44.0,
                     "comment": "",
@@ -244,6 +262,7 @@
                     "best_before": "2026-12-31T00:00:00",
                     "batch_id": "L-2022-01",
                     "sku": "HNFT500E",
+                    "label": "Fr\u00fchjahrstrachthonig 500 g",
                     "weight": 12.5,
                     "quantity": 25.0,
                     "comment": "",
@@ -255,6 +274,7 @@
                     "best_before": "2026-12-31T00:00:00",
                     "batch_id": "L-2024-01",
                     "sku": "HNFT500E",
+                    "label": "Fr\u00fchjahrstrachthonig 500 g",
                     "weight": 15.5,
                     "quantity": 31.0,
                     "comment": "Inventur",
@@ -271,6 +291,7 @@
             "brand_short": "bienensteff",
             "description": "Honig vom Sommer im 500 g Neutralglas, aromatisch, fein-w\u00fcrzig.",
             "hint": "Honig zu 100% in Bayern erzeugt, gelagert und verarbeitet.",
+            "certified": false,
             "marketing_note": "",
             "brand_owner": "",
             "comment": "",
@@ -284,6 +305,7 @@
                     "best_before": "2026-12-31T00:00:00",
                     "batch_id": "L-2024-04",
                     "sku": "HNST500E",
+                    "label": "Sommertrachthonig 500 g",
                     "weight": 24.0,
                     "quantity": 48.0,
                     "comment": "",
@@ -295,6 +317,7 @@
                     "best_before": "2026-12-31T00:00:00",
                     "batch_id": "L-2024-04",
                     "sku": "HNST500E",
+                    "label": "Sommertrachthonig 500 g",
                     "weight": 41.0,
                     "quantity": 82.0,
                     "comment": "",
@@ -306,6 +329,7 @@
                     "best_before": "2026-12-31T00:00:00",
                     "batch_id": "L-2024-04",
                     "sku": "HNST500E",
+                    "label": "Sommertrachthonig 500 g",
                     "weight": 83.0,
                     "quantity": 166.0,
                     "comment": "",
@@ -317,6 +341,7 @@
                     "best_before": "2026-12-31T00:00:00",
                     "batch_id": "L-2024-02",
                     "sku": "HNST500E",
+                    "label": "Sommertrachthonig 500 g",
                     "weight": 2.0,
                     "quantity": 4.0,
                     "comment": "Inventur",
@@ -345,6 +370,7 @@
                 "id": "L-2022-01",
                 "weight": 15.5,
                 "sort": "Fr\u00fchjahrstrachthonig",
+                "certified": false,
                 "comment": "Eimer noch nicht getracked"
             }
         },
@@ -367,6 +393,7 @@
                 "id": "L-2022-02",
                 "weight": 13.0,
                 "sort": "Sommertrachthonig",
+                "certified": false,
                 "comment": "Eimer noch nicht getracked"
             }
         },
@@ -389,6 +416,7 @@
                 "id": "L-2023-01",
                 "weight": 43.5,
                 "sort": "Fr\u00fchjahrstrachthonig",
+                "certified": false,
                 "comment": "AISEC"
             }
         },
@@ -411,6 +439,7 @@
                 "id": "L-2023-01",
                 "weight": 43.5,
                 "sort": "Fr\u00fchjahrstrachthonig",
+                "certified": false,
                 "comment": "AISEC"
             }
         },
@@ -433,6 +462,7 @@
                 "id": "L-2023-01",
                 "weight": 43.5,
                 "sort": "Fr\u00fchjahrstrachthonig",
+                "certified": false,
                 "comment": "AISEC"
             }
         },
@@ -455,6 +485,7 @@
                 "id": "L-2023-01",
                 "weight": 43.5,
                 "sort": "Fr\u00fchjahrstrachthonig",
+                "certified": false,
                 "comment": "AISEC"
             }
         },
@@ -477,6 +508,7 @@
                 "id": "L-2023-01",
                 "weight": 43.5,
                 "sort": "Fr\u00fchjahrstrachthonig",
+                "certified": false,
                 "comment": "AISEC"
             }
         },
@@ -499,6 +531,7 @@
                 "id": "L-2023-02",
                 "weight": 59.4,
                 "sort": "Lindenhonig",
+                "certified": false,
                 "comment": "WIEDE"
             }
         },
@@ -521,6 +554,7 @@
                 "id": "L-2023-02",
                 "weight": 59.4,
                 "sort": "Lindenhonig",
+                "certified": false,
                 "comment": "WIEDE"
             }
         },
@@ -543,6 +577,7 @@
                 "id": "L-2023-02",
                 "weight": 59.4,
                 "sort": "Lindenhonig",
+                "certified": false,
                 "comment": "WIEDE"
             }
         },
@@ -565,6 +600,7 @@
                 "id": "L-2023-02",
                 "weight": 59.4,
                 "sort": "Lindenhonig",
+                "certified": false,
                 "comment": "WIEDE"
             }
         },
@@ -587,6 +623,7 @@
                 "id": "L-2023-02",
                 "weight": 59.4,
                 "sort": "Lindenhonig",
+                "certified": false,
                 "comment": "WIEDE"
             }
         },
@@ -609,6 +646,7 @@
                 "id": "L-2023-02",
                 "weight": 59.4,
                 "sort": "Lindenhonig",
+                "certified": false,
                 "comment": "WIEDE"
             }
         },
@@ -631,6 +669,7 @@
                 "id": "L-2024-01",
                 "weight": 99.6,
                 "sort": "Fr\u00fchjahrstrachthonig",
+                "certified": false,
                 "comment": ""
             }
         },
@@ -653,6 +692,7 @@
                 "id": "L-2024-01",
                 "weight": 99.6,
                 "sort": "Fr\u00fchjahrstrachthonig",
+                "certified": false,
                 "comment": ""
             }
         },
@@ -675,6 +715,7 @@
                 "id": "L-2024-01",
                 "weight": 99.6,
                 "sort": "Fr\u00fchjahrstrachthonig",
+                "certified": false,
                 "comment": ""
             }
         },
@@ -697,6 +738,7 @@
                 "id": "L-2024-01",
                 "weight": 99.6,
                 "sort": "Fr\u00fchjahrstrachthonig",
+                "certified": false,
                 "comment": ""
             }
         },
@@ -719,6 +761,7 @@
                 "id": "L-2024-01",
                 "weight": 99.6,
                 "sort": "Fr\u00fchjahrstrachthonig",
+                "certified": false,
                 "comment": ""
             }
         },
@@ -741,6 +784,7 @@
                 "id": "L-2024-01",
                 "weight": 99.6,
                 "sort": "Fr\u00fchjahrstrachthonig",
+                "certified": false,
                 "comment": ""
             }
         },
@@ -763,6 +807,7 @@
                 "id": "L-2024-01",
                 "weight": 99.6,
                 "sort": "Fr\u00fchjahrstrachthonig",
+                "certified": false,
                 "comment": ""
             }
         },
@@ -833,7 +878,8 @@
                 "id": "L-2024-02",
                 "weight": 28.0,
                 "sort": "Backhonig",
-                "comment": "Melezitosehonig"
+                "certified": false,
+                "comment": "Melizitosehonig"
             }
         },
         {
@@ -855,7 +901,8 @@
                 "id": "L-2024-02",
                 "weight": 28.0,
                 "sort": "Backhonig",
-                "comment": "Melezitosehonig"
+                "certified": false,
+                "comment": "Melizitosehonig"
             }
         },
         {
@@ -903,6 +950,7 @@
                 "id": "L-2024-03",
                 "weight": 42.4,
                 "sort": "Honig",
+                "certified": false,
                 "comment": "Nearbees"
             }
         },
@@ -919,6 +967,7 @@
                 "id": "L-2024-03",
                 "weight": 42.4,
                 "sort": "Honig",
+                "certified": false,
                 "comment": "Nearbees"
             }
         },
@@ -935,6 +984,7 @@
                 "id": "L-2024-03",
                 "weight": 42.4,
                 "sort": "Honig",
+                "certified": false,
                 "comment": "Nearbees"
             }
         },
@@ -957,6 +1007,7 @@
                 "id": "L-2024-04",
                 "weight": 158.0,
                 "sort": "Lindenhonig",
+                "certified": false,
                 "comment": ""
             }
         },
@@ -979,6 +1030,7 @@
                 "id": "L-2024-04",
                 "weight": 158.0,
                 "sort": "Lindenhonig",
+                "certified": false,
                 "comment": ""
             }
         },
@@ -1001,6 +1053,7 @@
                 "id": "L-2024-04",
                 "weight": 158.0,
                 "sort": "Lindenhonig",
+                "certified": false,
                 "comment": ""
             }
         },
@@ -1023,6 +1076,7 @@
                 "id": "L-2024-04",
                 "weight": 158.0,
                 "sort": "Lindenhonig",
+                "certified": false,
                 "comment": ""
             }
         },
@@ -1045,6 +1099,7 @@
                 "id": "L-2024-04",
                 "weight": 158.0,
                 "sort": "Lindenhonig",
+                "certified": false,
                 "comment": ""
             }
         },
@@ -1067,6 +1122,7 @@
                 "id": "L-2024-04",
                 "weight": 158.0,
                 "sort": "Lindenhonig",
+                "certified": false,
                 "comment": ""
             }
         },
@@ -1089,6 +1145,7 @@
                 "id": "L-2024-04",
                 "weight": 158.0,
                 "sort": "Lindenhonig",
+                "certified": false,
                 "comment": ""
             }
         },
@@ -1111,6 +1168,7 @@
                 "id": "L-2024-04",
                 "weight": 158.0,
                 "sort": "Lindenhonig",
+                "certified": false,
                 "comment": ""
             }
         },
@@ -1133,6 +1191,7 @@
                 "id": "L-2024-04",
                 "weight": 158.0,
                 "sort": "Lindenhonig",
+                "certified": false,
                 "comment": ""
             }
         },
@@ -1155,6 +1214,7 @@
                 "id": "L-2024-04",
                 "weight": 158.0,
                 "sort": "Lindenhonig",
+                "certified": false,
                 "comment": ""
             }
         },
@@ -1177,6 +1237,7 @@
                 "id": "L-2024-04",
                 "weight": 158.0,
                 "sort": "Lindenhonig",
+                "certified": false,
                 "comment": ""
             }
         },
@@ -1199,7 +1260,8 @@
                 "id": "L-2025-02",
                 "weight": 23.4,
                 "sort": "Honig",
-                "comment": "GQ-Bayern"
+                "certified": true,
+                "comment": ""
             }
         },
         {
@@ -1221,7 +1283,8 @@
                 "id": "L-2025-02",
                 "weight": 23.4,
                 "sort": "Honig",
-                "comment": "GQ-Bayern"
+                "certified": true,
+                "comment": ""
             }
         },
         {
@@ -1243,6 +1306,7 @@
                 "id": "L-2025-01",
                 "weight": 46.2,
                 "sort": "Honig",
+                "certified": false,
                 "comment": "Nearbees"
             }
         },
@@ -1265,6 +1329,7 @@
                 "id": "L-2025-01",
                 "weight": 46.2,
                 "sort": "Honig",
+                "certified": false,
                 "comment": "Nearbees"
             }
         },
@@ -1287,6 +1352,7 @@
                 "id": "L-2025-01",
                 "weight": 46.2,
                 "sort": "Honig",
+                "certified": false,
                 "comment": "Nearbees"
             }
         },
@@ -1309,6 +1375,7 @@
                 "id": "L-2025-03",
                 "weight": 29.5,
                 "sort": "Honig",
+                "certified": false,
                 "comment": ""
             }
         },
@@ -1331,6 +1398,7 @@
                 "id": "L-2025-03",
                 "weight": 29.5,
                 "sort": "Honig",
+                "certified": false,
                 "comment": ""
             }
         }
@@ -1856,6 +1924,7 @@
             "id": "L-2022-01",
             "weight": 15.5,
             "sort": "Fr\u00fchjahrstrachthonig",
+            "certified": false,
             "comment": "Eimer noch nicht getracked",
             "buckets": [
                 {
@@ -1876,6 +1945,7 @@
                     "best_before": "2024-08-20T00:00:00",
                     "batch_id": "L-2022-01",
                     "sku": "HD500E",
+                    "label": "EDH Honig 500 g",
                     "weight": 9.0,
                     "quantity": 18.0,
                     "comment": "Blankoetiketten, Fr\u00fchjahrstracht",
@@ -1887,6 +1957,7 @@
                     "best_before": "2026-12-31T00:00:00",
                     "batch_id": "L-2022-01",
                     "sku": "HNFT500E",
+                    "label": "Fr\u00fchjahrstrachthonig 500 g",
                     "weight": 12.5,
                     "quantity": 25.0,
                     "comment": "",
@@ -1898,6 +1969,7 @@
             "id": "L-2022-02",
             "weight": 13.0,
             "sort": "Sommertrachthonig",
+            "certified": false,
             "comment": "Eimer noch nicht getracked",
             "buckets": [
                 {
@@ -1918,6 +1990,7 @@
                     "best_before": "2024-09-11T00:00:00",
                     "batch_id": "L-2022-02",
                     "sku": "HD500E",
+                    "label": "EDH Honig 500 g",
                     "weight": 9.5,
                     "quantity": 19.0,
                     "comment": "Blankoetiketten, Sommertracht",
@@ -1929,6 +2002,7 @@
             "id": "L-2023-01",
             "weight": 43.5,
             "sort": "Fr\u00fchjahrstrachthonig",
+            "certified": false,
             "comment": "AISEC",
             "buckets": [
                 {
@@ -1989,6 +2063,7 @@
                     "best_before": "2025-06-25T00:00:00",
                     "batch_id": "L-2023-01",
                     "sku": "HDFT500E",
+                    "label": "EDH Fr\u00fchjahrstrachthonig 500 g",
                     "weight": 28.0,
                     "quantity": 56.0,
                     "comment": "",
@@ -2000,6 +2075,7 @@
                     "best_before": "2025-11-19T00:00:00",
                     "batch_id": "L-2023-01",
                     "sku": "HDFT500E",
+                    "label": "EDH Fr\u00fchjahrstrachthonig 500 g",
                     "weight": 9.0,
                     "quantity": 18.0,
                     "comment": "",
@@ -2011,6 +2087,7 @@
             "id": "L-2023-02",
             "weight": 59.4,
             "sort": "Lindenhonig",
+            "certified": false,
             "comment": "WIEDE",
             "buckets": [
                 {
@@ -2081,6 +2158,7 @@
                     "best_before": "2025-07-23T00:00:00",
                     "batch_id": "L-2023-02",
                     "sku": "HDST500E",
+                    "label": "EDH Sommertrachthonig 500 g",
                     "weight": 1.5,
                     "quantity": 3.0,
                     "comment": "",
@@ -2092,6 +2170,7 @@
                     "best_before": "2025-09-16T00:00:00",
                     "batch_id": "L-2023-02",
                     "sku": "HDST500E",
+                    "label": "EDH Sommertrachthonig 500 g",
                     "weight": 37.0,
                     "quantity": 74.0,
                     "comment": "",
@@ -2103,6 +2182,7 @@
                     "best_before": "2025-11-19T00:00:00",
                     "batch_id": "L-2023-02",
                     "sku": "HDST500E",
+                    "label": "EDH Sommertrachthonig 500 g",
                     "weight": 13.0,
                     "quantity": 26.0,
                     "comment": "",
@@ -2114,6 +2194,7 @@
             "id": "L-2024-01",
             "weight": 99.6,
             "sort": "Fr\u00fchjahrstrachthonig",
+            "certified": false,
             "comment": "",
             "buckets": [
                 {
@@ -2194,6 +2275,7 @@
                     "best_before": "2026-06-22T00:00:00",
                     "batch_id": "L-2024-01",
                     "sku": "HDFT500E",
+                    "label": "EDH Fr\u00fchjahrstrachthonig 500 g",
                     "weight": 47.5,
                     "quantity": 95.0,
                     "comment": "",
@@ -2205,6 +2287,7 @@
                     "best_before": "2026-12-31T00:00:00",
                     "batch_id": "L-2024-01",
                     "sku": "HNFT500E",
+                    "label": "Fr\u00fchjahrstrachthonig 500 g",
                     "weight": 22.0,
                     "quantity": 44.0,
                     "comment": "",
@@ -2216,6 +2299,7 @@
                     "best_before": "2026-12-31T00:00:00",
                     "batch_id": "L-2024-01",
                     "sku": "HNFT500E",
+                    "label": "Fr\u00fchjahrstrachthonig 500 g",
                     "weight": 15.5,
                     "quantity": 31.0,
                     "comment": "Inventur",
@@ -2227,7 +2311,8 @@
             "id": "L-2024-02",
             "weight": 28.0,
             "sort": "Backhonig",
-            "comment": "Melezitosehonig",
+            "certified": false,
+            "comment": "Melizitosehonig",
             "buckets": [
                 {
                     "id": "E-2024-11",
@@ -2257,6 +2342,7 @@
                     "best_before": "2026-12-31T00:00:00",
                     "batch_id": "L-2024-02",
                     "sku": "HNST500E",
+                    "label": "Sommertrachthonig 500 g",
                     "weight": 2.0,
                     "quantity": 4.0,
                     "comment": "Inventur",
@@ -2268,6 +2354,7 @@
             "id": "L-2024-03",
             "weight": 42.4,
             "sort": "Honig",
+            "certified": false,
             "comment": "Nearbees",
             "buckets": [
                 {
@@ -2307,6 +2394,7 @@
             "id": "L-2024-04",
             "weight": 158.0,
             "sort": "Lindenhonig",
+            "certified": false,
             "comment": "",
             "buckets": [
                 {
@@ -2427,6 +2515,7 @@
                     "best_before": "2026-12-31T00:00:00",
                     "batch_id": "L-2024-04",
                     "sku": "HNST500E",
+                    "label": "Sommertrachthonig 500 g",
                     "weight": 24.0,
                     "quantity": 48.0,
                     "comment": "",
@@ -2438,6 +2527,7 @@
                     "best_before": "2026-12-31T00:00:00",
                     "batch_id": "L-2024-04",
                     "sku": "HNST500E",
+                    "label": "Sommertrachthonig 500 g",
                     "weight": 41.0,
                     "quantity": 82.0,
                     "comment": "",
@@ -2449,6 +2539,7 @@
                     "best_before": "2026-12-31T00:00:00",
                     "batch_id": "L-2024-04",
                     "sku": "HNST500E",
+                    "label": "Sommertrachthonig 500 g",
                     "weight": 83.0,
                     "quantity": 166.0,
                     "comment": "",
@@ -2460,6 +2551,7 @@
             "id": "L-2025-01",
             "weight": 46.2,
             "sort": "Honig",
+            "certified": false,
             "comment": "Nearbees",
             "buckets": [
                 {
@@ -2499,7 +2591,8 @@
             "id": "L-2025-02",
             "weight": 23.4,
             "sort": "Honig",
-            "comment": "GQ-Bayern",
+            "certified": true,
+            "comment": "",
             "buckets": [
                 {
                     "id": "E-2025-03",
@@ -2529,6 +2622,7 @@
                     "best_before": "2027-08-02T00:00:00",
                     "batch_id": "L-2025-02",
                     "sku": "HD500E",
+                    "label": "EDH Honig 500 g",
                     "weight": 7.0,
                     "quantity": 14.0,
                     "comment": "Blankoetiketten, Honig",
@@ -2540,6 +2634,7 @@
                     "best_before": "2027-09-05T00:00:00",
                     "batch_id": "L-2025-02",
                     "sku": "HDB250E",
+                    "label": "EDH Bl\u00fctenhonig 250 g",
                     "weight": 18.0,
                     "quantity": 72.0,
                     "comment": "Etikett 55 beim Aufkleben besch\u00e4digt",
@@ -2551,6 +2646,7 @@
             "id": "L-2025-03",
             "weight": 29.5,
             "sort": "Honig",
+            "certified": false,
             "comment": "",
             "buckets": [
                 {
@@ -2581,6 +2677,7 @@
                     "best_before": "2027-09-05T00:00:00",
                     "batch_id": "L-2025-03",
                     "sku": "HNB500E",
+                    "label": "Bl\u00fctenhonig 500 g",
                     "weight": 21.5,
                     "quantity": 43.0,
                     "comment": "",
@@ -2596,6 +2693,7 @@
             "best_before": "2024-08-20T00:00:00",
             "batch_id": "L-2022-01",
             "sku": "HD500E",
+            "label": "EDH Honig 500 g",
             "weight": 9.0,
             "quantity": 18.0,
             "comment": "Blankoetiketten, Fr\u00fchjahrstracht",
@@ -2607,6 +2705,7 @@
             "best_before": "2024-09-11T00:00:00",
             "batch_id": "L-2022-02",
             "sku": "HD500E",
+            "label": "EDH Honig 500 g",
             "weight": 9.5,
             "quantity": 19.0,
             "comment": "Blankoetiketten, Sommertracht",
@@ -2618,6 +2717,7 @@
             "best_before": "2025-06-25T00:00:00",
             "batch_id": "L-2023-01",
             "sku": "HDFT500E",
+            "label": "EDH Fr\u00fchjahrstrachthonig 500 g",
             "weight": 28.0,
             "quantity": 56.0,
             "comment": "",
@@ -2629,6 +2729,7 @@
             "best_before": "2025-07-23T00:00:00",
             "batch_id": "L-2023-02",
             "sku": "HDST500E",
+            "label": "EDH Sommertrachthonig 500 g",
             "weight": 1.5,
             "quantity": 3.0,
             "comment": "",
@@ -2640,6 +2741,7 @@
             "best_before": "2025-09-16T00:00:00",
             "batch_id": "L-2023-02",
             "sku": "HDST500E",
+            "label": "EDH Sommertrachthonig 500 g",
             "weight": 37.0,
             "quantity": 74.0,
             "comment": "",
@@ -2651,6 +2753,7 @@
             "best_before": "2025-11-19T00:00:00",
             "batch_id": "L-2023-02",
             "sku": "HDST500E",
+            "label": "EDH Sommertrachthonig 500 g",
             "weight": 13.0,
             "quantity": 26.0,
             "comment": "",
@@ -2662,6 +2765,7 @@
             "best_before": "2025-11-19T00:00:00",
             "batch_id": "L-2023-01",
             "sku": "HDFT500E",
+            "label": "EDH Fr\u00fchjahrstrachthonig 500 g",
             "weight": 9.0,
             "quantity": 18.0,
             "comment": "",
@@ -2673,6 +2777,7 @@
             "best_before": "2026-06-22T00:00:00",
             "batch_id": "L-2024-01",
             "sku": "HDFT500E",
+            "label": "EDH Fr\u00fchjahrstrachthonig 500 g",
             "weight": 47.5,
             "quantity": 95.0,
             "comment": "",
@@ -2684,6 +2789,7 @@
             "best_before": "2026-12-31T00:00:00",
             "batch_id": "L-2024-01",
             "sku": "HNFT500E",
+            "label": "Fr\u00fchjahrstrachthonig 500 g",
             "weight": 22.0,
             "quantity": 44.0,
             "comment": "",
@@ -2695,6 +2801,7 @@
             "best_before": "2026-12-31T00:00:00",
             "batch_id": "L-2024-04",
             "sku": "HNST500E",
+            "label": "Sommertrachthonig 500 g",
             "weight": 24.0,
             "quantity": 48.0,
             "comment": "",
@@ -2706,6 +2813,7 @@
             "best_before": "2026-12-31T00:00:00",
             "batch_id": "L-2024-04",
             "sku": "HNST500E",
+            "label": "Sommertrachthonig 500 g",
             "weight": 41.0,
             "quantity": 82.0,
             "comment": "",
@@ -2717,6 +2825,7 @@
             "best_before": "2026-12-31T00:00:00",
             "batch_id": "L-2022-01",
             "sku": "HNFT500E",
+            "label": "Fr\u00fchjahrstrachthonig 500 g",
             "weight": 12.5,
             "quantity": 25.0,
             "comment": "",
@@ -2728,6 +2837,7 @@
             "best_before": "2026-12-31T00:00:00",
             "batch_id": "L-2024-04",
             "sku": "HNST500E",
+            "label": "Sommertrachthonig 500 g",
             "weight": 83.0,
             "quantity": 166.0,
             "comment": "",
@@ -2739,6 +2849,7 @@
             "best_before": "2026-12-31T00:00:00",
             "batch_id": "L-2024-01",
             "sku": "HNFT500E",
+            "label": "Fr\u00fchjahrstrachthonig 500 g",
             "weight": 15.5,
             "quantity": 31.0,
             "comment": "Inventur",
@@ -2750,6 +2861,7 @@
             "best_before": "2026-12-31T00:00:00",
             "batch_id": "L-2024-02",
             "sku": "HNST500E",
+            "label": "Sommertrachthonig 500 g",
             "weight": 2.0,
             "quantity": 4.0,
             "comment": "Inventur",
@@ -2761,6 +2873,7 @@
             "best_before": "2027-08-02T00:00:00",
             "batch_id": "L-2025-02",
             "sku": "HD500E",
+            "label": "EDH Honig 500 g",
             "weight": 7.0,
             "quantity": 14.0,
             "comment": "Blankoetiketten, Honig",
@@ -2772,6 +2885,7 @@
             "best_before": "2027-09-05T00:00:00",
             "batch_id": "L-2025-02",
             "sku": "HDB250E",
+            "label": "EDH Bl\u00fctenhonig 250 g",
             "weight": 18.0,
             "quantity": 72.0,
             "comment": "Etikett 55 beim Aufkleben besch\u00e4digt",
@@ -2783,6 +2897,7 @@
             "best_before": "2027-09-05T00:00:00",
             "batch_id": "L-2025-03",
             "sku": "HNB500E",
+            "label": "Bl\u00fctenhonig 500 g",
             "weight": 21.5,
             "quantity": 43.0,
             "comment": "",
