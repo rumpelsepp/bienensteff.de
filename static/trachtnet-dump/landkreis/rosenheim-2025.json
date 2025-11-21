@@ -1612,12 +1612,12 @@
   {
     "dates": "2025-11-19",
     "values": -19.81,
-    "n_waagen": 2
+    "n_waagen": 4
   },
   {
     "dates": "2025-11-20",
-    "values": null,
-    "n_waagen": null
+    "values": -19.82,
+    "n_waagen": 2
   },
   {
     "dates": "2025-11-21",
