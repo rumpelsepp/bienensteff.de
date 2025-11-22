@@ -1602,27 +1602,27 @@
   {
     "dates": "2025-11-17",
     "values": 34.65,
-    "n_waagen": 229
+    "n_waagen": 231
   },
   {
     "dates": "2025-11-18",
-    "values": 34.56,
-    "n_waagen": 229
+    "values": 34.55,
+    "n_waagen": 231
   },
   {
     "dates": "2025-11-19",
-    "values": 34.7,
-    "n_waagen": 229
+    "values": 34.69,
+    "n_waagen": 231
   },
   {
     "dates": "2025-11-20",
-    "values": 34.7,
-    "n_waagen": 204
+    "values": 34.6,
+    "n_waagen": 231
   },
   {
     "dates": "2025-11-21",
-    "values": null,
-    "n_waagen": null
+    "values": 34.6,
+    "n_waagen": 227
   },
   {
     "dates": "2025-11-22",
