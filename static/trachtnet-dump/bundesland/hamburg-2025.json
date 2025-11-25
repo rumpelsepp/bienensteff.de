@@ -1626,18 +1626,18 @@
   },
   {
     "dates": "2025-11-22",
-    "values": 25.06,
+    "values": 25.05,
     "n_waagen": 8
   },
   {
     "dates": "2025-11-23",
-    "values": 25.03,
-    "n_waagen": 3
+    "values": 25.28,
+    "n_waagen": 8
   },
   {
     "dates": "2025-11-24",
-    "values": null,
-    "n_waagen": null
+    "values": 25.17,
+    "n_waagen": 6
   },
   {
     "dates": "2025-11-25",
