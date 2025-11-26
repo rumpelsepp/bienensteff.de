@@ -1631,18 +1631,18 @@
   },
   {
     "dates": "2025-11-23",
-    "values": 46.11,
+    "values": 46.09,
     "n_waagen": 3
   },
   {
     "dates": "2025-11-24",
-    "values": 46.67,
-    "n_waagen": 2
+    "values": 46.5,
+    "n_waagen": 3
   },
   {
     "dates": "2025-11-25",
-    "values": null,
-    "n_waagen": null
+    "values": 46.21,
+    "n_waagen": 2
   },
   {
     "dates": "2025-11-26",
