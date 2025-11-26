@@ -1636,13 +1636,13 @@
   },
   {
     "dates": "2025-11-24",
-    "values": -0.77,
+    "values": -1.4,
     "n_waagen": 1
   },
   {
     "dates": "2025-11-25",
-    "values": null,
-    "n_waagen": null
+    "values": -1.42,
+    "n_waagen": 1
   },
   {
     "dates": "2025-11-26",

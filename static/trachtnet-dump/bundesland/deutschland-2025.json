@@ -1622,32 +1622,32 @@
   {
     "dates": "2025-11-21",
     "values": 25.13,
-    "n_waagen": 794
+    "n_waagen": 795
   },
   {
     "dates": "2025-11-22",
     "values": 25.06,
-    "n_waagen": 794
-  },
-  {
-    "dates": "2025-11-23",
-    "values": 25.16,
     "n_waagen": 795
   },
   {
+    "dates": "2025-11-23",
+    "values": 25.17,
+    "n_waagen": 796
+  },
+  {
     "dates": "2025-11-24",
-    "values": 25.2,
-    "n_waagen": 669
+    "values": 25.14,
+    "n_waagen": 792
   },
   {
     "dates": "2025-11-25",
-    "values": 25.19,
-    "n_waagen": 7
+    "values": 25.14,
+    "n_waagen": 461
   },
   {
     "dates": "2025-11-26",
-    "values": null,
-    "n_waagen": null
+    "values": 25.14,
+    "n_waagen": 7
   },
   {
     "dates": "2025-11-27",
