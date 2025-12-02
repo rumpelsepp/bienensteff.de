@@ -1651,22 +1651,22 @@
   },
   {
     "dates": "2025-11-27",
-    "values": -18.79,
+    "values": -18.8,
     "n_waagen": 1
   },
   {
     "dates": "2025-11-28",
-    "values": null,
-    "n_waagen": null
+    "values": -18.73,
+    "n_waagen": 1
   },
   {
     "dates": "2025-11-29",
-    "values": null,
-    "n_waagen": null
+    "values": -18.78,
+    "n_waagen": 1
   },
   {
     "dates": "2025-11-30",
-    "values": null,
-    "n_waagen": null
+    "values": -18.82,
+    "n_waagen": 1
   }
 ]

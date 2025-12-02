@@ -1651,22 +1651,27 @@
   },
   {
     "dates": "2025-11-27",
-    "values": 16.56,
+    "values": 16.57,
     "n_waagen": 4
   },
   {
     "dates": "2025-11-28",
-    "values": 16.58,
-    "n_waagen": 3
+    "values": 16.71,
+    "n_waagen": 4
   },
   {
     "dates": "2025-11-29",
-    "values": 16.53,
-    "n_waagen": 1
+    "values": 16.69,
+    "n_waagen": 4
   },
   {
     "dates": "2025-11-30",
-    "values": 16.5,
-    "n_waagen": 1
+    "values": 16.75,
+    "n_waagen": 4
+  },
+  {
+    "dates": "2025-12-01",
+    "values": 16.76,
+    "n_waagen": 3
   }
 ]
