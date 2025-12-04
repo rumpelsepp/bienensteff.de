@@ -2,1686 +2,1691 @@
   {
     "dates": "2025-01-01",
     "values": -0.09,
-    "n_waagen": 677
+    "n_waagen": 676
   },
   {
     "dates": "2025-01-02",
     "values": 0.28,
-    "n_waagen": 676
+    "n_waagen": 675
   },
   {
     "dates": "2025-01-03",
     "values": 0.21,
-    "n_waagen": 677
+    "n_waagen": 676
   },
   {
     "dates": "2025-01-04",
     "values": 0.12,
-    "n_waagen": 679
+    "n_waagen": 678
   },
   {
     "dates": "2025-01-05",
     "values": 0.26,
-    "n_waagen": 677
+    "n_waagen": 676
   },
   {
     "dates": "2025-01-06",
     "values": -0.17,
-    "n_waagen": 677
+    "n_waagen": 676
   },
   {
     "dates": "2025-01-07",
     "values": -0.23,
-    "n_waagen": 678
+    "n_waagen": 677
   },
   {
     "dates": "2025-01-08",
     "values": 0.45,
-    "n_waagen": 676
+    "n_waagen": 675
   },
   {
     "dates": "2025-01-09",
     "values": 0.34,
-    "n_waagen": 677
+    "n_waagen": 676
   },
   {
     "dates": "2025-01-10",
     "values": 0.11,
-    "n_waagen": 681
+    "n_waagen": 680
   },
   {
     "dates": "2025-01-11",
-    "values": -0.02,
-    "n_waagen": 681
+    "values": -0.01,
+    "n_waagen": 680
   },
   {
     "dates": "2025-01-12",
-    "values": -0.15,
-    "n_waagen": 682
+    "values": -0.14,
+    "n_waagen": 681
   },
   {
     "dates": "2025-01-13",
-    "values": -0.22,
-    "n_waagen": 682
+    "values": -0.21,
+    "n_waagen": 681
   },
   {
     "dates": "2025-01-14",
-    "values": -0.31,
-    "n_waagen": 682
+    "values": -0.3,
+    "n_waagen": 681
   },
   {
     "dates": "2025-01-15",
-    "values": -0.44,
-    "n_waagen": 680
+    "values": -0.43,
+    "n_waagen": 679
   },
   {
     "dates": "2025-01-16",
-    "values": -0.55,
-    "n_waagen": 680
+    "values": -0.53,
+    "n_waagen": 679
   },
   {
     "dates": "2025-01-17",
-    "values": -0.59,
-    "n_waagen": 680
+    "values": -0.57,
+    "n_waagen": 679
   },
   {
     "dates": "2025-01-18",
-    "values": -0.64,
-    "n_waagen": 681
-  },
-  {
-    "dates": "2025-01-19",
-    "values": -0.71,
+    "values": -0.62,
     "n_waagen": 680
   },
   {
+    "dates": "2025-01-19",
+    "values": -0.69,
+    "n_waagen": 679
+  },
+  {
     "dates": "2025-01-20",
-    "values": -0.76,
-    "n_waagen": 683
+    "values": -0.74,
+    "n_waagen": 682
   },
   {
     "dates": "2025-01-21",
-    "values": -0.81,
-    "n_waagen": 683
+    "values": -0.79,
+    "n_waagen": 682
   },
   {
     "dates": "2025-01-22",
-    "values": -0.82,
-    "n_waagen": 685
-  },
-  {
-    "dates": "2025-01-23",
-    "values": -0.77,
-    "n_waagen": 683
-  },
-  {
-    "dates": "2025-01-24",
-    "values": -0.86,
-    "n_waagen": 682
-  },
-  {
-    "dates": "2025-01-25",
-    "values": -0.9,
-    "n_waagen": 681
-  },
-  {
-    "dates": "2025-01-26",
-    "values": -0.99,
-    "n_waagen": 682
-  },
-  {
-    "dates": "2025-01-27",
-    "values": -0.98,
+    "values": -0.8,
     "n_waagen": 684
   },
   {
-    "dates": "2025-01-28",
-    "values": -1.03,
+    "dates": "2025-01-23",
+    "values": -0.75,
+    "n_waagen": 682
+  },
+  {
+    "dates": "2025-01-24",
+    "values": -0.84,
+    "n_waagen": 681
+  },
+  {
+    "dates": "2025-01-25",
+    "values": -0.88,
+    "n_waagen": 680
+  },
+  {
+    "dates": "2025-01-26",
+    "values": -0.97,
+    "n_waagen": 681
+  },
+  {
+    "dates": "2025-01-27",
+    "values": -0.96,
     "n_waagen": 683
+  },
+  {
+    "dates": "2025-01-28",
+    "values": -1.01,
+    "n_waagen": 682
   },
   {
     "dates": "2025-01-29",
-    "values": -1.08,
-    "n_waagen": 683
+    "values": -1.07,
+    "n_waagen": 682
   },
   {
     "dates": "2025-01-30",
-    "values": -1.06,
-    "n_waagen": 685
+    "values": -1.05,
+    "n_waagen": 684
   },
   {
     "dates": "2025-01-31",
-    "values": -1.18,
-    "n_waagen": 687
+    "values": -1.17,
+    "n_waagen": 686
   },
   {
     "dates": "2025-02-01",
-    "values": -1.25,
-    "n_waagen": 692
+    "values": -1.24,
+    "n_waagen": 691
   },
   {
     "dates": "2025-02-02",
-    "values": -1.3,
-    "n_waagen": 695
+    "values": -1.29,
+    "n_waagen": 694
   },
   {
     "dates": "2025-02-03",
-    "values": -1.33,
-    "n_waagen": 694
-  },
-  {
-    "dates": "2025-02-04",
-    "values": -1.37,
-    "n_waagen": 694
-  },
-  {
-    "dates": "2025-02-05",
-    "values": -1.37,
+    "values": -1.32,
     "n_waagen": 693
   },
   {
+    "dates": "2025-02-04",
+    "values": -1.36,
+    "n_waagen": 693
+  },
+  {
+    "dates": "2025-02-05",
+    "values": -1.36,
+    "n_waagen": 692
+  },
+  {
     "dates": "2025-02-06",
-    "values": -1.43,
-    "n_waagen": 698
+    "values": -1.42,
+    "n_waagen": 697
   },
   {
     "dates": "2025-02-07",
-    "values": -1.51,
-    "n_waagen": 699
-  },
-  {
-    "dates": "2025-02-08",
-    "values": -1.61,
-    "n_waagen": 701
-  },
-  {
-    "dates": "2025-02-09",
-    "values": -1.65,
-    "n_waagen": 702
-  },
-  {
-    "dates": "2025-02-10",
-    "values": -1.62,
-    "n_waagen": 701
-  },
-  {
-    "dates": "2025-02-11",
-    "values": -1.65,
-    "n_waagen": 701
-  },
-  {
-    "dates": "2025-02-12",
-    "values": -1.65,
-    "n_waagen": 702
-  },
-  {
-    "dates": "2025-02-13",
-    "values": -1.54,
-    "n_waagen": 700
-  },
-  {
-    "dates": "2025-02-14",
-    "values": -1.59,
-    "n_waagen": 701
-  },
-  {
-    "dates": "2025-02-15",
-    "values": -1.7,
-    "n_waagen": 699
-  },
-  {
-    "dates": "2025-02-16",
-    "values": -1.74,
-    "n_waagen": 699
-  },
-  {
-    "dates": "2025-02-17",
-    "values": -1.86,
+    "values": -1.5,
     "n_waagen": 698
   },
   {
-    "dates": "2025-02-18",
-    "values": -1.96,
+    "dates": "2025-02-08",
+    "values": -1.6,
     "n_waagen": 700
   },
   {
-    "dates": "2025-02-19",
-    "values": -2.08,
+    "dates": "2025-02-09",
+    "values": -1.64,
+    "n_waagen": 701
+  },
+  {
+    "dates": "2025-02-10",
+    "values": -1.61,
+    "n_waagen": 700
+  },
+  {
+    "dates": "2025-02-11",
+    "values": -1.64,
+    "n_waagen": 700
+  },
+  {
+    "dates": "2025-02-12",
+    "values": -1.64,
+    "n_waagen": 701
+  },
+  {
+    "dates": "2025-02-13",
+    "values": -1.53,
     "n_waagen": 699
   },
   {
+    "dates": "2025-02-14",
+    "values": -1.58,
+    "n_waagen": 700
+  },
+  {
+    "dates": "2025-02-15",
+    "values": -1.69,
+    "n_waagen": 698
+  },
+  {
+    "dates": "2025-02-16",
+    "values": -1.73,
+    "n_waagen": 698
+  },
+  {
+    "dates": "2025-02-17",
+    "values": -1.85,
+    "n_waagen": 697
+  },
+  {
+    "dates": "2025-02-18",
+    "values": -1.95,
+    "n_waagen": 699
+  },
+  {
+    "dates": "2025-02-19",
+    "values": -2.07,
+    "n_waagen": 698
+  },
+  {
     "dates": "2025-02-20",
-    "values": -2.16,
-    "n_waagen": 702
+    "values": -2.15,
+    "n_waagen": 701
   },
   {
     "dates": "2025-02-21",
-    "values": -2.4,
-    "n_waagen": 703
+    "values": -2.39,
+    "n_waagen": 702
   },
   {
     "dates": "2025-02-22",
-    "values": -2.53,
-    "n_waagen": 704
+    "values": -2.52,
+    "n_waagen": 703
   },
   {
     "dates": "2025-02-23",
-    "values": -2.66,
-    "n_waagen": 706
+    "values": -2.65,
+    "n_waagen": 705
   },
   {
     "dates": "2025-02-24",
+    "values": -2.67,
+    "n_waagen": 707
+  },
+  {
+    "dates": "2025-02-25",
+    "values": -2.61,
+    "n_waagen": 706
+  },
+  {
+    "dates": "2025-02-26",
+    "values": -2.65,
+    "n_waagen": 705
+  },
+  {
+    "dates": "2025-02-27",
+    "values": -2.64,
+    "n_waagen": 705
+  },
+  {
+    "dates": "2025-02-28",
     "values": -2.68,
     "n_waagen": 708
   },
   {
-    "dates": "2025-02-25",
-    "values": -2.62,
-    "n_waagen": 707
-  },
-  {
-    "dates": "2025-02-26",
-    "values": -2.66,
-    "n_waagen": 706
-  },
-  {
-    "dates": "2025-02-27",
-    "values": -2.65,
-    "n_waagen": 706
-  },
-  {
-    "dates": "2025-02-28",
-    "values": -2.69,
-    "n_waagen": 709
-  },
-  {
     "dates": "2025-03-01",
-    "values": -2.78,
-    "n_waagen": 709
+    "values": -2.77,
+    "n_waagen": 708
   },
   {
     "dates": "2025-03-02",
-    "values": -2.9,
-    "n_waagen": 711
+    "values": -2.89,
+    "n_waagen": 710
   },
   {
     "dates": "2025-03-03",
-    "values": -3.06,
-    "n_waagen": 713
+    "values": -3.05,
+    "n_waagen": 712
   },
   {
     "dates": "2025-03-04",
-    "values": -3.19,
-    "n_waagen": 715
+    "values": -3.18,
+    "n_waagen": 714
   },
   {
     "dates": "2025-03-05",
-    "values": -3.32,
-    "n_waagen": 716
+    "values": -3.31,
+    "n_waagen": 715
   },
   {
     "dates": "2025-03-06",
-    "values": -3.41,
-    "n_waagen": 719
+    "values": -3.4,
+    "n_waagen": 718
   },
   {
     "dates": "2025-03-07",
-    "values": -3.47,
-    "n_waagen": 721
+    "values": -3.46,
+    "n_waagen": 720
   },
   {
     "dates": "2025-03-08",
-    "values": -3.56,
-    "n_waagen": 724
+    "values": -3.55,
+    "n_waagen": 723
   },
   {
     "dates": "2025-03-09",
-    "values": -3.65,
-    "n_waagen": 728
+    "values": -3.64,
+    "n_waagen": 727
   },
   {
     "dates": "2025-03-10",
-    "values": -3.71,
-    "n_waagen": 729
+    "values": -3.7,
+    "n_waagen": 728
   },
   {
     "dates": "2025-03-11",
-    "values": -3.69,
-    "n_waagen": 730
+    "values": -3.68,
+    "n_waagen": 729
   },
   {
     "dates": "2025-03-12",
-    "values": -3.74,
-    "n_waagen": 732
+    "values": -3.73,
+    "n_waagen": 731
   },
   {
     "dates": "2025-03-13",
-    "values": -3.74,
+    "values": -3.73,
     "n_waagen": 732
   },
   {
     "dates": "2025-03-14",
-    "values": -3.82,
+    "values": -3.81,
     "n_waagen": 732
   },
   {
     "dates": "2025-03-15",
-    "values": -3.92,
-    "n_waagen": 734
+    "values": -3.91,
+    "n_waagen": 733
   },
   {
     "dates": "2025-03-16",
-    "values": -4.03,
-    "n_waagen": 733
+    "values": -4.02,
+    "n_waagen": 732
   },
   {
     "dates": "2025-03-17",
-    "values": -4.15,
-    "n_waagen": 735
+    "values": -4.14,
+    "n_waagen": 734
   },
   {
     "dates": "2025-03-18",
-    "values": -4.28,
-    "n_waagen": 733
+    "values": -4.27,
+    "n_waagen": 732
   },
   {
     "dates": "2025-03-19",
     "values": -4.33,
-    "n_waagen": 734
+    "n_waagen": 733
   },
   {
     "dates": "2025-03-20",
     "values": -4.23,
-    "n_waagen": 734
+    "n_waagen": 733
   },
   {
     "dates": "2025-03-21",
     "values": -4.06,
-    "n_waagen": 734
+    "n_waagen": 733
   },
   {
     "dates": "2025-03-22",
     "values": -3.91,
-    "n_waagen": 735
+    "n_waagen": 734
   },
   {
     "dates": "2025-03-23",
     "values": -3.84,
-    "n_waagen": 736
+    "n_waagen": 735
   },
   {
     "dates": "2025-03-24",
     "values": -3.77,
-    "n_waagen": 746
+    "n_waagen": 745
   },
   {
     "dates": "2025-03-25",
     "values": -3.77,
-    "n_waagen": 747
+    "n_waagen": 746
   },
   {
     "dates": "2025-03-26",
     "values": -3.82,
-    "n_waagen": 671
+    "n_waagen": 670
   },
   {
     "dates": "2025-03-27",
     "values": -3.75,
-    "n_waagen": 128
+    "n_waagen": 127
   },
   {
     "dates": "2025-03-28",
     "values": -3.67,
-    "n_waagen": 751
+    "n_waagen": 750
   },
   {
     "dates": "2025-03-29",
     "values": -3.77,
-    "n_waagen": 751
+    "n_waagen": 750
   },
   {
     "dates": "2025-03-30",
     "values": -3.88,
-    "n_waagen": 751
+    "n_waagen": 750
   },
   {
     "dates": "2025-03-31",
     "values": -3.95,
-    "n_waagen": 757
+    "n_waagen": 756
   },
   {
     "dates": "2025-04-01",
     "values": -4.05,
-    "n_waagen": 756
+    "n_waagen": 755
   },
   {
     "dates": "2025-04-02",
     "values": -4.09,
-    "n_waagen": 758
+    "n_waagen": 757
   },
   {
     "dates": "2025-04-03",
     "values": -3.81,
-    "n_waagen": 760
+    "n_waagen": 759
   },
   {
     "dates": "2025-04-04",
     "values": -3.46,
-    "n_waagen": 760
+    "n_waagen": 759
   },
   {
     "dates": "2025-04-05",
     "values": -3.36,
-    "n_waagen": 758
+    "n_waagen": 757
   },
   {
     "dates": "2025-04-06",
     "values": -3.56,
-    "n_waagen": 760
+    "n_waagen": 759
   },
   {
     "dates": "2025-04-07",
     "values": -3.61,
-    "n_waagen": 760
+    "n_waagen": 759
   },
   {
     "dates": "2025-04-08",
     "values": -3.42,
-    "n_waagen": 760
+    "n_waagen": 759
   },
   {
     "dates": "2025-04-09",
     "values": -3.16,
-    "n_waagen": 765
+    "n_waagen": 764
   },
   {
     "dates": "2025-04-10",
     "values": -3.18,
-    "n_waagen": 767
+    "n_waagen": 766
   },
   {
     "dates": "2025-04-11",
     "values": -2.61,
-    "n_waagen": 766
+    "n_waagen": 765
   },
   {
     "dates": "2025-04-12",
     "values": -1.7,
-    "n_waagen": 768
+    "n_waagen": 767
   },
   {
     "dates": "2025-04-13",
     "values": -1.49,
-    "n_waagen": 771
+    "n_waagen": 770
   },
   {
     "dates": "2025-04-14",
-    "values": -0.67,
-    "n_waagen": 776
+    "values": -0.66,
+    "n_waagen": 775
   },
   {
     "dates": "2025-04-15",
-    "values": -0.07,
-    "n_waagen": 778
-  },
-  {
-    "dates": "2025-04-16",
-    "values": 0.45,
-    "n_waagen": 780
-  },
-  {
-    "dates": "2025-04-17",
-    "values": 0.49,
+    "values": -0.06,
     "n_waagen": 777
   },
   {
+    "dates": "2025-04-16",
+    "values": 0.46,
+    "n_waagen": 779
+  },
+  {
+    "dates": "2025-04-17",
+    "values": 0.5,
+    "n_waagen": 776
+  },
+  {
     "dates": "2025-04-18",
-    "values": 0.28,
-    "n_waagen": 781
+    "values": 0.29,
+    "n_waagen": 780
   },
   {
     "dates": "2025-04-19",
-    "values": 0.75,
-    "n_waagen": 783
-  },
-  {
-    "dates": "2025-04-20",
-    "values": 1.64,
-    "n_waagen": 783
-  },
-  {
-    "dates": "2025-04-21",
-    "values": 1.82,
+    "values": 0.76,
     "n_waagen": 782
   },
   {
+    "dates": "2025-04-20",
+    "values": 1.65,
+    "n_waagen": 782
+  },
+  {
+    "dates": "2025-04-21",
+    "values": 1.83,
+    "n_waagen": 781
+  },
+  {
     "dates": "2025-04-22",
-    "values": 2.24,
-    "n_waagen": 784
+    "values": 2.25,
+    "n_waagen": 783
   },
   {
     "dates": "2025-04-23",
-    "values": 2.82,
-    "n_waagen": 786
-  },
-  {
-    "dates": "2025-04-24",
-    "values": 2.65,
-    "n_waagen": 786
-  },
-  {
-    "dates": "2025-04-25",
-    "values": 2.63,
+    "values": 2.83,
     "n_waagen": 785
   },
   {
+    "dates": "2025-04-24",
+    "values": 2.66,
+    "n_waagen": 785
+  },
+  {
+    "dates": "2025-04-25",
+    "values": 2.64,
+    "n_waagen": 784
+  },
+  {
     "dates": "2025-04-26",
-    "values": 3.58,
-    "n_waagen": 791
+    "values": 3.59,
+    "n_waagen": 790
   },
   {
     "dates": "2025-04-27",
-    "values": 5.35,
-    "n_waagen": 793
-  },
-  {
-    "dates": "2025-04-28",
-    "values": 7.46,
+    "values": 5.36,
     "n_waagen": 792
   },
   {
+    "dates": "2025-04-28",
+    "values": 7.47,
+    "n_waagen": 791
+  },
+  {
     "dates": "2025-04-29",
-    "values": 9.46,
-    "n_waagen": 816
+    "values": 9.47,
+    "n_waagen": 815
   },
   {
     "dates": "2025-04-30",
-    "values": 11.55,
-    "n_waagen": 816
+    "values": 11.56,
+    "n_waagen": 815
   },
   {
     "dates": "2025-05-01",
-    "values": 13.62,
-    "n_waagen": 820
+    "values": 13.63,
+    "n_waagen": 819
   },
   {
     "dates": "2025-05-02",
-    "values": 15.36,
-    "n_waagen": 824
-  },
-  {
-    "dates": "2025-05-03",
-    "values": 15.71,
-    "n_waagen": 825
-  },
-  {
-    "dates": "2025-05-04",
-    "values": 15.13,
+    "values": 15.37,
     "n_waagen": 823
   },
   {
+    "dates": "2025-05-03",
+    "values": 15.72,
+    "n_waagen": 824
+  },
+  {
+    "dates": "2025-05-04",
+    "values": 15.14,
+    "n_waagen": 822
+  },
+  {
     "dates": "2025-05-05",
-    "values": 14.82,
-    "n_waagen": 830
+    "values": 14.83,
+    "n_waagen": 829
   },
   {
     "dates": "2025-05-06",
-    "values": 14.88,
-    "n_waagen": 832
+    "values": 14.89,
+    "n_waagen": 831
   },
   {
     "dates": "2025-05-07",
-    "values": 15.05,
-    "n_waagen": 832
+    "values": 15.06,
+    "n_waagen": 831
   },
   {
     "dates": "2025-05-08",
-    "values": 15.27,
-    "n_waagen": 835
+    "values": 15.28,
+    "n_waagen": 834
   },
   {
     "dates": "2025-05-09",
-    "values": 16.13,
-    "n_waagen": 838
-  },
-  {
-    "dates": "2025-05-10",
-    "values": 17.58,
-    "n_waagen": 838
-  },
-  {
-    "dates": "2025-05-11",
-    "values": 19.14,
-    "n_waagen": 841
-  },
-  {
-    "dates": "2025-05-12",
-    "values": 20.16,
-    "n_waagen": 851
-  },
-  {
-    "dates": "2025-05-13",
-    "values": 21.26,
-    "n_waagen": 851
-  },
-  {
-    "dates": "2025-05-14",
-    "values": 22.37,
-    "n_waagen": 851
-  },
-  {
-    "dates": "2025-05-15",
-    "values": 22.22,
-    "n_waagen": 852
-  },
-  {
-    "dates": "2025-05-16",
-    "values": 22.37,
-    "n_waagen": 854
-  },
-  {
-    "dates": "2025-05-17",
-    "values": 22.42,
-    "n_waagen": 855
-  },
-  {
-    "dates": "2025-05-18",
-    "values": 22.45,
-    "n_waagen": 855
-  },
-  {
-    "dates": "2025-05-19",
-    "values": 23.23,
-    "n_waagen": 854
-  },
-  {
-    "dates": "2025-05-20",
-    "values": 24.37,
-    "n_waagen": 856
-  },
-  {
-    "dates": "2025-05-21",
-    "values": 24.6,
+    "values": 16.14,
     "n_waagen": 837
   },
   {
-    "dates": "2025-05-22",
-    "values": 24.2,
-    "n_waagen": 496
+    "dates": "2025-05-10",
+    "values": 17.59,
+    "n_waagen": 837
   },
   {
-    "dates": "2025-05-23",
-    "values": 23.89,
-    "n_waagen": 857
+    "dates": "2025-05-11",
+    "values": 19.15,
+    "n_waagen": 840
   },
   {
-    "dates": "2025-05-24",
-    "values": 23.96,
-    "n_waagen": 858
+    "dates": "2025-05-12",
+    "values": 20.17,
+    "n_waagen": 850
   },
   {
-    "dates": "2025-05-25",
-    "values": 24.07,
-    "n_waagen": 858
+    "dates": "2025-05-13",
+    "values": 21.27,
+    "n_waagen": 850
   },
   {
-    "dates": "2025-05-26",
-    "values": 24.09,
-    "n_waagen": 859
+    "dates": "2025-05-14",
+    "values": 22.38,
+    "n_waagen": 850
   },
   {
-    "dates": "2025-05-27",
-    "values": 24.21,
-    "n_waagen": 858
+    "dates": "2025-05-15",
+    "values": 22.23,
+    "n_waagen": 851
   },
   {
-    "dates": "2025-05-28",
-    "values": 24.05,
+    "dates": "2025-05-16",
+    "values": 22.38,
     "n_waagen": 853
   },
   {
+    "dates": "2025-05-17",
+    "values": 22.43,
+    "n_waagen": 854
+  },
+  {
+    "dates": "2025-05-18",
+    "values": 22.46,
+    "n_waagen": 854
+  },
+  {
+    "dates": "2025-05-19",
+    "values": 23.24,
+    "n_waagen": 853
+  },
+  {
+    "dates": "2025-05-20",
+    "values": 24.38,
+    "n_waagen": 855
+  },
+  {
+    "dates": "2025-05-21",
+    "values": 24.61,
+    "n_waagen": 836
+  },
+  {
+    "dates": "2025-05-22",
+    "values": 24.21,
+    "n_waagen": 495
+  },
+  {
+    "dates": "2025-05-23",
+    "values": 23.9,
+    "n_waagen": 856
+  },
+  {
+    "dates": "2025-05-24",
+    "values": 23.97,
+    "n_waagen": 857
+  },
+  {
+    "dates": "2025-05-25",
+    "values": 24.08,
+    "n_waagen": 857
+  },
+  {
+    "dates": "2025-05-26",
+    "values": 24.1,
+    "n_waagen": 858
+  },
+  {
+    "dates": "2025-05-27",
+    "values": 24.22,
+    "n_waagen": 857
+  },
+  {
+    "dates": "2025-05-28",
+    "values": 24.06,
+    "n_waagen": 852
+  },
+  {
     "dates": "2025-05-29",
-    "values": 23.99,
+    "values": 24.0,
     "n_waagen": 851
   },
   {
     "dates": "2025-05-30",
-    "values": 25.26,
+    "values": 25.27,
     "n_waagen": 853
   },
   {
     "dates": "2025-05-31",
-    "values": 26.04,
-    "n_waagen": 860
+    "values": 26.05,
+    "n_waagen": 859
   },
   {
     "dates": "2025-06-01",
-    "values": 25.94,
-    "n_waagen": 861
+    "values": 25.95,
+    "n_waagen": 860
   },
   {
     "dates": "2025-06-02",
-    "values": 25.94,
-    "n_waagen": 861
+    "values": 25.95,
+    "n_waagen": 860
   },
   {
     "dates": "2025-06-03",
     "values": 26.47,
-    "n_waagen": 863
+    "n_waagen": 862
   },
   {
     "dates": "2025-06-04",
     "values": 26.69,
-    "n_waagen": 862
+    "n_waagen": 861
   },
   {
     "dates": "2025-06-05",
     "values": 26.33,
-    "n_waagen": 859
+    "n_waagen": 858
   },
   {
     "dates": "2025-06-06",
-    "values": 26.26,
-    "n_waagen": 859
+    "values": 26.25,
+    "n_waagen": 858
   },
   {
     "dates": "2025-06-07",
-    "values": 26.04,
-    "n_waagen": 859
+    "values": 26.02,
+    "n_waagen": 858
   },
   {
     "dates": "2025-06-08",
-    "values": 25.6,
-    "n_waagen": 858
+    "values": 25.58,
+    "n_waagen": 857
   },
   {
     "dates": "2025-06-09",
-    "values": 25.52,
-    "n_waagen": 858
+    "values": 25.5,
+    "n_waagen": 857
   },
   {
     "dates": "2025-06-10",
-    "values": 25.8,
-    "n_waagen": 856
+    "values": 25.78,
+    "n_waagen": 855
   },
   {
     "dates": "2025-06-11",
-    "values": 26.21,
-    "n_waagen": 853
+    "values": 26.19,
+    "n_waagen": 852
   },
   {
     "dates": "2025-06-12",
-    "values": 27.17,
-    "n_waagen": 855
+    "values": 27.15,
+    "n_waagen": 854
   },
   {
     "dates": "2025-06-13",
-    "values": 28.74,
-    "n_waagen": 852
+    "values": 28.71,
+    "n_waagen": 851
   },
   {
     "dates": "2025-06-14",
-    "values": 30.19,
-    "n_waagen": 851
-  },
-  {
-    "dates": "2025-06-15",
-    "values": 30.38,
+    "values": 30.15,
     "n_waagen": 850
   },
   {
+    "dates": "2025-06-15",
+    "values": 30.34,
+    "n_waagen": 849
+  },
+  {
     "dates": "2025-06-16",
-    "values": 30.76,
-    "n_waagen": 853
+    "values": 30.72,
+    "n_waagen": 852
   },
   {
     "dates": "2025-06-17",
-    "values": 32.09,
-    "n_waagen": 854
+    "values": 32.05,
+    "n_waagen": 853
   },
   {
     "dates": "2025-06-18",
-    "values": 33.48,
-    "n_waagen": 855
+    "values": 33.44,
+    "n_waagen": 854
   },
   {
     "dates": "2025-06-19",
-    "values": 34.41,
-    "n_waagen": 853
+    "values": 34.37,
+    "n_waagen": 852
   },
   {
     "dates": "2025-06-20",
-    "values": 35.16,
-    "n_waagen": 855
+    "values": 35.12,
+    "n_waagen": 854
   },
   {
     "dates": "2025-06-21",
-    "values": 36.59,
-    "n_waagen": 853
+    "values": 36.55,
+    "n_waagen": 852
   },
   {
     "dates": "2025-06-22",
-    "values": 38.2,
-    "n_waagen": 863
+    "values": 38.16,
+    "n_waagen": 862
   },
   {
     "dates": "2025-06-23",
-    "values": 38.07,
-    "n_waagen": 862
+    "values": 38.03,
+    "n_waagen": 861
   },
   {
     "dates": "2025-06-24",
-    "values": 38.68,
-    "n_waagen": 863
+    "values": 38.64,
+    "n_waagen": 862
   },
   {
     "dates": "2025-06-25",
-    "values": 40.07,
-    "n_waagen": 860
+    "values": 40.03,
+    "n_waagen": 859
   },
   {
     "dates": "2025-06-26",
-    "values": 39.94,
-    "n_waagen": 862
+    "values": 39.9,
+    "n_waagen": 861
   },
   {
     "dates": "2025-06-27",
-    "values": 39.92,
-    "n_waagen": 861
+    "values": 39.88,
+    "n_waagen": 860
   },
   {
     "dates": "2025-06-28",
-    "values": 41.07,
-    "n_waagen": 861
+    "values": 41.03,
+    "n_waagen": 860
   },
   {
     "dates": "2025-06-29",
-    "values": 41.58,
-    "n_waagen": 863
-  },
-  {
-    "dates": "2025-06-30",
-    "values": 41.65,
-    "n_waagen": 866
-  },
-  {
-    "dates": "2025-07-01",
-    "values": 41.71,
-    "n_waagen": 867
-  },
-  {
-    "dates": "2025-07-02",
-    "values": 41.57,
-    "n_waagen": 870
-  },
-  {
-    "dates": "2025-07-03",
-    "values": 41.21,
-    "n_waagen": 870
-  },
-  {
-    "dates": "2025-07-04",
-    "values": 40.88,
-    "n_waagen": 867
-  },
-  {
-    "dates": "2025-07-05",
-    "values": 40.63,
-    "n_waagen": 870
-  },
-  {
-    "dates": "2025-07-06",
-    "values": 40.48,
-    "n_waagen": 869
-  },
-  {
-    "dates": "2025-07-07",
-    "values": 40.43,
-    "n_waagen": 869
-  },
-  {
-    "dates": "2025-07-08",
-    "values": 40.14,
-    "n_waagen": 865
-  },
-  {
-    "dates": "2025-07-09",
-    "values": 39.83,
-    "n_waagen": 867
-  },
-  {
-    "dates": "2025-07-10",
-    "values": 39.48,
-    "n_waagen": 872
-  },
-  {
-    "dates": "2025-07-11",
-    "values": 39.25,
-    "n_waagen": 871
-  },
-  {
-    "dates": "2025-07-12",
-    "values": 39.03,
-    "n_waagen": 868
-  },
-  {
-    "dates": "2025-07-13",
-    "values": 38.73,
-    "n_waagen": 869
-  },
-  {
-    "dates": "2025-07-14",
-    "values": 38.6,
-    "n_waagen": 868
-  },
-  {
-    "dates": "2025-07-15",
-    "values": 38.32,
-    "n_waagen": 868
-  },
-  {
-    "dates": "2025-07-16",
-    "values": 38.2,
-    "n_waagen": 868
-  },
-  {
-    "dates": "2025-07-17",
-    "values": 37.88,
-    "n_waagen": 869
-  },
-  {
-    "dates": "2025-07-18",
-    "values": 37.57,
-    "n_waagen": 868
-  },
-  {
-    "dates": "2025-07-19",
-    "values": 37.34,
-    "n_waagen": 866
-  },
-  {
-    "dates": "2025-07-20",
-    "values": 37.24,
-    "n_waagen": 866
-  },
-  {
-    "dates": "2025-07-21",
-    "values": 37.24,
-    "n_waagen": 866
-  },
-  {
-    "dates": "2025-07-22",
-    "values": 36.97,
-    "n_waagen": 868
-  },
-  {
-    "dates": "2025-07-23",
-    "values": 36.61,
-    "n_waagen": 867
-  },
-  {
-    "dates": "2025-07-24",
-    "values": 36.47,
-    "n_waagen": 865
-  },
-  {
-    "dates": "2025-07-25",
-    "values": 36.3,
-    "n_waagen": 866
-  },
-  {
-    "dates": "2025-07-26",
-    "values": 36.15,
-    "n_waagen": 865
-  },
-  {
-    "dates": "2025-07-27",
-    "values": 36.07,
-    "n_waagen": 870
-  },
-  {
-    "dates": "2025-07-28",
-    "values": 35.84,
-    "n_waagen": 871
-  },
-  {
-    "dates": "2025-07-29",
-    "values": 35.61,
-    "n_waagen": 870
-  },
-  {
-    "dates": "2025-07-30",
-    "values": 35.4,
-    "n_waagen": 870
-  },
-  {
-    "dates": "2025-07-31",
-    "values": 35.3,
-    "n_waagen": 871
-  },
-  {
-    "dates": "2025-08-01",
-    "values": 35.05,
-    "n_waagen": 871
-  },
-  {
-    "dates": "2025-08-02",
-    "values": 34.85,
-    "n_waagen": 871
-  },
-  {
-    "dates": "2025-08-03",
-    "values": 34.73,
-    "n_waagen": 782
-  },
-  {
-    "dates": "2025-08-04",
-    "values": 34.66,
-    "n_waagen": 17
-  },
-  {
-    "dates": "2025-08-05",
-    "values": 34.45,
-    "n_waagen": 138
-  },
-  {
-    "dates": "2025-08-06",
-    "values": 34.15,
-    "n_waagen": 871
-  },
-  {
-    "dates": "2025-08-07",
-    "values": 33.94,
-    "n_waagen": 868
-  },
-  {
-    "dates": "2025-08-08",
-    "values": 33.76,
-    "n_waagen": 870
-  },
-  {
-    "dates": "2025-08-09",
-    "values": 33.64,
-    "n_waagen": 871
-  },
-  {
-    "dates": "2025-08-10",
-    "values": 33.47,
-    "n_waagen": 869
-  },
-  {
-    "dates": "2025-08-11",
-    "values": 33.31,
-    "n_waagen": 865
-  },
-  {
-    "dates": "2025-08-12",
-    "values": 33.22,
-    "n_waagen": 666
-  },
-  {
-    "dates": "2025-08-13",
-    "values": 33.16,
-    "n_waagen": 16
-  },
-  {
-    "dates": "2025-08-14",
-    "values": 33.09,
-    "n_waagen": 95
-  },
-  {
-    "dates": "2025-08-15",
-    "values": 32.99,
+    "values": 41.54,
     "n_waagen": 862
   },
   {
+    "dates": "2025-06-30",
+    "values": 41.61,
+    "n_waagen": 865
+  },
+  {
+    "dates": "2025-07-01",
+    "values": 41.67,
+    "n_waagen": 866
+  },
+  {
+    "dates": "2025-07-02",
+    "values": 41.53,
+    "n_waagen": 869
+  },
+  {
+    "dates": "2025-07-03",
+    "values": 41.17,
+    "n_waagen": 869
+  },
+  {
+    "dates": "2025-07-04",
+    "values": 40.84,
+    "n_waagen": 866
+  },
+  {
+    "dates": "2025-07-05",
+    "values": 40.59,
+    "n_waagen": 869
+  },
+  {
+    "dates": "2025-07-06",
+    "values": 40.44,
+    "n_waagen": 868
+  },
+  {
+    "dates": "2025-07-07",
+    "values": 40.39,
+    "n_waagen": 868
+  },
+  {
+    "dates": "2025-07-08",
+    "values": 40.1,
+    "n_waagen": 864
+  },
+  {
+    "dates": "2025-07-09",
+    "values": 39.79,
+    "n_waagen": 866
+  },
+  {
+    "dates": "2025-07-10",
+    "values": 39.44,
+    "n_waagen": 871
+  },
+  {
+    "dates": "2025-07-11",
+    "values": 39.21,
+    "n_waagen": 870
+  },
+  {
+    "dates": "2025-07-12",
+    "values": 38.99,
+    "n_waagen": 867
+  },
+  {
+    "dates": "2025-07-13",
+    "values": 38.69,
+    "n_waagen": 868
+  },
+  {
+    "dates": "2025-07-14",
+    "values": 38.56,
+    "n_waagen": 867
+  },
+  {
+    "dates": "2025-07-15",
+    "values": 38.28,
+    "n_waagen": 867
+  },
+  {
+    "dates": "2025-07-16",
+    "values": 38.16,
+    "n_waagen": 867
+  },
+  {
+    "dates": "2025-07-17",
+    "values": 37.84,
+    "n_waagen": 868
+  },
+  {
+    "dates": "2025-07-18",
+    "values": 37.53,
+    "n_waagen": 867
+  },
+  {
+    "dates": "2025-07-19",
+    "values": 37.3,
+    "n_waagen": 865
+  },
+  {
+    "dates": "2025-07-20",
+    "values": 37.2,
+    "n_waagen": 865
+  },
+  {
+    "dates": "2025-07-21",
+    "values": 37.2,
+    "n_waagen": 865
+  },
+  {
+    "dates": "2025-07-22",
+    "values": 36.93,
+    "n_waagen": 867
+  },
+  {
+    "dates": "2025-07-23",
+    "values": 36.57,
+    "n_waagen": 866
+  },
+  {
+    "dates": "2025-07-24",
+    "values": 36.43,
+    "n_waagen": 864
+  },
+  {
+    "dates": "2025-07-25",
+    "values": 36.26,
+    "n_waagen": 865
+  },
+  {
+    "dates": "2025-07-26",
+    "values": 36.11,
+    "n_waagen": 864
+  },
+  {
+    "dates": "2025-07-27",
+    "values": 36.03,
+    "n_waagen": 869
+  },
+  {
+    "dates": "2025-07-28",
+    "values": 35.8,
+    "n_waagen": 870
+  },
+  {
+    "dates": "2025-07-29",
+    "values": 35.57,
+    "n_waagen": 869
+  },
+  {
+    "dates": "2025-07-30",
+    "values": 35.36,
+    "n_waagen": 869
+  },
+  {
+    "dates": "2025-07-31",
+    "values": 35.26,
+    "n_waagen": 870
+  },
+  {
+    "dates": "2025-08-01",
+    "values": 35.01,
+    "n_waagen": 870
+  },
+  {
+    "dates": "2025-08-02",
+    "values": 34.81,
+    "n_waagen": 870
+  },
+  {
+    "dates": "2025-08-03",
+    "values": 34.69,
+    "n_waagen": 781
+  },
+  {
+    "dates": "2025-08-04",
+    "values": 34.62,
+    "n_waagen": 16
+  },
+  {
+    "dates": "2025-08-05",
+    "values": 34.41,
+    "n_waagen": 137
+  },
+  {
+    "dates": "2025-08-06",
+    "values": 34.11,
+    "n_waagen": 870
+  },
+  {
+    "dates": "2025-08-07",
+    "values": 33.9,
+    "n_waagen": 867
+  },
+  {
+    "dates": "2025-08-08",
+    "values": 33.72,
+    "n_waagen": 869
+  },
+  {
+    "dates": "2025-08-09",
+    "values": 33.6,
+    "n_waagen": 870
+  },
+  {
+    "dates": "2025-08-10",
+    "values": 33.43,
+    "n_waagen": 868
+  },
+  {
+    "dates": "2025-08-11",
+    "values": 33.27,
+    "n_waagen": 864
+  },
+  {
+    "dates": "2025-08-12",
+    "values": 33.18,
+    "n_waagen": 665
+  },
+  {
+    "dates": "2025-08-13",
+    "values": 33.13,
+    "n_waagen": 15
+  },
+  {
+    "dates": "2025-08-14",
+    "values": 33.07,
+    "n_waagen": 94
+  },
+  {
+    "dates": "2025-08-15",
+    "values": 32.97,
+    "n_waagen": 861
+  },
+  {
     "dates": "2025-08-16",
-    "values": 32.87,
-    "n_waagen": 856
+    "values": 32.85,
+    "n_waagen": 855
   },
   {
     "dates": "2025-08-17",
-    "values": 32.71,
-    "n_waagen": 852
+    "values": 32.69,
+    "n_waagen": 851
   },
   {
     "dates": "2025-08-18",
-    "values": 32.54,
-    "n_waagen": 857
+    "values": 32.52,
+    "n_waagen": 856
   },
   {
     "dates": "2025-08-19",
-    "values": 32.37,
-    "n_waagen": 859
-  },
-  {
-    "dates": "2025-08-20",
-    "values": 32.25,
-    "n_waagen": 856
-  },
-  {
-    "dates": "2025-08-21",
-    "values": 32.12,
-    "n_waagen": 859
-  },
-  {
-    "dates": "2025-08-22",
-    "values": 31.91,
+    "values": 32.35,
     "n_waagen": 858
   },
   {
-    "dates": "2025-08-23",
-    "values": 31.77,
+    "dates": "2025-08-20",
+    "values": 32.23,
+    "n_waagen": 855
+  },
+  {
+    "dates": "2025-08-21",
+    "values": 32.1,
+    "n_waagen": 858
+  },
+  {
+    "dates": "2025-08-22",
+    "values": 31.89,
     "n_waagen": 857
   },
   {
-    "dates": "2025-08-24",
-    "values": 31.56,
+    "dates": "2025-08-23",
+    "values": 31.75,
     "n_waagen": 856
+  },
+  {
+    "dates": "2025-08-24",
+    "values": 31.54,
+    "n_waagen": 855
   },
   {
     "dates": "2025-08-25",
-    "values": 31.38,
-    "n_waagen": 856
+    "values": 31.36,
+    "n_waagen": 855
   },
   {
     "dates": "2025-08-26",
-    "values": 31.2,
-    "n_waagen": 855
+    "values": 31.18,
+    "n_waagen": 854
   },
   {
     "dates": "2025-08-27",
-    "values": 31.14,
-    "n_waagen": 854
-  },
-  {
-    "dates": "2025-08-28",
-    "values": 31.19,
-    "n_waagen": 851
-  },
-  {
-    "dates": "2025-08-29",
-    "values": 31.01,
-    "n_waagen": 855
-  },
-  {
-    "dates": "2025-08-30",
-    "values": 30.86,
-    "n_waagen": 856
-  },
-  {
-    "dates": "2025-08-31",
-    "values": 30.7,
-    "n_waagen": 852
-  },
-  {
-    "dates": "2025-09-01",
-    "values": 30.66,
-    "n_waagen": 851
-  },
-  {
-    "dates": "2025-09-02",
-    "values": 30.54,
-    "n_waagen": 852
-  },
-  {
-    "dates": "2025-09-03",
-    "values": 30.38,
-    "n_waagen": 852
-  },
-  {
-    "dates": "2025-09-04",
-    "values": 30.41,
-    "n_waagen": 851
-  },
-  {
-    "dates": "2025-09-05",
-    "values": 30.25,
-    "n_waagen": 854
-  },
-  {
-    "dates": "2025-09-06",
-    "values": 30.05,
-    "n_waagen": 855
-  },
-  {
-    "dates": "2025-09-07",
-    "values": 29.92,
+    "values": 31.12,
     "n_waagen": 853
   },
   {
+    "dates": "2025-08-28",
+    "values": 31.17,
+    "n_waagen": 850
+  },
+  {
+    "dates": "2025-08-29",
+    "values": 30.99,
+    "n_waagen": 854
+  },
+  {
+    "dates": "2025-08-30",
+    "values": 30.84,
+    "n_waagen": 855
+  },
+  {
+    "dates": "2025-08-31",
+    "values": 30.68,
+    "n_waagen": 851
+  },
+  {
+    "dates": "2025-09-01",
+    "values": 30.65,
+    "n_waagen": 850
+  },
+  {
+    "dates": "2025-09-02",
+    "values": 30.53,
+    "n_waagen": 851
+  },
+  {
+    "dates": "2025-09-03",
+    "values": 30.37,
+    "n_waagen": 851
+  },
+  {
+    "dates": "2025-09-04",
+    "values": 30.4,
+    "n_waagen": 850
+  },
+  {
+    "dates": "2025-09-05",
+    "values": 30.24,
+    "n_waagen": 853
+  },
+  {
+    "dates": "2025-09-06",
+    "values": 30.04,
+    "n_waagen": 854
+  },
+  {
+    "dates": "2025-09-07",
+    "values": 29.91,
+    "n_waagen": 852
+  },
+  {
     "dates": "2025-09-08",
-    "values": 29.94,
-    "n_waagen": 847
+    "values": 29.93,
+    "n_waagen": 846
   },
   {
     "dates": "2025-09-09",
-    "values": 29.98,
-    "n_waagen": 845
+    "values": 29.97,
+    "n_waagen": 844
   },
   {
     "dates": "2025-09-10",
-    "values": 29.9,
-    "n_waagen": 843
+    "values": 29.89,
+    "n_waagen": 842
   },
   {
     "dates": "2025-09-11",
-    "values": 29.81,
-    "n_waagen": 834
+    "values": 29.8,
+    "n_waagen": 833
   },
   {
     "dates": "2025-09-12",
-    "values": 29.63,
-    "n_waagen": 828
+    "values": 29.62,
+    "n_waagen": 827
   },
   {
     "dates": "2025-09-13",
-    "values": 29.59,
-    "n_waagen": 837
+    "values": 29.58,
+    "n_waagen": 836
   },
   {
     "dates": "2025-09-14",
-    "values": 29.46,
-    "n_waagen": 841
-  },
-  {
-    "dates": "2025-09-15",
-    "values": 29.3,
-    "n_waagen": 837
-  },
-  {
-    "dates": "2025-09-16",
-    "values": 29.14,
-    "n_waagen": 838
-  },
-  {
-    "dates": "2025-09-17",
-    "values": 29.05,
-    "n_waagen": 838
-  },
-  {
-    "dates": "2025-09-18",
-    "values": 28.96,
-    "n_waagen": 835
-  },
-  {
-    "dates": "2025-09-19",
-    "values": 28.9,
-    "n_waagen": 834
-  },
-  {
-    "dates": "2025-09-20",
-    "values": 28.86,
-    "n_waagen": 832
-  },
-  {
-    "dates": "2025-09-21",
-    "values": 28.92,
-    "n_waagen": 832
-  },
-  {
-    "dates": "2025-09-22",
-    "values": 28.85,
-    "n_waagen": 832
-  },
-  {
-    "dates": "2025-09-23",
-    "values": 28.71,
-    "n_waagen": 833
-  },
-  {
-    "dates": "2025-09-24",
-    "values": 28.77,
-    "n_waagen": 832
-  },
-  {
-    "dates": "2025-09-25",
-    "values": 28.71,
-    "n_waagen": 834
-  },
-  {
-    "dates": "2025-09-26",
-    "values": 28.63,
-    "n_waagen": 838
-  },
-  {
-    "dates": "2025-09-27",
-    "values": 28.51,
-    "n_waagen": 838
-  },
-  {
-    "dates": "2025-09-28",
-    "values": 28.45,
-    "n_waagen": 839
-  },
-  {
-    "dates": "2025-09-29",
-    "values": 28.35,
+    "values": 29.45,
     "n_waagen": 840
   },
   {
-    "dates": "2025-09-30",
-    "values": 28.28,
-    "n_waagen": 838
+    "dates": "2025-09-15",
+    "values": 29.29,
+    "n_waagen": 836
   },
   {
-    "dates": "2025-10-01",
-    "values": 28.11,
-    "n_waagen": 835
+    "dates": "2025-09-16",
+    "values": 29.13,
+    "n_waagen": 837
   },
   {
-    "dates": "2025-10-02",
-    "values": 27.98,
+    "dates": "2025-09-17",
+    "values": 29.04,
+    "n_waagen": 837
+  },
+  {
+    "dates": "2025-09-18",
+    "values": 28.95,
+    "n_waagen": 834
+  },
+  {
+    "dates": "2025-09-19",
+    "values": 28.89,
     "n_waagen": 833
   },
   {
-    "dates": "2025-10-03",
-    "values": 27.88,
+    "dates": "2025-09-20",
+    "values": 28.85,
+    "n_waagen": 831
+  },
+  {
+    "dates": "2025-09-21",
+    "values": 28.91,
+    "n_waagen": 831
+  },
+  {
+    "dates": "2025-09-22",
+    "values": 28.84,
+    "n_waagen": 831
+  },
+  {
+    "dates": "2025-09-23",
+    "values": 28.69,
     "n_waagen": 832
   },
   {
+    "dates": "2025-09-24",
+    "values": 28.75,
+    "n_waagen": 831
+  },
+  {
+    "dates": "2025-09-25",
+    "values": 28.69,
+    "n_waagen": 833
+  },
+  {
+    "dates": "2025-09-26",
+    "values": 28.61,
+    "n_waagen": 837
+  },
+  {
+    "dates": "2025-09-27",
+    "values": 28.49,
+    "n_waagen": 837
+  },
+  {
+    "dates": "2025-09-28",
+    "values": 28.43,
+    "n_waagen": 838
+  },
+  {
+    "dates": "2025-09-29",
+    "values": 28.33,
+    "n_waagen": 839
+  },
+  {
+    "dates": "2025-09-30",
+    "values": 28.26,
+    "n_waagen": 837
+  },
+  {
+    "dates": "2025-10-01",
+    "values": 28.09,
+    "n_waagen": 834
+  },
+  {
+    "dates": "2025-10-02",
+    "values": 27.96,
+    "n_waagen": 832
+  },
+  {
+    "dates": "2025-10-03",
+    "values": 27.86,
+    "n_waagen": 831
+  },
+  {
     "dates": "2025-10-04",
-    "values": 27.9,
-    "n_waagen": 772
+    "values": 27.88,
+    "n_waagen": 771
   },
   {
     "dates": "2025-10-05",
-    "values": 27.82,
-    "n_waagen": 552
+    "values": 27.8,
+    "n_waagen": 551
   },
   {
     "dates": "2025-10-06",
-    "values": 27.81,
-    "n_waagen": 553
+    "values": 27.79,
+    "n_waagen": 552
   },
   {
     "dates": "2025-10-07",
-    "values": 27.73,
-    "n_waagen": 554
+    "values": 27.71,
+    "n_waagen": 553
   },
   {
     "dates": "2025-10-08",
-    "values": 27.6,
-    "n_waagen": 833
+    "values": 27.58,
+    "n_waagen": 832
   },
   {
     "dates": "2025-10-09",
-    "values": 27.45,
-    "n_waagen": 833
+    "values": 27.43,
+    "n_waagen": 832
   },
   {
     "dates": "2025-10-10",
-    "values": 27.37,
-    "n_waagen": 834
+    "values": 27.35,
+    "n_waagen": 833
   },
   {
     "dates": "2025-10-11",
-    "values": 27.27,
-    "n_waagen": 834
+    "values": 27.25,
+    "n_waagen": 833
   },
   {
     "dates": "2025-10-12",
-    "values": 27.16,
-    "n_waagen": 834
+    "values": 27.14,
+    "n_waagen": 833
   },
   {
     "dates": "2025-10-13",
-    "values": 27.08,
-    "n_waagen": 833
+    "values": 27.06,
+    "n_waagen": 832
   },
   {
     "dates": "2025-10-14",
-    "values": 26.97,
-    "n_waagen": 833
+    "values": 26.95,
+    "n_waagen": 832
   },
   {
     "dates": "2025-10-15",
-    "values": 26.91,
-    "n_waagen": 831
-  },
-  {
-    "dates": "2025-10-16",
-    "values": 26.85,
-    "n_waagen": 829
-  },
-  {
-    "dates": "2025-10-17",
-    "values": 26.78,
+    "values": 26.89,
     "n_waagen": 830
   },
   {
+    "dates": "2025-10-16",
+    "values": 26.83,
+    "n_waagen": 828
+  },
+  {
+    "dates": "2025-10-17",
+    "values": 26.76,
+    "n_waagen": 829
+  },
+  {
     "dates": "2025-10-18",
-    "values": 26.66,
-    "n_waagen": 831
+    "values": 26.64,
+    "n_waagen": 830
   },
   {
     "dates": "2025-10-19",
-    "values": 26.58,
-    "n_waagen": 831
+    "values": 26.56,
+    "n_waagen": 830
   },
   {
     "dates": "2025-10-20",
-    "values": 26.6,
+    "values": 26.58,
     "n_waagen": 830
   },
   {
     "dates": "2025-10-21",
-    "values": 26.5,
+    "values": 26.48,
     "n_waagen": 828
   },
   {
     "dates": "2025-10-22",
-    "values": 26.53,
+    "values": 26.51,
     "n_waagen": 825
   },
   {
     "dates": "2025-10-23",
-    "values": 26.53,
+    "values": 26.51,
     "n_waagen": 826
   },
   {
     "dates": "2025-10-24",
-    "values": 26.39,
+    "values": 26.37,
     "n_waagen": 824
   },
   {
     "dates": "2025-10-25",
-    "values": 26.44,
+    "values": 26.42,
     "n_waagen": 825
   },
   {
     "dates": "2025-10-26",
-    "values": 26.33,
+    "values": 26.31,
     "n_waagen": 817
   },
   {
     "dates": "2025-10-27",
-    "values": 26.4,
+    "values": 26.38,
     "n_waagen": 822
   },
   {
     "dates": "2025-10-28",
-    "values": 26.35,
+    "values": 26.33,
     "n_waagen": 820
   },
   {
     "dates": "2025-10-29",
-    "values": 26.19,
+    "values": 26.17,
     "n_waagen": 819
   },
   {
     "dates": "2025-10-30",
-    "values": 26.06,
-    "n_waagen": 821
-  },
-  {
-    "dates": "2025-10-31",
-    "values": 26.0,
-    "n_waagen": 822
-  },
-  {
-    "dates": "2025-11-01",
     "values": 26.04,
     "n_waagen": 821
   },
   {
+    "dates": "2025-10-31",
+    "values": 25.98,
+    "n_waagen": 822
+  },
+  {
+    "dates": "2025-11-01",
+    "values": 26.02,
+    "n_waagen": 821
+  },
+  {
     "dates": "2025-11-02",
-    "values": 26.06,
+    "values": 26.04,
     "n_waagen": 821
   },
   {
     "dates": "2025-11-03",
-    "values": 25.92,
+    "values": 25.9,
     "n_waagen": 820
   },
   {
     "dates": "2025-11-04",
-    "values": 25.75,
+    "values": 25.73,
     "n_waagen": 815
   },
   {
     "dates": "2025-11-05",
-    "values": 25.63,
+    "values": 25.61,
     "n_waagen": 813
   },
   {
     "dates": "2025-11-06",
-    "values": 25.59,
+    "values": 25.57,
     "n_waagen": 816
   },
   {
     "dates": "2025-11-07",
-    "values": 25.56,
+    "values": 25.54,
     "n_waagen": 815
   },
   {
     "dates": "2025-11-08",
-    "values": 25.55,
+    "values": 25.53,
     "n_waagen": 816
   },
   {
     "dates": "2025-11-09",
-    "values": 25.61,
+    "values": 25.59,
     "n_waagen": 817
   },
   {
     "dates": "2025-11-10",
-    "values": 25.59,
+    "values": 25.57,
     "n_waagen": 812
   },
   {
     "dates": "2025-11-11",
-    "values": 25.51,
+    "values": 25.49,
     "n_waagen": 790
   },
   {
     "dates": "2025-11-12",
-    "values": 25.43,
+    "values": 25.41,
     "n_waagen": 790
   },
   {
     "dates": "2025-11-13",
-    "values": 25.3,
+    "values": 25.28,
     "n_waagen": 791
   },
   {
     "dates": "2025-11-14",
-    "values": 25.25,
+    "values": 25.23,
     "n_waagen": 791
   },
   {
     "dates": "2025-11-15",
-    "values": 25.26,
+    "values": 25.24,
     "n_waagen": 791
   },
   {
     "dates": "2025-11-16",
-    "values": 25.27,
+    "values": 25.25,
     "n_waagen": 792
   },
   {
     "dates": "2025-11-17",
-    "values": 25.29,
+    "values": 25.27,
     "n_waagen": 795
   },
   {
     "dates": "2025-11-18",
-    "values": 25.21,
+    "values": 25.19,
     "n_waagen": 797
   },
   {
     "dates": "2025-11-19",
-    "values": 25.27,
+    "values": 25.25,
     "n_waagen": 798
   },
   {
     "dates": "2025-11-20",
-    "values": 25.24,
+    "values": 25.22,
     "n_waagen": 793
   },
   {
     "dates": "2025-11-21",
-    "values": 25.19,
+    "values": 25.17,
     "n_waagen": 795
   },
   {
     "dates": "2025-11-22",
-    "values": 25.12,
+    "values": 25.1,
     "n_waagen": 795
   },
   {
     "dates": "2025-11-23",
-    "values": 25.23,
+    "values": 25.21,
     "n_waagen": 796
   },
   {
     "dates": "2025-11-24",
-    "values": 25.19,
+    "values": 25.17,
     "n_waagen": 792
   },
   {
     "dates": "2025-11-25",
-    "values": 25.15,
+    "values": 25.13,
     "n_waagen": 791
   },
   {
     "dates": "2025-11-26",
-    "values": 25.14,
+    "values": 25.12,
     "n_waagen": 791
   },
   {
     "dates": "2025-11-27",
-    "values": 25.06,
+    "values": 25.04,
     "n_waagen": 791
   },
   {
     "dates": "2025-11-28",
-    "values": 25.07,
+    "values": 25.05,
     "n_waagen": 791
   },
   {
     "dates": "2025-11-29",
-    "values": 25.02,
-    "n_waagen": 789
+    "values": 25.0,
+    "n_waagen": 790
   },
   {
     "dates": "2025-11-30",
-    "values": 25.0,
-    "n_waagen": 786
+    "values": 24.98,
+    "n_waagen": 787
   },
   {
     "dates": "2025-12-01",
-    "values": 24.9,
-    "n_waagen": 786
+    "values": 24.88,
+    "n_waagen": 787
   },
   {
     "dates": "2025-12-02",
-    "values": 24.89,
-    "n_waagen": 759
+    "values": 24.86,
+    "n_waagen": 787
   },
   {
     "dates": "2025-12-03",
-    "values": 24.89,
-    "n_waagen": 76
+    "values": 24.85,
+    "n_waagen": 662
+  },
+  {
+    "dates": "2025-12-04",
+    "values": 24.84,
+    "n_waagen": 6
   }
 ]
