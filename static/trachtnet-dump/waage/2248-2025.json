@@ -1560,6 +1560,56 @@
     "n_waagen": 1
   },
   {
+    "dates": "2025-11-09",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-10",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-11",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-12",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-13",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-14",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-15",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-16",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-17",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-11-18",
+    "values": null,
+    "n_waagen": null
+  },
+  {
     "dates": "2025-11-19",
     "values": 12.04,
     "n_waagen": 1
@@ -1618,5 +1668,20 @@
     "dates": "2025-11-30",
     "values": null,
     "n_waagen": null
+  },
+  {
+    "dates": "2025-12-01",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-12-02",
+    "values": 12.05,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2025-12-03",
+    "values": 12.03,
+    "n_waagen": 1
   }
 ]
