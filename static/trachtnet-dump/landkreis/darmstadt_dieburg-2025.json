@@ -1696,12 +1696,17 @@
   },
   {
     "dates": "2025-12-06",
-    "values": 13.25,
+    "values": 13.21,
     "n_waagen": 4
   },
   {
     "dates": "2025-12-07",
-    "values": 13.14,
-    "n_waagen": 1
+    "values": 13.29,
+    "n_waagen": 4
+  },
+  {
+    "dates": "2025-12-08",
+    "values": 13.16,
+    "n_waagen": 2
   }
 ]
