@@ -31,6 +31,10 @@ Aufgrund vermehrter Rückfragen verweisen wir gerne auf den Punkt [Kristallisati
 
 ## Sortiment 2025 {#sortiment}
 
+{{< box header="! Ausverkauft !" >}}
+Unser Sortiment aus 2025 ist restlos ausverkauft! Vielen Dank an alle treuen Kunden, wir freuen uns auf die kommende Saison 2026! 🍯🐝
+{{</ box >}}
+
 Dieses Jahr war das Wetter ziemlich launisch – darum gibt es heuer nur eine Sorte.
 Aber dafür ist unser Blütenhonig 🍯🌸 etwas ganz Besonderes: Er vereint das ganze Bienenjahr in einem Glas und überrascht mit einem intensiven, aromatischen Geschmack 🤤.
 Probiert ihn aus!
@@ -94,9 +98,14 @@ In München ist tendentiell immer an Montagen tagsüber jemand zu Hause (ganz un
 
 ## Preisliste
 
-**Gültig ab 12.09.2025**
-
 {{< pricelist.inline >}}
+    <p>
+      <strong>
+      Gültig ab
+      {{ time.AsTime (index .Page.Site.Data.preisliste.timestamp) | time.Format ":date_medium"}}
+      </strong>
+    </p>
+
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -110,8 +119,12 @@ In München ist tendentiell immer an Montagen tagsüber jemand zu Hause (ganz un
             </tr>
         </thead>
         <tbody>
-          {{- range index .Page.Site.Data.preisliste -}}
+          {{- range index .Page.Site.Data.preisliste.articles -}}
+            {{ if .in_stock }}
             <tr>
+            {{ else }}
+            <tr class="line-through">
+            {{ end }}
                 <td>{{ .sku }}</td>
                 <td>{{ .product_name }}</td>
                 <td>{{ .brand }}</td>
