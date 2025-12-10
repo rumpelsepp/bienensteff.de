@@ -53,7 +53,7 @@ format-trachtnet:
     done
     
 update-pricelist:
-    ./scripts/gen-pricelist.py > data/preisliste/preisliste.json
+    ./scripts/gen-pricelist.py > data/preisliste.json
 
 update-trachtnet: && format-trachtnet
     ./scripts/dump-trachtnet.py --year $(date +%Y) --outdir static/trachtnet-dump
