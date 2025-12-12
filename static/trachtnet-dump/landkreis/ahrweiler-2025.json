@@ -1711,12 +1711,17 @@
   },
   {
     "dates": "2025-12-09",
-    "values": 43.84,
+    "values": 43.83,
     "n_waagen": 7
   },
   {
     "dates": "2025-12-10",
-    "values": 43.78,
-    "n_waagen": 6
+    "values": 43.86,
+    "n_waagen": 7
+  },
+  {
+    "dates": "2025-12-11",
+    "values": 43.83,
+    "n_waagen": 5
   }
 ]
