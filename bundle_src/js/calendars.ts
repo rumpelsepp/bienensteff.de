@@ -5,7 +5,28 @@ import calListPlugin from '@fullcalendar/list';
 import bootstrap5Plugin from '@fullcalendar/bootstrap5';
 import { DateTime } from 'luxon';
 
-import { BeeDates, TUBDates } from "./dates";
+import { BeeDates, TUBDates, ZuchtDates } from "./dates";
+
+function getCalender(calElement: HTMLElement, events: Object[], startDate: DateTime, endRange: DateTime): Calendar {
+    return new Calendar(calElement, {
+      plugins: [calDayGridPlugin, calListPlugin, bootstrap5Plugin],
+      themeSystem: 'bootstrap5',
+      initialView: 'dayGridMonth',
+      firstDay: 1,
+      locale: calDeLocale,
+      // weekNumbers: true,
+      validRange: {
+        start: startDate.toISODate()!,
+        end: endRange.toISODate()!
+      },
+      headerToolbar: {
+        start: 'title',
+        center: '',
+        end: 'today prev,next dayGridMonth,listYear'
+      },
+      events: events,
+    });
+}
 
 abstract class BaseCalendar {
   formElement: HTMLFormElement;
@@ -119,25 +140,7 @@ class BeeStatesCalendar extends BaseCalendar {
     }
 
     const dates = new BeeDates(this.startDate);
-    this.calendar = new Calendar(this.calElement, {
-      plugins: [calDayGridPlugin, calListPlugin, bootstrap5Plugin],
-      themeSystem: 'bootstrap5',
-      initialView: 'dayGridMonth',
-      firstDay: 1,
-      locale: calDeLocale,
-      // weekNumbers: true,
-      validRange: {
-        start: dates.startDate.toISODate()!,
-        end: dates.endRange.toISODate()!
-      },
-      headerToolbar: {
-        start: 'title',
-        center: '',
-        end: 'today prev,next dayGridMonth,listYear'
-      },
-      events: this.events,
-    });
-    
+    this.calendar = getCalender(this.calElement, this.events, dates.startDate, dates.endRange)
     this.calendar.render();
   }
 }
@@ -204,28 +207,99 @@ class TUBCalendar extends BaseCalendar {
 
     const dates = new TUBDates(this.startDate);
 
-    this.calendar = new Calendar(this.calElement, {
-      plugins: [calDayGridPlugin, calListPlugin, bootstrap5Plugin],
-      initialView: 'dayGridMonth',
-      themeSystem: 'bootstrap5',
-      firstDay: 1,
-      locale: calDeLocale,
-      // weekNumbers: true,
-      validRange: {
-        start: dates.startDate.toISODate()!,
-        end: dates.endRange.toISODate()!,
-      },
-      headerToolbar: {
-        start: 'title',
-        center: '',
-        end: 'today prev,next dayGridMonth,listYear'
-      },
-      events: this.events
-    })
-
+    this.calendar = getCalender(this.calElement, this.events, dates.startDate, dates.endRange)
     this.calendar.render()
   }
 
 }
 
-export { BeeStatesCalendar, TUBCalendar };
+class ZuchtCalendar extends BaseCalendar {
+  get events(): Object[] {
+    const dates = new ZuchtDates(this.startDate);
+
+    return [
+      {
+        title: 'Start (X)',
+        start: dates.startDate.toISODate()!,
+        allDay: true,
+      },
+      {
+        title: 'WZ brechen (X+9)',
+        start: dates.wzBrechenDate.toISODate()!,
+        allDay: true,
+      },
+      {
+        title: 'ZL geben (X+9)',
+        start: dates.wzBrechenDate.toISODate()!,
+        allDay: true,
+      },
+      {
+        title: 'verschulen (X+19)',
+        start: dates.verschulenDate.toISODate()!,
+        allDay: true,
+      },
+      {
+        title: 'Kö schlüpft (X+20)',
+        start: dates.schlupfDate.toISODate()!,
+        allDay: true,
+        color: "gray",
+        classNames: ["fst-italic"]
+      },
+      {
+        title: 'PV auflösen (X+21)',
+        start: dates.pvAufloesenDate.toISODate()!,
+        allDay: true,
+      },
+      {
+        title: 'WZ verdeckelt',
+        start: dates.wzVerdeckelt.toISODate()!,
+        end: dates.schlupfDate.toISODate()!,
+        allDay: true,
+        display: 'background',
+      },
+      {
+        title: 'Kö geschlechtsreif (X+27)',
+        start: dates.köGeschlechtsreif.toISODate()!,
+        allDay: true,
+        color: "gray",
+        classNames: ["fst-italic"]
+      },
+      {
+        title: 'Kö in Eilage (X+28)',
+        start: dates.köEilage.toISODate()!,
+        allDay: true,
+        color: "gray",
+        classNames: ["fst-italic"]
+      },
+      {
+        title: 'Brut verdeckelt (X+37)',
+        start: dates.brutVerdeckelt.toISODate()!,
+        allDay: true,
+        color: "gray",
+        classNames: ["fst-italic"]
+      },
+      {
+        title: 'Jungbienen (X+49)',
+        start: dates.jungbienen.toISODate()!,
+        allDay: true,
+        color: "gray",
+        classNames: ["fst-italic"]
+      },
+    ];
+  }
+
+  render() {
+    if (this.calendar !== null) {
+      this.calendar.destroy();
+      this.calendar = null;
+    }
+
+    const dates = new ZuchtDates(this.startDate);
+
+    this.calendar = getCalender(this.calElement, this.events, dates.startDate, dates.endRange)
+    this.calendar.render()
+  }
+
+}
+
+export { BeeStatesCalendar, TUBCalendar, ZuchtCalendar };
