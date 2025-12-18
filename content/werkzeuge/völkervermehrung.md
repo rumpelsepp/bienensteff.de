@@ -30,7 +30,7 @@ Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://
         <tr>
             <td><strong>X + 9</strong></td>
             <td><strong>Weiselzellen brechen und Zuchtlatte einhängen</strong></td>
-            <td>Weiselzellen brechen und direkt am Anschluss eine Zuchtlatte mit Zuchtstoff einhängen. Den Sammelbrutableger durch Untersetzen erweitern.</td>
+            <td>Weiselzellen brechen und direkt im Anschluss eine Zuchtlatte mit Zuchtstoff einhängen. Den Sammelbrutableger durch Untersetzen erweitern.</td>
         </tr>
         <tr>
             <td>X + 14</td>
