@@ -1741,17 +1741,17 @@
   },
   {
     "dates": "2025-12-15",
-    "values": 44.64,
+    "values": 44.65,
     "n_waagen": 31
   },
   {
     "dates": "2025-12-16",
-    "values": 44.67,
-    "n_waagen": 5
+    "values": 44.61,
+    "n_waagen": 31
   },
   {
     "dates": "2025-12-17",
-    "values": 44.69,
-    "n_waagen": 2
+    "values": 44.64,
+    "n_waagen": 5
   }
 ]
