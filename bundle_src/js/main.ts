@@ -1,5 +1,5 @@
 export { DateTime } from "luxon";
-export { BeeStatesCalendar, TUBCalendar } from "./calendars";
+export { BeeStatesCalendar, TUBCalendar, ZuchtCalendar } from "./calendars";
 export { getParam, getDateParam } from "./helpers";
 export {
     BarChart,

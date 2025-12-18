@@ -10,7 +10,7 @@ Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://
 Mit diesem Webtool können interaktiv die Schlupftermine von *Nachschaffungskönigin* und eine *Abschätzung* für Jungbienen berechnet werden.
 Diese Termine sind sinnvoll für die Planung von Brutwaben- oder Sammelbrutablegern.
 Dazu das Startdatum X auswählen und auf absenden klicken. Der grüne Bereich symbolisiert die brutfreie Zeit.
-Termine in _kursiv_ bzw. mit Stern * sind geschätzt, da der Tag des Hochzeitsflugs und folglich der Start der Eiablage nicht vorhersehbar ist.
+Termine in _kursiv_ sind geschätzt, da der Tag des Hochzeitsflugs und folglich der Start der Eiablage nicht vorhersehbar ist.
 
 <table class="table table-sm table-striped">
     <thead>
@@ -37,7 +37,7 @@ Termine in _kursiv_ bzw. mit Stern * sind geschätzt, da der Tag des Hochzeitsfl
             <td>Sieben Tage nach Schlupf ist die Jungkönigin geschlechtsreif.</td>
         </tr>
         <tr>
-            <td><em>X + 19*</em></td>
+            <td><em>X + 19</em></td>
             <td><em>Königin in Eilage</em></td>
             <td><em>Hochzeitsflug bei gutem Wetter (T ≥ 18°C); Eiablage beginnt meist acht Tage nach Schlupf. Wetterbedingt kann die Eiablage später einsetzen.</em></td>
         </tr>
@@ -47,12 +47,12 @@ Termine in _kursiv_ bzw. mit Stern * sind geschätzt, da der Tag des Hochzeitsfl
             <td>Sämtliche Arbeiterinnenbrut ist geschlüpft; drei Tage später (Tag X + 24) ist sämtliche Drohnenbrut geschlüpft.</td>
         </tr>
         <tr>
-            <td><em>X + 28*</em></td>
+            <td><em>X + 28</em></td>
             <td><em>Brut ist verdeckelt</em></td>
             <td><em>Brutzellen sind neun Tage nach Eiablage verdeckelt.</em></td>
         </tr>
         <tr>
-            <td><em>X + 39*</em></td>
+            <td><em>X + 39</em></td>
             <td><em>Schlupf der ersten Jungbienen</em></td>
             <td><em>Jungbienen schlüpfen 21 Tage nach Eiablage.</em></td>
         </tr>
