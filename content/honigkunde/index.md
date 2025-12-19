@@ -8,6 +8,44 @@ Dabei werden wir natürlich das Rad nicht neu erfinden, sondern wir beziehen uns
 Weiterführende Seiten oder Dokumente werden nach Möglichkeit verlinkt.
 {.lead}
 
+## Haltbarkeit
+
+_Kann Honig schlecht werden?_
+
+Die Angabe eines Mindesthaltbarkeitsdatum für Honig ist gemäß [Lebensmittelinformations-Verordnung](http://data.europa.eu/eli/reg/2011/1169/oj) gesetzlich vorgeschrieben.
+Bei ordentlicher Lagerung kann Honig auch nach Ablauf der Mindesthaltbarkeit durchaus noch verzehrfähig sein.
+Bei ungünstigen Lagerbedingungen (z.B. zu warm, zu feucht oder zu hell) können die [Qualitätsmerkmale](#qualitätskriterien) negativ beeinträchtigt werden.
+Üblicherweise wird auf Honiggläsern eine Haltbarkeit von **zwei Jahren** angegeben.
+
+## Honigsorten
+
+_Welche Honigsorten gibt es?_
+
+Detailliertere Informationen findet ihr in den [Leitsätzen für Honig](https://www.bmel.de/SharedDocs/Downloads/DE/_Ernaehrung/Lebensmittel-Kennzeichnung/LeitsaetzeHonig.html) des Deutschen Lebensmittelbuchs oder in den [Honigsorten-Bezeichnungen](https://deutscherimkerbund.de/wp-content/uploads/2025/02/34-honigsorten-bezeichnungen-2021.pdf) vom Deutschen Imkerbund.
+
+## Kristallisation
+
+{{< blockquote caption="Quelle: [laves.niedersachsen.de](https://www.laves.niedersachsen.de/download/41274/Honig-Kristallisation.pdf)">}}
+Die Kristallbildung im Honig ist abhängig von Zuckerspektrum, Konzentration der einzelnen Zucker, Gehalt an Kristallisationskeimen, Wassergehalt und Temperatur.
+[…]
+Die Kristallisation setzt ein, wenn für einen Zucker die Sättigungskonzentration überschritten wird.
+Der Zucker fällt aus der Lösung aus und bildet Kristalle, insbesondere wenn Kristallisationskeime (Pollen, Staub, Luftblasen, Primärzuckerkristalle) vorhanden sind.
+{{</ blockquote >}}
+
+
+{{< blockquote caption="Quelle: [bienen.info](https://bienen.info/honig-kristallisiert-biologin-klaert-auf/)">}}
+Kristallisierter Honig ist keinesfalls minderwertig.
+Im Gegenteil: Wenn ein Honig kristallisiert, zeugt das von dessen Naturbelassenheit.
+Das ist wiederum ein Zeichen von Qualität.
+Kristallisierter Honig ist dementsprechend auch nicht verdorben.
+Er kann ganz normal gegessen werden.
+Nur wenn sich durch die Kristallisation zwei Phasen bilden, können sich in der flüssigeren Phase durch den höheren Wassergehalt Hefen vermehren und zur Gärung des Honigs dieser Phase führen.
+
+Es ist möglich, festen Honig durch Wärme wieder flüssiger zu machen.
+Die Temperatur sollte dabei unter 40 °C liegen, um Inhaltsstoffen des Honigs nicht zu schaden.
+Eine geeignete und schonende Methode ist die Verflüssigung von Honig im Wasserbad.
+{{</ blockquote >}}
+
 ## Gesetzliche Grundlagen
 
 In der ["Honigverordnung vom 16. Januar 2004 (BGBl. I S. 92)"](https://www.gesetze-im-internet.de/honigv_2004/BJNR009200004.html) ist die Definition von Honig gesetzlich genau geregelt.
@@ -19,10 +57,6 @@ Honig besteht im Wesentlichen aus verschiedenen Zuckerarten, insbesondere aus Fr
 {{</ blockquote >}}
 
 Allgemeine Informationen rund um Honig gibt es auf der [Webseite](https://deutscherimkerbund.de/honig/) des Deutschen Imkerbundes.
-
-## Honigsorten
-
-Detailliertere Informationen findet ihr in den [Leitsätzen für Honig](https://www.bmel.de/SharedDocs/Downloads/DE/_Ernaehrung/Lebensmittel-Kennzeichnung/LeitsaetzeHonig.html) des Deutschen Lebensmittelbuchs oder in den [Honigsorten-Bezeichnungen](https://deutscherimkerbund.de/wp-content/uploads/2025/02/34-honigsorten-bezeichnungen-2021.pdf) vom Deutschen Imkerbund.
 
 ## Qualitätskriterien
 
@@ -117,7 +151,6 @@ HMF ist ein Zuckerabbauprodukt, das insbesondere bei Überhitzung und unsachgem�
 Ein niedriger HMF-Gehalt ist also ein Kriterium für schonend gewonnenen und richtig gelagerten Honig.
 {{</ blockquote >}}
 
-
 ### Zusammenfassung
 
 Honig soll man kühl, trocken, dunkel lagern, denn:
@@ -143,35 +176,3 @@ Um die Wirkung trotzdem zu erhalten, kann man den Honig stattdessen in lauwarmem
 
 Quelle: [chemie.uni-wuerzburg.de](https://www.chemie.uni-wuerzburg.de/fileadmin/08010034/user_upload/Honig/Station_3_-_Enzyme_im_Honig.pdf)
 {{</ box >}}
-
-## Kristallisation
-
-{{< blockquote caption="Quelle: [laves.niedersachsen.de](https://www.laves.niedersachsen.de/download/41274/Honig-Kristallisation.pdf)">}}
-Die Kristallbildung im Honig ist abhängig von Zuckerspektrum, Konzentration der einzelnen Zucker, Gehalt an Kristallisationskeimen, Wassergehalt und Temperatur.
-[…]
-Die Kristallisation setzt ein, wenn für einen Zucker die Sättigungskonzentration überschritten wird.
-Der Zucker fällt aus der Lösung aus und bildet Kristalle, insbesondere wenn Kristallisationskeime (Pollen, Staub, Luftblasen, Primärzuckerkristalle) vorhanden sind.
-{{</ blockquote >}}
-
-
-{{< blockquote caption="Quelle: [bienen.info](https://bienen.info/honig-kristallisiert-biologin-klaert-auf/)">}}
-Kristallisierter Honig ist keinesfalls minderwertig.
-Im Gegenteil: Wenn ein Honig kristallisiert, zeugt das von dessen Naturbelassenheit.
-Das ist wiederum ein Zeichen von Qualität.
-Kristallisierter Honig ist dementsprechend auch nicht verdorben.
-Er kann ganz normal gegessen werden.
-Nur wenn sich durch die Kristallisation zwei Phasen bilden, können sich in der flüssigeren Phase durch den höheren Wassergehalt Hefen vermehren und zur Gärung des Honigs dieser Phase führen.
-
-Es ist möglich, festen Honig durch Wärme wieder flüssiger zu machen.
-Die Temperatur sollte dabei unter 40 °C liegen, um Inhaltsstoffen des Honigs nicht zu schaden.
-Eine geeignete und schonende Methode ist die Verflüssigung von Honig im Wasserbad.
-{{</ blockquote >}}
-
-## Haltbarkeit
-
-_Kann Honig schlecht werden?_
-
-Die Angabe eines Mindesthaltbarkeitsdatum für Honig ist gemäß [Lebensmittelinformations-Verordnung](http://data.europa.eu/eli/reg/2011/1169/oj) gesetzlich vorgeschrieben.
-Bei ordentlicher Lagerung kann Honig auch nach Ablauf der Mindesthaltbarkeit durchaus noch verzehrfähig sein.
-Bei ungünstigen Lagerbedingungen (z.B. zu warm, zu feucht oder zu hell) können die [Qualitätsmerkmale](#qualitätskriterien) negativ beeinträchtigt werden.
-Üblicherweise wird auf Honiggläsern eine Haltbarkeit von **zwei Jahren** angegeben.
