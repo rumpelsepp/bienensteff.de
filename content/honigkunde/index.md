@@ -25,13 +25,7 @@ Detailliertere Informationen findet ihr in den [Leitsätzen für Honig](https://
 
 ## Kristallisation
 
-{{< blockquote caption="Quelle: [laves.niedersachsen.de](https://www.laves.niedersachsen.de/download/41274/Honig-Kristallisation.pdf)">}}
-Die Kristallbildung im Honig ist abhängig von Zuckerspektrum, Konzentration der einzelnen Zucker, Gehalt an Kristallisationskeimen, Wassergehalt und Temperatur.
-[…]
-Die Kristallisation setzt ein, wenn für einen Zucker die Sättigungskonzentration überschritten wird.
-Der Zucker fällt aus der Lösung aus und bildet Kristalle, insbesondere wenn Kristallisationskeime (Pollen, Staub, Luftblasen, Primärzuckerkristalle) vorhanden sind.
-{{</ blockquote >}}
-
+_Wurde dem Honig Zucker hinzugefügt?_
 
 {{< blockquote caption="Quelle: [bienen.info](https://bienen.info/honig-kristallisiert-biologin-klaert-auf/)">}}
 Kristallisierter Honig ist keinesfalls minderwertig.
@@ -44,6 +38,13 @@ Nur wenn sich durch die Kristallisation zwei Phasen bilden, können sich in der 
 Es ist möglich, festen Honig durch Wärme wieder flüssiger zu machen.
 Die Temperatur sollte dabei unter 40 °C liegen, um Inhaltsstoffen des Honigs nicht zu schaden.
 Eine geeignete und schonende Methode ist die Verflüssigung von Honig im Wasserbad.
+{{</ blockquote >}}
+
+{{< blockquote caption="Quelle: [laves.niedersachsen.de](https://www.laves.niedersachsen.de/download/41274/Honig-Kristallisation.pdf)">}}
+Die Kristallbildung im Honig ist abhängig von Zuckerspektrum, Konzentration der einzelnen Zucker, Gehalt an Kristallisationskeimen, Wassergehalt und Temperatur.
+[…]
+Die Kristallisation setzt ein, wenn für einen Zucker die Sättigungskonzentration überschritten wird.
+Der Zucker fällt aus der Lösung aus und bildet Kristalle, insbesondere wenn Kristallisationskeime (Pollen, Staub, Luftblasen, Primärzuckerkristalle) vorhanden sind.
 {{</ blockquote >}}
 
 ## Gesetzliche Grundlagen
