@@ -1,0 +1,45 @@
+name: deploy
+description: Builds and deploys to production
+inputs:
+  SSH_KEY:
+    description: ssh deploy key
+    required: true
+  SSH_KNOWN_HOSTS:
+    description: ssh server fingerprin 
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Install Node.js
+      uses: actions/setup-node@v6
+
+    - name: Install npm deps
+      shell: bash
+      run: npm ci
+
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v3
+      with:
+        hugo-version: 'latest'
+        extended: true
+
+    - name: Build the assets
+      shell: bash
+      run: npm run build
+
+    - name: Build the website
+      shell: bash
+      run: hugo build --ignoreCache
+
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ inputs.SSH_KEY }}
+        known_hosts: ${{ inputs.SSH_KNOWN_HOSTS }}
+        if_key_exists: fail
+
+    - name: Deploy it
+      shell: bash
+      run: |
+        rsync -avz --delete public/ deploy@bienensteff.de:/srv/http/deploy/bienensteff.de
