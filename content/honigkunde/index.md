@@ -166,3 +166,12 @@ Es ist möglich, festen Honig durch Wärme wieder flüssiger zu machen.
 Die Temperatur sollte dabei unter 40 °C liegen, um Inhaltsstoffen des Honigs nicht zu schaden.
 Eine geeignete und schonende Methode ist die Verflüssigung von Honig im Wasserbad.
 {{</ blockquote >}}
+
+## Haltbarkeit
+
+_Kann Honig schlecht werden?_
+
+Die Angabe eines Mindesthaltbarkeitsdatum für Honig ist gemäß [Lebensmittelinformations-Verordnung](http://data.europa.eu/eli/reg/2011/1169/oj) gesetzlich vorgeschrieben.
+Bei ordentlicher Lagerung kann Honig auch nach Ablauf der Mindesthaltbarkeit durchaus noch verzehrfähig sein.
+Bei ungünstigen Lagerbedingungen (z.B. zu warm, zu feucht oder zu hell) können die [Qualitätsmerkmale](#qualitätskriterien) negativ beeinträchtigt werden.
+Üblicherweise wird auf Honiggläsern eine Haltbarkeit von **zwei Jahren** angegeben.
