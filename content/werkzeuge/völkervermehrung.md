@@ -25,7 +25,7 @@ Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://
         <tr>
             <td><strong>X + 0</strong></td>
             <td><strong>Startzeitpunkt</strong></td>
-            <td>Sammelbrutableger (SBA) mit 9 Brutbrettern bilden.</td>
+            <td>Sammelbrutableger (SBA) mit neun Brutbrettern bilden.</td>
         </tr>
         <tr>
             <td><strong>X + 9</strong></td>
