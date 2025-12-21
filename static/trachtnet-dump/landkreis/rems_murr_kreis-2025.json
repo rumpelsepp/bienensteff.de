@@ -1756,12 +1756,17 @@
   },
   {
     "dates": "2025-12-18",
-    "values": 11.23,
+    "values": 11.26,
     "n_waagen": 2
   },
   {
     "dates": "2025-12-19",
+    "values": 11.23,
+    "n_waagen": 2
+  },
+  {
+    "dates": "2025-12-20",
     "values": 11.16,
-    "n_waagen": 1
+    "n_waagen": 2
   }
 ]
