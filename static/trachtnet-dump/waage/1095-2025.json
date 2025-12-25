@@ -1748,5 +1748,35 @@
     "dates": "2025-12-16",
     "values": 35.7,
     "n_waagen": 1
+  },
+  {
+    "dates": "2025-12-17",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-12-18",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-12-19",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2025-12-20",
+    "values": 35.67,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2025-12-21",
+    "values": 35.64,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2025-12-22",
+    "values": 35.63,
+    "n_waagen": 1
   }
 ]
