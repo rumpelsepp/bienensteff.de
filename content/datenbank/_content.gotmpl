@@ -1,7 +1,7 @@
 {{ $dbBaseURL := "https://db.bienensteff.de" }}
 
 {{ with resources.Get "/db/db.json" }}
-    {{ with . | transform.Unmarshal }}
+    {{ with . | transform.Unmarshal (dict "format" "json") }}
         {{ range $k, $v := . }}
             {{ range $row := $v }}
                 {{ $id := (strings.ToLower .id)}}
