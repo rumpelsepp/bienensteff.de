@@ -1801,12 +1801,17 @@
   },
   {
     "dates": "2025-12-27",
-    "values": 34.6,
+    "values": 34.61,
     "n_waagen": 3
   },
   {
     "dates": "2025-12-28",
-    "values": 34.67,
+    "values": 34.68,
+    "n_waagen": 3
+  },
+  {
+    "dates": "2025-12-29",
+    "values": 34.59,
     "n_waagen": 1
   }
 ]
