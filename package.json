@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@fullcalendar/bootstrap5": "^6.1.17",
-    "@fullcalendar/core": "^6.1.17",
+    "@fullcalendar/core": "^6.1.20",
     "@fullcalendar/daygrid": "^6.1.17",
     "@fullcalendar/list": "^6.1.17",
     "bootstrap": "^5.3.6",
