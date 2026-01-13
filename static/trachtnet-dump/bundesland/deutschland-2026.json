@@ -57,12 +57,12 @@
   {
     "dates": "2026-01-12",
     "values": 0.54,
-    "n_waagen": 454
+    "n_waagen": 455
   },
   {
     "dates": "2026-01-13",
-    "values": null,
-    "n_waagen": null
+    "values": 0.38,
+    "n_waagen": 7
   },
   {
     "dates": "2026-01-14",
