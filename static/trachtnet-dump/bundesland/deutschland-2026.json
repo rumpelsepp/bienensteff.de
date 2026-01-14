@@ -42,27 +42,27 @@
   {
     "dates": "2026-01-09",
     "values": 0.23,
-    "n_waagen": 800
+    "n_waagen": 801
   },
   {
     "dates": "2026-01-10",
     "values": 0.5,
-    "n_waagen": 800
+    "n_waagen": 801
   },
   {
     "dates": "2026-01-11",
-    "values": 0.43,
-    "n_waagen": 800
+    "values": 0.42,
+    "n_waagen": 801
   },
   {
     "dates": "2026-01-12",
-    "values": 0.54,
-    "n_waagen": 455
+    "values": 0.35,
+    "n_waagen": 802
   },
   {
     "dates": "2026-01-13",
-    "values": 0.38,
-    "n_waagen": 7
+    "values": 0.21,
+    "n_waagen": 455
   },
   {
     "dates": "2026-01-14",
