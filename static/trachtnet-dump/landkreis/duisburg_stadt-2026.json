@@ -56,28 +56,28 @@
   },
   {
     "dates": "2026-01-12",
-    "values": -0.68,
-    "n_waagen": 2
+    "values": -0.56,
+    "n_waagen": 3
   },
   {
     "dates": "2026-01-13",
-    "values": -0.8,
-    "n_waagen": 2
+    "values": -0.68,
+    "n_waagen": 3
   },
   {
     "dates": "2026-01-14",
-    "values": -0.76,
-    "n_waagen": 2
+    "values": -0.64,
+    "n_waagen": 3
   },
   {
     "dates": "2026-01-15",
     "values": -0.75,
-    "n_waagen": 2
+    "n_waagen": 3
   },
   {
     "dates": "2026-01-16",
-    "values": null,
-    "n_waagen": null
+    "values": -0.79,
+    "n_waagen": 2
   },
   {
     "dates": "2026-01-17",
