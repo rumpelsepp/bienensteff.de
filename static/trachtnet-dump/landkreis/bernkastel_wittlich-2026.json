@@ -91,13 +91,13 @@
   },
   {
     "dates": "2026-01-19",
-    "values": -1.02,
+    "values": -1.06,
     "n_waagen": 10
   },
   {
     "dates": "2026-01-20",
-    "values": null,
-    "n_waagen": null
+    "values": -1.07,
+    "n_waagen": 9
   },
   {
     "dates": "2026-01-21",
