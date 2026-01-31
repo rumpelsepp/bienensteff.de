@@ -141,13 +141,13 @@
   },
   {
     "dates": "2026-01-29",
-    "values": 0.36,
+    "values": 0.33,
     "n_waagen": 8
   },
   {
     "dates": "2026-01-30",
-    "values": 0.35,
-    "n_waagen": 5
+    "values": -0.06,
+    "n_waagen": 8
   },
   {
     "dates": "2026-01-31",
