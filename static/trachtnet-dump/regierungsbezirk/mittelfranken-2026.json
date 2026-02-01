@@ -147,11 +147,11 @@
   {
     "dates": "2026-01-30",
     "values": -0.83,
-    "n_waagen": 41
+    "n_waagen": 42
   },
   {
     "dates": "2026-01-31",
-    "values": null,
-    "n_waagen": null
+    "values": -1.05,
+    "n_waagen": 37
   }
 ]
