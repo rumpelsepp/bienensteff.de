@@ -181,13 +181,13 @@
   },
   {
     "dates": "2026-02-06",
-    "values": 0.22,
+    "values": 0.17,
     "n_waagen": 2
   },
   {
     "dates": "2026-02-07",
-    "values": null,
-    "n_waagen": null
+    "values": 0.0,
+    "n_waagen": 2
   },
   {
     "dates": "2026-02-08",
