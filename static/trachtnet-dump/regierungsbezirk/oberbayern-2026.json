@@ -187,12 +187,12 @@
   {
     "dates": "2026-02-07",
     "values": -2.45,
-    "n_waagen": 58
+    "n_waagen": 64
   },
   {
     "dates": "2026-02-08",
-    "values": null,
-    "n_waagen": null
+    "values": -2.45,
+    "n_waagen": 14
   },
   {
     "dates": "2026-02-09",

@@ -182,17 +182,17 @@
   {
     "dates": "2026-02-06",
     "values": -1.05,
-    "n_waagen": 785
+    "n_waagen": 786
   },
   {
     "dates": "2026-02-07",
-    "values": -1.22,
-    "n_waagen": 718
+    "values": -1.27,
+    "n_waagen": 785
   },
   {
     "dates": "2026-02-08",
-    "values": null,
-    "n_waagen": null
+    "values": -1.27,
+    "n_waagen": 339
   },
   {
     "dates": "2026-02-09",
