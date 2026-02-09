@@ -1,8 +1,8 @@
 <script type="module">
-  import { getDateParam, DateTime, ZuchtCalendar } from "/bundle.js";
+  import { getDateParam, ZuchtCalendar } from "/bundle.js";
 
   let date = getDateParam();
-  document.querySelector("#zucht-calendar-widget #date-form #date-input").value = date.toISODate();
+  document.querySelector("#zucht-calendar-widget #date-form #date-input").value = date.toString();
 
   let cal = new ZuchtCalendar("zucht-calendar-widget");
   cal.render();

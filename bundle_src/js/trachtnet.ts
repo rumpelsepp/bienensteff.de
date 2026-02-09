@@ -355,7 +355,7 @@ class LineChart {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
         });
-        
+
         const [startDate, endDate] = getXLimits();
 
         const option: echarts.EChartsOption = {
@@ -523,7 +523,7 @@ class BarChart {
         });
 
         const [startDate, endDate] = getXLimits();
-        
+
         const option: echarts.EChartsOption = {
             title: {
                 text: this.title,

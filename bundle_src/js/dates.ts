@@ -1,12 +1,12 @@
-import { DateTime } from "luxon";
+import { Temporal } from "@js-temporal/polyfill";
 
 class BeeDatesBase {
-  startDate: DateTime;
-  endRange: DateTime;
+  startDate: Temporal.PlainDate;
+  endRange: Temporal.PlainDate;
 
-  constructor(date: DateTime | Date) {
+  constructor(date: Temporal.PlainDate | Date) {
     if (date instanceof Date) {
-      this.startDate = DateTime.fromJSDate(date);
+      this.startDate = Temporal.PlainDate.from(date.toISOString());
     } else {
       this.startDate = date;
     }
@@ -17,71 +17,71 @@ class BeeDatesBase {
 }
 
 class BeeDates extends BeeDatesBase {
-  schlupfDate: DateTime;
-  gReifDate: DateTime;
-  eilageDate: DateTime;
-  brutfreiDate: DateTime;
-  verdeckeltDate: DateTime;
-  jungbienenDate: DateTime;
+  schlupfDate: Temporal.PlainDate;
+  gReifDate: Temporal.PlainDate;
+  eilageDate: Temporal.PlainDate;
+  brutfreiDate: Temporal.PlainDate;
+  verdeckeltDate: Temporal.PlainDate;
+  jungbienenDate: Temporal.PlainDate;
 
-  constructor(date: DateTime | Date) {
+  constructor(date: Temporal.PlainDate | Date) {
     super(date);
     
-    this.schlupfDate = this.startDate.plus({days: 11});;
-    this.gReifDate = this.schlupfDate.plus({days: 7});
-    this.eilageDate = this.schlupfDate.plus({days: 8});
-    this.brutfreiDate = this.startDate.plus({days: 21});
-    this.verdeckeltDate = this.eilageDate.plus({days: 9});
-    this.jungbienenDate = this.eilageDate.plus({days: 21});
-    this.endRange = this.eilageDate.plus({days: 22});
+    this.schlupfDate = this.startDate.add({days: 11});;
+    this.gReifDate = this.schlupfDate.add({days: 7});
+    this.eilageDate = this.schlupfDate.add({days: 8});
+    this.brutfreiDate = this.startDate.add({days: 21});
+    this.verdeckeltDate = this.eilageDate.add({days: 9});
+    this.jungbienenDate = this.eilageDate.add({days: 21});
+    this.endRange = this.eilageDate.add({days: 22});
   }
 }
 
 class TUBDates extends BeeDatesBase {
-  fBehandelnDate: DateTime;
-  fVerdeckelt: DateTime;
-  bSchlupfDate: DateTime;
-  bBrutfreiDate: DateTime;
-  bVerdeckeltDate: DateTime;
+  fBehandelnDate: Temporal.PlainDate;
+  fVerdeckelt: Temporal.PlainDate;
+  bSchlupfDate: Temporal.PlainDate;
+  bBrutfreiDate: Temporal.PlainDate;
+  bVerdeckeltDate: Temporal.PlainDate;
 
-  constructor(date: DateTime) {
+  constructor(date: Temporal.PlainDate) {
     super(date);
     
-    this.fBehandelnDate = date.plus({days: 2});
-    this.fVerdeckelt = date.plus({days: 9});
-    this.bSchlupfDate = this.startDate.plus({days: 11});;
-    this.bBrutfreiDate = date.plus({days: 21});
-    this.bVerdeckeltDate = date.plus({days: 28});
-    this.endRange = date.plus({days: 29});
+    this.fBehandelnDate = date.add({days: 2});
+    this.fVerdeckelt = date.add({days: 9});
+    this.bSchlupfDate = this.startDate.add({days: 11});;
+    this.bBrutfreiDate = date.add({days: 21});
+    this.bVerdeckeltDate = date.add({days: 28});
+    this.endRange = date.add({days: 29});
   }
 }
 
 class ZuchtDates extends BeeDatesBase {
-  wzBrechenDate: DateTime;
-  wzVerdeckelt: DateTime;
-  verschulenDate: DateTime;
-  schlupfDate: DateTime;
-  pvAufloesenDate: DateTime;
-  köGeschlechtsreif: DateTime;
-  köEilage: DateTime;
-  brutVerdeckelt: DateTime;
-  jungbienen: DateTime;
+  wzBrechenDate: Temporal.PlainDate;
+  wzVerdeckelt: Temporal.PlainDate;
+  verschulenDate: Temporal.PlainDate;
+  schlupfDate: Temporal.PlainDate;
+  pvAufloesenDate: Temporal.PlainDate;
+  köGeschlechtsreif: Temporal.PlainDate;
+  köEilage: Temporal.PlainDate;
+  brutVerdeckelt: Temporal.PlainDate;
+  jungbienen: Temporal.PlainDate;
   
   
 
-  constructor(date: DateTime) {
+  constructor(date: Temporal.PlainDate) {
     super(date);
     
-    this.wzBrechenDate = date.plus({days: 9});
-    this.wzVerdeckelt = this.wzBrechenDate.plus({days: 5});
-    this.schlupfDate = this.wzBrechenDate.plus({days: 11});
-    this.verschulenDate = this.schlupfDate.minus({days: 1});
-    this.pvAufloesenDate = date.plus({days: 21});
-    this.köGeschlechtsreif = this.schlupfDate.plus({days: 7});
-    this.köEilage = this.köGeschlechtsreif.plus({days: 1});
-    this.brutVerdeckelt = this.köEilage.plus({days: 9});
-    this.jungbienen = this.köEilage.plus({days: 21});
-    this.endRange = this.jungbienen.plus({days: 1});
+    this.wzBrechenDate = date.add({days: 9});
+    this.wzVerdeckelt = this.wzBrechenDate.add({days: 5});
+    this.schlupfDate = this.wzBrechenDate.add({days: 11});
+    this.verschulenDate = this.schlupfDate.subtract({days: 1});
+    this.pvAufloesenDate = date.add({days: 21});
+    this.köGeschlechtsreif = this.schlupfDate.add({days: 7});
+    this.köEilage = this.köGeschlechtsreif.add({days: 1});
+    this.brutVerdeckelt = this.köEilage.add({days: 9});
+    this.jungbienen = this.köEilage.add({days: 21});
+    this.endRange = this.jungbienen.add({days: 1});
   }
 }
 

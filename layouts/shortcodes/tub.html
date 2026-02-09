@@ -1,8 +1,8 @@
 <script type="module">
-  import { getDateParam, DateTime, TUBCalendar } from "/bundle.js";
+  import { getDateParam, TUBCalendar } from "/bundle.js";
 
   let date = getDateParam();
-  document.querySelector("#tub-calendar-widget #date-form #date-input").value = date.toISODate();
+  document.querySelector("#tub-calendar-widget #date-form #date-input").value = date.toString();
 
   let cal = new TUBCalendar("tub-calendar-widget");
   cal.render();
