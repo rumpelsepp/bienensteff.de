@@ -1,38 +1,38 @@
+import { Temporal } from '@js-temporal/polyfill';
 import { Calendar, EventSourceInput } from '@fullcalendar/core';
 import calDeLocale from '@fullcalendar/core/locales/de';
 import calDayGridPlugin from '@fullcalendar/daygrid'
 import calListPlugin from '@fullcalendar/list';
 import bootstrap5Plugin from '@fullcalendar/bootstrap5';
-import { DateTime } from 'luxon';
 
 import { BeeDates, TUBDates, ZuchtDates } from "./dates";
 
-function getCalender(calElement: HTMLElement, events: Object[], startDate: DateTime, endRange: DateTime): Calendar {
-    return new Calendar(calElement, {
-      plugins: [calDayGridPlugin, calListPlugin, bootstrap5Plugin],
-      themeSystem: 'bootstrap5',
-      initialView: 'dayGridMonth',
-      firstDay: 1,
-      locale: calDeLocale,
-      // weekNumbers: true,
-      validRange: {
-        start: startDate.toISODate()!,
-        end: endRange.toISODate()!
-      },
-      headerToolbar: {
-        start: 'title',
-        center: '',
-        end: 'today prev,next dayGridMonth,listYear'
-      },
-      events: events,
-    });
+function getCalender(calElement: HTMLElement, events: Object[], startDate: Temporal.PlainDate, endRange: Temporal.PlainDate): Calendar {
+  return new Calendar(calElement, {
+    plugins: [calDayGridPlugin, calListPlugin, bootstrap5Plugin],
+    themeSystem: 'bootstrap5',
+    initialView: 'dayGridMonth',
+    firstDay: 1,
+    locale: calDeLocale,
+    // weekNumbers: true,
+    validRange: {
+      start: startDate.toString()!,
+      end: endRange.toString()!
+    },
+    headerToolbar: {
+      start: 'title',
+      center: '',
+      end: 'today prev,next dayGridMonth,listYear'
+    },
+    events: events,
+  });
 }
 
 abstract class BaseCalendar {
   formElement: HTMLFormElement;
   calElement: HTMLElement;
   dateInput: HTMLInputElement;
-  startDate: DateTime;
+  startDate: Temporal.PlainDate;
   calendar: Calendar | null;
 
   constructor(widgetID: string) {
@@ -54,7 +54,7 @@ abstract class BaseCalendar {
     }
     this.calElement = calElement as HTMLElement;
 
-    this.startDate = DateTime.fromISO(this.dateInput.value);
+    this.startDate = Temporal.PlainDate.from(this.dateInput.value);
     this.calendar = null;
   }
 
@@ -64,16 +64,16 @@ abstract class BaseCalendar {
     this.formElement.addEventListener("submit", event => {
       event.preventDefault();
 
-      let date = DateTime.now().toLocal();
+      let date = Temporal.Now.plainDateISO();
       if (this.dateInput.value !== "") {
-        date = DateTime.fromISO(this.dateInput.value).toLocal() as DateTime<true>;
+        date = Temporal.PlainDate.from(this.dateInput.value);
       }
 
       this.startDate = date;
       this.render();
 
       const url = new URL(window.location.href);
-      url.searchParams.set("date", date.toISODate()!);
+      url.searchParams.set("date", date.toString()!);
       history.replaceState(null, "", url);
     })
   }
@@ -85,48 +85,48 @@ class BeeStatesCalendar extends BaseCalendar {
     return [
       {
         title: 'Start (X)',
-        start: dates.startDate.toISODate()!,
+        start: dates.startDate.toString()!,
         allDay: true,
       },
       {
         title: 'Kö schlüpft (X+11)',
-        start: dates.schlupfDate.toISODate()!,
+        start: dates.schlupfDate.toString()!,
         allDay: true,
       },
       {
         title: 'Kö geschlechtsreif (X+18)',
-        start: dates.gReifDate.toISODate()!,
+        start: dates.gReifDate.toString()!,
         allDay: true,
       },
       {
         title: 'Kö in Eilage (X+19)',
-        start: dates.eilageDate.toISODate()!,
+        start: dates.eilageDate.toString()!,
         allDay: true,
         color: "gray",
         classNames: ["fst-italic"]
       },
       {
         title: 'brutfrei (X+21)',
-        start: dates.brutfreiDate.toISODate()!,
+        start: dates.brutfreiDate.toString()!,
         allDay: true,
       },
       {
         title: 'verdeckelt (X+28)',
-        start: dates.verdeckeltDate.toISODate()!,
+        start: dates.verdeckeltDate.toString()!,
         allDay: true,
         color: "gray",
         classNames: ["fst-italic"]
       },
       {
         title: 'Jungbienen (X+39)',
-        start: dates.jungbienenDate.toISODate()!,
+        start: dates.jungbienenDate.toString()!,
         allDay: true,
         color: "gray",
         classNames: ["fst-italic"]
       },
       {
-        start: dates.brutfreiDate.toISODate()!,
-        end: dates.verdeckeltDate.toISODate()!,
+        start: dates.brutfreiDate.toString()!,
+        end: dates.verdeckeltDate.toString()!,
         allDay: true,
         display: 'background',
       }
@@ -152,47 +152,47 @@ class TUBCalendar extends BaseCalendar {
     return [
       {
         title: 'Start (X)',
-        start: dates.startDate.toISODate()!,
+        start: dates.startDate.toString()!,
         allDay: true,
       },
       {
         title: 'Fl gebildet (X+2)',
-        start: dates.fBehandelnDate.toISODate()!,
+        start: dates.fBehandelnDate.toString()!,
         allDay: true,
       },
       {
         title: 'Fl verdeckelt (X+9)',
-        start: dates.fVerdeckelt.toISODate()!,
+        start: dates.fVerdeckelt.toString()!,
         allDay: true,
       },
       {
         title: 'BV Kö schlüpft (X+11)',
-        start: dates.bSchlupfDate.toISODate()!,
+        start: dates.bSchlupfDate.toString()!,
         allDay: true,
       },
       {
         title: 'BV brutfrei (X+21)',
-        start: dates.bBrutfreiDate.toISODate()!,
+        start: dates.bBrutfreiDate.toString()!,
         allDay: true,
       },
       {
         title: 'BV verdeckelt (X+28)',
-        start: dates.bVerdeckeltDate.toISODate()!,
+        start: dates.bVerdeckeltDate.toString()!,
         allDay: true,
         color: "gray",
         classNames: ["fst-italic"]
       },
       {
         title: 'Fl brutfrei',
-        start: dates.fBehandelnDate.toISODate()!,
-        end: dates.fVerdeckelt.toISODate()!,
+        start: dates.fBehandelnDate.toString()!,
+        end: dates.fVerdeckelt.toString()!,
         allDay: true,
         display: 'background',
       },
       {
         title: 'BV brutfrei',
-        start: dates.bBrutfreiDate.toISODate()!,
-        end: dates.bVerdeckeltDate.toISODate()!,
+        start: dates.bBrutfreiDate.toString()!,
+        end: dates.bVerdeckeltDate.toString()!,
         allDay: true,
         display: 'background',
       }
@@ -220,67 +220,67 @@ class ZuchtCalendar extends BaseCalendar {
     return [
       {
         title: 'Start (X)',
-        start: dates.startDate.toISODate()!,
+        start: dates.startDate.toString()!,
         allDay: true,
       },
       {
         title: 'WZ brechen (X+9)',
-        start: dates.wzBrechenDate.toISODate()!,
+        start: dates.wzBrechenDate.toString()!,
         allDay: true,
       },
       {
         title: 'ZL geben (X+9)',
-        start: dates.wzBrechenDate.toISODate()!,
+        start: dates.wzBrechenDate.toString()!,
         allDay: true,
       },
       {
         title: 'verschulen (X+19)',
-        start: dates.verschulenDate.toISODate()!,
+        start: dates.verschulenDate.toString()!,
         allDay: true,
       },
       {
         title: 'Kö schlüpft (X+20)',
-        start: dates.schlupfDate.toISODate()!,
+        start: dates.schlupfDate.toString()!,
         allDay: true,
         color: "gray",
         classNames: ["fst-italic"]
       },
       {
         title: 'PV auflösen (X+21)',
-        start: dates.pvAufloesenDate.toISODate()!,
+        start: dates.pvAufloesenDate.toString()!,
         allDay: true,
       },
       {
         title: 'WZ verdeckelt',
-        start: dates.wzVerdeckelt.toISODate()!,
-        end: dates.schlupfDate.toISODate()!,
+        start: dates.wzVerdeckelt.toString()!,
+        end: dates.schlupfDate.toString()!,
         allDay: true,
         display: 'background',
       },
       {
         title: 'Kö geschlechtsreif (X+27)',
-        start: dates.köGeschlechtsreif.toISODate()!,
+        start: dates.köGeschlechtsreif.toString()!,
         allDay: true,
         color: "gray",
         classNames: ["fst-italic"]
       },
       {
         title: 'Kö in Eilage (X+28)',
-        start: dates.köEilage.toISODate()!,
+        start: dates.köEilage.toString()!,
         allDay: true,
         color: "gray",
         classNames: ["fst-italic"]
       },
       {
         title: 'Brut verdeckelt (X+37)',
-        start: dates.brutVerdeckelt.toISODate()!,
+        start: dates.brutVerdeckelt.toString()!,
         allDay: true,
         color: "gray",
         classNames: ["fst-italic"]
       },
       {
         title: 'Jungbienen (X+49)',
-        start: dates.jungbienen.toISODate()!,
+        start: dates.jungbienen.toString()!,
         allDay: true,
         color: "gray",
         classNames: ["fst-italic"]

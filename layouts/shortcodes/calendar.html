@@ -1,8 +1,8 @@
 <script type="module">
-  import { getDateParam, DateTime, BeeStatesCalendar } from "/bundle.js";
+  import { getDateParam, BeeStatesCalendar } from "/bundle.js";
 
   let date = getDateParam();
-  document.querySelector("#beestates-calendar-widget #date-form #date-input").value = date.toISODate();
+  document.querySelector("#beestates-calendar-widget #date-form #date-input").value = date.toString();
 
   let cal = new BeeStatesCalendar("beestates-calendar-widget");
   cal.render();

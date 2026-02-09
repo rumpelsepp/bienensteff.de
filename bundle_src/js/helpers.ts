@@ -1,26 +1,17 @@
-import { DateTime } from "luxon";
-
-function formatDate(date: DateTime): string {
-  return date.setLocale('de-DE').toLocaleString({
-    weekday: 'short',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit'
-  });
-}
+import { Temporal } from "@js-temporal/polyfill";
 
 function getParam(name: string): string | null {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(name);
 }
 
-function getDateParam(): DateTime {
+function getDateParam(): Temporal.PlainDate {
   const dateParam = getParam("date");
 
   if (dateParam === null) {
-    return DateTime.now().toLocal();
+    return Temporal.Now.plainDateISO();
   }
-  return DateTime.fromISO(dateParam).toLocal();
+  return Temporal.PlainDate.from(dateParam);
 }
 
 export { getParam, getDateParam };
