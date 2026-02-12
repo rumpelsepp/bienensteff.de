@@ -207,12 +207,12 @@
   {
     "dates": "2026-02-11",
     "values": -2.35,
-    "n_waagen": 3
+    "n_waagen": 5
   },
   {
     "dates": "2026-02-12",
-    "values": null,
-    "n_waagen": null
+    "values": -2.36,
+    "n_waagen": 2
   },
   {
     "dates": "2026-02-13",
