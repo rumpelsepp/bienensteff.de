@@ -270,14 +270,24 @@
     "n_waagen": 1
   },
   {
+    "dates": "2026-02-24",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-02-25",
+    "values": null,
+    "n_waagen": null
+  },
+  {
     "dates": "2026-02-26",
-    "values": -0.9,
+    "values": -1.17,
     "n_waagen": 1
   },
   {
     "dates": "2026-02-27",
-    "values": null,
-    "n_waagen": null
+    "values": -3.28,
+    "n_waagen": 1
   },
   {
     "dates": "2026-02-28",
