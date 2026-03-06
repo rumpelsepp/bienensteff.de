@@ -301,23 +301,23 @@
   },
   {
     "dates": "2026-03-02",
-    "values": -1.87,
+    "values": -1.99,
     "n_waagen": 1
   },
   {
     "dates": "2026-03-03",
-    "values": null,
-    "n_waagen": null
+    "values": -2.1,
+    "n_waagen": 1
   },
   {
     "dates": "2026-03-04",
-    "values": null,
-    "n_waagen": null
+    "values": -2.23,
+    "n_waagen": 1
   },
   {
     "dates": "2026-03-05",
-    "values": null,
-    "n_waagen": null
+    "values": -2.43,
+    "n_waagen": 1
   },
   {
     "dates": "2026-03-06",
