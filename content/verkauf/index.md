@@ -135,7 +135,7 @@ Die Abgabe erfolgt in haushaltsüblichen Mengen und nur solange der Vorrat reich
 Wir sind nach §19 UStG als Kleinbetrieb umsatzsteuerbefreit – es wird keine Mehrwertsteuer ausgewiesen.
 Durchgestrichene Sorten sind derzeit ausverkauft.
 
-## Wissenswerte
+## Wissenswertes
 
 Unsere Bienen stehen ganzjährig an festen Standorten im Münchner Grüngürtel.
 Mehrmals im Jahr wird geerntet, schonend geschleudert und von Hand ins Glas gefüllt.
@@ -143,8 +143,6 @@ Unser Honig kommt direkt aus unserer eigenen Imkerei und wird weder erhitzt noch
 Die frische Ernte gibt es jedes Jahr ab September.
 In unserer [Honigdatenbank]({{< relref "datenbank" >}}) lässt sich jedes Honiglos bis zum Erntedatum zurückverfolgen.
 Bei Fragen sprecht uns gerne an!
-{.lead}
 
 Wer sich besonders für Honig interessiert, kann in unsere [Honigkunde]({{< relref "honigkunde" >}}) eintauchen 🧑‍🎓.
 Aufgrund vermehrter Rückfragen verweisen wir gerne auf den Punkt [Kristallisation]({{< relref "honigkunde#kristallisation" >}}).
-{.lead}
