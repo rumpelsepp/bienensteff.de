@@ -17,18 +17,6 @@ Ein schöner Beleg für echte Qualität aus unserer kleinen Imkerei.
 Unser Honig wird zu 100 % in Bayern erzeugt, gelagert und liebevoll verarbeitet.
 {.lead}
 
-Unsere Bienen stehen ganzjährig an festen Standorten im Münchner Grüngürtel.
-Mehrmals im Jahr wird geerntet, schonend geschleudert und von Hand ins Glas gefüllt.
-Unser Honig kommt direkt aus unserer eigenen Imkerei und wird weder erhitzt noch gefiltert.
-Die frische Ernte gibt es jedes Jahr ab September.
-In unserer [Honigdatenbank]({{< relref "datenbank" >}}) lässt sich jedes Honiglos bis zum Erntedatum zurückverfolgen.
-Bei Fragen sprecht uns gerne an!
-{.lead}
-
-Wer sich besonders für Honig interessiert, kann in unsere [Honigkunde]({{< relref "honigkunde" >}}) eintauchen 🧑‍🎓.
-Aufgrund vermehrter Rückfragen verweisen wir gerne auf den Punkt [Kristallisation]({{< relref "honigkunde#kristallisation" >}}).
-{.lead}
-
 ## Sortiment 2025 {#sortiment}
 
 {{< box header="! Ausverkauft !" >}}
@@ -146,3 +134,17 @@ Alle Preise sind Endverbraucherpreise (EVP) im Direktverkauf.
 Die Abgabe erfolgt in haushaltsüblichen Mengen und nur solange der Vorrat reicht.
 Wir sind nach §19 UStG als Kleinbetrieb umsatzsteuerbefreit – es wird keine Mehrwertsteuer ausgewiesen.
 Durchgestrichene Sorten sind derzeit ausverkauft.
+
+## Wissenswerte
+
+Unsere Bienen stehen ganzjährig an festen Standorten im Münchner Grüngürtel.
+Mehrmals im Jahr wird geerntet, schonend geschleudert und von Hand ins Glas gefüllt.
+Unser Honig kommt direkt aus unserer eigenen Imkerei und wird weder erhitzt noch gefiltert.
+Die frische Ernte gibt es jedes Jahr ab September.
+In unserer [Honigdatenbank]({{< relref "datenbank" >}}) lässt sich jedes Honiglos bis zum Erntedatum zurückverfolgen.
+Bei Fragen sprecht uns gerne an!
+{.lead}
+
+Wer sich besonders für Honig interessiert, kann in unsere [Honigkunde]({{< relref "honigkunde" >}}) eintauchen 🧑‍🎓.
+Aufgrund vermehrter Rückfragen verweisen wir gerne auf den Punkt [Kristallisation]({{< relref "honigkunde#kristallisation" >}}).
+{.lead}
