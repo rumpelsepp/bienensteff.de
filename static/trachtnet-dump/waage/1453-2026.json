@@ -341,13 +341,13 @@
   },
   {
     "dates": "2026-03-10",
-    "values": -10.3,
+    "values": -10.33,
     "n_waagen": 1
   },
   {
     "dates": "2026-03-11",
-    "values": null,
-    "n_waagen": null
+    "values": -10.31,
+    "n_waagen": 1
   },
   {
     "dates": "2026-03-12",
