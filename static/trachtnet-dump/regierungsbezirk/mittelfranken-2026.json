@@ -377,12 +377,12 @@
   {
     "dates": "2026-03-17",
     "values": -3.53,
-    "n_waagen": 44
+    "n_waagen": 45
   },
   {
     "dates": "2026-03-18",
-    "values": null,
-    "n_waagen": null
+    "values": -3.51,
+    "n_waagen": 12
   },
   {
     "dates": "2026-03-19",
