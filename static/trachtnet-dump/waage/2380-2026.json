@@ -401,13 +401,13 @@
   },
   {
     "dates": "2026-03-22",
-    "values": 11.97,
+    "values": 12.0,
     "n_waagen": 1
   },
   {
     "dates": "2026-03-23",
-    "values": null,
-    "n_waagen": null
+    "values": 11.78,
+    "n_waagen": 1
   },
   {
     "dates": "2026-03-24",
