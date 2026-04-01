@@ -441,12 +441,12 @@
   },
   {
     "dates": "2026-03-30",
-    "values": -7.51,
+    "values": -7.62,
     "n_waagen": 1
   },
   {
     "dates": "2026-03-31",
-    "values": null,
-    "n_waagen": null
+    "values": -7.79,
+    "n_waagen": 1
   }
 ]
