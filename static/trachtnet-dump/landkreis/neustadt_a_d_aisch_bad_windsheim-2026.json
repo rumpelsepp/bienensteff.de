@@ -446,7 +446,157 @@
   },
   {
     "dates": "2026-03-31",
-    "values": -8.48,
+    "values": -8.47,
     "n_waagen": 3
+  },
+  {
+    "dates": "2026-04-01",
+    "values": -8.49,
+    "n_waagen": 3
+  },
+  {
+    "dates": "2026-04-02",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-03",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-04",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-05",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-06",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-07",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-08",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-09",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-10",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-11",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-12",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-13",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-14",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-15",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-16",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-17",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-18",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-19",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-20",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-21",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-22",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-23",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-24",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-25",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-26",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-27",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-28",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-29",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-30",
+    "values": null,
+    "n_waagen": null
   }
 ]
