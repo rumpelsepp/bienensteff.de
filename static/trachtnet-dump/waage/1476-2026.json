@@ -451,13 +451,13 @@
   },
   {
     "dates": "2026-04-01",
-    "values": -10.1,
+    "values": -10.12,
     "n_waagen": 1
   },
   {
     "dates": "2026-04-02",
-    "values": null,
-    "n_waagen": null
+    "values": -10.13,
+    "n_waagen": 1
   },
   {
     "dates": "2026-04-03",
