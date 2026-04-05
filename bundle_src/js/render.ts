@@ -42,7 +42,6 @@ async function fetchAndRenderTrachtProgressChart(id: string, region: string, yea
 
 async function fetchAndRenderDerivativeChart(id: string, region: string, year: number) {
     const years = Array.from({ length: 4 }, (_, i) => year - i).reverse();
-
     const data = await getTrachtnetDerivative(years, region);
 
     const chart = new BarChart(data, `Trachtänderungen ${toTitleCase(region)}`);
