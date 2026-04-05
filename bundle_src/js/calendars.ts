@@ -1,9 +1,9 @@
-import { Temporal } from '@js-temporal/polyfill';
-import { Calendar, EventSourceInput } from '@fullcalendar/core';
-import calDeLocale from '@fullcalendar/core/locales/de';
-import calDayGridPlugin from '@fullcalendar/daygrid'
-import calListPlugin from '@fullcalendar/list';
 import bootstrap5Plugin from '@fullcalendar/bootstrap5';
+import { Calendar } from '@fullcalendar/core';
+import calDeLocale from '@fullcalendar/core/locales/de';
+import calDayGridPlugin from '@fullcalendar/daygrid';
+import calListPlugin from '@fullcalendar/list';
+import { Temporal } from '@js-temporal/polyfill';
 
 import { BeeDates, TUBDates, ZuchtDates } from "./dates";
 
@@ -302,4 +302,4 @@ class ZuchtCalendar extends BaseCalendar {
 
 }
 
-export { BeeStatesCalendar, TUBCalendar, ZuchtCalendar };
+export { BaseCalendar, BeeStatesCalendar, TUBCalendar, ZuchtCalendar };

@@ -1,0 +1,16 @@
+{{ $region := lower (.Get "region") }}
+{{ $year := .Get "year" | default (now | dateFormat "2006") }}
+{{ $type := .Get "type" }}
+{{ $cssID := printf "trachtnet-%s-chart-%s-%s" $type $region $year }}
+
+<div class="trachtnet-{{ $type }}-chart-container mb-4"
+    data-region="{{ $region}}"
+    data-year="{{ $year }}"
+    data-id="{{ $cssID }}"
+>
+    <div class="card">
+        <div class="card-body">
+            <div id="{{ $cssID }}" style="height: 400px;"></div>
+        </div>
+    </div>
+</div>

@@ -75,4 +75,4 @@ Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://
     </tbody>
 </table>
 
-{{< zucht >}}
+{{< calendar-widget type="zucht" >}}

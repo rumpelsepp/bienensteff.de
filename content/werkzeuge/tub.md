@@ -72,7 +72,7 @@ Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://
 
 ---
 
-{{< tub >}}
+{{< calendar-widget type="tub" >}}
 
 ## Lehrvideos
 

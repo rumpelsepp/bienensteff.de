@@ -1,12 +1,4 @@
-export { BeeStatesCalendar, TUBCalendar, ZuchtCalendar } from "./calendars";
-export { getParam, getDateParam } from "./helpers";
-export {
-    BarChart,
-    LineChart,
-    fetchTrachtnetData,
-    getTrachtnetSeries,
-    getTrachtnetDerivative,
-    metaDataOfYear,
-    renderMetaData,
-    toTitleCase,
-} from "./trachtnet";
+import { initAllCalendarWidgets, initAllCharts } from "./render";
+
+initAllCalendarWidgets();
+await initAllCharts();

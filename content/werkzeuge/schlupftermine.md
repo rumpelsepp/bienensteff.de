@@ -57,7 +57,7 @@ Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://
     </tbody>
 </table>
 
-{{< calendar >}}
+{{< calendar-widget type="beestate" >}}
 
 ## Allgemeine Infos
 
