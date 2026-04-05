@@ -12,8 +12,8 @@ $currentYear) -1) (int $currentYear))) }}
       {{ $ariaSelected := "false"}}
 
       {{ if eq (add $i 1) (len $years) }}
-      {{ $classes = $classes | append (slice "active") }}
-      {{ $ariaSelected = "true" }}
+        {{ $classes = $classes | append (slice "active") }}
+        {{ $ariaSelected = "true" }}
       {{ end }}
 
       <button class="{{ delimit $classes " "}}" id="tab-{{ $region }}-{{ $year }}" data-bs-toggle="tab"

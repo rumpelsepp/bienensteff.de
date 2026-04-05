@@ -31,7 +31,7 @@ Probiert ihn aus!
 {{ $datasetName := .Get "dataset" }}
 
 <div class="row">
-  {{- range index .Page.Site.Data $datasetName -}}
+  {{- range index hugo.Data $datasetName -}}
     {{ if .active }}
     <div class="col-sm-6 mb-4">
       {{ $params := merge . (dict "content" (.content | markdownify) "footer" (.footer | markdownify) "cardClass" "me-2") }}
@@ -64,7 +64,7 @@ Wir nehmen Honiggläser gerne gespült zurück – Etikett bitte, wenn möglich,
             </tr>
         </thead>
         <tbody>
-          {{- range index .Page.Site.Data.verkaufsstellen -}}
+          {{- range index hugo.Data.verkaufsstellen -}}
             {{ if .active }}
             <tr>
                 <td>{{ .name | markdownify }}</td>
@@ -90,7 +90,7 @@ In München ist tendentiell immer an Montagen tagsüber jemand zu Hause (ganz un
     <p>
       <strong>
       Gültig ab
-      {{ time.AsTime (index .Page.Site.Data.preisliste.timestamp) | time.Format ":date_medium"}}
+      {{ time.AsTime (index hugo.Data.preisliste.timestamp) | time.Format ":date_medium"}}
       </strong>
     </p>
 
@@ -107,7 +107,7 @@ In München ist tendentiell immer an Montagen tagsüber jemand zu Hause (ganz un
             </tr>
         </thead>
         <tbody>
-          {{- range index .Page.Site.Data.preisliste.articles -}}
+          {{- range index hugo.Data.preisliste.articles -}}
             {{ if .in_stock }}
             <tr>
             {{ else }}
