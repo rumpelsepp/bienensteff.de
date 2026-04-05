@@ -6,38 +6,38 @@ $currentYear) -1) (int $currentYear))) }}
 
 <ul class="nav nav-tabs" role="tablist">
   {{ range $i, $year := $years }}
-  {{ $cssID := printf "trachtnet-evaluation-%s-%s" $region $year }}
-  <li class="nav-item" role="presentation">
-    {{ $classes := slice "nav-link" }}
-    {{ $ariaSelected := "false"}}
+    {{ $cssID := printf "trachtnet-evaluation-%s-%d" $region $year }}
+    <li class="nav-item" role="presentation">
+      {{ $classes := slice "nav-link" }}
+      {{ $ariaSelected := "false"}}
 
-    {{ if eq (add $i 1) (len $years) }}
-    {{ $classes = $classes | append (slice "active") }}
-    {{ $ariaSelected = "true" }}
-    {{ end }}
+      {{ if eq (add $i 1) (len $years) }}
+      {{ $classes = $classes | append (slice "active") }}
+      {{ $ariaSelected = "true" }}
+      {{ end }}
 
-    <button class="{{ delimit $classes " "}}" id="tab-{{ $region }}-{{ $year }}" data-bs-toggle="tab"
-      data-bs-target="#tab-pane-evaluation-{{ $region }}-{{ $year }}" type="button" role="tab"
-      aria-controls="tab-pane-evaluation-{{ $region }}-{{ $year }}" aria-selected="{{ $ariaSelected }}">{{ $year
-      }}</button>
-  </li>
+      <button class="{{ delimit $classes " "}}" id="tab-{{ $region }}-{{ $year }}" data-bs-toggle="tab"
+        data-bs-target="#tab-pane-evaluation-{{ $region }}-{{ $year }}" type="button" role="tab"
+        aria-controls="tab-pane-evaluation-{{ $region }}-{{ $year }}" aria-selected="{{ $ariaSelected }}">{{ $year
+        }}</button>
+    </li>
   {{ end }}
 </ul>
 
 {{ range $i, $year := $years }}
-{{ $cssID := printf "trachtnet-evaluation-%s-%s" $region $year }}
+  {{ $cssID := printf "trachtnet-evaluation-%s-%d" $region $year }}
 
-<div class="tab-content mt-4">
+  <div class="tab-content mt-4">
 
-  {{ $classes := slice "tab-pane" }}
-  {{ if eq (add $i 1) (len $years) }}
-  {{ $classes = $classes | append (slice "show" "active") }}
-  {{ end }}
+    {{ $classes := slice "tab-pane" }}
+    {{ if eq (add $i 1) (len $years) }}
+      {{ $classes = $classes | append (slice "show" "active") }}
+    {{ end }}
 
-  <div class="{{ delimit $classes " "}}" id="tab-pane-evaluation-{{ $region }}-{{ $year }}" role="tabpanel"
-    aria-labelledby="tab-evaluation-{{ $region }}-{{ $year }}" tabindex="0">
-    <div class="trachtnet-evaluation-table-container mb-4" id="{{ $cssID }}" data-id="{{ $cssID }}"
-      data-region="{{ $region }}" data-year="{{ $year }}"></div>
-  </div>
+    <div class="{{ delimit $classes " "}}" id="tab-pane-evaluation-{{ $region }}-{{ $year }}" role="tabpanel"
+      aria-labelledby="tab-evaluation-{{ $region }}-{{ $year }}" tabindex="0">
+      <div class="trachtnet-evaluation-table-container mb-4" id="{{ $cssID }}" data-id="{{ $cssID }}"
+        data-region="{{ $region }}" data-year="{{ $year }}"></div>
+    </div>
 </div>
 {{ end }}
