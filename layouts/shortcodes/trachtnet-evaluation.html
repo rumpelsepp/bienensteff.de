@@ -1,55 +1,43 @@
 {{ $region := lower (.Get "region") }}
 {{ $year := .Get "year" | default (now | dateFormat "2006") }}
 {{ $currentYear := now | dateFormat "2006" }}
-{{ $years := (.Get "years" | default (slice (add (int $currentYear) -3) (add (int $currentYear) -2) (add (int $currentYear) -1) (int $currentYear))) }}
-{{ $cssID := printf "%s-%s-trachtnet-evaluation" $region $year }}
-
-<script type="module">
-  import { LineChart, fetchTrachtnetData, metaDataOfYear, renderMetaData } from "/bundle.js";
-
-  async function renderTable(cssID, region, year) {
-    const dom = document.getElementById(cssID);
-    const data = await fetchTrachtnetData([year], region, true);
-
-    const metaData = metaDataOfYear(year, region, data);
-    return renderMetaData(metaData);
-  }
-  
-  const region = "{{ $region }}";
-  const years = JSON.parse({{ $years | jsonify }});
-
-  for (const year of years) {
-    let cssID = `${region}-${year}-trachtnet-evaluation`;
-    document.getElementById(cssID).innerHTML = await renderTable(cssID, region, year);
-  }
-</script>
+{{ $years := (.Get "years" | default (slice (add (int $currentYear) -3) (add (int $currentYear) -2) (add (int
+$currentYear) -1) (int $currentYear))) }}
 
 <ul class="nav nav-tabs" role="tablist">
   {{ range $i, $year := $years }}
-    <li class="nav-item" role="presentation">
-      {{ $classes := slice "nav-link" }}
-      {{ $ariaSelected := "false"}}
+  {{ $cssID := printf "trachtnet-evaluation-%s-%s" $region $year }}
+  <li class="nav-item" role="presentation">
+    {{ $classes := slice "nav-link" }}
+    {{ $ariaSelected := "false"}}
 
-      {{ if eq (add $i 1) (len $years) }}
-        {{ $classes = $classes | append (slice "active") }}
-        {{ $ariaSelected = "true" }}
-      {{ end }}
+    {{ if eq (add $i 1) (len $years) }}
+    {{ $classes = $classes | append (slice "active") }}
+    {{ $ariaSelected = "true" }}
+    {{ end }}
 
-      <button class="{{ delimit $classes " "}}" id="tab-{{ $region }}-{{ $year }}" data-bs-toggle="tab" data-bs-target="#tab-pane-{{ $region }}-{{ $year }}" type="button" role="tab" aria-controls="tab-pane-{{ $region }}-{{ $year }}" aria-selected="{{ $ariaSelected }}">{{ $year }}</button>
-    </li>
+    <button class="{{ delimit $classes " "}}" id="tab-{{ $region }}-{{ $year }}" data-bs-toggle="tab"
+      data-bs-target="#tab-pane-evaluation-{{ $region }}-{{ $year }}" type="button" role="tab"
+      aria-controls="tab-pane-evaluation-{{ $region }}-{{ $year }}" aria-selected="{{ $ariaSelected }}">{{ $year
+      }}</button>
+  </li>
   {{ end }}
 </ul>
 
 {{ range $i, $year := $years }}
-  <div class="tab-content mt-4" id="myTabContent">
+{{ $cssID := printf "trachtnet-evaluation-%s-%s" $region $year }}
 
-    {{ $classes := slice "tab-pane" }}
-    {{ if eq (add $i 1) (len $years) }}
-      {{ $classes = $classes | append (slice "show" "active") }}
-    {{ end }}
+<div class="tab-content mt-4">
 
-    <div class="{{ delimit $classes " "}}" id="tab-pane-{{ $region }}-{{ $year }}" role="tabpanel" aria-labelledby="tab-{{ $region }}-{{ $year }}" tabindex="0">
-      <div id="{{ printf "%s-%d-trachtnet-evaluation" $region $year }}" class="mb-4"></div>
-    </div>
+  {{ $classes := slice "tab-pane" }}
+  {{ if eq (add $i 1) (len $years) }}
+  {{ $classes = $classes | append (slice "show" "active") }}
+  {{ end }}
+
+  <div class="{{ delimit $classes " "}}" id="tab-pane-evaluation-{{ $region }}-{{ $year }}" role="tabpanel"
+    aria-labelledby="tab-evaluation-{{ $region }}-{{ $year }}" tabindex="0">
+    <div class="trachtnet-evaluation-table-container mb-4" id="{{ $cssID }}" data-id="{{ $cssID }}"
+      data-region="{{ $region }}" data-year="{{ $year }}"></div>
   </div>
+</div>
 {{ end }}

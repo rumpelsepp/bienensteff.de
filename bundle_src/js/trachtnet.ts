@@ -1,7 +1,8 @@
-import * as echarts from 'echarts';
 import type { ECharts } from 'echarts';
+import * as echarts from 'echarts';
 
-import { Land, Regierungsbezirk, Kreis } from './regions.js';
+import { toTitleCase } from './helpers.js';
+import { Kreis, Land, Regierungsbezirk } from './regions.js';
 
 type Record = {
     date: Date,
@@ -33,12 +34,6 @@ function normalizeYear(records: Record[]): Record[] {
             delta: r.delta
         };
     });
-}
-
-function toTitleCase(text: string): string {
-    return text.replace(/\w\S*/g, (wort) =>
-        wort.charAt(0).toUpperCase() + wort.slice(1).toLowerCase()
-    );
 }
 
 enum QueenColor {
@@ -103,7 +98,7 @@ async function fetchRegion(year: number, region: string): Promise<any> {
     }
 }
 
-async function fetchTrachtnetData(years: number | number[], region: string): Promise<TrachtNetData> {
+export async function fetchTrachtnetData(years: number | number[], region: string): Promise<TrachtNetData> {
     if (!isInteger(years) && !isIntegerArray(years)) {
         throw new Error("Year must be an integer or an array of integers.");
     }
@@ -149,7 +144,7 @@ async function fetchTrachtnetData(years: number | number[], region: string): Pro
     return out;
 }
 
-async function getTrachtnetSeries(year: number | number[], region: string, normalize: boolean = false): Promise<echarts.LineSeriesOption[]> {
+export async function getTrachtnetSeries(year: number | number[], region: string, normalize: boolean = false): Promise<echarts.LineSeriesOption[]> {
     const data = await fetchTrachtnetData(year, region);
     let out: echarts.LineSeriesOption[] = [];
 
@@ -199,7 +194,7 @@ async function getTrachtnetSeries(year: number | number[], region: string, norma
     return out;
 }
 
-async function getTrachtnetDerivative(years: number | number[], region: string): Promise<echarts.BarSeriesOption[]> {
+export async function getTrachtnetDerivative(years: number | number[], region: string): Promise<echarts.BarSeriesOption[]> {
     if (!isInteger(years) && !isIntegerArray(years)) {
         throw new Error("Year must be an integer or an array of integers.");
     }
@@ -269,7 +264,7 @@ type MetaData = {
     bestDays: Date[];
 };
 
-function metaDataOfYear(year: number, region: string, rawData: TrachtNetData): MetaData | null {
+export function metaDataOfYear(year: number, region: string, rawData: TrachtNetData): MetaData | null {
     let data = rawData[region][year];
     const maxDelta = Math.max(...data.filter(r => r.delta !== null).map(r => r.delta!));
     const bestDays = data
@@ -298,7 +293,7 @@ function metaDataOfYear(year: number, region: string, rawData: TrachtNetData): M
     }
 }
 
-function renderMetaData(data: MetaData): string {
+export function renderMetaData(data: MetaData): string {
     const formatterDE = new Intl.NumberFormat("de-DE", {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
@@ -329,7 +324,7 @@ function getXLimits(): [Date, Date] {
     return [startDate, endDate];
 }
 
-class LineChart {
+export class LineChart {
     private seriesData: echarts.LineSeriesOption[];
     private title: string;
     private subTitle: string;
@@ -495,7 +490,7 @@ class LineChart {
     }
 }
 
-class BarChart {
+export class BarChart {
     private seriesData: echarts.BarSeriesOption[];
     private title: string;
     private subTitle: string;
@@ -644,5 +639,3 @@ class BarChart {
         });
     }
 }
-
-export { BarChart, LineChart, fetchTrachtnetData, getTrachtnetSeries, getTrachtnetDerivative, metaDataOfYear, renderMetaData, toTitleCase };

@@ -12,24 +12,24 @@ Die Daten zu „heute“ und „gestern“ sind jeweils ungenau, da das Trachtne
 
 ## Bayern
 
-{{< trachtnet-derivative region="Bayern" >}}
+{{< trachtnet-widget region="Bayern" type="derivative" >}}
 
-{{< trachtnet region="Bayern" >}}
+{{< trachtnet-widget region="Bayern" type="progress" >}}
 
 {{< trachtnet-evaluation region="Bayern" >}}
 
 ### Oberbayern
 
-{{< trachtnet-derivative region="Oberbayern" >}}
+{{< trachtnet-widget region="Oberbayern" type="derivative" >}}
 
-{{< trachtnet region="Oberbayern" >}}
+{{< trachtnet-widget region="Oberbayern" type="progress" >}}
 
 {{< trachtnet-evaluation region="Oberbayern" >}}
 
 ### Niederbayern
 
-{{< trachtnet-derivative region="Niederbayern" >}}
+{{< trachtnet-widget region="Niederbayern" type="derivative" >}}
 
-{{< trachtnet region="Niederbayern" >}}
+{{< trachtnet-widget region="Niederbayern" type="progress" >}}
 
 {{< trachtnet-evaluation region="Niederbayern" >}}

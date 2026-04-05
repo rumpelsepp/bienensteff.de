@@ -1,0 +1,16 @@
+{{ $type := .Get "type" }}
+
+<div id="{{ $type }}-calendar-widget" 
+     class="calendar-widget-container mb-4" 
+     data-widget-type="{{ $type }}">
+  
+  <form id="date-form" method="get">
+    <div class="form-group mb-2">
+      <label>Tag X</label>
+      <input class="form-control form-control-sm" name="date" type="date" id="date-input">
+    </div>
+    <button class="btn btn-primary" type="submit">Abschicken</button>
+  </form>
+
+  <div class="mt-4" id="calendar"></div>
+</div>

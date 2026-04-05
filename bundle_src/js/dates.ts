@@ -1,6 +1,6 @@
 import { Temporal } from "@js-temporal/polyfill";
 
-class BeeDatesBase {
+export class BeeDatesBase {
   startDate: Temporal.PlainDate;
   endRange: Temporal.PlainDate;
 
@@ -16,7 +16,7 @@ class BeeDatesBase {
   }
 }
 
-class BeeDates extends BeeDatesBase {
+export class BeeDates extends BeeDatesBase {
   schlupfDate: Temporal.PlainDate;
   gReifDate: Temporal.PlainDate;
   eilageDate: Temporal.PlainDate;
@@ -37,7 +37,7 @@ class BeeDates extends BeeDatesBase {
   }
 }
 
-class TUBDates extends BeeDatesBase {
+export class TUBDates extends BeeDatesBase {
   fBehandelnDate: Temporal.PlainDate;
   fVerdeckelt: Temporal.PlainDate;
   bSchlupfDate: Temporal.PlainDate;
@@ -56,7 +56,7 @@ class TUBDates extends BeeDatesBase {
   }
 }
 
-class ZuchtDates extends BeeDatesBase {
+export class ZuchtDates extends BeeDatesBase {
   wzBrechenDate: Temporal.PlainDate;
   wzVerdeckelt: Temporal.PlainDate;
   verschulenDate: Temporal.PlainDate;
@@ -84,5 +84,3 @@ class ZuchtDates extends BeeDatesBase {
     this.endRange = this.jungbienen.add({days: 1});
   }
 }
-
-export { BeeDates, TUBDates, ZuchtDates };

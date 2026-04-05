@@ -1,11 +1,11 @@
 import { Temporal } from "@js-temporal/polyfill";
 
-function getParam(name: string): string | null {
+export function getParam(name: string): string | null {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get(name);
 }
 
-function getDateParam(): Temporal.PlainDate {
+export function getDateParam(): Temporal.PlainDate {
   const dateParam = getParam("date");
 
   if (dateParam === null) {
@@ -14,4 +14,9 @@ function getDateParam(): Temporal.PlainDate {
   return Temporal.PlainDate.from(dateParam);
 }
 
-export { getParam, getDateParam };
+
+export function toTitleCase(text: string): string {
+    return text.replace(/\w\S*/g, (wort) =>
+        wort.charAt(0).toUpperCase() + wort.slice(1).toLowerCase()
+    );
+}
