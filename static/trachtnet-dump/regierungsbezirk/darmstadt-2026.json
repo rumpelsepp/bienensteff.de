@@ -467,27 +467,27 @@
   {
     "dates": "2026-04-04",
     "values": -4.58,
-    "n_waagen": 41
+    "n_waagen": 42
   },
   {
     "dates": "2026-04-05",
-    "values": -4.57,
-    "n_waagen": 41
+    "values": -4.58,
+    "n_waagen": 42
   },
   {
     "dates": "2026-04-06",
-    "values": -4.02,
-    "n_waagen": 41
+    "values": -4.1,
+    "n_waagen": 42
   },
   {
     "dates": "2026-04-07",
-    "values": -4.04,
-    "n_waagen": 10
+    "values": -3.26,
+    "n_waagen": 42
   },
   {
     "dates": "2026-04-08",
-    "values": null,
-    "n_waagen": null
+    "values": -3.3,
+    "n_waagen": 10
   },
   {
     "dates": "2026-04-09",
