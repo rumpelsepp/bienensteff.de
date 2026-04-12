@@ -502,12 +502,12 @@
   {
     "dates": "2026-04-11",
     "values": -3.18,
-    "n_waagen": 4
+    "n_waagen": 5
   },
   {
     "dates": "2026-04-12",
-    "values": null,
-    "n_waagen": null
+    "values": -3.21,
+    "n_waagen": 2
   },
   {
     "dates": "2026-04-13",
