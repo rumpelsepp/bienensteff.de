@@ -501,13 +501,13 @@
   },
   {
     "dates": "2026-04-11",
-    "values": -10.6,
+    "values": -10.46,
     "n_waagen": 2
   },
   {
     "dates": "2026-04-12",
-    "values": null,
-    "n_waagen": null
+    "values": -10.43,
+    "n_waagen": 2
   },
   {
     "dates": "2026-04-13",
