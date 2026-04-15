@@ -44,7 +44,7 @@
 {{ else if strings.HasPrefix .Params.id "A-" }}
     {{ $type = "filling" }}
 {{ else }}
-    {{ errorf "invalid nummer: %s" .Params.id }}
+    {{ errorf "invalid id in: %+v" .Params }}
 {{ end }}
 
 <!-- TODO: inline partial -->

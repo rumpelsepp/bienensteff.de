@@ -18,7 +18,7 @@
                         <li><strong>Bezeichnung</strong>: {{ partial "db/crosslink" (dict "id" (printf "SKU-%s" .sku) "text" .label) }}</li>
                         <li><strong>Artikelnummer</strong>: {{ partial "db/crosslink" (dict "id" (printf "SKU-%s" .sku) "text" .sku) }}</li>
                         <li><strong>Abfülldatum</strong>: {{ partial "db/date" (dict "date" .date) }}</li>
-                        <li><strong>MHD</strong>: {{ partial "db/date" (dict "date" .best_before) }}</li>
+                        <li><strong>MHD</strong>: {{ partial "db/date" (dict "date" .best_before_date) }}</li>
                         {{ with .dib_field }}
                             <li><strong>DIB Kontrollnummer</strong>: {{ . }}</li>
                         {{ end }}
