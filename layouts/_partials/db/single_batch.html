@@ -1,5 +1,5 @@
 <tr><th>Losnummer</th><td>{{ .Params.id }}</td></tr>
-<tr><th>Sortenempfehlung</th><td>{{ .Params.sort }}</td></tr>
+<tr><th>Sortenempfehlung</th><td>{{ .Params.honey_type }}</td></tr>
 <tr><th>Gewicht</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.weight) "." "," }}</td></tr>
 <tr><th>Geprüfte Qualität Bayern</th><td>
     {{ if .Params.certified }}
