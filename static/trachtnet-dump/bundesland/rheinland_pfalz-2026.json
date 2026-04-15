@@ -492,7 +492,7 @@
   {
     "dates": "2026-04-09",
     "values": -0.09,
-    "n_waagen": 248
+    "n_waagen": 249
   },
   {
     "dates": "2026-04-10",
@@ -516,13 +516,13 @@
   },
   {
     "dates": "2026-04-14",
-    "values": 0.43,
+    "values": 0.69,
     "n_waagen": 247
   },
   {
     "dates": "2026-04-15",
-    "values": null,
-    "n_waagen": null
+    "values": 0.66,
+    "n_waagen": 237
   },
   {
     "dates": "2026-04-16",
