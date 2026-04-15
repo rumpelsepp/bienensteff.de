@@ -7,7 +7,7 @@ build: clean npm-build
         --rm \
         --interactive \
         --tty \
-        --volume "$PWD:/mnt/$PWD" \
+        --volume "$PWD:/mnt/$PWD:z" \
         --workdir "/mnt/$PWD" \
         --userns keep-id \
         --group-add keep-groups \
@@ -28,7 +28,7 @@ serve: clean npm-build
         --rm \
         --interactive \
         --tty \
-        --volume "$PWD:/mnt/$PWD" \
+        --volume "$PWD:/mnt/$PWD:z" \
         --workdir "/mnt/$PWD" \
         --userns keep-id \
         --group-add keep-groups \
@@ -42,7 +42,7 @@ clean:
     rm -rf public
 
 update-db:
-    ./scripts/dump-db-sql.py > assets/db/db.json
+    ./scripts/dump-db.py | jq > assets/db/db.json
 
 format-trachtnet:
     #!/usr/bin/env bash

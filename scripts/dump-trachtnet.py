@@ -1,7 +1,7 @@
 #!/usr/bin/env -S uv run -qs
 
 # /// script
-# requires-python = ">=3.13"
+# requires-python = ">=3.14"
 # dependencies = [
 #     "httpx",
 #     "polars",

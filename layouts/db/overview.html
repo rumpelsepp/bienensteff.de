@@ -31,8 +31,8 @@
             <tr>
                 <td>{{ partial "db/crosslink.html" (dict "id" .id "text" .sku) }}</td>
                 <td>{{ partial "db/link_gtin.html" (dict "gtin" .gtin) }}</td>
-                <td>{{ .name }} {{ .filling_quantity }} {{ .filling_unit }}</td>
-                <td>{{ .brand }}</td>
+                <td>{{ .name }} {{ .packaging.net_weight }} {{ .packaging.filling_unit }}</td>
+                <td>{{ .brand.name }}</td>
             </tr>
         {{ end }}
 
