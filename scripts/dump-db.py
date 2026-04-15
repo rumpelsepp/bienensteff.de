@@ -42,7 +42,19 @@ def main() -> None:
     article_details_df = fetch_table("Verkaufdetails")
     article_brands_df = fetch_table("Marken")
     article_vkes_df = fetch_table("VKEs")
-
+    article_prices_df = fetch_table("Preise")
+    articles_df = (
+        article_prices_df.join(
+            articles_df.with_columns([pl.col("id").alias("article_id")]),
+            left_on="sku_id",
+            right_on="id",
+            how="full",
+        )
+        .drop("sku_id")
+        .drop("id")
+        .rename({"article_id": "id"})
+    )
+    
     skus_df = (
         article_details_df.join(articles_df, left_on="sku", right_on="id", how="inner")
         .drop(["id", "sku", "label_right"])
@@ -99,9 +111,13 @@ def main() -> None:
     )
 
     locations_df = fetch_table("Standorte")
-    centrifugations_df = fetch_table("Tracing_Schleuderungen").with_columns([
-        pl.from_epoch(pl.col("date"), time_unit="s").dt.strftime("%Y-%m-%d").alias("date"),
-    ])
+    centrifugations_df = fetch_table("Tracing_Schleuderungen").with_columns(
+        [
+            pl.from_epoch(pl.col("date"), time_unit="s")
+            .dt.strftime("%Y-%m-%d")
+            .alias("date"),
+        ]
+    )
     batches_df = fetch_table("Tracing_Lose")
     buckets_df = (
         fetch_table("Tracing_Eimer")
@@ -131,9 +147,7 @@ def main() -> None:
             how="left",
         )
         .drop(["location"])
-        .with_columns(
-            pl.col("bucket_id").alias("id")
-        )
+        .with_columns(pl.col("bucket_id").alias("id"))
     )
 
     fillings_df = (
@@ -141,7 +155,9 @@ def main() -> None:
         .with_columns(
             [
                 pl.from_epoch(pl.col("date"), time_unit="s").dt.strftime("%Y-%m-%d"),
-                pl.from_epoch(pl.col("best_before_date"), time_unit="s").dt.strftime("%Y-%m-%d"),
+                pl.from_epoch(pl.col("best_before_date"), time_unit="s").dt.strftime(
+                    "%Y-%m-%d"
+                ),
             ]
         )
         .join(
@@ -160,26 +176,24 @@ def main() -> None:
         )
         .drop(["sku"])
         .rename({"sku_right": "sku"})
-        .with_columns(
-            pl.col("filling_id").alias("id")
-        )
+        .with_columns(pl.col("filling_id").alias("id"))
     )
-
+    
     fillings_grouped = fillings_df.group_by("sku").agg(
         pl.struct(pl.all().exclude("sku")).alias("fillings")
     )
-    skus_df = skus_df.join(fillings_grouped, on="sku", how="left").with_columns((pl.lit("SKU-") + pl.col("sku")).alias("id")).filter(pl.col("fillings").is_not_null())
-    
-    buckets_agg = (
-        buckets_df
-        .group_by("batch_id")
-        .agg(pl.struct(pl.all()).alias("buckets"))
+    skus_df = (
+        skus_df
+        .join(fillings_grouped, on="sku", how="left")
+        .with_columns((pl.lit("SKU-") + pl.col("sku")).alias("id"))
+        # .filter(pl.col("fillings").is_not_null())
+    )
+    buckets_agg = buckets_df.group_by("batch_id").agg(
+        pl.struct(pl.all()).alias("buckets")
     )
 
-    fillings_agg = (
-        fillings_df
-        .group_by("batch_id")
-        .agg(pl.struct(pl.all()).alias("fillings"))
+    fillings_agg = fillings_df.group_by("batch_id").agg(
+        pl.struct(pl.all()).alias("fillings")
     )
 
     batches_grouped_df = (
@@ -196,7 +210,9 @@ def main() -> None:
                 "fillings": fillings_df.to_dicts(),
                 "buckets": buckets_df.to_dicts(),
                 "batches": batches_grouped_df.to_dicts(),
-                "centrifugations": centrifugations_df.drop("id").with_columns(pl.col("centrifugation_id").alias("id")).to_dicts(),
+                "centrifugations": centrifugations_df.drop("id")
+                .with_columns(pl.col("centrifugation_id").alias("id"))
+                .to_dicts(),
             },
         )
     )
