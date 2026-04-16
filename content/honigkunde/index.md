@@ -6,6 +6,7 @@ toc: true
 Auf dieser Seite stellen wir euch die wichtigsten Infos über Honig als groben Überblick zusammen.
 Dabei werden wir natürlich das Rad nicht neu erfinden, sondern wir beziehen uns hier auf offizielle bzw. wissenschaftlich anerkannte Quellen.
 Weiterführende Seiten oder Dokumente werden nach Möglichkeit verlinkt.
+Allgemeine Informationen rund um Honig gibt es auf der [Webseite](https://deutscherimkerbund.de/honig/) des Deutschen Imkerbundes.
 {.lead}
 
 ## Haltbarkeit
@@ -14,7 +15,7 @@ _Kann Honig schlecht werden?_
 
 Die Angabe eines Mindesthaltbarkeitsdatum für Honig ist gemäß [Lebensmittelinformations-Verordnung](http://data.europa.eu/eli/reg/2011/1169/oj) gesetzlich vorgeschrieben.
 Bei ordentlicher Lagerung kann Honig auch nach Ablauf der Mindesthaltbarkeit durchaus noch verzehrfähig sein.
-Bei ungünstigen Lagerbedingungen (z.B. zu warm, zu feucht oder zu hell) können die [Qualitätsmerkmale](#qualitätskriterien) negativ beeinträchtigt werden.
+Bei ungünstigen Lagerbedingungen (z. B. zu warm, zu feucht oder zu hell) können die [Qualitätsmerkmale](#qualitätskriterien) negativ beeinträchtigt werden.
 Üblicherweise wird auf Honiggläsern eine Haltbarkeit von **zwei Jahren** angegeben.
 
 ## Honigsorten
@@ -57,14 +58,19 @@ Honig ist der natursüße Stoff, der von Honigbienen erzeugt wird, indem die Bie
 Honig besteht im Wesentlichen aus verschiedenen Zuckerarten, insbesondere aus Fructose und Glucose, sowie aus organischen Säuren, Enzymen und beim Nektarsammeln aufgenommenen festen Partikeln. Die Farbe des Honigs reicht von nahezu farblos bis dunkelbraun. Er kann von flüssiger, dickflüssiger oder teilweise bis durchgehend kristalliner Beschaffenheit sein. Die Unterschiede in Geschmack und Aroma werden von der jeweiligen botanischen Herkunft bestimmt.
 {{</ blockquote >}}
 
-Allgemeine Informationen rund um Honig gibt es auf der [Webseite](https://deutscherimkerbund.de/honig/) des Deutschen Imkerbundes.
+Für Bio-Honig gilt zusätzlich die [Vordnung über die ökologische/biologische Produktion und die Kennzeichnung von ökologischen/biologischen Erzeugnissen](http://data.europa.eu/eli/reg/2018/848).
+Bio-Honig grenzt sich von konventionellen Honig hauptsächlich durch die Betriebsweise des Imkers ab.
+Zum Beispiel sind chemische Schädlingsbekämpfungsmittel grundsätzlich untersagt, es besteht eine detaillierte Dokumentationspflicht und es muss darauf geachtet werden, dass das Wachs in den Bienenstöcken eine hohe Qualität aufweist und frei von Rückständen etwaiger Pestizide o. ä. ist.
+Genauere Details können der verlinkten EU-Verordnung entnommen werden.
+Bio-Imkerein werden regelmäßig auditiert und die Erfüllung der gesetzlichen Vorgaben überprüft.
 
 ## Qualitätskriterien
 
 Auf den Honiggläsern des Deutschen Imkerbundes findet sich der Hinweis "kühl, trocken, dunkel lagern".
 Der allgemeine Hintergrund dieses Hinweises ist die Erhaltung des typischen Geschmacks, sowie der wertvollen Inhaltsstoffe.
 Generell gilt, dass Honig ohne große Qualitätseinbußen mehrere Jahre lang haltbar ist — sofern er richtig gelagert wird.
-Lasst uns dazu den Lagerhinweis und dessen Hintergrund mal etwas genauer anschauen.
+… und was hat es eigentlich mit den ganzen Zertifikation und mit Bio auf sich?
+Lasst uns das Thema ausgehend vom Lagerhinweis und dessen Hintergrund mal etwas genauer anschauen.
 
 ### Wassergehalt
 
@@ -91,7 +97,7 @@ Gärender Honig riecht sauer. Da lebende Hefezellen Durchfall erzeugen, soll gä
 ### Invertase (auch: Saccharase)
 
 Die Bienen fügen dem Honig bei dessen Bereitung eine ganze Reihe körpereigener Enzyme bei. 
-Diese Enzyme haben verschiedene Effekte auf den Honig, wie z.B. eine antibakterielle Wirkung.
+Diese Enzyme haben verschiedene Effekte auf den Honig, wie z. B. eine antibakterielle Wirkung.
 Viele Enzyme sind wärme- und/oder lichtempfindlich.
 In einer Honiganalyse wird üblicherweise das Enzym Invertase geprüft.
 
@@ -151,6 +157,27 @@ Der Deutsche Imkerbund beschreibt den HMF-Gehalt ebenfalls als Indikator für sc
 HMF ist ein Zuckerabbauprodukt, das insbesondere bei Überhitzung und unsachgemäßer Lagerung entsteht.
 Ein niedriger HMF-Gehalt ist also ein Kriterium für schonend gewonnenen und richtig gelagerten Honig.
 {{</ blockquote >}}
+
+### Marken und Zertifikate
+
+Im Lebensmittelhandel gibt es viele Qualitäts-Zertifikate, Marken und die generelle Unterteilung in konventionell und bio.
+Während die Unterscheidung von konventiellem Honig zu Bio-Honig per Gesetz geregelt ist, schließt man als Imker bei der Verwendung von Marken oder Zertifikaten oft einen Vertrag mit einem Zeichengeber.
+Marken und Zertifikate weißen die Erfüllung bestimmter Kriterien nach.
+Der Nutzen ist individuell unterschiedlich: zum Beispiel benötigen manche Imker benötigen einen formalen Qualitätsnachweis gegenüber Supermärkten während andere Zertifikate rein für eigene Marketingzwecke nutzen.
+
+Unsere Imkerei nutzt die Marke [Echter Deutscher Honig®](https://deutscherimkerbund.de/warum-unser-honig/) vom Deutschen Imkerbund.
+Durch den Verkauf von Honig unter dieser Marke verpflichtet sich der Imker, strengere Qualitskriterien einzuhalten als durch die Honigverordnung vorgeschrieben.
+Der Deutsche Imkerbund führt über die Vereinsstruktur selbst Schulungen und Qualitätskontrollen durch.
+Die Qualitätskontrollen finden unabhängig von behördlichen Kontrollen statt und haben das übergeordnete Ziel den Imker zu unterstützen die Qualitätskriterien zu erfüllen.
+
+Zusätzlich ist unsere Imkerei Zeichennutzer des Siegels [Geprüfte Qualität Bayern für Honig](https://www.gq-bayern.de).
+Zertifikate sind oft verbunden mit strengen Auflagen und entsprechenden vor Ort Kontrollen und einer [begrenzten Gültigkeit](/zertifikate/20250523-gq-zertifikat.pdf).
+[Die Qualitätsbestimmungen](https://www.gq-bayern.de/wp-content/uploads/%C3%96ffentlicher-Bereich/Ueber-GQ-Bayern/Qualitaets-und-Pruefbestimmungen/Tierisch/Honig/gqualitaet_honig.pdf) für die Zertifikate sind beim Zeichengeber einsehbar; oft gibt es auch eine [Hilfestellung](https://www.gq-bayern.de/wp-content/uploads/%C3%96ffentlicher-Bereich/Ueber-GQ-Bayern/Qualitaets-und-Pruefbestimmungen/Tierisch/Honig/2021_12_Leistungsgegenueberstellung_GQ_3_Honig-M1-Genehmigt.pdf), die den Mehrwert des Zertifikates herausstellt.
+Durch das Siegel Geprüfte Qualität Bayern weißen wir eine nachvollziehbare und saubere Arbeitsweise in unserer Imkerei nach.
+Unsere [Rückverfolgungsdatenbank](https://db.bienensteff.de) entstammt direkt den Anforderungen des Programms Geprüfte Qualität Bayern und setzt das Kriterium der Dokumentationspflicht unserer Honigchargen um.
+
+Im Bio-Bereich werden oft die Siegel von Bio-Verbänden (z. B. [Naturland](https://www.naturland.de/) oder [Bioland](https://www.bioland.de/)) verwendet.
+Der formale Ablauf ist vergleichbar mit einer Zertifizierung von Geprüfte Qualität Bayern.
 
 ### Zusammenfassung
 
