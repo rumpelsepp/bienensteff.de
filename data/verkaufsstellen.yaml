@@ -1,11 +1,11 @@
 - name: Haustür
   type: Direktverkauf
   address: |
-    Stefan Tatschner  
     Gräfelfinger Straße 169a  
     81375 München  
     [Google Maps](https://maps.app.goo.gl/CxwePVnqYxZf5y3k8)
   contact: |
+    Imkerei Stefan Tatschner   
     Mobil: [+49 1512 4096409](tel:+4915124096409)  
     E-Mail: info@bienensteff.de
   active: true
@@ -13,11 +13,11 @@
 - name: Haustür
   type: Direktverkauf
   address: |
-    Familie Tatschner  
     Granitweg 20  
     94481 Grafenau  
     [Google Maps](https://maps.app.goo.gl/jTKsPPaF4Zm2bUPV6)
   contact: |
+    Familie Tatschner  
     Festnetz: [+49 8552 3391](tel:+4985523391)  
     E-Mail: anneliese.tatschner@gmail.com
   active: true
@@ -30,6 +30,8 @@
     81929 München  
     [Google Maps](https://maps.app.goo.gl/V2AfBJat9t6mBJ1J7)
   contact: |
+    Florian Kreuzer  
+    Johannesbienen München  
     Festnetz: [+49 89 96058096](tel:+498996058096)  
     E-Mail: honey@floriankreuzer.de
   active: true
