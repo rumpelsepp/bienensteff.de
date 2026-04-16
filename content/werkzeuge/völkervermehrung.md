@@ -1,11 +1,11 @@
 ---
-title: Völkervermehrung in vier Schritten
-description: "Übersicht und Webtool zum Berechnen der Termine für die Völkervermehrung mit integrierter Königinnenaufzucht"
+title: Völkervermehrung in vier Schritten Rechner
+description: "Übersicht und Werkzeug zum Berechnen der Termine für die Völkervermehrung mit integrierter Königinnenaufzucht"
 aliases: ["/völkervermehrung"]
 slug: "/voelkervermehrung"
 ---
 
-Mit diesem Webtool können interaktiv die Arbeitsschritte des Konzeptes [Völkervermehrung in vier Schritten](https://www.immelieb.de/imker-praxis/volkervermehrung/) berechnet werden.
+Mit diesem Werkzeug können interaktiv die Arbeitsschritte des Konzeptes [Völkervermehrung in vier Schritten](https://www.immelieb.de/imker-praxis/volkervermehrung/) berechnet werden.
 Dazu das Startdatum X auswählen und auf absenden klicken.
 Der grüne Bereich symbolisiert den Zeitraum wo die Weiselzellen verdeckelt sind.
 Termine in _kursiv_ sind geschätzt, da der Tag des Hochzeitsflugs und folglich der Start der Eiablage nicht vorhersehbar ist.

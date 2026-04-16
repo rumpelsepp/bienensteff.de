@@ -1,10 +1,12 @@
 ---
-title: Teilen und Behandeln
-description: "Übersicht und Webtool zum Berechnen der Termine für Teilen und Behandeln (TuB)"
+title: "Teilen und Behandeln Rechner"
+description: "Übersicht und Werkzeug zum Berechnen der Termine für Teilen und Behandeln (TuB)"
 ---
 
 [Teilen und Behandeln (TuB)](https://www.laves.niedersachsen.de/startseite/tiere/bienenkunde/informationsmaterial/varroa-bekampfungskonzept-teilen-und-behandeln-234443.html) ist ein modernes Konzept zur gleichzeitigen Varroabekämpfung, Wabenhygiene und Königinnenverjüngung.
 TuB ist größtenteils witterungsunabhängig und kann gut nach Zeitplan durchgeführt werden.
+
+Mit diesem Werkzeug können interaktiv die Zeitpunkte der einzelnen Arbeitsphasen berechnet werden.
 Der grüne Bereich symbolisiert die brutfreie Zeit.
 Termine in _kursiv_ sind geschätzt, da der Tag des Hochzeitsflugs und folglich der Start der Eiablage nicht vorhersehbar ist.
 Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://piaaumeier.de) veröffentlich wurden.
