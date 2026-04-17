@@ -490,14 +490,44 @@
     "n_waagen": 1
   },
   {
+    "dates": "2026-04-09",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-10",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-11",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-12",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-13",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-04-14",
+    "values": null,
+    "n_waagen": null
+  },
+  {
     "dates": "2026-04-15",
     "values": -5.29,
     "n_waagen": 1
   },
   {
     "dates": "2026-04-16",
-    "values": null,
-    "n_waagen": null
+    "values": -5.46,
+    "n_waagen": 1
   },
   {
     "dates": "2026-04-17",
