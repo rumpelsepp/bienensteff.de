@@ -168,7 +168,7 @@ Der Nutzen ist individuell unterschiedlich: Zum Beispiel benötigen manche Imker
 Unsere Imkerei nutzt die Marke [Echter Deutscher Honig®](https://deutscherimkerbund.de/warum-unser-honig/) vom Deutschen Imkerbund.
 Durch den Verkauf von Honig unter dieser Marke verpflichtet sich der Imker, strengere Qualitskriterien einzuhalten als durch die Honigverordnung vorgeschrieben.
 Der Deutsche Imkerbund führt über die Vereinsstruktur selbst Schulungen und Qualitätskontrollen durch.
-Die Qualitätskontrollen finden unabhängig von behördlichen Kontrollen statt und haben das übergeordnete Ziel den Imker zu unterstützen die Qualitätskriterien zu erfüllen.
+Die Qualitätskontrollen finden unabhängig von behördlichen Kontrollen statt und haben das übergeordnete Ziel den Imker bei der Erfüllung der Qualitätskriterien zu unterstützen.
 
 Zusätzlich ist unsere Imkerei Zeichennutzer des Siegels [Geprüfte Qualität Bayern für Honig](https://www.gq-bayern.de).
 Zertifikate sind oft verbunden mit strengen Auflagen und entsprechenden vor Ort Kontrollen und einer [begrenzten Gültigkeit](/zertifikate/20250523-gq-zertifikat.pdf).
