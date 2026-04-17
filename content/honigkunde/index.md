@@ -58,7 +58,7 @@ Honig ist der natursüße Stoff, der von Honigbienen erzeugt wird, indem die Bie
 Honig besteht im Wesentlichen aus verschiedenen Zuckerarten, insbesondere aus Fructose und Glucose, sowie aus organischen Säuren, Enzymen und beim Nektarsammeln aufgenommenen festen Partikeln. Die Farbe des Honigs reicht von nahezu farblos bis dunkelbraun. Er kann von flüssiger, dickflüssiger oder teilweise bis durchgehend kristalliner Beschaffenheit sein. Die Unterschiede in Geschmack und Aroma werden von der jeweiligen botanischen Herkunft bestimmt.
 {{</ blockquote >}}
 
-Für Bio-Honig gilt zusätzlich die [Vordnung über die ökologische/biologische Produktion und die Kennzeichnung von ökologischen/biologischen Erzeugnissen](http://data.europa.eu/eli/reg/2018/848).
+Für Bio-Honig gilt zusätzlich die [Verordnung über die ökologische/biologische Produktion und die Kennzeichnung von ökologischen/biologischen Erzeugnissen](http://data.europa.eu/eli/reg/2018/848).
 Bio-Honig grenzt sich von konventionellen Honig hauptsächlich durch die Betriebsweise des Imkers ab.
 Zum Beispiel sind chemische Schädlingsbekämpfungsmittel grundsätzlich untersagt, es besteht eine detaillierte Dokumentationspflicht und es muss darauf geachtet werden, dass das Wachs in den Bienenstöcken eine hohe Qualität aufweist und frei von Rückständen etwaiger Pestizide o. ä. ist.
 Genauere Details können der verlinkten EU-Verordnung entnommen werden.
