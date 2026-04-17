@@ -163,7 +163,7 @@ Ein niedriger HMF-Gehalt ist also ein Kriterium für schonend gewonnenen und ric
 Im Lebensmittelhandel gibt es viele Qualitäts-Zertifikate, Marken und die generelle Unterteilung in konventionell und bio.
 Während die Unterscheidung von konventiellem Honig zu Bio-Honig per Gesetz geregelt ist, schließt man als Imker bei der Verwendung von Marken oder Zertifikaten oft einen Vertrag mit einem Zeichengeber.
 Marken und Zertifikate weißen die Erfüllung bestimmter Kriterien nach.
-Der Nutzen ist individuell unterschiedlich: zum Beispiel benötigen manche Imker benötigen einen formalen Qualitätsnachweis gegenüber Supermärkten während andere Zertifikate rein für eigene Marketingzwecke nutzen.
+Der Nutzen ist individuell unterschiedlich: Zum Beispiel benötigen manche Imker benötigen einen formalen Qualitätsnachweis gegenüber Supermärkten während andere Zertifikate rein für eigene Marketingzwecke nutzen.
 
 Unsere Imkerei nutzt die Marke [Echter Deutscher Honig®](https://deutscherimkerbund.de/warum-unser-honig/) vom Deutschen Imkerbund.
 Durch den Verkauf von Honig unter dieser Marke verpflichtet sich der Imker, strengere Qualitskriterien einzuhalten als durch die Honigverordnung vorgeschrieben.
