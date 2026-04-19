@@ -520,14 +520,19 @@
     "n_waagen": 1
   },
   {
+    "dates": "2026-04-15",
+    "values": null,
+    "n_waagen": null
+  },
+  {
     "dates": "2026-04-16",
     "values": -7.34,
     "n_waagen": 1
   },
   {
     "dates": "2026-04-17",
-    "values": null,
-    "n_waagen": null
+    "values": -6.16,
+    "n_waagen": 1
   },
   {
     "dates": "2026-04-18",
