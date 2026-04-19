@@ -1,3 +1,5 @@
+// TODO: Migrate dates to temporal, since "heute" is actually tomorrow in the evening
+
 import type { ECharts } from 'echarts';
 import * as echarts from 'echarts';
 
