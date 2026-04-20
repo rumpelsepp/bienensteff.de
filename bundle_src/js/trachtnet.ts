@@ -1,13 +1,13 @@
-// TODO: Migrate dates to temporal, since "heute" is actually tomorrow in the evening
-
+import { Temporal } from "@js-temporal/polyfill";
 import type { ECharts } from 'echarts';
 import * as echarts from 'echarts';
 
 import { toTitleCase } from './helpers.js';
 import { Kreis, Land, Regierungsbezirk } from './regions.js';
+import de from "./i18n/de.js";
 
 type Record = {
-    date: Date,
+    date: Temporal.PlainDate,
     value: number,
     nWaagen: number,
     delta: number | null
@@ -24,13 +24,23 @@ type TrachtNetRawData = {
     n_waagen: number | null,
 }
 
+const localTimeZone = Temporal.Now.timeZoneId();
+
+echarts.registerLocale('DE', de);
+
+function getCurrentYear(): number {
+    return Temporal.Now.plainDateISO().year;
+}
+
+function getToday(): Temporal.PlainDate {
+    return Temporal.Now.plainDateISO();
+}
+
 function normalizeYear(records: Record[]): Record[] {
     return records.map(r => {
-        let today = new Date();
-        let recordDate = new Date(r.date);
-        recordDate.setFullYear(today.getFullYear());
+        let today = Temporal.Now.plainDateISO();
         return {
-            date: recordDate,
+            date: r.date.with({"year": today.year}),
             value: r.value,
             nWaagen: r.nWaagen,
             delta: r.delta
@@ -114,8 +124,9 @@ export async function fetchTrachtnetData(years: number | number[], region: strin
 
     let out: TrachtNetData = {};
     let yearlyData: YearlyData = out[region] = {};
+    const currentYear = Temporal.Now.plainDateISO().year;
     for (const y of years) {
-        if (!isInteger(y) || y < 2011 || y > new Date().getFullYear()) {
+        if (!isInteger(y) || y < 2011 || y > currentYear) {
             throw new Error(`Invalid year: ${y}. Trachtnet only has data from 2011 to the current year.`);
         }
 
@@ -135,7 +146,7 @@ export async function fetchTrachtnetData(years: number | number[], region: strin
             }
             prev = d.values;
             return {
-                date: new Date(d.dates),
+                date: Temporal.PlainDate.from(d.dates),
                 value: d.values,
                 nWaagen: d.n_waagen,
                 delta: delta
@@ -157,7 +168,7 @@ export async function getTrachtnetSeries(year: number | number[], region: string
 
         let seriesData = (normalize ? normalizeYear(records) : records).map(r => {
             return [
-                r.date,
+                r.date.toString(),
                 r.value,
                 r.nWaagen,
                 r.delta
@@ -174,11 +185,11 @@ export async function getTrachtnetSeries(year: number | number[], region: string
             },
         };
 
-        if (new Date().getFullYear() !== +year) {
+        if (getCurrentYear() !== +year) {
             entry.markLine = {
                 symbol: "none",
                 label: {
-                    formatter: `heute (${new Date().toLocaleDateString("de-DE")})`,
+                    formatter: getToday().toLocaleString(),
                     fontSize: 10,
                 },
                 lineStyle: {
@@ -186,7 +197,7 @@ export async function getTrachtnetSeries(year: number | number[], region: string
 
                 },
                 data: [
-                    { xAxis: new Date().toISOString() }
+                    { xAxis: getToday().toString() }
                 ]
             }
         }
@@ -220,7 +231,7 @@ export async function getTrachtnetDerivative(years: number | number[], region: s
 
         let seriesData = data.map(r => {
             let color = r.delta! >= 0 ? QueenColor.Green.toString() : QueenColor.Red.toString();
-            return { value: [r.date, r.delta, r.value, r.nWaagen], itemStyle: { color: color } };
+            return { value: [r.date.toString(), r.delta, r.value, r.nWaagen], itemStyle: { color: color } };
         });
 
         let entry: echarts.BarSeriesOption = {
@@ -236,7 +247,7 @@ export async function getTrachtnetDerivative(years: number | number[], region: s
 }
 
 function buildLegendSelectedCurPrev(allYears: number[]): { [key: string]: boolean } {
-    const currentYear = new Date().getFullYear();
+    const currentYear = getCurrentYear();
     const activeYears = [currentYear, currentYear - 1];
 
     const selected: { [key: string]: boolean } = {};
@@ -247,7 +258,7 @@ function buildLegendSelectedCurPrev(allYears: number[]): { [key: string]: boolea
 }
 
 function buildLegendSelectedCur(allYears: number[]): { [key: string]: boolean } {
-    const currentYear = new Date().getFullYear();
+    const currentYear = getCurrentYear();
     const activeYears = [currentYear];
 
     const selected: { [key: string]: boolean } = {};
@@ -260,10 +271,10 @@ function buildLegendSelectedCur(allYears: number[]): { [key: string]: boolean } 
 type MetaData = {
     year: number;
     region: string;
-    globalMax: { value: number, date: Date };
-    globalMin: { value: number, date: Date };
-    maxDelta: { value: number; dates: Date[] };
-    bestDays: Date[];
+    globalMax: { value: number, date: Temporal.PlainDate };
+    globalMin: { value: number, date: Temporal.PlainDate };
+    maxDelta: { value: number; dates: Temporal.PlainDate[] };
+    bestDays: Temporal.PlainDate[];
 };
 
 export function metaDataOfYear(year: number, region: string, rawData: TrachtNetData): MetaData | null {
@@ -303,27 +314,32 @@ export function renderMetaData(data: MetaData): string {
     let out = `<table class="table table-bordered table-striped table-sm">
   <caption>Auswertung von ${data.region} (${data.year})</caption>
   <tbody>
-    <tr><th scope="row">Jahresminimum</th><td>${data.globalMin.date.toLocaleDateString("de-DE")} (${formatterDE.format(data.globalMin.value)} kg)</td></tr>
-    <tr><th scope="row">Jahresmaximum</th><td>${data.globalMax.date.toLocaleDateString("de-DE")} (${formatterDE.format(data.globalMax.value)} kg)</td></tr>
-    <tr><th scope="row">Bester Tag</th><td>${data.maxDelta.dates.map(d => d.toLocaleDateString("de-DE")).join(", ")} (Δ ${formatterDE.format(data.maxDelta.value)} kg)</td></tr>
+    <tr><th scope="row">Jahresminimum</th><td>${data.globalMin.date.toLocaleString()} (${formatterDE.format(data.globalMin.value)} kg)</td></tr>
+    <tr><th scope="row">Jahresmaximum</th><td>${data.globalMax.date.toLocaleString()} (${formatterDE.format(data.globalMax.value)} kg)</td></tr>
+    <tr><th scope="row">Bester Tag</th><td>${data.maxDelta.dates.map(d => d.toLocaleString()).join(", ")} (Δ ${formatterDE.format(data.maxDelta.value)} kg)</td></tr>
   </tbody>
 </table>`;
     return out;
 }
 
-function getXLimits(): [Date, Date] {
-    const currentDate = new Date();
-    let startDate: Date;
-    let endDate: Date;
-    if ((currentDate.getMonth() < 3) || (currentDate.getMonth() > 6)) {
-        startDate = new Date(new Date().getFullYear(), 0);
-        endDate = new Date(new Date().getFullYear(), 11);
+function getXLimits(): [Temporal.PlainDate, Temporal.PlainDate] {
+    const today = getToday();
+    let startDate: Temporal.PlainDate;
+    let endDate: Temporal.PlainDate;
+    if ((today.month < 4) || (today.month > 6)) {
+        startDate = today.with({"month": 1, "day": 1});
+        endDate = today.with({"month": 12, "day": 31});
     } else {
-        startDate = new Date(new Date().getFullYear(), 3);
-        endDate = new Date(new Date().getFullYear(), 7);
+        startDate = today.with({"month": 4, "day": 1});
+        endDate = today.with({"month": 7, "day": 30});
     }
-
+    
     return [startDate, endDate];
+}
+
+function axisPointerCallback(value: number): string {
+    const date = Temporal.Instant.fromEpochMilliseconds(value).toZonedDateTimeISO(localTimeZone).toPlainDate();
+    return date.toLocaleString();
 }
 
 export class LineChart {
@@ -345,7 +361,8 @@ export class LineChart {
         }
 
         this.chart = echarts.init(chartContainer, null, {
-            renderer: "svg"
+            renderer: "svg",
+            locale: "DE",
         });
 
         const formatterDE = new Intl.NumberFormat("de-DE", {
@@ -362,7 +379,8 @@ export class LineChart {
                 left: "center",
                 textStyle: {
                     color: "#000",
-                }
+                },
+                top: 0,
             },
             animation: false,
             aria: {
@@ -390,7 +408,7 @@ export class LineChart {
                 formatter: params => {
                     let out = "";
                     // @ts-expect-error
-                    for (const p of params) {
+                    for (const p of params) { 
                         const prefix = `${p.marker} <b>${p.seriesName}</b>`;
                         const waagen = p.value[2];
                         if (waagen === null) {
@@ -427,11 +445,11 @@ export class LineChart {
                         show: true,
                         formatter: params => {
                             const value = params.value;
-                            const date = new Date(typeof value === "number" ? value : String(value));
-                            return date.toLocaleDateString("de-DE", {
-                                year: 'numeric', month: 'long', day: 'numeric'
-                            });
-                        }
+                            if (!isInteger(value)) {
+                                throw new Error("Date axis expected!"); 
+                            }
+                            return axisPointerCallback(value);
+                        } 
                     },
                 },
                 splitLine: {
@@ -477,8 +495,8 @@ export class LineChart {
                     type: "inside",
                     xAxisIndex: 0,
                     filterMode: 'none',
-                    startValue: startDate,
-                    endValue: endDate,
+                    startValue: startDate.toString(),
+                    endValue: endDate.toString(),
                 }
             ],
             series: this.seriesData
@@ -511,7 +529,8 @@ export class BarChart {
         }
 
         this.chart = echarts.init(chartContainer, null, {
-            renderer: "svg"
+            renderer: "svg",
+            locale: "DE",
         });
 
         const formatterDE = new Intl.NumberFormat("de-DE", {
@@ -528,7 +547,8 @@ export class BarChart {
                 left: "center",
                 textStyle: {
                     color: "#000",
-                }
+                },
+                top: 0,
             },
             animation: false,
             aria: {
@@ -563,10 +583,11 @@ export class BarChart {
                 extraCssText: "box-shadow: none; padding: 0.3rem 0.4rem",
                 formatter: params => {
                     let out = "";
+                    // @ts-expect-error
                     for (const p of params) {
-                        const date = new Date(p.value[0]);
+                        const date = Temporal.PlainDate.from(p.value[0])
                         const nWaagen = p.value[3];
-                        const prefix = `<b>${date.toLocaleDateString("de-DE")}</b>`;
+                        const prefix = `<b>${date.toLocaleString()}</b>`;
                         out += `${prefix}: Δ ${formatterDE.format(p.value[1])} kg (${nWaagen} Waagen)<br>`;
                     }
                     return out;
@@ -627,8 +648,8 @@ export class BarChart {
                     type: "inside",
                     xAxisIndex: 0,
                     filterMode: 'none',
-                    startValue: startDate,
-                    endValue: endDate,
+                    startValue: startDate.toString(),
+                    endValue: endDate.toString(),
                 }
             ],
             series: this.seriesData
