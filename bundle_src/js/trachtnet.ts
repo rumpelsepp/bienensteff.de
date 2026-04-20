@@ -351,7 +351,7 @@ export class LineChart {
     constructor(rawData: echarts.LineSeriesOption[], title: string) {
         this.seriesData = rawData;
         this.title = title;
-        this.subTitle = "Datenquelle: TrachtNet";
+        this.subTitle = "Aufsummierte Gewichtsänderung pro Tag [kg]";
     }
 
     render(elementID: string) {
@@ -461,7 +461,7 @@ export class LineChart {
             },
             yAxis: {
                 type: "value",
-                name: "Korrigierte Gewichtänderung [kg]",
+                name: "Korrigierte Gewichtsänderung [kg]",
                 nameLocation: 'middle',
                 nameGap: 55,
                 axisLine: {
@@ -519,7 +519,7 @@ export class BarChart {
     constructor(rawData: echarts.BarSeriesOption[], title: string) {
         this.seriesData = rawData;
         this.title = title;
-        this.subTitle = "Datenquelle: TrachtNet";
+        this.subTitle = "Gewichtsänderung pro Tag [kg]";
     }
 
     render(elementID: string) {
@@ -611,7 +611,7 @@ export class BarChart {
             },
             yAxis: {
                 type: "value",
-                name: "Gewichtänderung [kg]",
+                name: "Gewichtsänderung [kg]",
                 nameLocation: 'middle',
                 nameGap: 55,
                 axisLine: {
