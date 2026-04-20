@@ -461,7 +461,7 @@ export class LineChart {
             },
             yAxis: {
                 type: "value",
-                name: "Korrigierte Gewichtsänderung [kg]",
+                name: "Gewicht [kg]",
                 nameLocation: 'middle',
                 nameGap: 55,
                 axisLine: {
