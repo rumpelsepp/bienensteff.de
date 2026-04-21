@@ -49,6 +49,7 @@ Die Bienen danken’s uns auf ihre Art – mit einem Honig, der nicht nur gut sc
 
 ## Fachkundenachweise
 
+* 21.04.2026: [Krankheite und Schädlinge der Honigbiene](/fachkunde/2026-04-21-bienengesundheit.pdf); Bezirk Oberbayern: Fachberatung für Imkerei
 * 06.02.2025: [Trachtpflanzen erkennen und bewerten](/fachkunde/2025-02-06-trachtpflanzen.pdf); Bezirk Oberbayern: Fachberatung für Imkerei
 * 03.01.2025: [Imkerkurs mit Dr. Pia Aumeier (Modul 1 — 8)](/fachkunde/2025-01-03-imkerkurs-mit-dr-pia-aumeier.pdf); Imkerling — Die Akademie für Bienenfreunde
 * 11.10.2024: [Biozertifizierung in der Imkerei](/fachkunde/2024-10-11-bio-zertifizierung.pdf); Bezirk Oberbayern: Fachberatung für Imkerei
