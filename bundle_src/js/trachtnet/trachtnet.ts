@@ -2,9 +2,12 @@ import { Temporal } from "@js-temporal/polyfill";
 import type { ECharts } from 'echarts';
 import * as echarts from 'echarts';
 
-import { toTitleCase } from './helpers.js';
-import { Kreis, Land, Regierungsbezirk } from './regions.js';
+import { toTitleCase } from '../helpers.js';
+import { Kreis, Land, Regierungsbezirk } from '../calendars/regions.js';
 import de from "./i18n/de.js";
+
+const localTimeZone = Temporal.Now.timeZoneId();
+echarts.registerLocale('DE', de);
 
 type Record = {
     date: Temporal.PlainDate,
@@ -23,10 +26,6 @@ type TrachtNetRawData = {
     values: number | null,
     n_waagen: number | null,
 }
-
-const localTimeZone = Temporal.Now.timeZoneId();
-
-echarts.registerLocale('DE', de);
 
 function getCurrentYear(): number {
     return Temporal.Now.plainDateISO().year;
@@ -122,9 +121,13 @@ export async function fetchTrachtnetData(years: number | number[], region: strin
         years = [... new Set(years.sort((a, b) => a - b))];
     }
 
+    const currentYear = getCurrentYear();
+    const today = getToday();
+    const yesterday = today.subtract({ "days": 1 })
+
     let out: TrachtNetData = {};
     let yearlyData: YearlyData = out[region] = {};
-    const currentYear = Temporal.Now.plainDateISO().year;
+
     for (const y of years) {
         if (!isInteger(y) || y < 2011 || y > currentYear) {
             throw new Error(`Invalid year: ${y}. Trachtnet only has data from 2011 to the current year.`);
@@ -151,6 +154,11 @@ export async function fetchTrachtnetData(years: number | number[], region: strin
                 nWaagen: d.n_waagen,
                 delta: delta
             };
+        }).filter((r: Record) => {
+            if (r.date.equals(today) || r.date.equals(yesterday)) {
+                return false;
+            }
+            return true;
         });
     }
 
@@ -159,7 +167,6 @@ export async function fetchTrachtnetData(years: number | number[], region: strin
 
 export async function getTrachtnetSeries(year: number | number[], region: string, normalize: boolean = false): Promise<echarts.LineSeriesOption[]> {
     const data = await fetchTrachtnetData(year, region);
-    const today = getToday();
     let out: echarts.LineSeriesOption[] = [];
 
     for (const [year, records] of Object.entries(data[region])) {
@@ -167,12 +174,7 @@ export async function getTrachtnetSeries(year: number | number[], region: string
             throw new Error(`Invalid year in data: ${year}`);
         }
 
-        let seriesData = (normalize ? normalizeYear(records) : records).filter(r => {
-            if (r.date == today) {
-                return false;
-            }
-            return true;
-        }).map(r => {
+        let seriesData = (normalize ? normalizeYear(records) : records).map(r => {
             return [
                 r.date.toString(),
                 r.value,
@@ -191,7 +193,7 @@ export async function getTrachtnetSeries(year: number | number[], region: string
             },
         };
 
-        if (getCurrentYear() !== +year) {
+        if (getCurrentYear() === +year) {
             entry.markLine = {
                 symbol: "none",
                 label: {
@@ -200,7 +202,7 @@ export async function getTrachtnetSeries(year: number | number[], region: string
                 },
                 lineStyle: {
                     type: "dashed",
-
+                    color: "#000",
                 },
                 data: [
                     { xAxis: getToday().toString() }
@@ -337,7 +339,7 @@ function getXLimits(): [Temporal.PlainDate, Temporal.PlainDate] {
         endDate = today.with({ "month": 12, "day": 31 });
     } else {
         startDate = today.with({ "month": 4, "day": 1 });
-        endDate = today.with({ "month": 7, "day": 30 });
+        endDate = today.add({ "days": 45 });
     }
 
     return [startDate, endDate];
@@ -349,13 +351,11 @@ function axisPointerCallback(value: number): string {
 }
 
 export class LineChart {
-    private seriesData: echarts.LineSeriesOption[];
     private title: string;
     private subTitle: string;
     private chart?: ECharts;
 
-    constructor(rawData: echarts.LineSeriesOption[], title: string) {
-        this.seriesData = rawData;
+    constructor(title: string) {
         this.title = title;
         this.subTitle = "Aufsummierte Gewichtsänderung pro Tag [kg]";
     }
@@ -430,13 +430,6 @@ export class LineChart {
                     return out;
                 }
             },
-            legend: {
-                show: true,
-                top: "bottom",
-                selected: buildLegendSelectedCurPrev(this.seriesData.map(s => {
-                    return parseInt(typeof s.name === "string" ? s.name : "");
-                })),
-            },
             xAxis: {
                 type: "time",
                 axisLine: {
@@ -500,12 +493,10 @@ export class LineChart {
                 {
                     type: "inside",
                     xAxisIndex: 0,
-                    filterMode: 'none',
                     startValue: startDate.toString(),
                     endValue: endDate.toString(),
                 }
             ],
-            series: this.seriesData
         };
 
         this.chart.setOption(option);
@@ -514,16 +505,27 @@ export class LineChart {
             this.chart!.resize();
         });
     }
+
+    setData(data: echarts.LineSeriesOption[]) {
+        this.chart!.setOption({
+            series: data,
+            legend: {
+                show: true,
+                top: "bottom",
+                selected: buildLegendSelectedCurPrev(data.map(s => {
+                    return parseInt(typeof s.name === "string" ? s.name : "");
+                })),
+            },
+        });
+    }
 }
 
 export class BarChart {
-    private seriesData: echarts.BarSeriesOption[];
     private title: string;
     private subTitle: string;
     private chart?: ECharts;
 
-    constructor(rawData: echarts.BarSeriesOption[], title: string) {
-        this.seriesData = rawData;
+    constructor(title: string) {
         this.title = title;
         this.subTitle = "Gewichtsänderung pro Tag [kg]";
     }
@@ -544,7 +546,7 @@ export class BarChart {
             maximumFractionDigits: 2
         });
 
-        const [startDate, endDate] = getXLimits();
+        const [startDate, _] = getXLimits();
 
         const option: echarts.EChartsOption = {
             title: {
@@ -568,13 +570,6 @@ export class BarChart {
                 feature: {
                     saveAsImage: {}
                 }
-            },
-            legend: {
-                show: true,
-                top: "bottom",
-                selected: buildLegendSelectedCur(this.seriesData.map(s => {
-                    return parseInt(typeof s.name === "string" ? s.name : "");
-                }))
             },
             tooltip: {
                 trigger: "axis",
@@ -606,7 +601,6 @@ export class BarChart {
                     lineStyle: {
                         color: "#000"
                     }
-                    // TODO: https://echarts.apache.org/en/option.html#xAxis.axisLabel.formatter
                 },
                 splitLine: {
                     show: true,
@@ -653,18 +647,29 @@ export class BarChart {
                 {
                     type: "inside",
                     xAxisIndex: 0,
-                    filterMode: 'none',
                     startValue: startDate.toString(),
-                    endValue: endDate.toString(),
+                    endValue: getToday().toString(),
                 }
             ],
-            series: this.seriesData
         };
 
-        this.chart.setOption(option);
+        this.chart!.setOption(option);
 
         window.addEventListener("resize", () => {
             this.chart!.resize();
+        });
+    }
+
+    setData(data: echarts.BarSeriesOption[]) {
+        this.chart!.setOption({
+            series: data,
+            legend: {
+                show: true,
+                top: "bottom",
+                selected: buildLegendSelectedCur(data.map(s => {
+                    return parseInt(typeof s.name === "string" ? s.name : "");
+                }))
+            },
         });
     }
 }
