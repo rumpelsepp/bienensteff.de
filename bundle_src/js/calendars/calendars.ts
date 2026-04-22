@@ -5,7 +5,7 @@ import calDayGridPlugin from '@fullcalendar/daygrid';
 import calListPlugin from '@fullcalendar/list';
 import { Temporal } from '@js-temporal/polyfill';
 
-import { BeeDates, TUBDates, ZuchtDates } from "./dates";
+import { BeeDates, TUBDates, ZuchtDates } from "./events";
 
 function getCalender(calElement: HTMLElement, events: Object[], startDate: Temporal.PlainDate, endRange: Temporal.PlainDate): Calendar {
   return new Calendar(calElement, {
@@ -28,7 +28,7 @@ function getCalender(calElement: HTMLElement, events: Object[], startDate: Tempo
   });
 }
 
-abstract class BaseCalendar {
+export abstract class BaseCalendar {
   formElement: HTMLFormElement;
   calElement: HTMLElement;
   dateInput: HTMLInputElement;
@@ -79,7 +79,7 @@ abstract class BaseCalendar {
   }
 }
 
-class BeeStatesCalendar extends BaseCalendar {
+export class BeeStatesCalendar extends BaseCalendar {
   get events(): Object[] {
     const dates = new BeeDates(this.startDate);
     return [
@@ -145,7 +145,7 @@ class BeeStatesCalendar extends BaseCalendar {
   }
 }
 
-class TUBCalendar extends BaseCalendar {
+export class TUBCalendar extends BaseCalendar {
   get events(): Object[] {
     const dates = new TUBDates(this.startDate);
 
@@ -213,7 +213,7 @@ class TUBCalendar extends BaseCalendar {
 
 }
 
-class ZuchtCalendar extends BaseCalendar {
+export class ZuchtCalendar extends BaseCalendar {
   get events(): Object[] {
     const dates = new ZuchtDates(this.startDate);
 
@@ -301,5 +301,3 @@ class ZuchtCalendar extends BaseCalendar {
   }
 
 }
-
-export { BaseCalendar, BeeStatesCalendar, TUBCalendar, ZuchtCalendar };
