@@ -40,7 +40,7 @@ function normalizeYear(records: Record[]): Record[] {
     return records.map(r => {
         let today = Temporal.Now.plainDateISO();
         return {
-            date: r.date.with({"year": today.year}),
+            date: r.date.with({ "year": today.year }),
             value: r.value,
             nWaagen: r.nWaagen,
             delta: r.delta
@@ -159,6 +159,7 @@ export async function fetchTrachtnetData(years: number | number[], region: strin
 
 export async function getTrachtnetSeries(year: number | number[], region: string, normalize: boolean = false): Promise<echarts.LineSeriesOption[]> {
     const data = await fetchTrachtnetData(year, region);
+    const today = getToday();
     let out: echarts.LineSeriesOption[] = [];
 
     for (const [year, records] of Object.entries(data[region])) {
@@ -166,7 +167,12 @@ export async function getTrachtnetSeries(year: number | number[], region: string
             throw new Error(`Invalid year in data: ${year}`);
         }
 
-        let seriesData = (normalize ? normalizeYear(records) : records).map(r => {
+        let seriesData = (normalize ? normalizeYear(records) : records).filter(r => {
+            if (r.date == today) {
+                return false;
+            }
+            return true;
+        }).map(r => {
             return [
                 r.date.toString(),
                 r.value,
@@ -327,13 +333,13 @@ function getXLimits(): [Temporal.PlainDate, Temporal.PlainDate] {
     let startDate: Temporal.PlainDate;
     let endDate: Temporal.PlainDate;
     if ((today.month < 4) || (today.month > 6)) {
-        startDate = today.with({"month": 1, "day": 1});
-        endDate = today.with({"month": 12, "day": 31});
+        startDate = today.with({ "month": 1, "day": 1 });
+        endDate = today.with({ "month": 12, "day": 31 });
     } else {
-        startDate = today.with({"month": 4, "day": 1});
-        endDate = today.with({"month": 7, "day": 30});
+        startDate = today.with({ "month": 4, "day": 1 });
+        endDate = today.with({ "month": 7, "day": 30 });
     }
-    
+
     return [startDate, endDate];
 }
 
@@ -408,7 +414,7 @@ export class LineChart {
                 formatter: params => {
                     let out = "";
                     // @ts-expect-error
-                    for (const p of params) { 
+                    for (const p of params) {
                         const prefix = `${p.marker} <b>${p.seriesName}</b>`;
                         const waagen = p.value[2];
                         if (waagen === null) {
@@ -446,10 +452,10 @@ export class LineChart {
                         formatter: params => {
                             const value = params.value;
                             if (!isInteger(value)) {
-                                throw new Error("Date axis expected!"); 
+                                throw new Error("Date axis expected!");
                             }
                             return axisPointerCallback(value);
-                        } 
+                        }
                     },
                 },
                 splitLine: {
