@@ -6,7 +6,7 @@ Die Daten für die folgende Auswertungen stammen aus Trachtnet, das von [Agrarme
 Für Trachtnet gibt es eine eigene [Web UI](https://dlr-web-daten1.aspdienste.de/cgi-bin/tdsa/tdsa_client.pl), die interaktiv verwendet werden kann.
 Die folgenden Grafiken sind meine eigenen Auswertungen und zeigen hauptsächlich für mich selbst relevante Regionen.
 Die Graphen werden täglich aktualisiert.
-Die Daten zu „heute“ und „gestern“ sind jeweils ungenau, da das Trachtnet Netzwerk die Datensätze mit einer gewissen Verzögerung aktualisiert.
+Die Daten zu „heute“ und „gestern“ fehlen, da das Trachtnet Netzwerk die Datensätze verzögert aktualisiert.
 {.lead}
 
 
