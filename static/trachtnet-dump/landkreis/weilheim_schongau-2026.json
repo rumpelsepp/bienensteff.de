@@ -552,12 +552,12 @@
   {
     "dates": "2026-04-21",
     "values": -10.11,
-    "n_waagen": 1
+    "n_waagen": 2
   },
   {
     "dates": "2026-04-22",
-    "values": null,
-    "n_waagen": null
+    "values": -10.18,
+    "n_waagen": 2
   },
   {
     "dates": "2026-04-23",
