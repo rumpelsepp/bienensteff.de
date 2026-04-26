@@ -27,6 +27,10 @@ type TrachtNetRawData = {
     n_waagen: number | null,
 }
 
+function formatRecord(record: Record): string {
+    return `date: ${record.date.toLocaleString()}; value: ${record.value}; nWaagen: ${record.nWaagen}; delta: ${record.delta}`;
+}
+
 function getCurrentYear(): number {
     return Temporal.Now.plainDateISO().year;
 }
@@ -155,6 +159,12 @@ export async function fetchTrachtnetData(years: number | number[], region: strin
                 delta: delta
             };
         }).filter((r: Record) => {
+            if (r.value === null || r.nWaagen == 0) {
+                return false;
+            }
+            return true;
+        })
+        .filter((r: Record) => {
             if (r.date.equals(today) || r.date.equals(yesterday)) {
                 return false;
             }
@@ -279,38 +289,52 @@ function buildLegendSelectedCur(allYears: number[]): { [key: string]: boolean } 
 type MetaData = {
     year: number;
     region: string;
-    globalMax: { value: number, date: Temporal.PlainDate };
-    globalMin: { value: number, date: Temporal.PlainDate };
-    maxDelta: { value: number; dates: Temporal.PlainDate[] };
-    bestDays: Temporal.PlainDate[];
+    globalMax: Record,
+    globalMin: Record,
+    maxDelta: Record,
 };
 
-export function metaDataOfYear(year: number, region: string, rawData: TrachtNetData): MetaData | null {
-    let data = rawData[region][year];
-    const maxDelta = Math.max(...data.filter(r => r.delta !== null).map(r => r.delta!));
-    const bestDays = data
-        .filter(r => r.delta === maxDelta)
-        .map(r => r.date);
-
-    const minValue = Math.min(...data.map(r => r.value));
-    const minDate = data.find(r => r.value === minValue)?.date ?? null;
-
-    const maxValue = Math.max(...data.map(d => d.value));
-    const maxDate = data.find(r => r.value === maxValue)?.date ?? null;
-
-    if (!minDate || !maxDate) {
-        return null; // No valid data for min or max
+function isInSeason(date: Temporal.PlainDate): boolean {
+    if (date.month >= 3 && date.month <= 8) {
+        return true;
     }
+    return false;
+}
 
+export function metaDataOfYear(year: number, region: string, rawData: TrachtNetData): MetaData | null {
+    const data = rawData[region][year];
+    
+    const maxData = data.reduce((max, current) => {
+        if (isInSeason(current.date)) {
+            if (max === null || current.value >= max.value) {
+                return current;
+            }
+        }
+        return max;
+    });
+    const minData = data.reduce((min, current) => {
+        if (min === null || current.value < min.value) {
+            return current;
+        }
+        return min;
+    });
+    const maxDelta = data.reduce((max, current) => {
+        if (isInSeason(current.date)) {
+            if (max === null || current.delta === null || max.delta === null || current.delta >= max.delta) {
+                return current;
+            }
+        }
+        return max;
+    });
+    
     return {
         year: year,
         // TODO: Capitalize the first letter of the region name.
         // This assumes that the region is a string and not an enum.
         region: toTitleCase(region),
-        globalMax: { value: maxValue, date: maxDate },
-        globalMin: { value: minValue, date: minDate },
-        maxDelta: { value: maxDelta, dates: bestDays },
-        bestDays: bestDays,
+        globalMax: maxData,
+        globalMin: minData,
+        maxDelta: maxDelta,
     }
 }
 
@@ -324,7 +348,7 @@ export function renderMetaData(data: MetaData): string {
   <tbody>
     <tr><th scope="row">Jahresminimum</th><td>${data.globalMin.date.toLocaleString()} (${formatterDE.format(data.globalMin.value)} kg)</td></tr>
     <tr><th scope="row">Jahresmaximum</th><td>${data.globalMax.date.toLocaleString()} (${formatterDE.format(data.globalMax.value)} kg)</td></tr>
-    <tr><th scope="row">Bester Tag</th><td>${data.maxDelta.dates.map(d => d.toLocaleString()).join(", ")} (Δ ${formatterDE.format(data.maxDelta.value)} kg)</td></tr>
+    <tr><th scope="row">Bester Tag</th><td>${data.maxDelta.date.toLocaleString()} (Δ ${formatterDE.format(data.maxDelta.delta!)} kg)</td></tr>
   </tbody>
 </table>`;
     return out;
