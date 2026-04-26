@@ -164,12 +164,12 @@ export async function fetchTrachtnetData(years: number | number[], region: strin
             }
             return true;
         })
-        .filter((r: Record) => {
-            if (r.date.equals(today) || r.date.equals(yesterday)) {
-                return false;
-            }
-            return true;
-        });
+            .filter((r: Record) => {
+                if (r.date.equals(today) || r.date.equals(yesterday)) {
+                    return false;
+                }
+                return true;
+            });
     }
 
     return out;
@@ -303,7 +303,7 @@ function isInSeason(date: Temporal.PlainDate): boolean {
 
 export function metaDataOfYear(year: number, region: string, rawData: TrachtNetData): MetaData | null {
     const data = rawData[region][year];
-    
+
     const maxData = data.reduce((max, current) => {
         if (isInSeason(current.date)) {
             if (max === null || current.value >= max.value) {
@@ -326,7 +326,7 @@ export function metaDataOfYear(year: number, region: string, rawData: TrachtNetD
         }
         return max;
     });
-    
+
     return {
         year: year,
         // TODO: Capitalize the first letter of the region name.
