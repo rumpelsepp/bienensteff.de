@@ -565,14 +565,19 @@
     "n_waagen": 1
   },
   {
+    "dates": "2026-04-24",
+    "values": null,
+    "n_waagen": null
+  },
+  {
     "dates": "2026-04-25",
-    "values": 4.97,
+    "values": 5.93,
     "n_waagen": 1
   },
   {
     "dates": "2026-04-26",
-    "values": null,
-    "n_waagen": null
+    "values": 5.91,
+    "n_waagen": 1
   },
   {
     "dates": "2026-04-27",
