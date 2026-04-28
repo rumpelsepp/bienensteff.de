@@ -64,6 +64,27 @@ Zum Beispiel sind chemische Schädlingsbekämpfungsmittel grundsätzlich untersa
 Genauere Details können der verlinkten EU-Verordnung entnommen werden.
 Bio-Imkerein werden regelmäßig auditiert und die Erfüllung der gesetzlichen Vorgaben überprüft.
 
+## Marken und Zertifikate
+
+Im Lebensmittelhandel gibt es viele Qualitäts-Zertifikate, Marken und die generelle Unterteilung in konventionell und bio.
+Während die Unterscheidung von konventiellem Honig zu Bio-Honig per Gesetz geregelt ist, schließt man als Imker bei der Verwendung von Marken oder Zertifikaten oft einen Vertrag mit einem Zeichengeber.
+Marken und Zertifikate weißen die Erfüllung bestimmter Kriterien nach.
+Der Nutzen ist individuell unterschiedlich: Zum Beispiel benötigen manche Imker benötigen einen formalen Qualitätsnachweis gegenüber Supermärkten während andere Zertifikate rein für eigene Marketingzwecke nutzen.
+
+Unsere Imkerei nutzt die Marke [Echter Deutscher Honig®](https://deutscherimkerbund.de/warum-unser-honig/) vom Deutschen Imkerbund.
+Durch den Verkauf von Honig unter dieser Marke verpflichtet sich der Imker, strengere Qualitskriterien einzuhalten als durch die Honigverordnung vorgeschrieben.
+Der Deutsche Imkerbund führt über die Vereinsstruktur selbst Schulungen und Qualitätskontrollen durch.
+Die Qualitätskontrollen finden unabhängig von behördlichen Kontrollen statt und haben das übergeordnete Ziel den Imker bei der Erfüllung der Qualitätskriterien zu unterstützen.
+
+Zusätzlich ist unsere Imkerei Zeichennutzer des Siegels [Geprüfte Qualität Bayern für Honig](https://www.gq-bayern.de).
+Zertifikate sind oft verbunden mit strengen Auflagen und entsprechenden vor Ort Kontrollen und einer [begrenzten Gültigkeit](/zertifikate/20250523-gq-zertifikat.pdf).
+[Die Qualitätsbestimmungen](https://www.gq-bayern.de/wp-content/uploads/%C3%96ffentlicher-Bereich/Ueber-GQ-Bayern/Qualitaets-und-Pruefbestimmungen/Tierisch/Honig/gqualitaet_honig.pdf) für die Zertifikate sind beim Zeichengeber einsehbar; oft gibt es auch eine [Hilfestellung](https://www.gq-bayern.de/wp-content/uploads/%C3%96ffentlicher-Bereich/Ueber-GQ-Bayern/Qualitaets-und-Pruefbestimmungen/Tierisch/Honig/2021_12_Leistungsgegenueberstellung_GQ_3_Honig-M1-Genehmigt.pdf), die den Mehrwert des Zertifikates herausstellt.
+Durch das Siegel Geprüfte Qualität Bayern weißen wir eine nachvollziehbare und saubere Arbeitsweise in unserer Imkerei nach.
+Unsere [Rückverfolgungsdatenbank](https://db.bienensteff.de) entstammt direkt den Anforderungen des Programms Geprüfte Qualität Bayern und setzt das Kriterium der Dokumentationspflicht unserer Honigchargen um.
+
+Im Bio-Bereich werden oft die Siegel von Bio-Verbänden (z. B. [Naturland](https://www.naturland.de/) oder [Bioland](https://www.bioland.de/)) verwendet.
+Der formale Ablauf ist vergleichbar mit einer Zertifizierung von Geprüfte Qualität Bayern.
+
 ## Qualitätskriterien
 
 Auf den Honiggläsern des Deutschen Imkerbundes findet sich der Hinweis "kühl, trocken, dunkel lagern".
@@ -157,27 +178,6 @@ Der Deutsche Imkerbund beschreibt den HMF-Gehalt ebenfalls als Indikator für sc
 HMF ist ein Zuckerabbauprodukt, das insbesondere bei Überhitzung und unsachgemäßer Lagerung entsteht.
 Ein niedriger HMF-Gehalt ist also ein Kriterium für schonend gewonnenen und richtig gelagerten Honig.
 {{</ blockquote >}}
-
-### Marken und Zertifikate
-
-Im Lebensmittelhandel gibt es viele Qualitäts-Zertifikate, Marken und die generelle Unterteilung in konventionell und bio.
-Während die Unterscheidung von konventiellem Honig zu Bio-Honig per Gesetz geregelt ist, schließt man als Imker bei der Verwendung von Marken oder Zertifikaten oft einen Vertrag mit einem Zeichengeber.
-Marken und Zertifikate weißen die Erfüllung bestimmter Kriterien nach.
-Der Nutzen ist individuell unterschiedlich: Zum Beispiel benötigen manche Imker benötigen einen formalen Qualitätsnachweis gegenüber Supermärkten während andere Zertifikate rein für eigene Marketingzwecke nutzen.
-
-Unsere Imkerei nutzt die Marke [Echter Deutscher Honig®](https://deutscherimkerbund.de/warum-unser-honig/) vom Deutschen Imkerbund.
-Durch den Verkauf von Honig unter dieser Marke verpflichtet sich der Imker, strengere Qualitskriterien einzuhalten als durch die Honigverordnung vorgeschrieben.
-Der Deutsche Imkerbund führt über die Vereinsstruktur selbst Schulungen und Qualitätskontrollen durch.
-Die Qualitätskontrollen finden unabhängig von behördlichen Kontrollen statt und haben das übergeordnete Ziel den Imker bei der Erfüllung der Qualitätskriterien zu unterstützen.
-
-Zusätzlich ist unsere Imkerei Zeichennutzer des Siegels [Geprüfte Qualität Bayern für Honig](https://www.gq-bayern.de).
-Zertifikate sind oft verbunden mit strengen Auflagen und entsprechenden vor Ort Kontrollen und einer [begrenzten Gültigkeit](/zertifikate/20250523-gq-zertifikat.pdf).
-[Die Qualitätsbestimmungen](https://www.gq-bayern.de/wp-content/uploads/%C3%96ffentlicher-Bereich/Ueber-GQ-Bayern/Qualitaets-und-Pruefbestimmungen/Tierisch/Honig/gqualitaet_honig.pdf) für die Zertifikate sind beim Zeichengeber einsehbar; oft gibt es auch eine [Hilfestellung](https://www.gq-bayern.de/wp-content/uploads/%C3%96ffentlicher-Bereich/Ueber-GQ-Bayern/Qualitaets-und-Pruefbestimmungen/Tierisch/Honig/2021_12_Leistungsgegenueberstellung_GQ_3_Honig-M1-Genehmigt.pdf), die den Mehrwert des Zertifikates herausstellt.
-Durch das Siegel Geprüfte Qualität Bayern weißen wir eine nachvollziehbare und saubere Arbeitsweise in unserer Imkerei nach.
-Unsere [Rückverfolgungsdatenbank](https://db.bienensteff.de) entstammt direkt den Anforderungen des Programms Geprüfte Qualität Bayern und setzt das Kriterium der Dokumentationspflicht unserer Honigchargen um.
-
-Im Bio-Bereich werden oft die Siegel von Bio-Verbänden (z. B. [Naturland](https://www.naturland.de/) oder [Bioland](https://www.bioland.de/)) verwendet.
-Der formale Ablauf ist vergleichbar mit einer Zertifizierung von Geprüfte Qualität Bayern.
 
 ### Zusammenfassung
 
