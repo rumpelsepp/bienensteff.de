@@ -77,7 +77,7 @@ Der Deutsche Imkerbund führt über die Vereinsstruktur selbst Schulungen und Qu
 Die Qualitätskontrollen finden unabhängig von behördlichen Kontrollen statt und haben das übergeordnete Ziel den Imker bei der Erfüllung der Qualitätskriterien zu unterstützen.
 
 Zusätzlich ist unsere Imkerei Zeichennutzer des Siegels [Geprüfte Qualität Bayern für Honig](https://www.gq-bayern.de).
-Zertifikate sind oft verbunden mit strengen Auflagen und entsprechenden vor Ort Kontrollen und einer [begrenzten Gültigkeit](/zertifikate/20250523-gq-zertifikat.pdf).
+Zertifikate sind oft verbunden mit strengen Auflagen und entsprechenden Kontrollen vor Ort und einer [begrenzten Gültigkeit](/zertifikate/20250523-gq-zertifikat.pdf).
 [Die Qualitätsbestimmungen](https://www.gq-bayern.de/wp-content/uploads/%C3%96ffentlicher-Bereich/Ueber-GQ-Bayern/Qualitaets-und-Pruefbestimmungen/Tierisch/Honig/gqualitaet_honig.pdf) für die Zertifikate sind beim Zeichengeber einsehbar; oft gibt es auch eine [Hilfestellung](https://www.gq-bayern.de/wp-content/uploads/%C3%96ffentlicher-Bereich/Ueber-GQ-Bayern/Qualitaets-und-Pruefbestimmungen/Tierisch/Honig/2021_12_Leistungsgegenueberstellung_GQ_3_Honig-M1-Genehmigt.pdf), die den Mehrwert des Zertifikates herausstellt.
 Durch das Siegel Geprüfte Qualität Bayern weißen wir eine nachvollziehbare und saubere Arbeitsweise in unserer Imkerei nach.
 Unsere [Rückverfolgungsdatenbank](https://db.bienensteff.de) entstammt direkt den Anforderungen des Programms Geprüfte Qualität Bayern und setzt das Kriterium der Dokumentationspflicht unserer Honigchargen um.
