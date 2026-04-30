@@ -581,18 +581,18 @@
   },
   {
     "dates": "2026-04-27",
-    "values": 11.67,
+    "values": 11.65,
     "n_waagen": 50
   },
   {
     "dates": "2026-04-28",
-    "values": 11.38,
-    "n_waagen": 43
+    "values": 13.1,
+    "n_waagen": 50
   },
   {
     "dates": "2026-04-29",
-    "values": null,
-    "n_waagen": null
+    "values": 12.76,
+    "n_waagen": 43
   },
   {
     "dates": "2026-04-30",
