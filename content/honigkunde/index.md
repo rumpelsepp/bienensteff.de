@@ -62,7 +62,24 @@ Für Bio-Honig gilt zusätzlich die [Verordnung über die ökologische/biologisc
 Bio-Honig grenzt sich von konventionellen Honig hauptsächlich durch die Betriebsweise des Imkers ab.
 Zum Beispiel sind chemische Schädlingsbekämpfungsmittel grundsätzlich untersagt, es besteht eine detaillierte Dokumentationspflicht und es muss darauf geachtet werden, dass das Wachs in den Bienenstöcken eine hohe Qualität aufweist und frei von Rückständen etwaiger Pestizide o. ä. ist.
 Genauere Details können der verlinkten EU-Verordnung entnommen werden.
-Bio-Imkerein werden regelmäßig auditiert und die Erfüllung der gesetzlichen Vorgaben überprüft.
+Bio-Imkereien werden regelmäßig auditiert und die Erfüllung der gesetzlichen Vorgaben überprüft.
+
+### Ist Bio-Honig besser als konventioneller Honig?
+
+Jein.
+Bio-Honig unterscheidet sich hauptsächlich durch die streng kontrollierte Betriebsweise und die umfangreichen Dokumentationspflichten des Imkers von konventionellem Honig.
+Dieser Mehraufwand spiegelt sich unterm Strich auch im Honigpreis wider.
+
+Aufgrund der strengen Kontrollen und der hohen formalen Hürden kann vorsichtig abgeleitet werden[^1], dass die Wahrscheinlichkeit, dass ein zufällig ausgewählter Bio-Imker unsauber bzw. unsachgemäß arbeitet, geringer ist als bei einem zufällig gewählten konventionellen Imker.
+Aber: Auch konventionelle Imker können eine saubere Arbeitsweise und umfangreiche Dokumentationen nachweisen, zum Beispiel durch [Zertifikate](#marken-und-zertifikate).
+
+Wenn sauber gearbeitet und die Qualität des Honigs regelmäßig labortechnisch überprüft wird, sind aus unserer Sicht konventioneller Honig und Bio-Honig absolut gleichwertig.
+Wesentlich wichtiger ist hier das Vertrauen des Kunden in den Imker.
+Ein nachhaltiges Vertrauensverhältnis kann nicht durch ein Bio-Zertifikat ersetzt werden.
+
+Wir stehen hinter den Werten der ökologischen Landwirtschaft, haben uns aber hauptsächlich aus Kostengründen (laufende Gebühren und der daraus resultierende höhere Honigpreis) gegen eine Bio-Zertifizierung entschieden.
+
+[^1]: persönliche Meinung des Autors
 
 ## Marken und Zertifikate
 
