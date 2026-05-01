@@ -241,13 +241,14 @@ export async function getTrachtnetDerivative(years: number | number[], region: s
 
     let entries: echarts.BarSeriesOption[] = [];
     years.forEach(y => {
-        let data = rawData[region][y];
-        let lastIndex = data.findLastIndex(r => r.nWaagen !== null);
+        let records = rawData[region][y];
+        records = normalizeYear(records);
+        let lastIndex = records.findLastIndex(r => r.nWaagen !== null);
 
         // Slice the data to only include entries with valid nWaagen.
-        data = lastIndex === -1 ? data : data.slice(0, lastIndex + 1);
+        records = lastIndex === -1 ? records : records.slice(0, lastIndex + 1);
 
-        let seriesData = data.map(r => {
+        let seriesData = records.map(r => {
             let color = r.delta! >= 0 ? QueenColor.Green.toString() : QueenColor.Red.toString();
             return { value: [r.date.toString(), r.delta, r.value, r.nWaagen], itemStyle: { color: color } };
         });
