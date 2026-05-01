@@ -59,23 +59,32 @@ enum QueenColor {
     Green = "#2ca02c"   // tab:green
 }
 
-function chooseQueenColor(year: number): QueenColor {
+// Codes from Gemini.
+enum QueenColorLight {
+    Blue= "#7ca0ba",
+    Black = "#555555",
+    Olive = "#99994d",
+    Red = "#cc7a7a",
+    Green = "#75a375"
+}
+
+function chooseQueenColor(year: number, light: boolean = false): QueenColor | QueenColorLight {
     switch (year % 10) {
         case 0:
         case 5:
-            return QueenColor.Blue;
+            return light ? QueenColorLight.Blue : QueenColor.Blue;
         case 1:
         case 6:
-            return QueenColor.Black;
+            return light ? QueenColorLight.Black : QueenColor.Black;
         case 2:
         case 7:
-            return QueenColor.Olive;
+            return light ? QueenColorLight.Olive : QueenColor.Olive;
         case 3:
         case 8:
-            return QueenColor.Red;
+            return light ? QueenColorLight.Red : QueenColor.Red;
         case 4:
         case 9:
-            return QueenColor.Green;
+            return light ? QueenColorLight.Green : QueenColor.Green;
         default:
             throw new Error(`Invalid year for queen color selection: ${year}`);
     }
@@ -249,7 +258,7 @@ export async function getTrachtnetDerivative(years: number | number[], region: s
         records = lastIndex === -1 ? records : records.slice(0, lastIndex + 1);
 
         let seriesData = records.map(r => {
-            let color = r.delta! >= 0 ? QueenColor.Green.toString() : QueenColor.Red.toString();
+            const color = r.delta! >= 0 ? chooseQueenColor(y) : chooseQueenColor(y, true);
             return { value: [r.date.toString(), r.delta, r.value, r.nWaagen], itemStyle: { color: color } };
         });
 
