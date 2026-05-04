@@ -61,7 +61,7 @@ enum QueenColor {
 
 // Codes from Gemini.
 enum QueenColorLight {
-    Blue= "#7ca0ba",
+    Blue = "#7ca0ba",
     Black = "#555555",
     Olive = "#99994d",
     Red = "#cc7a7a",
@@ -172,13 +172,12 @@ export async function fetchTrachtnetData(years: number | number[], region: strin
                 return false;
             }
             return true;
-        })
-            .filter((r: Record) => {
-                if (r.date.equals(today) || r.date.equals(yesterday)) {
-                    return false;
-                }
-                return true;
-            });
+        }).filter((r: Record) => {
+            if (r.date.equals(today) || r.date.equals(yesterday)) {
+                return false;
+            }
+            return true;
+        });
     }
 
     return out;
@@ -620,9 +619,8 @@ export class BarChart {
                     let out = "";
                     // @ts-expect-error
                     for (const p of params) {
-                        const date = Temporal.PlainDate.from(p.value[0])
                         const nWaagen = p.value[3];
-                        const prefix = `<b>${date.toLocaleString()}</b>`;
+                        const prefix = `${p.marker} <b>${p.seriesName}</b>`;
                         out += `${prefix}: Δ ${formatterDE.format(p.value[1])} kg (${nWaagen} Waagen)<br>`;
                     }
                     return out;
@@ -641,7 +639,19 @@ export class BarChart {
                     lineStyle: {
                         color: '#eee'
                     }
-                }
+                },
+                axisPointer: {
+                    label: {
+                        show: true,
+                        formatter: params => {
+                            const value = params.value;
+                            if (!isInteger(value)) {
+                                throw new Error("Date axis expected!");
+                            }
+                            return axisPointerCallback(value);
+                        }
+                    },
+                },
             },
             yAxis: {
                 type: "value",
