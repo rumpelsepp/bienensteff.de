@@ -2,27 +2,27 @@
   {
     "dates": "2026-01-01",
     "values": 0.22,
-    "n_waagen": 86
+    "n_waagen": 87
   },
   {
     "dates": "2026-01-02",
     "values": 0.35,
-    "n_waagen": 86
+    "n_waagen": 87
   },
   {
     "dates": "2026-01-03",
     "values": 0.36,
-    "n_waagen": 86
+    "n_waagen": 87
   },
   {
     "dates": "2026-01-04",
     "values": 0.3,
-    "n_waagen": 86
+    "n_waagen": 87
   },
   {
     "dates": "2026-01-05",
     "values": 0.32,
-    "n_waagen": 86
+    "n_waagen": 87
   },
   {
     "dates": "2026-01-06",
@@ -37,62 +37,62 @@
   {
     "dates": "2026-01-08",
     "values": 1.24,
-    "n_waagen": 84
+    "n_waagen": 85
   },
   {
     "dates": "2026-01-09",
-    "values": 0.23,
-    "n_waagen": 84
+    "values": 0.24,
+    "n_waagen": 85
   },
   {
     "dates": "2026-01-10",
     "values": 0.44,
-    "n_waagen": 83
+    "n_waagen": 84
   },
   {
     "dates": "2026-01-11",
     "values": 0.29,
-    "n_waagen": 85
+    "n_waagen": 86
   },
   {
     "dates": "2026-01-12",
     "values": 0.13,
-    "n_waagen": 84
+    "n_waagen": 85
   },
   {
     "dates": "2026-01-13",
     "values": -0.29,
-    "n_waagen": 84
+    "n_waagen": 85
   },
   {
     "dates": "2026-01-14",
     "values": -0.33,
-    "n_waagen": 84
+    "n_waagen": 85
   },
   {
     "dates": "2026-01-15",
     "values": -0.43,
-    "n_waagen": 85
+    "n_waagen": 86
   },
   {
     "dates": "2026-01-16",
     "values": -0.49,
-    "n_waagen": 84
+    "n_waagen": 85
   },
   {
     "dates": "2026-01-17",
     "values": -0.56,
-    "n_waagen": 83
+    "n_waagen": 84
   },
   {
     "dates": "2026-01-18",
     "values": -0.57,
-    "n_waagen": 82
+    "n_waagen": 83
   },
   {
     "dates": "2026-01-19",
     "values": -0.63,
-    "n_waagen": 82
+    "n_waagen": 83
   },
   {
     "dates": "2026-01-20",
@@ -611,23 +611,23 @@
   },
   {
     "dates": "2026-05-03",
-    "values": 17.84,
-    "n_waagen": 114
+    "values": 17.85,
+    "n_waagen": 115
   },
   {
     "dates": "2026-05-04",
-    "values": 19.53,
-    "n_waagen": 114
+    "values": 19.55,
+    "n_waagen": 115
   },
   {
     "dates": "2026-05-05",
-    "values": 20.56,
-    "n_waagen": 114
+    "values": 20.46,
+    "n_waagen": 115
   },
   {
     "dates": "2026-05-06",
-    "values": null,
-    "n_waagen": null
+    "values": 20.45,
+    "n_waagen": 115
   },
   {
     "dates": "2026-05-07",
