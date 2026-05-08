@@ -67,7 +67,8 @@ Entwicklungsphasen der drei Bienenwesen
 </caption>
 <thead>
     <tr>
-        <th colspan="4">
+        <th></th>
+        <th colspan="3">
             Königin <abbr title="also known as">aka.</abbr> Weisel
         </th>
         <th>
