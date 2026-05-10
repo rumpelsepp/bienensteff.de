@@ -243,7 +243,6 @@ export class ZuchtCalendar extends BaseCalendar {
         start: dates.schlupfDate.toString()!,
         allDay: true,
         color: "gray",
-        classNames: ["fst-italic"]
       },
       {
         title: 'PV auflösen (X+21)',
@@ -262,7 +261,6 @@ export class ZuchtCalendar extends BaseCalendar {
         start: dates.köGeschlechtsreif.toString()!,
         allDay: true,
         color: "gray",
-        classNames: ["fst-italic"]
       },
       {
         title: 'Kö in Eilage (X+28)',
