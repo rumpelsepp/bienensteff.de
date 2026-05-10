@@ -15,6 +15,11 @@ function renderCalendarWidget(
     const input = document.querySelector<HTMLInputElement>(selector)!;
     input.value = getDateParam().toString();
 
+    const form = document.querySelector<HTMLFormElement>(`#${containerId} #date-form`);
+    form?.addEventListener("change", () => {
+        form.requestSubmit();
+    });
+
     const cal = new CalendarClass(containerId);
     cal.render();
     cal.registerSubmitHandler();
