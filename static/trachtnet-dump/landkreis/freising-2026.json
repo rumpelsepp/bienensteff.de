@@ -651,18 +651,18 @@
   },
   {
     "dates": "2026-05-11",
-    "values": 11.83,
+    "values": 11.86,
     "n_waagen": 6
   },
   {
     "dates": "2026-05-12",
-    "values": 11.78,
-    "n_waagen": 2
+    "values": 11.42,
+    "n_waagen": 6
   },
   {
     "dates": "2026-05-13",
-    "values": null,
-    "n_waagen": null
+    "values": 11.36,
+    "n_waagen": 6
   },
   {
     "dates": "2026-05-14",
