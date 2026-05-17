@@ -672,12 +672,12 @@
   {
     "dates": "2026-05-15",
     "values": 20.32,
-    "n_waagen": 3
+    "n_waagen": 5
   },
   {
     "dates": "2026-05-16",
-    "values": null,
-    "n_waagen": null
+    "values": 20.01,
+    "n_waagen": 4
   },
   {
     "dates": "2026-05-17",
