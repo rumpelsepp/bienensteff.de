@@ -437,27 +437,27 @@
   {
     "dates": "2026-03-29",
     "values": -3.49,
-    "n_waagen": 861
+    "n_waagen": 862
   },
   {
     "dates": "2026-03-30",
     "values": -3.59,
-    "n_waagen": 860
+    "n_waagen": 861
   },
   {
     "dates": "2026-03-31",
     "values": -3.79,
-    "n_waagen": 860
+    "n_waagen": 861
   },
   {
     "dates": "2026-04-01",
     "values": -4.04,
-    "n_waagen": 863
+    "n_waagen": 864
   },
   {
     "dates": "2026-04-02",
     "values": -4.27,
-    "n_waagen": 862
+    "n_waagen": 863
   },
   {
     "dates": "2026-04-03",
@@ -681,13 +681,13 @@
   },
   {
     "dates": "2026-05-17",
-    "values": 21.08,
-    "n_waagen": 997
+    "values": 21.0,
+    "n_waagen": 1066
   },
   {
     "dates": "2026-05-18",
-    "values": null,
-    "n_waagen": null
+    "values": 21.57,
+    "n_waagen": 995
   },
   {
     "dates": "2026-05-19",
