@@ -691,13 +691,13 @@
   },
   {
     "dates": "2026-05-19",
-    "values": 3.24,
+    "values": 3.23,
     "n_waagen": 2
   },
   {
     "dates": "2026-05-20",
-    "values": null,
-    "n_waagen": null
+    "values": 3.21,
+    "n_waagen": 2
   },
   {
     "dates": "2026-05-21",
