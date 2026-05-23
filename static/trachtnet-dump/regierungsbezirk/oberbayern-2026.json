@@ -697,17 +697,17 @@
   {
     "dates": "2026-05-20",
     "values": 24.53,
-    "n_waagen": 94
+    "n_waagen": 95
   },
   {
     "dates": "2026-05-21",
-    "values": 25.31,
-    "n_waagen": 91
+    "values": 25.09,
+    "n_waagen": 96
   },
   {
     "dates": "2026-05-22",
-    "values": null,
-    "n_waagen": null
+    "values": 25.8,
+    "n_waagen": 90
   },
   {
     "dates": "2026-05-23",
