@@ -560,42 +560,47 @@
     "n_waagen": 1
   },
   {
-    "dates": "2026-04-23",
+    "dates": "2026-05-23",
+    "values": 1.08,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2026-05-24",
     "values": null,
     "n_waagen": null
   },
   {
-    "dates": "2026-04-24",
+    "dates": "2026-05-25",
     "values": null,
     "n_waagen": null
   },
   {
-    "dates": "2026-04-25",
+    "dates": "2026-05-26",
     "values": null,
     "n_waagen": null
   },
   {
-    "dates": "2026-04-26",
+    "dates": "2026-05-27",
     "values": null,
     "n_waagen": null
   },
   {
-    "dates": "2026-04-27",
+    "dates": "2026-05-28",
     "values": null,
     "n_waagen": null
   },
   {
-    "dates": "2026-04-28",
+    "dates": "2026-05-29",
     "values": null,
     "n_waagen": null
   },
   {
-    "dates": "2026-04-29",
+    "dates": "2026-05-30",
     "values": null,
     "n_waagen": null
   },
   {
-    "dates": "2026-04-30",
+    "dates": "2026-05-31",
     "values": null,
     "n_waagen": null
   }
