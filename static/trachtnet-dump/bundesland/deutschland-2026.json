@@ -557,7 +557,7 @@
   {
     "dates": "2026-04-22",
     "values": 2.3,
-    "n_waagen": 1028
+    "n_waagen": 1029
   },
   {
     "dates": "2026-04-23",
@@ -712,12 +712,12 @@
   {
     "dates": "2026-05-23",
     "values": 24.03,
-    "n_waagen": 1022
+    "n_waagen": 1100
   },
   {
     "dates": "2026-05-24",
-    "values": null,
-    "n_waagen": null
+    "values": 24.95,
+    "n_waagen": 1020
   },
   {
     "dates": "2026-05-25",
