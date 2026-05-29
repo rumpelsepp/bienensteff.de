@@ -722,22 +722,22 @@
   {
     "dates": "2026-05-25",
     "values": 28.3,
-    "n_waagen": 250
+    "n_waagen": 251
   },
   {
     "dates": "2026-05-26",
     "values": 29.4,
-    "n_waagen": 250
+    "n_waagen": 251
   },
   {
     "dates": "2026-05-27",
-    "values": 29.87,
+    "values": 30.23,
     "n_waagen": 250
   },
   {
     "dates": "2026-05-28",
-    "values": null,
-    "n_waagen": null
+    "values": 30.07,
+    "n_waagen": 213
   },
   {
     "dates": "2026-05-29",
