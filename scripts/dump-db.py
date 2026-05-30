@@ -50,8 +50,7 @@ def main() -> None:
             right_on="id",
             how="full",
         )
-        .drop("sku_id")
-        .drop("id")
+        .drop(["sku_id", "id", "label_right"])
         .rename({"article_id": "id"})
     )
     
