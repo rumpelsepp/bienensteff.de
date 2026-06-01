@@ -597,20 +597,7 @@
         "packaging_type": "Stück",
         "packaging_unit": 1
       },
-      "fillings": [
-        {
-          "filling_id": "A-2026-01",
-          "date": "2026-05-28",
-          "best_before_date": "2028-05-30",
-          "pieces": 40,
-          "comment": "Vorbestellungen, abgefüllt aus der Siebkanne nach dem Schleudern",
-          "dib_field": "",
-          "label": "Hausmarke Honig 500 g",
-          "weight_total": 20.0,
-          "batch_id": "L-2026-02",
-          "id": "A-2026-01"
-        }
-      ],
+      "fillings": null,
       "id": "SKU-HN500E"
     },
     {
@@ -690,6 +677,18 @@
           "weight_total": 21.5,
           "batch_id": "L-2025-03",
           "id": "A-2025-03"
+        },
+        {
+          "filling_id": "A-2026-01",
+          "date": "2026-05-28",
+          "best_before_date": "2028-05-30",
+          "pieces": 40,
+          "comment": "Vorbestellungen, abgefüllt aus der Siebkanne nach dem Schleudern",
+          "dib_field": "",
+          "label": "Hausmarke Blütenhonig 500 g",
+          "weight_total": 20.0,
+          "batch_id": "L-2026-02",
+          "id": "A-2026-01"
         }
       ],
       "id": "SKU-HNB500E"
@@ -1159,10 +1158,10 @@
       "pieces": 40,
       "comment": "Vorbestellungen, abgefüllt aus der Siebkanne nach dem Schleudern",
       "dib_field": "",
-      "label": "Hausmarke Honig 500 g",
+      "label": "Hausmarke Blütenhonig 500 g",
       "weight_total": 20.0,
       "batch_id": "L-2026-02",
-      "sku": "HN500E",
+      "sku": "HNB500E",
       "id": "A-2026-01"
     }
   ],
@@ -2554,9 +2553,9 @@
           "pieces": 40,
           "comment": "Vorbestellungen, abgefüllt aus der Siebkanne nach dem Schleudern",
           "dib_field": "",
-          "label": "Hausmarke Honig 500 g",
+          "label": "Hausmarke Blütenhonig 500 g",
           "weight_total": 20.0,
-          "sku": "HN500E",
+          "sku": "HNB500E",
           "id": "A-2026-01"
         }
       ],
