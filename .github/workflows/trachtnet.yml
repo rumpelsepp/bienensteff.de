@@ -21,7 +21,7 @@ jobs:
         uses: astral-sh/setup-uv@v7
 
       - name: Install just
-        uses: extractions/setup-just@v3
+        uses: extractions/setup-just@v4
 
       - name: Update Trachtnet data
         run: |
