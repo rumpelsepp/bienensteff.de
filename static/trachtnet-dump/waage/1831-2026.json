@@ -741,17 +741,17 @@
   },
   {
     "dates": "2026-05-29",
-    "values": 54.4,
+    "values": 53.92,
     "n_waagen": 1
   },
   {
     "dates": "2026-05-30",
-    "values": null,
-    "n_waagen": null
+    "values": 56.25,
+    "n_waagen": 1
   },
   {
     "dates": "2026-05-31",
-    "values": null,
-    "n_waagen": null
+    "values": 57.24,
+    "n_waagen": 1
   }
 ]
