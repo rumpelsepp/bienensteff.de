@@ -757,22 +757,22 @@
   {
     "dates": "2026-06-01",
     "values": 30.2,
-    "n_waagen": 359
+    "n_waagen": 360
   },
   {
     "dates": "2026-06-02",
     "values": 30.57,
-    "n_waagen": 359
+    "n_waagen": 360
   },
   {
     "dates": "2026-06-03",
-    "values": 30.27,
-    "n_waagen": 278
+    "values": 30.21,
+    "n_waagen": 360
   },
   {
     "dates": "2026-06-04",
-    "values": null,
-    "n_waagen": null
+    "values": 30.5,
+    "n_waagen": 276
   },
   {
     "dates": "2026-06-05",
