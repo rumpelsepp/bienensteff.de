@@ -26,6 +26,11 @@ Gräfelfinger Str. 169a
   weight = 30
 
   [[menus.main]]
+  name = 'Bestellung'
+  pageRef = 'bestellformular'
+  weight = 35
+
+  [[menus.main]]
   name = 'Rezepte'
   pageRef = '/rezepte'
   weight = 40
