@@ -4,11 +4,9 @@ description: |
     Unser Honig wurde mehrfach bei der Bayerischen Honigprämierung ausgezeichnet – darüber gfrein wir uns natürlich narrisch.
     Ein schöner Beleg für echte Qualität aus unserer kleinen Imkerei.
     Seit 2025 tragen wir zudem das Siegel Geprüfte Qualität – Bayern für Honig.
-
-    Dieses Jahr war das Wetter ziemlich launisch – darum gibt es heuer nur eine Sorte.
-    Aber dafür ist unser Blütenhonig 🍯🌸 etwas ganz Besonderes: Er vereint das ganze Bienenjahr in einem Glas und überrascht mit einem intensiven, aromatischen Geschmack 🤤.
-    Probiert ihn aus!
 ---
+
+**Ware ist vorraussichtlich ab Mitte Juli verfügbar!**
 
 Unser Honig wurde mehrfach bei der Bayerischen Honigprämierung [ausgezeichnet]({{< relref "über-uns#auszeichnungen" >}}).
 Darüber gfrein wir uns natürlich narrisch!
@@ -17,15 +15,7 @@ Ein schöner Beleg für echte Qualität aus unserer kleinen Imkerei.
 Unser Honig wird zu 100 % in Bayern erzeugt, gelagert und liebevoll verarbeitet.
 {.lead}
 
-## Sortiment 2025 {#sortiment}
-
-{{< box header="! Ausverkauft !" >}}
-Unser Sortiment aus 2025 ist restlos ausverkauft! Vielen Dank an alle treuen Kunden, wir freuen uns auf die kommende Saison 2026! 🍯🐝
-{{</ box >}}
-
-Dieses Jahr war das Wetter ziemlich launisch – darum gibt es heuer nur eine Sorte.
-Aber dafür ist unser Blütenhonig 🍯🌸 etwas ganz Besonderes: Er vereint das ganze Bienenjahr in einem Glas und überrascht mit einem intensiven, aromatischen Geschmack 🤤.
-Probiert ihn aus!
+## Sortiment 2026 {#sortiment}
 
 {{< sortiment.inline dataset="sortiment" >}}
 {{ $datasetName := .Get "dataset" }}
