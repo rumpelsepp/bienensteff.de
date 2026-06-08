@@ -20,6 +20,21 @@
                     An diese Telefonnummer wenden wir uns nur bei Rückfragen.
                 </div>
                 
+                <div class="mb-3">
+                    <label class="form-label" for="delivery">Versand</label>
+                    <select class="form-select" id="delivery" name="delivery">
+                        <option value="Abholung (Gräfelfinger Str. 169a, 81375 München)" selected>Abholung (Gräfelfinger Str. 169a, 81375 München)</option>
+                        <option value="Abholung (Granitweg 20, 94481 Grafenau)">Abholung (Granitweg 20, 94481 Grafenau)</option>
+                        <option value="kostenlose Lieferung (nur im Umkreis Hadern!)">kostenlose Lieferung (nur im Umkreis Hadern!)</option>
+                        <option value="Postversand (zzgl. Frachtkosten)">Postversand (zzgl. Frachtkosten)</option>
+                    </select>
+                    <div class="form-text mb-3">
+                        Wie möchtest du Deine Ware erhalten?
+                    </div>
+                </div>
+                
+                <p>Gewünschte Artikel in Stück auswählen:</p>
+
                                                                                                                                     <div class="row">
                             <label class="form-check-label" for="HNB500E">
                                 {{ if hugo.IsDevelopment }}                                    <a href="/datenbank/q/sku-hnb500e">Hausmarke Blütenhonig 500 g</a>
@@ -34,19 +49,6 @@
                             </div>
                         </div>
                                                                         
-                <div class="mb-3">
-                    <label class="form-label" for="delivery">Versand</label>
-                    <select class="form-select" id="delivery" name="delivery">
-                        <option value="Abholung (Gräfelfinger Str. 169a, 81375 München)" selected>Abholung (Gräfelfinger Str. 169a, 81375 München)</option>
-                        <option value="Abholung (Granitweg 20, 94481 Grafenau)">Abholung (Granitweg 20, 94481 Grafenau)</option>
-                        <option value="kostenlose Lieferung (nur im Umkreis Hadern!)">kostenlose Lieferung (nur im Umkreis Hadern!)</option>
-                        <option value="Postversand (zzgl. Frachtkosten)">Postversand (zzgl. Frachtkosten)</option>
-                    </select>
-                <div class="form-text mb-3">
-                    Wie möchtest du Deine Ware erhalten?
-                </div>
-                </div>
-
                 <div class="mb-3">
                     <label class="form-label" for="comment">Nachricht</label>
                     <textarea class="form-control" id="comment" name="comment" rows="4"></textarea>
