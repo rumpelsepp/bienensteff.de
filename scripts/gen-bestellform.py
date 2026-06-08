@@ -34,6 +34,21 @@ TPL = """
                     An diese Telefonnummer wenden wir uns nur bei Rückfragen.
                 </div>
                 
+                <div class="mb-3">
+                    <label class="form-label" for="delivery">Versand</label>
+                    <select class="form-select" id="delivery" name="delivery">
+                        <option value="Abholung (Gräfelfinger Str. 169a, 81375 München)" selected>Abholung (Gräfelfinger Str. 169a, 81375 München)</option>
+                        <option value="Abholung (Granitweg 20, 94481 Grafenau)">Abholung (Granitweg 20, 94481 Grafenau)</option>
+                        <option value="kostenlose Lieferung (nur im Umkreis Hadern!)">kostenlose Lieferung (nur im Umkreis Hadern!)</option>
+                        <option value="Postversand (zzgl. Frachtkosten)">Postversand (zzgl. Frachtkosten)</option>
+                    </select>
+                    <div class="form-text mb-3">
+                        Wie möchtest du Deine Ware erhalten?
+                    </div>
+                </div>
+                
+                <p>Gewünschte Artikel in Stück auswählen:</p>
+
                 {% for article in articles %}
                     {% if article.in_stock %}
                         <div class="row">
@@ -54,19 +69,6 @@ TPL = """
                         </div>
                     {% endif %}
                 {% endfor %}
-
-                <div class="mb-3">
-                    <label class="form-label" for="delivery">Versand</label>
-                    <select class="form-select" id="delivery" name="delivery">
-                        <option value="Abholung (Gräfelfinger Str. 169a, 81375 München)" selected>Abholung (Gräfelfinger Str. 169a, 81375 München)</option>
-                        <option value="Abholung (Granitweg 20, 94481 Grafenau)">Abholung (Granitweg 20, 94481 Grafenau)</option>
-                        <option value="kostenlose Lieferung (nur im Umkreis Hadern!)">kostenlose Lieferung (nur im Umkreis Hadern!)</option>
-                        <option value="Postversand (zzgl. Frachtkosten)">Postversand (zzgl. Frachtkosten)</option>
-                    </select>
-                <div class="form-text mb-3">
-                    Wie möchtest du Deine Ware erhalten?
-                </div>
-                </div>
 
                 <div class="mb-3">
                     <label class="form-label" for="comment">Nachricht</label>
