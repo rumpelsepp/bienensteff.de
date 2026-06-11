@@ -761,32 +761,32 @@
   },
   {
     "dates": "2026-06-02",
-    "values": 32.54,
+    "values": 32.53,
     "n_waagen": 120
   },
   {
     "dates": "2026-06-03",
-    "values": 32.22,
-    "n_waagen": 118
+    "values": 32.21,
+    "n_waagen": 120
   },
   {
     "dates": "2026-06-04",
-    "values": 32.18,
-    "n_waagen": 115
+    "values": 32.17,
+    "n_waagen": 117
   },
   {
     "dates": "2026-06-05",
-    "values": 31.82,
-    "n_waagen": 118
+    "values": 31.81,
+    "n_waagen": 120
   },
   {
     "dates": "2026-06-06",
-    "values": 32.16,
-    "n_waagen": 118
+    "values": 32.15,
+    "n_waagen": 120
   },
   {
     "dates": "2026-06-07",
-    "values": 32.34,
+    "values": 32.33,
     "n_waagen": 118
   },
   {
@@ -796,13 +796,13 @@
   },
   {
     "dates": "2026-06-09",
-    "values": 32.67,
+    "values": 32.57,
     "n_waagen": 115
   },
   {
     "dates": "2026-06-10",
-    "values": null,
-    "n_waagen": null
+    "values": 32.59,
+    "n_waagen": 118
   },
   {
     "dates": "2026-06-11",
