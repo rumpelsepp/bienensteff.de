@@ -792,7 +792,7 @@
   {
     "dates": "2026-06-08",
     "values": 30.9,
-    "n_waagen": 1101
+    "n_waagen": 1102
   },
   {
     "dates": "2026-06-09",
@@ -801,13 +801,13 @@
   },
   {
     "dates": "2026-06-10",
-    "values": 30.72,
-    "n_waagen": 1017
+    "values": 30.65,
+    "n_waagen": 1102
   },
   {
     "dates": "2026-06-11",
-    "values": null,
-    "n_waagen": null
+    "values": 30.51,
+    "n_waagen": 1017
   },
   {
     "dates": "2026-06-12",

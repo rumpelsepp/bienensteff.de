@@ -802,12 +802,12 @@
   {
     "dates": "2026-06-10",
     "values": 23.83,
-    "n_waagen": 7
+    "n_waagen": 8
   },
   {
     "dates": "2026-06-11",
-    "values": null,
-    "n_waagen": null
+    "values": 23.57,
+    "n_waagen": 7
   },
   {
     "dates": "2026-06-12",
