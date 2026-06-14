@@ -797,27 +797,27 @@
   {
     "dates": "2026-06-09",
     "values": 31.52,
-    "n_waagen": 359
+    "n_waagen": 360
   },
   {
     "dates": "2026-06-10",
     "values": 31.41,
-    "n_waagen": 359
+    "n_waagen": 360
   },
   {
     "dates": "2026-06-11",
     "values": 31.03,
-    "n_waagen": 359
+    "n_waagen": 360
   },
   {
     "dates": "2026-06-12",
-    "values": 31.24,
-    "n_waagen": 275
+    "values": 31.14,
+    "n_waagen": 360
   },
   {
     "dates": "2026-06-13",
-    "values": null,
-    "n_waagen": null
+    "values": 31.04,
+    "n_waagen": 281
   },
   {
     "dates": "2026-06-14",

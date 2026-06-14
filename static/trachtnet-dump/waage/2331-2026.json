@@ -811,13 +811,13 @@
   },
   {
     "dates": "2026-06-12",
-    "values": 2.58,
+    "values": 2.5,
     "n_waagen": 1
   },
   {
     "dates": "2026-06-13",
-    "values": null,
-    "n_waagen": null
+    "values": 2.05,
+    "n_waagen": 1
   },
   {
     "dates": "2026-06-14",
