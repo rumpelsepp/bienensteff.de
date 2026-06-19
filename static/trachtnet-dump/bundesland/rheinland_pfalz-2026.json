@@ -562,17 +562,17 @@
   {
     "dates": "2026-04-23",
     "values": 8.74,
-    "n_waagen": 248
+    "n_waagen": 249
   },
   {
     "dates": "2026-04-24",
     "values": 10.3,
-    "n_waagen": 249
+    "n_waagen": 250
   },
   {
     "dates": "2026-04-25",
     "values": 11.88,
-    "n_waagen": 249
+    "n_waagen": 250
   },
   {
     "dates": "2026-04-26",
@@ -836,18 +836,18 @@
   },
   {
     "dates": "2026-06-17",
-    "values": 35.65,
+    "values": 36.46,
     "n_waagen": 247
   },
   {
     "dates": "2026-06-18",
-    "values": null,
-    "n_waagen": null
+    "values": 38.54,
+    "n_waagen": 249
   },
   {
     "dates": "2026-06-19",
-    "values": null,
-    "n_waagen": null
+    "values": 38.24,
+    "n_waagen": 206
   },
   {
     "dates": "2026-06-20",
