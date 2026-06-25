@@ -866,13 +866,13 @@
   },
   {
     "dates": "2026-06-23",
-    "values": 49.46,
+    "values": 50.0,
     "n_waagen": 5
   },
   {
     "dates": "2026-06-24",
-    "values": null,
-    "n_waagen": null
+    "values": 51.64,
+    "n_waagen": 5
   },
   {
     "dates": "2026-06-25",
