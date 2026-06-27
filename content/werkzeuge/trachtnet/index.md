@@ -11,6 +11,8 @@ Die Daten zu „heute“ und „gestern“ fehlen, da das TrachtNet Netzwerk die
 
 ## Bayern
 
+{{< klima-widget station_id="03379" >}}
+
 {{< trachtnet-widget region="Bayern" type="derivative" >}}
 
 {{< trachtnet-widget region="Bayern" type="progress" >}}
