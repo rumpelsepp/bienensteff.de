@@ -13,7 +13,7 @@ type DailyRecordRaw = {
     temperature_mean: number,
     temperature_max: number,
     temperature_min: number,
-    dew_point_mean: number,
+    // dew_point_mean: number,
     precipitation_sum: number,
 }
 
@@ -22,7 +22,7 @@ type DailyRecord = {
     temperatureMean: number,
     temperatureMax: number,
     temperatureMin: number,
-    dewPointMean: number,
+    // dewPointMean: number,
     precipitationSum: number,
 }
 
@@ -34,14 +34,14 @@ async function fetchKlimaDaily(stationID: string): Promise<DailyRecord[]> {
     } else {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
-
+    
     return data.map((d: DailyRecordRaw) => {
         return {
             timestamp: Temporal.PlainDate.from(d.timestamp),
             temperatureMean: d.temperature_mean,
             temperatureMax: d.temperature_max,
             temperatureMin: d.temperature_min,
-            dewPointMean: d.dew_point_mean,
+            // dewPointMean: d.dew_point_mean,
             precipitationSum: d.precipitation_sum,
         };
     });
