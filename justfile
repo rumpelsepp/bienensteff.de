@@ -58,6 +58,9 @@ update-pricelist:
 update-trachtnet: && format-trachtnet
     ./scripts/dump-trachtnet.py --year $(date +%Y) --outdir static/trachtnet-dump
     
+update-klima:
+    ./scripts/dump-dwd.py --station-id 03379 static/klima/03379_daily.json static/klima/03387_hourly.json
+    
 update-trachtnet-chosen:
     ./scripts/gen-trachtnet.py --chosen-evaluations
     mv -f *.svg static/trachtnet/

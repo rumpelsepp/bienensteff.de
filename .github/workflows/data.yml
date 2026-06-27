@@ -1,4 +1,4 @@
-name: Trachtnet Update
+name: Data Update
 
 on:
   schedule:
@@ -26,6 +26,10 @@ jobs:
       - name: Update Trachtnet data
         run: |
           just update-trachtnet
+
+      - name: Update klima data
+        run: |
+          just update-klima
 
       - name: Commit and Push Changes
         run: |

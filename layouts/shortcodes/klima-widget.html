@@ -1,0 +1,13 @@
+{{ $station_id := lower (.Get "station_id") }}
+{{ $cssID := printf "klima-%s-chart" $station_id }}
+
+<div class="klima-chart-container mb-4"
+    data-station-id="{{ $station_id }}"
+    data-id="{{ $cssID }}"
+>
+    <div class="card">
+        <div class="card-body" style="padding-left: 0; padding-right: 0;">
+            <div id="{{ $cssID }}" style="height: 400px;"></div>
+        </div>
+    </div>
+</div>

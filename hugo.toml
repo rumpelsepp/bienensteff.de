@@ -1,6 +1,6 @@
 baseURL = 'https://bienensteff.de'
 defaultContentLanguage = "de"
-languageCode = 'de-DE'
+locale = 'de-DE'
 title = "Imkerei Stefan Tatschner 🐝"
 timeZone = "Europe/Berlin"
 enableEmoji = true
