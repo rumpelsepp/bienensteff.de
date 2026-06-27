@@ -740,12 +740,37 @@
     "n_waagen": 1
   },
   {
+    "dates": "2026-05-29",
+    "values": null,
+    "n_waagen": null
+  },
+  {
     "dates": "2026-05-30",
     "values": 3.8,
     "n_waagen": 1
   },
   {
-    "dates": "2026-05-31",
+    "dates": "2026-06-26",
+    "values": 2.19,
+    "n_waagen": 1
+  },
+  {
+    "dates": "2026-06-27",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-06-28",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-06-29",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-06-30",
     "values": null,
     "n_waagen": null
   }
