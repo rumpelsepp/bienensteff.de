@@ -896,12 +896,12 @@
   },
   {
     "dates": "2026-06-29",
-    "values": 33.33,
+    "values": 33.28,
     "n_waagen": 1
   },
   {
     "dates": "2026-06-30",
-    "values": null,
-    "n_waagen": null
+    "values": 32.66,
+    "n_waagen": 1
   }
 ]
