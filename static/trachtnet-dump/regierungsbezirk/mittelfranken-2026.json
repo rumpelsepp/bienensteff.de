@@ -897,11 +897,11 @@
   {
     "dates": "2026-06-29",
     "values": 32.36,
-    "n_waagen": 58
+    "n_waagen": 69
   },
   {
     "dates": "2026-06-30",
-    "values": null,
-    "n_waagen": null
+    "values": 32.13,
+    "n_waagen": 58
   }
 ]
