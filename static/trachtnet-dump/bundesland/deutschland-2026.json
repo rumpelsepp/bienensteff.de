@@ -842,27 +842,27 @@
   {
     "dates": "2026-06-18",
     "values": 35.74,
-    "n_waagen": 1098
+    "n_waagen": 1099
   },
   {
     "dates": "2026-06-19",
     "values": 37.54,
-    "n_waagen": 1109
+    "n_waagen": 1110
   },
   {
     "dates": "2026-06-20",
     "values": 38.95,
-    "n_waagen": 1110
+    "n_waagen": 1111
   },
   {
     "dates": "2026-06-21",
     "values": 40.03,
-    "n_waagen": 1115
+    "n_waagen": 1116
   },
   {
     "dates": "2026-06-22",
     "values": 41.21,
-    "n_waagen": 1117
+    "n_waagen": 1118
   },
   {
     "dates": "2026-06-23",
@@ -901,7 +901,162 @@
   },
   {
     "dates": "2026-06-30",
-    "values": 44.16,
-    "n_waagen": 1031
+    "values": 44.13,
+    "n_waagen": 1112
+  },
+  {
+    "dates": "2026-07-01",
+    "values": 43.94,
+    "n_waagen": 1029
+  },
+  {
+    "dates": "2026-07-02",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-03",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-04",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-05",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-06",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-07",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-08",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-09",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-10",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-11",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-12",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-13",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-14",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-15",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-16",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-17",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-18",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-19",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-20",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-21",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-22",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-23",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-24",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-25",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-26",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-27",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-28",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-29",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-30",
+    "values": null,
+    "n_waagen": null
+  },
+  {
+    "dates": "2026-07-31",
+    "values": null,
+    "n_waagen": null
   }
 ]
