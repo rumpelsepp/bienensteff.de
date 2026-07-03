@@ -907,12 +907,12 @@
   {
     "dates": "2026-07-01",
     "values": 26.16,
-    "n_waagen": 7
+    "n_waagen": 8
   },
   {
     "dates": "2026-07-02",
-    "values": null,
-    "n_waagen": null
+    "values": 25.68,
+    "n_waagen": 7
   },
   {
     "dates": "2026-07-03",
