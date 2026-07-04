@@ -911,13 +911,13 @@
   },
   {
     "dates": "2026-07-02",
-    "values": 31.02,
+    "values": 31.01,
     "n_waagen": 1
   },
   {
     "dates": "2026-07-03",
-    "values": null,
-    "n_waagen": null
+    "values": 30.43,
+    "n_waagen": 1
   },
   {
     "dates": "2026-07-04",
