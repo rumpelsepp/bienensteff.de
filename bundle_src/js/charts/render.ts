@@ -45,18 +45,37 @@ async function fetchAndRenderDailyKlimaChart(id: string, stationID: string) {
 export async function initAllCharts() {
     const renderAllTrachtnet = <T>(selector: string, renderFn: (id: string, region: string, year: number) => Promise<T>) =>
         Array.from(document.querySelectorAll<HTMLElement>(selector))
-            .map(c => renderFn(c.dataset.id!, c.dataset.region!, parseInt(c.dataset.year!)));
-    const renderAllKlima =  <T>(selector: string, renderFn: (id: string, stationID: string) => Promise<T>) =>
+            .map(c => {
+                const { id, region, year } = c.dataset;
+                if (!id || !region || !year) {
+                    console.error("Trachtnet widget is missing required data attributes:", c);
+                    return Promise.resolve();
+                }
+                return renderFn(id, region, parseInt(year));
+            });
+    const renderAllKlima = <T>(selector: string, renderFn: (id: string, stationID: string) => Promise<T>) =>
         Array.from(document.querySelectorAll<HTMLElement>(selector))
-            .map(c => renderFn(c.dataset.id!, c.dataset.stationId!));
+            .map(c => {
+                const { id, stationId } = c.dataset;
+                if (!id || !stationId) {
+                    console.error("Klima widget is missing required data attributes:", c);
+                    return Promise.resolve();
+                }
+                return renderFn(id, stationId);
+            });
 
 
     const progressPromises = renderAllTrachtnet(".trachtnet-progress-chart-container", fetchAndRenderTrachtProgressChart);
     const derivativePromises = renderAllTrachtnet(".trachtnet-derivative-chart-container", fetchAndRenderDerivativeChart);
     const evaluationPromises = renderAllTrachtnet(".trachtnet-evaluation-table-container", fetchAndRenderEvaluationTable);
     const klimaPromises = renderAllKlima(".klima-chart-container", fetchAndRenderDailyKlimaChart);
-    
+
     const allPromises = [...progressPromises, ...derivativePromises, ...evaluationPromises, ...klimaPromises];
 
-    await Promise.all(allPromises);
+    const results = await Promise.allSettled(allPromises);
+    for (const result of results) {
+        if (result.status === "rejected") {
+            console.error("Failed to render chart widget:", result.reason);
+        }
+    }
 }
