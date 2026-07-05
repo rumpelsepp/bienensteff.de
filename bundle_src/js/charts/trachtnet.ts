@@ -249,30 +249,37 @@ type MetaData = {
 };
 
 export function metaDataOfYear(year: number, region: string, rawData: TrachtNetData): MetaData | null {
-    const data = rawData[region][year];
+    const data = rawData[region]?.[year];
+    if (!data || data.length === 0) {
+        return null;
+    }
 
-    const maxData = data.reduce((max, current) => {
+    const maxData = data.reduce<Record | null>((max, current) => {
         if (isInSeason(current.date)) {
             if (max === null || current.value >= max.value) {
                 return current;
             }
         }
         return max;
-    });
-    const minData = data.reduce((min, current) => {
+    }, null);
+    const minData = data.reduce<Record | null>((min, current) => {
         if (min === null || current.value < min.value) {
             return current;
         }
         return min;
-    });
-    const maxDelta = data.reduce((max, current) => {
+    }, null);
+    const maxDelta = data.reduce<Record | null>((max, current) => {
         if (isInSeason(current.date)) {
             if (max === null || current.delta === null || max.delta === null || current.delta >= max.delta) {
                 return current;
             }
         }
         return max;
-    });
+    }, null);
+
+    if (maxData === null || minData === null || maxDelta === null) {
+        return null;
+    }
 
     return {
         year: year,

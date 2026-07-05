@@ -36,21 +36,21 @@ export abstract class BaseCalendar {
   calendar: Calendar | null;
 
   constructor(widgetID: string) {
-    const formElement = document.querySelector(`#${widgetID} #date-form`);
+    const formElement = document.querySelector(`#${widgetID}-date-form`);
     if (formElement === null) {
-      throw new Error(`Form element #${widgetID} #date-form not found`);
+      throw new Error(`Form element #${widgetID}-date-form not found`);
     }
     this.formElement = formElement as HTMLFormElement;
 
-    const dateInput = document.querySelector(`#${widgetID} #date-form #date-input`);
+    const dateInput = document.querySelector(`#${widgetID}-date-input`);
     if (dateInput === null) {
-      throw new Error(`Date input element #${widgetID} #date-form #date-input not found`);
+      throw new Error(`Date input element #${widgetID}-date-input not found`);
     }
     this.dateInput = dateInput as HTMLInputElement;
 
-    const calElement = document.querySelector(`#${widgetID} #calendar`);
+    const calElement = document.querySelector(`#${widgetID}-calendar`);
     if (calElement === null) {
-      throw new Error(`Calendar element #${widgetID} #calendar not found`);
+      throw new Error(`Calendar element #${widgetID}-calendar not found`);
     }
     this.calElement = calElement as HTMLElement;
 

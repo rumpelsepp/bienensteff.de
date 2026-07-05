@@ -11,11 +11,14 @@ function renderCalendarWidget(
     containerId: string,
     CalendarClass: new (id: string) => BaseCalendar
 ) {
-    const selector = `#${containerId} #date-input`;
-    const input = document.querySelector<HTMLInputElement>(selector)!;
+    const selector = `#${containerId}-date-input`;
+    const input = document.querySelector<HTMLInputElement>(selector);
+    if (!input) {
+        throw new Error(`Date input element ${selector} not found`);
+    }
     input.value = getDateParam().toString();
 
-    const form = document.querySelector<HTMLFormElement>(`#${containerId} #date-form`);
+    const form = document.querySelector<HTMLFormElement>(`#${containerId}-date-form`);
     form?.addEventListener("change", () => {
         form.requestSubmit();
     });
@@ -29,9 +32,16 @@ export function initAllCalendarWidgets() {
     const widgets = document.querySelectorAll<HTMLElement>('.calendar-widget-container');
 
     widgets.forEach(container => {
-        const type = container.dataset.widgetType!;
-        const calendarClass = CALENDAR_REGISTRY[type]!;
+        try {
+            const type = container.dataset.widgetType;
+            const calendarClass = type ? CALENDAR_REGISTRY[type] : undefined;
+            if (!calendarClass) {
+                throw new Error(`Unknown calendar widget type: ${type}`);
+            }
 
-        renderCalendarWidget(container.id, calendarClass);
+            renderCalendarWidget(container.id, calendarClass);
+        } catch (error) {
+            console.error(`Failed to initialize calendar widget #${container.id}:`, error);
+        }
     });
 }

@@ -1,15 +1,16 @@
 {{ $type := .Get "type" }}
+{{ $containerID := printf "%s-calendar-widget" $type }}
 
-<div id="{{ $type }}-calendar-widget" 
-     class="calendar-widget-container mb-4" 
+<div id="{{ $containerID }}"
+     class="calendar-widget-container mb-4"
      data-widget-type="{{ $type }}">
-  
-  <form id="date-form" method="get">
+
+  <form id="{{ $containerID }}-date-form" method="get">
     <div class="form-group mb-2">
       <label>Tag X</label>
-      <input class="form-control form-control-sm" name="date" type="date" id="date-input">
+      <input class="form-control form-control-sm" name="date" type="date" id="{{ $containerID }}-date-input">
     </div>
   </form>
 
-  <div class="mt-4" id="calendar"></div>
+  <div class="mt-4" id="{{ $containerID }}-calendar"></div>
 </div>
