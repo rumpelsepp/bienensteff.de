@@ -927,17 +927,17 @@
   {
     "dates": "2026-07-05",
     "values": 42.66,
-    "n_waagen": 1121
+    "n_waagen": 1123
   },
   {
     "dates": "2026-07-06",
-    "values": 42.43,
-    "n_waagen": 1001
+    "values": 42.35,
+    "n_waagen": 1122
   },
   {
     "dates": "2026-07-07",
-    "values": null,
-    "n_waagen": null
+    "values": 42.07,
+    "n_waagen": 998
   },
   {
     "dates": "2026-07-08",
