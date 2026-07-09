@@ -931,18 +931,18 @@
   },
   {
     "dates": "2026-07-06",
-    "values": 42.44,
+    "values": 43.21,
     "n_waagen": 1
   },
   {
     "dates": "2026-07-07",
-    "values": null,
-    "n_waagen": null
+    "values": 42.55,
+    "n_waagen": 1
   },
   {
     "dates": "2026-07-08",
-    "values": null,
-    "n_waagen": null
+    "values": 42.5,
+    "n_waagen": 1
   },
   {
     "dates": "2026-07-09",
