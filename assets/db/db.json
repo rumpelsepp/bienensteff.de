@@ -31,20 +31,7 @@
         "packaging_type": "Stück",
         "packaging_unit": 1
       },
-      "fillings": [
-        {
-          "filling_id": "A-2026-03",
-          "date": "2026-07-05",
-          "best_before_date": "2028-07-05",
-          "pieces": 18,
-          "comment": "",
-          "dib_field": "",
-          "label": "EDH Honig 250 g",
-          "weight_total": 4.5,
-          "batch_id": "L-2026-04",
-          "id": "A-2026-03"
-        }
-      ],
+      "fillings": null,
       "id": "SKU-HD250E"
     },
     {
@@ -114,18 +101,6 @@
           "weight_total": 7.0,
           "batch_id": "L-2025-02",
           "id": "A-2025-01"
-        },
-        {
-          "filling_id": "A-2026-04",
-          "date": "2026-07-05",
-          "best_before_date": "2028-07-05",
-          "pieces": 24,
-          "comment": "",
-          "dib_field": "",
-          "label": "EDH Honig 500 g",
-          "weight_total": 12.0,
-          "batch_id": "L-2026-04",
-          "id": "A-2026-04"
         }
       ],
       "id": "SKU-HD500E"
@@ -207,6 +182,18 @@
           "weight_total": 18.0,
           "batch_id": "L-2025-02",
           "id": "A-2025-02"
+        },
+        {
+          "filling_id": "A-2026-03",
+          "date": "2026-07-05",
+          "best_before_date": "2028-07-05",
+          "pieces": 18,
+          "comment": "",
+          "dib_field": "",
+          "label": "EDH Blütenhonig 250 g",
+          "weight_total": 4.5,
+          "batch_id": "L-2026-04",
+          "id": "A-2026-03"
         }
       ],
       "id": "SKU-HDB250E"
@@ -276,7 +263,20 @@
         "packaging_type": "Stück",
         "packaging_unit": 1
       },
-      "fillings": null,
+      "fillings": [
+        {
+          "filling_id": "A-2026-04",
+          "date": "2026-07-05",
+          "best_before_date": "2028-07-05",
+          "pieces": 24,
+          "comment": "",
+          "dib_field": "",
+          "label": "EDH Blütenhonig 500 g",
+          "weight_total": 12.0,
+          "batch_id": "L-2026-04",
+          "id": "A-2026-04"
+        }
+      ],
       "id": "SKU-HDB500E"
     },
     {
@@ -1221,10 +1221,10 @@
       "pieces": 18,
       "comment": "",
       "dib_field": "",
-      "label": "EDH Honig 250 g",
+      "label": "EDH Blütenhonig 250 g",
       "weight_total": 4.5,
       "batch_id": "L-2026-04",
-      "sku": "HD250E",
+      "sku": "HDB250E",
       "id": "A-2026-03"
     },
     {
@@ -1234,10 +1234,10 @@
       "pieces": 24,
       "comment": "",
       "dib_field": "",
-      "label": "EDH Honig 500 g",
+      "label": "EDH Blütenhonig 500 g",
       "weight_total": 12.0,
       "batch_id": "L-2026-04",
-      "sku": "HD500E",
+      "sku": "HDB500E",
       "id": "A-2026-04"
     }
   ],
@@ -2695,9 +2695,9 @@
           "pieces": 18,
           "comment": "",
           "dib_field": "",
-          "label": "EDH Honig 250 g",
+          "label": "EDH Blütenhonig 250 g",
           "weight_total": 4.5,
-          "sku": "HD250E",
+          "sku": "HDB250E",
           "id": "A-2026-03"
         },
         {
@@ -2707,9 +2707,9 @@
           "pieces": 24,
           "comment": "",
           "dib_field": "",
-          "label": "EDH Honig 500 g",
+          "label": "EDH Blütenhonig 500 g",
           "weight_total": 12.0,
-          "sku": "HD500E",
+          "sku": "HDB500E",
           "id": "A-2026-04"
         }
       ],
