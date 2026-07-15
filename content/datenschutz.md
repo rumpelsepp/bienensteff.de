@@ -29,3 +29,4 @@ Wir setzen hierzu folgende Dienstleister ein, mit denen entsprechende Verträge 
 
 * **E-Mail-Provider**: Für den Empfang und die Bearbeitung Ihrer Bestell-E-Mails nutzen wir den Dienstleister [mailbox.org](https://mailbox.org) (Heinlein Hosting GmbH, Schwedter Str. 8/9B, 10119 Berlin).
 * **Buchhaltung und Rechnungserstellung**: Zur Erstellung von Angeboten und Rechnungen nutzen wir die Software von [Lexware](https://www.lexware.de/) (Haufe-Lexware GmbH & Co. KG, Munzinger Straße 9, 79111 Freiburg).
+* **Server**: Server die zur Bereitstellung unserer öffentlichen Webdienste und unserer internen Verwaltungswerkzeuge verwendet werden, werden von [Hetzner Online GmbH](https://hetzner.com), Industriestr. 25, 91710 Gunzenhausen betrieben.
