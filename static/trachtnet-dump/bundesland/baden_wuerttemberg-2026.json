@@ -952,27 +952,27 @@
   {
     "dates": "2026-07-10",
     "values": 32.52,
-    "n_waagen": 62
+    "n_waagen": 63
   },
   {
     "dates": "2026-07-11",
-    "values": 32.19,
-    "n_waagen": 62
+    "values": 32.18,
+    "n_waagen": 63
   },
   {
     "dates": "2026-07-12",
-    "values": 32.09,
-    "n_waagen": 15
+    "values": 31.9,
+    "n_waagen": 62
   },
   {
     "dates": "2026-07-13",
-    "values": null,
-    "n_waagen": null
+    "values": 31.54,
+    "n_waagen": 62
   },
   {
     "dates": "2026-07-14",
-    "values": null,
-    "n_waagen": null
+    "values": 31.3,
+    "n_waagen": 62
   },
   {
     "dates": "2026-07-15",
