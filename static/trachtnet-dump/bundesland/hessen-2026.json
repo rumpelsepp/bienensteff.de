@@ -946,33 +946,33 @@
   },
   {
     "dates": "2026-07-09",
-    "values": 40.11,
-    "n_waagen": 120
+    "values": 40.12,
+    "n_waagen": 121
   },
   {
     "dates": "2026-07-10",
-    "values": 39.82,
+    "values": 39.84,
     "n_waagen": 121
   },
   {
     "dates": "2026-07-11",
-    "values": 39.62,
+    "values": 39.61,
     "n_waagen": 122
   },
   {
     "dates": "2026-07-12",
-    "values": 39.54,
-    "n_waagen": 32
+    "values": 39.38,
+    "n_waagen": 122
   },
   {
     "dates": "2026-07-13",
-    "values": null,
-    "n_waagen": null
+    "values": 39.17,
+    "n_waagen": 123
   },
   {
     "dates": "2026-07-14",
-    "values": null,
-    "n_waagen": null
+    "values": 39.07,
+    "n_waagen": 123
   },
   {
     "dates": "2026-07-15",
