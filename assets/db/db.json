@@ -31,7 +31,20 @@
         "packaging_type": "Stück",
         "packaging_unit": 1
       },
-      "fillings": null,
+      "fillings": [
+        {
+          "filling_id": "A-2026-03",
+          "date": "2026-07-05",
+          "best_before_date": "2028-07-05",
+          "pieces": 18,
+          "comment": "",
+          "dib_field": "",
+          "label": "EDH Honig 250 g",
+          "weight_total": 4.5,
+          "batch_id": "L-2026-04",
+          "id": "A-2026-03"
+        }
+      ],
       "id": "SKU-HD250E"
     },
     {
@@ -101,6 +114,18 @@
           "weight_total": 7.0,
           "batch_id": "L-2025-02",
           "id": "A-2025-01"
+        },
+        {
+          "filling_id": "A-2026-04",
+          "date": "2026-07-05",
+          "best_before_date": "2028-07-05",
+          "pieces": 24,
+          "comment": "",
+          "dib_field": "",
+          "label": "EDH Honig 500 g",
+          "weight_total": 12.0,
+          "batch_id": "L-2026-04",
+          "id": "A-2026-04"
         }
       ],
       "id": "SKU-HD500E"
@@ -689,6 +714,18 @@
           "weight_total": 20.0,
           "batch_id": "L-2026-02",
           "id": "A-2026-01"
+        },
+        {
+          "filling_id": "A-2026-02",
+          "date": "2026-07-05",
+          "best_before_date": "2028-07-05",
+          "pieces": 26,
+          "comment": "Bei 6 Stück fehlen noch Etiketten; Etiketten nachbestellt",
+          "dib_field": "",
+          "label": "Hausmarke Blütenhonig 500 g",
+          "weight_total": 13.0,
+          "batch_id": "L-2026-03",
+          "id": "A-2026-02"
         }
       ],
       "id": "SKU-HNB500E"
@@ -1163,6 +1200,45 @@
       "batch_id": "L-2026-02",
       "sku": "HNB500E",
       "id": "A-2026-01"
+    },
+    {
+      "filling_id": "A-2026-02",
+      "date": "2026-07-05",
+      "best_before_date": "2028-07-05",
+      "pieces": 26,
+      "comment": "Bei 6 Stück fehlen noch Etiketten; Etiketten nachbestellt",
+      "dib_field": "",
+      "label": "Hausmarke Blütenhonig 500 g",
+      "weight_total": 13.0,
+      "batch_id": "L-2026-03",
+      "sku": "HNB500E",
+      "id": "A-2026-02"
+    },
+    {
+      "filling_id": "A-2026-03",
+      "date": "2026-07-05",
+      "best_before_date": "2028-07-05",
+      "pieces": 18,
+      "comment": "",
+      "dib_field": "",
+      "label": "EDH Honig 250 g",
+      "weight_total": 4.5,
+      "batch_id": "L-2026-04",
+      "sku": "HD250E",
+      "id": "A-2026-03"
+    },
+    {
+      "filling_id": "A-2026-04",
+      "date": "2026-07-05",
+      "best_before_date": "2028-07-05",
+      "pieces": 24,
+      "comment": "",
+      "dib_field": "",
+      "label": "EDH Honig 500 g",
+      "weight_total": 12.0,
+      "batch_id": "L-2026-04",
+      "sku": "HD500E",
+      "id": "A-2026-04"
     }
   ],
   "buckets": [
@@ -2503,7 +2579,7 @@
     },
     {
       "batch_id": "L-2026-01",
-      "honey_type": "Honig",
+      "honey_type": "Blütenhonig",
       "gqb_compliant": false,
       "comment": "Nearbees",
       "weight": 20.6,
@@ -2576,9 +2652,22 @@
       "batch_id": "L-2026-03",
       "honey_type": "Blütenhonig",
       "gqb_compliant": false,
-      "comment": "",
+      "comment": "Hausmarke",
       "weight": 14.6,
-      "fillings": null,
+      "fillings": [
+        {
+          "filling_id": "A-2026-02",
+          "date": "2026-07-05",
+          "best_before_date": "2028-07-05",
+          "pieces": 26,
+          "comment": "Bei 6 Stück fehlen noch Etiketten; Etiketten nachbestellt",
+          "dib_field": "",
+          "label": "Hausmarke Blütenhonig 500 g",
+          "weight_total": 13.0,
+          "sku": "HNB500E",
+          "id": "A-2026-02"
+        }
+      ],
       "buckets": [
         {
           "bucket_id": "E-2026-06",
@@ -2596,9 +2685,34 @@
       "batch_id": "L-2026-04",
       "honey_type": "Blütenhonig",
       "gqb_compliant": true,
-      "comment": "",
+      "comment": "GQ-Bayern",
       "weight": 106.3,
-      "fillings": null,
+      "fillings": [
+        {
+          "filling_id": "A-2026-03",
+          "date": "2026-07-05",
+          "best_before_date": "2028-07-05",
+          "pieces": 18,
+          "comment": "",
+          "dib_field": "",
+          "label": "EDH Honig 250 g",
+          "weight_total": 4.5,
+          "sku": "HD250E",
+          "id": "A-2026-03"
+        },
+        {
+          "filling_id": "A-2026-04",
+          "date": "2026-07-05",
+          "best_before_date": "2028-07-05",
+          "pieces": 24,
+          "comment": "",
+          "dib_field": "",
+          "label": "EDH Honig 500 g",
+          "weight_total": 12.0,
+          "sku": "HD500E",
+          "id": "A-2026-04"
+        }
+      ],
       "buckets": [
         {
           "bucket_id": "E-2026-01",
