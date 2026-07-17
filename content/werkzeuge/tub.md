@@ -5,6 +5,7 @@ description: "Übersicht und Werkzeug zum Berechnen der Termine für Teilen und 
 
 [Teilen und Behandeln (TuB)](https://www.laves.niedersachsen.de/startseite/tiere/bienenkunde/informationsmaterial/varroa-bekampfungskonzept-teilen-und-behandeln-234443.html) ist ein modernes Konzept zur gleichzeitigen Varroabekämpfung, Wabenhygiene und Königinnenverjüngung.
 TuB ist größtenteils witterungsunabhängig und kann gut nach Zeitplan durchgeführt werden.
+{.lead}
 
 Mit diesem Werkzeug können interaktiv die Zeitpunkte der einzelnen Arbeitsphasen berechnet werden.
 Der grüne Bereich symbolisiert die brutfreie Zeit.
