@@ -1,16 +1,19 @@
-import bootstrap5Plugin from '@fullcalendar/bootstrap5';
-import { Calendar } from '@fullcalendar/core';
-import calDeLocale from '@fullcalendar/core/locales/de';
-import calDayGridPlugin from '@fullcalendar/daygrid';
-import calListPlugin from '@fullcalendar/list';
+import { Calendar } from 'fullcalendar';
+import calDeLocale from 'fullcalendar/locales/de';
+import calDayGridPlugin from 'fullcalendar/daygrid';
+import calListPlugin from 'fullcalendar/list';
+import formaThemePlugin from 'fullcalendar/themes/forma';
 import { Temporal } from '@js-temporal/polyfill';
+
+import 'fullcalendar/skeleton.css';
+import 'fullcalendar/themes/forma/theme.css';
+import 'fullcalendar/themes/forma/palettes/blue.css';
 
 import { BeeDates, TUBDates, ZuchtDates } from "./events";
 
 function getCalender(calElement: HTMLElement, events: Object[], startDate: Temporal.PlainDate, endRange: Temporal.PlainDate): Calendar {
   return new Calendar(calElement, {
-    plugins: [calDayGridPlugin, calListPlugin, bootstrap5Plugin],
-    themeSystem: 'bootstrap5',
+    plugins: [calDayGridPlugin, calListPlugin, formaThemePlugin],
     initialView: 'dayGridMonth',
     firstDay: 1,
     locale: calDeLocale,

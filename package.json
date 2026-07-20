@@ -1,13 +1,11 @@
 {
   "dependencies": {
-    "@fullcalendar/bootstrap5": "^6.1.21",
-    "@fullcalendar/core": "^7.0.1",
-    "@fullcalendar/daygrid": "^6.1.20",
-    "@fullcalendar/list": "^6.1.21",
     "@js-temporal/polyfill": "^0.5.1",
     "bootstrap": "^5.3.6",
     "bootstrap-icons": "^1.13.1",
-    "echarts": "^6.1.0"
+    "echarts": "^6.1.0",
+    "fullcalendar": "^7.0.1",
+    "temporal-polyfill": "^1.0.1"
   },
   "devDependencies": {
     "@types/bootstrap": "^5.2.11",
