@@ -5,7 +5,7 @@ description: "Übersicht und Werkzeug zum Berechnen von Schlupfterminen von Kön
 
 Mit diesem Werkzeug können interaktiv die Schlupftermine von *Nachschaffungskönigin* und eine *Abschätzung* für Jungbienen berechnet werden.
 Diese Termine sind sinnvoll für die Planung von Brutwaben- oder Sammelbrutablegern.
-Dazu das Startdatum X auswählen und auf absenden klicken. Der grüne Bereich symbolisiert die brutfreie Zeit.
+Dazu das Startdatum X auswählen und auf absenden klicken. Der hinterlegte Bereich symbolisiert die brutfreie Zeit.
 Termine in _kursiv_ sind geschätzt, da der Tag des Hochzeitsflugs und folglich der Start der Eiablage nicht vorhersehbar ist.
 Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://piaaumeier.de) veröffentlich wurden.
 {.lead}

@@ -8,7 +8,7 @@ TuB ist größtenteils witterungsunabhängig und kann gut nach Zeitplan durchgef
 {.lead}
 
 Mit diesem Werkzeug können interaktiv die Zeitpunkte der einzelnen Arbeitsphasen berechnet werden.
-Der grüne Bereich symbolisiert die brutfreie Zeit.
+Der hinterlegte Bereich symbolisiert die brutfreie Zeit.
 Termine in _kursiv_ sind geschätzt, da der Tag des Hochzeitsflugs und folglich der Start der Eiablage nicht vorhersehbar ist.
 Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://piaaumeier.de) veröffentlich wurden.
 {.lead}
