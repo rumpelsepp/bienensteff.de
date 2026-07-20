@@ -3,7 +3,7 @@
     "@fullcalendar/bootstrap5": "^6.1.20",
     "@fullcalendar/core": "^6.1.17",
     "@fullcalendar/daygrid": "^6.1.20",
-    "@fullcalendar/list": "^6.1.20",
+    "@fullcalendar/list": "^6.1.21",
     "@js-temporal/polyfill": "^0.5.1",
     "bootstrap": "^5.3.6",
     "bootstrap-icons": "^1.13.1",
