@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@types/bootstrap": "^5.2.11",
-    "esbuild": "^0.27.3",
+    "esbuild": "^0.28.1",
     "typescript": "^6.0.3"
   },
   "scripts": {
