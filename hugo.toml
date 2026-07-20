@@ -30,11 +30,6 @@ Gräfelfinger Str. 169a
   weight = 35
 
   [[menus.main]]
-  name = 'Rezepte'
-  pageRef = '/rezepte'
-  weight = 40
-
-  [[menus.main]]
   name = 'Honigkunde'
   pageRef = '/honigkunde'
   weight = 50
@@ -62,6 +57,11 @@ Gräfelfinger Str. 169a
   name = 'Datenbank'
   parent = "Mehr"
   pageRef = '/datenbank'
+
+  [[menus.main]]
+  name = 'Rezepte'
+  parent = "Mehr"
+  pageRef = '/rezepte'
 
   [[menus.footerExternalLinks]]
   name = 'Schwarmrettung'
