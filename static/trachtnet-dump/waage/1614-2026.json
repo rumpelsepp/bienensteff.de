@@ -991,13 +991,13 @@
   },
   {
     "dates": "2026-07-18",
-    "values": 133.22,
+    "values": 133.3,
     "n_waagen": 1
   },
   {
     "dates": "2026-07-19",
-    "values": null,
-    "n_waagen": null
+    "values": 133.26,
+    "n_waagen": 1
   },
   {
     "dates": "2026-07-20",
