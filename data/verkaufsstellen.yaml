@@ -23,6 +23,17 @@
   active: true
 
 - name: |
+    [REWE Di Prospero oHG](https://www.rewe.de/marktseite/grafenau/865859/rewe-markt-bahnhofstr-12/)
+  type: Supermarkt
+  address: |
+    REWE Markt Di Prospero oHG  
+    Bahnhofstr. 12  
+    94481 Grafenau  
+    [Google Maps](https://maps.app.goo.gl/KTScUSvN9LatmxNM9)
+  contact:
+  active: true
+
+- name: |
     [Honighäusl](http://honey.floriankreuzer.de/verkaufsstellen/)
   type: SB-Verkauf
   address: |
