@@ -6,8 +6,6 @@ description: |
     Seit 2025 tragen wir zudem das Siegel Geprüfte Qualität – Bayern für Honig.
 ---
 
-**Ware ist vorraussichtlich ab Mitte Juli verfügbar!**
-
 Unser Honig wurde mehrfach bei der Bayerischen Honigprämierung [ausgezeichnet]({{< relref "über-uns#auszeichnungen" >}}).
 Darüber gfrein wir uns natürlich narrisch!
 Seit 2025 tragen wir zudem das Siegel [Geprüfte Qualität — Bayern](/zertifikate/20250523-gq-zertifikat.pdf).
@@ -91,7 +89,7 @@ In München ist tendentiell immer an Montagen tagsüber jemand zu Hause (ganz un
               <th>Produkt</th>
               <th>Marke</th>
               <th><acronym title="Verkaufseinheit">VKE</acronym></th>
-              <th><acronym title="Verpackungseinheit">VPE</acronym></th>
+              <!-- <th><acronym title="Verpackungseinheit">VPE</acronym></th> -->
               <th>Preis</th>
               <th>Preis / kg</th>
             </tr>
@@ -107,16 +105,16 @@ In München ist tendentiell immer an Montagen tagsüber jemand zu Hause (ganz un
                 <td>{{ .product_name }}</td>
                 <td>{{ .brand }}</td>
                 <td>{{ .vke }}</td>
-                <td>{{ .vpe }}</td>
-                <td>{{ .price }}</td>
-                <td>{{ .price_per_kg }}</td>
+                <!-- <td>{{ .vpe }}</td> -->
+                <td>{{ .price }} €</td>
+                <td>{{ .price_per_kg }} €</td>
             </tr>
           {{- end -}}
         </tbody>
     </table>
 {{</ pricelist.inline >}}
 
-Wer gleich **sechs Gläser oder mehr** mitnimmt, zahlt a bissal weniger. 🙂
+Wer gleich **sechs Gläser oder mehr** mitnimmt, bekommt 10 % Rabatt. 🙂
 Auf Wunsch füllen wir den Honig auch in mitgebrachte Gläser oder auch Eimer ab.
 Sonderabfüllungen bitte **bis Anfang September** anfragen – dann können wir’s passend einplanen.
 

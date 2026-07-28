@@ -1,26 +1,15 @@
 {
   "articles": [
     {
-      "sku": "HDB250E",
-      "label": "EDH Blütenhonig 250 g",
+      "sku": "HDST500E",
+      "label": "EDH Sommertrachthonig 500 g",
       "brand": "Echter Deutscher Honig®",
-      "product_name": "Blütenhonig",
-      "price": 5,
-      "price_per_kg": 20,
-      "vke": "250 g Glas",
+      "product_name": "Sommertrachthonig",
+      "price": 9,
+      "price_per_kg": 18,
+      "vke": "500 g Glas",
       "vpe": 1,
-      "in_stock": false
-    },
-    {
-      "sku": "HDB250K6",
-      "label": "EDH Blütenhonig 250 g (6er-Karton)",
-      "brand": "Echter Deutscher Honig®",
-      "product_name": "Blütenhonig",
-      "price": 25,
-      "price_per_kg": 100,
-      "vke": "250 g Glas",
-      "vpe": 6,
-      "in_stock": false
+      "in_stock": true
     },
     {
       "sku": "HNB500E",
@@ -31,19 +20,8 @@
       "price_per_kg": 18,
       "vke": "500 g Glas",
       "vpe": 1,
-      "in_stock": false
-    },
-    {
-      "sku": "HNB500K6",
-      "label": "Hausmarke Blütenhonig 500 g (6er-Karton)",
-      "brand": "Hausmarke",
-      "product_name": "Blütenhonig",
-      "price": 48,
-      "price_per_kg": 96,
-      "vke": "500 g Glas",
-      "vpe": 6,
-      "in_stock": false
+      "in_stock": true
     }
   ],
-  "timestamp": "2026-06-07T15:43:32.023086"
+  "timestamp": "2026-07-25T14:26:38.320336"
 }

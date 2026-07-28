@@ -3,8 +3,6 @@ title: Bestellanfrage
 slug: formular
 ---
 
-**Ware ist vorraussichtlich ab Mitte Juli verfügbar!**
-
 Nach Erhalt prüfen wir deine Anfrage und senden dir zeitnah ein verbindliches Angebot per E-Mail zu.
 Alternativ könnt Ihr uns auch gerne unter der Nummer [+49 1512 4096409](tel:+4915124096409) anrufen oder eine [E-Mail](mailto:info@bienensteff.de) schreiben.
 Weitere Informationen zu unserem Verkauf findest du auf unserer [Verkaufsseite]({{< relref "verkauf" >}}).
