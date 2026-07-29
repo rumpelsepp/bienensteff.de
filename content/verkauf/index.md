@@ -70,7 +70,7 @@ Wir nehmen Honiggläser gerne gespült zurück – Etikett bitte, wenn möglich,
 
 Wir führen kein klassisches Ladengeschäft mit Öffnungszeiten.
 Beim Direktverkauf am besten vorher kurz anrufen oder schreiben.
-In München ist tendentiell immer an Montagen tagsüber jemand zu Hause (ganz unverbindliche Info).
+In München ist tendenziell immer an Montagen tagsüber jemand zu Hause (ganz unverbindliche Info).
 
 ## Preisliste
 

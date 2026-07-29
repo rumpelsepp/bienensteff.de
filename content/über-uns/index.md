@@ -6,7 +6,7 @@ slug: "/ueber-uns"
 
 **Wie ich zum Imkern gekommen bin? Ganz ehrlich – ziemlich unspektakulär.**
 Hauptberuflich verbringe ich die meiste Zeit vor dem Bildschirm und war lange auf der Suche nach einem echten Ausgleich.
-2021 bin ich dann über die Website meines [Imkervereins (BZVM)](https://bzvm.de/) auf das Konzept „Imkern auf Probe“ gestoßen – und zack: hat's mich erwischt.
+2021 bin ich dann über die Website meines [Imkervereins (BZVM)](https://bzvm.de/) auf das Konzept „Imkern auf Probe“ gestoßen – und zack: hat’s mich erwischt.
 Aus einem einzigen Volk wurden schnell mehrere – und ja, es werden eher mehr als weniger!
 Zum Glück hab ich daheim eine Familie, die das ganze Summen und Schleudern mit viel Geduld (und einer ordentlichen Portion Humor) mitträgt:
 beim Wachsschmelzen, beim Honig rühren oder einfach nur beim stillen Ertragen meines unaufhaltsamen Bienengelabers… 😁
