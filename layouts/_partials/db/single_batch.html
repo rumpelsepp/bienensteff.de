@@ -1,6 +1,6 @@
 <tr><th>Losnummer</th><td>{{ .Params.id }}</td></tr>
 <tr><th>Sortenempfehlung</th><td>{{ .Params.honey_type }}</td></tr>
-<tr><th>Gewicht</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.weight) "." "," }}</td></tr>
+<tr><th>Gewicht</th><td>{{ partial "db/de-number.html" (dict "format" "%.2f kg" "value" .Params.weight) }}</td></tr>
 <tr><th>Geprüfte Qualität Bayern</th><td>
     {{ if .Params.certified }}
         ja
@@ -10,33 +10,20 @@
 </td></tr>
 {{ with .Params.fillings }}
     <tr><th>Abfüllungen</th>
-    <td>
-        <ul>
-            {{ range . }}
-                <li>{{ partial "db/crosslink" (dict "id" .id) }}</li>
-                    <ul>
-                        <li><strong>Bezeichnung</strong>: {{ partial "db/crosslink" (dict "id" (printf "SKU-%s" .sku) "text" .label) }}</li>
-                        <li><strong>Artikelnummer</strong>: {{ partial "db/crosslink" (dict "id" (printf "SKU-%s" .sku) "text" .sku) }}</li>
-                        <li><strong>Abfülldatum</strong>: {{ partial "db/date" (dict "date" .date) }}</li>
-                        <li><strong>MHD</strong>: {{ partial "db/date" (dict "date" .best_before_date) }}</li>
-                        {{ with .dib_field }}
-                            <li><strong>DIB Kontrollnummer</strong>: {{ . }}</li>
-                        {{ end }}
-                    </ul>
-            {{ end }}
-        </ul>
-    </td></tr>
+    <td>{{ partial "db/filling_list.html" (dict "fillings" . "showBatchLink" false) }}</td></tr>
 {{ end }}
 {{ with .Params.buckets }}
     <tr><th>Eimer</th><td>
         <ul>
             {{ range . }}
-                <li>{{ partial "db/crosslink" (dict "id" .id) }}</li>
+                <li>
+                    {{ partial "db/crosslink.html" (dict "id" .id) }}
                     <ul>
-                        <li><strong>Wassergehalt (Stichprobe)</strong>: {{ strings.Replace (fmt.Printf "%.2f %%" (math.Mul .moisture 100)) "." "," }}</li>
-                        <li><strong>Gewicht</strong>: {{ strings.Replace (fmt.Printf "%.2f kg" .weight) "." "," }}</li>
-                        <li><strong>Schleuderung</strong>: {{ partial "db/crosslink" (dict "id" .centrifugation_id) }}</li>
+                        <li><strong>Wassergehalt (Stichprobe)</strong>: {{ partial "db/de-number.html" (dict "format" "%.2f %%" "value" (math.Mul .moisture 100)) }}</li>
+                        <li><strong>Gewicht</strong>: {{ partial "db/de-number.html" (dict "format" "%.2f kg" "value" .weight) }}</li>
+                        <li><strong>Schleuderung</strong>: {{ partial "db/crosslink.html" (dict "id" .centrifugation_id) }}</li>
                     </ul>
+                </li>
             {{ end }}
         </ul>
     </td></tr>

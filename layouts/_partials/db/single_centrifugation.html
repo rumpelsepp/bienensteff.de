@@ -1,12 +1,12 @@
 <tr><th>Schleuderungsnummer</th><td>{{ .Params.id }}</td></tr>
-<tr><th>Schleuderdatum</th><td>{{ partial "db/date" (dict "date" .Params.date) }}</td></tr>
-<tr><th>Gewicht</th><td>{{ strings.Replace (fmt.Printf "%.2f kg" .Params.weight) "." "," }}</td></tr>
+<tr><th>Schleuderdatum</th><td>{{ partial "db/date.html" (dict "date" .Params.date) }}</td></tr>
+<tr><th>Gewicht</th><td>{{ partial "db/de-number.html" (dict "format" "%.2f kg" "value" .Params.weight) }}</td></tr>
 {{ with .Params.batches }}
     <tr><th>Honiglose</th>
     <td>
         <ul>
             {{ range . }}
-                <li>{{ partial "db/crosslink" (dict "id" .id) }}</li>
+                <li>{{ partial "db/crosslink.html" (dict "id" .id) }}</li>
             {{ end }}
         </ul>
     </td></tr>
@@ -16,7 +16,7 @@
     <td>
         <ul>
             {{ range . }}
-                <li>{{ partial "db/crosslink" (dict "id" .id) }}</li>
+                <li>{{ partial "db/crosslink.html" (dict "id" .id) }}</li>
             {{ end }}
         </ul>
     </td></tr>

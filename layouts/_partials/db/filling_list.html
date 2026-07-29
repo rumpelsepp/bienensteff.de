@@ -1,0 +1,21 @@
+{{- $showBatchLink := .showBatchLink -}}
+<ul>
+    {{ range .fillings }}
+        <li>
+            {{ partial "db/crosslink.html" (dict "id" .id) }}
+            <ul>
+                {{ if $showBatchLink }}
+                    <li><strong>Los</strong>: {{ partial "db/crosslink.html" (dict "id" .batch_id) }}</li>
+                {{ else }}
+                    <li><strong>Bezeichnung</strong>: {{ partial "db/crosslink.html" (dict "id" (printf "SKU-%s" .sku) "text" .label) }}</li>
+                    <li><strong>Artikelnummer</strong>: {{ partial "db/crosslink.html" (dict "id" (printf "SKU-%s" .sku) "text" .sku) }}</li>
+                {{ end }}
+                <li><strong>Abfülldatum</strong>: {{ partial "db/date.html" (dict "date" .date) }}</li>
+                <li><strong>MHD</strong>: {{ partial "db/date.html" (dict "date" .best_before_date) }}</li>
+                {{ with .dib_field }}
+                    <li><strong>DIB Kontrollnummer</strong>: {{ . }}</li>
+                {{ end }}
+            </ul>
+        </li>
+    {{ end }}
+</ul>

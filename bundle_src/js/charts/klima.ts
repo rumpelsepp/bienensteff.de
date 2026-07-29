@@ -2,11 +2,8 @@ import { Temporal } from "@js-temporal/polyfill";
 import type { ECharts } from 'echarts';
 import * as echarts from 'echarts';
 
-import de from "./i18n/de.js";
-import { QueenColor, isInteger, getXLimits, getToday } from "./helpers";
-
-const localTimeZone = Temporal.Now.timeZoneId();
-echarts.registerLocale('DE', de);
+import { QueenColor, getXLimits, getToday } from "./helpers";
+import { buildBaseOption, buildFormatterDE, initEchartsInstance } from "./base";
 
 type DailyRecordRaw = {
     timestamp: string,
@@ -106,11 +103,6 @@ export async function getKlimaDailySeries(stationID: string): Promise<Array<echa
     ];
 }
 
-function axisPointerCallback(value: number): string {
-    const date = Temporal.Instant.fromEpochMilliseconds(value).toZonedDateTimeISO(localTimeZone).toPlainDate();
-    return date.toLocaleString();
-}
-
 export class LineChart {
     private title: string;
     private subTitle: string;
@@ -122,99 +114,27 @@ export class LineChart {
     }
 
     render(elementID: string) {
-        const chartContainer = document.getElementById(elementID);
-        if (!chartContainer) {
-            throw new Error(`Element with ID ${elementID} not found.`);
-        }
+        this.chart = initEchartsInstance(elementID);
 
-        this.chart = echarts.init(chartContainer, null, {
-            renderer: "svg",
-            locale: "DE",
-        });
-
-        const formatterDE = new Intl.NumberFormat("de-DE", {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        });
-
+        const formatterDE = buildFormatterDE();
         const [startDate, _] = getXLimits();
 
+        const tooltipFormatter = (params: any): string => {
+            let out = "";
+            for (const p of params) {
+                const prefix = `${p.marker} <b>${p.seriesName}</b>`;
+                out += `${prefix}: ${formatterDE.format(p.value[1])}`;
+                if (p.componentIndex == 0) {
+                    out += " °C<br>";
+                } else {
+                    out += " mm<br>";
+                }
+            }
+            return out;
+        };
+
         const option: echarts.EChartsOption = {
-            title: {
-                text: this.title,
-                subtext: this.subTitle,
-                left: "center",
-                textStyle: {
-                    color: "#000",
-                },
-                top: 0,
-            },
-            animation: false,
-            aria: {
-                enabled: true,
-                decal: {
-                    show: true
-                }
-            },
-            toolbox: {
-                show: true,
-                feature: {
-                    saveAsImage: {}
-                }
-            },
-            tooltip: {
-                trigger: "axis",
-                backgroundColor: "#fff",
-                borderColor: "#000",
-                borderWidth: 1,
-                textStyle: {
-                    color: "#000",
-                    fontSize: 12
-                },
-                extraCssText: "box-shadow: none; padding: 0.3rem 0.4rem",
-                formatter: params => {
-                    let out = "";
-                    // @ts-expect-error
-                    for (const p of params) {
-                        const prefix = `${p.marker} <b>${p.seriesName}</b>`;
-                        out += `${prefix}: ${formatterDE.format(p.value[1])}`;
-                        if (p.componentIndex == 0) {
-                            out += " °C<br>";
-                        } else {
-                            out += " mm<br>";
-                        }
-                    }
-                    return out;
-                }
-            },
-            xAxis: {
-                type: "time",
-                axisLine: {
-                    onZero: false,
-                    lineStyle: {
-                        color: "#000"
-                    }
-                    // TODO: https://echarts.apache.org/en/option.html#xAxis.axisLabel.formatter
-                },
-                splitLine: {
-                    show: true,
-                    lineStyle: {
-                        color: '#eee'
-                    }
-                },
-                axisPointer: {
-                    label: {
-                        show: true,
-                        formatter: params => {
-                            const value = params.value;
-                            if (!isInteger(value)) {
-                                throw new Error("Date axis expected!");
-                            }
-                            return axisPointerCallback(value);
-                        }
-                    },
-                },
-            },
+            ...buildBaseOption(this.title, this.subTitle, tooltipFormatter),
             yAxis: [{
                 type: "value",
                 name: "Temperatur [°C]",
@@ -285,10 +205,6 @@ export class LineChart {
         };
 
         this.chart.setOption(option);
-
-        window.addEventListener("resize", () => {
-            this.chart!.resize();
-        });
     }
 
     setData(data: Array<echarts.LineSeriesOption | echarts.BarSeriesOption>) {

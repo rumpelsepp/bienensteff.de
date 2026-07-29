@@ -25,11 +25,6 @@ Gräfelfinger Str. 169a
   weight = 30
 
   [[menus.main]]
-  name = 'Bestellung'
-  pageRef = 'bestellformular'
-  weight = 35
-
-  [[menus.main]]
   name = 'Honigkunde'
   pageRef = '/honigkunde'
   weight = 50
@@ -123,7 +118,7 @@ Gräfelfinger Str. 169a
         leftDoubleQuote = '„'
         leftSingleQuote = '‚'
         rightAngleQuote = '&raquo;'
-        rightDoubleQuote = '”'
+        rightDoubleQuote = '“'
         rightSingleQuote = '‘' 
 
 [privacy]

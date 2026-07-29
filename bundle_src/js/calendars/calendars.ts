@@ -121,7 +121,7 @@ export class BeeStatesCalendar extends BaseCalendar {
         classNames: ["fst-italic"]
       },
       {
-        title: 'Jungbienen (X+39)',
+        title: 'Jungbienen (X+40)',
         start: dates.jungbienenDate.toString()!,
         allDay: true,
         color: "gray",
