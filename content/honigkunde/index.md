@@ -50,7 +50,7 @@ Der Zucker fällt aus der Lösung aus und bildet Kristalle, insbesondere wenn Kr
 
 ## Gesetzliche Grundlagen
 
-In der ["Honigverordnung vom 16. Januar 2004 (BGBl. I S. 92)"](https://www.gesetze-im-internet.de/honigv_2004/BJNR009200004.html) ist die Definition von Honig gesetzlich genau geregelt.
+In der [„Honigverordnung vom 16. Januar 2004 (BGBl. I S. 92)“](https://www.gesetze-im-internet.de/honigv_2004/BJNR009200004.html) ist die Definition von Honig gesetzlich genau geregelt.
 Im Gesetz ist Honig wie folgt definiert:
 
 {{< blockquote caption="Honigverordnung vom 16. Januar 2004 (BGBl. I S. 92), die zuletzt durch Artikel 10 der Verordnung vom 5. Juli 2017 (BGBl. I S. 2272) geändert worden ist">}}
@@ -59,7 +59,7 @@ Honig besteht im Wesentlichen aus verschiedenen Zuckerarten, insbesondere aus Fr
 {{</ blockquote >}}
 
 Für Bio-Honig gilt zusätzlich die [Verordnung über die ökologische/biologische Produktion und die Kennzeichnung von ökologischen/biologischen Erzeugnissen](http://data.europa.eu/eli/reg/2018/848).
-Bio-Honig grenzt sich von konventionellen Honig hauptsächlich durch die Betriebsweise des Imkers ab.
+Bio-Honig grenzt sich von konventionellem Honig hauptsächlich durch die Betriebsweise des Imkers ab.
 Zum Beispiel sind chemische Schädlingsbekämpfungsmittel grundsätzlich untersagt, es besteht eine detaillierte Dokumentationspflicht und es muss darauf geachtet werden, dass das Wachs in den Bienenstöcken eine hohe Qualität aufweist und frei von Rückständen etwaiger Pestizide o. ä. ist.
 Genauere Details können der verlinkten EU-Verordnung entnommen werden.
 Bio-Imkereien werden regelmäßig auditiert und die Erfüllung der gesetzlichen Vorgaben überprüft.
@@ -84,19 +84,19 @@ Wir stehen hinter den Werten der ökologischen Landwirtschaft, haben uns aber ha
 ## Marken und Zertifikate
 
 Im Lebensmittelhandel gibt es viele Qualitäts-Zertifikate, Marken und die generelle Unterteilung in konventionell und bio.
-Während die Unterscheidung von konventiellem Honig zu Bio-Honig per Gesetz geregelt ist, schließt man als Imker bei der Verwendung von Marken oder Zertifikaten oft einen Vertrag mit einem Zeichengeber.
-Marken und Zertifikate weißen die Erfüllung bestimmter Kriterien nach.
-Der Nutzen ist individuell unterschiedlich: Zum Beispiel benötigen manche Imker benötigen einen formalen Qualitätsnachweis gegenüber Supermärkten während andere Zertifikate rein für eigene Marketingzwecke nutzen.
+Während die Unterscheidung von konventionellem Honig zu Bio-Honig per Gesetz geregelt ist, schließt man als Imker bei der Verwendung von Marken oder Zertifikaten oft einen Vertrag mit einem Zeichengeber.
+Marken und Zertifikate weisen die Erfüllung bestimmter Kriterien nach.
+Der Nutzen ist individuell unterschiedlich: Zum Beispiel benötigen manche Imker einen formalen Qualitätsnachweis gegenüber Supermärkten, während andere Zertifikate rein für eigene Marketingzwecke nutzen.
 
 Unsere Imkerei nutzt die Marke [Echter Deutscher Honig®](https://deutscherimkerbund.de/warum-unser-honig/) vom Deutschen Imkerbund.
-Durch den Verkauf von Honig unter dieser Marke verpflichtet sich der Imker, strengere Qualitskriterien einzuhalten als durch die Honigverordnung vorgeschrieben.
+Durch den Verkauf von Honig unter dieser Marke verpflichtet sich der Imker, strengere Qualitätskriterien einzuhalten als durch die Honigverordnung vorgeschrieben.
 Der Deutsche Imkerbund führt über die Vereinsstruktur selbst Schulungen und Qualitätskontrollen durch.
 Die Qualitätskontrollen finden unabhängig von behördlichen Kontrollen statt und haben das übergeordnete Ziel den Imker bei der Erfüllung der Qualitätskriterien zu unterstützen.
 
 Zusätzlich ist unsere Imkerei Zeichennutzer des Siegels [Geprüfte Qualität Bayern für Honig](https://www.gq-bayern.de).
 Zertifikate sind oft verbunden mit strengen Auflagen und entsprechenden Kontrollen vor Ort und einer [begrenzten Gültigkeit](/zertifikate/20250523-gq-zertifikat.pdf).
 [Die Qualitätsbestimmungen](https://www.gq-bayern.de/wp-content/uploads/%C3%96ffentlicher-Bereich/Ueber-GQ-Bayern/Qualitaets-und-Pruefbestimmungen/Tierisch/Honig/gqualitaet_honig.pdf) für die Zertifikate sind beim Zeichengeber einsehbar; oft gibt es auch eine [Hilfestellung](https://www.gq-bayern.de/wp-content/uploads/%C3%96ffentlicher-Bereich/Ueber-GQ-Bayern/Qualitaets-und-Pruefbestimmungen/Tierisch/Honig/2021_12_Leistungsgegenueberstellung_GQ_3_Honig-M1-Genehmigt.pdf), die den Mehrwert des Zertifikates herausstellt.
-Durch das Siegel Geprüfte Qualität Bayern weißen wir eine nachvollziehbare und saubere Arbeitsweise in unserer Imkerei nach.
+Durch das Siegel Geprüfte Qualität Bayern weisen wir eine nachvollziehbare und saubere Arbeitsweise in unserer Imkerei nach.
 Unsere [Rückverfolgungsdatenbank](https://db.bienensteff.de) entstammt direkt den Anforderungen des Programms Geprüfte Qualität Bayern und setzt das Kriterium der Dokumentationspflicht unserer Honigchargen um.
 
 Im Bio-Bereich werden oft die Siegel von Bio-Verbänden (z. B. [Naturland](https://www.naturland.de/) oder [Bioland](https://www.bioland.de/)) verwendet.
@@ -104,7 +104,7 @@ Der formale Ablauf ist vergleichbar mit einer Zertifizierung von Geprüfte Quali
 
 ## Qualitätskriterien
 
-Auf den Honiggläsern des Deutschen Imkerbundes findet sich der Hinweis "kühl, trocken, dunkel lagern".
+Auf den Honiggläsern des Deutschen Imkerbundes findet sich der Hinweis „kühl, trocken, dunkel lagern“.
 Der allgemeine Hintergrund dieses Hinweises ist die Erhaltung des typischen Geschmacks, sowie der wertvollen Inhaltsstoffe.
 Generell gilt, dass Honig ohne große Qualitätseinbußen mehrere Jahre lang haltbar ist — sofern er richtig gelagert wird.
 … und was hat es eigentlich mit den ganzen Zertifikation und mit Bio auf sich?
@@ -129,12 +129,12 @@ In dieser Quelle finden sich auch vergleichende Bilder von Honigen, die untersch
 {{< blockquote caption="Quelle: [bienen.ch](https://bienen.ch/wp-content/uploads/2024/06/3.3-Honiglagerung_2024.pdf)">}}
 Erhöhter Wassergehalt fördert die Gärung (Fermentation). Auf der Honigoberfläche entstehen Luftblasen.
 Zwischen Honig und Deckel bildet sich ein Überdruck, der beim Öffnen des Gefässes deutlich hörbar entweicht.
-Gärender Honig riecht sauer. Da lebende Hefezellen Durchfall erzeugen, soll gärender Honig nur erhitzt, als Backhonig, verzehrt werden. 
+Gärender Honig riecht sauer. Da lebende Hefezellen Durchfall erzeugen, soll gärender Honig nur erhitzt, als Backhonig, verzehrt werden.
 {{</ blockquote >}}
 
 ### Invertase (auch: Saccharase)
 
-Die Bienen fügen dem Honig bei dessen Bereitung eine ganze Reihe körpereigener Enzyme bei. 
+Die Bienen fügen dem Honig bei dessen Bereitung eine ganze Reihe körpereigener Enzyme bei.
 Diese Enzyme haben verschiedene Effekte auf den Honig, wie z. B. eine antibakterielle Wirkung.
 Viele Enzyme sind wärme- und/oder lichtempfindlich.
 In einer Honiganalyse wird üblicherweise das Enzym Invertase geprüft.
@@ -155,7 +155,7 @@ Das Fachzentrum für Imkerei schreibt ferner:
 Enzyme sind Eiweißmoleküle, die meist sehr wärmeempfindlich sind. Bei Temperaturen über 40 °C denaturieren diese und verlieren ihre katalytischen Eigenschaften.
 Sie können den chemischen Prozess also nicht mehr umsetzen.
 Somit lassen sich über die Aktivität von Enzymen - im Honig v.a. über die Saccharase-Aktivität - Wärmeeinwirkungen oder Hitzeschäden nachweisen.
-Auch falsche oder lange Lagerung des Honigs führt zu einer Abnahme der Saccharase-Aktivität. 
+Auch falsche oder lange Lagerung des Honigs führt zu einer Abnahme der Saccharase-Aktivität.
 {{</ blockquote >}}
 
 Der Deutsche Imkerbund fasst den Sachverhalt wie folgt zusammen:
@@ -216,7 +216,7 @@ Abschließend ein Faktencheck zu einem beliebten Hausmittel:
 Honig enthält Glucoseoxidase, ein Enzym, das Glucose zur Gluconsäure oxidiert, wobei Wasserstoffperoxid frei wird.
 Dieses weist eine antibakterielle Wirkung auf.
 Wenn Honig in heißem Tee gelöst wird, dann wird die Glucoseoxidase inaktiviert und die antibakterielle Wirkung des Honigs verschwindet.
-Heißer Tee mit Honig schmeckt zwar gut, ist aber kein wirksames Hausmittel gegen Halsschmerzen. 
+Heißer Tee mit Honig schmeckt zwar gut, ist aber kein wirksames Hausmittel gegen Halsschmerzen.
 Um die Wirkung trotzdem zu erhalten, kann man den Honig stattdessen in lauwarmem (ca. 40 Grad) Tee lösen.
 
 Quelle: [chemie.uni-wuerzburg.de](https://www.chemie.uni-wuerzburg.de/fileadmin/08010034/user_upload/Honig/Station_3_-_Enzyme_im_Honig.pdf)

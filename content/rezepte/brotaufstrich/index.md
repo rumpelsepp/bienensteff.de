@@ -22,9 +22,9 @@ Reicht locker für 4 Brotzeitportionen.
 * a paar getrocknete Tomaten
 * Kräuter nach Wunsch (z.B. Petersilie, Schnittlauch, Thymian, …)
 * Salz und Pfeffer
-* Wer's gern a bissl schärfer mag 🌶️: Chili oder Pfefferoni
+* Wer’s gern a bissl schärfer mag 🌶️: Chili oder Pfefferoni
 
-### So wird's g'macht
+### So wird’s g’macht
 
 1. Milch im Topf aufkochen und den Essig dazugeben. Rühren, bis sich die Molke vom Frischkäse trennt.
 2. Durch ein Sieb abgießen. Die Molke kannst optional weiterverarbeiten, der Frischkäse sollt erst abkühlen.

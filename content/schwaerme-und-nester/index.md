@@ -12,15 +12,15 @@ Sollte gerade niemand verfügbar sein oder wir keine Kapazitäten haben, findet 
 {{< fig src="bienenschwarm2.jpg" caption="Schwarm der [Westlichen Honigbiene](https://de.wikipedia.org/wiki/Westliche_Honigbiene)." >}}
 {{< fig src="bienenschwarm.jpg" caption="Schwarm der [Westlichen Honigbiene](https://de.wikipedia.org/wiki/Westliche_Honigbiene)." >}}
 
-## „Bienennester”
+## „Bienennester“
 
 Besonders im Herbst bekommen wir recht viele Meldungen wegen „Bienennestern“, zum Beispiel unterm Balkon, in der Mülltonnenbox oder am Gartenhäusl.
-Die Schwarmzeit für Honigbienen ist ungefähr von Mai bis Anfang Juli. Bei "Bienennester" handelt es sich in den allermeisten Fällen um Wespen oder Hornissen und die steh’n unter [strengem Naturschutz](https://www.bussgeldkatalog.org/news/wespen-vertreiben-was-ist-erlaubt-was-nicht-2836604/).
+Die Schwarmzeit für Honigbienen ist ungefähr von Mai bis Anfang Juli. Bei „Bienennester“ handelt es sich in den allermeisten Fällen um Wespen oder Hornissen und die steh’n unter [strengem Naturschutz](https://www.bussgeldkatalog.org/news/wespen-vertreiben-was-ist-erlaubt-was-nicht-2836604/).
 
 Wir als Imkerei dürfen da leider nix machen und auch keine Nester entfernen.
 Ganz wichtig: **So a Nest darf nur mit Erlaubnis von der Unteren Naturschutzbehörde entfernt werden!**
 Die offizielle Handlungsempfehlung der Stadt München ist die Saison mit den Wespen zu koexistieren.
-Mehr Infos gibt's bei der [Stadt München](https://stadt.muenchen.de/infos/wespen-hornissen-muenchen.html).
+Mehr Infos gibt’s bei der [Stadt München](https://stadt.muenchen.de/infos/wespen-hornissen-muenchen.html).
 Die Stadt München stellt ein [Online Formular](https://service.muenchen.de/intelliform/forms/01/09/09/meldung_insektennest/index) zur Meldung von Wespen und Hornissen sowie deren Nestern bereit.
 
 ### Bestimmungshilfen

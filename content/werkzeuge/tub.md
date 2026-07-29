@@ -54,7 +54,7 @@ Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://
         </tr>
         <tr>
             <td class="align-middle">Schritt 3(c)</td>
-            <td class="align-middle">Bei weisellosem Brutvolk dieses auflösen oder neu mit einer Königing aus einem Jungvolk beweiseln (in ca. 10% der Fälle notwendig).</td>
+            <td class="align-middle">Bei weisellosem Brutvolk dieses auflösen oder neu mit einer Königin aus einem Jungvolk beweiseln (in ca. 10% der Fälle notwendig).</td>
         </tr>
         <tr>
             <td class="align-middle"></td>
