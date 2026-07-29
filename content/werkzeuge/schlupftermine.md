@@ -50,7 +50,7 @@ Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://
             <td><em>Brutzellen sind neun Tage nach Eiablage verdeckelt.</em></td>
         </tr>
         <tr>
-            <td><em>X + 39</em></td>
+            <td><em>X + 40</em></td>
             <td><em>Schlupf der ersten Jungbienen</em></td>
             <td><em>Jungbienen schlüpfen 21 Tage nach Eiablage.</em></td>
         </tr>

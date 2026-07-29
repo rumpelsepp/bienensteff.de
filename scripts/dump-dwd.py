@@ -101,21 +101,6 @@ def clean_and_prepare_data(station_id: str) -> pl.DataFrame:
     )
 
 
-# TODO: Is this required? I leave it here for now and just test without.
-def append_new_data(df_new: pl.DataFrame, target_path: Path) -> int:
-    if target_path.exists():
-        existing_ts = pl.scan_ndjson(target_path).select("timestamp").collect()
-        df_delta = df_new.filter(~pl.col("timestamp").is_in(existing_ts["timestamp"]))
-    else:
-        df_delta = df_new
-
-    if df_delta.height > 0:
-        with target_path.open(mode="ab") as f:
-            df_delta.write_ndjson(f)
-
-    return df_delta.height
-
-
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument(

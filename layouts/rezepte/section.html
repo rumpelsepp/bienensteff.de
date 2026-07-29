@@ -14,8 +14,9 @@
 
   {{ .Content }}
 
+  {{ $last := sub (len .Pages) 1 }}
   {{ range $i, $p := .Pages }}
-  
+
     {{ if eq (mod $i 3) 0 }}
       <div class="row">
     {{ end }}
@@ -31,7 +32,7 @@
       {{ partial "card.html" $context }}
     </div>
 
-    {{ if eq (mod $i 3) 0 }}
+    {{ if or (eq (mod $i 3) 2) (eq $i $last) }}
       </div>
     {{ end }}
   {{ end }}

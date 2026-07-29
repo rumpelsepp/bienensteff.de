@@ -16,14 +16,17 @@ import requests
 
 
 document_id = "suQKVJDfFYQF"
-api_key = (
-    subprocess.run(["gopass", "show", "grist-api-key"], check=True, capture_output=True)
-    .stdout.decode()
-    .strip()
-)
 
 
-def fetch_table(table_id: str) -> pl.DataFrame:
+def get_api_key() -> str:
+    return (
+        subprocess.run(["gopass", "show", "grist-api-key"], check=True, capture_output=True)
+        .stdout.decode()
+        .strip()
+    )
+
+
+def fetch_table(table_id: str, api_key: str) -> pl.DataFrame:
     url = f"https://docs.getgrist.com/api/docs/{document_id}/tables/{table_id}/records"
     headers = {"Authorization": f"Bearer {api_key}"}
 
@@ -38,11 +41,13 @@ def fetch_table(table_id: str) -> pl.DataFrame:
 
 
 def main() -> None:
-    articles_df = fetch_table("Artikel").filter(~pl.col("sku").str.starts_with("_"))
-    article_details_df = fetch_table("Verkaufdetails")
-    article_brands_df = fetch_table("Marken")
-    article_vkes_df = fetch_table("VKEs")
-    article_prices_df = fetch_table("Preise")
+    api_key = get_api_key()
+
+    articles_df = fetch_table("Artikel", api_key).filter(~pl.col("sku").str.starts_with("_"))
+    article_details_df = fetch_table("Verkaufdetails", api_key)
+    article_brands_df = fetch_table("Marken", api_key)
+    article_vkes_df = fetch_table("VKEs", api_key)
+    article_prices_df = fetch_table("Preise", api_key)
     articles_df = (
         article_prices_df.join(
             articles_df.with_columns([pl.col("id").alias("article_id")]),
@@ -109,17 +114,17 @@ def main() -> None:
         )
     )
 
-    locations_df = fetch_table("Standorte")
-    centrifugations_df = fetch_table("Tracing_Schleuderungen").with_columns(
+    locations_df = fetch_table("Standorte", api_key)
+    centrifugations_df = fetch_table("Tracing_Schleuderungen", api_key).with_columns(
         [
             pl.from_epoch(pl.col("date"), time_unit="s")
             .dt.strftime("%Y-%m-%d")
             .alias("date"),
         ]
     )
-    batches_df = fetch_table("Tracing_Lose")
+    batches_df = fetch_table("Tracing_Lose", api_key)
     buckets_df = (
-        fetch_table("Tracing_Eimer")
+        fetch_table("Tracing_Eimer", api_key)
         .join(
             batches_df.select(["id", "batch_id"]),
             left_on="batch_id",
@@ -150,7 +155,7 @@ def main() -> None:
     )
 
     fillings_df = (
-        fetch_table("Abfullungen")
+        fetch_table("Abfullungen", api_key)
         .with_columns(
             [
                 pl.from_epoch(pl.col("date"), time_unit="s").dt.strftime("%Y-%m-%d"),

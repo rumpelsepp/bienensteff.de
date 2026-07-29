@@ -5,10 +5,7 @@ import * as echarts from 'echarts';
 import { chooseQueenColor, getCurrentYear, getToday, getXLimits, isInteger, isIntegerArray, isInSeason } from "./helpers";
 import { toTitleCase } from '../helpers';
 import { Kreis, Land, Regierungsbezirk } from '../calendars/regions';
-import de from "./i18n/de.js";
-
-const localTimeZone = Temporal.Now.timeZoneId();
-echarts.registerLocale('DE', de);
+import { buildBaseOption, buildFormatterDE, initEchartsInstance } from "./base";
 
 type Record = {
     date: Temporal.PlainDate,
@@ -308,11 +305,6 @@ export function renderMetaData(data: MetaData): string {
     return out;
 }
 
-function axisPointerCallback(value: number): string {
-    const date = Temporal.Instant.fromEpochMilliseconds(value).toZonedDateTimeISO(localTimeZone).toPlainDate();
-    return date.toLocaleString();
-}
-
 export class LineChart {
     private title: string;
     private subTitle: string;
@@ -324,103 +316,31 @@ export class LineChart {
     }
 
     render(elementID: string) {
-        const chartContainer = document.getElementById(elementID);
-        if (!chartContainer) {
-            throw new Error(`Element with ID ${elementID} not found.`);
-        }
+        this.chart = initEchartsInstance(elementID);
 
-        this.chart = echarts.init(chartContainer, null, {
-            renderer: "svg",
-            locale: "DE",
-        });
-
-        const formatterDE = new Intl.NumberFormat("de-DE", {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        });
-
+        const formatterDE = buildFormatterDE();
         const [startDate, endDate] = getXLimits();
 
+        const tooltipFormatter = (params: any): string => {
+            let out = "";
+            for (const p of params) {
+                const prefix = `${p.marker} <b>${p.seriesName}</b>`;
+                const waagen = p.value[2];
+                if (waagen === null) {
+                    continue;
+                }
+                const delta = p.value[3];
+                if (delta !== null) {
+                    out += `${prefix}: ${formatterDE.format(p.value[1])} kg (Δ ${formatterDE.format(delta)} kg, ${p.value[2]} Waagen)<br>`;
+                } else {
+                    out += `${prefix}: ${formatterDE.format(p.value[1])} kg (${p.value[2]} Waagen)<br>`;
+                }
+            }
+            return out;
+        };
+
         const option: echarts.EChartsOption = {
-            title: {
-                text: this.title,
-                subtext: this.subTitle,
-                left: "center",
-                textStyle: {
-                    color: "#000",
-                },
-                top: 0,
-            },
-            animation: false,
-            aria: {
-                enabled: true,
-                decal: {
-                    show: true
-                }
-            },
-            toolbox: {
-                show: true,
-                feature: {
-                    saveAsImage: {}
-                }
-            },
-            tooltip: {
-                trigger: "axis",
-                backgroundColor: "#fff",
-                borderColor: "#000",
-                borderWidth: 1,
-                textStyle: {
-                    color: "#000",
-                    fontSize: 12
-                },
-                extraCssText: "box-shadow: none; padding: 0.3rem 0.4rem",
-                formatter: params => {
-                    let out = "";
-                    // @ts-expect-error
-                    for (const p of params) {
-                        const prefix = `${p.marker} <b>${p.seriesName}</b>`;
-                        const waagen = p.value[2];
-                        if (waagen === null) {
-                            continue;
-                        }
-                        const delta = p.value[3];
-                        if (delta !== null) {
-                            out += `${prefix}: ${formatterDE.format(p.value[1])} kg (Δ ${formatterDE.format(delta)} kg, ${p.value[2]} Waagen)<br>`;
-                        } else {
-                            out += `${prefix}: ${formatterDE.format(p.value[1])} kg (${p.value[2]} Waagen)<br>`;
-                        }
-                    }
-                    return out;
-                }
-            },
-            xAxis: {
-                type: "time",
-                axisLine: {
-                    onZero: false,
-                    lineStyle: {
-                        color: "#000"
-                    }
-                    // TODO: https://echarts.apache.org/en/option.html#xAxis.axisLabel.formatter
-                },
-                axisPointer: {
-                    label: {
-                        show: true,
-                        formatter: params => {
-                            const value = params.value;
-                            if (!isInteger(value)) {
-                                throw new Error("Date axis expected!");
-                            }
-                            return axisPointerCallback(value);
-                        }
-                    },
-                },
-                splitLine: {
-                    show: true,
-                    lineStyle: {
-                        color: '#eee'
-                    }
-                }
-            },
+            ...buildBaseOption(this.title, this.subTitle, tooltipFormatter),
             yAxis: {
                 type: "value",
                 name: "Gewicht [kg]",
@@ -463,10 +383,6 @@ export class LineChart {
         };
 
         this.chart.setOption(option);
-
-        window.addEventListener("resize", () => {
-            this.chart!.resize();
-        });
     }
 
     setData(data: echarts.LineSeriesOption[]) {
@@ -494,95 +410,23 @@ export class BarChart {
     }
 
     render(elementID: string) {
-        const chartContainer = document.getElementById(elementID);
-        if (!chartContainer) {
-            throw new Error(`Element with ID ${elementID} not found.`);
-        }
+        this.chart = initEchartsInstance(elementID);
 
-        this.chart = echarts.init(chartContainer, null, {
-            renderer: "svg",
-            locale: "DE",
-        });
-
-        const formatterDE = new Intl.NumberFormat("de-DE", {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        });
-
+        const formatterDE = buildFormatterDE();
         const [startDate, _] = getXLimits();
 
+        const tooltipFormatter = (params: any): string => {
+            let out = "";
+            for (const p of params) {
+                const nWaagen = p.value[3];
+                const prefix = `${p.marker} <b>${p.seriesName}</b>`;
+                out += `${prefix}: Δ ${formatterDE.format(p.value[1])} kg (${nWaagen} Waagen)<br>`;
+            }
+            return out;
+        };
+
         const option: echarts.EChartsOption = {
-            title: {
-                text: this.title,
-                subtext: this.subTitle,
-                left: "center",
-                textStyle: {
-                    color: "#000",
-                },
-                top: 0,
-            },
-            animation: false,
-            aria: {
-                enabled: true,
-                decal: {
-                    show: true
-                }
-            },
-            toolbox: {
-                show: true,
-                feature: {
-                    saveAsImage: {}
-                }
-            },
-            tooltip: {
-                trigger: "axis",
-                backgroundColor: "#fff",
-                borderColor: "#000",
-                borderWidth: 1,
-                // borderRadius: 0,
-                textStyle: {
-                    color: "#000",
-                    fontSize: 12
-                },
-                extraCssText: "box-shadow: none; padding: 0.3rem 0.4rem",
-                formatter: params => {
-                    let out = "";
-                    // @ts-expect-error
-                    for (const p of params) {
-                        const nWaagen = p.value[3];
-                        const prefix = `${p.marker} <b>${p.seriesName}</b>`;
-                        out += `${prefix}: Δ ${formatterDE.format(p.value[1])} kg (${nWaagen} Waagen)<br>`;
-                    }
-                    return out;
-                }
-            },
-            xAxis: {
-                type: "time",
-                axisLine: {
-                    onZero: false,
-                    lineStyle: {
-                        color: "#000"
-                    }
-                },
-                splitLine: {
-                    show: true,
-                    lineStyle: {
-                        color: '#eee'
-                    }
-                },
-                axisPointer: {
-                    label: {
-                        show: true,
-                        formatter: params => {
-                            const value = params.value;
-                            if (!isInteger(value)) {
-                                throw new Error("Date axis expected!");
-                            }
-                            return axisPointerCallback(value);
-                        }
-                    },
-                },
-            },
+            ...buildBaseOption(this.title, this.subTitle, tooltipFormatter),
             yAxis: {
                 type: "value",
                 name: "Gewichtsänderung [kg]",
@@ -628,10 +472,6 @@ export class BarChart {
         };
 
         this.chart!.setOption(option);
-
-        window.addEventListener("resize", () => {
-            this.chart!.resize();
-        });
     }
 
     setData(data: echarts.BarSeriesOption[]) {

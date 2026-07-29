@@ -15,7 +15,7 @@ Gräfelfinger Straße 169a
 
 ### Erhebung und Verarbeitung von Daten
 
-Wenn Sie unser [Formular]({{< relref "bestellformular" >}}) für eine Bestellanfrage nutzen, erheben wir die von Ihnen eingegebenen Daten (Name/Pseudonym, E-Mail-Adresse, Telefonnummer).
+Wenn Sie bei uns per E-Mail eine Bestellanfrage aufgeben, erheben wir die von Ihnen eingegebenen Daten (Name/Pseudonym, E-Mail-Adresse, Telefonnummer).
 Die Verarbeitung dieser Daten erfolgt ausschließlich zum Zweck der Bearbeitung und Abwicklung Ihrer Bestellung.
 Die Rechtsgrundlage hierfür ist Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung).
 

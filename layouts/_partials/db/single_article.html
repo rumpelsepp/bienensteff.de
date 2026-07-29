@@ -19,22 +19,6 @@
 {{ end }}
 {{ with .Params.fillings }}
     <tr><th>Abfüllungen</th>
-        <td>
-            <ul>
-                {{ range . }}
-                    <li>
-                        {{ partial "db/crosslink" (dict "id" .id) }}
-                        <ul>
-                            <li><strong>Abfülldatum</strong>: {{ partial "db/date" (dict "date" .date) }}</li>
-                            <li><strong>MHD</strong>: {{ partial "db/date" (dict "date" .best_before_date) }}</li>
-                            <li><strong>Los</strong>: {{ partial "db/crosslink" (dict "id" .batch_id) }}</li>
-                            {{ with .dib_field }}
-                                <li><strong>DIB Kontrollnummer</strong>: {{ . }}</li>
-                            {{ end }}
-                        </ul>
-                    </li>
-                {{ end }}
-            </ul>
-        </td>
+        <td>{{ partial "db/filling_list.html" (dict "fillings" . "showBatchLink" true) }}</td>
     </tr>
 {{ end }}

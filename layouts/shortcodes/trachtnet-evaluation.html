@@ -24,10 +24,9 @@ $currentYear) -1) (int $currentYear))) }}
   {{ end }}
 </ul>
 
-{{ range $i, $year := $years }}
-  {{ $cssID := printf "trachtnet-evaluation-%s-%d" $region $year }}
-
-  <div class="tab-content mt-4">
+<div class="tab-content mt-4">
+  {{ range $i, $year := $years }}
+    {{ $cssID := printf "trachtnet-evaluation-%s-%d" $region $year }}
 
     {{ $classes := slice "tab-pane" }}
     {{ if eq (add $i 1) (len $years) }}
@@ -39,5 +38,5 @@ $currentYear) -1) (int $currentYear))) }}
       <div class="trachtnet-evaluation-table-container mb-4" id="{{ $cssID }}" data-id="{{ $cssID }}"
         data-region="{{ $region }}" data-year="{{ $year }}"></div>
     </div>
+  {{ end }}
 </div>
-{{ end }}
