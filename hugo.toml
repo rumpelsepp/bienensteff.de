@@ -35,6 +35,11 @@ Gräfelfinger Str. 169a
   weight = 60
 
   [[menus.main]]
+  name = 'Rezepte'
+  weight = 65
+  pageRef = '/rezepte'
+
+  [[menus.main]]
   name = 'Über uns'
   pageRef = '/über-uns'
   weight = 70
@@ -52,11 +57,6 @@ Gräfelfinger Str. 169a
   name = 'Datenbank'
   parent = "Mehr"
   pageRef = '/datenbank'
-
-  [[menus.main]]
-  name = 'Rezepte'
-  parent = "Mehr"
-  pageRef = '/rezepte'
 
   [[menus.footerExternalLinks]]
   name = 'Schwarmrettung'
