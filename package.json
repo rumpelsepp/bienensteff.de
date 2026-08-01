@@ -4,7 +4,7 @@
     "bootstrap": "^5.3.6",
     "bootstrap-icons": "^1.13.1",
     "echarts": "^6.1.0",
-    "fullcalendar": "^7.0.1"
+    "fullcalendar": "^7.0.2"
   },
   "devDependencies": {
     "@types/bootstrap": "^5.2.11",
