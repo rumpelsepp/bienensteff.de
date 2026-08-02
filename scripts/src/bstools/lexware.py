@@ -1,0 +1,245 @@
+"""Shared Lexware Office API client, used by grist_magic, lexware_download and
+lexware_sales_by_article -- previously each of those reimplemented parts of
+this (throttled HTTP, pagination, deeplinks, article/contact lookups) on
+their own.
+"""
+
+from __future__ import annotations
+
+import json
+import sys
+import time
+from typing import Any, Iterator
+
+import httpx
+
+BASE_URL = "https://api.lexware.io/v1"
+APP_BASE_URL = "https://app.lexware.de"
+MIN_INTERVAL = 0.6  # Lexware caps at 2 req/s; margin built in.
+# /voucherlist's own default page size is 25; 250 is the documented maximum.
+# Doesn't affect correctness (pagination stops on an empty page regardless
+# of page_size, see paginate_voucherlist), just fewer round-trips.
+MAX_VOUCHERLIST_PAGE_SIZE = 250
+
+# voucherType (API filter value) -> URL path segment, used for detail GETs,
+# file downloads, and deeplinks alike.
+RESOURCE_INFO: dict[str, str] = {
+    "invoice": "invoices",
+    "deliverynote": "delivery-notes",
+    "orderconfirmation": "order-confirmations",
+    "quotation": "quotations",  # path unverified, best guess
+    "creditnote": "credit-notes",
+    # Down-payment invoices (Abschlagsrechnungen) are their own voucherType,
+    # NOT included when filtering voucherType=invoice -- easy to miss a
+    # chunk of "Rechnungen" this way if the account uses them. Read-only via
+    # the API (no POST /v1/down-payment-invoices).
+    "downpaymentinvoice": "down-payment-invoices",
+    "dun": "dunnings",
+}
+
+
+class LexwareClient:
+    def __init__(self, api_key: str, debug: bool = False) -> None:
+        self._client = httpx.Client(
+            base_url=BASE_URL,
+            headers={"Authorization": f"Bearer {api_key}", "Accept": "application/json"},
+            timeout=30.0,
+        )
+        self._last_call = 0.0
+        self.debug = debug
+        # Per-instance caches -- both keyed by Lexware id, populated lazily by
+        # get_article_number()/get_contact_name() so repeated lookups across
+        # many vouchers cost one API call each instead of one per voucher.
+        self._article_cache: dict[str, tuple[str, str]] = {}
+        self._contact_name_cache: dict[str, str] = {}
+
+    def _throttle(self) -> None:
+        elapsed = time.monotonic() - self._last_call
+        if elapsed < MIN_INTERVAL:
+            time.sleep(MIN_INTERVAL - elapsed)
+
+    def _send(self, method: str, path: str, **kwargs: Any) -> httpx.Response:
+        self._throttle()
+        resp = self._client.request(method, path, **kwargs)
+        self._last_call = time.monotonic()
+        if resp.status_code == 429:
+            time.sleep(2.0)
+            resp = self._client.request(method, path, **kwargs)
+            self._last_call = time.monotonic()
+        resp.raise_for_status()
+        return resp
+
+    def get(self, path: str, params: dict[str, Any] | None = None) -> dict[str, Any]:
+        data = self._send("GET", path, params=params).json()
+        if self.debug:
+            print(f"--- DEBUG GET {path} params={params} ---", file=sys.stderr)
+            print(json.dumps(data, indent=2, ensure_ascii=False)[:3000], file=sys.stderr)
+        return data
+
+    def get_file(self, path: str) -> bytes:
+        return self._send("GET", path).content
+
+    def paginate_voucherlist(
+        self,
+        voucher_type: str,
+        voucher_status: str = "any",
+        page_size: int = MAX_VOUCHERLIST_PAGE_SIZE,
+        **extra_params: Any,
+    ) -> Iterator[dict[str, Any]]:
+        """Stops as soon as the response's own "last" field says so; falls
+        back to requesting pages until one comes back empty if that field is
+        ever missing (deliberately NOT stopping just because a page is
+        shorter than the requested `page_size` -- that heuristic, used here
+        previously, breaks silently whenever the server enforces its own,
+        smaller effective page size: a genuinely full server-page then still
+        looks "short" relative to what we asked for, so pagination would
+        stop after page 1 -- seen in practice, always cut off at exactly 60
+        results regardless of the true total, no matter how large
+        `page_size` was set to).
+
+        `extra_params` passes through to the request as-is, e.g.
+        voucherDateFrom/voucherDateTo/contactId/voucherNumber -- see
+        https://developers.lexware.io/docs/#voucherlist-endpoint.
+        """
+        page = 0
+        fetched = 0
+        while True:
+            data = self.get(
+                "/voucherlist",
+                params={
+                    "voucherType": voucher_type,
+                    "voucherStatus": voucher_status,
+                    "page": page,
+                    "size": page_size,
+                    **extra_params,
+                },
+            )
+            content = data.get("content", [])
+            is_last = data.get("last")
+            fetched += len(content)
+            print(
+                f"  /voucherlist {voucher_type} page {page}: {len(content)} entries "
+                f"(total so far: {fetched})"
+                + ("" if content else " -- empty page, done")
+                + (" -- last page" if is_last and content else ""),
+                file=sys.stderr,
+            )
+            if not content:
+                return
+            yield from content
+            if is_last is True:
+                return
+            page += 1
+
+    def index_vouchers(
+        self, voucher_type: str, voucher_status: str = "any"
+    ) -> dict[str, dict[str, Any]]:
+        """Mapping voucher id -> {voucherNumber, voucherStatus, voucherDate,
+        totalAmount, openAmount}, from the /voucherlist view only -- no
+        per-voucher detail GET.
+
+        Deliberately not a per-voucher detail GET (e.g. GET /invoices/{id}):
+        that response has no "openAmount" field at all, only totalPrice.*
+        for the voucher's own total. openAmount only exists on the
+        /voucherlist summary, so that's the only source for it.
+        """
+        index: dict[str, dict[str, Any]] = {}
+        for entry in self.paginate_voucherlist(voucher_type, voucher_status):
+            voucher_id = entry.get("id")
+            if not voucher_id:
+                continue
+            index[voucher_id] = {
+                "voucherNumber": entry.get("voucherNumber"),
+                "voucherStatus": entry.get("voucherStatus"),
+                "voucherDate": (entry.get("voucherDate") or "")[:10] or None,
+                "totalAmount": entry.get("totalAmount"),
+                "openAmount": entry.get("openAmount"),
+            }
+        return index
+
+    def find_voucher_id(self, voucher_type: str, voucher_number: str) -> str | None:
+        data = self.get(
+            "/voucherlist",
+            params={"voucherType": voucher_type, "voucherStatus": "any", "voucherNumber": voucher_number},
+        )
+        content = data.get("content", [])
+        return content[0]["id"] if content else None
+
+    def get_voucher_detail(self, voucher_type: str, voucher_id: str) -> dict[str, Any]:
+        return self.get(f"/{RESOURCE_INFO[voucher_type]}/{voucher_id}")
+
+    def get_voucher_file(self, voucher_type: str, voucher_id: str) -> bytes:
+        return self.get_file(f"/{RESOURCE_INFO[voucher_type]}/{voucher_id}/file")
+
+    def get_contact(self, contact_id: str) -> dict[str, Any]:
+        return self.get(f"/contacts/{contact_id}")
+
+    def get_contact_name(self, contact_id: str) -> str:
+        """Display name for a contact, cached per client instance. A
+        contact is either a company (has a "company" block) or a person
+        (has a "person" block, first/last name) -- falls back to "Unknown"
+        for anything else rather than raising.
+        """
+        if contact_id not in self._contact_name_cache:
+            contact = self.get_contact(contact_id)
+            company = contact.get("company") or {}
+            person = contact.get("person") or {}
+            if company.get("name"):
+                name = company["name"]
+            elif person:
+                name = f"{person.get('firstName', '')} {person.get('lastName', '')}".strip()
+            else:
+                name = "Unknown"
+            self._contact_name_cache[contact_id] = name
+        return self._contact_name_cache[contact_id]
+
+    def get_article_number(self, item: dict[str, Any]) -> tuple[str, str]:
+        """Resolves a sales-voucher lineItem's article id to (articleNumber,
+        gtin), cached per client instance. If the article no longer exists
+        (404 -- happens for old invoices whose article was since deleted in
+        Lexware), tries the line item's own "articleNumber" field
+        (undocumented, not always present) before falling back to a
+        "(Artikel gelöscht) <name>" placeholder; gtin is empty in that case,
+        since it's not carried on the line item at all.
+        """
+        article_id = item["id"]
+        if article_id not in self._article_cache:
+            try:
+                article = self.get(f"/articles/{article_id}")
+                number = article.get("articleNumber") or article_id
+                self._article_cache[article_id] = (number, article.get("gtin") or "")
+            except httpx.HTTPStatusError as exc:
+                if exc.response.status_code != 404:
+                    raise
+                fallback_number = item.get("articleNumber")
+                name = item.get("name", "?")
+                number = fallback_number if fallback_number else f"(Artikel gelöscht) {name}"
+                self._article_cache[article_id] = (number, "")
+        return self._article_cache[article_id]
+
+    def deeplink(self, voucher_type: str, voucher_id: str) -> str:
+        return f"{APP_BASE_URL}/permalink/{RESOURCE_INFO[voucher_type]}/view/{voucher_id}"
+
+    def contact_deeplink(self, contact_id: str) -> str:
+        return f"{APP_BASE_URL}/permalink/contacts/view/{contact_id}"
+
+
+def extract_contact_id(voucher_detail: dict[str, Any]) -> str | None:
+    return (voucher_detail.get("address", {}) or {}).get("contactId")
+
+
+def extract_one_time_name(voucher_detail: dict[str, Any]) -> str:
+    """Display name for one-time addresses (Einmalkunde), which have no
+    contactId -- the name is entered directly on the voucher's address block.
+    """
+    return (voucher_detail.get("address", {}) or {}).get("name") or "Unknown"
+
+
+def extract_related(voucher_detail: dict[str, Any]) -> list[dict[str, str]]:
+    """All related vouchers (any type) from a voucher's own relatedVouchers
+    list -- this is how Lexware links e.g. an order confirmation to the
+    invoices/delivery notes/etc. created from it (there is no
+    "precedingSalesVoucherId" field on the other side).
+    """
+    related = voucher_detail.get("relatedVouchers") or []
+    return [r for r in related if r.get("id") and r.get("voucherType")]

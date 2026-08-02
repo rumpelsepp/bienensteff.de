@@ -1,18 +1,18 @@
-#!/usr/bin/env -S uv run -qs
+"""
+Dumps historical Trachtnet (dlr-web-daten1.aspdienste.de) beehive scale data
+per year and region (Bundesland/Regierungsbezirk/Landkreis/individual scale)
+as one JSON file per region/year under --outdir.
 
-# /// script
-# requires-python = ">=3.14"
-# dependencies = [
-#     "httpx",
-#     "polars",
-# ]
-# ///
+Usage:
+  dump-trachtnet --year 2026 --outdir static/trachtnet-dump
+"""
 
 import argparse
 import enum
 import re
 import datetime
 import http
+import sys
 import time
 from typing import Any, Literal, TypedDict
 from pathlib import Path
@@ -1615,16 +1615,16 @@ class TrachtnetClient:
                 return resp.json()
             except httpx.HTTPStatusError as e:
                 if e.response.status_code == http.HTTPStatus.INTERNAL_SERVER_ERROR:
-                    print(f"Internal server error for {regions}. Returning empty data.")
+                    print(f"Internal server error for {regions}. Returning empty data.", file=sys.stderr)
                     return {}
                 else:
                     raise e
             except httpx.ReadTimeout:
-                print("ReadTimeout, trying again…")
+                print("ReadTimeout, trying again…", file=sys.stderr)
                 time.sleep(2)
                 continue
 
-        print("unknown problem, no data gathered")
+        print("unknown problem, no data gathered", file=sys.stderr)
         return {}
 
     def _parse_german_date(self, date_str: str) -> datetime.date:
@@ -1756,7 +1756,7 @@ class TrachtnetClient:
         raw_data = self.get_data(year, year, regions=[region])
         name = region.name if isinstance(region, enum.Enum) else str(region)
         if not raw_data:
-            print(f"No data found for {name} in {year}")
+            print(f"No data found for {name} in {year}", file=sys.stderr)
             return
 
         match region:
@@ -1776,10 +1776,8 @@ class TrachtnetClient:
         outfile.write_text(raw_data[0]["dataframe"].write_json())
 
 
-def parse_args() -> tuple[argparse.ArgumentParser, argparse.Namespace]:
-    parser = argparse.ArgumentParser(
-        description="Dump Trachtnet data for a given year and region."
-    )
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--year",
         type=int,
@@ -1792,11 +1790,7 @@ def parse_args() -> tuple[argparse.ArgumentParser, argparse.Namespace]:
         default=Path("./trachtnet-dump"),
         help="Output directory for the dumped data",
     )
-    return parser, parser.parse_args()
-
-
-def main() -> None:
-    _, args = parse_args()
+    args = parser.parse_args()
 
     year_list = (
         args.year if args.year else list(range(2011, datetime.datetime.today().year))
@@ -1806,16 +1800,16 @@ def main() -> None:
 
     for year in year_list:
         for state in Land:
-            print(f"Dumping {year} {state.name}")
+            print(f"Dumping {year} {state.name}", file=sys.stderr)
             client.dump_data(year, state, args.outdir)
         for county in Regierungsbezirk:
-            print(f"Dumping {year} {county.name}")
+            print(f"Dumping {year} {county.name}", file=sys.stderr)
             client.dump_data(year, county, args.outdir)
         for landkreis in Kreis:
-            print(f"Dumping {year} {landkreis.name}")
+            print(f"Dumping {year} {landkreis.name}", file=sys.stderr)
             client.dump_data(year, landkreis, args.outdir)
         for wid in waagen_ids:
-            print(f"Dumping {year} wid {wid}")
+            print(f"Dumping {year} wid {wid}", file=sys.stderr)
             client.dump_data(year, wid, args.outdir)
 
 

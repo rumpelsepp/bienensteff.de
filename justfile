@@ -42,7 +42,7 @@ clean:
     rm -rf public
 
 update-db:
-    ./scripts/dump-db.py | jq > assets/db/db.json
+    uv run --project scripts dump-db | jq > assets/db/db.json
 
 format-trachtnet:
     #!/usr/bin/env bash
@@ -51,16 +51,12 @@ format-trachtnet:
         jq < "$f" > "$f".pretty
         mv "$f".pretty "$f"
     done
-    
+
 update-pricelist:
-    ./scripts/gen-pricelist.py > data/preisliste.json
+    uv run --project scripts gen-pricelist > data/preisliste.json
 
 update-trachtnet: && format-trachtnet
-    ./scripts/dump-trachtnet.py --year $(date +%Y) --outdir static/trachtnet-dump
-    
+    uv run --project scripts dump-trachtnet --year $(date +%Y) --outdir static/trachtnet-dump
+
 update-klima:
-    ./scripts/dump-dwd.py --station-id 03379 static/klima/03387_hourly.json static/klima/03379_daily.json 
-    
-update-trachtnet-chosen:
-    ./scripts/gen-trachtnet.py --chosen-evaluations
-    mv -f *.svg static/trachtnet/
+    uv run --project scripts dump-dwd --station-id 03379 static/klima/03387_hourly.json static/klima/03379_daily.json

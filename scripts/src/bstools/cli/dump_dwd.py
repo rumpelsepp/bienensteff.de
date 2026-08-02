@@ -1,12 +1,11 @@
-#!/usr/bin/env -S uv run -s
+"""
+Downloads hourly temperature/humidity/precipitation data for a DWD weather
+station (opendata.dwd.de) and writes out an hourly and a daily-aggregated
+NDJSON file.
 
-# /// script
-# requires-python = ">=3.14"
-# dependencies = [
-#     "httpx>=0.28.1",
-#     "polars>=1.42.0",
-# ]
-# ///
+Usage:
+  dump-dwd --station-id 03379 static/klima/03379_hourly.json static/klima/03379_daily.json
+"""
 
 import argparse
 import io
@@ -101,8 +100,8 @@ def clean_and_prepare_data(station_id: str) -> pl.DataFrame:
     )
 
 
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser()
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--station-id",
         required=True,
@@ -110,11 +109,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("FILE_HOURLY", type=Path, help="path to write the hourly data")
     parser.add_argument("FILE_DAILY", type=Path, help="path to write the daily data")
-    return parser.parse_args()
-
-
-def main() -> None:
-    args = parse_args()
+    args = parser.parse_args()
 
     df_hourly = clean_and_prepare_data(args.station_id)
     df_daily = df_hourly.group_by_dynamic(
