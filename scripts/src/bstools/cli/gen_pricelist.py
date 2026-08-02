@@ -1,9 +1,11 @@
-#!/usr/bin/env -S uv run -s
+"""
+Turns the local ./assets/db/db.json (see dump-db) into a slimmed-down price
+list (only for-sale articles, only the fields a storefront needs), printed
+as JSON to stdout.
 
-# /// script
-# requires-python = ">=3.14"
-# dependencies = []
-# ///
+Usage:
+  gen-pricelist > data/preisliste.json
+"""
 
 import datetime
 import json

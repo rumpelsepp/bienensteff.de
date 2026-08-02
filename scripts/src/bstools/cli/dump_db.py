@@ -1,21 +1,23 @@
-#!/usr/bin/env -S uv run -s
+"""
+Dumps the Bienensteff product/tracing database from its Grist SaaS document
+(articles, fillings, buckets, batches, centrifugations) as one joined JSON
+blob to stdout.
 
-# /// script
-# requires-python = ">=3.14"
-# dependencies = [
-#     "polars>=1.39.3",
-#     "requests>=2.33.1",
-# ]
-# ///
+Requires a working `gopass show grist-api-key`.
+
+Usage:
+  dump-db > assets/db/db.json
+"""
 
 import json
 import subprocess
 
 import polars as pl
-import requests
 
+from bstools.grist import GristClient
 
-document_id = "suQKVJDfFYQF"
+GRIST_BASE_URL = "https://docs.getgrist.com"
+DOCUMENT_ID = "suQKVJDfFYQF"
 
 
 def get_api_key() -> str:
@@ -26,28 +28,22 @@ def get_api_key() -> str:
     )
 
 
-def fetch_table(table_id: str, api_key: str) -> pl.DataFrame:
-    url = f"https://docs.getgrist.com/api/docs/{document_id}/tables/{table_id}/records"
-    headers = {"Authorization": f"Bearer {api_key}"}
-
-    r = requests.get(url, headers=headers)
-    r.raise_for_status()
-    data = r.json()
+def fetch_table(grist: GristClient, table_id: str) -> pl.DataFrame:
     return (
-        pl.DataFrame(data["records"])
+        pl.DataFrame(grist.get_records(table_id))
         .unnest("fields")
         .select(pl.all().exclude(["created_at", "updated_at"]))
     )
 
 
 def main() -> None:
-    api_key = get_api_key()
+    grist = GristClient(GRIST_BASE_URL, get_api_key(), DOCUMENT_ID)
 
-    articles_df = fetch_table("Artikel", api_key).filter(~pl.col("sku").str.starts_with("_"))
-    article_details_df = fetch_table("Verkaufdetails", api_key)
-    article_brands_df = fetch_table("Marken", api_key)
-    article_vkes_df = fetch_table("VKEs", api_key)
-    article_prices_df = fetch_table("Preise", api_key)
+    articles_df = fetch_table(grist, "Artikel").filter(~pl.col("sku").str.starts_with("_"))
+    article_details_df = fetch_table(grist, "Verkaufdetails")
+    article_brands_df = fetch_table(grist, "Marken")
+    article_vkes_df = fetch_table(grist, "VKEs")
+    article_prices_df = fetch_table(grist, "Preise")
     articles_df = (
         article_prices_df.join(
             articles_df.with_columns([pl.col("id").alias("article_id")]),
@@ -58,7 +54,7 @@ def main() -> None:
         .drop(["sku_id", "id", "label_right"])
         .rename({"article_id": "id"})
     )
-    
+
     skus_df = (
         article_details_df.join(articles_df, left_on="sku", right_on="id", how="inner")
         .drop(["id", "sku", "label_right"])
@@ -114,17 +110,17 @@ def main() -> None:
         )
     )
 
-    locations_df = fetch_table("Standorte", api_key)
-    centrifugations_df = fetch_table("Tracing_Schleuderungen", api_key).with_columns(
+    locations_df = fetch_table(grist, "Standorte")
+    centrifugations_df = fetch_table(grist, "Tracing_Schleuderungen").with_columns(
         [
             pl.from_epoch(pl.col("date"), time_unit="s")
             .dt.strftime("%Y-%m-%d")
             .alias("date"),
         ]
     )
-    batches_df = fetch_table("Tracing_Lose", api_key)
+    batches_df = fetch_table(grist, "Tracing_Lose")
     buckets_df = (
-        fetch_table("Tracing_Eimer", api_key)
+        fetch_table(grist, "Tracing_Eimer")
         .join(
             batches_df.select(["id", "batch_id"]),
             left_on="batch_id",
@@ -155,7 +151,7 @@ def main() -> None:
     )
 
     fillings_df = (
-        fetch_table("Abfullungen", api_key)
+        fetch_table(grist, "Abfullungen")
         .with_columns(
             [
                 pl.from_epoch(pl.col("date"), time_unit="s").dt.strftime("%Y-%m-%d"),
@@ -182,7 +178,7 @@ def main() -> None:
         .rename({"sku_right": "sku"})
         .with_columns(pl.col("filling_id").alias("id"))
     )
-    
+
     fillings_grouped = fillings_df.group_by("sku").agg(
         pl.struct(pl.all().exclude("sku")).alias("fillings")
     )
