@@ -119,7 +119,13 @@ from dataclasses import dataclass, field
 from typing import Any
 
 from bstools.env import require_env
-from bstools.grist import GristClient, choice_options, date_options, date_to_epoch, markdown_options
+from bstools.grist import (
+    GristClient,
+    choice_options,
+    date_options,
+    date_to_epoch,
+    markdown_options,
+)
 from bstools.lexware import (
     RESOURCE_INFO,
     LexwareClient,
@@ -127,6 +133,25 @@ from bstools.lexware import (
     extract_one_time_name,
     extract_related,
 )
+
+# Short version of the module docstring above, for --help -- the full one is
+# too long to dump on a terminal usefully. Keep in sync by hand; it's meant
+# to stay a stable summary, not track every detail of the long version.
+CLI_HELP = """Lexware Office -> Grist sync for order confirmations (Bienensteff).
+
+Syncs order confirmations from Lexware into a Grist table: one row per OC
+(Status + Versandstatus manual, Abrechnungsstatus automatic billing
+progress), plus a derived "_Docs" table linking every related voucher. See
+the module docstring in the source for the full column semantics, Amount
+calculation, and Docs-table derivation rules.
+
+Required environment variables:
+  LEXWARE_API_KEY, GRIST_API_KEY, GRIST_BASE_URL, GRIST_DOC_ID, GRIST_TABLE_ID
+
+Usage:
+  grist-magic --init [--dry-run]   # create/update the Grist table
+  grist-magic --debug --dry-run
+  grist-magic"""
 
 # Invoice voucherStatus values (raw Lexware API values, not user-facing --
 # German display strings are a separate concern, see DOCUMENT_STATUS_LABELS)
@@ -457,7 +482,9 @@ def build_records(
             # delivered (Lexware has no such confirmation), just that the
             # document was created -- but it's a strong hint billing is due.
             amount = entry.get("totalAmount")
-            billing_status = BILLING_STATUS_TO_INVOICE if has_delivery_note else BILLING_STATUS_UNBILLED
+            billing_status = (
+                BILLING_STATUS_TO_INVOICE if has_delivery_note else BILLING_STATUS_UNBILLED
+            )
 
         records.append(
             OrderRecord(
@@ -632,8 +659,7 @@ def sync_docs_table(
         row_id = row_ids.get(rec.ab_id)
         if row_id is None:
             print(
-                f"WARNING: no Grist row id for OC {rec.ab_number}, skipping "
-                f"its Docs table rows.",
+                f"WARNING: no Grist row id for OC {rec.ab_number}, skipping its Docs table rows.",
                 file=sys.stderr,
             )
             continue
@@ -664,7 +690,9 @@ def run_init(grist: GristClient, table_id: str, dry_run: bool) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(
+        description=CLI_HELP, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     parser.add_argument("--debug", action="store_true", help="print raw API payloads to stderr")
     parser.add_argument("--dry-run", action="store_true", help="don't write anything to Grist")
     parser.add_argument(
@@ -673,8 +701,7 @@ def main() -> None:
     parser.add_argument(
         "--only",
         metavar="AB_NUMBER",
-        help="only process this one order confirmation number, for debugging "
-        "(e.g. --only AB-0042)",
+        help="only process this one order confirmation number, for debugging (e.g. --only AB-0042)",
     )
     args = parser.parse_args()
 
@@ -703,8 +730,10 @@ def main() -> None:
     row_ids = sync_to_grist(grist, table_id, records, existing, dry_run=args.dry_run)
 
     if args.only:
-        print("--only is set, skipping the Docs table (it's a full wipe-and-reinsert, "
-              "which would delete every other OC's document links).")
+        print(
+            "--only is set, skipping the Docs table (it's a full wipe-and-reinsert, "
+            "which would delete every other OC's document links)."
+        )
     else:
         docs_table_id = f"{table_id}{DOCS_TABLE_SUFFIX}"
         sync_docs_table(grist, docs_table_id, records, row_ids, dry_run=args.dry_run)

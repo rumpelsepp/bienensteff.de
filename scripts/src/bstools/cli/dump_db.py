@@ -113,9 +113,7 @@ def main() -> None:
     locations_df = fetch_table(grist, "Standorte")
     centrifugations_df = fetch_table(grist, "Tracing_Schleuderungen").with_columns(
         [
-            pl.from_epoch(pl.col("date"), time_unit="s")
-            .dt.strftime("%Y-%m-%d")
-            .alias("date"),
+            pl.from_epoch(pl.col("date"), time_unit="s").dt.strftime("%Y-%m-%d").alias("date"),
         ]
     )
     batches_df = fetch_table(grist, "Tracing_Lose")
@@ -155,9 +153,7 @@ def main() -> None:
         .with_columns(
             [
                 pl.from_epoch(pl.col("date"), time_unit="s").dt.strftime("%Y-%m-%d"),
-                pl.from_epoch(pl.col("best_before_date"), time_unit="s").dt.strftime(
-                    "%Y-%m-%d"
-                ),
+                pl.from_epoch(pl.col("best_before_date"), time_unit="s").dt.strftime("%Y-%m-%d"),
             ]
         )
         .join(
@@ -183,18 +179,14 @@ def main() -> None:
         pl.struct(pl.all().exclude("sku")).alias("fillings")
     )
     skus_df = (
-        skus_df
-        .join(fillings_grouped, on="sku", how="left")
-        .with_columns((pl.lit("SKU-") + pl.col("sku")).alias("id"))
+        skus_df.join(fillings_grouped, on="sku", how="left").with_columns(
+            (pl.lit("SKU-") + pl.col("sku")).alias("id")
+        )
         # .filter(pl.col("fillings").is_not_null())
     )
-    buckets_agg = buckets_df.group_by("batch_id").agg(
-        pl.struct(pl.all()).alias("buckets")
-    )
+    buckets_agg = buckets_df.group_by("batch_id").agg(pl.struct(pl.all()).alias("buckets"))
 
-    fillings_agg = fillings_df.group_by("batch_id").agg(
-        pl.struct(pl.all()).alias("fillings")
-    )
+    fillings_agg = fillings_df.group_by("batch_id").agg(pl.struct(pl.all()).alias("fillings"))
 
     batches_grouped_df = (
         batches_df.join(fillings_agg, on="batch_id", how="left")

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import json
 import sys
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any
 
 import niquests
@@ -26,13 +26,13 @@ AUTO_SYNCED_OPTION_KEYS = {"choices", "widget"}
 
 
 def date_to_epoch(date_str: str | None) -> int | None:
-    """"YYYY-MM-DD" -> Unix timestamp (seconds, UTC midnight), the value
+    """ "YYYY-MM-DD" -> Unix timestamp (seconds, UTC midnight), the value
     format Grist's Date columns actually store/expect via the API -- an ISO
     string is not accepted.
     """
     if not date_str:
         return None
-    dt = datetime.strptime(date_str, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+    dt = datetime.strptime(date_str, "%Y-%m-%d").replace(tzinfo=UTC)
     return int(dt.timestamp())
 
 
@@ -52,8 +52,9 @@ def _parse_widget_options(widget_options_raw: Any) -> dict[str, Any]:
     if not widget_options_raw:
         return {}
     try:
-        return json.loads(widget_options_raw)
-    except (TypeError, ValueError):
+        parsed: dict[str, Any] = json.loads(widget_options_raw)
+        return parsed
+    except TypeError, ValueError:
         return {}
 
 
@@ -75,16 +76,16 @@ class GristClient:
     def get_records(self, table_id: str) -> list[dict[str, Any]]:
         resp = self._client.get(f"/api/docs/{self.doc_id}/tables/{table_id}/records")
         self._check(resp)
-        return resp.json().get("records", [])
+        data: dict[str, Any] = resp.json()
+        records: list[dict[str, Any]] = data.get("records", [])
+        return records
 
     def add_records(self, table_id: str, records: list[dict[str, Any]]) -> list[int]:
         """Returns the newly assigned row ids, in the same order as `records`."""
         if not records:
             return []
         payload = {"records": [{"fields": r} for r in records]}
-        resp = self._client.post(
-            f"/api/docs/{self.doc_id}/tables/{table_id}/records", json=payload
-        )
+        resp = self._client.post(f"/api/docs/{self.doc_id}/tables/{table_id}/records", json=payload)
         self._check(resp)
         return [rec["id"] for rec in resp.json().get("records", [])]
 
@@ -129,11 +130,10 @@ class GristClient:
         """Internal row id of a table in the _grist_Tables metadata table --
         needed to look up a column's colRef for visibleCol on Ref columns.
         """
-        resp = self._client.get(f"/api/docs/{self.doc_id}/tables/_grist_Tables/records")
-        self._check(resp)
-        for rec in resp.json().get("records", []):
+        for rec in self.get_records("_grist_Tables"):
             if rec.get("fields", {}).get("tableId") == table_id:
-                return rec["id"]
+                row_id: int = rec["id"]
+                return row_id
         return None
 
     def get_column_ref(self, table_id: str, col_id: str) -> int | None:
@@ -143,14 +143,11 @@ class GristClient:
         table_ref = self.get_table_ref(table_id)
         if table_ref is None:
             return None
-        resp = self._client.get(
-            f"/api/docs/{self.doc_id}/tables/_grist_Tables_column/records"
-        )
-        self._check(resp)
-        for rec in resp.json().get("records", []):
+        for rec in self.get_records("_grist_Tables_column"):
             fields = rec.get("fields", {})
             if fields.get("parentId") == table_ref and fields.get("colId") == col_id:
-                return rec["id"]
+                row_id: int = rec["id"]
+                return row_id
         return None
 
     def create_table(
@@ -185,9 +182,7 @@ class GristClient:
                 for col_id, col_type, extra in columns
             ]
         }
-        resp = self._client.post(
-            f"/api/docs/{self.doc_id}/tables/{table_id}/columns", json=payload
-        )
+        resp = self._client.post(f"/api/docs/{self.doc_id}/tables/{table_id}/columns", json=payload)
         self._check(resp)
 
     def update_column_fields(self, table_id: str, col_id: str, fields: dict[str, Any]) -> None:
@@ -281,7 +276,9 @@ class GristClient:
                 "already stored in it, so confirm each one:"
             )
             for col_id, have, want in mismatched:
-                answer = input(f"  Change '{col_id}' from {have!r} to {want!r}? [y/N] ").strip().lower()
+                answer = (
+                    input(f"  Change '{col_id}' from {have!r} to {want!r}? [y/N] ").strip().lower()
+                )
                 if answer == "y":
                     self.update_column_fields(table_id, col_id, {"type": want})
                     print(f"  Updated {col_id}.")

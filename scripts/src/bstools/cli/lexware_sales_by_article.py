@@ -48,6 +48,22 @@ import polars as pl
 from bstools.env import require_env_var
 from bstools.lexware import LexwareClient
 
+# Short version of the module docstring above, for --help -- the full one is
+# too long to dump on a terminal usefully. Keep in sync by hand; it's meant
+# to stay a stable summary, not track every detail of the long version.
+CLI_HELP = """Two Lexware Office reports in one JSON, grouped by year: "artikel" (sold
+quantity per article number across paid invoices, e.g. for a GQ-Kontrolle)
+and "einnahmen_ausgaben" (per-year paid-invoice revenue -- a plain income
+overview, not a profit calculation; manual bookkeeping vouchers and
+depreciation are deliberately not included, see the module docstring in the
+source for why).
+
+Required environment variable: LEXWARE_API_KEY
+
+Usage:
+  lexware-sales-by-article
+  lexware-sales-by-article --from 2026-01-01 --to 2026-12-31"""
+
 
 def build_article_report(rows: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
     if not rows:
@@ -72,9 +88,21 @@ def build_article_report(rows: list[dict[str, Any]]) -> dict[str, list[dict[str,
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--from", dest="date_from", metavar="YYYY-MM-DD", help="only invoices/vouchers on/after this date")
-    parser.add_argument("--to", dest="date_to", metavar="YYYY-MM-DD", help="only invoices/vouchers on/before this date")
+    parser = argparse.ArgumentParser(
+        description=CLI_HELP, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    parser.add_argument(
+        "--from",
+        dest="date_from",
+        metavar="YYYY-MM-DD",
+        help="only invoices/vouchers on/after this date",
+    )
+    parser.add_argument(
+        "--to",
+        dest="date_to",
+        metavar="YYYY-MM-DD",
+        help="only invoices/vouchers on/before this date",
+    )
     args = parser.parse_args()
 
     client = LexwareClient(require_env_var("LEXWARE_API_KEY"))
@@ -93,7 +121,7 @@ def main() -> None:
 
     paid = [
         entry
-        for entry in client.paginate_voucherlist("invoice", **api_date_params)
+        for entry in client.paginate_voucherlist("invoice", extra_params=api_date_params)
         if entry.get("voucherStatus") == "paid"
         and (not args.date_from or (entry.get("voucherDate") or "") >= args.date_from)
         and (not args.date_to or (entry.get("voucherDate") or "") <= args.date_to)

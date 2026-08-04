@@ -9,8 +9,8 @@ Usage:
 
 import datetime
 import json
-from typing import TypedDict
 from pathlib import Path
+from typing import TypedDict
 
 
 class Article(TypedDict):
@@ -54,7 +54,7 @@ def main() -> None:
 
     out: ArticleList = {
         "articles": articles_out,
-        "timestamp": datetime.datetime.now().isoformat(),
+        "timestamp": datetime.datetime.now(datetime.UTC).isoformat(),
     }
     print(json.dumps(out, indent=2, ensure_ascii=False))
 
