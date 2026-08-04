@@ -18,7 +18,7 @@ from typing import Any, Literal, TypedDict
 from pathlib import Path
 from urllib.parse import urljoin
 
-import httpx
+import niquests
 import polars as pl
 
 
@@ -1561,10 +1561,9 @@ class TrachtnetClient:
         self.user_agent = (
             "Mozilla/5.0 (X11; Linux x86_64; rv:138.0) Gecko/20100101 Firefox/138.0"
         )
-        transport = httpx.HTTPTransport(retries=3)
-        self.client = httpx.Client(transport=transport)
+        self.client = niquests.Session(retries=3)
 
-    def _request(self, method: str, endpoint: str, **kwargs) -> httpx.Response:
+    def _request(self, method: str, endpoint: str, **kwargs) -> niquests.Response:
         headers = kwargs.pop("headers", {})
         headers["User-Agent"] = self.user_agent
         resp = self.client.request(
@@ -1613,13 +1612,13 @@ class TrachtnetClient:
                     params=params,
                 )
                 return resp.json()
-            except httpx.HTTPStatusError as e:
+            except niquests.HTTPError as e:
                 if e.response.status_code == http.HTTPStatus.INTERNAL_SERVER_ERROR:
                     print(f"Internal server error for {regions}. Returning empty data.", file=sys.stderr)
                     return {}
                 else:
                     raise e
-            except httpx.ReadTimeout:
+            except niquests.ReadTimeout:
                 print("ReadTimeout, trying again…", file=sys.stderr)
                 time.sleep(2)
                 continue

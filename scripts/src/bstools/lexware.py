@@ -11,7 +11,7 @@ import sys
 import time
 from typing import Any, Iterator
 
-import httpx
+import niquests
 
 BASE_URL = "https://api.lexware.io/v1"
 APP_BASE_URL = "https://app.lexware.de"
@@ -40,7 +40,7 @@ RESOURCE_INFO: dict[str, str] = {
 
 class LexwareClient:
     def __init__(self, api_key: str, debug: bool = False) -> None:
-        self._client = httpx.Client(
+        self._client = niquests.Session(
             base_url=BASE_URL,
             headers={"Authorization": f"Bearer {api_key}", "Accept": "application/json"},
             timeout=30.0,
@@ -58,7 +58,7 @@ class LexwareClient:
         if elapsed < MIN_INTERVAL:
             time.sleep(MIN_INTERVAL - elapsed)
 
-    def _send(self, method: str, path: str, **kwargs: Any) -> httpx.Response:
+    def _send(self, method: str, path: str, **kwargs: Any) -> niquests.Response:
         self._throttle()
         resp = self._client.request(method, path, **kwargs)
         self._last_call = time.monotonic()
@@ -66,6 +66,12 @@ class LexwareClient:
             time.sleep(2.0)
             resp = self._client.request(method, path, **kwargs)
             self._last_call = time.monotonic()
+        if not resp.ok and resp.status_code != 404:
+            # 404 is deliberately quiet -- callers like get_article_number()
+            # already expect and handle it (e.g. an article deleted since
+            # the invoice was created). Anything else is unexpected enough
+            # to want the full response body, not just the status code.
+            print(f"Lexware API error {resp.status_code} for {method} {path}: {resp.text}", file=sys.stderr)
         resp.raise_for_status()
         return resp
 
@@ -79,46 +85,32 @@ class LexwareClient:
     def get_file(self, path: str) -> bytes:
         return self._send("GET", path).content
 
-    def paginate_voucherlist(
-        self,
-        voucher_type: str,
-        voucher_status: str = "any",
-        page_size: int = MAX_VOUCHERLIST_PAGE_SIZE,
-        **extra_params: Any,
-    ) -> Iterator[dict[str, Any]]:
-        """Stops as soon as the response's own "last" field says so; falls
+    def _paginate(self, path: str, params: dict[str, Any]) -> Iterator[dict[str, Any]]:
+        """Generic pager for Lexware's {content, last, ...} paged list
+        responses, used by paginate_voucherlist(). Factored out as its own
+        method since it's not voucherlist-specific -- ready to reuse for any
+        other Lexware list endpoint that follows the same paging shape.
+
+        Stops as soon as the response's own "last" field says so; falls
         back to requesting pages until one comes back empty if that field is
         ever missing (deliberately NOT stopping just because a page is
-        shorter than the requested `page_size` -- that heuristic, used here
+        shorter than the requested `size` -- that heuristic, used here
         previously, breaks silently whenever the server enforces its own,
         smaller effective page size: a genuinely full server-page then still
         looks "short" relative to what we asked for, so pagination would
         stop after page 1 -- seen in practice, always cut off at exactly 60
-        results regardless of the true total, no matter how large
-        `page_size` was set to).
-
-        `extra_params` passes through to the request as-is, e.g.
-        voucherDateFrom/voucherDateTo/contactId/voucherNumber -- see
-        https://developers.lexware.io/docs/#voucherlist-endpoint.
+        results regardless of the true total, no matter how large `size`
+        was set to).
         """
         page = 0
         fetched = 0
         while True:
-            data = self.get(
-                "/voucherlist",
-                params={
-                    "voucherType": voucher_type,
-                    "voucherStatus": voucher_status,
-                    "page": page,
-                    "size": page_size,
-                    **extra_params,
-                },
-            )
+            data = self.get(path, params={**params, "page": page})
             content = data.get("content", [])
             is_last = data.get("last")
             fetched += len(content)
             print(
-                f"  /voucherlist {voucher_type} page {page}: {len(content)} entries "
+                f"  {path} page {page}: {len(content)} entries "
                 f"(total so far: {fetched})"
                 + ("" if content else " -- empty page, done")
                 + (" -- last page" if is_last and content else ""),
@@ -130,6 +122,37 @@ class LexwareClient:
             if is_last is True:
                 return
             page += 1
+
+    def paginate_voucherlist(
+        self,
+        voucher_type: str,
+        voucher_status: str = "any",
+        page_size: int = MAX_VOUCHERLIST_PAGE_SIZE,
+        **extra_params: Any,
+    ) -> Iterator[dict[str, Any]]:
+        """See _paginate() for the pagination behavior.
+
+        `extra_params` passes through to the request as-is, e.g.
+        voucherDateFrom/voucherDateTo/contactId/voucherNumber -- see
+        https://developers.lexware.io/docs/#voucherlist-endpoint.
+        """
+        yield from self._paginate(
+            "/voucherlist",
+            {
+                "voucherType": voucher_type,
+                "voucherStatus": voucher_status,
+                "size": page_size,
+                **extra_params,
+            },
+        )
+
+    # Note: GET /v1/vouchers ("Belege" -- manually recorded bookkeeping
+    # income/expense entries) looked like a natural fit for a
+    # paginate_bookkeeping_vouchers() alongside paginate_voucherlist(), but
+    # it 400s with "voucherNumber parameter is required" when called
+    # without one -- it's a single-voucher lookup by number, not a list-all
+    # endpoint. There is no way to discover/enumerate all Belege via the
+    # public API, so this was removed again rather than kept as dead code.
 
     def index_vouchers(
         self, voucher_type: str, voucher_status: str = "any"
@@ -193,13 +216,13 @@ class LexwareClient:
             self._contact_name_cache[contact_id] = name
         return self._contact_name_cache[contact_id]
 
-    def get_article_number(self, item: dict[str, Any]) -> tuple[str, str]:
+    def get_article_number(self, item: dict[str, Any]) -> tuple[str, str | None]:
         """Resolves a sales-voucher lineItem's article id to (articleNumber,
         gtin), cached per client instance. If the article no longer exists
         (404 -- happens for old invoices whose article was since deleted in
         Lexware), tries the line item's own "articleNumber" field
         (undocumented, not always present) before falling back to a
-        "(Artikel gelöscht) <name>" placeholder; gtin is empty in that case,
+        "(Artikel gelöscht) <name>" placeholder; gtin is None in that case,
         since it's not carried on the line item at all.
         """
         article_id = item["id"]
@@ -207,14 +230,14 @@ class LexwareClient:
             try:
                 article = self.get(f"/articles/{article_id}")
                 number = article.get("articleNumber") or article_id
-                self._article_cache[article_id] = (number, article.get("gtin") or "")
-            except httpx.HTTPStatusError as exc:
+                self._article_cache[article_id] = (number, article.get("gtin") or None)
+            except niquests.HTTPError as exc:
                 if exc.response.status_code != 404:
                     raise
                 fallback_number = item.get("articleNumber")
                 name = item.get("name", "?")
                 number = fallback_number if fallback_number else f"(Artikel gelöscht) {name}"
-                self._article_cache[article_id] = (number, "")
+                self._article_cache[article_id] = (number, None)
         return self._article_cache[article_id]
 
     def deeplink(self, voucher_type: str, voucher_id: str) -> str:

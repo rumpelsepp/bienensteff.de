@@ -13,7 +13,7 @@ import zipfile
 from pathlib import Path
 from string import Template
 
-import httpx
+import niquests
 import polars as pl
 
 BASE_URL = "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly"
@@ -27,8 +27,8 @@ URL_PREC_TPL = Template(
 
 
 def fetch_dwd_csv(url: str) -> pl.DataFrame:
-    with httpx.Client(follow_redirects=True) as client:
-        response = client.get(url)
+    with niquests.Session() as client:
+        response = client.get(url, allow_redirects=True)
         response.raise_for_status()
 
     with zipfile.ZipFile(io.BytesIO(response.content)) as z:

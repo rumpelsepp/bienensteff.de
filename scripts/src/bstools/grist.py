@@ -14,7 +14,7 @@ import sys
 from datetime import datetime, timezone
 from typing import Any
 
-import httpx
+import niquests
 
 # widgetOptions keys that ensure_table_schema() syncs onto an already-existing
 # column without asking (unlike a type change, these never touch stored cell
@@ -59,7 +59,7 @@ def _parse_widget_options(widget_options_raw: Any) -> dict[str, Any]:
 
 class GristClient:
     def __init__(self, base_url: str, api_key: str, doc_id: str) -> None:
-        self._client = httpx.Client(
+        self._client = niquests.Session(
             base_url=base_url.rstrip("/"),
             headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
             timeout=30.0,
@@ -67,8 +67,8 @@ class GristClient:
         self.doc_id = doc_id
 
     @staticmethod
-    def _check(resp: httpx.Response) -> None:
-        if resp.is_error:
+    def _check(resp: niquests.Response) -> None:
+        if not resp.ok:
             print(f"Grist API error {resp.status_code}: {resp.text}", file=sys.stderr)
         resp.raise_for_status()
 
