@@ -1,20 +1,33 @@
 """
-Sums the sold quantity per article number across all paid invoices
-(Lexware Office), grouped by year (of the invoice's voucherDate), for e.g. a
-GQ-Kontrolle.
+Two Lexware Office reports in one JSON, grouped by year:
 
-Only invoices with voucherStatus == "paid" are counted (drafts, open,
-overdue, voided invoices are ignored). Line items of type "material" or
-"service" are attributed to their article's articleNumber (resolved via
-LexwareClient.get_article_number()); line items of type "custom" (free-text
-position with a quantity but no article reference) are grouped under their
-own name instead; type "text" (section headers, no quantity) is skipped.
+1. "artikel": sold quantity per article number across all paid invoices
+   (for e.g. a GQ-Kontrolle). Only invoices with voucherStatus == "paid"
+   are counted (drafts, open, overdue, voided invoices are ignored). Line
+   items of type "material" or "service" are attributed to their article's
+   articleNumber (resolved via LexwareClient.get_article_number()); line
+   items of type "custom" (free-text position with a quantity but no
+   article reference) are grouped under their own name instead; type
+   "text" (section headers, no quantity) is skipped. gtin is null for
+   line items without a resolvable article (custom positions, or an
+   article deleted from Lexware without a recoverable articleNumber).
 
-Grouping/summing is done with polars; the result is printed to stdout as
-JSON: {"<year>": [{"artikelnummer", "bezeichnung", "gtin", "menge", "einheit"}, ...]}.
-gtin is empty for line items without a resolvable article (custom positions,
-or an article deleted from Lexware without a recoverable articleNumber, see
-LexwareClient.get_article_number()).
+2. "einnahmen_ausgaben": per-year totalAmount of the same paid invoices as
+   the "artikel" report (already fetched, no extra API calls) -- a plain
+   income overview, NOT a profit calculation.
+
+   Manually recorded bookkeeping vouchers ("Belege", GET /v1/vouchers) were
+   meant to be folded in here too (income AND expenses), but that endpoint
+   turned out to be a dead end: it 400s with "voucherNumber parameter is
+   required" when called without one, i.e. it can only look up one already-
+   known voucher by number, not list/enumerate all of them -- there is no
+   way to discover and sum "all Belege" via the public API. Left out until
+   Lexware offers an actual list endpoint for this.
+
+   Depreciation (Abschreibungen) is deliberately out of scope regardless --
+   it isn't a dated voucher amount you can sum, but a periodic accounting
+   figure (AfA tables, useful life, acquisition cost) that belongs to a
+   real BWA or your Steuerberater.
 
 Required environment variable: LEXWARE_API_KEY
 
@@ -36,14 +49,37 @@ from bstools.env import require_env_var
 from bstools.lexware import LexwareClient
 
 
+def build_article_report(rows: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+    if not rows:
+        return {}
+
+    grouped = (
+        pl.DataFrame(rows)
+        .group_by(["jahr", "artikelnummer"], maintain_order=True)
+        .agg(
+            pl.col("bezeichnung").first(),
+            pl.col("gtin").first(),
+            pl.col("einheit").first(),
+            pl.col("menge").sum(),
+        )
+        .sort(["jahr", "artikelnummer"])
+    )
+
+    result: dict[str, list[dict[str, Any]]] = {}
+    for year, group in grouped.group_by(["jahr"], maintain_order=True):
+        result[year[0]] = group.drop("jahr").to_dicts()
+    return result
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--from", dest="date_from", metavar="YYYY-MM-DD", help="only invoices on/after this date")
-    parser.add_argument("--to", dest="date_to", metavar="YYYY-MM-DD", help="only invoices on/before this date")
+    parser.add_argument("--from", dest="date_from", metavar="YYYY-MM-DD", help="only invoices/vouchers on/after this date")
+    parser.add_argument("--to", dest="date_to", metavar="YYYY-MM-DD", help="only invoices/vouchers on/before this date")
     args = parser.parse_args()
 
     client = LexwareClient(require_env_var("LEXWARE_API_KEY"))
     rows: list[dict[str, Any]] = []
+    invoice_revenue_by_year: dict[str, float] = {}
 
     # Always send an explicit voucherDateFrom, even when the user didn't ask
     # for one -- rules out any undocumented default date window /voucherlist
@@ -81,6 +117,10 @@ def main() -> None:
 
     for entry in paid:
         year = (entry.get("voucherDate") or "")[:4] or "unbekannt"
+        invoice_revenue_by_year[year] = invoice_revenue_by_year.get(year, 0.0) + (
+            entry.get("totalAmount") or 0
+        )
+
         invoice = client.get_voucher_detail("invoice", entry["id"])
         for item in invoice.get("lineItems", []):
             item_type = item.get("type")
@@ -89,7 +129,7 @@ def main() -> None:
                 continue
             item_name = item.get("name", "?")
             if item_type == "custom" or not item.get("id"):
-                key, gtin = f"(ohne Artikelnummer) {item_name}", ""
+                key, gtin = f"(ohne Artikelnummer) {item_name}", None
             else:
                 key, gtin = client.get_article_number(item)
 
@@ -104,26 +144,15 @@ def main() -> None:
                 }
             )
 
-    if not rows:
-        print(json.dumps({}))
-        return
+    einnahmen_ausgaben: dict[str, dict[str, float]] = {
+        year: {"einnahmen_rechnungen": round(amount, 2)}
+        for year, amount in invoice_revenue_by_year.items()
+    }
 
-    grouped = (
-        pl.DataFrame(rows)
-        .group_by(["jahr", "artikelnummer"], maintain_order=True)
-        .agg(
-            pl.col("bezeichnung").first(),
-            pl.col("gtin").first(),
-            pl.col("einheit").first(),
-            pl.col("menge").sum(),
-        )
-        .sort(["jahr", "artikelnummer"])
-    )
-
-    result: dict[str, list[dict[str, Any]]] = {}
-    for year, group in grouped.group_by(["jahr"], maintain_order=True):
-        result[year[0]] = group.drop("jahr").to_dicts()
-
+    result = {
+        "artikel": build_article_report(rows),
+        "einnahmen_ausgaben": einnahmen_ausgaben,
+    }
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
 
