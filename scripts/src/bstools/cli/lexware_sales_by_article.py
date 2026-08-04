@@ -29,11 +29,25 @@ Two Lexware Office reports in one JSON, grouped by year:
    figure (AfA tables, useful life, acquisition cost) that belongs to a
    real BWA or your Steuerberater.
 
-Required environment variable: LEXWARE_API_KEY
+Grist sync (table "Verkaufszahlen", hardcoded -- this script feeds exactly
+one table, unlike grist_magic's generic GRIST_TABLE_ID): every normal run
+also upserts the "artikel" rows into Grist, keyed on (Year, Article_Number)
+so a partial --from/--to run only ever touches the years it actually
+fetched, never wipes-and-reinserts the whole table (unlike grist_magic's
+_Docs table). Only articles with a resolvable GTIN are uploaded -- rows
+without one (custom/free-text positions, or an article deleted from Lexware
+without a recoverable GTIN) are left out of Grist entirely, though they
+still show up in the JSON report on stdout as before. "einnahmen_ausgaben"
+is not synced -- it isn't per-article data, so it doesn't fit this table.
+
+Required environment variables:
+  LEXWARE_API_KEY, GRIST_API_KEY, GRIST_BASE_URL, GRIST_DOC_ID
 
 Usage:
+  lexware-sales-by-article --init [--dry-run]   # create/update the Grist table
   lexware-sales-by-article
   lexware-sales-by-article --from 2026-01-01 --to 2026-12-31
+  lexware-sales-by-article --dry-run
 """
 
 from __future__ import annotations
@@ -41,12 +55,36 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import time
 from typing import Any
 
 import polars as pl
 
-from bstools.env import require_env_var
+from bstools.env import require_env
+from bstools.grist import GristClient
 from bstools.lexware import LexwareClient
+
+# This script feeds exactly one Grist table, unlike grist_magic's generic
+# GRIST_TABLE_ID -- so the table name is a constant here, not an env var.
+GRIST_TABLE_ID = "Verkaufszahlen"
+
+GRIST_ENV = ["GRIST_API_KEY", "GRIST_BASE_URL", "GRIST_DOC_ID"]
+REQUIRED_ENV = ["LEXWARE_API_KEY"] + GRIST_ENV
+
+# Columns this script needs, in creation order -- see grist_magic.py's
+# GRIST_SCHEMA for the general shape. Year is Text, not Numeric/Date: rows
+# with an unresolvable voucherDate fall back to "unbekannt" (see main()),
+# which wouldn't fit either of those types. GTIN is Text too, to preserve it
+# verbatim rather than risk it being read back as a mangled number.
+GRIST_SCHEMA: list[tuple[str, str, dict[str, Any] | None]] = [
+    ("Year", "Text", None),
+    ("Article_Number", "Text", None),
+    ("Description", "Text", None),
+    ("GTIN", "Text", None),
+    ("Unit", "Text", None),
+    ("Quantity", "Numeric", None),
+    ("Last_Synced", "Text", None),
+]
 
 # Short version of the module docstring above, for --help -- the full one is
 # too long to dump on a terminal usefully. Keep in sync by hand; it's meant
@@ -58,18 +96,37 @@ overview, not a profit calculation; manual bookkeeping vouchers and
 depreciation are deliberately not included, see the module docstring in the
 source for why).
 
-Required environment variable: LEXWARE_API_KEY
+Also upserts the "artikel" rows (GTIN required) into the Grist table
+"Verkaufszahlen"; see the module docstring for the sync/key details.
+
+Required environment variables:
+  LEXWARE_API_KEY, GRIST_API_KEY, GRIST_BASE_URL, GRIST_DOC_ID
 
 Usage:
+  lexware-sales-by-article --init [--dry-run]   # create/update the Grist table
   lexware-sales-by-article
-  lexware-sales-by-article --from 2026-01-01 --to 2026-12-31"""
+  lexware-sales-by-article --from 2026-01-01 --to 2026-12-31
+  lexware-sales-by-article --dry-run"""
 
 
-def build_article_report(rows: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+def build_grouped_df(rows: list[dict[str, Any]]) -> pl.DataFrame:
+    """One row per (jahr, artikelnummer): bezeichnung/gtin/einheit (first
+    seen) and menge (summed) -- the shared aggregation behind both
+    build_article_report() (JSON, grouped by year) and build_grist_rows()
+    (flat, GTIN-filtered).
+    """
     if not rows:
-        return {}
-
-    grouped = (
+        return pl.DataFrame(
+            schema={
+                "jahr": pl.Utf8,
+                "artikelnummer": pl.Utf8,
+                "bezeichnung": pl.Utf8,
+                "gtin": pl.Utf8,
+                "einheit": pl.Utf8,
+                "menge": pl.Float64,
+            }
+        )
+    return (
         pl.DataFrame(rows)
         .group_by(["jahr", "artikelnummer"], maintain_order=True)
         .agg(
@@ -81,10 +138,82 @@ def build_article_report(rows: list[dict[str, Any]]) -> dict[str, list[dict[str,
         .sort(["jahr", "artikelnummer"])
     )
 
+
+def build_article_report(df: pl.DataFrame) -> dict[str, list[dict[str, Any]]]:
+    if df.is_empty():
+        return {}
+
     result: dict[str, list[dict[str, Any]]] = {}
-    for year, group in grouped.group_by(["jahr"], maintain_order=True):
+    for year, group in df.group_by(["jahr"], maintain_order=True):
         result[year[0]] = group.drop("jahr").to_dicts()
     return result
+
+
+def build_grist_rows(df: pl.DataFrame) -> list[dict[str, Any]]:
+    """Flat (jahr, artikelnummer, bezeichnung, gtin, einheit, menge) rows for
+    the Grist sync -- only articles with a resolvable GTIN, per user request.
+    Rows without one (custom/free-text positions, or an article deleted from
+    Lexware without a recoverable GTIN) are left out of Grist entirely, even
+    though they still show up in the JSON report on stdout.
+    """
+    if df.is_empty():
+        return []
+    return df.filter(pl.col("gtin").is_not_null()).to_dicts()
+
+
+def run_init(grist: GristClient, dry_run: bool) -> None:
+    grist.ensure_table_schema(GRIST_TABLE_ID, GRIST_SCHEMA, dry_run)
+
+
+def fetch_existing_grist(grist: GristClient) -> dict[tuple[str, str], int]:
+    """(Year, Article_Number) -> Grist row id, for upserting instead of a
+    full wipe-and-reinsert -- a partial --from/--to run must only ever touch
+    the years it actually fetched, never delete other years' rows a previous
+    full run already put there (unlike grist_magic's fully-derived _Docs
+    table, which has no such partial-run concern).
+    """
+    existing: dict[tuple[str, str], int] = {}
+    for rec in grist.get_records(GRIST_TABLE_ID):
+        fields = rec.get("fields", {})
+        year, number = fields.get("Year"), fields.get("Article_Number")
+        if year and number:
+            existing[(year, number)] = rec["id"]
+    return existing
+
+
+def sync_sales_to_grist(
+    grist: GristClient, grist_rows: list[dict[str, Any]], dry_run: bool
+) -> None:
+    existing = fetch_existing_grist(grist)
+    now_iso = time.strftime("%Y-%m-%dT%H:%M:%S")
+    to_add: list[dict[str, Any]] = []
+    to_update: list[tuple[int, dict[str, Any]]] = []
+
+    for row in grist_rows:
+        fields = {
+            "Year": row["jahr"],
+            "Article_Number": row["artikelnummer"],
+            "Description": row["bezeichnung"],
+            "GTIN": row["gtin"],
+            "Unit": row["einheit"],
+            "Quantity": row["menge"],
+            "Last_Synced": now_iso,
+        }
+        key = (row["jahr"], row["artikelnummer"])
+        if key in existing:
+            to_update.append((existing[key], fields))
+        else:
+            to_add.append(fields)
+
+    print(
+        f"Grist '{GRIST_TABLE_ID}': new {len(to_add)}, updated {len(to_update)} "
+        f"(articles without a GTIN are not synced, see module docstring)."
+    )
+    if dry_run:
+        print("--dry-run is set, nothing will be written to Grist.")
+        return
+    grist.add_records(GRIST_TABLE_ID, to_add)
+    grist.update_records(GRIST_TABLE_ID, to_update)
 
 
 def main() -> None:
@@ -103,9 +232,21 @@ def main() -> None:
         metavar="YYYY-MM-DD",
         help="only invoices/vouchers on/before this date",
     )
+    parser.add_argument("--debug", action="store_true", help="print raw API payloads to stderr")
+    parser.add_argument("--dry-run", action="store_true", help="don't write anything to Grist")
+    parser.add_argument(
+        "--init", action="store_true", help="create/update the Grist table, then exit"
+    )
     args = parser.parse_args()
 
-    client = LexwareClient(require_env_var("LEXWARE_API_KEY"))
+    if args.init:
+        cfg = require_env(*GRIST_ENV)
+        grist = GristClient(cfg["GRIST_BASE_URL"], cfg["GRIST_API_KEY"], cfg["GRIST_DOC_ID"])
+        run_init(grist, dry_run=args.dry_run)
+        return
+
+    cfg = require_env(*REQUIRED_ENV)
+    client = LexwareClient(cfg["LEXWARE_API_KEY"], debug=args.debug)
     rows: list[dict[str, Any]] = []
     invoice_revenue_by_year: dict[str, float] = {}
 
@@ -177,11 +318,15 @@ def main() -> None:
         for year, amount in invoice_revenue_by_year.items()
     }
 
+    df = build_grouped_df(rows)
     result = {
-        "artikel": build_article_report(rows),
+        "artikel": build_article_report(df),
         "einnahmen_ausgaben": einnahmen_ausgaben,
     }
     print(json.dumps(result, ensure_ascii=False, indent=2))
+
+    grist = GristClient(cfg["GRIST_BASE_URL"], cfg["GRIST_API_KEY"], cfg["GRIST_DOC_ID"])
+    sync_sales_to_grist(grist, build_grist_rows(df), dry_run=args.dry_run)
 
 
 if __name__ == "__main__":
