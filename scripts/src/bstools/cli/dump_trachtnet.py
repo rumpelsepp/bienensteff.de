@@ -8,14 +8,14 @@ Usage:
 """
 
 import argparse
-import enum
-import re
 import datetime
+import enum
 import http
+import re
 import sys
 import time
-from typing import Any, Literal, TypedDict
 from pathlib import Path
+from typing import Any, Literal, TypedDict
 from urllib.parse import urljoin
 
 import niquests
@@ -475,6 +475,7 @@ class Kreis(enum.Enum):
     ZOLLERNALBKREIS = "08417"
     ZWEIBRUECKEN_KREISFREIE_STADT = "07320"
     ZWICKAU = "14524"
+
 
 # This list can be found in the HTML source of the Trachtnet page.
 waagen_ids = [
@@ -1558,12 +1559,10 @@ TrachtnetParams = TypedDict(
 class TrachtnetClient:
     def __init__(self) -> None:
         self.base_url = "https://dlr-web-daten1.aspdienste.de"
-        self.user_agent = (
-            "Mozilla/5.0 (X11; Linux x86_64; rv:138.0) Gecko/20100101 Firefox/138.0"
-        )
+        self.user_agent = "Mozilla/5.0 (X11; Linux x86_64; rv:138.0) Gecko/20100101 Firefox/138.0"
         self.client = niquests.Session(retries=3)
 
-    def _request(self, method: str, endpoint: str, **kwargs) -> niquests.Response:
+    def _request(self, method: str, endpoint: str, **kwargs: Any) -> niquests.Response:
         headers = kwargs.pop("headers", {})
         headers["User-Agent"] = self.user_agent
         resp = self.client.request(
@@ -1611,13 +1610,20 @@ class TrachtnetClient:
                     "cgi-bin/tdsa/tdsa_client.pl",
                     params=params,
                 )
-                return resp.json()
+                data: dict[str, Any] = resp.json()
+                return data
             except niquests.HTTPError as e:
-                if e.response.status_code == http.HTTPStatus.INTERNAL_SERVER_ERROR:
-                    print(f"Internal server error for {regions}. Returning empty data.", file=sys.stderr)
+                if (
+                    e.response is not None
+                    and e.response.status_code == http.HTTPStatus.INTERNAL_SERVER_ERROR
+                ):
+                    print(
+                        f"Internal server error for {regions}. Returning empty data.",
+                        file=sys.stderr,
+                    )
                     return {}
                 else:
-                    raise e
+                    raise
             except niquests.ReadTimeout:
                 print("ReadTimeout, trying again…", file=sys.stderr)
                 time.sleep(2)
@@ -1723,18 +1729,14 @@ class TrachtnetClient:
                     pl.Series(
                         "values",
                         [
-                            float(record["value"])
-                            if record["value"] is not None
-                            else None
+                            float(record["value"]) if record["value"] is not None else None
                             for record in records
                         ],
                     ),
                     pl.Series(
                         "n_waagen",
                         [
-                            int(record["n_waagen"])
-                            if record["n_waagen"] is not None
-                            else None
+                            int(record["n_waagen"]) if record["n_waagen"] is not None else None
                             for record in records
                         ],
                     ),
@@ -1776,7 +1778,9 @@ class TrachtnetClient:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     parser.add_argument(
         "--year",
         type=int,
@@ -1792,7 +1796,7 @@ def main() -> None:
     args = parser.parse_args()
 
     year_list = (
-        args.year if args.year else list(range(2011, datetime.datetime.today().year))
+        args.year if args.year else list(range(2011, datetime.datetime.now(datetime.UTC).year))
     )
 
     client = TrachtnetClient()

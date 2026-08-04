@@ -9,7 +9,8 @@ from __future__ import annotations
 import json
 import sys
 import time
-from typing import Any, Iterator
+from collections.abc import Iterator
+from typing import Any
 
 import niquests
 
@@ -50,7 +51,7 @@ class LexwareClient:
         # Per-instance caches -- both keyed by Lexware id, populated lazily by
         # get_article_number()/get_contact_name() so repeated lookups across
         # many vouchers cost one API call each instead of one per voucher.
-        self._article_cache: dict[str, tuple[str, str]] = {}
+        self._article_cache: dict[str, tuple[str, str | None]] = {}
         self._contact_name_cache: dict[str, str] = {}
 
     def _throttle(self) -> None:
@@ -71,19 +72,31 @@ class LexwareClient:
             # already expect and handle it (e.g. an article deleted since
             # the invoice was created). Anything else is unexpected enough
             # to want the full response body, not just the status code.
-            print(f"Lexware API error {resp.status_code} for {method} {path}: {resp.text}", file=sys.stderr)
+            print(
+                f"Lexware API error {resp.status_code} for {method} {path}: {resp.text}",
+                file=sys.stderr,
+            )
         resp.raise_for_status()
         return resp
 
     def get(self, path: str, params: dict[str, Any] | None = None) -> dict[str, Any]:
-        data = self._send("GET", path, params=params).json()
+        data: dict[str, Any] = self._send("GET", path, params=params).json()
         if self.debug:
             print(f"--- DEBUG GET {path} params={params} ---", file=sys.stderr)
             print(json.dumps(data, indent=2, ensure_ascii=False)[:3000], file=sys.stderr)
         return data
 
     def get_file(self, path: str) -> bytes:
-        return self._send("GET", path).content
+        """GET a binary document (PDF/XML), not JSON -- overrides the
+        session's default `Accept: application/json` header. Lexware's own
+        docs warn that binary-download endpoints can return metadata
+        instead of the actual file bytes when the Accept header doesn't
+        ask for a binary type.
+        """
+        content = self._send(
+            "GET", path, headers={"Accept": "application/pdf, application/xml, */*"}
+        ).content
+        return content or b""
 
     def _paginate(self, path: str, params: dict[str, Any]) -> Iterator[dict[str, Any]]:
         """Generic pager for Lexware's {content, last, ...} paged list
@@ -128,13 +141,17 @@ class LexwareClient:
         voucher_type: str,
         voucher_status: str = "any",
         page_size: int = MAX_VOUCHERLIST_PAGE_SIZE,
-        **extra_params: Any,
+        extra_params: dict[str, Any] | None = None,
     ) -> Iterator[dict[str, Any]]:
         """See _paginate() for the pagination behavior.
 
-        `extra_params` passes through to the request as-is, e.g.
-        voucherDateFrom/voucherDateTo/contactId/voucherNumber -- see
-        https://developers.lexware.io/docs/#voucherlist-endpoint.
+        `extra_params` is merged into the request as-is, e.g.
+        {"voucherDateFrom": ..., "voucherDateTo": ..., "contactId": ...,
+        "voucherNumber": ...} -- see
+        https://developers.lexware.io/docs/#voucherlist-endpoint. A plain
+        dict rather than **kwargs, so callers can build it dynamically
+        (e.g. an optional date range) without mypy treating the unpacked
+        dict as having to match every other keyword parameter's type too.
         """
         yield from self._paginate(
             "/voucherlist",
@@ -142,7 +159,7 @@ class LexwareClient:
                 "voucherType": voucher_type,
                 "voucherStatus": voucher_status,
                 "size": page_size,
-                **extra_params,
+                **(extra_params or {}),
             },
         )
 
@@ -183,7 +200,11 @@ class LexwareClient:
     def find_voucher_id(self, voucher_type: str, voucher_number: str) -> str | None:
         data = self.get(
             "/voucherlist",
-            params={"voucherType": voucher_type, "voucherStatus": "any", "voucherNumber": voucher_number},
+            params={
+                "voucherType": voucher_type,
+                "voucherStatus": "any",
+                "voucherNumber": voucher_number,
+            },
         )
         content = data.get("content", [])
         return content[0]["id"] if content else None
@@ -193,6 +214,28 @@ class LexwareClient:
 
     def get_voucher_file(self, voucher_type: str, voucher_id: str) -> bytes:
         return self.get_file(f"/{RESOURCE_INFO[voucher_type]}/{voucher_id}/file")
+
+    def download_voucher_pdf(self, voucher_type: str, voucher_number: str) -> bytes:
+        """Resolves a human-readable voucher number (e.g. "RE-1044") to its
+        PDF bytes: find_voucher_id() then get_voucher_file(), with a magic-
+        byte sanity check (Lexware's file endpoints have been known to hand
+        back something other than the actual PDF, e.g. metadata or an error
+        page, without a non-2xx status to signal it).
+
+        Raises KeyError if no voucher with that number exists, ValueError if
+        the response doesn't look like a PDF.
+        """
+        voucher_id = self.find_voucher_id(voucher_type, voucher_number)
+        if voucher_id is None:
+            raise KeyError(f"{voucher_number} not found")
+        data = self.get_voucher_file(voucher_type, voucher_id)
+        if not data.startswith(b"%PDF-"):
+            raise ValueError(
+                f"{voucher_number}: response doesn't look like a PDF "
+                f"(starts with {data[:16]!r}, {len(data)} bytes total) -- "
+                f"not writing it out."
+            )
+        return data
 
     def get_contact(self, contact_id: str) -> dict[str, Any]:
         return self.get(f"/contacts/{contact_id}")
@@ -232,7 +275,7 @@ class LexwareClient:
                 number = article.get("articleNumber") or article_id
                 self._article_cache[article_id] = (number, article.get("gtin") or None)
             except niquests.HTTPError as exc:
-                if exc.response.status_code != 404:
+                if exc.response is None or exc.response.status_code != 404:
                     raise
                 fallback_number = item.get("articleNumber")
                 name = item.get("name", "?")

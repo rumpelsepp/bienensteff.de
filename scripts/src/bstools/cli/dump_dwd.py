@@ -18,12 +18,8 @@ import polars as pl
 
 BASE_URL = "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly"
 
-URL_TEMP_TPL = Template(
-    BASE_URL + "/air_temperature/recent/stundenwerte_TU_${station_id}_akt.zip"
-)
-URL_PREC_TPL = Template(
-    BASE_URL + "/precipitation/recent/stundenwerte_RR_${station_id}_akt.zip"
-)
+URL_TEMP_TPL = Template(BASE_URL + "/air_temperature/recent/stundenwerte_TU_${station_id}_akt.zip")
+URL_PREC_TPL = Template(BASE_URL + "/precipitation/recent/stundenwerte_RR_${station_id}_akt.zip")
 
 
 def fetch_dwd_csv(url: str) -> pl.DataFrame:
@@ -31,10 +27,8 @@ def fetch_dwd_csv(url: str) -> pl.DataFrame:
         response = client.get(url, allow_redirects=True)
         response.raise_for_status()
 
-    with zipfile.ZipFile(io.BytesIO(response.content)) as z:
-        product_file = next(
-            name for name in z.namelist() if name.startswith("produkt_")
-        )
+    with zipfile.ZipFile(io.BytesIO(response.content or b"")) as z:
+        product_file = next(name for name in z.namelist() if name.startswith("produkt_"))
         with z.open(product_file) as f:
             return pl.read_csv(f, separator=";", infer_schema_length=0)
 
@@ -95,13 +89,13 @@ def clean_and_prepare_data(station_id: str) -> pl.DataFrame:
 
     # df = df.with_columns(((b * alpha) / (a - alpha)).round(2).alias("dew_point"))
 
-    return df.sort("timestamp").select(
-        ["timestamp", "temperature", "precipitation"]
-    )
+    return df.sort("timestamp").select(["timestamp", "temperature", "precipitation"])
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     parser.add_argument(
         "--station-id",
         required=True,

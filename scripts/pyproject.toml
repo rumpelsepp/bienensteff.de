@@ -1,3 +1,7 @@
+[build-system]
+requires = ["uv_build>=0.11,<0.13"]
+build-backend = "uv_build"
+
 [project]
 name = "bienensteff-scripts"
 version = "0.1.0"
@@ -17,9 +21,20 @@ grist-magic = "bstools.cli.grist_magic:main"
 lexware-download = "bstools.cli.lexware_download:main"
 lexware-sales-by-article = "bstools.cli.lexware_sales_by_article:main"
 
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+[dependency-groups]
+dev = [
+    "ruff",
+    "mypy",
+    "ty",
+]
 
-[tool.hatch.build.targets.wheel]
-packages = ["src/bstools"]
+[tool.mypy]
+strict = true
+native_parser = true
+num_workers = 4
+
+[tool.ruff]
+line-length = 100
+
+[tool.uv.build-backend]
+module-name = "bstools"

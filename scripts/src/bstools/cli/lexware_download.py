@@ -36,23 +36,18 @@ def get_voucher_type(voucher_number: str) -> str:
         ) from None
 
 
-def download_voucher(client: LexwareClient, voucher_number: str) -> bytes:
-    voucher_type = get_voucher_type(voucher_number)
-    voucher_id = client.find_voucher_id(voucher_type, voucher_number)
-    if voucher_id is None:
-        raise KeyError(f"{voucher_number} not found")
-    return client.get_voucher_file(voucher_type, voucher_id)
-
-
 def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     parser.add_argument("DOCUMENT_NUMBER")
     args = parser.parse_args()
 
     client = LexwareClient(require_env_var("LEXWARE_API_KEY"))
     try:
-        data = download_voucher(client, args.DOCUMENT_NUMBER)
-    except KeyError as e:
+        voucher_type = get_voucher_type(args.DOCUMENT_NUMBER)
+        data = client.download_voucher_pdf(voucher_type, args.DOCUMENT_NUMBER)
+    except (KeyError, ValueError) as e:
         print(str(e), file=sys.stderr)
         sys.exit(1)
 
