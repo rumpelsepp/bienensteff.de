@@ -1026,63 +1026,63 @@
   },
   {
     "dates": "2026-07-25",
-    "values": 37.08,
-    "n_waagen": 123
+    "values": 37.09,
+    "n_waagen": 124
   },
   {
     "dates": "2026-07-26",
-    "values": 37.02,
-    "n_waagen": 124
+    "values": 37.04,
+    "n_waagen": 125
   },
   {
     "dates": "2026-07-27",
-    "values": 36.85,
-    "n_waagen": 123
-  },
-  {
-    "dates": "2026-07-28",
-    "values": 36.68,
+    "values": 36.87,
     "n_waagen": 124
   },
   {
+    "dates": "2026-07-28",
+    "values": 36.7,
+    "n_waagen": 125
+  },
+  {
     "dates": "2026-07-29",
-    "values": 36.51,
+    "values": 36.53,
     "n_waagen": 124
   },
   {
     "dates": "2026-07-30",
-    "values": 36.41,
+    "values": 36.43,
     "n_waagen": 122
   },
   {
     "dates": "2026-07-31",
-    "values": 36.28,
+    "values": 36.3,
     "n_waagen": 124
   },
   {
     "dates": "2026-08-01",
-    "values": 36.18,
+    "values": 36.2,
     "n_waagen": 124
   },
   {
     "dates": "2026-08-02",
-    "values": 36.0,
+    "values": 36.02,
     "n_waagen": 124
   },
   {
     "dates": "2026-08-03",
-    "values": 35.88,
+    "values": 35.9,
     "n_waagen": 124
   },
   {
     "dates": "2026-08-04",
-    "values": 35.77,
+    "values": 35.74,
     "n_waagen": 124
   },
   {
     "dates": "2026-08-05",
-    "values": null,
-    "n_waagen": null
+    "values": 35.66,
+    "n_waagen": 124
   },
   {
     "dates": "2026-08-06",
