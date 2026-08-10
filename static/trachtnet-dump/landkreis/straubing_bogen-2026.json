@@ -1097,12 +1097,12 @@
   {
     "dates": "2026-08-08",
     "values": 22.92,
-    "n_waagen": 8
+    "n_waagen": 10
   },
   {
     "dates": "2026-08-09",
-    "values": null,
-    "n_waagen": null
+    "values": 22.83,
+    "n_waagen": 9
   },
   {
     "dates": "2026-08-10",
