@@ -1101,13 +1101,13 @@
   },
   {
     "dates": "2026-08-09",
-    "values": 51.3,
+    "values": 51.28,
     "n_waagen": 25
   },
   {
     "dates": "2026-08-10",
-    "values": null,
-    "n_waagen": null
+    "values": 51.2,
+    "n_waagen": 25
   },
   {
     "dates": "2026-08-11",
