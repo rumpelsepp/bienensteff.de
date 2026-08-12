@@ -1,111 +1,6 @@
 {
   "articles": [
     {
-      "gtin": "",
-      "color": "",
-      "flavor": "",
-      "gqb_certified": false,
-      "for_sale": false,
-      "in_stock": false,
-      "label": "EDH Honig 250 g",
-      "auto_description": "Echter Deutscher Honig® im 250 g Glas.",
-      "price": null,
-      "base_price": null,
-      "id_right": 1,
-      "sku": "HD250E",
-      "name": "Honig",
-      "comment": "",
-      "description": "",
-      "brand": {
-        "name_short": "EDH",
-        "name": "Echter Deutscher Honig®",
-        "corporate_claim": "Echter Deutscher Honig ist die Verbandsmarke des Deutschen Imkerbund e.V. Seit 1925 steht sie für höchste Qualität und Naturbelassenheit. Über 99 % unserer Mitglieder sind Freizeitimkerinnen und -imker, die ihrem Hobby mit viel Herzblut nachgehen. Diese Liebe schmeckt man in jedem Glas Echten Deutschen Honigs.",
-        "hint": "In unserer Imkerei seit 2025 „Geprüfte Qualität – Bayern“ zertifiziert. Honig zu 100% in Bayern erzeugt, gelagert und verarbeitet.",
-        "owner": "Deutscher Imkerbund e.V."
-      },
-      "packaging": {
-        "label": "250 g Glas",
-        "filling_unit": "g",
-        "net_weight": 250,
-        "name": "Glas",
-        "packaging_type": "Stück",
-        "packaging_unit": 1
-      },
-      "fillings": null,
-      "id": "SKU-HD250E"
-    },
-    {
-      "gtin": "",
-      "color": "",
-      "flavor": "",
-      "gqb_certified": false,
-      "for_sale": false,
-      "in_stock": false,
-      "label": "EDH Honig 500 g",
-      "auto_description": "Echter Deutscher Honig® im 500 g Glas.",
-      "price": null,
-      "base_price": null,
-      "id_right": 2,
-      "sku": "HD500E",
-      "name": "Honig",
-      "comment": "",
-      "description": "",
-      "brand": {
-        "name_short": "EDH",
-        "name": "Echter Deutscher Honig®",
-        "corporate_claim": "Echter Deutscher Honig ist die Verbandsmarke des Deutschen Imkerbund e.V. Seit 1925 steht sie für höchste Qualität und Naturbelassenheit. Über 99 % unserer Mitglieder sind Freizeitimkerinnen und -imker, die ihrem Hobby mit viel Herzblut nachgehen. Diese Liebe schmeckt man in jedem Glas Echten Deutschen Honigs.",
-        "hint": "In unserer Imkerei seit 2025 „Geprüfte Qualität – Bayern“ zertifiziert. Honig zu 100% in Bayern erzeugt, gelagert und verarbeitet.",
-        "owner": "Deutscher Imkerbund e.V."
-      },
-      "packaging": {
-        "label": "500 g Glas",
-        "filling_unit": "g",
-        "net_weight": 500,
-        "name": "Glas",
-        "packaging_type": "Stück",
-        "packaging_unit": 1
-      },
-      "fillings": [
-        {
-          "filling_id": "A-2022-01",
-          "date": "2022-08-20",
-          "best_before_date": "2024-08-20",
-          "pieces": 18,
-          "comment": "Blankoetiketten, Frühjahrstracht",
-          "dib_field": "WW 884582 — 884599",
-          "label": "EDH Honig 500 g",
-          "weight_total": 9.0,
-          "batch_id": "L-2022-01",
-          "id": "A-2022-01"
-        },
-        {
-          "filling_id": "A-2022-02",
-          "date": "2022-09-11",
-          "best_before_date": "2024-09-11",
-          "pieces": 19,
-          "comment": "Blankoetiketten, Sommertracht",
-          "dib_field": "WW 884563 — 884581",
-          "label": "EDH Honig 500 g",
-          "weight_total": 9.5,
-          "batch_id": "L-2022-02",
-          "id": "A-2022-02"
-        },
-        {
-          "filling_id": "A-2025-01",
-          "date": "2025-08-02",
-          "best_before_date": "2027-08-02",
-          "pieces": 14,
-          "comment": "Blankoetiketten, Honig",
-          "dib_field": "WW 0884503 — 00884516",
-          "label": "EDH Honig 500 g",
-          "weight_total": 7.0,
-          "batch_id": "L-2025-02",
-          "id": "A-2025-01"
-        }
-      ],
-      "id": "SKU-HD500E"
-    },
-    {
       "gtin": "4270004430264",
       "color": "goldgelb",
       "flavor": "aromatisch, blumig",
@@ -116,11 +11,11 @@
       "auto_description": "Echter Deutscher Honig® von gemischten Blühpflanzen im 250 g Glas, aromatisch, blumig.",
       "price": null,
       "base_price": null,
-      "id_right": 4,
       "sku": "HDB250E",
       "name": "Blütenhonig",
       "comment": "",
       "description": "",
+      "id": "SKU-HDB250E",
       "brand": {
         "name_short": "EDH",
         "name": "Echter Deutscher Honig®",
@@ -173,42 +68,7 @@
           "batch_id": "L-2026-04",
           "id": "A-2026-06"
         }
-      ],
-      "id": "SKU-HDB250E"
-    },
-    {
-      "gtin": "4270004430233",
-      "color": "",
-      "flavor": "aromatisch, blumig",
-      "gqb_certified": true,
-      "for_sale": false,
-      "in_stock": false,
-      "label": "EDH Blütenhonig 250 g (12er-Karton)",
-      "auto_description": "Echter Deutscher Honig® von gemischten Blühpflanzen im 250 g Glas, aromatisch, blumig. Verpackungseinheit: Karton zu 12.",
-      "price": null,
-      "base_price": null,
-      "id_right": 5,
-      "sku": "HDB250K12",
-      "name": "Blütenhonig",
-      "comment": "",
-      "description": "",
-      "brand": {
-        "name_short": "EDH",
-        "name": "Echter Deutscher Honig®",
-        "corporate_claim": "Echter Deutscher Honig ist die Verbandsmarke des Deutschen Imkerbund e.V. Seit 1925 steht sie für höchste Qualität und Naturbelassenheit. Über 99 % unserer Mitglieder sind Freizeitimkerinnen und -imker, die ihrem Hobby mit viel Herzblut nachgehen. Diese Liebe schmeckt man in jedem Glas Echten Deutschen Honigs.",
-        "hint": "In unserer Imkerei seit 2025 „Geprüfte Qualität – Bayern“ zertifiziert. Honig zu 100% in Bayern erzeugt, gelagert und verarbeitet.",
-        "owner": "Deutscher Imkerbund e.V."
-      },
-      "packaging": {
-        "label": "250 g Glas",
-        "filling_unit": "g",
-        "net_weight": 250,
-        "name": "Glas",
-        "packaging_type": "Karton",
-        "packaging_unit": 12
-      },
-      "fillings": null,
-      "id": "SKU-HDB250K12"
+      ]
     },
     {
       "gtin": "4270004430226",
@@ -221,11 +81,11 @@
       "auto_description": "Echter Deutscher Honig® von gemischten Blühpflanzen im 500 g Glas, aromatisch, blumig.",
       "price": null,
       "base_price": null,
-      "id_right": 6,
       "sku": "HDB500E",
       "name": "Blütenhonig",
       "comment": "",
       "description": "",
+      "id": "SKU-HDB500E",
       "brand": {
         "name_short": "EDH",
         "name": "Echter Deutscher Honig®",
@@ -266,8 +126,7 @@
           "batch_id": "L-2026-04",
           "id": "A-2026-07"
         }
-      ],
-      "id": "SKU-HDB500E"
+      ]
     },
     {
       "gtin": "",
@@ -280,11 +139,11 @@
       "auto_description": "Echter Deutscher Honig® vom Frühjahr im 250 g Glas, lieblich, süß.",
       "price": null,
       "base_price": null,
-      "id_right": 7,
       "sku": "HDFT250E",
       "name": "Frühjahrstrachthonig",
       "comment": "",
       "description": "",
+      "id": "SKU-HDFT250E",
       "brand": {
         "name_short": "EDH",
         "name": "Echter Deutscher Honig®",
@@ -300,8 +159,7 @@
         "packaging_type": "Stück",
         "packaging_unit": 1
       },
-      "fillings": null,
-      "id": "SKU-HDFT250E"
+      "fillings": []
     },
     {
       "gtin": "",
@@ -314,11 +172,11 @@
       "auto_description": "Echter Deutscher Honig® vom Frühjahr im 500 g Glas, lieblich, süß.",
       "price": null,
       "base_price": null,
-      "id_right": 8,
       "sku": "HDFT500E",
       "name": "Frühjahrstrachthonig",
       "comment": "",
       "description": "",
+      "id": "SKU-HDFT500E",
       "brand": {
         "name_short": "EDH",
         "name": "Echter Deutscher Honig®",
@@ -371,8 +229,7 @@
           "batch_id": "L-2024-01",
           "id": "A-2024-01"
         }
-      ],
-      "id": "SKU-HDFT500E"
+      ]
     },
     {
       "gtin": "",
@@ -385,11 +242,11 @@
       "auto_description": "Echter Deutscher Honig® vom Sommer im 250 g Glas, aromatisch, fein-würzig.",
       "price": null,
       "base_price": null,
-      "id_right": 9,
       "sku": "HDST250E",
       "name": "Sommertrachthonig",
       "comment": "",
       "description": "",
+      "id": "SKU-HDST250E",
       "brand": {
         "name_short": "EDH",
         "name": "Echter Deutscher Honig®",
@@ -405,8 +262,7 @@
         "packaging_type": "Stück",
         "packaging_unit": 1
       },
-      "fillings": null,
-      "id": "SKU-HDST250E"
+      "fillings": []
     },
     {
       "gtin": "2001132501203",
@@ -419,11 +275,11 @@
       "auto_description": "Echter Deutscher Honig® vom Sommer im 500 g Glas, aromatisch, fein-würzig.",
       "price": 9,
       "base_price": 18,
-      "id_right": 10,
       "sku": "HDST500E",
       "name": "Sommertrachthonig",
       "comment": "",
       "description": "",
+      "id": "SKU-HDST500E",
       "brand": {
         "name_short": "EDH",
         "name": "Echter Deutscher Honig®",
@@ -488,8 +344,7 @@
           "batch_id": "L-2026-05",
           "id": "A-2026-05"
         }
-      ],
-      "id": "SKU-HDST500E"
+      ]
     },
     {
       "gtin": "",
@@ -502,11 +357,11 @@
       "auto_description": "Echter Deutscher Honig® von Honigtauerzeugern im 250 g Glas, aromatisch, kräftig, würzig.",
       "price": null,
       "base_price": null,
-      "id_right": 11,
       "sku": "HDW250E",
       "name": "Waldhonig",
       "comment": "",
       "description": "",
+      "id": "SKU-HDW250E",
       "brand": {
         "name_short": "EDH",
         "name": "Echter Deutscher Honig®",
@@ -522,8 +377,7 @@
         "packaging_type": "Stück",
         "packaging_unit": 1
       },
-      "fillings": null,
-      "id": "SKU-HDW250E"
+      "fillings": []
     },
     {
       "gtin": "",
@@ -536,11 +390,11 @@
       "auto_description": "Echter Deutscher Honig® von Honigtauerzeugern im 500 g Glas, aromatisch, kräftig, würzig.",
       "price": null,
       "base_price": null,
-      "id_right": 12,
       "sku": "HDW500E",
       "name": "Waldhonig",
       "comment": "",
       "description": "",
+      "id": "SKU-HDW500E",
       "brand": {
         "name_short": "EDH",
         "name": "Echter Deutscher Honig®",
@@ -556,8 +410,143 @@
         "packaging_type": "Stück",
         "packaging_unit": 1
       },
-      "fillings": null,
-      "id": "SKU-HDW500E"
+      "fillings": []
+    },
+    {
+      "gtin": "",
+      "color": "",
+      "flavor": "",
+      "gqb_certified": false,
+      "for_sale": false,
+      "in_stock": false,
+      "label": "EDH Honig 250 g",
+      "auto_description": "Echter Deutscher Honig® im 250 g Glas.",
+      "price": null,
+      "base_price": null,
+      "sku": "HD250E",
+      "name": "Honig",
+      "comment": "",
+      "description": "",
+      "id": "SKU-HD250E",
+      "brand": {
+        "name_short": "EDH",
+        "name": "Echter Deutscher Honig®",
+        "corporate_claim": "Echter Deutscher Honig ist die Verbandsmarke des Deutschen Imkerbund e.V. Seit 1925 steht sie für höchste Qualität und Naturbelassenheit. Über 99 % unserer Mitglieder sind Freizeitimkerinnen und -imker, die ihrem Hobby mit viel Herzblut nachgehen. Diese Liebe schmeckt man in jedem Glas Echten Deutschen Honigs.",
+        "hint": "In unserer Imkerei seit 2025 „Geprüfte Qualität – Bayern“ zertifiziert. Honig zu 100% in Bayern erzeugt, gelagert und verarbeitet.",
+        "owner": "Deutscher Imkerbund e.V."
+      },
+      "packaging": {
+        "label": "250 g Glas",
+        "filling_unit": "g",
+        "net_weight": 250,
+        "name": "Glas",
+        "packaging_type": "Stück",
+        "packaging_unit": 1
+      },
+      "fillings": []
+    },
+    {
+      "gtin": "",
+      "color": "",
+      "flavor": "",
+      "gqb_certified": false,
+      "for_sale": false,
+      "in_stock": false,
+      "label": "EDH Honig 500 g",
+      "auto_description": "Echter Deutscher Honig® im 500 g Glas.",
+      "price": null,
+      "base_price": null,
+      "sku": "HD500E",
+      "name": "Honig",
+      "comment": "",
+      "description": "",
+      "id": "SKU-HD500E",
+      "brand": {
+        "name_short": "EDH",
+        "name": "Echter Deutscher Honig®",
+        "corporate_claim": "Echter Deutscher Honig ist die Verbandsmarke des Deutschen Imkerbund e.V. Seit 1925 steht sie für höchste Qualität und Naturbelassenheit. Über 99 % unserer Mitglieder sind Freizeitimkerinnen und -imker, die ihrem Hobby mit viel Herzblut nachgehen. Diese Liebe schmeckt man in jedem Glas Echten Deutschen Honigs.",
+        "hint": "In unserer Imkerei seit 2025 „Geprüfte Qualität – Bayern“ zertifiziert. Honig zu 100% in Bayern erzeugt, gelagert und verarbeitet.",
+        "owner": "Deutscher Imkerbund e.V."
+      },
+      "packaging": {
+        "label": "500 g Glas",
+        "filling_unit": "g",
+        "net_weight": 500,
+        "name": "Glas",
+        "packaging_type": "Stück",
+        "packaging_unit": 1
+      },
+      "fillings": [
+        {
+          "filling_id": "A-2022-01",
+          "date": "2022-08-20",
+          "best_before_date": "2024-08-20",
+          "pieces": 18,
+          "comment": "Blankoetiketten, Frühjahrstracht",
+          "dib_field": "WW 884582 — 884599",
+          "label": "EDH Honig 500 g",
+          "weight_total": 9.0,
+          "batch_id": "L-2022-01",
+          "id": "A-2022-01"
+        },
+        {
+          "filling_id": "A-2022-02",
+          "date": "2022-09-11",
+          "best_before_date": "2024-09-11",
+          "pieces": 19,
+          "comment": "Blankoetiketten, Sommertracht",
+          "dib_field": "WW 884563 — 884581",
+          "label": "EDH Honig 500 g",
+          "weight_total": 9.5,
+          "batch_id": "L-2022-02",
+          "id": "A-2022-02"
+        },
+        {
+          "filling_id": "A-2025-01",
+          "date": "2025-08-02",
+          "best_before_date": "2027-08-02",
+          "pieces": 14,
+          "comment": "Blankoetiketten, Honig",
+          "dib_field": "WW 0884503 — 00884516",
+          "label": "EDH Honig 500 g",
+          "weight_total": 7.0,
+          "batch_id": "L-2025-02",
+          "id": "A-2025-01"
+        }
+      ]
+    },
+    {
+      "gtin": "4270004430233",
+      "color": "goldgelb",
+      "flavor": "aromatisch, blumig",
+      "gqb_certified": true,
+      "for_sale": false,
+      "in_stock": false,
+      "label": "EDH Blütenhonig 250 g (12er-Karton)",
+      "auto_description": "Echter Deutscher Honig® von gemischten Blühpflanzen im 250 g Glas, aromatisch, blumig. Verpackungseinheit: Karton zu 12.",
+      "price": null,
+      "base_price": null,
+      "sku": "HDB250K12",
+      "name": "Blütenhonig",
+      "comment": "",
+      "description": "",
+      "id": "SKU-HDB250K12",
+      "brand": {
+        "name_short": "EDH",
+        "name": "Echter Deutscher Honig®",
+        "corporate_claim": "Echter Deutscher Honig ist die Verbandsmarke des Deutschen Imkerbund e.V. Seit 1925 steht sie für höchste Qualität und Naturbelassenheit. Über 99 % unserer Mitglieder sind Freizeitimkerinnen und -imker, die ihrem Hobby mit viel Herzblut nachgehen. Diese Liebe schmeckt man in jedem Glas Echten Deutschen Honigs.",
+        "hint": "In unserer Imkerei seit 2025 „Geprüfte Qualität – Bayern“ zertifiziert. Honig zu 100% in Bayern erzeugt, gelagert und verarbeitet.",
+        "owner": "Deutscher Imkerbund e.V."
+      },
+      "packaging": {
+        "label": "250 g Glas",
+        "filling_unit": "g",
+        "net_weight": 250,
+        "name": "Glas",
+        "packaging_type": "Karton",
+        "packaging_unit": 12
+      },
+      "fillings": []
     },
     {
       "gtin": "",
@@ -570,11 +559,11 @@
       "auto_description": "Honig im 500 g Glas.",
       "price": null,
       "base_price": null,
-      "id_right": 13,
       "sku": "HN250E",
       "name": "Honig",
       "comment": "",
       "description": "",
+      "id": "SKU-HN250E",
       "brand": {
         "name_short": "Hausmarke",
         "name": "Hausmarke",
@@ -590,8 +579,7 @@
         "packaging_type": "Stück",
         "packaging_unit": 1
       },
-      "fillings": null,
-      "id": "SKU-HN250E"
+      "fillings": []
     },
     {
       "gtin": "",
@@ -604,11 +592,11 @@
       "auto_description": "Honig im 500 g Glas.",
       "price": 9,
       "base_price": 18,
-      "id_right": 14,
       "sku": "HN500E",
       "name": "Honig",
       "comment": "",
       "description": "",
+      "id": "SKU-HN500E",
       "brand": {
         "name_short": "Hausmarke",
         "name": "Hausmarke",
@@ -624,8 +612,7 @@
         "packaging_type": "Stück",
         "packaging_unit": 1
       },
-      "fillings": null,
-      "id": "SKU-HN500E"
+      "fillings": []
     },
     {
       "gtin": "2001215000005",
@@ -638,11 +625,11 @@
       "auto_description": "Honig von gemischten Blühpflanzen im 500 g Glas, aromatisch, blumig.",
       "price": 9,
       "base_price": 18,
-      "id_right": 16,
       "sku": "HNB500E",
       "name": "Blütenhonig",
       "comment": "",
       "description": "",
+      "id": "SKU-HNB500E",
       "brand": {
         "name_short": "Hausmarke",
         "name": "Hausmarke",
@@ -695,8 +682,7 @@
           "batch_id": "L-2026-03",
           "id": "A-2026-02"
         }
-      ],
-      "id": "SKU-HNB500E"
+      ]
     },
     {
       "gtin": "",
@@ -709,11 +695,11 @@
       "auto_description": "Honig vom Frühjahr im 500 g Glas.",
       "price": null,
       "base_price": null,
-      "id_right": 18,
       "sku": "HNFT500E",
       "name": "Frühjahrstrachthonig",
       "comment": "",
       "description": "",
+      "id": "SKU-HNFT500E",
       "brand": {
         "name_short": "Hausmarke",
         "name": "Hausmarke",
@@ -766,8 +752,40 @@
           "batch_id": "L-2024-01",
           "id": "A-2024-07"
         }
-      ],
-      "id": "SKU-HNFT500E"
+      ]
+    },
+    {
+      "gtin": "2001000000005",
+      "color": "",
+      "flavor": "",
+      "gqb_certified": false,
+      "for_sale": true,
+      "in_stock": true,
+      "label": "Hausmarke Honig unverpackt",
+      "auto_description": "",
+      "price": 14,
+      "base_price": 14,
+      "sku": "HU",
+      "name": "Honig",
+      "comment": "unverpackt Preis pro Kilo",
+      "description": "Honig abgefüllt in kundeneigene Gebinde",
+      "id": "SKU-HU",
+      "brand": {
+        "name_short": "Hausmarke",
+        "name": "Hausmarke",
+        "corporate_claim": "",
+        "hint": "Honig zu 100% in Bayern erzeugt, gelagert und verarbeitet.",
+        "owner": "Imkerei Stefan Tatschner"
+      },
+      "packaging": {
+        "label": "unverpackt",
+        "filling_unit": "",
+        "net_weight": null,
+        "name": "unverpackt",
+        "packaging_type": "Stück",
+        "packaging_unit": 1
+      },
+      "fillings": []
     },
     {
       "gtin": "",
@@ -780,11 +798,11 @@
       "auto_description": "Honig vom Sommer im 500 g Glas, aromatisch, fein-würzig.",
       "price": null,
       "base_price": null,
-      "id_right": 19,
       "sku": "HNST500E",
       "name": "Sommertrachthonig",
       "comment": "",
       "description": "",
+      "id": "SKU-HNST500E",
       "brand": {
         "name_short": "Hausmarke",
         "name": "Hausmarke",
@@ -849,42 +867,40 @@
           "batch_id": "L-2024-02",
           "id": "A-2024-08"
         }
-      ],
-      "id": "SKU-HNST500E"
+      ]
     },
     {
-      "gtin": "2001000000005",
-      "color": "",
-      "flavor": "",
-      "gqb_certified": false,
-      "for_sale": true,
-      "in_stock": true,
-      "label": "Hausmarke Honig unverpackt",
-      "auto_description": "",
-      "price": 14,
-      "base_price": 14,
-      "id_right": 20,
-      "sku": "HU",
-      "name": "Honig",
-      "comment": "unverpackt Preis pro Kilo",
-      "description": "Honig abgefüllt in kundeneigene Gebinde",
+      "gtin": "4270004430219",
+      "color": "goldgelb",
+      "flavor": "aromatisch, blumig",
+      "gqb_certified": true,
+      "for_sale": false,
+      "in_stock": false,
+      "label": "EDH Blütenhonig 500 g (12er-Karton)",
+      "auto_description": "Echter Deutscher Honig® von gemischten Blühpflanzen im 500 g Glas, aromatisch, blumig. Verpackungseinheit: Karton zu 12.",
+      "price": null,
+      "base_price": null,
+      "sku": "HDB500K12",
+      "name": "Blütenhonig",
+      "comment": "",
+      "description": "",
+      "id": "SKU-HDB500K12",
       "brand": {
-        "name_short": "Hausmarke",
-        "name": "Hausmarke",
-        "corporate_claim": "",
-        "hint": "Honig zu 100% in Bayern erzeugt, gelagert und verarbeitet.",
-        "owner": "Imkerei Stefan Tatschner"
+        "name_short": "EDH",
+        "name": "Echter Deutscher Honig®",
+        "corporate_claim": "Echter Deutscher Honig ist die Verbandsmarke des Deutschen Imkerbund e.V. Seit 1925 steht sie für höchste Qualität und Naturbelassenheit. Über 99 % unserer Mitglieder sind Freizeitimkerinnen und -imker, die ihrem Hobby mit viel Herzblut nachgehen. Diese Liebe schmeckt man in jedem Glas Echten Deutschen Honigs.",
+        "hint": "In unserer Imkerei seit 2025 „Geprüfte Qualität – Bayern“ zertifiziert. Honig zu 100% in Bayern erzeugt, gelagert und verarbeitet.",
+        "owner": "Deutscher Imkerbund e.V."
       },
       "packaging": {
-        "label": "unverpackt",
-        "filling_unit": "",
-        "net_weight": null,
-        "name": "unverpackt",
-        "packaging_type": "Stück",
-        "packaging_unit": 1
+        "label": "500 g Glas",
+        "filling_unit": "g",
+        "net_weight": 500,
+        "name": "Glas",
+        "packaging_type": "Karton",
+        "packaging_unit": 12
       },
-      "fillings": null,
-      "id": "SKU-HU"
+      "fillings": []
     },
     {
       "gtin": "2001000000012",
@@ -897,11 +913,11 @@
       "auto_description": "",
       "price": null,
       "base_price": null,
-      "id_right": 39,
       "sku": "HP",
       "name": "Honig (pauschal)",
       "comment": "",
       "description": "Honig pauschal nach Vereinbarung",
+      "id": "SKU-HP",
       "brand": {
         "name_short": "Hausmarke",
         "name": "Hausmarke",
@@ -917,59 +933,24 @@
         "packaging_type": "Stück",
         "packaging_unit": 1
       },
-      "fillings": null,
-      "id": "SKU-HP"
+      "fillings": []
     },
     {
-      "gtin": "4270004430219",
-      "color": "",
-      "flavor": "aromatisch, blumig",
-      "gqb_certified": true,
-      "for_sale": false,
-      "in_stock": false,
-      "label": "EDH Blütenhonig 500 g (12er-Karton)",
-      "auto_description": "Echter Deutscher Honig® von gemischten Blühpflanzen im 500 g Glas, aromatisch, blumig. Verpackungseinheit: Karton zu 12.",
-      "price": null,
-      "base_price": null,
-      "id_right": 57,
-      "sku": "HDB500K12",
-      "name": "Blütenhonig",
-      "comment": "",
-      "description": "",
-      "brand": {
-        "name_short": "EDH",
-        "name": "Echter Deutscher Honig®",
-        "corporate_claim": "Echter Deutscher Honig ist die Verbandsmarke des Deutschen Imkerbund e.V. Seit 1925 steht sie für höchste Qualität und Naturbelassenheit. Über 99 % unserer Mitglieder sind Freizeitimkerinnen und -imker, die ihrem Hobby mit viel Herzblut nachgehen. Diese Liebe schmeckt man in jedem Glas Echten Deutschen Honigs.",
-        "hint": "In unserer Imkerei seit 2025 „Geprüfte Qualität – Bayern“ zertifiziert. Honig zu 100% in Bayern erzeugt, gelagert und verarbeitet.",
-        "owner": "Deutscher Imkerbund e.V."
-      },
-      "packaging": {
-        "label": "500 g Glas",
-        "filling_unit": "g",
-        "net_weight": 500,
-        "name": "Glas",
-        "packaging_type": "Karton",
-        "packaging_unit": 12
-      },
-      "fillings": null,
-      "id": "SKU-HDB500K12"
-    },
-    {
-      "gtin": "",
-      "color": "",
-      "flavor": "",
+      "gtin": "4270004430271",
+      "color": "bernsteinfarben",
+      "flavor": "aromatisch, feinherb",
       "gqb_certified": true,
       "for_sale": false,
       "in_stock": false,
       "label": "EDH Sommertracht mit Lindenhonig 250 g",
-      "auto_description": "Echter Deutscher Honig® im 250 g Glas.",
+      "auto_description": "Echter Deutscher Honig® vom Sommer mit einem Anteil Lindenhonig im 250 g Glas, aromatisch, feinherb.",
       "price": null,
       "base_price": null,
-      "id_right": 58,
       "sku": "HDSTL250E",
       "name": "Sommertracht mit Lindenhonig",
       "comment": "",
       "description": "",
+      "id": "SKU-HDSTL250E",
       "brand": {
         "name_short": "EDH",
         "name": "Echter Deutscher Honig®",
@@ -985,25 +966,24 @@
         "packaging_type": "Stück",
         "packaging_unit": 1
       },
-      "fillings": null,
-      "id": "SKU-HDSTL250E"
+      "fillings": []
     },
     {
       "gtin": "",
-      "color": "",
-      "flavor": "",
+      "color": "bernsteinfarben",
+      "flavor": "aromatisch, feinherb",
       "gqb_certified": false,
       "for_sale": false,
       "in_stock": false,
       "label": "EDH Sommertracht mit Lindenhonig 250 g (12er-Karton)",
-      "auto_description": "Echter Deutscher Honig® im 250 g Glas. Verpackungseinheit: Karton zu 12.",
+      "auto_description": "Echter Deutscher Honig® vom Sommer mit einem Anteil Lindenhonig im 250 g Glas, aromatisch, feinherb. Verpackungseinheit: Karton zu 12.",
       "price": null,
       "base_price": null,
-      "id_right": 59,
       "sku": "HDSTL250K12",
       "name": "Sommertracht mit Lindenhonig",
       "comment": "",
       "description": "",
+      "id": "SKU-HDSTL250K12",
       "brand": {
         "name_short": "EDH",
         "name": "Echter Deutscher Honig®",
@@ -1019,59 +999,24 @@
         "packaging_type": "Karton",
         "packaging_unit": 12
       },
-      "fillings": null,
-      "id": "SKU-HDSTL250K12"
+      "fillings": []
     },
     {
-      "gtin": "",
-      "color": "",
-      "flavor": "",
-      "gqb_certified": false,
-      "for_sale": false,
-      "in_stock": false,
-      "label": "EDH Sommertracht mit Lindenhonig 500 g (12er-Karton)",
-      "auto_description": "Echter Deutscher Honig® im 500 g Glas. Verpackungseinheit: Karton zu 12.",
-      "price": null,
-      "base_price": null,
-      "id_right": 60,
-      "sku": "HDSTL500K12",
-      "name": "Sommertracht mit Lindenhonig",
-      "comment": "",
-      "description": "",
-      "brand": {
-        "name_short": "EDH",
-        "name": "Echter Deutscher Honig®",
-        "corporate_claim": "Echter Deutscher Honig ist die Verbandsmarke des Deutschen Imkerbund e.V. Seit 1925 steht sie für höchste Qualität und Naturbelassenheit. Über 99 % unserer Mitglieder sind Freizeitimkerinnen und -imker, die ihrem Hobby mit viel Herzblut nachgehen. Diese Liebe schmeckt man in jedem Glas Echten Deutschen Honigs.",
-        "hint": "In unserer Imkerei seit 2025 „Geprüfte Qualität – Bayern“ zertifiziert. Honig zu 100% in Bayern erzeugt, gelagert und verarbeitet.",
-        "owner": "Deutscher Imkerbund e.V."
-      },
-      "packaging": {
-        "label": "500 g Glas",
-        "filling_unit": "g",
-        "net_weight": 500,
-        "name": "Glas",
-        "packaging_type": "Karton",
-        "packaging_unit": 12
-      },
-      "fillings": null,
-      "id": "SKU-HDSTL500K12"
-    },
-    {
-      "gtin": "",
-      "color": "",
-      "flavor": "",
+      "gtin": "4270004430257",
+      "color": "bernsteinfarben",
+      "flavor": "aromatisch, feinherb",
       "gqb_certified": true,
       "for_sale": false,
       "in_stock": false,
       "label": "EDH Sommertracht mit Lindenhonig 500 g",
-      "auto_description": "Echter Deutscher Honig® im 500 g Glas.",
+      "auto_description": "Echter Deutscher Honig® vom Sommer mit einem Anteil Lindenhonig im 500 g Glas, aromatisch, feinherb.",
       "price": null,
       "base_price": null,
-      "id_right": 61,
       "sku": "HDSTL500E",
       "name": "Sommertracht mit Lindenhonig",
       "comment": "",
       "description": "",
+      "id": "SKU-HDSTL500E",
       "brand": {
         "name_short": "EDH",
         "name": "Echter Deutscher Honig®",
@@ -1087,12 +1032,45 @@
         "packaging_type": "Stück",
         "packaging_unit": 1
       },
-      "fillings": null,
-      "id": "SKU-HDSTL500E"
+      "fillings": []
+    },
+    {
+      "gtin": "",
+      "color": "bernsteinfarben",
+      "flavor": "aromatisch, feinherb",
+      "gqb_certified": false,
+      "for_sale": false,
+      "in_stock": false,
+      "label": "EDH Sommertracht mit Lindenhonig 500 g (12er-Karton)",
+      "auto_description": "Echter Deutscher Honig® vom Sommer mit einem Anteil Lindenhonig im 500 g Glas, aromatisch, feinherb. Verpackungseinheit: Karton zu 12.",
+      "price": null,
+      "base_price": null,
+      "sku": "HDSTL500K12",
+      "name": "Sommertracht mit Lindenhonig",
+      "comment": "",
+      "description": "",
+      "id": "SKU-HDSTL500K12",
+      "brand": {
+        "name_short": "EDH",
+        "name": "Echter Deutscher Honig®",
+        "corporate_claim": "Echter Deutscher Honig ist die Verbandsmarke des Deutschen Imkerbund e.V. Seit 1925 steht sie für höchste Qualität und Naturbelassenheit. Über 99 % unserer Mitglieder sind Freizeitimkerinnen und -imker, die ihrem Hobby mit viel Herzblut nachgehen. Diese Liebe schmeckt man in jedem Glas Echten Deutschen Honigs.",
+        "hint": "In unserer Imkerei seit 2025 „Geprüfte Qualität – Bayern“ zertifiziert. Honig zu 100% in Bayern erzeugt, gelagert und verarbeitet.",
+        "owner": "Deutscher Imkerbund e.V."
+      },
+      "packaging": {
+        "label": "500 g Glas",
+        "filling_unit": "g",
+        "net_weight": 500,
+        "name": "Glas",
+        "packaging_type": "Karton",
+        "packaging_unit": 12
+      },
+      "fillings": []
     }
   ],
   "fillings": [
     {
+      "sku": "HD500E",
       "filling_id": "A-2022-01",
       "date": "2022-08-20",
       "best_before_date": "2024-08-20",
@@ -1102,10 +1080,10 @@
       "label": "EDH Honig 500 g",
       "weight_total": 9.0,
       "batch_id": "L-2022-01",
-      "sku": "HD500E",
       "id": "A-2022-01"
     },
     {
+      "sku": "HD500E",
       "filling_id": "A-2022-02",
       "date": "2022-09-11",
       "best_before_date": "2024-09-11",
@@ -1115,10 +1093,10 @@
       "label": "EDH Honig 500 g",
       "weight_total": 9.5,
       "batch_id": "L-2022-02",
-      "sku": "HD500E",
       "id": "A-2022-02"
     },
     {
+      "sku": "HDFT500E",
       "filling_id": "A-2023-01",
       "date": "2023-06-25",
       "best_before_date": "2025-06-25",
@@ -1128,10 +1106,10 @@
       "label": "EDH Frühjahrstrachthonig 500 g",
       "weight_total": 28.0,
       "batch_id": "L-2023-01",
-      "sku": "HDFT500E",
       "id": "A-2023-01"
     },
     {
+      "sku": "HDST500E",
       "filling_id": "A-2023-02",
       "date": "2023-07-23",
       "best_before_date": "2025-07-23",
@@ -1141,10 +1119,10 @@
       "label": "EDH Sommertrachthonig 500 g",
       "weight_total": 1.5,
       "batch_id": "L-2023-02",
-      "sku": "HDST500E",
       "id": "A-2023-02"
     },
     {
+      "sku": "HDST500E",
       "filling_id": "A-2023-03",
       "date": "2023-09-16",
       "best_before_date": "2025-09-16",
@@ -1154,10 +1132,10 @@
       "label": "EDH Sommertrachthonig 500 g",
       "weight_total": 37.0,
       "batch_id": "L-2023-02",
-      "sku": "HDST500E",
       "id": "A-2023-03"
     },
     {
+      "sku": "HDST500E",
       "filling_id": "A-2023-04",
       "date": "2023-11-19",
       "best_before_date": "2025-11-19",
@@ -1167,10 +1145,10 @@
       "label": "EDH Sommertrachthonig 500 g",
       "weight_total": 13.0,
       "batch_id": "L-2023-02",
-      "sku": "HDST500E",
       "id": "A-2023-04"
     },
     {
+      "sku": "HDFT500E",
       "filling_id": "A-2023-05",
       "date": "2023-11-19",
       "best_before_date": "2025-11-19",
@@ -1180,10 +1158,10 @@
       "label": "EDH Frühjahrstrachthonig 500 g",
       "weight_total": 9.0,
       "batch_id": "L-2023-01",
-      "sku": "HDFT500E",
       "id": "A-2023-05"
     },
     {
+      "sku": "HDFT500E",
       "filling_id": "A-2024-01",
       "date": "2024-06-22",
       "best_before_date": "2026-06-22",
@@ -1193,10 +1171,10 @@
       "label": "EDH Frühjahrstrachthonig 500 g",
       "weight_total": 47.5,
       "batch_id": "L-2024-01",
-      "sku": "HDFT500E",
       "id": "A-2024-01"
     },
     {
+      "sku": "HNFT500E",
       "filling_id": "A-2024-02",
       "date": "2024-09-08",
       "best_before_date": "2026-12-31",
@@ -1206,10 +1184,10 @@
       "label": "Hausmarke Frühjahrstrachthonig 500 g",
       "weight_total": 22.0,
       "batch_id": "L-2024-01",
-      "sku": "HNFT500E",
       "id": "A-2024-02"
     },
     {
+      "sku": "HNST500E",
       "filling_id": "A-2024-03",
       "date": "2024-09-28",
       "best_before_date": "2026-12-31",
@@ -1219,10 +1197,10 @@
       "label": "Hausmarke Sommertrachthonig 500 g",
       "weight_total": 24.0,
       "batch_id": "L-2024-04",
-      "sku": "HNST500E",
       "id": "A-2024-03"
     },
     {
+      "sku": "HNST500E",
       "filling_id": "A-2024-04",
       "date": "2024-10-20",
       "best_before_date": "2026-12-31",
@@ -1232,10 +1210,10 @@
       "label": "Hausmarke Sommertrachthonig 500 g",
       "weight_total": 41.0,
       "batch_id": "L-2024-04",
-      "sku": "HNST500E",
       "id": "A-2024-04"
     },
     {
+      "sku": "HNFT500E",
       "filling_id": "A-2024-05",
       "date": "2024-12-22",
       "best_before_date": "2026-12-31",
@@ -1245,10 +1223,10 @@
       "label": "Hausmarke Frühjahrstrachthonig 500 g",
       "weight_total": 12.5,
       "batch_id": "L-2022-01",
-      "sku": "HNFT500E",
       "id": "A-2024-05"
     },
     {
+      "sku": "HNST500E",
       "filling_id": "A-2024-06",
       "date": "2024-12-22",
       "best_before_date": "2026-12-31",
@@ -1258,10 +1236,10 @@
       "label": "Hausmarke Sommertrachthonig 500 g",
       "weight_total": 83.0,
       "batch_id": "L-2024-04",
-      "sku": "HNST500E",
       "id": "A-2024-06"
     },
     {
+      "sku": "HNFT500E",
       "filling_id": "A-2024-07",
       "date": "2024-12-31",
       "best_before_date": "2026-12-31",
@@ -1271,10 +1249,10 @@
       "label": "Hausmarke Frühjahrstrachthonig 500 g",
       "weight_total": 15.5,
       "batch_id": "L-2024-01",
-      "sku": "HNFT500E",
       "id": "A-2024-07"
     },
     {
+      "sku": "HNST500E",
       "filling_id": "A-2024-08",
       "date": "2024-12-31",
       "best_before_date": "2026-12-31",
@@ -1284,10 +1262,10 @@
       "label": "Hausmarke Sommertrachthonig 500 g",
       "weight_total": 2.0,
       "batch_id": "L-2024-02",
-      "sku": "HNST500E",
       "id": "A-2024-08"
     },
     {
+      "sku": "HD500E",
       "filling_id": "A-2025-01",
       "date": "2025-08-02",
       "best_before_date": "2027-08-02",
@@ -1297,10 +1275,10 @@
       "label": "EDH Honig 500 g",
       "weight_total": 7.0,
       "batch_id": "L-2025-02",
-      "sku": "HD500E",
       "id": "A-2025-01"
     },
     {
+      "sku": "HDB250E",
       "filling_id": "A-2025-02",
       "date": "2025-09-05",
       "best_before_date": "2027-09-05",
@@ -1310,10 +1288,10 @@
       "label": "EDH Blütenhonig 250 g",
       "weight_total": 18.0,
       "batch_id": "L-2025-02",
-      "sku": "HDB250E",
       "id": "A-2025-02"
     },
     {
+      "sku": "HNB500E",
       "filling_id": "A-2025-03",
       "date": "2025-09-05",
       "best_before_date": "2027-09-05",
@@ -1323,10 +1301,10 @@
       "label": "Hausmarke Blütenhonig 500 g",
       "weight_total": 21.5,
       "batch_id": "L-2025-03",
-      "sku": "HNB500E",
       "id": "A-2025-03"
     },
     {
+      "sku": "HNB500E",
       "filling_id": "A-2026-01",
       "date": "2026-05-28",
       "best_before_date": "2028-05-30",
@@ -1336,10 +1314,10 @@
       "label": "Hausmarke Blütenhonig 500 g",
       "weight_total": 20.0,
       "batch_id": "L-2026-02",
-      "sku": "HNB500E",
       "id": "A-2026-01"
     },
     {
+      "sku": "HNB500E",
       "filling_id": "A-2026-02",
       "date": "2026-07-05",
       "best_before_date": "2028-07-05",
@@ -1349,10 +1327,10 @@
       "label": "Hausmarke Blütenhonig 500 g",
       "weight_total": 13.0,
       "batch_id": "L-2026-03",
-      "sku": "HNB500E",
       "id": "A-2026-02"
     },
     {
+      "sku": "HDB250E",
       "filling_id": "A-2026-03",
       "date": "2026-07-05",
       "best_before_date": "2028-07-05",
@@ -1362,10 +1340,10 @@
       "label": "EDH Blütenhonig 250 g",
       "weight_total": 4.5,
       "batch_id": "L-2026-04",
-      "sku": "HDB250E",
       "id": "A-2026-03"
     },
     {
+      "sku": "HDB500E",
       "filling_id": "A-2026-04",
       "date": "2026-07-05",
       "best_before_date": "2028-07-05",
@@ -1375,10 +1353,10 @@
       "label": "EDH Blütenhonig 500 g",
       "weight_total": 12.0,
       "batch_id": "L-2026-04",
-      "sku": "HDB500E",
       "id": "A-2026-04"
     },
     {
+      "sku": "HDST500E",
       "filling_id": "A-2026-05",
       "date": "2026-07-22",
       "best_before_date": "2028-07-22",
@@ -1388,10 +1366,10 @@
       "label": "EDH Sommertrachthonig 500 g",
       "weight_total": 16.0,
       "batch_id": "L-2026-05",
-      "sku": "HDST500E",
       "id": "A-2026-05"
     },
     {
+      "sku": "HDB250E",
       "filling_id": "A-2026-06",
       "date": "2026-08-06",
       "best_before_date": "2028-08-06",
@@ -1401,10 +1379,10 @@
       "label": "EDH Blütenhonig 250 g",
       "weight_total": 9.0,
       "batch_id": "L-2026-04",
-      "sku": "HDB250E",
       "id": "A-2026-06"
     },
     {
+      "sku": "HDB500E",
       "filling_id": "A-2026-07",
       "date": "2026-08-06",
       "best_before_date": "2028-08-06",
@@ -1414,7 +1392,6 @@
       "label": "EDH Blütenhonig 500 g",
       "weight_total": 19.0,
       "batch_id": "L-2026-04",
-      "sku": "HDB500E",
       "id": "A-2026-07"
     }
   ],
@@ -2256,8 +2233,10 @@
       "comment": "Eimer noch nicht getracked",
       "weight": 15.5,
       "avail": 0.0,
+      "id": "L-2022-01",
       "fillings": [
         {
+          "sku": "HD500E",
           "filling_id": "A-2022-01",
           "date": "2022-08-20",
           "best_before_date": "2024-08-20",
@@ -2266,10 +2245,10 @@
           "dib_field": "WW 884582 — 884599",
           "label": "EDH Honig 500 g",
           "weight_total": 9.0,
-          "sku": "HD500E",
           "id": "A-2022-01"
         },
         {
+          "sku": "HNFT500E",
           "filling_id": "A-2024-05",
           "date": "2024-12-22",
           "best_before_date": "2026-12-31",
@@ -2278,7 +2257,6 @@
           "dib_field": "",
           "label": "Hausmarke Frühjahrstrachthonig 500 g",
           "weight_total": 12.5,
-          "sku": "HNFT500E",
           "id": "A-2024-05"
         }
       ],
@@ -2294,8 +2272,7 @@
           "location_id": "AISEC",
           "id": "E-2022-01"
         }
-      ],
-      "id": "L-2022-01"
+      ]
     },
     {
       "batch_id": "L-2022-02",
@@ -2304,8 +2281,10 @@
       "comment": "Eimer noch nicht getracked",
       "weight": 13.0,
       "avail": 0.0,
+      "id": "L-2022-02",
       "fillings": [
         {
+          "sku": "HD500E",
           "filling_id": "A-2022-02",
           "date": "2022-09-11",
           "best_before_date": "2024-09-11",
@@ -2314,7 +2293,6 @@
           "dib_field": "WW 884563 — 884581",
           "label": "EDH Honig 500 g",
           "weight_total": 9.5,
-          "sku": "HD500E",
           "id": "A-2022-02"
         }
       ],
@@ -2330,8 +2308,7 @@
           "location_id": "AISEC",
           "id": "E-2022-02"
         }
-      ],
-      "id": "L-2022-02"
+      ]
     },
     {
       "batch_id": "L-2023-01",
@@ -2340,8 +2317,10 @@
       "comment": "AISEC",
       "weight": 43.5,
       "avail": 0.0,
+      "id": "L-2023-01",
       "fillings": [
         {
+          "sku": "HDFT500E",
           "filling_id": "A-2023-01",
           "date": "2023-06-25",
           "best_before_date": "2025-06-25",
@@ -2350,10 +2329,10 @@
           "dib_field": "GKSI 1 — 56",
           "label": "EDH Frühjahrstrachthonig 500 g",
           "weight_total": 28.0,
-          "sku": "HDFT500E",
           "id": "A-2023-01"
         },
         {
+          "sku": "HDFT500E",
           "filling_id": "A-2023-05",
           "date": "2023-11-19",
           "best_before_date": "2025-11-19",
@@ -2362,7 +2341,6 @@
           "dib_field": "GKSI 57 — 74",
           "label": "EDH Frühjahrstrachthonig 500 g",
           "weight_total": 9.0,
-          "sku": "HDFT500E",
           "id": "A-2023-05"
         }
       ],
@@ -2422,8 +2400,7 @@
           "location_id": "WIEDE",
           "id": "E-2023-05"
         }
-      ],
-      "id": "L-2023-01"
+      ]
     },
     {
       "batch_id": "L-2023-02",
@@ -2432,8 +2409,10 @@
       "comment": "WIEDE",
       "weight": 59.400000000000006,
       "avail": 0.0,
+      "id": "L-2023-02",
       "fillings": [
         {
+          "sku": "HDST500E",
           "filling_id": "A-2023-02",
           "date": "2023-07-23",
           "best_before_date": "2025-07-23",
@@ -2442,10 +2421,10 @@
           "dib_field": "GKSK 498 — 500",
           "label": "EDH Sommertrachthonig 500 g",
           "weight_total": 1.5,
-          "sku": "HDST500E",
           "id": "A-2023-02"
         },
         {
+          "sku": "HDST500E",
           "filling_id": "A-2023-03",
           "date": "2023-09-16",
           "best_before_date": "2025-09-16",
@@ -2454,10 +2433,10 @@
           "dib_field": "GKSK 1 — 74",
           "label": "EDH Sommertrachthonig 500 g",
           "weight_total": 37.0,
-          "sku": "HDST500E",
           "id": "A-2023-03"
         },
         {
+          "sku": "HDST500E",
           "filling_id": "A-2023-04",
           "date": "2023-11-19",
           "best_before_date": "2025-11-19",
@@ -2466,7 +2445,6 @@
           "dib_field": "GKSK 75 — 100",
           "label": "EDH Sommertrachthonig 500 g",
           "weight_total": 13.0,
-          "sku": "HDST500E",
           "id": "A-2023-04"
         }
       ],
@@ -2537,8 +2515,7 @@
           "location_id": "AISEC",
           "id": "E-2023-11"
         }
-      ],
-      "id": "L-2023-02"
+      ]
     },
     {
       "batch_id": "L-2024-01",
@@ -2547,8 +2524,10 @@
       "comment": "",
       "weight": 99.60000000000001,
       "avail": 0.0,
+      "id": "L-2024-01",
       "fillings": [
         {
+          "sku": "HDFT500E",
           "filling_id": "A-2024-01",
           "date": "2024-06-22",
           "best_before_date": "2026-06-22",
@@ -2557,10 +2536,10 @@
           "dib_field": "GKSI 75 — 169",
           "label": "EDH Frühjahrstrachthonig 500 g",
           "weight_total": 47.5,
-          "sku": "HDFT500E",
           "id": "A-2024-01"
         },
         {
+          "sku": "HNFT500E",
           "filling_id": "A-2024-02",
           "date": "2024-09-08",
           "best_before_date": "2026-12-31",
@@ -2569,10 +2548,10 @@
           "dib_field": "",
           "label": "Hausmarke Frühjahrstrachthonig 500 g",
           "weight_total": 22.0,
-          "sku": "HNFT500E",
           "id": "A-2024-02"
         },
         {
+          "sku": "HNFT500E",
           "filling_id": "A-2024-07",
           "date": "2024-12-31",
           "best_before_date": "2026-12-31",
@@ -2581,7 +2560,6 @@
           "dib_field": "",
           "label": "Hausmarke Frühjahrstrachthonig 500 g",
           "weight_total": 15.5,
-          "sku": "HNFT500E",
           "id": "A-2024-07"
         }
       ],
@@ -2663,8 +2641,7 @@
           "location_id": "SFG",
           "id": "E-2024-07"
         }
-      ],
-      "id": "L-2024-01"
+      ]
     },
     {
       "batch_id": "L-2024-02",
@@ -2673,8 +2650,10 @@
       "comment": "Melizitosehonig",
       "weight": 28.0,
       "avail": 0.0,
+      "id": "L-2024-02",
       "fillings": [
         {
+          "sku": "HNST500E",
           "filling_id": "A-2024-08",
           "date": "2024-12-31",
           "best_before_date": "2026-12-31",
@@ -2683,7 +2662,6 @@
           "dib_field": "",
           "label": "Hausmarke Sommertrachthonig 500 g",
           "weight_total": 2.0,
-          "sku": "HNST500E",
           "id": "A-2024-08"
         }
       ],
@@ -2710,8 +2688,7 @@
           "location_id": "SFG",
           "id": "E-2024-12"
         }
-      ],
-      "id": "L-2024-02"
+      ]
     },
     {
       "batch_id": "L-2024-03",
@@ -2720,7 +2697,8 @@
       "comment": "Nearbees",
       "weight": 42.4,
       "avail": 0.0,
-      "fillings": null,
+      "id": "L-2024-03",
+      "fillings": [],
       "buckets": [
         {
           "bucket_id": "E-2024-15",
@@ -2755,8 +2733,7 @@
           "location_id": "SFG",
           "id": "E-2024-17"
         }
-      ],
-      "id": "L-2024-03"
+      ]
     },
     {
       "batch_id": "L-2024-04",
@@ -2765,8 +2742,10 @@
       "comment": "",
       "weight": 158.0,
       "avail": 0.0,
+      "id": "L-2024-04",
       "fillings": [
         {
+          "sku": "HNST500E",
           "filling_id": "A-2024-03",
           "date": "2024-09-28",
           "best_before_date": "2026-12-31",
@@ -2775,10 +2754,10 @@
           "dib_field": "",
           "label": "Hausmarke Sommertrachthonig 500 g",
           "weight_total": 24.0,
-          "sku": "HNST500E",
           "id": "A-2024-03"
         },
         {
+          "sku": "HNST500E",
           "filling_id": "A-2024-04",
           "date": "2024-10-20",
           "best_before_date": "2026-12-31",
@@ -2787,10 +2766,10 @@
           "dib_field": "",
           "label": "Hausmarke Sommertrachthonig 500 g",
           "weight_total": 41.0,
-          "sku": "HNST500E",
           "id": "A-2024-04"
         },
         {
+          "sku": "HNST500E",
           "filling_id": "A-2024-06",
           "date": "2024-12-22",
           "best_before_date": "2026-12-31",
@@ -2799,7 +2778,6 @@
           "dib_field": "",
           "label": "Hausmarke Sommertrachthonig 500 g",
           "weight_total": 83.0,
-          "sku": "HNST500E",
           "id": "A-2024-06"
         }
       ],
@@ -2925,8 +2903,7 @@
           "location_id": "SFG",
           "id": "E-2024-28"
         }
-      ],
-      "id": "L-2024-04"
+      ]
     },
     {
       "batch_id": "L-2025-01",
@@ -2935,7 +2912,8 @@
       "comment": "Nearbees",
       "weight": 46.2,
       "avail": 0.0,
-      "fillings": null,
+      "id": "L-2025-01",
+      "fillings": [],
       "buckets": [
         {
           "bucket_id": "E-2025-07",
@@ -2970,8 +2948,7 @@
           "location_id": "SFG",
           "id": "E-2025-09"
         }
-      ],
-      "id": "L-2025-01"
+      ]
     },
     {
       "batch_id": "L-2025-02",
@@ -2980,8 +2957,10 @@
       "comment": "",
       "weight": 23.4,
       "avail": 0.0,
+      "id": "L-2025-02",
       "fillings": [
         {
+          "sku": "HD500E",
           "filling_id": "A-2025-01",
           "date": "2025-08-02",
           "best_before_date": "2027-08-02",
@@ -2990,10 +2969,10 @@
           "dib_field": "WW 0884503 — 00884516",
           "label": "EDH Honig 500 g",
           "weight_total": 7.0,
-          "sku": "HD500E",
           "id": "A-2025-01"
         },
         {
+          "sku": "HDB250E",
           "filling_id": "A-2025-02",
           "date": "2025-09-05",
           "best_before_date": "2027-09-05",
@@ -3002,7 +2981,6 @@
           "dib_field": "QGUF 1 — 73",
           "label": "EDH Blütenhonig 250 g",
           "weight_total": 18.0,
-          "sku": "HDB250E",
           "id": "A-2025-02"
         }
       ],
@@ -3029,8 +3007,7 @@
           "location_id": "SFG",
           "id": "E-2025-06"
         }
-      ],
-      "id": "L-2025-02"
+      ]
     },
     {
       "batch_id": "L-2025-03",
@@ -3039,8 +3016,10 @@
       "comment": "",
       "weight": 29.5,
       "avail": 0.0,
+      "id": "L-2025-03",
       "fillings": [
         {
+          "sku": "HNB500E",
           "filling_id": "A-2025-03",
           "date": "2025-09-05",
           "best_before_date": "2027-09-05",
@@ -3049,7 +3028,6 @@
           "dib_field": "",
           "label": "Hausmarke Blütenhonig 500 g",
           "weight_total": 21.5,
-          "sku": "HNB500E",
           "id": "A-2025-03"
         }
       ],
@@ -3076,8 +3054,7 @@
           "location_id": "SFG",
           "id": "E-2025-11"
         }
-      ],
-      "id": "L-2025-03"
+      ]
     },
     {
       "batch_id": "L-2026-01",
@@ -3086,7 +3063,8 @@
       "comment": "Nearbees",
       "weight": 20.6,
       "avail": 0.0,
-      "fillings": null,
+      "id": "L-2026-01",
+      "fillings": [],
       "buckets": [
         {
           "bucket_id": "E-2026-05",
@@ -3121,8 +3099,7 @@
           "location_id": "ALLE",
           "id": "E-2026-11"
         }
-      ],
-      "id": "L-2026-01"
+      ]
     },
     {
       "batch_id": "L-2026-02",
@@ -3131,8 +3108,10 @@
       "comment": "Vorbestellungen",
       "weight": 26.15,
       "avail": 0.0,
+      "id": "L-2026-02",
       "fillings": [
         {
+          "sku": "HNB500E",
           "filling_id": "A-2026-01",
           "date": "2026-05-28",
           "best_before_date": "2028-05-30",
@@ -3141,7 +3120,6 @@
           "dib_field": "",
           "label": "Hausmarke Blütenhonig 500 g",
           "weight_total": 20.0,
-          "sku": "HNB500E",
           "id": "A-2026-01"
         }
       ],
@@ -3157,8 +3135,7 @@
           "location_id": "ALLE",
           "id": "E-2026-12"
         }
-      ],
-      "id": "L-2026-02"
+      ]
     },
     {
       "batch_id": "L-2026-03",
@@ -3167,8 +3144,10 @@
       "comment": "Hausmarke",
       "weight": 14.6,
       "avail": 0.0,
+      "id": "L-2026-03",
       "fillings": [
         {
+          "sku": "HNB500E",
           "filling_id": "A-2026-02",
           "date": "2026-07-05",
           "best_before_date": "2028-07-05",
@@ -3177,7 +3156,6 @@
           "dib_field": "",
           "label": "Hausmarke Blütenhonig 500 g",
           "weight_total": 13.0,
-          "sku": "HNB500E",
           "id": "A-2026-02"
         }
       ],
@@ -3193,8 +3171,7 @@
           "location_id": "ALLE",
           "id": "E-2026-06"
         }
-      ],
-      "id": "L-2026-03"
+      ]
     },
     {
       "batch_id": "L-2026-04",
@@ -3203,8 +3180,10 @@
       "comment": "GQ-Bayern",
       "weight": 106.3,
       "avail": 61.5,
+      "id": "L-2026-04",
       "fillings": [
         {
+          "sku": "HDB250E",
           "filling_id": "A-2026-03",
           "date": "2026-07-05",
           "best_before_date": "2028-07-05",
@@ -3213,10 +3192,10 @@
           "dib_field": "QGUF 74 — 94",
           "label": "EDH Blütenhonig 250 g",
           "weight_total": 4.5,
-          "sku": "HDB250E",
           "id": "A-2026-03"
         },
         {
+          "sku": "HDB500E",
           "filling_id": "A-2026-04",
           "date": "2026-07-05",
           "best_before_date": "2028-07-05",
@@ -3225,10 +3204,10 @@
           "dib_field": "SZA 1 — 61",
           "label": "EDH Blütenhonig 500 g",
           "weight_total": 12.0,
-          "sku": "HDB500E",
           "id": "A-2026-04"
         },
         {
+          "sku": "HDB250E",
           "filling_id": "A-2026-06",
           "date": "2026-08-06",
           "best_before_date": "2028-08-06",
@@ -3237,10 +3216,10 @@
           "dib_field": "QGUF 95 — 135",
           "label": "EDH Blütenhonig 250 g",
           "weight_total": 9.0,
-          "sku": "HDB250E",
           "id": "A-2026-06"
         },
         {
+          "sku": "HDB500E",
           "filling_id": "A-2026-07",
           "date": "2026-08-06",
           "best_before_date": "2028-08-06",
@@ -3249,7 +3228,6 @@
           "dib_field": "SZA 25 — 63",
           "label": "EDH Blütenhonig 500 g",
           "weight_total": 19.0,
-          "sku": "HDB500E",
           "id": "A-2026-07"
         }
       ],
@@ -3331,8 +3309,7 @@
           "location_id": "ALLE",
           "id": "E-2026-09"
         }
-      ],
-      "id": "L-2026-04"
+      ]
     },
     {
       "batch_id": "L-2026-05",
@@ -3341,8 +3318,10 @@
       "comment": "GQ-Bayern",
       "weight": 98.39999999999999,
       "avail": 73.39999999999999,
+      "id": "L-2026-05",
       "fillings": [
         {
+          "sku": "HDST500E",
           "filling_id": "A-2026-05",
           "date": "2026-07-22",
           "best_before_date": "2028-07-22",
@@ -3351,7 +3330,6 @@
           "dib_field": "GKSK 101 — 100",
           "label": "EDH Sommertrachthonig 500 g",
           "weight_total": 16.0,
-          "sku": "HDST500E",
           "id": "A-2026-05"
         }
       ],
@@ -3422,8 +3400,7 @@
           "location_id": "ALLE",
           "id": "E-2026-21"
         }
-      ],
-      "id": "L-2026-05"
+      ]
     }
   ],
   "centrifugations": [
