@@ -11,12 +11,45 @@ from __future__ import annotations
 
 import json
 import logging
+import marshal
 from datetime import UTC, datetime
 from typing import Any
 
 import niquests
 
 logger = logging.getLogger(__name__)
+
+
+def _decode_sql_value(column: str, value: Any) -> Any:
+    """query_sql() exposes Grist's raw SQLite storage representation
+    (unlike get_records(), which always normalizes) -- a handful of legacy
+    cells in older Grist docs are stored there as binary Python marshal
+    blobs rather than a plain scalar (Grist's own docs, grist-data-format.md:
+    "non-primitive values (errors, complex objects) are stored as binary
+    Python marshal blobs"), which the /sql endpoint's JSON response
+    represents as `{"type": "Buffer", "data": [...]}`.
+
+    Decodes those back to the plain value they represent, so callers never
+    have to special-case this column by column, or discover it by diffing
+    output against another data source the way dump_db.py originally did.
+    Falls back to the raw dict (with a warning, so it's visible rather than
+    silently wrong in whatever JSON this ends up in) if marshal can't make
+    sense of it -- e.g. a genuine BLOB/Attachments column, or some future
+    Grist encoding this hasn't seen before.
+    """
+    if not (isinstance(value, dict) and value.get("type") == "Buffer" and "data" in value):
+        return value
+    try:
+        return marshal.loads(bytes(value["data"]))
+    except ValueError, TypeError, EOFError:
+        logger.warning(
+            "query_sql(): column %r's value looked like a marshalled Buffer but didn't "
+            "decode as one, leaving it as-is: %r",
+            column,
+            value,
+        )
+        return value
+
 
 # widgetOptions keys that ensure_table_schema() syncs onto an already-existing
 # column without asking (unlike a type change, these never touch stored cell
@@ -81,6 +114,43 @@ class GristClient:
         data: dict[str, Any] = resp.json()
         records: list[dict[str, Any]] = data.get("records", [])
         return records
+
+    def query_sql(self, sql: str, args: list[Any] | None = None) -> list[dict[str, Any]]:
+        """Runs a read-only SQL SELECT against the doc's own SQLite-backed
+        /sql endpoint (POST, not the GET+query-string variant -- avoids URL
+        length/escaping issues for longer queries) -- SQLite dialect,
+        supports JOIN/GROUP BY/window functions/json_object()/
+        json_group_array() etc.
+
+        Unlike get_records(), this can join across tables and aggregate
+        server-side instead of pulling whole tables and joining them
+        client-side -- see dump_db.py. Ref columns behave as plain integer
+        row ids in SQL (joinable against the target table's "id"), *except*
+        as a JOIN/WHERE operand against a column affected by the legacy
+        marshal-blob storage _decode_sql_value() handles below -- SQLite
+        compares a BLOB and an INTEGER as simply unequal, so a join on a
+        raw ref column can silently drop rows no matter what this method
+        does to the result afterwards; resolve those client-side instead
+        (see dump_db.py's _resolve_filling_skus() for the pattern). Bool
+        columns come back as SQLite 0/1 integers, not JSON booleans like
+        get_records() returns, and json_object()/json_group_array() results
+        come back as JSON *text*, not nested structures -- callers need
+        their own bool(...)/json.loads() as needed.
+
+        `args` are bound as SQLite `?` placeholders (not string-
+        interpolated) -- see
+        https://support.getgrist.com/api/#tag/sql/operation/sqlPost.
+        """
+        payload: dict[str, Any] = {"sql": sql}
+        if args is not None:
+            payload["args"] = args
+        resp = self._client.post(f"/api/docs/{self.doc_id}/sql", json=payload)
+        self._check(resp)
+        data: dict[str, Any] = resp.json()
+        return [
+            {col: _decode_sql_value(col, val) for col, val in rec["fields"].items()}
+            for rec in data.get("records", [])
+        ]
 
     def add_records(self, table_id: str, records: list[dict[str, Any]]) -> list[int]:
         """Returns the newly assigned row ids, in the same order as `records`."""
@@ -211,19 +281,21 @@ class GristClient:
         column's Markdown-rendering widget -- those only affect UI behavior,
         never a stored cell value.
         """
-        print(f"Checking Grist table '{table_id}' in doc {self.doc_id} ...")
+        logger.info("Checking Grist table '%s' in doc %s ...", table_id, self.doc_id)
         tables = self.list_tables()
 
         if table_id not in tables:
-            print(f"Table '{table_id}' does not exist, creating with {len(schema)} columns ...")
+            logger.info(
+                "Table '%s' does not exist, creating with %s columns ...", table_id, len(schema)
+            )
             if dry_run:
-                print("--dry-run is set, nothing will be created.")
+                logger.info("--dry-run is set, nothing will be created.")
                 return
             self.create_table(table_id, schema)
-            print("Table created.")
+            logger.info("Table created.")
             return
 
-        print(f"Table '{table_id}' already exists, checking columns ...")
+        logger.info("Table '%s' already exists, checking columns ...", table_id)
         existing_cols = self.get_columns(table_id)
 
         missing = [
@@ -249,33 +321,35 @@ class GristClient:
                 options_to_sync.append((col_id, extra))
 
         if not missing and not mismatched and not options_to_sync:
-            print("Nothing to do, the table already matches the expected schema.")
+            logger.info("Nothing to do, the table already matches the expected schema.")
             return
 
         if missing:
-            print("Missing columns: " + ", ".join(col_id for col_id, _, _ in missing))
+            logger.info("Missing columns: %s", ", ".join(col_id for col_id, _, _ in missing))
         if mismatched:
-            print("Columns with a different type than expected:")
+            logger.warning("Columns with a different type than expected:")
             for col_id, have, want in mismatched:
-                print(f"  {col_id}: have {have!r}, expected {want!r}")
+                logger.warning("  %s: have %r, expected %r", col_id, have, want)
         if options_to_sync:
-            print(
-                "Columns whose choices/widget will be (re-)set: "
-                + ", ".join(c for c, _ in options_to_sync)
+            logger.info(
+                "Columns whose choices/widget will be (re-)set: %s",
+                ", ".join(c for c, _ in options_to_sync),
             )
 
         if dry_run:
-            print("--dry-run is set, nothing will be changed.")
+            logger.info("--dry-run is set, nothing will be changed.")
             return
 
         if missing:
             self.add_columns(table_id, missing)
-            print(f"Added {len(missing)} column(s).")
+            logger.info("Added %s column(s).", len(missing))
 
         if mismatched:
-            print(
-                "\nChanging a column's type can reformat or discard the values "
-                "already stored in it, so confirm each one:"
+            # A heads-up via logging, then plain input()/print() for the actual
+            # interactive prompt itself -- logging has no notion of a prompt.
+            logger.warning(
+                "Changing a column's type can reformat or discard the values already "
+                "stored in it, so confirm each one:"
             )
             for col_id, have, want in mismatched:
                 answer = (
@@ -283,10 +357,12 @@ class GristClient:
                 )
                 if answer == "y":
                     self.update_column_fields(table_id, col_id, {"type": want})
-                    print(f"  Updated {col_id}.")
+                    logger.info("  Updated %s.", col_id)
                 else:
-                    print(f"  Skipped {col_id} -- writes to it may fail until fixed manually.")
+                    logger.warning(
+                        "  Skipped %s -- writes to it may fail until fixed manually.", col_id
+                    )
 
         for col_id, extra in options_to_sync:
             self.update_column_fields(table_id, col_id, extra)
-            print(f"Updated options for {col_id}.")
+            logger.info("Updated options for %s.", col_id)
