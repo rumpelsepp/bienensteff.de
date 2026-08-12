@@ -3,7 +3,7 @@ title: Honigkunde
 toc: true
 ---
 
-Auf dieser Seite stellen wir euch die wichtigsten Infos über Honig als groben Überblick zusammen.
+Auf dieser Seite stellen wir euch die wichtigsten Infos über Honig zusammen, von praktischen Alltagsfragen bis zu den Kriterien, die echte Honigqualität ausmachen.
 Dabei werden wir natürlich das Rad nicht neu erfinden, sondern wir beziehen uns hier auf offizielle bzw. wissenschaftlich anerkannte Quellen.
 Weiterführende Seiten oder Dokumente werden nach Möglichkeit verlinkt.
 Allgemeine Informationen rund um Honig gibt es auf der [Webseite](https://deutscherimkerbund.de/honig/) des Deutschen Imkerbundes.
@@ -15,105 +15,20 @@ _Kann Honig schlecht werden?_
 
 Die Angabe eines Mindesthaltbarkeitsdatum für Honig ist gemäß [Lebensmittelinformations-Verordnung](http://data.europa.eu/eli/reg/2011/1169/oj) gesetzlich vorgeschrieben.
 Bei ordentlicher Lagerung kann Honig auch nach Ablauf der Mindesthaltbarkeit durchaus noch verzehrfähig sein.
-Bei ungünstigen Lagerbedingungen (z. B. zu warm, zu feucht oder zu hell) können die [Qualitätsmerkmale](#qualitätskriterien) negativ beeinträchtigt werden.
+Bei ungünstigen Lagerbedingungen (z. B. zu warm, zu feucht oder zu hell) können die [Qualitätskriterien](#qualitätskriterien) negativ beeinträchtigt werden.
 Üblicherweise wird auf Honiggläsern eine Haltbarkeit von **zwei Jahren** angegeben.
-
-## Honigsorten
-
-_Welche Honigsorten gibt es?_
-
-Detailliertere Informationen findet ihr in den [Leitsätzen für Honig](https://www.bmel.de/SharedDocs/Downloads/DE/_Ernaehrung/Lebensmittel-Kennzeichnung/LeitsaetzeHonig.html) des Deutschen Lebensmittelbuchs oder in den [Honigsorten-Bezeichnungen](https://deutscherimkerbund.de/wp-content/uploads/2025/02/34-honigsorten-bezeichnungen-2021.pdf) vom Deutschen Imkerbund.
-
-## Kristallisation
-
-_Wurde dem Honig Zucker hinzugefügt?_
-
-{{< blockquote caption="Quelle: [bienen.info](https://bienen.info/honig-kristallisiert-biologin-klaert-auf/)">}}
-Kristallisierter Honig ist keinesfalls minderwertig.
-Im Gegenteil: Wenn ein Honig kristallisiert, zeugt das von dessen Naturbelassenheit.
-Das ist wiederum ein Zeichen von Qualität.
-Kristallisierter Honig ist dementsprechend auch nicht verdorben.
-Er kann ganz normal gegessen werden.
-Nur wenn sich durch die Kristallisation zwei Phasen bilden, können sich in der flüssigeren Phase durch den höheren Wassergehalt Hefen vermehren und zur Gärung des Honigs dieser Phase führen.
-
-Es ist möglich, festen Honig durch Wärme wieder flüssiger zu machen.
-Die Temperatur sollte dabei unter 40 °C liegen, um Inhaltsstoffen des Honigs nicht zu schaden.
-Eine geeignete und schonende Methode ist die Verflüssigung von Honig im Wasserbad.
-{{</ blockquote >}}
-
-{{< blockquote caption="Quelle: [laves.niedersachsen.de](https://www.laves.niedersachsen.de/download/41274/Honig-Kristallisation.pdf)">}}
-Die Kristallbildung im Honig ist abhängig von Zuckerspektrum, Konzentration der einzelnen Zucker, Gehalt an Kristallisationskeimen, Wassergehalt und Temperatur.
-[…]
-Die Kristallisation setzt ein, wenn für einen Zucker die Sättigungskonzentration überschritten wird.
-Der Zucker fällt aus der Lösung aus und bildet Kristalle, insbesondere wenn Kristallisationskeime (Pollen, Staub, Luftblasen, Primärzuckerkristalle) vorhanden sind.
-{{</ blockquote >}}
-
-## Gesetzliche Grundlagen
-
-In der [„Honigverordnung vom 16. Januar 2004 (BGBl. I S. 92)“](https://www.gesetze-im-internet.de/honigv_2004/BJNR009200004.html) ist die Definition von Honig gesetzlich genau geregelt.
-Im Gesetz ist Honig wie folgt definiert:
-
-{{< blockquote caption="Honigverordnung vom 16. Januar 2004 (BGBl. I S. 92), die zuletzt durch Artikel 10 der Verordnung vom 5. Juli 2017 (BGBl. I S. 2272) geändert worden ist">}}
-Honig ist der natursüße Stoff, der von Honigbienen erzeugt wird, indem die Bienen Nektar von Pflanzen oder Sekrete lebender Pflanzenteile oder sich auf den lebenden Pflanzenteilen befindende Exkrete von an Pflanzen saugenden Insekten aufnehmen, durch Kombination mit eigenen spezifischen Stoffen umwandeln, einlagern, dehydratisieren und in den Waben des Bienenstocks speichern und reifen lassen.
-Honig besteht im Wesentlichen aus verschiedenen Zuckerarten, insbesondere aus Fructose und Glucose, sowie aus organischen Säuren, Enzymen und beim Nektarsammeln aufgenommenen festen Partikeln. Die Farbe des Honigs reicht von nahezu farblos bis dunkelbraun. Er kann von flüssiger, dickflüssiger oder teilweise bis durchgehend kristalliner Beschaffenheit sein. Die Unterschiede in Geschmack und Aroma werden von der jeweiligen botanischen Herkunft bestimmt.
-{{</ blockquote >}}
-
-Für Bio-Honig gilt zusätzlich die [Verordnung über die ökologische/biologische Produktion und die Kennzeichnung von ökologischen/biologischen Erzeugnissen](http://data.europa.eu/eli/reg/2018/848).
-Bio-Honig grenzt sich von konventionellem Honig hauptsächlich durch die Betriebsweise des Imkers ab.
-Zum Beispiel sind chemische Schädlingsbekämpfungsmittel grundsätzlich untersagt, es besteht eine detaillierte Dokumentationspflicht und es muss darauf geachtet werden, dass das Wachs in den Bienenstöcken eine hohe Qualität aufweist und frei von Rückständen etwaiger Pestizide o. ä. ist.
-Genauere Details können der verlinkten EU-Verordnung entnommen werden.
-Bio-Imkereien werden regelmäßig auditiert und die Erfüllung der gesetzlichen Vorgaben überprüft.
-
-### Ist Bio-Honig besser als konventioneller Honig?
-
-Jein.
-Bio-Honig unterscheidet sich hauptsächlich durch die streng kontrollierte Betriebsweise und die umfangreichen Dokumentationspflichten des Imkers von konventionellem Honig.
-Dieser Mehraufwand spiegelt sich unterm Strich auch im Honigpreis wider.
-
-Aufgrund der strengen Kontrollen und der hohen formalen Hürden kann vorsichtig abgeleitet werden[^1], dass die Wahrscheinlichkeit, dass ein zufällig ausgewählter Bio-Imker unsauber bzw. unsachgemäß arbeitet, geringer ist als bei einem zufällig gewählten konventionellen Imker.
-Aber: Auch konventionelle Imker können eine saubere Arbeitsweise und umfangreiche Dokumentationen nachweisen, zum Beispiel durch [Zertifikate](#marken-und-zertifikate).
-
-Wenn sauber gearbeitet und die Qualität des Honigs regelmäßig labortechnisch überprüft wird, sind aus unserer Sicht konventioneller Honig und Bio-Honig absolut gleichwertig.
-Wesentlich wichtiger ist hier das Vertrauen des Kunden in den Imker.
-Ein nachhaltiges Vertrauensverhältnis kann nicht durch ein Bio-Zertifikat ersetzt werden.
-
-Wir stehen hinter den Werten der ökologischen Landwirtschaft, haben uns aber hauptsächlich aus Kostengründen (laufende Gebühren und der daraus resultierende höhere Honigpreis) gegen eine Bio-Zertifizierung entschieden.
-
-[^1]: persönliche Meinung des Autors
-
-## Marken und Zertifikate
-
-Im Lebensmittelhandel gibt es viele Qualitäts-Zertifikate, Marken und die generelle Unterteilung in konventionell und bio.
-Während die Unterscheidung von konventionellem Honig zu Bio-Honig per Gesetz geregelt ist, schließt man als Imker bei der Verwendung von Marken oder Zertifikaten oft einen Vertrag mit einem Zeichengeber.
-Marken und Zertifikate weisen die Erfüllung bestimmter Kriterien nach.
-Der Nutzen ist individuell unterschiedlich: Zum Beispiel benötigen manche Imker einen formalen Qualitätsnachweis gegenüber Supermärkten, während andere Zertifikate rein für eigene Marketingzwecke nutzen.
-
-Unsere Imkerei nutzt die Marke [Echter Deutscher Honig®](https://deutscherimkerbund.de/warum-unser-honig/) vom Deutschen Imkerbund.
-Durch den Verkauf von Honig unter dieser Marke verpflichtet sich der Imker, strengere Qualitätskriterien einzuhalten als durch die Honigverordnung vorgeschrieben.
-Der Deutsche Imkerbund führt über die Vereinsstruktur selbst Schulungen und Qualitätskontrollen durch.
-Die Qualitätskontrollen finden unabhängig von behördlichen Kontrollen statt und haben das übergeordnete Ziel den Imker bei der Erfüllung der Qualitätskriterien zu unterstützen.
-
-Zusätzlich ist unsere Imkerei Zeichennutzer des Siegels [Geprüfte Qualität Bayern für Honig](https://www.gq-bayern.de).
-Zertifikate sind oft verbunden mit strengen Auflagen und entsprechenden Kontrollen vor Ort und einer [begrenzten Gültigkeit](/zertifikate/20250523-gq-zertifikat.pdf).
-[Die Qualitätsbestimmungen](https://www.gq-bayern.de/wp-content/uploads/%C3%96ffentlicher-Bereich/Ueber-GQ-Bayern/Qualitaets-und-Pruefbestimmungen/Tierisch/Honig/gqualitaet_honig.pdf) für die Zertifikate sind beim Zeichengeber einsehbar; oft gibt es auch eine [Hilfestellung](https://www.gq-bayern.de/wp-content/uploads/%C3%96ffentlicher-Bereich/Ueber-GQ-Bayern/Qualitaets-und-Pruefbestimmungen/Tierisch/Honig/2021_12_Leistungsgegenueberstellung_GQ_3_Honig-M1-Genehmigt.pdf), die den Mehrwert des Zertifikates herausstellt.
-Durch das Siegel Geprüfte Qualität Bayern weisen wir eine nachvollziehbare und saubere Arbeitsweise in unserer Imkerei nach.
-Unsere [Rückverfolgungsdatenbank](https://db.bienensteff.de) entstammt direkt den Anforderungen des Programms Geprüfte Qualität Bayern und setzt das Kriterium der Dokumentationspflicht unserer Honigchargen um.
-
-Im Bio-Bereich werden oft die Siegel von Bio-Verbänden (z. B. [Naturland](https://www.naturland.de/) oder [Bioland](https://www.bioland.de/)) verwendet.
-Der formale Ablauf ist vergleichbar mit einer Zertifizierung von Geprüfte Qualität Bayern.
 
 ## Qualitätskriterien
 
-Auf den Honiggläsern des Deutschen Imkerbundes findet sich der Hinweis „kühl, trocken, dunkel lagern“.
-Der allgemeine Hintergrund dieses Hinweises ist die Erhaltung des typischen Geschmacks, sowie der wertvollen Inhaltsstoffe.
-Generell gilt, dass Honig ohne große Qualitätseinbußen mehrere Jahre lang haltbar ist — sofern er richtig gelagert wird.
-… und was hat es eigentlich mit den ganzen Zertifikation und mit Bio auf sich?
-Lasst uns das Thema ausgehend vom Lagerhinweis und dessen Hintergrund mal etwas genauer anschauen.
+Auf den Honiggläsern des Deutschen Imkerbundes findet sich der Hinweis „kühl, trocken, dunkel lagern".
+Der Hintergrund: Nur so bleiben Geschmack und wertvolle Inhaltsstoffe über Jahre erhalten.
+Doch woran lässt sich Honigqualität objektiv festmachen?
+Die folgenden drei Kriterien werden in jeder Honiganalyse geprüft, unabhängig davon, ob der Honig bio oder konventionell erzeugt wurde.
 
 ### Wassergehalt
 
 Der Wassergehalt ist das wichtigste Kriterium für die Qualität von Honig.
-Es ist zugleich auch das praxisnahste Kriterium, da der Wassergehalt einfach mit einem Refraktometer — zur Not direkt am Bienenstand — gemessen werden kann.
+Es ist zugleich auch das praxisnahste Kriterium, da sich der Wassergehalt einfach mit einem Refraktometer messen lässt, notfalls sogar direkt am Bienenstand.
 Die Honigverordnung gibt einen maximalen Wert von 20 % für Honig an und 23 % für Backhonig an.
 
 Der Deutsche Imkerbund gibt an:
@@ -208,11 +123,9 @@ Honig soll man kühl, trocken, dunkel lagern, denn:
 Kühl (optimal sind 15 °C), trocken (optimal sind weniger als 55 % relative Luftfeuchte) und dunkel gelagert, lässt sich Honig über Jahre ohne nennenswerte Qualitätseinbußen aufbewahren.
 {{</ blockquote >}}
 
-Abschließend ein Faktencheck zu einem beliebten Hausmittel:
+Zum Abschluss dieses Themenblocks noch ein Faktencheck zu einem beliebten Hausmittel:
 
-{{< box header="Faktencheck">}}
-## Heißer Tee mit Honig gegen Halsschmerzen? {.card-title .h5}
-
+{{< box header="Faktencheck" title="Heißer Tee mit Honig gegen Halsschmerzen?" >}}
 Honig enthält Glucoseoxidase, ein Enzym, das Glucose zur Gluconsäure oxidiert, wobei Wasserstoffperoxid frei wird.
 Dieses weist eine antibakterielle Wirkung auf.
 Wenn Honig in heißem Tee gelöst wird, dann wird die Glucoseoxidase inaktiviert und die antibakterielle Wirkung des Honigs verschwindet.
@@ -221,3 +134,97 @@ Um die Wirkung trotzdem zu erhalten, kann man den Honig stattdessen in lauwarmem
 
 Quelle: [chemie.uni-wuerzburg.de](https://www.chemie.uni-wuerzburg.de/fileadmin/08010034/user_upload/Honig/Station_3_-_Enzyme_im_Honig.pdf)
 {{</ box >}}
+
+## Honigsorten
+
+_Welche Honigsorten gibt es?_
+
+Honig wird grob nach zwei Kriterien unterschieden: nach botanischer Herkunft und nach Gewinnungsart.
+
+Bei der **botanischen Herkunft** unterscheidet man zwischen Blütenhonig (auch Nektarhonig), der überwiegend aus dem Nektar von Blüten gewonnen wird, und Honigtauhonig (z. B. Wald- oder Tannenhonig), der auf Ausscheidungen pflanzensaugender Insekten zurückgeht.
+Stammt der überwiegende Teil eines Honigs nachweislich aus einer bestimmten Pflanze wie Raps, Linde oder Akazie, darf er als entsprechender Sortenhonig bezeichnet werden.
+
+Bei der **Gewinnungsart** ist Schleuderhonig die mit Abstand gängigste Form: Er wird durch Zentrifugieren aus den Waben gelöst.
+Seltener sind Presshonig (aus den Waben gepresst) und Wabenhonig (direkt im Wabenstück verkauft).
+
+Detailliertere Informationen findet ihr in den [Leitsätzen für Honig](https://www.bmel.de/SharedDocs/Downloads/DE/_Ernaehrung/Lebensmittel-Kennzeichnung/LeitsaetzeHonig.html) des Deutschen Lebensmittelbuchs oder in den [Honigsorten-Bezeichnungen](https://deutscherimkerbund.de/wp-content/uploads/2025/02/34-honigsorten-bezeichnungen-2021.pdf) vom Deutschen Imkerbund.
+
+## Kristallisation
+
+_Wurde dem Honig Zucker hinzugefügt?_
+
+{{< blockquote caption="Quelle: [bienen.info](https://bienen.info/honig-kristallisiert-biologin-klaert-auf/)">}}
+Kristallisierter Honig ist keinesfalls minderwertig.
+Im Gegenteil: Wenn ein Honig kristallisiert, zeugt das von dessen Naturbelassenheit.
+Das ist wiederum ein Zeichen von Qualität.
+Kristallisierter Honig ist dementsprechend auch nicht verdorben.
+Er kann ganz normal gegessen werden.
+Nur wenn sich durch die Kristallisation zwei Phasen bilden, können sich in der flüssigeren Phase durch den höheren Wassergehalt Hefen vermehren und zur Gärung des Honigs dieser Phase führen.
+
+Es ist möglich, festen Honig durch Wärme wieder flüssiger zu machen.
+Die Temperatur sollte dabei unter 40 °C liegen, um Inhaltsstoffen des Honigs nicht zu schaden.
+Eine geeignete und schonende Methode ist die Verflüssigung von Honig im Wasserbad.
+{{</ blockquote >}}
+
+{{< blockquote caption="Quelle: [laves.niedersachsen.de](https://www.laves.niedersachsen.de/download/41274/Honig-Kristallisation.pdf)">}}
+Die Kristallbildung im Honig ist abhängig von Zuckerspektrum, Konzentration der einzelnen Zucker, Gehalt an Kristallisationskeimen, Wassergehalt und Temperatur.
+[…]
+Die Kristallisation setzt ein, wenn für einen Zucker die Sättigungskonzentration überschritten wird.
+Der Zucker fällt aus der Lösung aus und bildet Kristalle, insbesondere wenn Kristallisationskeime (Pollen, Staub, Luftblasen, Primärzuckerkristalle) vorhanden sind.
+{{</ blockquote >}}
+
+## Gesetzliche Grundlagen
+
+In der [„Honigverordnung vom 16. Januar 2004 (BGBl. I S. 92)"](https://www.gesetze-im-internet.de/honigv_2004/BJNR009200004.html) ist die Definition von Honig gesetzlich genau geregelt.
+Im Gesetz ist Honig wie folgt definiert:
+
+{{< blockquote caption="Honigverordnung vom 16. Januar 2004 (BGBl. I S. 92), die zuletzt durch Artikel 10 der Verordnung vom 5. Juli 2017 (BGBl. I S. 2272) geändert worden ist">}}
+Honig ist der natursüße Stoff, der von Honigbienen erzeugt wird, indem die Bienen Nektar von Pflanzen oder Sekrete lebender Pflanzenteile oder sich auf den lebenden Pflanzenteilen befindende Exkrete von an Pflanzen saugenden Insekten aufnehmen, durch Kombination mit eigenen spezifischen Stoffen umwandeln, einlagern, dehydratisieren und in den Waben des Bienenstocks speichern und reifen lassen.
+Honig besteht im Wesentlichen aus verschiedenen Zuckerarten, insbesondere aus Fructose und Glucose, sowie aus organischen Säuren, Enzymen und beim Nektarsammeln aufgenommenen festen Partikeln. Die Farbe des Honigs reicht von nahezu farblos bis dunkelbraun. Er kann von flüssiger, dickflüssiger oder teilweise bis durchgehend kristalliner Beschaffenheit sein. Die Unterschiede in Geschmack und Aroma werden von der jeweiligen botanischen Herkunft bestimmt.
+{{</ blockquote >}}
+
+Für Bio-Honig gilt zusätzlich die [Verordnung über die ökologische/biologische Produktion und die Kennzeichnung von ökologischen/biologischen Erzeugnissen](http://data.europa.eu/eli/reg/2018/848).
+Bio-Honig grenzt sich von konventionellem Honig hauptsächlich durch die Betriebsweise des Imkers ab.
+Zum Beispiel sind chemische Schädlingsbekämpfungsmittel grundsätzlich untersagt, es besteht eine detaillierte Dokumentationspflicht und es muss darauf geachtet werden, dass das Wachs in den Bienenstöcken eine hohe Qualität aufweist und frei von Rückständen etwaiger Pestizide o. ä. ist.
+Genauere Details können der verlinkten EU-Verordnung entnommen werden.
+Bio-Imkereien werden regelmäßig auditiert und die Erfüllung der gesetzlichen Vorgaben überprüft.
+Was das für die Honigqualität in der Praxis bedeutet, schauen wir uns weiter unten im Abschnitt [Ist Bio-Honig besser als konventioneller Honig?](#ist-bio-honig-besser-als-konventioneller-honig) genauer an.
+
+## Marken und Zertifikate
+
+Im Lebensmittelhandel gibt es viele Qualitäts-Zertifikate, Marken und die generelle Unterteilung in konventionell und bio.
+Während die Unterscheidung von konventionellem Honig zu Bio-Honig per Gesetz geregelt ist, schließt man als Imker bei der Verwendung von Marken oder Zertifikaten oft einen Vertrag mit einem Zeichengeber.
+Marken und Zertifikate weisen die Erfüllung bestimmter Kriterien nach.
+Der Nutzen ist individuell unterschiedlich: Zum Beispiel benötigen manche Imker einen formalen Qualitätsnachweis gegenüber Supermärkten, während andere Zertifikate rein für eigene Marketingzwecke nutzen.
+
+Unsere Imkerei nutzt die Marke [Echter Deutscher Honig®](https://deutscherimkerbund.de/warum-unser-honig/) vom Deutschen Imkerbund.
+Durch den Verkauf von Honig unter dieser Marke verpflichtet sich der Imker, strengere Qualitätskriterien einzuhalten als durch die Honigverordnung vorgeschrieben.
+Der Deutsche Imkerbund führt über die Vereinsstruktur selbst Schulungen und Qualitätskontrollen durch.
+Die Qualitätskontrollen finden unabhängig von behördlichen Kontrollen statt und haben das übergeordnete Ziel den Imker bei der Erfüllung der Qualitätskriterien zu unterstützen.
+
+Zusätzlich ist unsere Imkerei Zeichennutzer des Siegels [Geprüfte Qualität Bayern für Honig](https://www.gq-bayern.de).
+Zertifikate sind oft verbunden mit strengen Auflagen und entsprechenden Kontrollen vor Ort und einer [begrenzten Gültigkeit](/zertifikate/20250523-gq-zertifikat.pdf).
+[Die Qualitätsbestimmungen](https://www.gq-bayern.de/wp-content/uploads/%C3%96ffentlicher-Bereich/Ueber-GQ-Bayern/Qualitaets-und-Pruefbestimmungen/Tierisch/Honig/gqualitaet_honig.pdf) für die Zertifikate sind beim Zeichengeber einsehbar; oft gibt es auch eine [Hilfestellung](https://www.gq-bayern.de/wp-content/uploads/%C3%96ffentlicher-Bereich/Ueber-GQ-Bayern/Qualitaets-und-Pruefbestimmungen/Tierisch/Honig/2021_12_Leistungsgegenueberstellung_GQ_3_Honig-M1-Genehmigt.pdf), die den Mehrwert des Zertifikates herausstellt.
+Durch das Siegel Geprüfte Qualität Bayern weisen wir eine nachvollziehbare und saubere Arbeitsweise in unserer Imkerei nach.
+Unsere [Rückverfolgungsdatenbank](https://db.bienensteff.de) entstammt direkt den Anforderungen des Programms Geprüfte Qualität Bayern und setzt das Kriterium der Dokumentationspflicht unserer Honigchargen um.
+
+Im Bio-Bereich werden oft die Siegel von Bio-Verbänden (z. B. [Naturland](https://www.naturland.de/) oder [Bioland](https://www.bioland.de/)) verwendet.
+Der formale Ablauf ist vergleichbar mit einer Zertifizierung von Geprüfte Qualität Bayern.
+
+## Ist Bio-Honig besser als konventioneller Honig?
+
+Jein.
+Bio-Honig unterscheidet sich hauptsächlich durch die streng kontrollierte Betriebsweise und die umfangreichen Dokumentationspflichten des Imkers von konventionellem Honig.
+Dieser Mehraufwand spiegelt sich unterm Strich auch im Honigpreis wider.
+
+Aufgrund der strengen Kontrollen und der hohen formalen Hürden können wir vorsichtig ableiten[^1], dass die Wahrscheinlichkeit, dass ein zufällig ausgewählter Bio-Imker unsauber bzw. unsachgemäß arbeitet, geringer ist als bei einem zufällig gewählten konventionellen Imker.
+Aber: Auch konventionelle Imker können eine saubere Arbeitsweise und umfangreiche Dokumentationen nachweisen, zum Beispiel durch [Zertifikate](#marken-und-zertifikate).
+
+Wenn sauber gearbeitet und die Qualität des Honigs regelmäßig labortechnisch überprüft wird, sind aus unserer Sicht konventioneller Honig und Bio-Honig absolut gleichwertig.
+Die entsprechenden [Qualitätskriterien](#qualitätskriterien) haben wir weiter oben im Detail beschrieben.
+Wesentlich wichtiger ist hier das Vertrauen des Kunden in den Imker.
+Ein nachhaltiges Vertrauensverhältnis kann nicht durch ein Bio-Zertifikat ersetzt werden.
+
+Wir stehen hinter den Werten der ökologischen Landwirtschaft, haben uns aber hauptsächlich aus Kostengründen (laufende Gebühren und der daraus resultierende höhere Honigpreis) gegen eine Bio-Zertifizierung entschieden.
+
+[^1]: unsere subjektive Einschätzung, keine wissenschaftliche Aussage
