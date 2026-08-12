@@ -31,14 +31,23 @@ Two Lexware Office reports in one JSON, grouped by year:
 
 Grist sync (table "Verkaufszahlen", hardcoded -- this script feeds exactly
 one table, unlike grist_magic's generic GRIST_TABLE_ID): every normal run
-also upserts the "artikel" rows into Grist, keyed on (Year, Article_Number)
-so a partial --from/--to run only ever touches the years it actually
-fetched, never wipes-and-reinserts the whole table (unlike grist_magic's
-_Docs table). Only articles with a resolvable GTIN are uploaded -- rows
-without one (custom/free-text positions, or an article deleted from Lexware
-without a recoverable GTIN) are left out of Grist entirely, though they
-still show up in the JSON report on stdout as before. "einnahmen_ausgaben"
-is not synced -- it isn't per-article data, so it doesn't fit this table.
+also upserts the "artikel" rows into Grist, keyed on (Year, Article_Number).
+The upserted Quantity is the FULL sum for that year recomputed from this
+run's fetch, not a delta -- so only years that this run's --from/--to window
+covers completely (from on/before Jan 1 through on/after Dec 31, or through
+"today" for the still-running current year) are synced. A narrower window
+(e.g. a single month) would only see a fraction of the year's invoices and
+would silently overwrite a previous full-year total with that fraction, so
+such incomplete years are computed for the JSON report but skipped for
+Grist (see is_year_complete()/build_grist_rows()). Rows whose voucherDate
+was missing (year bucket "unbekannt") are likewise never synced, since that
+bucket can silently merge quantities from otherwise-unrelated invoices --
+it only ever shows up in the JSON report. Only articles with a resolvable
+GTIN are uploaded -- rows without one (custom/free-text positions, or an
+article deleted from Lexware without a recoverable GTIN) are left out of
+Grist entirely, though they still show up in the JSON report on stdout as
+before. "einnahmen_ausgaben" is not synced -- it isn't per-article data, so
+it doesn't fit this table.
 
 Required environment variables:
   LEXWARE_API_KEY, GRIST_API_KEY, GRIST_BASE_URL, GRIST_DOC_ID
@@ -149,16 +158,48 @@ def build_article_report(df: pl.DataFrame) -> dict[str, list[dict[str, Any]]]:
     return result
 
 
-def build_grist_rows(df: pl.DataFrame) -> list[dict[str, Any]]:
+def is_year_complete(year: str, date_from: str | None, date_to: str | None, today: str) -> bool:
+    """Whether this run's --from/--to window covers ALL of `year`, i.e.
+    whether it's safe to upsert that year's summed Quantity into Grist
+    without silently shrinking a previously-synced full-year total (see the
+    module docstring's Grist sync section). `year` is the "jahr" bucket, so
+    the literal "unbekannt" fallback is always incomplete -- there is no
+    real year to compare against, and lumping unrelated invoices under one
+    key is exactly what must never reach Grist.
+    """
+    if not year.isdigit():
+        return False
+    effective_from = date_from or "2000-01-01"
+    effective_to = date_to or today
+    year_start, year_end = f"{year}-01-01", f"{year}-12-31"
+    if effective_from > year_start:
+        return False
+    # A year still in progress (year_end is in the future) can only be
+    # "complete" up through today -- there's no Dec-31 data to require yet.
+    return effective_to >= (year_end if year_end <= today else today)
+
+
+def build_grist_rows(
+    df: pl.DataFrame, date_from: str | None, date_to: str | None, today: str
+) -> list[dict[str, Any]]:
     """Flat (jahr, artikelnummer, bezeichnung, gtin, einheit, menge) rows for
-    the Grist sync -- only articles with a resolvable GTIN, per user request.
-    Rows without one (custom/free-text positions, or an article deleted from
-    Lexware without a recoverable GTIN) are left out of Grist entirely, even
-    though they still show up in the JSON report on stdout.
+    the Grist sync -- only articles with a resolvable GTIN, per user request,
+    and only for years this run's date window covers completely (see
+    is_year_complete()). Rows filtered out here still show up in the JSON
+    report on stdout as before.
     """
     if df.is_empty():
         return []
-    return df.filter(pl.col("gtin").is_not_null()).to_dicts()
+    return (
+        df.filter(pl.col("gtin").is_not_null())
+        .filter(
+            pl.col("jahr").map_elements(
+                lambda year: is_year_complete(year, date_from, date_to, today),
+                return_dtype=pl.Boolean,
+            )
+        )
+        .to_dicts()
+    )
 
 
 def run_init(grist: GristClient, dry_run: bool) -> None:
@@ -325,8 +366,25 @@ def main() -> None:
     }
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
+    today = time.strftime("%Y-%m-%d")
+    incomplete_years = sorted(
+        year
+        for year in df["jahr"].unique().to_list()
+        if not is_year_complete(year, args.date_from, args.date_to, today)
+    )
+    if incomplete_years:
+        print(
+            f"NOTE: year(s) {', '.join(incomplete_years)} are not fully covered by "
+            f"--from/--to (or have an unresolvable voucherDate) and are therefore "
+            f"NOT synced to Grist this run, to avoid overwriting a full-year total "
+            f"with a partial one -- see the module docstring.",
+            file=sys.stderr,
+        )
+
     grist = GristClient(cfg["GRIST_BASE_URL"], cfg["GRIST_API_KEY"], cfg["GRIST_DOC_ID"])
-    sync_sales_to_grist(grist, build_grist_rows(df), dry_run=args.dry_run)
+    sync_sales_to_grist(
+        grist, build_grist_rows(df, args.date_from, args.date_to, today), dry_run=args.dry_run
+    )
 
 
 if __name__ == "__main__":
