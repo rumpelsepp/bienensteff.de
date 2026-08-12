@@ -49,10 +49,8 @@ Die Bienen danken’s uns auf ihre Art – mit einem Honig, der nicht nur gut sc
 
 ## Fachkundenachweise
 
-<!-- TODO: Zertifikate hochladen -->
-
-* 30.07.2026: [Sachkunde: Qualifizierter Nestentferner für die mechanische Bekämpfung (Lanzenmethode) von Nestern der Vespa velutina](); Institut für Bienenkunde und Imkerei; Bayerische Landesanstalt für Weinbau und Gartenbau (LWG)
-* 29.07.2026: [Sachkunde: Qualifizierter Nestentferner für die mechanische Bekämpfung (Absaugmethode) von Nestern der Vespa velutina](); Institut für Bienenkunde und Imkerei; Bayerische Landesanstalt für Weinbau und Gartenbau (LWG)
+* 30.07.2026: [Sachkunde: Qualifizierter Nestentferner für die mechanische Bekämpfung (Lanzenmethode) von Nestern der Vespa velutina](/fachkunde/2026-07-30-velutina-lanzenmethode); Institut für Bienenkunde und Imkerei; Bayerische Landesanstalt für Weinbau und Gartenbau (LWG)
+* 29.07.2026: [Sachkunde: Qualifizierter Nestentferner für die mechanische Bekämpfung (Absaugmethode) von Nestern der Vespa velutina](/fachkunde/2026-07-29-velutina-absaugmethode); Institut für Bienenkunde und Imkerei; Bayerische Landesanstalt für Weinbau und Gartenbau (LWG)
 * 28.07.2026: [Wespen und Hornissenfachberater](); Institut für Bienenkunde und Imkerei; Bayerische Landesanstalt für Weinbau und Gartenbau (LWG)
 * 21.04.2026: [Krankheiten und Schädlinge der Honigbiene](/fachkunde/2026-04-21-bienengesundheit.pdf); Bezirk Oberbayern: Fachberatung für Imkerei
 * 06.02.2025: [Trachtpflanzen erkennen und bewerten](/fachkunde/2025-02-06-trachtpflanzen.pdf); Bezirk Oberbayern: Fachberatung für Imkerei
