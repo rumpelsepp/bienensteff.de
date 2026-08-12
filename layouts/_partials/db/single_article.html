@@ -17,7 +17,13 @@
         <tr><th>Marketingbotschaft</th><td>{{ . }}</td></tr>
     {{ end }}
 {{ end }}
-{{ with .Params.fillings }}
+{{/* Abgelaufene Abfüllungen (MHD < heute) werden hier ausgeblendet, damit
+     die Artikelsicht nur noch aktuell verkaufte Chargen zeigt -- ihre
+     eigenen Permalinks (/q/<filling-id>) bleiben trotzdem erreichbar, da
+     content/datenbank/_content.gotmpl weiterhin ungefiltert für jede
+     Abfüllung eine eigene Seite erzeugt. */}}
+{{ $validFillings := where .Params.fillings "best_before_date" "ge" (now.Format "2006-01-02") }}
+{{ with $validFillings }}
     <tr><th>Abfüllungen</th>
         <td>{{ partial "db/filling_list.html" (dict "fillings" . "showBatchLink" true) }}</td>
     </tr>

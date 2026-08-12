@@ -27,8 +27,13 @@
         </thead>
         <tbody>
 
+        {{/* Nur Artikel mit mindestens einer noch nicht abgelaufenen
+             Abfüllung (MHD >= heute) landen in der Übersicht -- Artikel
+             ohne aktuell im Umlauf befindliche Gläser fallen raus, ohne
+             dass ihre eigene Seite/ihr Permalink verschwindet (siehe
+             _content.gotmpl, das ungefiltert bleibt). */}}
         {{ range $data }}
-            {{ if .fillings }}
+            {{ if where .fillings "best_before_date" "ge" (now.Format "2006-01-02") }}
             <tr>
                 <td>{{ partial "db/crosslink.html" (dict "id" .id "text" .sku) }}</td>
                 <td>{{ partial "db/link_gtin.html" (dict "gtin" .gtin) }}</td>
