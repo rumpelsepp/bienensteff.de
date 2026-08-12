@@ -1002,12 +1002,12 @@
   {
     "dates": "2026-07-20",
     "values": 39.26,
-    "n_waagen": 1124
+    "n_waagen": 1125
   },
   {
     "dates": "2026-07-21",
     "values": 39.03,
-    "n_waagen": 1121
+    "n_waagen": 1122
   },
   {
     "dates": "2026-07-22",
@@ -1106,13 +1106,13 @@
   },
   {
     "dates": "2026-08-10",
-    "values": 35.44,
-    "n_waagen": 1029
+    "values": 35.39,
+    "n_waagen": 1116
   },
   {
     "dates": "2026-08-11",
-    "values": null,
-    "n_waagen": null
+    "values": 35.23,
+    "n_waagen": 1033
   },
   {
     "dates": "2026-08-12",
