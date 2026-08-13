@@ -7,12 +7,14 @@ their own.
 from __future__ import annotations
 
 import json
-import sys
+import logging
 import time
 from collections.abc import Iterator
 from typing import Any
 
 import niquests
+
+logger = logging.getLogger(__name__)
 
 BASE_URL = "https://api.lexware.io/v1"
 APP_BASE_URL = "https://app.lexware.de"
@@ -40,14 +42,13 @@ RESOURCE_INFO: dict[str, str] = {
 
 
 class LexwareClient:
-    def __init__(self, api_key: str, debug: bool = False) -> None:
+    def __init__(self, api_key: str) -> None:
         self._client = niquests.Session(
             base_url=BASE_URL,
             headers={"Authorization": f"Bearer {api_key}", "Accept": "application/json"},
             timeout=30.0,
         )
         self._last_call = 0.0
-        self.debug = debug
         # Per-instance caches -- both keyed by Lexware id, populated lazily by
         # get_article_number()/get_contact_name() so repeated lookups across
         # many vouchers cost one API call each instead of one per voucher.
@@ -72,18 +73,26 @@ class LexwareClient:
             # already expect and handle it (e.g. an article deleted since
             # the invoice was created). Anything else is unexpected enough
             # to want the full response body, not just the status code.
-            print(
-                f"Lexware API error {resp.status_code} for {method} {path}: {resp.text}",
-                file=sys.stderr,
+            logger.error(
+                "Lexware API error %s for %s %s: %s", resp.status_code, method, path, resp.text
             )
         resp.raise_for_status()
         return resp
 
     def get(self, path: str, params: dict[str, Any] | None = None) -> dict[str, Any]:
         data: dict[str, Any] = self._send("GET", path, params=params).json()
-        if self.debug:
-            print(f"--- DEBUG GET {path} params={params} ---", file=sys.stderr)
-            print(json.dumps(data, indent=2, ensure_ascii=False)[:3000], file=sys.stderr)
+        # Guarded by isEnabledFor rather than left to logger.debug()'s own
+        # lazy %-formatting: the json.dumps() itself (and the [:3000] slice
+        # of a potentially large payload) shouldn't run at all unless DEBUG
+        # is actually enabled (see setup_logging(debug=...) in each CLI's
+        # main()).
+        if logger.isEnabledFor(logging.DEBUG):
+            logger.debug(
+                "GET %s params=%s\n%s",
+                path,
+                params,
+                json.dumps(data, indent=2, ensure_ascii=False)[:3000],
+            )
         return data
 
     def get_file(self, path: str) -> bytes:
@@ -122,12 +131,14 @@ class LexwareClient:
             content = data.get("content", [])
             is_last = data.get("last")
             fetched += len(content)
-            print(
-                f"  {path} page {page}: {len(content)} entries "
-                f"(total so far: {fetched})"
-                + ("" if content else " -- empty page, done")
-                + (" -- last page" if is_last and content else ""),
-                file=sys.stderr,
+            logger.debug(
+                "%s page %s: %s entries (total so far: %s)%s%s",
+                path,
+                page,
+                len(content),
+                fetched,
+                "" if content else " -- empty page, done",
+                " -- last page" if is_last and content else "",
             )
             if not content:
                 return

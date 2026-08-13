@@ -15,6 +15,7 @@ import subprocess
 import polars as pl
 
 from bstools.grist import GristClient
+from bstools.logging_setup import setup_logging
 
 GRIST_BASE_URL = "https://docs.getgrist.com"
 DOCUMENT_ID = "suQKVJDfFYQF"
@@ -37,6 +38,7 @@ def fetch_table(grist: GristClient, table_id: str) -> pl.DataFrame:
 
 
 def main() -> None:
+    setup_logging()
     grist = GristClient(GRIST_BASE_URL, get_api_key(), DOCUMENT_ID)
 
     articles_df = fetch_table(grist, "Artikel").filter(~pl.col("sku").str.starts_with("_"))

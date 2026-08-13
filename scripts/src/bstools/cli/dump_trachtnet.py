@@ -11,8 +11,8 @@ import argparse
 import datetime
 import enum
 import http
+import logging
 import re
-import sys
 import time
 from pathlib import Path
 from typing import Any, Literal, TypedDict
@@ -20,6 +20,10 @@ from urllib.parse import urljoin
 
 import niquests
 import polars as pl
+
+from bstools.logging_setup import setup_logging
+
+logger = logging.getLogger(__name__)
 
 
 @enum.unique
@@ -1617,19 +1621,16 @@ class TrachtnetClient:
                     e.response is not None
                     and e.response.status_code == http.HTTPStatus.INTERNAL_SERVER_ERROR
                 ):
-                    print(
-                        f"Internal server error for {regions}. Returning empty data.",
-                        file=sys.stderr,
-                    )
+                    logger.warning("Internal server error for %s. Returning empty data.", regions)
                     return {}
                 else:
                     raise
             except niquests.ReadTimeout:
-                print("ReadTimeout, trying again…", file=sys.stderr)
+                logger.warning("ReadTimeout, trying again…")
                 time.sleep(2)
                 continue
 
-        print("unknown problem, no data gathered", file=sys.stderr)
+        logger.error("unknown problem, no data gathered")
         return {}
 
     def _parse_german_date(self, date_str: str) -> datetime.date:
@@ -1757,7 +1758,7 @@ class TrachtnetClient:
         raw_data = self.get_data(year, year, regions=[region])
         name = region.name if isinstance(region, enum.Enum) else str(region)
         if not raw_data:
-            print(f"No data found for {name} in {year}", file=sys.stderr)
+            logger.warning("No data found for %s in %s", name, year)
             return
 
         match region:
@@ -1794,6 +1795,7 @@ def main() -> None:
         help="Output directory for the dumped data",
     )
     args = parser.parse_args()
+    setup_logging()
 
     year_list = (
         args.year if args.year else list(range(2011, datetime.datetime.now(datetime.UTC).year))
@@ -1803,16 +1805,16 @@ def main() -> None:
 
     for year in year_list:
         for state in Land:
-            print(f"Dumping {year} {state.name}", file=sys.stderr)
+            logger.info("Dumping %s %s", year, state.name)
             client.dump_data(year, state, args.outdir)
         for county in Regierungsbezirk:
-            print(f"Dumping {year} {county.name}", file=sys.stderr)
+            logger.info("Dumping %s %s", year, county.name)
             client.dump_data(year, county, args.outdir)
         for landkreis in Kreis:
-            print(f"Dumping {year} {landkreis.name}", file=sys.stderr)
+            logger.info("Dumping %s %s", year, landkreis.name)
             client.dump_data(year, landkreis, args.outdir)
         for wid in waagen_ids:
-            print(f"Dumping {year} wid {wid}", file=sys.stderr)
+            logger.info("Dumping %s wid %s", year, wid)
             client.dump_data(year, wid, args.outdir)
 
 

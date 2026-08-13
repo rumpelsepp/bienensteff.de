@@ -63,7 +63,7 @@ from __future__ import annotations
 
 import argparse
 import json
-import sys
+import logging
 import time
 from typing import Any
 
@@ -72,6 +72,9 @@ import polars as pl
 from bstools.env import require_env
 from bstools.grist import GristClient
 from bstools.lexware import LexwareClient
+from bstools.logging_setup import setup_logging
+
+logger = logging.getLogger(__name__)
 
 # This script feeds exactly one Grist table, unlike grist_magic's generic
 # GRIST_TABLE_ID -- so the table name is a constant here, not an env var.
@@ -176,7 +179,7 @@ def is_year_complete(year: str, date_from: str | None, date_to: str | None, toda
         return False
     # A year still in progress (year_end is in the future) can only be
     # "complete" up through today -- there's no Dec-31 data to require yet.
-    return effective_to >= (year_end if year_end <= today else today)
+    return effective_to >= (min(year_end, today))
 
 
 def build_grist_rows(
@@ -279,6 +282,7 @@ def main() -> None:
         "--init", action="store_true", help="create/update the Grist table, then exit"
     )
     args = parser.parse_args()
+    setup_logging(debug=args.debug)
 
     if args.init:
         cfg = require_env(*GRIST_ENV)
@@ -287,7 +291,7 @@ def main() -> None:
         return
 
     cfg = require_env(*REQUIRED_ENV)
-    client = LexwareClient(cfg["LEXWARE_API_KEY"], debug=args.debug)
+    client = LexwareClient(cfg["LEXWARE_API_KEY"])
     rows: list[dict[str, Any]] = []
     invoice_revenue_by_year: dict[str, float] = {}
 
@@ -299,7 +303,7 @@ def main() -> None:
     api_date_params: dict[str, str] = {"voucherDateFrom": args.date_from or "2000-01-01"}
     if args.date_to:
         api_date_params["voucherDateTo"] = args.date_to
-    print(f"Querying /voucherlist with {api_date_params} ...", file=sys.stderr)
+    logger.info("Querying /voucherlist with %s ...", api_date_params)
 
     paid = [
         entry
@@ -308,7 +312,7 @@ def main() -> None:
         and (not args.date_from or (entry.get("voucherDate") or "") >= args.date_from)
         and (not args.date_to or (entry.get("voucherDate") or "") <= args.date_to)
     ]
-    print(f"Found {len(paid)} paid invoice(s), fetching line items ...", file=sys.stderr)
+    logger.info("Found %s paid invoice(s), fetching line items ...", len(paid))
 
     # Down-payment invoices (Abschlagsrechnungen) are a separate voucherType
     # in Lexware, not included in the "invoice" query above -- a common
@@ -318,11 +322,11 @@ def main() -> None:
     # yet, only counted here.
     dpi_count = sum(1 for _ in client.paginate_voucherlist("downpaymentinvoice"))
     if dpi_count:
-        print(
-            f"NOTE: {dpi_count} Abschlagsrechnung(en) (down-payment invoices) exist "
-            f"in Lexware but are NOT included in this report -- they're a separate "
-            f"voucherType. Say the word if these should count too.",
-            file=sys.stderr,
+        logger.warning(
+            "%s Abschlagsrechnung(en) (down-payment invoices) exist in Lexware but are "
+            "NOT included in this report -- they're a separate voucherType. Say the word "
+            "if these should count too.",
+            dpi_count,
         )
 
     for entry in paid:
@@ -373,12 +377,11 @@ def main() -> None:
         if not is_year_complete(year, args.date_from, args.date_to, today)
     )
     if incomplete_years:
-        print(
-            f"NOTE: year(s) {', '.join(incomplete_years)} are not fully covered by "
-            f"--from/--to (or have an unresolvable voucherDate) and are therefore "
-            f"NOT synced to Grist this run, to avoid overwriting a full-year total "
-            f"with a partial one -- see the module docstring.",
-            file=sys.stderr,
+        logger.warning(
+            "year(s) %s are not fully covered by --from/--to (or have an unresolvable "
+            "voucherDate) and are therefore NOT synced to Grist this run, to avoid "
+            "overwriting a full-year total with a partial one -- see the module docstring.",
+            ", ".join(incomplete_years),
         )
 
     grist = GristClient(cfg["GRIST_BASE_URL"], cfg["GRIST_API_KEY"], cfg["GRIST_DOC_ID"])
