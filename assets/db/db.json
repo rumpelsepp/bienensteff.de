@@ -73,8 +73,8 @@
           "pieces": 18,
           "comment": "Blankoetiketten, Frühjahrstracht",
           "dib_field": "WW 884582 — 884599",
-          "weight_total": 9.0,
           "label": "EDH Honig 500 g",
+          "weight_total": 9.0,
           "batch_id": "L-2022-01",
           "id": "A-2022-01"
         },
@@ -85,8 +85,8 @@
           "pieces": 19,
           "comment": "Blankoetiketten, Sommertracht",
           "dib_field": "WW 884563 — 884581",
-          "weight_total": 9.5,
           "label": "EDH Honig 500 g",
+          "weight_total": 9.5,
           "batch_id": "L-2022-02",
           "id": "A-2022-02"
         },
@@ -97,8 +97,8 @@
           "pieces": 14,
           "comment": "Blankoetiketten, Honig",
           "dib_field": "WW 0884503 — 00884516",
-          "weight_total": 7.0,
           "label": "EDH Honig 500 g",
+          "weight_total": 7.0,
           "batch_id": "L-2025-02",
           "id": "A-2025-01"
         }
@@ -144,8 +144,8 @@
           "pieces": 72,
           "comment": "Etikett 55 beim Aufkleben beschädigt",
           "dib_field": "QGUF 1 — 73",
-          "weight_total": 18.0,
           "label": "EDH Blütenhonig 250 g",
+          "weight_total": 18.0,
           "batch_id": "L-2025-02",
           "id": "A-2025-02"
         },
@@ -156,8 +156,8 @@
           "pieces": 18,
           "comment": "",
           "dib_field": "QGUF 74 — 94",
-          "weight_total": 4.5,
           "label": "EDH Blütenhonig 250 g",
+          "weight_total": 4.5,
           "batch_id": "L-2026-04",
           "id": "A-2026-03"
         },
@@ -168,8 +168,8 @@
           "pieces": 36,
           "comment": "",
           "dib_field": "QGUF 95 — 135",
-          "weight_total": 9.0,
           "label": "EDH Blütenhonig 250 g",
+          "weight_total": 9.0,
           "batch_id": "L-2026-04",
           "id": "A-2026-06"
         }
@@ -249,8 +249,8 @@
           "pieces": 24,
           "comment": "",
           "dib_field": "SZA 1 — 61",
-          "weight_total": 12.0,
           "label": "EDH Blütenhonig 500 g",
+          "weight_total": 12.0,
           "batch_id": "L-2026-04",
           "id": "A-2026-04"
         },
@@ -260,9 +260,9 @@
           "best_before_date": "2028-08-06",
           "pieces": 38,
           "comment": "",
-          "dib_field": "TODO: SZA 25 — 62",
-          "weight_total": 19.0,
+          "dib_field": "SZA 25 — 63",
           "label": "EDH Blütenhonig 500 g",
+          "weight_total": 19.0,
           "batch_id": "L-2026-04",
           "id": "A-2026-07"
         }
@@ -342,8 +342,8 @@
           "pieces": 56,
           "comment": "",
           "dib_field": "GKSI 1 — 56",
-          "weight_total": 28.0,
           "label": "EDH Frühjahrstrachthonig 500 g",
+          "weight_total": 28.0,
           "batch_id": "L-2023-01",
           "id": "A-2023-01"
         },
@@ -354,8 +354,8 @@
           "pieces": 18,
           "comment": "",
           "dib_field": "GKSI 57 — 74",
-          "weight_total": 9.0,
           "label": "EDH Frühjahrstrachthonig 500 g",
+          "weight_total": 9.0,
           "batch_id": "L-2023-01",
           "id": "A-2023-05"
         },
@@ -366,8 +366,8 @@
           "pieces": 95,
           "comment": "",
           "dib_field": "GKSI 75 — 169",
-          "weight_total": 47.5,
           "label": "EDH Frühjahrstrachthonig 500 g",
+          "weight_total": 47.5,
           "batch_id": "L-2024-01",
           "id": "A-2024-01"
         }
@@ -447,8 +447,8 @@
           "pieces": 3,
           "comment": "",
           "dib_field": "GKSK 498 — 500",
-          "weight_total": 1.5,
           "label": "EDH Sommertrachthonig 500 g",
+          "weight_total": 1.5,
           "batch_id": "L-2023-02",
           "id": "A-2023-02"
         },
@@ -459,8 +459,8 @@
           "pieces": 74,
           "comment": "",
           "dib_field": "GKSK 1 — 74",
-          "weight_total": 37.0,
           "label": "EDH Sommertrachthonig 500 g",
+          "weight_total": 37.0,
           "batch_id": "L-2023-02",
           "id": "A-2023-03"
         },
@@ -471,8 +471,8 @@
           "pieces": 26,
           "comment": "",
           "dib_field": "GKSK 75 — 100",
-          "weight_total": 13.0,
           "label": "EDH Sommertrachthonig 500 g",
+          "weight_total": 13.0,
           "batch_id": "L-2023-02",
           "id": "A-2023-04"
         },
@@ -483,8 +483,8 @@
           "pieces": 32,
           "comment": "",
           "dib_field": "GKSK 101 — 100",
-          "weight_total": 16.0,
           "label": "EDH Sommertrachthonig 500 g",
+          "weight_total": 16.0,
           "batch_id": "L-2026-05",
           "id": "A-2026-05"
         }
@@ -666,8 +666,8 @@
           "pieces": 43,
           "comment": "",
           "dib_field": "",
-          "weight_total": 21.5,
           "label": "Hausmarke Blütenhonig 500 g",
+          "weight_total": 21.5,
           "batch_id": "L-2025-03",
           "id": "A-2025-03"
         },
@@ -678,8 +678,8 @@
           "pieces": 40,
           "comment": "Vorbestellungen, abgefüllt aus der Siebkanne nach dem Schleudern",
           "dib_field": "",
-          "weight_total": 20.0,
           "label": "Hausmarke Blütenhonig 500 g",
+          "weight_total": 20.0,
           "batch_id": "L-2026-02",
           "id": "A-2026-01"
         },
@@ -690,8 +690,8 @@
           "pieces": 26,
           "comment": "",
           "dib_field": "",
-          "weight_total": 13.0,
           "label": "Hausmarke Blütenhonig 500 g",
+          "weight_total": 13.0,
           "batch_id": "L-2026-03",
           "id": "A-2026-02"
         }
@@ -737,8 +737,8 @@
           "pieces": 44,
           "comment": "",
           "dib_field": "",
-          "weight_total": 22.0,
           "label": "Hausmarke Frühjahrstrachthonig 500 g",
+          "weight_total": 22.0,
           "batch_id": "L-2024-01",
           "id": "A-2024-02"
         },
@@ -749,8 +749,8 @@
           "pieces": 25,
           "comment": "",
           "dib_field": "",
-          "weight_total": 12.5,
           "label": "Hausmarke Frühjahrstrachthonig 500 g",
+          "weight_total": 12.5,
           "batch_id": "L-2022-01",
           "id": "A-2024-05"
         },
@@ -761,8 +761,8 @@
           "pieces": 31,
           "comment": "Inventur",
           "dib_field": "",
-          "weight_total": 15.5,
           "label": "Hausmarke Frühjahrstrachthonig 500 g",
+          "weight_total": 15.5,
           "batch_id": "L-2024-01",
           "id": "A-2024-07"
         }
@@ -808,8 +808,8 @@
           "pieces": 48,
           "comment": "",
           "dib_field": "",
-          "weight_total": 24.0,
           "label": "Hausmarke Sommertrachthonig 500 g",
+          "weight_total": 24.0,
           "batch_id": "L-2024-04",
           "id": "A-2024-03"
         },
@@ -820,8 +820,8 @@
           "pieces": 82,
           "comment": "",
           "dib_field": "",
-          "weight_total": 41.0,
           "label": "Hausmarke Sommertrachthonig 500 g",
+          "weight_total": 41.0,
           "batch_id": "L-2024-04",
           "id": "A-2024-04"
         },
@@ -832,8 +832,8 @@
           "pieces": 166,
           "comment": "",
           "dib_field": "",
-          "weight_total": 83.0,
           "label": "Hausmarke Sommertrachthonig 500 g",
+          "weight_total": 83.0,
           "batch_id": "L-2024-04",
           "id": "A-2024-06"
         },
@@ -844,8 +844,8 @@
           "pieces": 4,
           "comment": "Inventur",
           "dib_field": "",
-          "weight_total": 2.0,
           "label": "Hausmarke Sommertrachthonig 500 g",
+          "weight_total": 2.0,
           "batch_id": "L-2024-02",
           "id": "A-2024-08"
         }
@@ -1099,8 +1099,8 @@
       "pieces": 18,
       "comment": "Blankoetiketten, Frühjahrstracht",
       "dib_field": "WW 884582 — 884599",
-      "weight_total": 9.0,
       "label": "EDH Honig 500 g",
+      "weight_total": 9.0,
       "batch_id": "L-2022-01",
       "sku": "HD500E",
       "id": "A-2022-01"
@@ -1112,8 +1112,8 @@
       "pieces": 19,
       "comment": "Blankoetiketten, Sommertracht",
       "dib_field": "WW 884563 — 884581",
-      "weight_total": 9.5,
       "label": "EDH Honig 500 g",
+      "weight_total": 9.5,
       "batch_id": "L-2022-02",
       "sku": "HD500E",
       "id": "A-2022-02"
@@ -1125,8 +1125,8 @@
       "pieces": 56,
       "comment": "",
       "dib_field": "GKSI 1 — 56",
-      "weight_total": 28.0,
       "label": "EDH Frühjahrstrachthonig 500 g",
+      "weight_total": 28.0,
       "batch_id": "L-2023-01",
       "sku": "HDFT500E",
       "id": "A-2023-01"
@@ -1138,8 +1138,8 @@
       "pieces": 3,
       "comment": "",
       "dib_field": "GKSK 498 — 500",
-      "weight_total": 1.5,
       "label": "EDH Sommertrachthonig 500 g",
+      "weight_total": 1.5,
       "batch_id": "L-2023-02",
       "sku": "HDST500E",
       "id": "A-2023-02"
@@ -1151,8 +1151,8 @@
       "pieces": 74,
       "comment": "",
       "dib_field": "GKSK 1 — 74",
-      "weight_total": 37.0,
       "label": "EDH Sommertrachthonig 500 g",
+      "weight_total": 37.0,
       "batch_id": "L-2023-02",
       "sku": "HDST500E",
       "id": "A-2023-03"
@@ -1164,8 +1164,8 @@
       "pieces": 26,
       "comment": "",
       "dib_field": "GKSK 75 — 100",
-      "weight_total": 13.0,
       "label": "EDH Sommertrachthonig 500 g",
+      "weight_total": 13.0,
       "batch_id": "L-2023-02",
       "sku": "HDST500E",
       "id": "A-2023-04"
@@ -1177,8 +1177,8 @@
       "pieces": 18,
       "comment": "",
       "dib_field": "GKSI 57 — 74",
-      "weight_total": 9.0,
       "label": "EDH Frühjahrstrachthonig 500 g",
+      "weight_total": 9.0,
       "batch_id": "L-2023-01",
       "sku": "HDFT500E",
       "id": "A-2023-05"
@@ -1190,8 +1190,8 @@
       "pieces": 95,
       "comment": "",
       "dib_field": "GKSI 75 — 169",
-      "weight_total": 47.5,
       "label": "EDH Frühjahrstrachthonig 500 g",
+      "weight_total": 47.5,
       "batch_id": "L-2024-01",
       "sku": "HDFT500E",
       "id": "A-2024-01"
@@ -1203,8 +1203,8 @@
       "pieces": 44,
       "comment": "",
       "dib_field": "",
-      "weight_total": 22.0,
       "label": "Hausmarke Frühjahrstrachthonig 500 g",
+      "weight_total": 22.0,
       "batch_id": "L-2024-01",
       "sku": "HNFT500E",
       "id": "A-2024-02"
@@ -1216,8 +1216,8 @@
       "pieces": 48,
       "comment": "",
       "dib_field": "",
-      "weight_total": 24.0,
       "label": "Hausmarke Sommertrachthonig 500 g",
+      "weight_total": 24.0,
       "batch_id": "L-2024-04",
       "sku": "HNST500E",
       "id": "A-2024-03"
@@ -1229,8 +1229,8 @@
       "pieces": 82,
       "comment": "",
       "dib_field": "",
-      "weight_total": 41.0,
       "label": "Hausmarke Sommertrachthonig 500 g",
+      "weight_total": 41.0,
       "batch_id": "L-2024-04",
       "sku": "HNST500E",
       "id": "A-2024-04"
@@ -1242,8 +1242,8 @@
       "pieces": 25,
       "comment": "",
       "dib_field": "",
-      "weight_total": 12.5,
       "label": "Hausmarke Frühjahrstrachthonig 500 g",
+      "weight_total": 12.5,
       "batch_id": "L-2022-01",
       "sku": "HNFT500E",
       "id": "A-2024-05"
@@ -1255,8 +1255,8 @@
       "pieces": 166,
       "comment": "",
       "dib_field": "",
-      "weight_total": 83.0,
       "label": "Hausmarke Sommertrachthonig 500 g",
+      "weight_total": 83.0,
       "batch_id": "L-2024-04",
       "sku": "HNST500E",
       "id": "A-2024-06"
@@ -1268,8 +1268,8 @@
       "pieces": 31,
       "comment": "Inventur",
       "dib_field": "",
-      "weight_total": 15.5,
       "label": "Hausmarke Frühjahrstrachthonig 500 g",
+      "weight_total": 15.5,
       "batch_id": "L-2024-01",
       "sku": "HNFT500E",
       "id": "A-2024-07"
@@ -1281,8 +1281,8 @@
       "pieces": 4,
       "comment": "Inventur",
       "dib_field": "",
-      "weight_total": 2.0,
       "label": "Hausmarke Sommertrachthonig 500 g",
+      "weight_total": 2.0,
       "batch_id": "L-2024-02",
       "sku": "HNST500E",
       "id": "A-2024-08"
@@ -1294,8 +1294,8 @@
       "pieces": 14,
       "comment": "Blankoetiketten, Honig",
       "dib_field": "WW 0884503 — 00884516",
-      "weight_total": 7.0,
       "label": "EDH Honig 500 g",
+      "weight_total": 7.0,
       "batch_id": "L-2025-02",
       "sku": "HD500E",
       "id": "A-2025-01"
@@ -1307,8 +1307,8 @@
       "pieces": 72,
       "comment": "Etikett 55 beim Aufkleben beschädigt",
       "dib_field": "QGUF 1 — 73",
-      "weight_total": 18.0,
       "label": "EDH Blütenhonig 250 g",
+      "weight_total": 18.0,
       "batch_id": "L-2025-02",
       "sku": "HDB250E",
       "id": "A-2025-02"
@@ -1320,8 +1320,8 @@
       "pieces": 43,
       "comment": "",
       "dib_field": "",
-      "weight_total": 21.5,
       "label": "Hausmarke Blütenhonig 500 g",
+      "weight_total": 21.5,
       "batch_id": "L-2025-03",
       "sku": "HNB500E",
       "id": "A-2025-03"
@@ -1333,8 +1333,8 @@
       "pieces": 40,
       "comment": "Vorbestellungen, abgefüllt aus der Siebkanne nach dem Schleudern",
       "dib_field": "",
-      "weight_total": 20.0,
       "label": "Hausmarke Blütenhonig 500 g",
+      "weight_total": 20.0,
       "batch_id": "L-2026-02",
       "sku": "HNB500E",
       "id": "A-2026-01"
@@ -1346,8 +1346,8 @@
       "pieces": 26,
       "comment": "",
       "dib_field": "",
-      "weight_total": 13.0,
       "label": "Hausmarke Blütenhonig 500 g",
+      "weight_total": 13.0,
       "batch_id": "L-2026-03",
       "sku": "HNB500E",
       "id": "A-2026-02"
@@ -1359,8 +1359,8 @@
       "pieces": 18,
       "comment": "",
       "dib_field": "QGUF 74 — 94",
-      "weight_total": 4.5,
       "label": "EDH Blütenhonig 250 g",
+      "weight_total": 4.5,
       "batch_id": "L-2026-04",
       "sku": "HDB250E",
       "id": "A-2026-03"
@@ -1372,8 +1372,8 @@
       "pieces": 24,
       "comment": "",
       "dib_field": "SZA 1 — 61",
-      "weight_total": 12.0,
       "label": "EDH Blütenhonig 500 g",
+      "weight_total": 12.0,
       "batch_id": "L-2026-04",
       "sku": "HDB500E",
       "id": "A-2026-04"
@@ -1385,8 +1385,8 @@
       "pieces": 32,
       "comment": "",
       "dib_field": "GKSK 101 — 100",
-      "weight_total": 16.0,
       "label": "EDH Sommertrachthonig 500 g",
+      "weight_total": 16.0,
       "batch_id": "L-2026-05",
       "sku": "HDST500E",
       "id": "A-2026-05"
@@ -1398,8 +1398,8 @@
       "pieces": 36,
       "comment": "",
       "dib_field": "QGUF 95 — 135",
-      "weight_total": 9.0,
       "label": "EDH Blütenhonig 250 g",
+      "weight_total": 9.0,
       "batch_id": "L-2026-04",
       "sku": "HDB250E",
       "id": "A-2026-06"
@@ -1410,9 +1410,9 @@
       "best_before_date": "2028-08-06",
       "pieces": 38,
       "comment": "",
-      "dib_field": "TODO: SZA 25 — 62",
-      "weight_total": 19.0,
+      "dib_field": "SZA 25 — 63",
       "label": "EDH Blütenhonig 500 g",
+      "weight_total": 19.0,
       "batch_id": "L-2026-04",
       "sku": "HDB500E",
       "id": "A-2026-07"
@@ -2264,8 +2264,8 @@
           "pieces": 18,
           "comment": "Blankoetiketten, Frühjahrstracht",
           "dib_field": "WW 884582 — 884599",
-          "weight_total": 9.0,
           "label": "EDH Honig 500 g",
+          "weight_total": 9.0,
           "sku": "HD500E",
           "id": "A-2022-01"
         },
@@ -2276,8 +2276,8 @@
           "pieces": 25,
           "comment": "",
           "dib_field": "",
-          "weight_total": 12.5,
           "label": "Hausmarke Frühjahrstrachthonig 500 g",
+          "weight_total": 12.5,
           "sku": "HNFT500E",
           "id": "A-2024-05"
         }
@@ -2312,8 +2312,8 @@
           "pieces": 19,
           "comment": "Blankoetiketten, Sommertracht",
           "dib_field": "WW 884563 — 884581",
-          "weight_total": 9.5,
           "label": "EDH Honig 500 g",
+          "weight_total": 9.5,
           "sku": "HD500E",
           "id": "A-2022-02"
         }
@@ -2348,8 +2348,8 @@
           "pieces": 56,
           "comment": "",
           "dib_field": "GKSI 1 — 56",
-          "weight_total": 28.0,
           "label": "EDH Frühjahrstrachthonig 500 g",
+          "weight_total": 28.0,
           "sku": "HDFT500E",
           "id": "A-2023-01"
         },
@@ -2360,8 +2360,8 @@
           "pieces": 18,
           "comment": "",
           "dib_field": "GKSI 57 — 74",
-          "weight_total": 9.0,
           "label": "EDH Frühjahrstrachthonig 500 g",
+          "weight_total": 9.0,
           "sku": "HDFT500E",
           "id": "A-2023-05"
         }
@@ -2440,8 +2440,8 @@
           "pieces": 3,
           "comment": "",
           "dib_field": "GKSK 498 — 500",
-          "weight_total": 1.5,
           "label": "EDH Sommertrachthonig 500 g",
+          "weight_total": 1.5,
           "sku": "HDST500E",
           "id": "A-2023-02"
         },
@@ -2452,8 +2452,8 @@
           "pieces": 74,
           "comment": "",
           "dib_field": "GKSK 1 — 74",
-          "weight_total": 37.0,
           "label": "EDH Sommertrachthonig 500 g",
+          "weight_total": 37.0,
           "sku": "HDST500E",
           "id": "A-2023-03"
         },
@@ -2464,8 +2464,8 @@
           "pieces": 26,
           "comment": "",
           "dib_field": "GKSK 75 — 100",
-          "weight_total": 13.0,
           "label": "EDH Sommertrachthonig 500 g",
+          "weight_total": 13.0,
           "sku": "HDST500E",
           "id": "A-2023-04"
         }
@@ -2555,8 +2555,8 @@
           "pieces": 95,
           "comment": "",
           "dib_field": "GKSI 75 — 169",
-          "weight_total": 47.5,
           "label": "EDH Frühjahrstrachthonig 500 g",
+          "weight_total": 47.5,
           "sku": "HDFT500E",
           "id": "A-2024-01"
         },
@@ -2567,8 +2567,8 @@
           "pieces": 44,
           "comment": "",
           "dib_field": "",
-          "weight_total": 22.0,
           "label": "Hausmarke Frühjahrstrachthonig 500 g",
+          "weight_total": 22.0,
           "sku": "HNFT500E",
           "id": "A-2024-02"
         },
@@ -2579,8 +2579,8 @@
           "pieces": 31,
           "comment": "Inventur",
           "dib_field": "",
-          "weight_total": 15.5,
           "label": "Hausmarke Frühjahrstrachthonig 500 g",
+          "weight_total": 15.5,
           "sku": "HNFT500E",
           "id": "A-2024-07"
         }
@@ -2681,8 +2681,8 @@
           "pieces": 4,
           "comment": "Inventur",
           "dib_field": "",
-          "weight_total": 2.0,
           "label": "Hausmarke Sommertrachthonig 500 g",
+          "weight_total": 2.0,
           "sku": "HNST500E",
           "id": "A-2024-08"
         }
@@ -2773,8 +2773,8 @@
           "pieces": 48,
           "comment": "",
           "dib_field": "",
-          "weight_total": 24.0,
           "label": "Hausmarke Sommertrachthonig 500 g",
+          "weight_total": 24.0,
           "sku": "HNST500E",
           "id": "A-2024-03"
         },
@@ -2785,8 +2785,8 @@
           "pieces": 82,
           "comment": "",
           "dib_field": "",
-          "weight_total": 41.0,
           "label": "Hausmarke Sommertrachthonig 500 g",
+          "weight_total": 41.0,
           "sku": "HNST500E",
           "id": "A-2024-04"
         },
@@ -2797,8 +2797,8 @@
           "pieces": 166,
           "comment": "",
           "dib_field": "",
-          "weight_total": 83.0,
           "label": "Hausmarke Sommertrachthonig 500 g",
+          "weight_total": 83.0,
           "sku": "HNST500E",
           "id": "A-2024-06"
         }
@@ -2988,8 +2988,8 @@
           "pieces": 14,
           "comment": "Blankoetiketten, Honig",
           "dib_field": "WW 0884503 — 00884516",
-          "weight_total": 7.0,
           "label": "EDH Honig 500 g",
+          "weight_total": 7.0,
           "sku": "HD500E",
           "id": "A-2025-01"
         },
@@ -3000,8 +3000,8 @@
           "pieces": 72,
           "comment": "Etikett 55 beim Aufkleben beschädigt",
           "dib_field": "QGUF 1 — 73",
-          "weight_total": 18.0,
           "label": "EDH Blütenhonig 250 g",
+          "weight_total": 18.0,
           "sku": "HDB250E",
           "id": "A-2025-02"
         }
@@ -3047,8 +3047,8 @@
           "pieces": 43,
           "comment": "",
           "dib_field": "",
-          "weight_total": 21.5,
           "label": "Hausmarke Blütenhonig 500 g",
+          "weight_total": 21.5,
           "sku": "HNB500E",
           "id": "A-2025-03"
         }
@@ -3139,8 +3139,8 @@
           "pieces": 40,
           "comment": "Vorbestellungen, abgefüllt aus der Siebkanne nach dem Schleudern",
           "dib_field": "",
-          "weight_total": 20.0,
           "label": "Hausmarke Blütenhonig 500 g",
+          "weight_total": 20.0,
           "sku": "HNB500E",
           "id": "A-2026-01"
         }
@@ -3175,8 +3175,8 @@
           "pieces": 26,
           "comment": "",
           "dib_field": "",
-          "weight_total": 13.0,
           "label": "Hausmarke Blütenhonig 500 g",
+          "weight_total": 13.0,
           "sku": "HNB500E",
           "id": "A-2026-02"
         }
@@ -3211,8 +3211,8 @@
           "pieces": 18,
           "comment": "",
           "dib_field": "QGUF 74 — 94",
-          "weight_total": 4.5,
           "label": "EDH Blütenhonig 250 g",
+          "weight_total": 4.5,
           "sku": "HDB250E",
           "id": "A-2026-03"
         },
@@ -3223,8 +3223,8 @@
           "pieces": 24,
           "comment": "",
           "dib_field": "SZA 1 — 61",
-          "weight_total": 12.0,
           "label": "EDH Blütenhonig 500 g",
+          "weight_total": 12.0,
           "sku": "HDB500E",
           "id": "A-2026-04"
         },
@@ -3235,8 +3235,8 @@
           "pieces": 36,
           "comment": "",
           "dib_field": "QGUF 95 — 135",
-          "weight_total": 9.0,
           "label": "EDH Blütenhonig 250 g",
+          "weight_total": 9.0,
           "sku": "HDB250E",
           "id": "A-2026-06"
         },
@@ -3246,9 +3246,9 @@
           "best_before_date": "2028-08-06",
           "pieces": 38,
           "comment": "",
-          "dib_field": "TODO: SZA 25 — 62",
-          "weight_total": 19.0,
+          "dib_field": "SZA 25 — 63",
           "label": "EDH Blütenhonig 500 g",
+          "weight_total": 19.0,
           "sku": "HDB500E",
           "id": "A-2026-07"
         }
@@ -3349,8 +3349,8 @@
           "pieces": 32,
           "comment": "",
           "dib_field": "GKSK 101 — 100",
-          "weight_total": 16.0,
           "label": "EDH Sommertrachthonig 500 g",
+          "weight_total": 16.0,
           "sku": "HDST500E",
           "id": "A-2026-05"
         }
