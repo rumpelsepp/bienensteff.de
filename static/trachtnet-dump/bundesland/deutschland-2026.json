@@ -1107,17 +1107,17 @@
   {
     "dates": "2026-08-10",
     "values": 35.39,
-    "n_waagen": 1116
+    "n_waagen": 1117
   },
   {
     "dates": "2026-08-11",
-    "values": 35.23,
-    "n_waagen": 1033
+    "values": 35.19,
+    "n_waagen": 1120
   },
   {
     "dates": "2026-08-12",
-    "values": null,
-    "n_waagen": null
+    "values": 35.01,
+    "n_waagen": 1033
   },
   {
     "dates": "2026-08-13",
