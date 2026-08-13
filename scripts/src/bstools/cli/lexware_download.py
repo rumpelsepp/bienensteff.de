@@ -11,11 +11,15 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import logging
 import sys
 from pathlib import Path
 
 from bstools.env import require_env_var
 from bstools.lexware import LexwareClient
+from bstools.logging_setup import setup_logging
+
+logger = logging.getLogger(__name__)
 
 # Voucher number prefix -> voucherType (Lexware API filter value / RESOURCE_INFO key).
 PREFIX_TO_VOUCHER_TYPE = {
@@ -42,13 +46,14 @@ def main() -> None:
     )
     parser.add_argument("DOCUMENT_NUMBER")
     args = parser.parse_args()
+    setup_logging()
 
     client = LexwareClient(require_env_var("LEXWARE_API_KEY"))
     try:
         voucher_type = get_voucher_type(args.DOCUMENT_NUMBER)
         data = client.download_voucher_pdf(voucher_type, args.DOCUMENT_NUMBER)
     except (KeyError, ValueError) as e:
-        print(str(e), file=sys.stderr)
+        logger.error(str(e))
         sys.exit(1)
 
     Path(args.DOCUMENT_NUMBER).with_suffix(".pdf").write_bytes(data)

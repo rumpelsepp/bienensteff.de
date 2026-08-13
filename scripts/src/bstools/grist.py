@@ -10,11 +10,13 @@ per call, since a document has several tables.
 from __future__ import annotations
 
 import json
-import sys
+import logging
 from datetime import UTC, datetime
 from typing import Any
 
 import niquests
+
+logger = logging.getLogger(__name__)
 
 # widgetOptions keys that ensure_table_schema() syncs onto an already-existing
 # column without asking (unlike a type change, these never touch stored cell
@@ -70,7 +72,7 @@ class GristClient:
     @staticmethod
     def _check(resp: niquests.Response) -> None:
         if not resp.ok:
-            print(f"Grist API error {resp.status_code}: {resp.text}", file=sys.stderr)
+            logger.error("Grist API error %s: %s", resp.status_code, resp.text)
         resp.raise_for_status()
 
     def get_records(self, table_id: str) -> list[dict[str, Any]]:

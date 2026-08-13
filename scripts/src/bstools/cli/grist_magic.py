@@ -113,7 +113,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
-import sys
+import logging
 import time
 from dataclasses import dataclass, field
 from typing import Any
@@ -133,6 +133,9 @@ from bstools.lexware import (
     extract_one_time_name,
     extract_related,
 )
+from bstools.logging_setup import setup_logging
+
+logger = logging.getLogger(__name__)
 
 # Short version of the module docstring above, for --help -- the full one is
 # too long to dump on a terminal usefully. Keep in sync by hand; it's meant
@@ -547,12 +550,11 @@ def build_docs_schema(
     if visible_col_ref is not None:
         ref_fields["visibleCol"] = visible_col_ref
     else:
-        print(
-            f"WARNING: could not look up the colRef for "
-            f"{main_table_id}.Order_Confirmation_Number -- the reference "
-            f"column will show raw row ids until 'Show column' is set by "
-            f"hand in Grist.",
-            file=sys.stderr,
+        logger.warning(
+            "could not look up the colRef for %s.Order_Confirmation_Number -- the "
+            "reference column will show raw row ids until 'Show column' is set by hand "
+            "in Grist.",
+            main_table_id,
         )
     return [
         ("Order_Confirmation_Number", f"Ref:{main_table_id}", ref_fields or None),
@@ -658,9 +660,8 @@ def sync_docs_table(
     for rec in records:
         row_id = row_ids.get(rec.ab_id)
         if row_id is None:
-            print(
-                f"WARNING: no Grist row id for OC {rec.ab_number}, skipping its Docs table rows.",
-                file=sys.stderr,
+            logger.warning(
+                "no Grist row id for OC %s, skipping its Docs table rows.", rec.ab_number
             )
             continue
         for link in rec.doc_links:
@@ -704,6 +705,7 @@ def main() -> None:
         help="only process this one order confirmation number, for debugging (e.g. --only AB-0042)",
     )
     args = parser.parse_args()
+    setup_logging(debug=args.debug)
 
     if args.init:
         cfg = require_env(*GRIST_ENV)
@@ -712,7 +714,7 @@ def main() -> None:
         return
 
     cfg = require_env(*REQUIRED_ENV)
-    lexware = LexwareClient(cfg["LEXWARE_API_KEY"], debug=args.debug)
+    lexware = LexwareClient(cfg["LEXWARE_API_KEY"])
     grist = GristClient(cfg["GRIST_BASE_URL"], cfg["GRIST_API_KEY"], cfg["GRIST_DOC_ID"])
     table_id = cfg["GRIST_TABLE_ID"]
 
