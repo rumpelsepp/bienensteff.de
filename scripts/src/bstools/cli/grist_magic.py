@@ -17,7 +17,8 @@ SHIPPING_STATUS_* constants):
   note exists -- NOT a claim the goods were actually delivered, Lexware has
   no such confirmation, just a hint that billing is likely due),
   "Fakturiert" (invoice(s) linked, at least one still open), "Überfällig"
-  (invoice open AND a dunning is linked), "Bezahlt" (all linked invoices
+  (at least one linked invoice is itself overdue -- voucherStatus "overdue"
+  -- or a dunning is linked), "Bezahlt" (all linked invoices
   settled -- voucherStatus in SETTLED_INVOICE_STATUSES, "paid" or "voided"
   -- and at least one was actually paid), or "Storniert" (all linked
   invoices settled but every one of them is "voided" -- nothing was ever
@@ -171,6 +172,13 @@ SETTLED_INVOICE_STATUSES = {"paid", "voided"}
 # draft still shows up as a normal row in the Docs table, this only affects
 # the main table's computed columns.
 IGNORED_INVOICE_STATUSES = {"draft"}
+
+# Invoice voucherStatus value meaning Lexware itself considers the invoice
+# overdue (past its due date, still unpaid) -- triggers Abrechnungsstatus
+# BILLING_STATUS_OVERDUE on its own, same as a linked dunning does. Confirmed
+# against a live --debug payload, also used for Document_Status via
+# DOCUMENT_STATUS_LABELS.
+OVERDUE_INVOICE_STATUS = "overdue"
 
 # Status (main table, manual) choices.
 STATUS_OPEN = "Offen"
@@ -478,7 +486,14 @@ def build_records(
                 all_voided = all(d.get("voucherStatus") == "voided" for d in all_invoices)
                 billing_status = BILLING_STATUS_CANCELLED if all_voided else BILLING_STATUS_PAID
             else:
-                billing_status = BILLING_STATUS_OVERDUE if has_dunning else BILLING_STATUS_INVOICED
+                invoice_overdue = any(
+                    d.get("voucherStatus") == OVERDUE_INVOICE_STATUS for d in all_invoices
+                )
+                billing_status = (
+                    BILLING_STATUS_OVERDUE
+                    if has_dunning or invoice_overdue
+                    else BILLING_STATUS_INVOICED
+                )
         else:
             # Not billed yet -- show the OC's own total instead of 0. A
             # delivery note existing doesn't mean the goods were actually
