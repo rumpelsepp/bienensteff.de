@@ -1,5 +1,62 @@
+/* ==========================================================================
+   bienensteff.de — color scheme only
+   ==========================================================================
+   Everything here is a pure color-token override: a honey/amber accent for
+   links, the one primary button and a few active/focus states. No layout,
+   spacing, or structural changes — those are left at Bootstrap/theme
+   defaults.
+   ========================================================================== */
+
+:root {
+    --bs-primary: #b8720c;
+    --bs-primary-rgb: 184, 114, 12;
+    --bs-link-color: #9c5c09;
+    --bs-link-color-rgb: 156, 92, 9;
+    --bs-link-hover-color: #764408;
+    --bs-link-hover-color-rgb: 118, 68, 8;
+    --bs-focus-ring-color: rgba(184, 114, 12, 0.25);
+
+    /* Darker shade for text-on-primary (the order-form button): --bs-primary
+       itself is a bit too light for white text to pass contrast on. */
+    --honey-700: #96600a;
+    --honey-800: #7a4d08;
+    --honey-900: #623e06;
+}
+
+.dropdown-menu {
+    --bs-dropdown-link-active-bg: var(--honey-700);
+}
+
+.table {
+    --bs-table-striped-bg: rgba(184, 114, 12, 0.05);
+}
+
+.btn-primary {
+    --bs-btn-bg: var(--honey-700);
+    --bs-btn-border-color: var(--honey-700);
+    --bs-btn-hover-bg: var(--honey-800);
+    --bs-btn-hover-border-color: var(--honey-800);
+    --bs-btn-active-bg: var(--honey-900);
+    --bs-btn-active-border-color: var(--honey-900);
+    --bs-btn-disabled-bg: var(--honey-700);
+    --bs-btn-disabled-border-color: var(--honey-700);
+    --bs-btn-focus-shadow-rgb: 184, 114, 12;
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+    border-color: #d9a758;
+    box-shadow: 0 0 0 0.25rem rgba(184, 114, 12, 0.25);
+}
+
+.form-check-input:checked {
+    background-color: var(--honey-700);
+    border-color: var(--honey-700);
+}
+
 figure .blockquote {
-    border-left: 4px solid var(--bs-body-color);
+    border-left: 4px solid var(--bs-primary);
     padding-left: 1rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
