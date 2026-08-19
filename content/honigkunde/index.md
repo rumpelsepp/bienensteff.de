@@ -123,17 +123,16 @@ Honig soll man kühl, trocken, dunkel lagern, denn:
 Kühl (optimal sind 15 °C), trocken (optimal sind weniger als 55 % relative Luftfeuchte) und dunkel gelagert, lässt sich Honig über Jahre ohne nennenswerte Qualitätseinbußen aufbewahren.
 {{</ blockquote >}}
 
-Zum Abschluss dieses Themenblocks noch ein Faktencheck zu einem beliebten Hausmittel:
+Zum Abschluss dieses Themenblocks noch ein Faktencheck zu einem beliebten Hausmittel: _Heißer Tee mit Honig gegen Halsschmerzen?_
 
-{{< box header="Faktencheck" title="Heißer Tee mit Honig gegen Halsschmerzen?" >}}
 Honig enthält Glucoseoxidase, ein Enzym, das Glucose zur Gluconsäure oxidiert, wobei Wasserstoffperoxid frei wird.
 Dieses weist eine antibakterielle Wirkung auf.
-Wenn Honig in heißem Tee gelöst wird, dann wird die Glucoseoxidase inaktiviert und die antibakterielle Wirkung des Honigs verschwindet.
-Heißer Tee mit Honig schmeckt zwar gut, ist aber kein wirksames Hausmittel gegen Halsschmerzen.
-Um die Wirkung trotzdem zu erhalten, kann man den Honig stattdessen in lauwarmem (ca. 40 Grad) Tee lösen.
 
-Quelle: [chemie.uni-wuerzburg.de](https://www.chemie.uni-wuerzburg.de/fileadmin/08010034/user_upload/Honig/Station_3_-_Enzyme_im_Honig.pdf)
-{{</ box >}}
+{{< blockquote caption="Quelle: https://www.chemie.uni-wuerzburg.de/fileadmin/08010034/user_upload/Honig/Station_3_-_Enzyme_im_Honig.pdf" >}}
+Wird Honig also in heißem Tee gelöst, so wird die Glucoseoxidase inaktiviert und kein Wasserstoffperoxid mehr freigesetzt.
+Heißer Tee mit Honig wirkt folglich nicht antibakteriell und ist damit — entgegen vielfacher Annahmen — kein wirksames Hausmittel gegen Halsschmerzen.
+Sinnvoller ist es, den Honig in lauwarmem Tee zu lösen.
+{{</blockquote >}}
 
 ## Honigsorten
 
@@ -206,7 +205,7 @@ Zusätzlich ist unsere Imkerei Zeichennutzer des Siegels [Geprüfte Qualität Ba
 Zertifikate sind oft verbunden mit strengen Auflagen und entsprechenden Kontrollen vor Ort und einer [begrenzten Gültigkeit](/zertifikate/20250523-gq-zertifikat.pdf).
 [Die Qualitätsbestimmungen](https://www.gq-bayern.de/wp-content/uploads/%C3%96ffentlicher-Bereich/Ueber-GQ-Bayern/Qualitaets-und-Pruefbestimmungen/Tierisch/Honig/gqualitaet_honig.pdf) für die Zertifikate sind beim Zeichengeber einsehbar; oft gibt es auch eine [Hilfestellung](https://www.gq-bayern.de/wp-content/uploads/%C3%96ffentlicher-Bereich/Ueber-GQ-Bayern/Qualitaets-und-Pruefbestimmungen/Tierisch/Honig/2021_12_Leistungsgegenueberstellung_GQ_3_Honig-M1-Genehmigt.pdf), die den Mehrwert des Zertifikates herausstellt.
 Durch das Siegel Geprüfte Qualität Bayern weisen wir eine nachvollziehbare und saubere Arbeitsweise in unserer Imkerei nach.
-Unsere [Rückverfolgungsdatenbank](https://db.bienensteff.de) entstammt direkt den Anforderungen des Programms Geprüfte Qualität Bayern und setzt das Kriterium der Dokumentationspflicht unserer Honigchargen um.
+Unsere [Rückverfolgungsdatenbank]({{% relref "datenbank" %}}) entstammt direkt den Anforderungen des Programms Geprüfte Qualität Bayern und setzt das Kriterium der Dokumentationspflicht unserer Honigchargen um.
 
 Im Bio-Bereich werden oft die Siegel von Bio-Verbänden (z. B. [Naturland](https://www.naturland.de/) oder [Bioland](https://www.bioland.de/)) verwendet.
 Der formale Ablauf ist vergleichbar mit einer Zertifizierung von Geprüfte Qualität Bayern.
