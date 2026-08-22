@@ -69,7 +69,7 @@
         </h1>
     </header>
     
-    <table id="honeydb" class="table table-striped">
+    <table id="honeydb" class="table table-striped table-bordered">
         {{ if eq $type "article" }}
             {{ partial "db/single_article.html" . }}
             {{ partial "inline/db/permalink.html" . }}
@@ -109,7 +109,7 @@
     {{ with resources.GetMatch (printf "/db/img/%s.{jpg,png}" (strings.ToLower .Params.id)) }}
         <hr>
         <figure class="figure">
-            <img class="figure-img img-fluid rounded" src="{{ .RelPermalink }}" loading="lazy">
+            <img class="figure-img img-fluid rounded" src="{{ .RelPermalink }}" loading="lazy" alt="">
             <figcaption class="figure-caption">
                 {{ $id }}
             </figcaption>

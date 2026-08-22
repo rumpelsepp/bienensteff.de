@@ -1,24 +1,36 @@
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <h6>Externe Links</h6>
-            {{ partial "menu-stock.html" (dict "menuID" "footerexternallinks" "page" .) }}
-        </div>
-        <div class="col">
-            <h6>Rechtliches</h6>
-            {{ partial "menu-stock.html" (dict "menuID" "footerlegal" "page" .) }}
-        </div>
-        <div class="col">
-            <h6>Kontakt</h6>
-            <address>{{ .Site.Params.contact | markdownify }}</address>
-        </div>
+<div class="footer-inner container">
+  <div class="footer-brand">
+    <strong>{{ site.Title }}</strong>
+    {{ with site.Params.description }}
+      <span class="footer-tagline">{{ . }}</span>
+    {{ end }}
+  </div>
+
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h6>Externe Links</h6>
+      {{ partial "menu-stock.html" (dict "menuID" "footerexternallinks" "page" .) }}
     </div>
-    <div class="row text-center mt-4">
-        <div class="col">
-            <a href="https://www.gq-bayern.de" rel="noopener noreferrer" target="_blank"><img height="120" src="/GQB-Logo.svg" loading="lazy"></a>
-        </div>
-        <div class="col">
-            <a href="https://stadt.muenchen.de/infos/muenchner-gruenguertel.html" rel="noopener noreferrer" target="_blank"><img height="120" src="/Grüngürtel_Logo.svg" loading="lazy"></a>
-        </div>
+    <div class="footer-col">
+      <h6>Rechtliches</h6>
+      {{ partial "menu-stock.html" (dict "menuID" "footerlegal" "page" .) }}
     </div>
+    <div class="footer-col">
+      <h6>Kontakt</h6>
+      <address>{{ .Site.Params.contact | markdownify }}</address>
+    </div>
+  </div>
+
+  <div class="footer-seals">
+    {{/* The GQB seal is a solid-filled badge with no transparent gaps between
+         its ring and interior, so it keeps its original colors — a white
+         silhouette (like the Grüngürtel mark below) would just collapse
+         it into a blank oval. */}}
+    <a class="footer-seal" href="https://www.gq-bayern.de" rel="noopener noreferrer" target="_blank"><img height="90" src="/GQB-Logo.svg" loading="lazy" alt="Geprüfte Qualität – Bayern"></a>
+    <a class="footer-seal footer-seal--mono" href="https://stadt.muenchen.de/infos/muenchner-gruenguertel.html" rel="noopener noreferrer" target="_blank"><img height="90" src="/Grüngürtel_Logo.svg" loading="lazy" alt="Münchner Grüngürtel"></a>
+  </div>
+
+  <div class="footer-bottom">
+    <span>&copy; {{ now.Format "2006" }} {{ site.Title }}</span>
+  </div>
 </div>
