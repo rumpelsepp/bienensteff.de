@@ -1162,17 +1162,17 @@
   {
     "dates": "2026-08-21",
     "values": 35.45,
-    "n_waagen": 9
+    "n_waagen": 12
   },
   {
     "dates": "2026-08-22",
-    "values": 35.4,
-    "n_waagen": 8
+    "values": 35.23,
+    "n_waagen": 9
   },
   {
     "dates": "2026-08-23",
-    "values": null,
-    "n_waagen": null
+    "values": 35.21,
+    "n_waagen": 8
   },
   {
     "dates": "2026-08-24",
