@@ -1166,18 +1166,18 @@
   },
   {
     "dates": "2026-08-22",
-    "values": 56.06,
+    "values": 56.05,
     "n_waagen": 5
   },
   {
     "dates": "2026-08-23",
-    "values": 56.08,
-    "n_waagen": 2
+    "values": 55.79,
+    "n_waagen": 5
   },
   {
     "dates": "2026-08-24",
-    "values": null,
-    "n_waagen": null
+    "values": 55.87,
+    "n_waagen": 2
   },
   {
     "dates": "2026-08-25",
