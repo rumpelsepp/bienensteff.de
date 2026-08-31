@@ -1201,17 +1201,17 @@
   },
   {
     "dates": "2026-08-29",
-    "values": 31.69,
+    "values": 31.67,
     "n_waagen": 35
   },
   {
     "dates": "2026-08-30",
-    "values": 31.64,
-    "n_waagen": 14
+    "values": 31.46,
+    "n_waagen": 36
   },
   {
     "dates": "2026-08-31",
-    "values": null,
-    "n_waagen": null
+    "values": 31.46,
+    "n_waagen": 15
   }
 ]

@@ -1186,32 +1186,32 @@
   },
   {
     "dates": "2026-08-26",
-    "values": 16.54,
+    "values": 16.53,
     "n_waagen": 6
   },
   {
     "dates": "2026-08-27",
-    "values": 16.49,
+    "values": 16.48,
     "n_waagen": 5
   },
   {
     "dates": "2026-08-28",
-    "values": 16.23,
+    "values": 16.22,
     "n_waagen": 5
   },
   {
     "dates": "2026-08-29",
-    "values": 16.18,
+    "values": 16.1,
     "n_waagen": 5
   },
   {
     "dates": "2026-08-30",
-    "values": 16.15,
-    "n_waagen": 1
+    "values": 16.02,
+    "n_waagen": 6
   },
   {
     "dates": "2026-08-31",
-    "values": null,
-    "n_waagen": null
+    "values": 16.01,
+    "n_waagen": 2
   }
 ]
