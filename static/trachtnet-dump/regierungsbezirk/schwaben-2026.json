@@ -1217,12 +1217,12 @@
   {
     "dates": "2026-09-01",
     "values": 34.11,
-    "n_waagen": 22
+    "n_waagen": 35
   },
   {
     "dates": "2026-09-02",
-    "values": null,
-    "n_waagen": null
+    "values": 34.01,
+    "n_waagen": 22
   },
   {
     "dates": "2026-09-03",
