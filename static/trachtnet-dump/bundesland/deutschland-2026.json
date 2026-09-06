@@ -1227,17 +1227,17 @@
   {
     "dates": "2026-09-03",
     "values": 32.46,
-    "n_waagen": 1088
+    "n_waagen": 1090
   },
   {
     "dates": "2026-09-04",
-    "values": 32.37,
-    "n_waagen": 1000
+    "values": 32.36,
+    "n_waagen": 1085
   },
   {
     "dates": "2026-09-05",
-    "values": null,
-    "n_waagen": null
+    "values": 32.24,
+    "n_waagen": 1006
   },
   {
     "dates": "2026-09-06",

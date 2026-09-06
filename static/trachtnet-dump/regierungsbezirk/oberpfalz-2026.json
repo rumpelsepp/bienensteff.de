@@ -1221,23 +1221,23 @@
   },
   {
     "dates": "2026-09-02",
-    "values": 42.0,
+    "values": 41.99,
     "n_waagen": 53
   },
   {
     "dates": "2026-09-03",
-    "values": 41.91,
-    "n_waagen": 52
+    "values": 41.9,
+    "n_waagen": 53
   },
   {
     "dates": "2026-09-04",
-    "values": 41.78,
-    "n_waagen": 36
+    "values": 41.71,
+    "n_waagen": 53
   },
   {
     "dates": "2026-09-05",
-    "values": null,
-    "n_waagen": null
+    "values": 41.72,
+    "n_waagen": 38
   },
   {
     "dates": "2026-09-06",
