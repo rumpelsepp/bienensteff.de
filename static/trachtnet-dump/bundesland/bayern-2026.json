@@ -1242,12 +1242,12 @@
   {
     "dates": "2026-09-06",
     "values": 30.5,
-    "n_waagen": 280
+    "n_waagen": 358
   },
   {
     "dates": "2026-09-07",
-    "values": null,
-    "n_waagen": null
+    "values": 30.42,
+    "n_waagen": 285
   },
   {
     "dates": "2026-09-08",
