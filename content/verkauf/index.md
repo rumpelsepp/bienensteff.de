@@ -13,6 +13,12 @@ Ein schöner Beleg für echte Qualität aus unserer kleinen Imkerei.
 Unser Honig wird zu 100 % in Bayern erzeugt, gelagert und liebevoll verarbeitet.
 {.lead}
 
+Ihr wollt Honig? Schreibt uns kurz mit Sorte und Menge – oder nehmt ihn direkt an einer unserer [Verkaufsstellen](#verkaufsstellen) mit.
+
+<a class="btn btn-primary mb-3" href="{{< relref "kontakt#honig-kaufen--bestellanfrage" >}}">
+<i class="bi bi-envelope"></i> Bestellanfrage &amp; Kontakt
+</a>
+
 ## Sortiment 2026 {#sortiment}
 
 {{< sortiment.inline dataset="sortiment" >}}
