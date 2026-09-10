@@ -69,3 +69,7 @@ Die Bienen danken’s uns auf ihre Art – mit einem Honig, der nicht nur gut sc
 ## Mitgliedschaften
 
 Unsere Imkerei ist Mitglied im [Deutschen Imkerbund e.V.](https://deutscherimkerbund.de/), dem [Landesverband Bayerischer Imker e.V.](https://www.lvbi.de/) und dem [Bienenzuchtverein München und Umgebung e.V. (BZVM)](https://bzvm.de/).
+
+## Kontakt
+
+Ihr habt Fragen oder wollt Honig bestellen? Wie ihr uns erreicht, steht auf der [Kontaktseite]({{< relref "kontakt" >}}).
