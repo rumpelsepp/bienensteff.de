@@ -45,11 +45,6 @@ Gräfelfinger Str. 169a
   weight = 70
 
   [[menus.main]]
-  name = 'Kontakt'
-  pageRef = '/kontakt'
-  weight = 80
-
-  [[menus.main]]
   name = 'Mehr'
   weight = 99
 
