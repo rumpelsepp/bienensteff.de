@@ -13,7 +13,7 @@ async function runBuild() {
         base_style: path.resolve('themes/bienensteff/bundle_src/css/main.css'),
         style: path.resolve('bundle_src/css/style.css'),
       },
-      outdir: 'static',
+      outdir: 'assets/gen',
       bundle: true,
       sourcemap: true,
       minify: true,

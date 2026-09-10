@@ -68,9 +68,8 @@ Wir nehmen Honiggläser gerne gespült zurück – Etikett bitte, wenn möglich,
 
 ### Öffnungszeiten
 
-Wir führen kein klassisches Ladengeschäft mit Öffnungszeiten.
-Beim Direktverkauf am besten vorher kurz anrufen oder schreiben.
-In München ist tendenziell immer an Montagen tagsüber jemand zu Hause (ganz unverbindliche Info).
+Wir führen kein klassisches Ladengeschäft mit festen Öffnungszeiten.
+Für den Direktverkauf an der Haustür bitte vorher kurz anrufen oder schreiben – wie ihr uns erreicht und wann meist jemand da ist, steht auf der [Kontaktseite]({{< relref "kontakt" >}}).
 
 ## Preisliste
 
@@ -125,7 +124,7 @@ Durchgestrichene Sorten sind derzeit ausverkauft.
 
 ## Wissenswertes
 
-Unsere Bienen stehen ganzjährig an festen Standorten im Münchner Grüngürtel.
+Unsere Bienen stehen ganzjährig an festen Standorten im [Münchner Grüngürtel]({{< relref "über-uns#regionalität" >}}).
 Mehrmals im Jahr wird geerntet, schonend geschleudert und von Hand ins Glas gefüllt.
 Unser Honig kommt direkt aus unserer eigenen Imkerei und wird weder erhitzt noch gefiltert.
 Die frische Ernte gibt es jedes Jahr ab September.
