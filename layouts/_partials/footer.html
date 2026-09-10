@@ -18,6 +18,7 @@
     <div class="footer-col">
       <h6>Kontakt</h6>
       <address>{{ .Site.Params.contact | markdownify }}</address>
+      {{ with .Site.GetPage "/kontakt" }}<a href="{{ .RelPermalink }}">Zur Kontaktseite</a>{{ end }}
     </div>
   </div>
 

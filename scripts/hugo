@@ -1,0 +1,29 @@
+#!/bin/sh
+# Wrapper around hugo.
+#
+# By default this simply execs the locally installed hugo. When USE_PODMAN=1
+# is set, hugo is instead run from the official container image via podman.
+set -eu
+
+if [ "${USE_PODMAN:-}" != "1" ]; then
+    exec hugo "$@"
+fi
+
+# The build must not touch the network, the dev server obviously must.
+net=none
+case "${1:-}" in
+    server) net=host ;;
+esac
+
+exec podman run \
+    --net="$net" \
+    --rm \
+    --interactive \
+    --tty \
+    --volume "$PWD:/mnt/$PWD:z" \
+    --workdir "/mnt/$PWD" \
+    --userns keep-id \
+    --group-add keep-groups \
+    --log-driver none \
+    ghcr.io/gohugoio/hugo:latest \
+    "$@"

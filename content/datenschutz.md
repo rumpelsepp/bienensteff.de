@@ -2,7 +2,7 @@
 title: Datenschutzerklärung
 ---
 
-Stand: 29. März 2025
+Stand: 9. September 2026
 
 ## Verantwortlicher
 
@@ -21,6 +21,12 @@ Die Rechtsgrundlage hierfür ist Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung)
 
 Die Daten werden gelöscht, sobald sie für die Erreichung des Zweckes ihrer Erhebung nicht mehr erforderlich sind und keine gesetzlichen Aufbewahrungsfristen entgegenstehen.
 Eine Weitergabe an unbefugte Dritte erfolgt nicht.
+
+### Ernte-Benachrichtigung
+
+Wenn Sie uns per E-Mail bitten, Sie über die Verfügbarkeit der neuen Honigernte zu informieren, speichern wir Ihre E-Mail-Adresse ausschließlich zu diesem Zweck.
+Rechtsgrundlage ist Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO.
+Sie können der weiteren Nutzung jederzeit formlos per E-Mail widersprechen; wir löschen Ihre Adresse dann umgehend.
 
 ### Weitergabe von Daten (Empfänger)
 

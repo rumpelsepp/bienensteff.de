@@ -15,13 +15,12 @@ Sollte gerade niemand verfügbar sein oder wir keine Kapazitäten haben, findet 
 ## „Bienennester“
 
 Besonders im Herbst bekommen wir recht viele Meldungen wegen „Bienennestern“, zum Beispiel unterm Balkon, in der Mülltonnenbox oder am Gartenhäusl.
-Die Schwarmzeit für Honigbienen ist ungefähr von Mai bis Anfang Juli. Bei „Bienennester“ handelt es sich in den allermeisten Fällen um Wespen oder Hornissen und die steh’n unter [strengem Naturschutz](https://www.bussgeldkatalog.org/news/wespen-vertreiben-was-ist-erlaubt-was-nicht-2836604/).
+Die Schwarmzeit für Honigbienen ist ungefähr von Mai bis Anfang Juli. Bei „Bienennestern“ handelt es sich in den allermeisten Fällen um Wespen oder Hornissen – und die steh’n unter [strengem Naturschutz](https://www.bussgeldkatalog.org/news/wespen-vertreiben-was-ist-erlaubt-was-nicht-2836604/).
 
-Wir als Imkerei dürfen da leider nix machen und auch keine Nester entfernen.
-Ganz wichtig: **So a Nest darf nur mit Erlaubnis von der Unteren Naturschutzbehörde entfernt werden!**
-Die offizielle Handlungsempfehlung der Stadt München ist die Saison mit den Wespen zu koexistieren.
-Mehr Infos gibt’s bei der [Stadt München](https://stadt.muenchen.de/infos/wespen-hornissen-muenchen.html).
-Die Stadt München stellt ein [Online Formular](https://service.muenchen.de/intelliform/forms/01/09/09/meldung_insektennest/index) zur Meldung von Wespen und Hornissen sowie deren Nestern bereit.
+Wir sind ausgebildete **[Wespen- und Hornissenfachberater](/fachkunde/2026-07-28-wespen-fachberater.pdf)** (Institut für Bienenkunde und Imkerei, LWG) und beraten euch gerne: beim Bestimmen der Tiere, mit einer Einschätzung zur Gefährdung und mit Tipps zum Umgang mit dem Nest. Die Kontaktwege stehen auf der [Kontaktseite]({{< relref "kontakt" >}}).
+
+Selbst tätig werden dürfen wir aber nicht: **Ein Nest darf nur mit Genehmigung der Unteren Naturschutzbehörde entfernt werden.** Die offizielle Handlungsempfehlung der Stadt München ist, die Saison mit den Tieren zu koexistieren – meist geht das gut.
+Mehr Infos gibt’s bei der [Stadt München](https://stadt.muenchen.de/infos/wespen-hornissen-muenchen.html); zur Meldung von Wespen, Hornissen und deren Nestern steht ein [Online-Formular](https://service.muenchen.de/intelliform/forms/01/09/09/meldung_insektennest/index) bereit.
 
 ### Bestimmungshilfen
 
