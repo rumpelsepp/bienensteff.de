@@ -1252,22 +1252,22 @@
   {
     "dates": "2026-09-08",
     "values": 45.87,
-    "n_waagen": 24
+    "n_waagen": 25
   },
   {
     "dates": "2026-09-09",
     "values": 45.75,
-    "n_waagen": 24
+    "n_waagen": 25
   },
   {
     "dates": "2026-09-10",
-    "values": 45.61,
-    "n_waagen": 24
+    "values": 45.5,
+    "n_waagen": 25
   },
   {
     "dates": "2026-09-11",
-    "values": null,
-    "n_waagen": null
+    "values": 45.32,
+    "n_waagen": 25
   },
   {
     "dates": "2026-09-12",
