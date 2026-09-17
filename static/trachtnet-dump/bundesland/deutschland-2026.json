@@ -1286,18 +1286,18 @@
   },
   {
     "dates": "2026-09-15",
-    "values": 31.04,
-    "n_waagen": 1017
+    "values": 31.03,
+    "n_waagen": 1079
   },
   {
     "dates": "2026-09-16",
-    "values": 31.03,
-    "n_waagen": 566
+    "values": 31.01,
+    "n_waagen": 1014
   },
   {
     "dates": "2026-09-17",
-    "values": null,
-    "n_waagen": null
+    "values": 31.01,
+    "n_waagen": 559
   },
   {
     "dates": "2026-09-18",
