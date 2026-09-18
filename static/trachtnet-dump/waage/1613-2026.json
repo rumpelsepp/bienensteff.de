@@ -1285,14 +1285,19 @@
     "n_waagen": 1
   },
   {
+    "dates": "2026-09-15",
+    "values": null,
+    "n_waagen": null
+  },
+  {
     "dates": "2026-09-16",
-    "values": -10.54,
+    "values": -10.5,
     "n_waagen": 1
   },
   {
     "dates": "2026-09-17",
-    "values": null,
-    "n_waagen": null
+    "values": -10.64,
+    "n_waagen": 1
   },
   {
     "dates": "2026-09-18",
