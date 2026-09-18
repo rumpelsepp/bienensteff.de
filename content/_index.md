@@ -30,7 +30,7 @@ Wir sind Mitglied im Qualitätsprogramm [Geprüfte Qualität – Bayern für Hon
 Damit ihr wisst, was genau in eurem Honigglas steckt, veröffentlichen wir alle [Informationen]({{< relref "datenbank" >}}) zu unseren Ernten und Chargen ganz transparent.
 {.lead}
 
-Neben dem Honig sind wir ausgebildete Wespen- und Hornissenfachberater: Wenn ihr einen [Bienenschwarm oder ein „Nest“]({{< relref "schwaerme-und-nester" >}}) entdeckt, beraten wir euch gerne.
+Neben dem Honig sind wir ausgebildete Wespen- und Hornissenberater: Wenn ihr einen [Bienenschwarm oder ein „Nest“]({{< relref "schwaerme-und-nester" >}}) entdeckt, beraten wir euch gerne.
 {.lead}
 
 Schaut’s euch gern um – und vielleicht sehen wir uns ja bald!
