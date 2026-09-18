@@ -1296,13 +1296,13 @@
   },
   {
     "dates": "2026-09-17",
-    "values": 19.81,
+    "values": 19.72,
     "n_waagen": 1
   },
   {
     "dates": "2026-09-18",
-    "values": null,
-    "n_waagen": null
+    "values": 19.72,
+    "n_waagen": 1
   },
   {
     "dates": "2026-09-19",
