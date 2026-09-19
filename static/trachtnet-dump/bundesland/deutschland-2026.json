@@ -1292,17 +1292,17 @@
   {
     "dates": "2026-09-16",
     "values": 31.0,
-    "n_waagen": 1077
+    "n_waagen": 1078
   },
   {
     "dates": "2026-09-17",
-    "values": 30.85,
-    "n_waagen": 993
+    "values": 30.84,
+    "n_waagen": 1075
   },
   {
     "dates": "2026-09-18",
-    "values": null,
-    "n_waagen": null
+    "values": 30.75,
+    "n_waagen": 997
   },
   {
     "dates": "2026-09-19",
