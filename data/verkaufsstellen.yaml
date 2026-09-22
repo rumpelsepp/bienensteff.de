@@ -34,6 +34,16 @@
   active: true
 
 - name: |
+    [A Guade Zeit](https://a-guade-zeit.de/)
+  type: Bioladen
+  address: |
+    Hauptstraße 12
+    94481 Grafenau
+    [Google Maps](https://maps.app.goo.gl/WW1QfQcsnJmcoVXv8)
+  contact:
+  active: true
+
+- name: |
     [Honighäusl](http://honey.floriankreuzer.de/verkaufsstellen/)
   type: SB-Verkauf
   address: |
@@ -45,4 +55,4 @@
     Johannesbienen München  
     Festnetz: [+49 89 96058096](tel:+498996058096)  
     E-Mail: honey@floriankreuzer.de
-  active: true
+  active: false
