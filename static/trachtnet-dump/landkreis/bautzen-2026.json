@@ -1321,33 +1321,33 @@
   },
   {
     "dates": "2026-09-22",
-    "values": 53.29,
+    "values": 53.28,
     "n_waagen": 3
   },
   {
     "dates": "2026-09-23",
-    "values": 52.97,
-    "n_waagen": 2
+    "values": 53.0,
+    "n_waagen": 3
   },
   {
     "dates": "2026-09-24",
-    "values": 53.23,
-    "n_waagen": 2
+    "values": 53.19,
+    "n_waagen": 3
   },
   {
     "dates": "2026-09-25",
-    "values": 53.04,
+    "values": 52.87,
     "n_waagen": 2
   },
   {
     "dates": "2026-09-26",
-    "values": null,
-    "n_waagen": null
+    "values": 52.6,
+    "n_waagen": 3
   },
   {
     "dates": "2026-09-27",
-    "values": null,
-    "n_waagen": null
+    "values": 52.6,
+    "n_waagen": 1
   },
   {
     "dates": "2026-09-28",
