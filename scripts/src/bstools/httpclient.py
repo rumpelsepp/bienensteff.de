@@ -3,33 +3,65 @@ Lexware, DWD and Trachtnet code -- replaces niquests, which pulled in a
 pile of less well-known dependencies just for a handful of plain REST calls.
 
 Deliberately covers only what those callers need: a reusable client with
-base URL, default headers and timeout, query params (list values repeat
+base URL, default headers and timeouts, query params (list values repeat
 the key, like requests does), a JSON request body, redirects, transparent
 decompression, a few retries on connection failures, and a Response with
 status_code/ok/content/text/json()/raise_for_status().
 
-One Client keeps one curl handle, so connections are reused across
-requests (curl_easy_reset() keeps the connection cache). Not thread-safe
--- use one Client per thread.
+Two flavors sharing all request setup:
+- Client: blocking. Keeps one curl handle, so connections are reused
+  across requests (curl_easy_reset() keeps the connection cache). Not
+  thread-safe -- use one Client per thread.
+- AsyncClient: asyncio, via pycurl's own AsyncCurlMulti (libcurl's
+  multi-socket API driven by the event loop -- no threads, no polling).
+  Concurrent requests share the multi handle's connection pool, and
+  HTTP/2 requests to the same host get multiplexed over one connection.
+
+URLs are built with libcurl's own URL API (pycurl.CurlUrl, i.e.
+curl_url()) rather than string concatenation and urllib.parse: libcurl
+parses, normalizes and percent-encodes, and the handle is passed to
+the transfer as-is (CURLOPT_CURLU), so the URL curl sends is exactly
+the one built here.
+
+Logging (logger "bstools.httpclient"): one DEBUG line per request with
+status, HTTP version, size and a timing breakdown (DNS/connect/TLS/first
+byte/total, and whether a pooled connection was reused) -- shows up with
+any CLI's --debug. Setting BSTOOLS_HTTP_TRACE=1 additionally enables
+curl's verbose trace (like `curl -v`: connection info, request and
+response headers, Authorization/Cookie redacted) on
+"bstools.httpclient.trace", independent of --debug.
+
+Response bodies are buffered in memory -- fine for JSON APIs and the few
+MB of a DWD zip. libcurl itself already handles chunked transfer
+encoding, Content-Encoding (gzip/brotli/zstd) and HTTP/2 streams below
+this layer, so a body always arrives here complete and decoded.
 """
 
 from __future__ import annotations
 
+import asyncio
 import io
 import json as jsonlib
 import logging
 import math
 import os
+import re
 import time
 from collections.abc import Mapping
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Self
-from urllib.parse import urlencode
 
 import pycurl
 
 logger = logging.getLogger(__name__)
+trace_logger = logging.getLogger(f"{__name__}.trace")
+
+TRACE = os.environ.get("BSTOOLS_HTTP_TRACE", "") not in ("", "0")
+if TRACE:
+    # Propagation to the root handlers doesn't check the root's level, so
+    # this makes the trace visible even without a CLI's --debug.
+    trace_logger.setLevel(logging.DEBUG)
 
 # The pycurl wheels bundle their own libcurl/OpenSSL, whose compiled-in CA
 # bundle path is that of the wheel build system and may not exist on the
@@ -50,6 +82,17 @@ _RETRY_ANY = {pycurl.E_COULDNT_RESOLVE_HOST, pycurl.E_COULDNT_CONNECT}
 # Failures mid-exchange: only retried for GET, since a POST/PATCH may
 # already have been applied server-side.
 _RETRY_GET = {pycurl.E_GOT_NOTHING, pycurl.E_SEND_ERROR, pycurl.E_RECV_ERROR}
+
+_HTTP_VERSIONS = {
+    pycurl.CURL_HTTP_VERSION_1_0: "HTTP/1.0",
+    pycurl.CURL_HTTP_VERSION_1_1: "HTTP/1.1",
+    pycurl.CURL_HTTP_VERSION_2_0: "HTTP/2",
+    pycurl.CURL_HTTP_VERSION_3: "HTTP/3",
+}
+
+# Matches the header both as a real header line ("Authorization: ...")
+# and inside curl's HTTP/2 stream info text ("[authorization: ...]").
+_REDACT_RE = re.compile(r"(?i)\b((?:proxy-)?authorization|(?:set-)?cookie)(:\s*)[^\]\r\n]*")
 
 
 def _find_ca_bundle() -> str | None:
@@ -72,7 +115,8 @@ class TransportError(Exception):
 
 
 class Timeout(TransportError):
-    """Connect timed out, or no data arrived for `timeout` seconds."""
+    """Connect timed out, no data arrived for `timeout` seconds, or the
+    whole request exceeded `total_timeout`."""
 
 
 class HTTPError(Exception):
@@ -89,6 +133,8 @@ class Response:
     url: str
     status_code: int
     content: bytes
+    http_version: str
+    elapsed: float  # seconds, whole transfer incl. redirects
 
     @property
     def ok(self) -> bool:
@@ -106,90 +152,102 @@ class Response:
             raise HTTPError(self)
 
 
-class Client:
+def _trace(infotype: int, data: bytes) -> None:
+    """CURLOPT_DEBUGFUNCTION callback -- the same information `curl -v`
+    prints, minus body bytes."""
+    match infotype:
+        case pycurl.INFOTYPE_TEXT:
+            prefix = "*"
+        case pycurl.INFOTYPE_HEADER_OUT:
+            prefix = ">"
+        case pycurl.INFOTYPE_HEADER_IN:
+            prefix = "<"
+        case _:
+            return
+    for line in data.decode("utf-8", errors="replace").splitlines():
+        if not line:
+            continue
+        line = _REDACT_RE.sub(r"\1\2[redacted]", line)
+        trace_logger.debug("%s %s", prefix, line)
+
+
+class _BaseClient:
     def __init__(
         self,
         base_url: str = "",
         headers: Mapping[str, str] | None = None,
         timeout: float = 60.0,
+        connect_timeout: float = 10.0,
+        total_timeout: float | None = None,
         retries: int = 2,
     ) -> None:
-        """`timeout` is both the connect timeout and how long a transfer
-        may stall without receiving any data (like requests' read timeout),
-        not a cap on the total transfer time. `retries` only applies to
-        connection failures (see _RETRY_ANY/_RETRY_GET), never to HTTP
-        error statuses -- callers handle those themselves.
+        """`timeout` is how long a transfer may stall without receiving
+        any data (like requests' read timeout) -- it covers a server that
+        takes long to start answering as well as one that stops mid-body.
+        `connect_timeout` bounds DNS + TCP + TLS setup. `total_timeout`,
+        if set, is a hard cap on the whole request incl. redirects.
+        `retries` only applies to connection failures (see _RETRY_ANY/
+        _RETRY_GET), never to HTTP error statuses or timeouts -- callers
+        handle those themselves.
         """
-        self.base_url = base_url.rstrip("/")
+        self.base_url = pycurl.CurlUrl(base_url.encode()) if base_url else None
         self.headers = dict(headers or {})
         self.timeout = timeout
+        self.connect_timeout = connect_timeout
+        self.total_timeout = total_timeout
         self.retries = retries
         self._ca_bundle = _find_ca_bundle()
-        self._curl = pycurl.Curl()
 
-    def close(self) -> None:
-        self._curl.close()
-
-    def __enter__(self) -> Self:
-        return self
-
-    def __exit__(self, *exc_info: object) -> None:
-        self.close()
-
-    def _build_url(self, url: str, params: Mapping[str, Any] | None) -> str:
-        if not url.startswith(("http://", "https://")):
-            url = f"{self.base_url}/{url.lstrip('/')}"
-        if params:
-            query = urlencode({k: v for k, v in params.items() if v is not None}, doseq=True)
+    def _build_url(self, url: str, params: Mapping[str, Any] | None) -> pycurl.CurlUrl:
+        """Relative `url`s are appended to the base URL's path (not
+        RFC 3986-resolved against it: "/articles" on ".../v1" must give
+        ".../v1/articles", not "/articles"). Params are appended one by
+        one, percent-encoded by libcurl; list values repeat the key, None
+        values are skipped. Everything goes to libcurl as UTF-8 bytes --
+        pycurl encodes str arguments as ASCII and would choke on "süß".
+        """
+        if self.base_url is None or url.startswith(("http://", "https://")):
+            u = pycurl.CurlUrl(url.encode())
+        else:
+            path, _, query = url.partition("?")
+            u = pycurl.CurlUrl(self.base_url.url)
+            base_path = (u.path or "").rstrip("/")
+            u.path = f"{base_path}/{path.lstrip('/')}".encode()
             if query:
-                url += ("&" if "?" in url else "?") + query
-        return url
+                u.setpart(pycurl.UPART_QUERY, query.encode(), pycurl.U_APPENDQUERY)
+        for key, value in (params or {}).items():
+            values = value if isinstance(value, (list, tuple)) else [value]
+            for v in values:
+                if v is None:
+                    continue
+                u.setpart(
+                    pycurl.UPART_QUERY,
+                    f"{key}={v}".encode(),
+                    pycurl.U_APPENDQUERY | pycurl.U_URLENCODE,
+                )
+        return u
 
-    def request(
-        self,
-        method: str,
-        url: str,
-        *,
-        params: Mapping[str, Any] | None = None,
-        json: Any = None,
-        headers: Mapping[str, str] | None = None,
-    ) -> Response:
-        method = str(method).upper()
-        full_url = self._build_url(url, params)
-
+    def _header_lines(self, headers: Mapping[str, str] | None, has_json: bool) -> list[str]:
         # Case-insensitive merge: per-request headers override the defaults.
         merged = {k.lower(): (k, v) for k, v in self.headers.items()}
         merged.update({k.lower(): (k, v) for k, v in (headers or {}).items()})
-        body: bytes | None = None
-        if json is not None:
-            body = jsonlib.dumps(json).encode()
+        if has_json:
             merged.setdefault("content-type", ("Content-Type", "application/json"))
         # No "Expect: 100-continue" round trip before larger bodies.
         merged.setdefault("expect", ("Expect", ""))
-        header_lines = [f"{k}: {v}" for k, v in merged.values()]
+        return [f"{k}: {v}" for k, v in merged.values()]
 
-        attempt = 0
-        while True:
-            try:
-                return self._perform(method, full_url, header_lines, body)
-            except TransportError as exc:
-                retryable = exc.curl_code in _RETRY_ANY or (
-                    method == "GET" and exc.curl_code in _RETRY_GET
-                )
-                if isinstance(exc, Timeout) or not retryable or attempt >= self.retries:
-                    raise
-                attempt += 1
-                delay = 0.5 * 2**attempt
-                logger.warning("%s, retrying in %.1fs (%s/%s)", exc, delay, attempt, self.retries)
-                time.sleep(delay)
-
-    def _perform(
-        self, method: str, url: str, header_lines: list[str], body: bytes | None
-    ) -> Response:
-        c = self._curl
+    def _setup(
+        self,
+        c: pycurl.Curl,
+        method: str,
+        url: pycurl.CurlUrl,
+        header_lines: list[str],
+        body: bytes | None,
+    ) -> io.BytesIO:
         c.reset()
         buf = io.BytesIO()
-        c.setopt(pycurl.URL, url)
+        c.setopt(pycurl.CURLU, url)
         c.setopt(pycurl.HTTPHEADER, header_lines)
         c.setopt(pycurl.WRITEDATA, buf)
         c.setopt(pycurl.FOLLOWLOCATION, True)
@@ -197,11 +255,16 @@ class Client:
         c.setopt(pycurl.ACCEPT_ENCODING, "")  # everything libcurl can decode
         c.setopt(pycurl.USERAGENT, pycurl.version.split()[0])
         c.setopt(pycurl.NOSIGNAL, True)
-        c.setopt(pycurl.CONNECTTIMEOUT_MS, int(self.timeout * 1000))
+        c.setopt(pycurl.CONNECTTIMEOUT_MS, int(self.connect_timeout * 1000))
         c.setopt(pycurl.LOW_SPEED_LIMIT, 1)
         c.setopt(pycurl.LOW_SPEED_TIME, max(1, math.ceil(self.timeout)))
+        if self.total_timeout is not None:
+            c.setopt(pycurl.TIMEOUT_MS, int(self.total_timeout * 1000))
         if self._ca_bundle:
             c.setopt(pycurl.CAINFO, self._ca_bundle)
+        if TRACE:
+            c.setopt(pycurl.VERBOSE, True)
+            c.setopt(pycurl.DEBUGFUNCTION, _trace)
 
         if body is not None:
             c.setopt(pycurl.POSTFIELDS, body)
@@ -213,22 +276,119 @@ class Client:
             c.setopt(pycurl.NOBODY, True)
         else:
             c.setopt(pycurl.CUSTOMREQUEST, method)
+        return buf
 
-        try:
-            c.perform()
-        except pycurl.error as exc:
-            # (CURLcode, message) -- types-pycurl doesn't type the args.
-            args: tuple[Any, ...] = exc.args
-            code, message = int(args[0]), str(args[1])
-            cls = Timeout if code == pycurl.E_OPERATION_TIMEDOUT else TransportError
-            raise cls(code, message, method, url) from exc
+    @staticmethod
+    def _transport_error(exc: pycurl.error, method: str, url: str) -> TransportError:
+        # (CURLcode, message) -- types-pycurl doesn't type the args.
+        args: tuple[Any, ...] = exc.args
+        code, message = int(args[0]), str(args[1])
+        cls = Timeout if code == pycurl.E_OPERATION_TIMEDOUT else TransportError
+        return cls(code, message, method, url)
 
-        return Response(
+    @staticmethod
+    def _response(c: pycurl.Curl, method: str, buf: io.BytesIO) -> Response:
+        resp = Response(
             method=method,
             url=c.getinfo(pycurl.EFFECTIVE_URL),
             status_code=c.getinfo(pycurl.RESPONSE_CODE),
             content=buf.getvalue(),
+            http_version=_HTTP_VERSIONS.get(c.getinfo(pycurl.INFO_HTTP_VERSION), "HTTP/?"),
+            elapsed=c.getinfo(pycurl.TOTAL_TIME_T) / 1e6,
         )
+        if logger.isEnabledFor(logging.DEBUG):
+            ms = {
+                name: c.getinfo(info) / 1000
+                for name, info in (
+                    ("dns", pycurl.NAMELOOKUP_TIME_T),
+                    ("connect", pycurl.CONNECT_TIME_T),
+                    ("tls", pycurl.APPCONNECT_TIME_T),
+                    ("ttfb", pycurl.STARTTRANSFER_TIME_T),
+                )
+            }
+            reused = c.getinfo(pycurl.NUM_CONNECTS) == 0
+            logger.debug(
+                "%s %s -> %s %s, %d bytes, %.0f ms "
+                "(dns %.0f, connect %.0f, tls %.0f, ttfb %.0f ms%s)",
+                method,
+                resp.url,
+                resp.http_version,
+                resp.status_code,
+                c.getinfo(pycurl.SIZE_DOWNLOAD_T),
+                resp.elapsed * 1000,
+                ms["dns"],
+                ms["connect"],
+                ms["tls"],
+                ms["ttfb"],
+                ", reused connection" if reused else "",
+            )
+        return resp
+
+    def _prepare(
+        self,
+        method: str,
+        url: str,
+        params: Mapping[str, Any] | None,
+        json: Any,
+        headers: Mapping[str, str] | None,
+    ) -> tuple[str, pycurl.CurlUrl, list[str], bytes | None]:
+        body = None if json is None else jsonlib.dumps(json).encode()
+        return (
+            str(method).upper(),
+            self._build_url(url, params),
+            self._header_lines(headers, has_json=body is not None),
+            body,
+        )
+
+    def _retry_delay(self, exc: TransportError, method: str, attempt: int) -> float | None:
+        """Seconds to wait before retry number `attempt` (1-based), or
+        None if `exc` shouldn't be retried."""
+        retryable = exc.curl_code in _RETRY_ANY or (method == "GET" and exc.curl_code in _RETRY_GET)
+        if isinstance(exc, Timeout) or not retryable or attempt > self.retries:
+            return None
+        delay = 0.5 * 2.0**attempt
+        logger.warning("%s, retrying in %.1fs (%s/%s)", exc, delay, attempt, self.retries)
+        return delay
+
+
+class Client(_BaseClient):
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        super().__init__(*args, **kwargs)
+        self._curl = pycurl.Curl()
+
+    def close(self) -> None:
+        self._curl.close()
+
+    def __enter__(self) -> Self:
+        return self
+
+    def __exit__(self, *exc_info: object) -> None:
+        self.close()
+
+    def request(
+        self,
+        method: str,
+        url: str,
+        *,
+        params: Mapping[str, Any] | None = None,
+        json: Any = None,
+        headers: Mapping[str, str] | None = None,
+    ) -> Response:
+        method, curl_url, header_lines, body = self._prepare(method, url, params, json, headers)
+        attempt = 0
+        while True:
+            buf = self._setup(self._curl, method, curl_url, header_lines, body)
+            try:
+                self._curl.perform()
+            except pycurl.error as exc:
+                err = self._transport_error(exc, method, str(curl_url.url))
+                attempt += 1
+                delay = self._retry_delay(err, method, attempt)
+                if delay is None:
+                    raise err from exc
+                time.sleep(delay)
+                continue
+            return self._response(self._curl, method, buf)
 
     def get(self, url: str, **kwargs: Any) -> Response:
         return self.request("GET", url, **kwargs)
@@ -238,3 +398,68 @@ class Client:
 
     def patch(self, url: str, **kwargs: Any) -> Response:
         return self.request("PATCH", url, **kwargs)
+
+
+class AsyncClient(_BaseClient):
+    def __init__(self, *args: Any, max_concurrency: int = 4, **kwargs: Any) -> None:
+        """`max_concurrency` caps in-flight requests across the whole
+        client -- be kind to the servers on the other end."""
+        super().__init__(*args, **kwargs)
+        self._multi = pycurl.AsyncCurlMulti()
+        self._sem = asyncio.Semaphore(max_concurrency)
+        # Idle easy handles, reused across requests (one per concurrent
+        # request at most); connections live in the multi handle's pool.
+        self._idle: list[pycurl.Curl] = []
+
+    async def aclose(self) -> None:
+        await self._multi.aclose()
+        for c in self._idle:
+            c.close()
+        self._idle.clear()
+
+    async def __aenter__(self) -> Self:
+        return self
+
+    async def __aexit__(self, *exc_info: object) -> None:
+        await self.aclose()
+
+    async def request(
+        self,
+        method: str,
+        url: str,
+        *,
+        params: Mapping[str, Any] | None = None,
+        json: Any = None,
+        headers: Mapping[str, str] | None = None,
+    ) -> Response:
+        method, curl_url, header_lines, body = self._prepare(method, url, params, json, headers)
+        attempt = 0
+        while True:
+            async with self._sem:
+                c = self._idle.pop() if self._idle else pycurl.Curl()
+                try:
+                    buf = self._setup(c, method, curl_url, header_lines, body)
+                    try:
+                        await self._multi.perform(c)
+                    except pycurl.error as exc:
+                        err = self._transport_error(exc, method, str(curl_url.url))
+                        attempt += 1
+                        delay = self._retry_delay(err, method, attempt)
+                        if delay is None:
+                            raise err from exc
+                    else:
+                        return self._response(c, method, buf)
+                finally:
+                    self._idle.append(c)
+            # Sleep outside the semaphore, so a backing-off request doesn't
+            # block a concurrency slot.
+            await asyncio.sleep(delay)
+
+    async def get(self, url: str, **kwargs: Any) -> Response:
+        return await self.request("GET", url, **kwargs)
+
+    async def post(self, url: str, **kwargs: Any) -> Response:
+        return await self.request("POST", url, **kwargs)
+
+    async def patch(self, url: str, **kwargs: Any) -> Response:
+        return await self.request("PATCH", url, **kwargs)
