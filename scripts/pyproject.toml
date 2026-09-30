@@ -8,8 +8,8 @@ version = "0.1.0"
 description = "Internal data/ops scripts for bienensteff.de -- not published"
 requires-python = ">=3.14"
 dependencies = [
-    "niquests>=3.21",
     "polars>=1.42",
+    "pycurl>=7.48.0",
 ]
 
 [project.scripts]
@@ -26,6 +26,7 @@ dev = [
     "ruff",
     "mypy",
     "ty",
+    "types-pycurl>=7.48.0.20260923",
 ]
 
 [tool.mypy]

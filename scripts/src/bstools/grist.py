@@ -15,7 +15,7 @@ import marshal
 from datetime import UTC, datetime
 from typing import Any
 
-import niquests
+from bstools import httpclient
 
 logger = logging.getLogger(__name__)
 
@@ -130,7 +130,7 @@ def _parse_widget_options(widget_options_raw: Any) -> dict[str, Any]:
 
 class GristClient:
     def __init__(self, base_url: str, api_key: str, doc_id: str) -> None:
-        self._client = niquests.Session(
+        self._client = httpclient.Client(
             base_url=base_url.rstrip("/"),
             headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
             timeout=30.0,
@@ -138,7 +138,7 @@ class GristClient:
         self.doc_id = doc_id
 
     @staticmethod
-    def _check(resp: niquests.Response) -> None:
+    def _check(resp: httpclient.Response) -> None:
         if not resp.ok:
             logger.error("Grist API error %s: %s", resp.status_code, resp.text)
         resp.raise_for_status()
