@@ -1,1 +1,13 @@
-<a href="https://www.gs1.org/services/verified-by-gs1/results?gtin={{ .gtin }}">{{ .gtin }}</a>
+{{- /*
+  A GTIN, linked to "Verified by GS1" -- except internal numbers from the
+  GS1 restricted-circulation range (GTIN-13 prefix 20-29, e.g.
+  2000000000015): those are only valid in-house and GS1 has no record of
+  them, so they're shown as plain text. No GTIN renders nothing.
+*/ -}}
+{{- with .gtin }}
+  {{- if and (eq (len .) 13) (strings.HasPrefix . "2") }}
+    <span title="Interne Nummer (nicht im GS1-Register)">{{ . }}</span>
+  {{- else }}
+    <a href="https://www.gs1.org/services/verified-by-gs1/results?gtin={{ . }}">{{ . }}</a>
+  {{- end }}
+{{- end }}
