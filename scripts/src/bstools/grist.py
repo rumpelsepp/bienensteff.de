@@ -71,6 +71,41 @@ def date_to_epoch(date_str: str | None) -> int | None:
     return int(dt.timestamp())
 
 
+def _cell_key(value: Any) -> Any:
+    """Normalizes a cell value for comparing what a sync is about to write
+    against what get_records() returned: Grist hands back empty Text cells
+    as "" where the sync may write None, and numbers can round-trip as
+    float where the sync wrote int (Date epochs) or vice versa, or pick up
+    float noise (Numeric sums).
+    """
+    if value is None or value == "":
+        return None
+    if isinstance(value, (int, float)) and not isinstance(value, bool):
+        return round(float(value), 9)
+    if isinstance(value, list):
+        return tuple(_cell_key(v) for v in value)
+    return value
+
+
+def cells_equal(a: Any, b: Any) -> bool:
+    return bool(_cell_key(a) == _cell_key(b))
+
+
+def changed_fields(new: dict[str, Any], old: dict[str, Any]) -> dict[str, Any]:
+    """The subset of `new` that actually differs from the existing row's
+    `old` fields -- so a sync can skip rows (and cells) that didn't change,
+    instead of PATCHing every row on every run.
+    """
+    return {k: v for k, v in new.items() if not cells_equal(v, old.get(k))}
+
+
+def row_key(fields: dict[str, Any], columns: list[str]) -> tuple[Any, ...]:
+    """Hashable, normalized fingerprint of a row over `columns`, for
+    comparing a whole table's contents as a multiset (e.g. via Counter).
+    """
+    return tuple(_cell_key(fields.get(c)) for c in columns)
+
+
 def choice_options(choices: list[str]) -> dict[str, Any]:
     return {"widgetOptions": json.dumps({"choices": choices})}
 
