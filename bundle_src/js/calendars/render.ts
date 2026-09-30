@@ -1,3 +1,4 @@
+import { CALENDAR_WIDGET } from "../selectors";
 import { BaseCalendar, BeeStatesCalendar, TUBCalendar, ZuchtCalendar } from "./calendars";
 import { getDateParam } from "../helpers";
 
@@ -29,7 +30,7 @@ function renderCalendarWidget(
 }
 
 export function initAllCalendarWidgets() {
-    const widgets = document.querySelectorAll<HTMLElement>('.calendar-widget-container');
+    const widgets = document.querySelectorAll<HTMLElement>(CALENDAR_WIDGET);
 
     widgets.forEach(container => {
         try {

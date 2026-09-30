@@ -3,7 +3,7 @@ import calDeLocale from 'fullcalendar/locales/de';
 import calDayGridPlugin from 'fullcalendar/daygrid';
 import calListPlugin from 'fullcalendar/list';
 import formaThemePlugin from 'fullcalendar/themes/forma';
-import { Temporal } from '@js-temporal/polyfill';
+import { Temporal } from "temporal-polyfill";
 
 import 'fullcalendar/skeleton.css';
 import 'fullcalendar/themes/forma/theme.css';

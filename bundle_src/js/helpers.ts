@@ -1,4 +1,4 @@
-import { Temporal } from "@js-temporal/polyfill";
+import { Temporal } from "temporal-polyfill";
 
 export function getParam(name: string): string | null {
     const urlParams = new URLSearchParams(window.location.search);

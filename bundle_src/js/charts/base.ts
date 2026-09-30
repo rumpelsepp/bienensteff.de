@@ -1,4 +1,4 @@
-import { Temporal } from "@js-temporal/polyfill";
+import { Temporal } from "temporal-polyfill";
 import type { ECharts } from 'echarts';
 import * as echarts from 'echarts';
 

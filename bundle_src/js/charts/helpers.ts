@@ -1,4 +1,4 @@
-import { Temporal } from "@js-temporal/polyfill";
+import { Temporal } from "temporal-polyfill";
 
 export function getCurrentYear(): number {
     return Temporal.Now.plainDateISO().year;
