@@ -3,19 +3,25 @@ Dumps historical Trachtnet (dlr-web-daten1.aspdienste.de) beehive scale data
 per year and region (Bundesland/Regierungsbezirk/Landkreis/individual scale)
 as one JSON file per region/year under --outdir.
 
+Requests run concurrently (asyncio + libcurl multi), bounded by
+--concurrency and --min-interval so the public DLR server sees at most a
+few requests per second -- see TrachtnetConfig for the defaults.
+
 Usage:
   dump-trachtnet --year 2026 --outdir static/trachtnet-dump
+  dump-trachtnet --year 2026 --concurrency 2 --min-interval 0.5
 """
 
 import argparse
+import asyncio
+import dataclasses
 import datetime
 import enum
 import http
 import logging
 import re
-import time
 from pathlib import Path
-from typing import Any, Literal, TypedDict
+from typing import Any, Literal, Self, TypedDict
 
 import polars as pl
 
@@ -1559,31 +1565,62 @@ TrachtnetParams = TypedDict(
 )
 
 
-class TrachtnetClient:
-    def __init__(self) -> None:
-        # Timeouts from measurements (Sept 2026): a single chart request
-        # answers in ~0.3 s (max seen 0.45 s, incl. all of Deutschland), so
-        # 15 s without data or 30 s in total means the server is stuck, not
-        # slow -- get_raw_data() then retries rather than hanging the whole
-        # (long, strictly sequential) dump.
-        self.client = httpclient.Client(
-            base_url="https://dlr-web-daten1.aspdienste.de",
-            headers={
-                "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:138.0) Gecko/20100101 "
-                "Firefox/138.0"
-            },
-            connect_timeout=5.0,
-            timeout=15.0,
-            total_timeout=30.0,
-            retries=3,
-        )
+# See TrachtnetConfig for where these numbers come from.
+DEFAULT_HTTP_CONFIG = httpclient.ClientConfig(
+    base_url="https://dlr-web-daten1.aspdienste.de",
+    user_agent="Mozilla/5.0 (X11; Linux x86_64; rv:138.0) Gecko/20100101 Firefox/138.0",
+    connect_timeout=5.0,
+    timeout=15.0,
+    total_timeout=30.0,
+    retries=3,
+    max_concurrency=4,
+    min_interval=0.15,
+)
 
-    def _request(self, method: str, endpoint: str, **kwargs: Any) -> httpclient.Response:
-        resp = self.client.request(method, endpoint, **kwargs)
+
+@dataclasses.dataclass(frozen=True, kw_only=True)
+class TrachtnetConfig:
+    """Tunables for a dump run; main() derives the CLI overrides from the
+    defaults here via dataclasses.replace().
+
+    HTTP timeouts are from measurements (Sept 2026): a single chart
+    request answers in ~0.3 s (max seen 0.45 s, incl. all of
+    Deutschland), so 15 s without data or 30 s in total means the server
+    is stuck, not slow -- get_raw_data() then retries up to
+    `max_attempts` times, `retry_delay` seconds apart.
+
+    Load on the (public) server: at most `max_concurrency` requests in
+    flight and at least `min_interval` seconds between two request
+    starts, i.e. <= ~6.7 req/s with the defaults -- the old strictly
+    sequential dump did ~3 req/s, and the ~1500 requests of a full year
+    now take ~4 min instead of 8+.
+    """
+
+    http: httpclient.ClientConfig = DEFAULT_HTTP_CONFIG
+    max_attempts: int = 5
+    retry_delay: float = 2.0
+
+
+class TrachtnetClient:
+    def __init__(self, config: TrachtnetConfig | None = None) -> None:
+        self.config = config or TrachtnetConfig()
+        self.client = httpclient.AsyncClient(self.config.http)
+
+    async def aclose(self) -> None:
+        await self.client.aclose()
+
+    async def __aenter__(self) -> Self:
+        return self
+
+    async def __aexit__(self, *exc_info: object) -> None:
+        await self.aclose()
+
+    async def _request(self, method: str, endpoint: str, **kwargs: Any) -> httpclient.Response:
+        resp = await self.client.request(method, endpoint, **kwargs)
         resp.raise_for_status()
         return resp
 
-    def get_raw_data(
+    async def get_raw_data(
         self,
         from_year: int,
         to_year: int,
@@ -1611,10 +1648,9 @@ class TrachtnetClient:
                 case _:
                     raise ValueError(f"Invalid region type: {region}")
 
-        max_retries = 5
-        for _ in range(max_retries):
+        for _ in range(self.config.max_attempts):
             try:
-                resp = self._request(
+                resp = await self._request(
                     http.HTTPMethod.GET,
                     "cgi-bin/tdsa/tdsa_client.pl",
                     params=params,
@@ -1627,9 +1663,9 @@ class TrachtnetClient:
                     return {}
                 else:
                     raise
-            except httpclient.Timeout:
-                logger.warning("ReadTimeout, trying again…")
-                time.sleep(2)
+            except httpclient.Timeout as e:
+                logger.warning("%s, trying again…", e)
+                await asyncio.sleep(self.config.retry_delay)
                 continue
 
         logger.error("unknown problem, no data gathered")
@@ -1696,13 +1732,13 @@ class TrachtnetClient:
                 return item[date_hash]
         raise ValueError(f"Waagen not found for hash: {hash}")
 
-    def get_data(
+    async def get_data(
         self,
         from_year: int,
         to_year: int,
         regions: list[RegionType | int],
     ) -> list[Records]:
-        raw_data = self.get_raw_data(from_year, to_year, regions)
+        raw_data = await self.get_raw_data(from_year, to_year, regions)
         series: list[Records] = []
 
         chart_data = raw_data.get("chart_data")
@@ -1756,8 +1792,8 @@ class TrachtnetClient:
             )
         return series
 
-    def dump_data(self, year: int, region: RegionType | int, outdir: Path) -> None:
-        raw_data = self.get_data(year, year, regions=[region])
+    async def dump_data(self, year: int, region: RegionType | int, outdir: Path) -> None:
+        raw_data = await self.get_data(year, year, regions=[region])
         name = region.name if isinstance(region, enum.Enum) else str(region)
         if not raw_data:
             logger.warning("No data found for %s in %s", name, year)
@@ -1780,7 +1816,29 @@ class TrachtnetClient:
         outfile.write_text(raw_data[0]["dataframe"].write_json())
 
 
+async def dump_all(config: TrachtnetConfig, years: list[int], outdir: Path) -> None:
+    regions: list[RegionType | int] = [*Land, *Regierungsbezirk, *Kreis, *waagen_ids]
+    total = len(years) * len(regions)
+    done = 0
+
+    async def dump_one(client: TrachtnetClient, year: int, region: RegionType | int) -> None:
+        nonlocal done
+        await client.dump_data(year, region, outdir)
+        done += 1
+        name = region.name if isinstance(region, enum.Enum) else f"wid {region}"
+        logger.info("Dumped %s %s (%s/%s)", year, name, done, total)
+
+    # All jobs are queued at once; the client's concurrency limit and
+    # min_interval decide how fast they actually hit the server. Any
+    # unexpected error cancels the rest, like the old sequential loop.
+    async with TrachtnetClient(config) as client, asyncio.TaskGroup() as tg:
+        for year in years:
+            for region in regions:
+                tg.create_task(dump_one(client, year, region))
+
+
 def main() -> None:
+    defaults = TrachtnetConfig()
     parser = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
@@ -1796,28 +1854,45 @@ def main() -> None:
         default=Path("./trachtnet-dump"),
         help="Output directory for the dumped data",
     )
+    parser.add_argument(
+        "--concurrency",
+        type=int,
+        default=defaults.http.max_concurrency,
+        help="max requests in flight (default: %(default)s)",
+    )
+    parser.add_argument(
+        "--min-interval",
+        type=float,
+        default=defaults.http.min_interval,
+        metavar="SECONDS",
+        help="min time between two request starts (default: %(default)s)",
+    )
+    parser.add_argument(
+        "--timeout",
+        type=float,
+        default=defaults.http.total_timeout,
+        metavar="SECONDS",
+        help="hard cap per request (default: %(default)s)",
+    )
+    parser.add_argument("--debug", action="store_true", help="log every request with timings")
     args = parser.parse_args()
-    setup_logging()
+    setup_logging(debug=args.debug)
+    if args.concurrency < 1:
+        parser.error("--concurrency must be at least 1")
 
+    config = dataclasses.replace(
+        defaults,
+        http=dataclasses.replace(
+            defaults.http,
+            max_concurrency=args.concurrency,
+            min_interval=args.min_interval,
+            total_timeout=args.timeout,
+        ),
+    )
     year_list = (
         args.year if args.year else list(range(2011, datetime.datetime.now(datetime.UTC).year))
     )
-
-    client = TrachtnetClient()
-
-    for year in year_list:
-        for state in Land:
-            logger.info("Dumping %s %s", year, state.name)
-            client.dump_data(year, state, args.outdir)
-        for county in Regierungsbezirk:
-            logger.info("Dumping %s %s", year, county.name)
-            client.dump_data(year, county, args.outdir)
-        for landkreis in Kreis:
-            logger.info("Dumping %s %s", year, landkreis.name)
-            client.dump_data(year, landkreis, args.outdir)
-        for wid in waagen_ids:
-            logger.info("Dumping %s wid %s", year, wid)
-            client.dump_data(year, wid, args.outdir)
+    asyncio.run(dump_all(config, year_list, args.outdir))
 
 
 if __name__ == "__main__":
