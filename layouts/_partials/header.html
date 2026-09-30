@@ -7,14 +7,19 @@
 {{ if .IsHome }}
   {{ block "banner" . }}
     <div class="hero">
-      {{/* Full-bleed background (object-fit: cover), hence sizes=100vw; eager
-           + high priority as it's the largest thing above the fold. */}}
+      {{/* Full-bleed background with object-fit: cover, so the rendered
+           image is as wide as the viewport *or* as wide as the hero's height
+           needs at the banner's aspect ratio (~4:1), whichever is larger --
+           on a phone the hero is ~416px tall, i.e. the image ~1660px wide,
+           not 100vw. The height term mirrors .hero's min-height in the
+           theme's main.css. Eager + high priority: largest thing above the
+           fold. */}}
       {{ with resources.Get "/img/banner.jpg" }}
         {{ partial "image/img.html" (dict
           "image" .
           "class" "hero-media"
           "widths" (slice 800 1200 1600 2400 3200)
-          "sizes" "100vw"
+          "sizes" (printf "max(100vw, min(60vh, 26rem) * %.2f)" (div (float .Width) .Height))
           "loading" "eager"
           "fetchpriority" "high"
         ) }}
