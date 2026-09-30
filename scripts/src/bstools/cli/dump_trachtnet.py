@@ -16,7 +16,6 @@ import re
 import time
 from pathlib import Path
 from typing import Any, Literal, TypedDict
-from urllib.parse import urljoin
 
 import polars as pl
 
@@ -1562,19 +1561,25 @@ TrachtnetParams = TypedDict(
 
 class TrachtnetClient:
     def __init__(self) -> None:
-        self.base_url = "https://dlr-web-daten1.aspdienste.de"
-        self.user_agent = "Mozilla/5.0 (X11; Linux x86_64; rv:138.0) Gecko/20100101 Firefox/138.0"
-        self.client = httpclient.Client(retries=3)
+        # Timeouts from measurements (Sept 2026): a single chart request
+        # answers in ~0.3 s (max seen 0.45 s, incl. all of Deutschland), so
+        # 15 s without data or 30 s in total means the server is stuck, not
+        # slow -- get_raw_data() then retries rather than hanging the whole
+        # (long, strictly sequential) dump.
+        self.client = httpclient.Client(
+            base_url="https://dlr-web-daten1.aspdienste.de",
+            headers={
+                "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:138.0) Gecko/20100101 "
+                "Firefox/138.0"
+            },
+            connect_timeout=5.0,
+            timeout=15.0,
+            total_timeout=30.0,
+            retries=3,
+        )
 
     def _request(self, method: str, endpoint: str, **kwargs: Any) -> httpclient.Response:
-        headers = kwargs.pop("headers", {})
-        headers["User-Agent"] = self.user_agent
-        resp = self.client.request(
-            method,
-            urljoin(self.base_url, endpoint),
-            headers=headers,
-            **kwargs,
-        )
+        resp = self.client.request(method, endpoint, **kwargs)
         resp.raise_for_status()
         return resp
 
