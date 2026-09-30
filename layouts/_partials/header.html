@@ -7,8 +7,17 @@
 {{ if .IsHome }}
   {{ block "banner" . }}
     <div class="hero">
-      {{ with resources.Get "/img/banner.jpg" | resources.Fingerprint }}
-        <img class="hero-media" src="{{ .RelPermalink }}" width="1400" height="350" alt="" loading="eager" fetchpriority="high">
+      {{/* Full-bleed background (object-fit: cover), hence sizes=100vw; eager
+           + high priority as it's the largest thing above the fold. */}}
+      {{ with resources.Get "/img/banner.jpg" }}
+        {{ partial "image/img.html" (dict
+          "image" .
+          "class" "hero-media"
+          "widths" (slice 800 1200 1600 2400 3200)
+          "sizes" "100vw"
+          "loading" "eager"
+          "fetchpriority" "high"
+        ) }}
       {{ end }}
       <div class="hero-scrim" aria-hidden="true"></div>
       <div class="hero-inner container">

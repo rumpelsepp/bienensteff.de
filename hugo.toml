@@ -127,7 +127,9 @@ Gräfelfinger Str. 169a
     privacyEnhanced = true
 
 [imaging]
-  quality = 97
+  # Lossy quality for resized images (WebP via the fig/image partials).
+  # 97 made 1200px WebPs 700-900 KB; around 80 is visually indistinguishable.
+  quality = 80
   resampleFilter = "Lanczos"
 
 [security]
