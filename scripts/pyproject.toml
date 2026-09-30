@@ -16,7 +16,6 @@ dependencies = [
 dump-db = "bstools.cli.dump_db:main"
 dump-dwd = "bstools.cli.dump_dwd:main"
 dump-trachtnet = "bstools.cli.dump_trachtnet:main"
-gen-pricelist = "bstools.cli.gen_pricelist:main"
 grist-magic = "bstools.cli.grist_magic:main"
 lexware-download = "bstools.cli.lexware_download:main"
 lexware-sales-by-article = "bstools.cli.lexware_sales_by_article:main"

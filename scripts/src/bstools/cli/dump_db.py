@@ -46,8 +46,6 @@ SELECT
   vd.in_stock AS in_stock,
   vd.label AS label,
   vd.auto_description AS auto_description,
-  p.price AS price,
-  p.base_price AS base_price,
   a.sku AS sku,
   a.name AS name,
   a.comment AS comment,
@@ -66,7 +64,6 @@ SELECT
   'SKU-' || a.sku AS id
 FROM Verkaufdetails vd
 JOIN Artikel a ON vd.sku = a.id
-LEFT JOIN Preise p ON p.sku_id = a.id
 JOIN Marken m ON vd.brand_id = m.id
 JOIN VKEs k ON vd.sales_unit = k.id
 WHERE substr(a.sku, 1, 1) != '_'
@@ -165,8 +162,8 @@ def _coerce_floats(rows: list[dict[str, Any]], keys: tuple[str, ...]) -> None:
     Only applied to columns that are consistently float in practice (a
     physical weight essentially never lands on a whole kg for long) --
     *not* blanket-applied to every Grist "Numeric" column, since several of
-    those (price, pieces, ...) are just as consistently whole numbers, and
-    forcing e.g. `"price": 12.0` where every consumer and this script's own
+    those (pieces, ...) are just as consistently whole numbers, and
+    forcing e.g. `"pieces": 12.0` where every consumer and this script's own
     history has always emitted `12` would be a regression in the other
     direction.
     """
