@@ -25,7 +25,7 @@
       {{ $context := dict
           "cardClass" "mb-3"
           "title" $p.Title
-          "image" (urls.JoinPath $p.Path ($p.Param "image"))
+          "image" ($p.Resources.GetMatch ($p.Param "image"))
           "content" (partial "inline/rezepte/card-content.html" $p)
           "url" $p.RelPermalink
       }}

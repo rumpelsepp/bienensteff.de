@@ -108,12 +108,7 @@
     {{ $id := .Params.id }}
     {{ with resources.GetMatch (printf "/db/img/%s.{jpg,png}" (strings.ToLower .Params.id)) }}
         <hr>
-        <figure class="figure">
-            <img class="figure-img img-fluid rounded" src="{{ .RelPermalink }}" loading="lazy" alt="">
-            <figcaption class="figure-caption">
-                {{ $id }}
-            </figcaption>
-        </figure>
+        {{ partial "image/figure.html" (dict "image" . "caption" $id) }}
     {{ end }}
     </article>
 </main>
