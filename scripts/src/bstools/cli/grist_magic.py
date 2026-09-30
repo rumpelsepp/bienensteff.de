@@ -116,16 +116,19 @@ from __future__ import annotations
 import argparse
 import logging
 import time
+from collections import Counter
 from dataclasses import dataclass, field
 from typing import Any
 
 from bstools.env import require_env
 from bstools.grist import (
     GristClient,
+    changed_fields,
     choice_options,
     date_options,
     date_to_epoch,
     markdown_options,
+    row_key,
 )
 from bstools.lexware import (
     RESOURCE_INFO,
@@ -583,7 +586,8 @@ def build_docs_schema(
 
 def fetch_existing(grist: GristClient, table_id: str) -> dict[str, dict[str, Any]]:
     """Mapping Lexware_Order_Confirmation_Id -> {row_id,
-    manual_document_numbers}."""
+    manual_document_numbers, fields} -- fields is the whole row as Grist
+    has it, so sync_to_grist can skip rows that didn't change."""
     result: dict[str, dict[str, Any]] = {}
     for rec in grist.get_records(table_id):
         fields = rec.get("fields", {})
@@ -592,11 +596,15 @@ def fetch_existing(grist: GristClient, table_id: str) -> dict[str, dict[str, Any
             result[ab_id] = {
                 "row_id": rec["id"],
                 "manual_document_numbers": fields.get("Manual_Document_Numbers", "") or "",
+                "fields": fields,
             }
     return result
 
 
-def to_grist_fields(rec: OrderRecord, now_iso: str, is_new: bool) -> dict[str, Any]:
+def to_grist_fields(rec: OrderRecord, is_new: bool) -> dict[str, Any]:
+    """Everything but Last_Synced -- sync_to_grist only stamps that on rows
+    that are new or actually changed, so an unchanged OC isn't rewritten
+    just for a fresh timestamp."""
     fields = {
         "Lexware_Order_Confirmation_Id": rec.ab_id,
         "Order_Confirmation_Number": rec.ab_number,
@@ -605,7 +613,6 @@ def to_grist_fields(rec: OrderRecord, now_iso: str, is_new: bool) -> dict[str, A
         "Customer_Id": rec.customer_id,
         "Amount": rec.amount,
         "Abrechnungsstatus": rec.billing_status,
-        "Last_Synced": now_iso,
     }
     if is_new:
         fields["Status"] = STATUS_OPEN
@@ -633,14 +640,17 @@ def sync_to_grist(
 
     for rec in records:
         is_new = rec.ab_id not in existing
-        fields = to_grist_fields(rec, now_iso, is_new)
+        fields = to_grist_fields(rec, is_new)
         if is_new:
-            to_add.append(fields)
+            to_add.append({**fields, "Last_Synced": now_iso})
             to_add_ab_ids.append(rec.ab_id)
-        else:
-            to_update.append((existing[rec.ab_id]["row_id"], fields))
+            continue
+        changed = changed_fields(fields, existing[rec.ab_id]["fields"])
+        if changed:
+            to_update.append((existing[rec.ab_id]["row_id"], {**changed, "Last_Synced": now_iso}))
 
-    print(f"New: {len(to_add)}, updated: {len(to_update)}")
+    unchanged = len(records) - len(to_add) - len(to_update)
+    print(f"New: {len(to_add)}, updated: {len(to_update)}, unchanged: {unchanged}")
     if dry_run:
         print("--dry-run is set, nothing will be written to Grist.")
         return row_ids
@@ -659,7 +669,9 @@ def sync_docs_table(
     dry_run: bool,
 ) -> None:
     """The docs table is fully derived (no manual columns), so the simplest
-    correct sync is: wipe it and reinsert -- one row per document link.
+    correct sync is: wipe it and reinsert -- one row per document link. Only
+    done when its contents actually differ from what's already there, so an
+    unchanged run doesn't churn every row in the doc's history.
 
     Order_Confirmation_Number is a Ref to the main table, so it needs the
     OC's actual Grist row id (from row_ids, as returned by sync_to_grist),
@@ -667,9 +679,6 @@ def sync_docs_table(
     """
     total_links = sum(len(rec.doc_links) for rec in records)
     print(f"Docs table '{table_id}': {total_links} document link(s).")
-    if dry_run:
-        print("--dry-run is set, the Docs table will not be touched.")
-        return
 
     rows: list[dict[str, Any]] = []
     for rec in records:
@@ -691,7 +700,19 @@ def sync_docs_table(
                 }
             )
 
-    existing_ids = grist.list_row_ids(table_id)
+    existing_records = grist.get_records(table_id)
+    columns = list(rows[0]) if rows else []
+    if Counter(row_key(r, columns) for r in rows) == Counter(
+        row_key(r.get("fields", {}), columns) for r in existing_records
+    ):
+        print("Docs table unchanged, nothing to write.")
+        return
+    print("Docs table changed, rewriting it.")
+    if dry_run:
+        print("--dry-run is set, the Docs table will not be touched.")
+        return
+
+    existing_ids = [r["id"] for r in existing_records]
     if existing_ids:
         grist.delete_records(table_id, existing_ids)
     grist.add_records(table_id, rows)

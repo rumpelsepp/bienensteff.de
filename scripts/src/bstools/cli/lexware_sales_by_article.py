@@ -70,7 +70,7 @@ from typing import Any
 import polars as pl
 
 from bstools.env import require_env
-from bstools.grist import GristClient
+from bstools.grist import GristClient, changed_fields
 from bstools.lexware import LexwareClient
 from bstools.logging_setup import setup_logging
 
@@ -209,19 +209,22 @@ def run_init(grist: GristClient, dry_run: bool) -> None:
     grist.ensure_table_schema(GRIST_TABLE_ID, GRIST_SCHEMA, dry_run)
 
 
-def fetch_existing_grist(grist: GristClient) -> dict[tuple[str, str], int]:
-    """(Year, Article_Number) -> Grist row id, for upserting instead of a
+def fetch_existing_grist(
+    grist: GristClient,
+) -> dict[tuple[str, str], tuple[int, dict[str, Any]]]:
+    """(Year, Article_Number) -> (Grist row id, row fields), for upserting
+    only rows that actually changed, instead of a
     full wipe-and-reinsert -- a partial --from/--to run must only ever touch
     the years it actually fetched, never delete other years' rows a previous
     full run already put there (unlike grist_magic's fully-derived _Docs
     table, which has no such partial-run concern).
     """
-    existing: dict[tuple[str, str], int] = {}
+    existing: dict[tuple[str, str], tuple[int, dict[str, Any]]] = {}
     for rec in grist.get_records(GRIST_TABLE_ID):
         fields = rec.get("fields", {})
         year, number = fields.get("Year"), fields.get("Article_Number")
         if year and number:
-            existing[(year, number)] = rec["id"]
+            existing[(year, number)] = (rec["id"], fields)
     return existing
 
 
@@ -241,16 +244,22 @@ def sync_sales_to_grist(
             "GTIN": row["gtin"],
             "Unit": row["einheit"],
             "Quantity": row["menge"],
-            "Last_Synced": now_iso,
         }
         key = (row["jahr"], row["artikelnummer"])
-        if key in existing:
-            to_update.append((existing[key], fields))
-        else:
-            to_add.append(fields)
+        if key not in existing:
+            to_add.append({**fields, "Last_Synced": now_iso})
+            continue
+        row_id, old_fields = existing[key]
+        # Last_Synced only on rows that actually changed, so an unchanged
+        # run doesn't rewrite every row just for a fresh timestamp.
+        changed = changed_fields(fields, old_fields)
+        if changed:
+            to_update.append((row_id, {**changed, "Last_Synced": now_iso}))
 
+    unchanged = len(grist_rows) - len(to_add) - len(to_update)
     print(
-        f"Grist '{GRIST_TABLE_ID}': new {len(to_add)}, updated {len(to_update)} "
+        f"Grist '{GRIST_TABLE_ID}': new {len(to_add)}, updated {len(to_update)}, "
+        f"unchanged {unchanged} "
         f"(articles without a GTIN are not synced, see module docstring)."
     )
     if dry_run:
