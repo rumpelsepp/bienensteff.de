@@ -25,7 +25,7 @@ update-pricelist:
     uv run --project scripts gen-pricelist > data/preisliste.json
 
 update-trachtnet:
-    uv run --project scripts dump-trachtnet --year $(date +%Y) --outdir static/trachtnet-dump
+    uv run --project scripts dump-trachtnet --outdir static/trachtnet-dump
 
 update-klima:
-    uv run --project scripts dump-dwd --station-id 03379 static/klima/03387_hourly.json static/klima/03379_daily.json
+    uv run --project scripts dump-dwd --station-id 03379 static/klima/03379_hourly.json static/klima/03379_daily.json

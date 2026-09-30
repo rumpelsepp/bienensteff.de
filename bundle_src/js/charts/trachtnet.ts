@@ -4,7 +4,6 @@ import * as echarts from 'echarts';
 
 import { chooseQueenColor, getCurrentYear, getToday, getXLimits, isInteger, isIntegerArray, isInSeason } from "./helpers";
 import { toTitleCase } from '../helpers';
-import { Kreis, Land, Regierungsbezirk } from '../calendars/regions';
 import { buildBaseOption, buildFormatterDE, initEchartsInstance } from "./base";
 
 type Record = {
@@ -19,10 +18,22 @@ type YearlyData = {
 type TrachtNetData = {
     [region: string]: YearlyData,
 }
+// One line of a /trachtnet-dump/<kind>/<id>-<year>.ndjson file, see
+// scripts/src/bstools/cli/dump_trachtnet.py. Empty days, junk zeros and the
+// still-provisional last two days are already filtered out there.
 type TrachtNetRawData = {
-    dates: string,
-    values: number | null,
-    n_waagen: number | null,
+    date: string,
+    weight: number,
+    delta: number | null,
+    scales: number,
+}
+// An entry of /trachtnet-dump/index.json.
+type TrachtNetRegion = {
+    kind: "bundesland" | "regierungsbezirk" | "landkreis" | "waage",
+    id: string,
+    name: string,
+    slug: string,
+    years: number[],
 }
 
 function formatRecord(record: Record): string {
@@ -40,28 +51,56 @@ function normalizeYear(records: Record[]): Record[] {
         };
     });
 }
-async function fetchRegion(year: number, region: string): Promise<any> {
-    let rawRegion = region.toUpperCase();
+let regionIndex: Promise<TrachtNetRegion[]> | null = null;
 
-    let endpoint = "";
-    if (rawRegion in Land) {
-        endpoint = `/trachtnet-dump/bundesland/${region.toLowerCase()}-${year}.json`;
-    } else if (rawRegion in Regierungsbezirk) {
-        endpoint = `/trachtnet-dump/regierungsbezirk/${region.toLowerCase()}-${year}.json`;
-    } else if (rawRegion in Kreis) {
-        endpoint = `/trachtnet-dump/landkreis/${region.toLowerCase()}-${year}.json`;
-    } else if (isInteger(+region)) {
-        endpoint = `/trachtnet-dump/waage/${region}-${year}.json`;
+function loadRegionIndex(): Promise<TrachtNetRegion[]> {
+    regionIndex ??= fetch("/trachtnet-dump/index.json").then(async response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return (await response.json()).regions as TrachtNetRegion[];
+    });
+    return regionIndex;
+}
+
+// Same lookup order as before the index existed: a number is a scale id,
+// otherwise the slug is matched against Bundesländer first, then
+// Regierungsbezirke, then Landkreise (e.g. "berlin" is the Bundesland).
+async function resolveRegion(region: string): Promise<TrachtNetRegion> {
+    const regions = await loadRegionIndex();
+    const key = region.toLowerCase();
+    let found: TrachtNetRegion | undefined;
+    if (isInteger(+key)) {
+        const id = key.padStart(4, "0");
+        found = regions.find(r => r.kind === "waage" && r.id === id);
     } else {
+        for (const kind of ["bundesland", "regierungsbezirk", "landkreis"]) {
+            found = regions.find(r => r.kind === kind && r.slug === key);
+            if (found) {
+                break;
+            }
+        }
+    }
+    if (!found) {
         throw new Error(`Unknown region: ${region}`);
     }
+    return found;
+}
 
-    let response = await fetch(endpoint);
-    if (response.ok) {
-        return await response.json();
-    } else {
+async function fetchRegion(year: number, region: string): Promise<TrachtNetRawData[]> {
+    const r = await resolveRegion(region);
+    if (!r.years.includes(year)) {
+        throw new Error(`No data for ${r.name} in ${year}`);
+    }
+
+    const response = await fetch(`/trachtnet-dump/${r.kind}/${r.id}-${year}.ndjson`);
+    if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
+    return (await response.text())
+        .split("\n")
+        .filter(line => line.trim() !== "")
+        .map(line => JSON.parse(line) as TrachtNetRawData);
 }
 
 export async function fetchTrachtnetData(years: number | number[], region: string): Promise<TrachtNetData> {
@@ -77,8 +116,6 @@ export async function fetchTrachtnetData(years: number | number[], region: strin
     }
 
     const currentYear = getCurrentYear();
-    const today = getToday();
-    const yesterday = today.subtract({ "days": 1 })
 
     let out: TrachtNetData = {};
     let yearlyData: YearlyData = out[region] = {};
@@ -88,38 +125,20 @@ export async function fetchTrachtnetData(years: number | number[], region: strin
             throw new Error(`Invalid year: ${y}. Trachtnet only has data from 2011 to the current year.`);
         }
 
-        let json_data: any;
+        let rawData: TrachtNetRawData[];
         try {
-            json_data = await fetchRegion(y, region);
+            rawData = await fetchRegion(y, region);
         } catch (error) {
             // console.error(`Error fetching data for year ${y} and region ${region}:`, error);
             continue;
         }
 
-        let prev: number | null = null;
-        yearlyData[y] = json_data.map((d: TrachtNetRawData) => {
-            let delta = prev === null ? null : d.values! - prev;
-            if (d.values === null) {
-                delta = 0;
-            }
-            prev = d.values;
-            return {
-                date: Temporal.PlainDate.from(d.dates),
-                value: d.values,
-                nWaagen: d.n_waagen,
-                delta: delta
-            };
-        }).filter((r: Record) => {
-            if (r.value === null || r.nWaagen == 0) {
-                return false;
-            }
-            return true;
-        }).filter((r: Record) => {
-            if (r.date.equals(today) || r.date.equals(yesterday)) {
-                return false;
-            }
-            return true;
-        });
+        yearlyData[y] = rawData.map(d => ({
+            date: Temporal.PlainDate.from(d.date),
+            value: d.weight,
+            nWaagen: d.scales,
+            delta: d.delta,
+        }));
     }
 
     return out;
