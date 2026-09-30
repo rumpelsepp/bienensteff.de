@@ -1,3 +1,4 @@
+import { KLIMA_CHART, TRACHTNET_DERIVATIVE_CHART, TRACHTNET_EVALUATION_TABLE, TRACHTNET_PROGRESS_CHART } from "../selectors";
 import { toTitleCase } from "../helpers";
 import { BarChart as TrachtnetBarChart, fetchTrachtnetData, getTrachtnetDerivative, getTrachtnetSeries, LineChart as TrachtnetLineChart, metaDataOfYear, renderMetaData } from "./trachtnet";
 import { getKlimaDailySeries, LineChart as KlimaLineChart } from "./klima";
@@ -65,10 +66,10 @@ export async function initAllCharts() {
             });
 
 
-    const progressPromises = renderAllTrachtnet(".trachtnet-progress-chart-container", fetchAndRenderTrachtProgressChart);
-    const derivativePromises = renderAllTrachtnet(".trachtnet-derivative-chart-container", fetchAndRenderDerivativeChart);
-    const evaluationPromises = renderAllTrachtnet(".trachtnet-evaluation-table-container", fetchAndRenderEvaluationTable);
-    const klimaPromises = renderAllKlima(".klima-chart-container", fetchAndRenderDailyKlimaChart);
+    const progressPromises = renderAllTrachtnet(TRACHTNET_PROGRESS_CHART, fetchAndRenderTrachtProgressChart);
+    const derivativePromises = renderAllTrachtnet(TRACHTNET_DERIVATIVE_CHART, fetchAndRenderDerivativeChart);
+    const evaluationPromises = renderAllTrachtnet(TRACHTNET_EVALUATION_TABLE, fetchAndRenderEvaluationTable);
+    const klimaPromises = renderAllKlima(KLIMA_CHART, fetchAndRenderDailyKlimaChart);
 
     const allPromises = [...progressPromises, ...derivativePromises, ...evaluationPromises, ...klimaPromises];
 

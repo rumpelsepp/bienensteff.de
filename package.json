@@ -1,10 +1,10 @@
 {
   "dependencies": {
-    "@js-temporal/polyfill": "^0.5.1",
     "bootstrap": "^5.3.6",
     "bootstrap-icons": "^1.13.1",
     "echarts": "^6.1.0",
-    "fullcalendar": "^7.0.2"
+    "fullcalendar": "^7.0.2",
+    "temporal-polyfill": "^1.0.5"
   },
   "devDependencies": {
     "@types/bootstrap": "^5.2.11",
