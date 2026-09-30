@@ -18,9 +18,9 @@ from pathlib import Path
 from typing import Any, Literal, TypedDict
 from urllib.parse import urljoin
 
-import niquests
 import polars as pl
 
+from bstools import httpclient
 from bstools.logging_setup import setup_logging
 
 logger = logging.getLogger(__name__)
@@ -1564,9 +1564,9 @@ class TrachtnetClient:
     def __init__(self) -> None:
         self.base_url = "https://dlr-web-daten1.aspdienste.de"
         self.user_agent = "Mozilla/5.0 (X11; Linux x86_64; rv:138.0) Gecko/20100101 Firefox/138.0"
-        self.client = niquests.Session(retries=3)
+        self.client = httpclient.Client(retries=3)
 
-    def _request(self, method: str, endpoint: str, **kwargs: Any) -> niquests.Response:
+    def _request(self, method: str, endpoint: str, **kwargs: Any) -> httpclient.Response:
         headers = kwargs.pop("headers", {})
         headers["User-Agent"] = self.user_agent
         resp = self.client.request(
@@ -1616,16 +1616,13 @@ class TrachtnetClient:
                 )
                 data: dict[str, Any] = resp.json()
                 return data
-            except niquests.HTTPError as e:
-                if (
-                    e.response is not None
-                    and e.response.status_code == http.HTTPStatus.INTERNAL_SERVER_ERROR
-                ):
+            except httpclient.HTTPError as e:
+                if e.response.status_code == http.HTTPStatus.INTERNAL_SERVER_ERROR:
                     logger.warning("Internal server error for %s. Returning empty data.", regions)
                     return {}
                 else:
                     raise
-            except niquests.ReadTimeout:
+            except httpclient.Timeout:
                 logger.warning("ReadTimeout, trying again…")
                 time.sleep(2)
                 continue

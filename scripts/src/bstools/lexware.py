@@ -12,7 +12,7 @@ import time
 from collections.abc import Iterator
 from typing import Any
 
-import niquests
+from bstools import httpclient
 
 logger = logging.getLogger(__name__)
 
@@ -43,7 +43,7 @@ RESOURCE_INFO: dict[str, str] = {
 
 class LexwareClient:
     def __init__(self, api_key: str) -> None:
-        self._client = niquests.Session(
+        self._client = httpclient.Client(
             base_url=BASE_URL,
             headers={"Authorization": f"Bearer {api_key}", "Accept": "application/json"},
             timeout=30.0,
@@ -60,7 +60,7 @@ class LexwareClient:
         if elapsed < MIN_INTERVAL:
             time.sleep(MIN_INTERVAL - elapsed)
 
-    def _send(self, method: str, path: str, **kwargs: Any) -> niquests.Response:
+    def _send(self, method: str, path: str, **kwargs: Any) -> httpclient.Response:
         self._throttle()
         resp = self._client.request(method, path, **kwargs)
         self._last_call = time.monotonic()
@@ -102,10 +102,9 @@ class LexwareClient:
         instead of the actual file bytes when the Accept header doesn't
         ask for a binary type.
         """
-        content = self._send(
+        return self._send(
             "GET", path, headers={"Accept": "application/pdf, application/xml, */*"}
         ).content
-        return content or b""
 
     def _paginate(self, path: str, params: dict[str, Any]) -> Iterator[dict[str, Any]]:
         """Generic pager for Lexware's {content, last, ...} paged list
@@ -285,8 +284,8 @@ class LexwareClient:
                 article = self.get(f"/articles/{article_id}")
                 number = article.get("articleNumber") or article_id
                 self._article_cache[article_id] = (number, article.get("gtin") or None)
-            except niquests.HTTPError as exc:
-                if exc.response is None or exc.response.status_code != 404:
+            except httpclient.HTTPError as exc:
+                if exc.response.status_code != 404:
                     raise
                 fallback_number = item.get("articleNumber")
                 name = item.get("name", "?")
