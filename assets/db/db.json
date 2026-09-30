@@ -255,7 +255,7 @@
       "fillings": []
     },
     {
-      "gtin": "2001132501203",
+      "gtin": "2000000000015",
       "color": "goldgelb",
       "flavor": "aromatisch, fein-würzig",
       "gqb_certified": false,
@@ -589,7 +589,7 @@
       "fillings": []
     },
     {
-      "gtin": "2001215000005",
+      "gtin": "2000000000022",
       "color": "goldgelb",
       "flavor": "aromatisch, blumig",
       "gqb_certified": false,
@@ -725,7 +725,7 @@
       ]
     },
     {
-      "gtin": "2001000000005",
+      "gtin": "2000000000046",
       "color": "",
       "flavor": "",
       "gqb_certified": false,
@@ -867,7 +867,7 @@
       "fillings": []
     },
     {
-      "gtin": "2001000000012",
+      "gtin": "2000000000039",
       "color": "",
       "flavor": "",
       "gqb_certified": false,
@@ -926,10 +926,23 @@
         "packaging_type": "Stück",
         "packaging_unit": 1
       },
-      "fillings": []
+      "fillings": [
+        {
+          "filling_id": "A-2026-08",
+          "date": "2026-09-19",
+          "best_before_date": "2028-09-19",
+          "pieces": 24,
+          "comment": "",
+          "dib_field": "ULEC 1 — 24",
+          "label": "EDH Sommertracht mit Lindenhonig 250 g",
+          "weight_total": 6.0,
+          "batch_id": "L-2026-05",
+          "id": "A-2026-08"
+        }
+      ]
     },
     {
-      "gtin": "",
+      "gtin": "4270004430288",
       "color": "bernsteinfarben",
       "flavor": "aromatisch, feinherb",
       "gqb_certified": false,
@@ -988,10 +1001,23 @@
         "packaging_type": "Stück",
         "packaging_unit": 1
       },
-      "fillings": []
+      "fillings": [
+        {
+          "filling_id": "A-2026-09",
+          "date": "2026-09-19",
+          "best_before_date": "2028-09-19",
+          "pieces": 49,
+          "comment": "",
+          "dib_field": "ULDP 1 — 49",
+          "label": "EDH Sommertracht mit Lindenhonig 500 g",
+          "weight_total": 24.5,
+          "batch_id": "L-2026-05",
+          "id": "A-2026-09"
+        }
+      ]
     },
     {
-      "gtin": "",
+      "gtin": "4270004430240",
       "color": "bernsteinfarben",
       "flavor": "aromatisch, feinherb",
       "gqb_certified": false,
@@ -1347,6 +1373,32 @@
       "weight_total": 19.0,
       "batch_id": "L-2026-04",
       "id": "A-2026-07"
+    },
+    {
+      "sku": "HDSTL250E",
+      "filling_id": "A-2026-08",
+      "date": "2026-09-19",
+      "best_before_date": "2028-09-19",
+      "pieces": 24,
+      "comment": "",
+      "dib_field": "ULEC 1 — 24",
+      "label": "EDH Sommertracht mit Lindenhonig 250 g",
+      "weight_total": 6.0,
+      "batch_id": "L-2026-05",
+      "id": "A-2026-08"
+    },
+    {
+      "sku": "HDSTL500E",
+      "filling_id": "A-2026-09",
+      "date": "2026-09-19",
+      "best_before_date": "2028-09-19",
+      "pieces": 49,
+      "comment": "",
+      "dib_field": "ULDP 1 — 49",
+      "label": "EDH Sommertracht mit Lindenhonig 500 g",
+      "weight_total": 24.5,
+      "batch_id": "L-2026-05",
+      "id": "A-2026-09"
     }
   ],
   "buckets": [
@@ -2110,10 +2162,10 @@
       "bucket_id": "E-2026-16",
       "weight": 15.6,
       "moisture": 0.191,
-      "comment": "",
+      "comment": "TODO: ist der weg?",
       "done": false,
       "date": 1784592000,
-      "batch_id": null,
+      "batch_id": "L-2026-05",
       "centrifugation_id": "S-2026-02",
       "location_id": "ALLE",
       "id": "E-2026-16"
@@ -2122,10 +2174,10 @@
       "bucket_id": "E-2026-17",
       "weight": 15.6,
       "moisture": 0.19,
-      "comment": "",
+      "comment": "TODO: ist der weg?",
       "done": false,
       "date": 1784592000,
-      "batch_id": null,
+      "batch_id": "L-2026-05",
       "centrifugation_id": "S-2026-02",
       "location_id": "ALLE",
       "id": "E-2026-17"
@@ -2137,7 +2189,7 @@
       "comment": "",
       "done": false,
       "date": 1784592000,
-      "batch_id": null,
+      "batch_id": "L-2026-05",
       "centrifugation_id": "S-2026-02",
       "location_id": "ALLE",
       "id": "E-2026-18"
@@ -3270,8 +3322,8 @@
       "honey_type": "Sommertrachthonig",
       "gqb_compliant": true,
       "comment": "GQ-Bayern",
-      "weight": 98.39999999999999,
-      "avail": 73.39999999999999,
+      "weight": 145.2,
+      "avail": 120.19999999999999,
       "id": "L-2026-05",
       "fillings": [
         {
@@ -3285,6 +3337,30 @@
           "label": "EDH Sommertrachthonig 500 g",
           "weight_total": 16.0,
           "id": "A-2026-05"
+        },
+        {
+          "sku": "HDSTL250E",
+          "filling_id": "A-2026-08",
+          "date": "2026-09-19",
+          "best_before_date": "2028-09-19",
+          "pieces": 24,
+          "comment": "",
+          "dib_field": "ULEC 1 — 24",
+          "label": "EDH Sommertracht mit Lindenhonig 250 g",
+          "weight_total": 6.0,
+          "id": "A-2026-08"
+        },
+        {
+          "sku": "HDSTL500E",
+          "filling_id": "A-2026-09",
+          "date": "2026-09-19",
+          "best_before_date": "2028-09-19",
+          "pieces": 49,
+          "comment": "",
+          "dib_field": "ULDP 1 — 49",
+          "label": "EDH Sommertracht mit Lindenhonig 500 g",
+          "weight_total": 24.5,
+          "id": "A-2026-09"
         }
       ],
       "buckets": [
@@ -3320,6 +3396,39 @@
           "centrifugation_id": "S-2026-02",
           "location_id": "ALLE",
           "id": "E-2026-15"
+        },
+        {
+          "bucket_id": "E-2026-16",
+          "weight": 15.6,
+          "moisture": 0.191,
+          "comment": "TODO: ist der weg?",
+          "done": false,
+          "date": 1784592000,
+          "centrifugation_id": "S-2026-02",
+          "location_id": "ALLE",
+          "id": "E-2026-16"
+        },
+        {
+          "bucket_id": "E-2026-17",
+          "weight": 15.6,
+          "moisture": 0.19,
+          "comment": "TODO: ist der weg?",
+          "done": false,
+          "date": 1784592000,
+          "centrifugation_id": "S-2026-02",
+          "location_id": "ALLE",
+          "id": "E-2026-17"
+        },
+        {
+          "bucket_id": "E-2026-18",
+          "weight": 15.6,
+          "moisture": 0.19,
+          "comment": "",
+          "done": false,
+          "date": 1784592000,
+          "centrifugation_id": "S-2026-02",
+          "location_id": "ALLE",
+          "id": "E-2026-18"
         },
         {
           "bucket_id": "E-2026-19",
