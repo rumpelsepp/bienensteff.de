@@ -19,7 +19,7 @@ clean:
     rm -rf public
 
 update-db:
-    uv run --project scripts dump-db | jq > assets/db/db.json
+    uv run --project scripts dump-db > assets/db/db.json
 
 update-pricelist:
     uv run --project scripts gen-pricelist > data/preisliste.json

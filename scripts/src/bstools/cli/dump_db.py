@@ -238,6 +238,9 @@ def main() -> None:
         row["fillings"] = fillings_by_batch.get(row["batch_id"], [])
         row["buckets"] = buckets_by_batch.get(row["batch_id"], [])
 
+    # Pretty-printed and UTF-8 rather than \u-escaped, so commits of
+    # assets/db/db.json give readable diffs -- byte-identical to the `jq`
+    # pass the justfile used to pipe this through.
     print(
         json.dumps(
             {
@@ -246,7 +249,9 @@ def main() -> None:
                 "buckets": buckets,
                 "batches": batches,
                 "centrifugations": centrifugations,
-            }
+            },
+            indent=2,
+            ensure_ascii=False,
         )
     )
 
