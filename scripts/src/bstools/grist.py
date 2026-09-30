@@ -131,9 +131,11 @@ def _parse_widget_options(widget_options_raw: Any) -> dict[str, Any]:
 class GristClient:
     def __init__(self, base_url: str, api_key: str, doc_id: str) -> None:
         self._client = httpclient.Client(
-            base_url=base_url.rstrip("/"),
-            headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
-            timeout=30.0,
+            httpclient.ClientConfig(
+                base_url=base_url.rstrip("/"),
+                headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
+                timeout=30.0,
+            )
         )
         self.doc_id = doc_id
 

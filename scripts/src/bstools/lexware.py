@@ -18,7 +18,9 @@ logger = logging.getLogger(__name__)
 
 BASE_URL = "https://api.lexware.io/v1"
 APP_BASE_URL = "https://app.lexware.de"
-MIN_INTERVAL = 0.6  # Lexware caps at 2 req/s; margin built in.
+# Lexware caps at 2 req/s; margin built in. Enforced by the HTTP client
+# (ClientConfig.min_interval, start to start), incl. the 429 retry below.
+MIN_INTERVAL = 0.6
 # /voucherlist's own default page size is 25; 250 is the documented maximum.
 # Doesn't affect correctness (pagination stops on an empty page regardless
 # of page_size, see paginate_voucherlist), just fewer round-trips.
@@ -44,30 +46,24 @@ RESOURCE_INFO: dict[str, str] = {
 class LexwareClient:
     def __init__(self, api_key: str) -> None:
         self._client = httpclient.Client(
-            base_url=BASE_URL,
-            headers={"Authorization": f"Bearer {api_key}", "Accept": "application/json"},
-            timeout=30.0,
+            httpclient.ClientConfig(
+                base_url=BASE_URL,
+                headers={"Authorization": f"Bearer {api_key}", "Accept": "application/json"},
+                timeout=30.0,
+                min_interval=MIN_INTERVAL,
+            )
         )
-        self._last_call = 0.0
         # Per-instance caches -- both keyed by Lexware id, populated lazily by
         # get_article_number()/get_contact_name() so repeated lookups across
         # many vouchers cost one API call each instead of one per voucher.
         self._article_cache: dict[str, tuple[str, str | None]] = {}
         self._contact_name_cache: dict[str, str] = {}
 
-    def _throttle(self) -> None:
-        elapsed = time.monotonic() - self._last_call
-        if elapsed < MIN_INTERVAL:
-            time.sleep(MIN_INTERVAL - elapsed)
-
     def _send(self, method: str, path: str, **kwargs: Any) -> httpclient.Response:
-        self._throttle()
         resp = self._client.request(method, path, **kwargs)
-        self._last_call = time.monotonic()
         if resp.status_code == 429:
             time.sleep(2.0)
             resp = self._client.request(method, path, **kwargs)
-            self._last_call = time.monotonic()
         if not resp.ok and resp.status_code != 404:
             # 404 is deliberately quiet -- callers like get_article_number()
             # already expect and handle it (e.g. an article deleted since

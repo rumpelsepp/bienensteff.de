@@ -8,6 +8,10 @@ the key, like requests does), a JSON request body, redirects, transparent
 decompression, a few retries on connection failures, and a Response with
 status_code/ok/content/text/json()/raise_for_status().
 
+All settings live in one ClientConfig (frozen dataclass), so callers
+describe a client declaratively and can derive variants with
+dataclasses.replace() -- e.g. a CLI flag overriding the concurrency.
+
 Two flavors sharing all request setup:
 - Client: blocking. Keeps one curl handle, so connections are reused
   across requests (curl_easy_reset() keeps the connection cache). Not
@@ -16,6 +20,11 @@ Two flavors sharing all request setup:
   multi-socket API driven by the event loop -- no threads, no polling).
   Concurrent requests share the multi handle's connection pool, and
   HTTP/2 requests to the same host get multiplexed over one connection.
+
+Politeness: ClientConfig.min_interval spaces out request *starts* across
+the whole client (both flavors, incl. retries), independent of how many
+run concurrently -- max_concurrency alone would let a fast server be hit
+as often as it can answer.
 
 URLs are built with libcurl's own URL API (pycurl.CurlUrl, i.e.
 curl_url()) rather than string concatenation and urllib.parse: libcurl
@@ -26,7 +35,8 @@ the one built here.
 Logging (logger "bstools.httpclient"): one DEBUG line per request with
 status, HTTP version, size and a timing breakdown (DNS/connect/TLS/first
 byte/total, and whether a pooled connection was reused) -- shows up with
-any CLI's --debug. Setting BSTOOLS_HTTP_TRACE=1 additionally enables
+any CLI's --debug. ClientConfig.trace (default: BSTOOLS_HTTP_TRACE=1 in
+the environment) additionally enables
 curl's verbose trace (like `curl -v`: connection info, request and
 response headers, Authorization/Cookie redacted) on
 "bstools.httpclient.trace", independent of --debug.
@@ -48,9 +58,9 @@ import os
 import re
 import time
 from collections.abc import Mapping
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Self
+from typing import Any, Literal, Self
 
 import pycurl
 
@@ -92,6 +102,12 @@ _HTTP_VERSIONS = {
 
 # Matches the header both as a real header line ("Authorization: ...")
 # and inside curl's HTTP/2 stream info text ("[authorization: ...]").
+_HTTP_VERSION_OPTS = {
+    "1.1": pycurl.CURL_HTTP_VERSION_1_1,
+    "2": pycurl.CURL_HTTP_VERSION_2TLS,  # h2 over TLS, HTTP/1.1 for plain http
+    "3": pycurl.CURL_HTTP_VERSION_3,  # try h3, fall back to h2/h1.1
+}
+
 _REDACT_RE = re.compile(r"(?i)\b((?:proxy-)?authorization|(?:set-)?cookie)(:\s*)[^\]\r\n]*")
 
 
@@ -171,32 +187,70 @@ def _trace(infotype: int, data: bytes) -> None:
         trace_logger.debug("%s %s", prefix, line)
 
 
+@dataclass(frozen=True, kw_only=True)
+class ClientConfig:
+    """Everything a Client/AsyncClient can be tuned with.
+
+    Timeouts (seconds): `timeout` is how long a transfer may stall
+    without receiving any data (like requests' read timeout) -- it covers
+    a server that takes long to start answering as well as one that stops
+    mid-body. `connect_timeout` bounds DNS + TCP + TLS setup.
+    `total_timeout`, if set, is a hard cap on the whole request incl.
+    redirects.
+
+    `retries`/`retry_backoff`: retries only happen for connection
+    failures (see _RETRY_ANY/_RETRY_GET), never for HTTP error statuses or
+    timeouts -- callers handle those themselves. Retry n waits
+    retry_backoff * 2**n seconds.
+
+    `max_concurrency` (AsyncClient only) caps in-flight requests;
+    `min_interval` is the minimum time between two request starts across
+    the whole client -- together they bound the load on the server.
+
+    `http_version`: None lets libcurl negotiate (HTTP/2 over TLS where
+    the server offers it); "3" tries HTTP/3 first. `ca_bundle`: None
+    autodetects the system bundle (see _find_ca_bundle). `trace`: curl's
+    verbose trace, see the module docstring.
+    """
+
+    base_url: str = ""
+    headers: Mapping[str, str] = field(default_factory=dict)
+    user_agent: str = pycurl.version.split()[0]
+    connect_timeout: float = 10.0
+    timeout: float = 60.0
+    total_timeout: float | None = None
+    retries: int = 2
+    retry_backoff: float = 0.5
+    max_redirects: int = 10
+    max_concurrency: int = 4
+    min_interval: float = 0.0
+    http_version: Literal["1.1", "2", "3"] | None = None
+    ca_bundle: str | None = None
+    trace: bool = TRACE
+
+
 class _BaseClient:
-    def __init__(
-        self,
-        base_url: str = "",
-        headers: Mapping[str, str] | None = None,
-        timeout: float = 60.0,
-        connect_timeout: float = 10.0,
-        total_timeout: float | None = None,
-        retries: int = 2,
-    ) -> None:
-        """`timeout` is how long a transfer may stall without receiving
-        any data (like requests' read timeout) -- it covers a server that
-        takes long to start answering as well as one that stops mid-body.
-        `connect_timeout` bounds DNS + TCP + TLS setup. `total_timeout`,
-        if set, is a hard cap on the whole request incl. redirects.
-        `retries` only applies to connection failures (see _RETRY_ANY/
-        _RETRY_GET), never to HTTP error statuses or timeouts -- callers
-        handle those themselves.
-        """
-        self.base_url = pycurl.CurlUrl(base_url.encode()) if base_url else None
-        self.headers = dict(headers or {})
-        self.timeout = timeout
-        self.connect_timeout = connect_timeout
-        self.total_timeout = total_timeout
-        self.retries = retries
-        self._ca_bundle = _find_ca_bundle()
+    def __init__(self, config: ClientConfig | None = None) -> None:
+        self.config = config or ClientConfig()
+        self.base_url = (
+            pycurl.CurlUrl(self.config.base_url.encode()) if self.config.base_url else None
+        )
+        self.headers = dict(self.config.headers)
+        self._ca_bundle = self.config.ca_bundle or _find_ca_bundle()
+        self._next_start = 0.0
+
+    def _reserve_start(self) -> float:
+        """Books the next request start slot per config.min_interval and
+        returns how long to wait for it (0 if it's now). Reservation
+        rather than sleep-under-lock, so concurrent async requests queue
+        up in order without holding anything while they wait."""
+        interval = self.config.min_interval
+        if interval <= 0:
+            return 0.0
+        now = time.monotonic()
+        start = max(now, self._next_start)
+        self._next_start = start + interval
+        return start - now
 
     def _build_url(self, url: str, params: Mapping[str, Any] | None) -> pycurl.CurlUrl:
         """Relative `url`s are appended to the base URL's path (not
@@ -245,24 +299,27 @@ class _BaseClient:
         header_lines: list[str],
         body: bytes | None,
     ) -> io.BytesIO:
+        cfg = self.config
         c.reset()
         buf = io.BytesIO()
         c.setopt(pycurl.CURLU, url)
         c.setopt(pycurl.HTTPHEADER, header_lines)
         c.setopt(pycurl.WRITEDATA, buf)
         c.setopt(pycurl.FOLLOWLOCATION, True)
-        c.setopt(pycurl.MAXREDIRS, 10)
+        c.setopt(pycurl.MAXREDIRS, cfg.max_redirects)
         c.setopt(pycurl.ACCEPT_ENCODING, "")  # everything libcurl can decode
-        c.setopt(pycurl.USERAGENT, pycurl.version.split()[0])
+        c.setopt(pycurl.USERAGENT, cfg.user_agent)
         c.setopt(pycurl.NOSIGNAL, True)
-        c.setopt(pycurl.CONNECTTIMEOUT_MS, int(self.connect_timeout * 1000))
+        c.setopt(pycurl.CONNECTTIMEOUT_MS, int(cfg.connect_timeout * 1000))
         c.setopt(pycurl.LOW_SPEED_LIMIT, 1)
-        c.setopt(pycurl.LOW_SPEED_TIME, max(1, math.ceil(self.timeout)))
-        if self.total_timeout is not None:
-            c.setopt(pycurl.TIMEOUT_MS, int(self.total_timeout * 1000))
+        c.setopt(pycurl.LOW_SPEED_TIME, max(1, math.ceil(cfg.timeout)))
+        if cfg.total_timeout is not None:
+            c.setopt(pycurl.TIMEOUT_MS, int(cfg.total_timeout * 1000))
+        if cfg.http_version is not None:
+            c.setopt(pycurl.HTTP_VERSION, _HTTP_VERSION_OPTS[cfg.http_version])
         if self._ca_bundle:
             c.setopt(pycurl.CAINFO, self._ca_bundle)
-        if TRACE:
+        if cfg.trace:
             c.setopt(pycurl.VERBOSE, True)
             c.setopt(pycurl.DEBUGFUNCTION, _trace)
 
@@ -344,16 +401,17 @@ class _BaseClient:
         """Seconds to wait before retry number `attempt` (1-based), or
         None if `exc` shouldn't be retried."""
         retryable = exc.curl_code in _RETRY_ANY or (method == "GET" and exc.curl_code in _RETRY_GET)
-        if isinstance(exc, Timeout) or not retryable or attempt > self.retries:
+        retries = self.config.retries
+        if isinstance(exc, Timeout) or not retryable or attempt > retries:
             return None
-        delay = 0.5 * 2.0**attempt
-        logger.warning("%s, retrying in %.1fs (%s/%s)", exc, delay, attempt, self.retries)
+        delay = self.config.retry_backoff * 2.0**attempt
+        logger.warning("%s, retrying in %.1fs (%s/%s)", exc, delay, attempt, retries)
         return delay
 
 
 class Client(_BaseClient):
-    def __init__(self, *args: Any, **kwargs: Any) -> None:
-        super().__init__(*args, **kwargs)
+    def __init__(self, config: ClientConfig | None = None) -> None:
+        super().__init__(config)
         self._curl = pycurl.Curl()
 
     def close(self) -> None:
@@ -377,6 +435,8 @@ class Client(_BaseClient):
         method, curl_url, header_lines, body = self._prepare(method, url, params, json, headers)
         attempt = 0
         while True:
+            if wait := self._reserve_start():
+                time.sleep(wait)
             buf = self._setup(self._curl, method, curl_url, header_lines, body)
             try:
                 self._curl.perform()
@@ -401,12 +461,10 @@ class Client(_BaseClient):
 
 
 class AsyncClient(_BaseClient):
-    def __init__(self, *args: Any, max_concurrency: int = 4, **kwargs: Any) -> None:
-        """`max_concurrency` caps in-flight requests across the whole
-        client -- be kind to the servers on the other end."""
-        super().__init__(*args, **kwargs)
+    def __init__(self, config: ClientConfig | None = None) -> None:
+        super().__init__(config)
         self._multi = pycurl.AsyncCurlMulti()
-        self._sem = asyncio.Semaphore(max_concurrency)
+        self._sem = asyncio.Semaphore(self.config.max_concurrency)
         # Idle easy handles, reused across requests (one per concurrent
         # request at most); connections live in the multi handle's pool.
         self._idle: list[pycurl.Curl] = []
@@ -436,6 +494,8 @@ class AsyncClient(_BaseClient):
         attempt = 0
         while True:
             async with self._sem:
+                if wait := self._reserve_start():
+                    await asyncio.sleep(wait)
                 c = self._idle.pop() if self._idle else pycurl.Curl()
                 try:
                     buf = self._setup(c, method, curl_url, header_lines, body)
