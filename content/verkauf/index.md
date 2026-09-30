@@ -36,7 +36,7 @@ Ihr wollt Honig? Schreibt uns kurz mit Sorte und Menge – oder nehmt ihn direkt
 </div>
 {{</ sortiment.inline >}}
 
-Alle Produkte und unsere attraktiven Mengenrabatte findet ihr in der [aktuellen Preisliste]({{< relref "verkauf#preisliste" >}}).
+Preise – auch für größere Mengen – nennen wir euch gern auf [Anfrage]({{< relref "kontakt#honig-kaufen--bestellanfrage" >}}).
 Je nach Blüten und Jahreszeit kann der Honig a bisserl anders schmecken oder ausschauen – so wie’s die Natur vorgibt.
 Mit der Zeit wird er fester bzw. [kristallisiert]({{< relref "honigkunde#kristallisation" >}}) – des is a ganz natürlicher Vorgang und zeigt, dass er unbehandelt is.
 
@@ -77,56 +77,13 @@ Wir nehmen Honiggläser gerne gespült zurück – Etikett bitte, wenn möglich,
 Wir führen kein klassisches Ladengeschäft mit festen Öffnungszeiten.
 Für den Direktverkauf an der Haustür bitte vorher kurz anrufen oder schreiben – wie ihr uns erreicht und wann meist jemand da ist, steht auf der [Kontaktseite]({{< relref "kontakt" >}}).
 
-## Preisliste
+## Bestellung
 
-{{< pricelist.inline >}}
-    <p>
-      <strong>
-      Gültig ab
-      {{ time.AsTime (index hugo.Data.preisliste.timestamp) | time.Format ":date_medium"}}
-      </strong>
-    </p>
-
-    <table class="table table-striped table-bordered">
-        <thead>
-            <tr>
-              <th>Art.-Nr.</th>
-              <th>Produkt</th>
-              <th>Marke</th>
-              <th><acronym title="Verkaufseinheit">VKE</acronym></th>
-              <!-- <th><acronym title="Verpackungseinheit">VPE</acronym></th> -->
-              <th>Preis</th>
-              <th>Preis / kg</th>
-            </tr>
-        </thead>
-        <tbody>
-          {{- range index hugo.Data.preisliste.articles -}}
-            {{ if .in_stock }}
-            <tr>
-            {{ else }}
-            <tr class="line-through">
-            {{ end }}
-                <td>{{ .sku }}</td>
-                <td>{{ .product_name }}</td>
-                <td>{{ .brand }}</td>
-                <td>{{ .vke }}</td>
-                <!-- <td>{{ .vpe }}</td> -->
-                <td>{{ .price }} €</td>
-                <td>{{ .price_per_kg }} €</td>
-            </tr>
-          {{- end -}}
-        </tbody>
-    </table>
-{{</ pricelist.inline >}}
-
-Wer gleich **sechs Gläser oder mehr** mitnimmt, bekommt 10 % Rabatt. 🙂
 Auf Wunsch füllen wir den Honig auch in mitgebrachte Gläser oder auch Eimer ab.
 Sonderabfüllungen bitte **bis Anfang September** anfragen – dann können wir’s passend einplanen.
 
-Alle Preise sind Endverbraucherpreise (EVP) im Direktverkauf.
 Die Abgabe erfolgt in haushaltsüblichen Mengen und nur solange der Vorrat reicht.
 Wir sind nach §19 UStG als Kleinbetrieb umsatzsteuerbefreit – es wird keine Mehrwertsteuer ausgewiesen.
-Durchgestrichene Sorten sind derzeit ausverkauft.
 
 ## Wissenswertes
 

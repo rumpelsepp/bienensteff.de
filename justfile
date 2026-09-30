@@ -21,9 +21,6 @@ clean:
 update-db:
     uv run --project scripts dump-db > assets/db/db.json
 
-update-pricelist:
-    uv run --project scripts gen-pricelist > data/preisliste.json
-
 update-trachtnet:
     uv run --project scripts dump-trachtnet --outdir static/trachtnet-dump
 
