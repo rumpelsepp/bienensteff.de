@@ -4,8 +4,6 @@
   content: |
     Echter deutscher Honig® aus der Blütenvielfalt unserer bayerischen Wiesen und Wälder – aromatisch, blumig und unverfälscht.
     Auch im kleineren Glas erhältlich: das perfekte Geschenk für Freunde, Familie! 🎁
-  footer: |
-    <a href="https://www.gq-bayern.de" rel="noopener noreferrer" target="_blank"><img class="me-2" height="40" src="/GQB-Logo-ohne-txt.svg" loading="lazy"></a>
   active: true
 
 - title: "Blütenhonig 500 g"
@@ -14,6 +12,4 @@
   content: |
     Unser Blütenhonig wird von Bienen aus einer bunten Vielfalt regionaler Blüten gesammelt.
     Hergestellt in unserer eigenen Imkerei, vermarktet unter unserer Hausmarke.
-  footer: |
-    <a href="/"><img class="me-2" width="40" src="/img/logo.svg" loading="lazy"></a>
   active: true
