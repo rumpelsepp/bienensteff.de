@@ -21,18 +21,10 @@ clean:
 update-db:
     uv run --project scripts dump-db | jq > assets/db/db.json
 
-format-trachtnet:
-    #!/usr/bin/env bash
-
-    for f in "$PWD/static/trachtnet-dump"/**/*.json; do
-        jq < "$f" > "$f".pretty
-        mv "$f".pretty "$f"
-    done
-
 update-pricelist:
     uv run --project scripts gen-pricelist > data/preisliste.json
 
-update-trachtnet: && format-trachtnet
+update-trachtnet:
     uv run --project scripts dump-trachtnet --year $(date +%Y) --outdir static/trachtnet-dump
 
 update-klima:

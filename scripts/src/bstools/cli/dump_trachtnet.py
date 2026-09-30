@@ -18,6 +18,7 @@ import dataclasses
 import datetime
 import enum
 import http
+import json
 import logging
 import re
 from pathlib import Path
@@ -1813,7 +1814,11 @@ class TrachtnetClient:
 
         outfile = outdir.joinpath(folder).joinpath(f"{name.lower()}-{year}.json")
         outfile.parent.mkdir(parents=True, exist_ok=True)
-        outfile.write_text(raw_data[0]["dataframe"].write_json())
+        # Pretty-printed (2-space indent, trailing newline) so the daily
+        # data commits give readable per-day diffs -- byte-identical to the
+        # `jq` pass the justfile used to run over every file afterwards.
+        records = json.loads(raw_data[0]["dataframe"].write_json())
+        outfile.write_text(json.dumps(records, indent=2, ensure_ascii=False) + "\n")
 
 
 async def dump_all(config: TrachtnetConfig, years: list[int], outdir: Path) -> None:
