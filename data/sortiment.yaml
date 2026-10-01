@@ -1,4 +1,5 @@
-- title: "Blütenhonig 250 g / 500 g (GQ-Bayern)"
+- title: "Blütenhonig 250 g / 500 g"
+  gqb: true
   subtitle: "Art.-Nr.: HDB250E / HDB500E"
   image: "/db/img/sku-hdb250e.png"
   content: |
@@ -12,4 +13,16 @@
   content: |
     Unser Blütenhonig wird von Bienen aus einer bunten Vielfalt regionaler Blüten gesammelt.
     Hergestellt in unserer eigenen Imkerei, vermarktet unter unserer Hausmarke.
+  active: true
+
+- title: "Sommertracht mit Lindenhonig 250 g / 500 g"
+  gqb: true
+  subtitle: "Art.-Nr.: HDSTL250E / HDSTL500E"
+  # No photo of this one yet: same jar as the Blütenhonig, only the variety
+  # on the label differs.
+  image: "/db/img/sku-hdb250e.png"
+  image_note: "Abbildung ähnlich"
+  content: |
+    Echter deutscher Honig® vom Sommer mit einem Anteil Lindenhonig – bernsteinfarben, aromatisch und feinherb.
+    Im 250-g- und im 500-g-Glas erhältlich.
   active: true
