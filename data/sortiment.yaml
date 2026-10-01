@@ -1,4 +1,4 @@
-- title: "Blütenhonig 250 g / 500 g"
+- title: "Blütenhonig 250\u00A0g / 500\u00A0g"
   gqb: true
   subtitle: "Art.-Nr.: HDB250E / HDB500E"
   image: "/db/img/sku-hdb250e.png"
@@ -7,7 +7,7 @@
     Auch im kleineren Glas erhältlich: das perfekte Geschenk für Freunde, Familie! 🎁
   active: true
 
-- title: "Blütenhonig 500 g"
+- title: "Blütenhonig 500\u00A0g"
   subtitle: "Art.-Nr.: HNB500E"
   image: "/db/img/sku-hnb500e.png"
   content: |
@@ -15,7 +15,7 @@
     Hergestellt in unserer eigenen Imkerei, vermarktet unter unserer Hausmarke.
   active: true
 
-- title: "Sommertracht mit Lindenhonig 250 g / 500 g"
+- title: "Sommertracht mit Lindenhonig 250\u00A0g / 500\u00A0g"
   gqb: true
   subtitle: "Art.-Nr.: HDSTL250E / HDSTL500E"
   # No photo of this one yet: same jar as the Blütenhonig, only the variety
@@ -24,5 +24,5 @@
   image_note: "Abbildung ähnlich"
   content: |
     Echter deutscher Honig® vom Sommer mit einem Anteil Lindenhonig – bernsteinfarben, aromatisch und feinherb.
-    Im 250-g- und im 500-g-Glas erhältlich.
+    Im 250&nbsp;g und im 500&nbsp;g Glas erhältlich.
   active: true
