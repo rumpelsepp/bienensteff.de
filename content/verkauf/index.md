@@ -24,11 +24,22 @@ Ihr wollt Honig? Schreibt uns kurz mit Sorte und Menge – oder nehmt ihn direkt
 {{< sortiment.inline dataset="sortiment" >}}
 {{ $datasetName := .Get "dataset" }}
 
-<div class="row">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 mb-4">
   {{- range index hugo.Data $datasetName -}}
     {{ if .active }}
-    <div class="col-sm-6 mb-4">
-      {{ $params := merge . (dict "content" (.content | markdownify) "footer" (.footer | markdownify) "cardClass" "me-2") }}
+    <div class="col">
+      {{ $content := .content | markdownify }}
+      {{/* Overlays on the photo, the CSS lifts them out of the card body:
+           .gqb puts the GQ-Bayern seal in the top left corner, .image_note
+           is e.g. "Abbildung ähnlich" for a photo borrowed from a similar
+           product. */}}
+      {{ if .gqb }}
+        {{ $content = printf `%s<a class="sortiment-seal" href="https://www.gq-bayern.de" rel="noopener noreferrer" target="_blank"><img src="/GQB-Logo-ohne-txt.svg" loading="lazy" alt="Geprüfte Qualität – Bayern"></a>` $content | safeHTML }}
+      {{ end }}
+      {{ with .image_note }}
+        {{ $content = printf `%s<span class="sortiment-image-note">%s</span>` $content (. | htmlEscape) | safeHTML }}
+      {{ end }}
+      {{ $params := merge . (dict "content" $content "footer" (.footer | markdownify) "cardClass" "sortiment-card h-100") }}
       {{- partial "card.html" $params -}}
     </div>
     {{ end }}

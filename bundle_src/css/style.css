@@ -70,3 +70,79 @@
   background-color: var(--honey-700);
   border-color: var(--honey-700);
 }
+
+/* --------------------------------------------------------------------
+   Sortiment cards (Verkauf)
+   -------------------------------------------------------------------- */
+
+.sortiment-card {
+  /* Only visible behind the product photo, .card-body paints its own
+     surface. The photos have a plain white backdrop, so multiplying them
+     onto the gradient turns that white into a soft honey spotlight. */
+  background: radial-gradient(
+    ellipse at 50% 55%,
+    var(--color-surface) 35%,
+    color-mix(in srgb, var(--color-primary) 16%, var(--color-surface)) 100%
+  );
+  box-shadow: var(--shadow-md);
+  /* For the cqi unit of the photo overlays below. */
+  container-type: inline-size;
+
+  .card-img-top {
+    mix-blend-mode: multiply;
+  }
+
+  .card-body {
+    background: var(--color-surface);
+    border-top: 3px solid var(--color-primary);
+    padding: 1.25rem 1.5rem 1.5rem;
+    /* Justified text tears holes into a column this narrow. */
+    text-align: start;
+    hyphens: manual;
+  }
+
+  /* Both sit in .card-body in the markup and are placed on the photo above
+     it, relative to the card: the seal in the top left corner, the note in
+     the bottom right one. The photo is as wide as the card and 4:3 (see
+     .card-img-top in the theme), so its bottom edge is at 75cqi. */
+  .sortiment-seal,
+  .sortiment-image-note {
+    position: absolute;
+  }
+
+  .sortiment-seal {
+    top: 0.75rem;
+    left: 0.75rem;
+    line-height: 0;
+
+    img {
+      height: 3.25rem;
+      width: auto;
+    }
+  }
+
+  .sortiment-image-note {
+    top: calc(75cqi - 0.6rem);
+    right: 0.75rem;
+    transform: translateY(-100%);
+    padding: 0.1rem 0.6rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-surface) 85%, transparent);
+    color: var(--color-ink-muted);
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .card-subtitle {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+}
