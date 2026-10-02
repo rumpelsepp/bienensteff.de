@@ -1,5 +1,5 @@
 {{ define "_partials/inline/db/permalink.html" }}
-    <tr><th>Permalink</th>
+    <tr><th scope="row">Permalink</th>
         <td>
             {{ if hugo.IsDevelopment }}
                 <a href="{{ .Permalink }}">{{ .Permalink }}</a>
@@ -14,7 +14,7 @@
 {{ define "_partials/inline/db/analysis-permalink.html" }}
     {{ with resources.GetMatch (printf "/db/analysen/an-%s.pdf" (strings.ToLower .)) }}
     <tr>
-        <th>Laboranalyse</th>
+        <th scope="row">Laboranalyse</th>
         <td>
             {{ if hugo.IsDevelopment }}
                 <a href="{{ .Permalink }}">{{ .Permalink }}</a>
@@ -49,7 +49,7 @@
     {{ errorf "invalid id in: %+v" .Params }}
 {{ end }}
 
-<main class="single">
+<div class="single">
     <article class="content">
     <header>
         <h1>
@@ -113,6 +113,6 @@
         {{ partial "image/figure.html" (dict "image" . "caption" $id) }}
     {{ end }}
     </article>
-</main>
+</div>
 
 {{ end }}

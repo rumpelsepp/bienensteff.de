@@ -16,9 +16,9 @@ Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://
 <table class="table table-sm table-striped">
     <thead>
         <tr>
-            <th>Zeitpunkt</th>
-            <th>Ereignis</th>
-            <th>Beschreibung</th>
+            <th scope="col">Zeitpunkt</th>
+            <th scope="col">Ereignis</th>
+            <th scope="col">Beschreibung</th>
         </tr>
     </thead>
     <tbody class="table-group-divider">

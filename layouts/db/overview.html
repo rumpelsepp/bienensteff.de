@@ -1,6 +1,6 @@
 {{ define "main" }}
 
-<main class="single">
+<div class="single">
     <article class="content">
     <header>
         <h1>{{$.Title}}</h1>
@@ -19,10 +19,10 @@
         <table id="honeydb" class="table table-striped table-bordered">
         <thead>
             <tr>
-                <th>Artikelnummer</th>
-                <th>GTIN</th>
-                <th>Produktname</th>
-                <th>Marke</th>
+                <th scope="col">Artikelnummer</th>
+                <th scope="col">GTIN</th>
+                <th scope="col">Produktname</th>
+                <th scope="col">Marke</th>
             </tr>
         </thead>
         <tbody>
@@ -48,4 +48,6 @@
         </div>
     {{ end }}
 {{ end }}
+    </article>
+</div>
 {{ end }}

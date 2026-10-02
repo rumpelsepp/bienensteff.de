@@ -36,6 +36,21 @@
   --bs-dropdown-link-active-bg: var(--honey-700);
 }
 
+/* Bootstrap's outline button is its own blue, which has only 4.2:1 on the
+   page background; the darker honey shade has enough contrast and is on
+   brand. */
+.btn-outline-primary {
+  --bs-btn-color: var(--honey-800);
+  --bs-btn-border-color: var(--honey-800);
+  --bs-btn-hover-bg: var(--honey-800);
+  --bs-btn-hover-border-color: var(--honey-800);
+  --bs-btn-active-bg: var(--honey-900);
+  --bs-btn-active-border-color: var(--honey-900);
+  --bs-btn-disabled-color: var(--honey-800);
+  --bs-btn-disabled-border-color: var(--honey-800);
+  --bs-btn-focus-shadow-rgb: 184, 114, 12;
+}
+
 .btn-primary {
   --bs-btn-bg: var(--honey-700);
   --bs-btn-border-color: var(--honey-700);

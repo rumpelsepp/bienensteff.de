@@ -18,8 +18,8 @@ contact = """Imkerei Stefan Tatschner
 Gräfelfinger Str. 169a  
 81375 München
 
-<i class="bi bi-telephone"></i> [+49 1512 4096409](tel:+4915124096409)  
-<i class="bi bi-envelope"></i> info@bienensteff.de  
+<i class="bi bi-telephone" aria-hidden="true"></i> [+49 1512 4096409](tel:+4915124096409)  
+<i class="bi bi-envelope" aria-hidden="true"></i> info@bienensteff.de  
 """
 
 [menus]

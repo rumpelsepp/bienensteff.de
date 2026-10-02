@@ -17,9 +17,9 @@ Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://
 <table class="table table-sm">
     <thead>
         <tr>
-            <th>Schritt</th>
-            <th>Zeitpunkt</th>
-            <th>Völkerführung und Varroabehandlung</th>
+            <th scope="col">Schritt</th>
+            <th scope="col">Zeitpunkt</th>
+            <th scope="col">Völkerführung und Varroabehandlung</th>
         </tr>
     </thead>
     <tbody class="table-group-divider">
