@@ -8,15 +8,15 @@
 
   <div class="footer-grid">
     <div class="footer-col">
-      <h6>Externe Links</h6>
+      <h2 class="footer-title">Externe Links</h2>
       {{ partial "menu-stock.html" (dict "menuID" "footerexternallinks" "label" "Externe Links" "page" .) }}
     </div>
     <div class="footer-col">
-      <h6>Rechtliches</h6>
+      <h2 class="footer-title">Rechtliches</h2>
       {{ partial "menu-stock.html" (dict "menuID" "footerlegal" "label" "Rechtliches" "page" .) }}
     </div>
     <div class="footer-col">
-      <h6>Kontakt</h6>
+      <h2 class="footer-title">Kontakt</h2>
       <address>{{ .Site.Params.contact | markdownify }}</address>
       {{ with .Site.GetPage "/kontakt" }}<a href="{{ .RelPermalink }}">Zur Kontaktseite</a>{{ end }}
     </div>

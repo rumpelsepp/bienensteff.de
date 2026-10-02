@@ -1,7 +1,7 @@
-<tr><th>Losnummer</th><td>{{ .Params.id }}</td></tr>
-<tr><th>Sortenempfehlung</th><td>{{ .Params.honey_type }}</td></tr>
-<tr><th>Gewicht</th><td>{{ partial "db/de-number.html" (dict "format" "%.2f kg" "value" .Params.weight) }}</td></tr>
-<tr><th>Geprüfte Qualität Bayern</th><td>
+<tr><th scope="row">Losnummer</th><td>{{ .Params.id }}</td></tr>
+<tr><th scope="row">Sortenempfehlung</th><td>{{ .Params.honey_type }}</td></tr>
+<tr><th scope="row">Gewicht</th><td>{{ partial "db/de-number.html" (dict "format" "%.2f kg" "value" .Params.weight) }}</td></tr>
+<tr><th scope="row">Geprüfte Qualität Bayern</th><td>
     {{ if .Params.certified }}
         ja
     {{ else }}
@@ -9,11 +9,11 @@
     {{ end }}
 </td></tr>
 {{ with .Params.fillings }}
-    <tr><th>Abfüllungen</th>
+    <tr><th scope="row">Abfüllungen</th>
     <td>{{ partial "db/filling_list.html" (dict "fillings" . "showBatchLink" false) }}</td></tr>
 {{ end }}
 {{ with .Params.buckets }}
-    <tr><th>Eimer</th><td>
+    <tr><th scope="row">Eimer</th><td>
         <ul>
             {{ range . }}
                 <li>

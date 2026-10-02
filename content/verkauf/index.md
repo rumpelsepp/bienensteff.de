@@ -16,7 +16,7 @@ Unser Honig wird zu 100 % in Bayern erzeugt, gelagert und liebevoll verarbeite
 Ihr wollt Honig? Schreibt uns kurz mit Sorte und Menge – oder nehmt ihn direkt an einer unserer [Verkaufsstellen](#verkaufsstellen) mit.
 
 <a class="btn btn-primary mb-3" href="{{< relref "kontakt#honig-kaufen--bestellanfrage" >}}">
-<i class="bi bi-envelope"></i> Bestellanfrage &amp; Kontakt
+<i class="bi bi-envelope" aria-hidden="true"></i> Bestellanfrage &amp; Kontakt
 </a>
 
 ## Sortiment 2026 {#sortiment}
@@ -68,10 +68,10 @@ Wir nehmen Honiggläser gerne gespült zurück – Etikett bitte, wenn möglich,
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
-              <th>Verkaufsstelle</th>
-              <th>Art</th>
-              <th>Adresse</th>
-              <th>Kontakt</th>
+              <th scope="col">Verkaufsstelle</th>
+              <th scope="col">Art</th>
+              <th scope="col">Adresse</th>
+              <th scope="col">Kontakt</th>
             </tr>
         </thead>
         <tbody>

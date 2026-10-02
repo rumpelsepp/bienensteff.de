@@ -1,20 +1,20 @@
-<tr><th><abbr title="Stock Keeping Unit">SKU</abbr></th><td>{{ .Params.sku }}</td></tr>
+<tr><th scope="row"><abbr title="Stock Keeping Unit">SKU</abbr></th><td>{{ .Params.sku }}</td></tr>
 {{ with .Params.gtin }}
-    <tr><th><abbr title="Global Trade Item Number (vormals EAN)">GTIN</abbr></th><td>{{ partial "db/link_gtin.html" (dict "gtin" .) }}</td></tr>
+    <tr><th scope="row"><abbr title="Global Trade Item Number (vormals EAN)">GTIN</abbr></th><td>{{ partial "db/link_gtin.html" (dict "gtin" .) }}</td></tr>
 {{ end }}
 
 {{ with .Params.description }}
-    <tr><th>Beschreibung</th><td>{{ . }}</td></tr>
+    <tr><th scope="row">Beschreibung</th><td>{{ . }}</td></tr>
 {{ else with .Params.auto_description }}
-    <tr><th>Beschreibung</th><td>{{ . }}</td></tr>
+    <tr><th scope="row">Beschreibung</th><td>{{ . }}</td></tr>
 {{ end }}
 {{ with .Params.brand }}
-    <tr><th>Marke</th><td>{{ .name }}</td></tr>
+    <tr><th scope="row">Marke</th><td>{{ .name }}</td></tr>
     {{ with .hint }}
-        <tr><th>Produkthinweis</th><td>{{ . }}</td></tr>
+        <tr><th scope="row">Produkthinweis</th><td>{{ . }}</td></tr>
     {{ end }}
     {{ with .corporate_claim }}
-        <tr><th>Marketingbotschaft</th><td>{{ . }}</td></tr>
+        <tr><th scope="row">Marketingbotschaft</th><td>{{ . }}</td></tr>
     {{ end }}
 {{ end }}
 {{/* Abgelaufene Abfüllungen (MHD < heute) werden hier ausgeblendet, damit
@@ -24,7 +24,7 @@
      Abfüllung eine eigene Seite erzeugt. */}}
 {{ $validFillings := where .Params.fillings "best_before_date" "ge" (now.Format "2006-01-02") }}
 {{ with $validFillings }}
-    <tr><th>Abfüllungen</th>
+    <tr><th scope="row">Abfüllungen</th>
         <td>{{ partial "db/filling_list.html" (dict "fillings" . "showBatchLink" true) }}</td>
     </tr>
 {{ end }}

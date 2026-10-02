@@ -1,8 +1,8 @@
-<tr><th>Schleuderungsnummer</th><td>{{ .Params.id }}</td></tr>
-<tr><th>Schleuderdatum</th><td>{{ partial "db/date.html" (dict "date" .Params.date) }}</td></tr>
-<tr><th>Gewicht</th><td>{{ partial "db/de-number.html" (dict "format" "%.2f kg" "value" .Params.weight) }}</td></tr>
+<tr><th scope="row">Schleuderungsnummer</th><td>{{ .Params.id }}</td></tr>
+<tr><th scope="row">Schleuderdatum</th><td>{{ partial "db/date.html" (dict "date" .Params.date) }}</td></tr>
+<tr><th scope="row">Gewicht</th><td>{{ partial "db/de-number.html" (dict "format" "%.2f kg" "value" .Params.weight) }}</td></tr>
 {{ with .Params.batches }}
-    <tr><th>Honiglose</th>
+    <tr><th scope="row">Honiglose</th>
     <td>
         <ul>
             {{ range . }}
@@ -12,7 +12,7 @@
     </td></tr>
 {{ end }}
 {{ with .Params.buckets }}
-    <tr><th>Eimer</th>
+    <tr><th scope="row">Eimer</th>
     <td>
         <ul>
             {{ range . }}
@@ -22,5 +22,5 @@
     </td></tr>
 {{ end }}
 {{ with .Params.comment }}
-    <tr><th>Kommentar</th><td>{{ . }}</td></tr>
+    <tr><th scope="row">Kommentar</th><td>{{ . }}</td></tr>
 {{ end }}
