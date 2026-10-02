@@ -126,10 +126,23 @@ Gräfelfinger Str. 169a
     privacyEnhanced = true
 
 [imaging]
-  # Lossy quality for resized images (WebP via the fig/image partials).
-  # 97 made 1200px WebPs 700-900 KB; around 80 is visually indistinguishable.
-  quality = 80
   resampleFilter = "Lanczos"
+
+  # Global nur fuer Hugo < 0.163 (z.B. das Fedora-Paket), das die Werte pro
+  # Format unten noch nicht kennt und sonst mit 75 baut. Neuere Versionen
+  # melden den Schluessel als veraltet (nur auf Log-Level info) und nehmen
+  # die Werte pro Format. Kann weg, sobald lokal kein altes Hugo mehr laeuft.
+  quality = 90
+
+  # Lossy quality for resized images (WebP via the fig/image partials).
+  # 97 made 1200px WebPs 700-900 KB; 80 showed artefacts in soft gradients,
+  # hence 90. Set per format, as on the other two sites: the global
+  # imaging.quality is deprecated since Hugo 0.163.
+  [imaging.webp]
+    quality = 90
+
+  [imaging.jpeg]
+    quality = 90
 
 [security]
   enableInlineShortcodes = true
