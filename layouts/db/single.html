@@ -4,7 +4,8 @@
             {{ if hugo.IsDevelopment }}
                 <a href="{{ .Permalink }}">{{ .Permalink }}</a>
             {{ else }}
-                <a href="https://db.bienensteff.de/?q={{ strings.ToLower .Params.id }}">https://db.bienensteff.de/?q={{ strings.ToLower .Params.id }}</a>
+                {{ $url := printf "https://db.bienensteff.de/?q=%s" (strings.ToLower .Params.id) }}
+                {{ partial "link.html" (dict "href" $url "text" $url) }}
             {{ end }}
         </td>
     </tr>
@@ -19,7 +20,8 @@
                 <a href="{{ .Permalink }}">{{ .Permalink }}</a>
             {{ else }}
                 <!-- This is needed to force hugo to copy the files: {{ .Permalink }} -->
-                <a href="https://db.bienensteff.de/?q={{ strings.ToLower (strings.TrimPrefix "/db/analysen/" .Title) }}">https://db.bienensteff.de/?q={{ strings.ToLower (strings.TrimPrefix "/db/analysen/" .Title) }}</a>
+                {{ $url := printf "https://db.bienensteff.de/?q=%s" (strings.ToLower (strings.TrimPrefix "/db/analysen/" .Title)) }}
+                {{ partial "link.html" (dict "href" $url "text" $url) }}
             {{ end }}
         </td>
     </tr>
@@ -99,7 +101,7 @@
                 Die angegebenen Werte entsprechen einer Eigenmessung basierend auf einer zufälligen Stichprobe.
                 Diese Werte geben einen groben Anhaltspunkt, stellen aber keine verlässliche Aussage über den tatsächlichen Wassergehalt dar.
                 Das verlässlichste Ergebnis stellt die Vermessung einer homogenisierten Probe unter Laborbedingungen dar.
-                Zur Homogenisierung orientieren wir uns an den <a href="https://www.lwg.bayern.de/mam/cms06/bienen/dateien/qualit%C3%A4tskontrolle_honig_und_probennahme_tgd_2021.pdf">Richtlinien</a> des Tiergesundheitsdienst Bayern.
+                Zur Homogenisierung orientieren wir uns an den {{ partial "link.html" (dict "href" "https://www.lwg.bayern.de/mam/cms06/bienen/dateien/qualit%C3%A4tskontrolle_honig_und_probennahme_tgd_2021.pdf" "text" "Richtlinien") }} des Tiergesundheitsdienst Bayern.
                 Sofern vorhanden, sind die Berichte der jeweiligen Laboranalysen in der obigen Tabelle verlinkt.
             </div>
         </div>

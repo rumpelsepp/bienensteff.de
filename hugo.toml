@@ -60,31 +60,26 @@ Gräfelfinger Str. 169a
 
   [[menus.footerExternalLinks]]
   name = 'Schwarmrettung'
-  pre = '<i class="bi bi-box-arrow-up-right"></i>'
   URL = 'https://schwarmrettung.de/'
   weight = 1
 
   [[menus.footerExternalLinks]]
   name = 'Flaticon'
-  pre = '<i class="bi bi-box-arrow-up-right"></i>'
   URL = 'https://www.flaticon.com/free-icons/bee'
   weight = 2
 
   [[menus.footerExternalLinks]]
   name = 'Deutscher Imkerbund e.V.'
-  pre = '<i class="bi bi-box-arrow-up-right"></i>'
   URL = 'https://deutscherimkerbund.de/'
   weight = 30
 
   [[menus.footerExternalLinks]]
   name = 'LV Bayerischer Imker e.V.'
-  pre = '<i class="bi bi-box-arrow-up-right"></i>'
   URL = 'https://lvbi.de/'
   weight = 40
 
   [[menus.footerExternalLinks]]
   name = 'BZV München und Umgebung e.V.'
-  pre = '<i class="bi bi-box-arrow-up-right"></i>'
   URL = 'https://bzvm.de/'
   weight = 60
 

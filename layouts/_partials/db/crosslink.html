@@ -6,5 +6,5 @@
 {{ if hugo.IsDevelopment }}
     <a href="{{ relURL (urls.JoinPath "datenbank" "q" (strings.ToLower .id)) }}">{{ $text }}</a>
 {{ else }}
-    <a href="https://db.bienensteff.de/?q={{ (strings.ToLower .id) }}">{{ $text }}</a>
+    {{ partial "link.html" (dict "href" (printf "https://db.bienensteff.de/?q=%s" (strings.ToLower .id)) "text" $text) }}
 {{ end }}
