@@ -9,11 +9,11 @@
   <div class="footer-grid">
     <div class="footer-col">
       <h6>Externe Links</h6>
-      {{ partial "menu-stock.html" (dict "menuID" "footerexternallinks" "page" .) }}
+      {{ partial "menu-stock.html" (dict "menuID" "footerexternallinks" "label" "Externe Links" "page" .) }}
     </div>
     <div class="footer-col">
       <h6>Rechtliches</h6>
-      {{ partial "menu-stock.html" (dict "menuID" "footerlegal" "page" .) }}
+      {{ partial "menu-stock.html" (dict "menuID" "footerlegal" "label" "Rechtliches" "page" .) }}
     </div>
     <div class="footer-col">
       <h6>Kontakt</h6>
@@ -27,8 +27,18 @@
          its ring and interior, so it keeps its original colors — a white
          silhouette (like the Grüngürtel mark below) would just collapse
          it into a blank oval. */}}
-    <a class="footer-seal" href="https://www.gq-bayern.de" rel="noopener noreferrer" target="_blank"><img height="90" src="/GQB-Logo.svg" loading="lazy" alt="Geprüfte Qualität – Bayern"></a>
-    <a class="footer-seal footer-seal--mono" href="https://stadt.muenchen.de/infos/muenchner-gruenguertel.html" rel="noopener noreferrer" target="_blank"><img height="90" src="/Grüngürtel_Logo.svg" loading="lazy" alt="Münchner Grüngürtel"></a>
+    {{ partial "link.html" (dict
+      "href" "https://www.gq-bayern.de"
+      "class" "footer-seal"
+      "icon" false
+      "text" (`<img height="90" src="/GQB-Logo.svg" loading="lazy" alt="Geprüfte Qualität – Bayern">` | safeHTML)
+    ) }}
+    {{ partial "link.html" (dict
+      "href" "https://stadt.muenchen.de/infos/muenchner-gruenguertel.html"
+      "class" "footer-seal footer-seal--mono"
+      "icon" false
+      "text" (`<img height="90" src="/Grüngürtel_Logo.svg" loading="lazy" alt="Münchner Grüngürtel">` | safeHTML)
+    ) }}
   </div>
 
   <div class="footer-bottom">

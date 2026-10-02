@@ -34,7 +34,13 @@ Ihr wollt Honig? Schreibt uns kurz mit Sorte und Menge – oder nehmt ihn direkt
            is e.g. "Abbildung ähnlich" for a photo borrowed from a similar
            product. */}}
       {{ if .gqb }}
-        {{ $content = printf `%s<a class="sortiment-seal" href="https://www.gq-bayern.de" rel="noopener noreferrer" target="_blank"><img src="/GQB-Logo-ohne-txt.svg" loading="lazy" alt="Geprüfte Qualität – Bayern"></a>` $content | safeHTML }}
+        {{ $seal := partial "link.html" (dict
+          "href" "https://www.gq-bayern.de"
+          "class" "sortiment-seal"
+          "icon" false
+          "text" (`<img src="/GQB-Logo-ohne-txt.svg" loading="lazy" alt="Geprüfte Qualität – Bayern">` | safeHTML)
+        ) }}
+        {{ $content = printf `%s%s` $content $seal | safeHTML }}
       {{ end }}
       {{ with .image_note }}
         {{ $content = printf `%s<span class="sortiment-image-note">%s</span>` $content (. | htmlEscape) | safeHTML }}
