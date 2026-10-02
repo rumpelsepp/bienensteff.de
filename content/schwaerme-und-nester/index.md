@@ -9,8 +9,8 @@ In Bayern haben solche Schwärme jedoch leider keine Überlebenschance: Durch di
 Wenn ihr einen Schwarm entdeckt, erreicht ihr uns unter der Handynummer [+49 1512 4096409](tel:+4915124096409).
 Sollte gerade niemand verfügbar sein oder wir keine Kapazitäten haben, findet ihr auf [schwarmrettung.de](https://schwarmrettung.de/) weitere Kontakte zu Imkern in eurer Nähe.  
 
-{{< fig src="bienenschwarm2.jpg" caption="Schwarm der [Westlichen Honigbiene](https://de.wikipedia.org/wiki/Westliche_Honigbiene)." >}}
-{{< fig src="bienenschwarm.jpg" caption="Schwarm der [Westlichen Honigbiene](https://de.wikipedia.org/wiki/Westliche_Honigbiene)." >}}
+{{< fig src="bienenschwarm2.jpg" alt="Bienenschwarm hängt als dunkle Traube hoch oben in einer Baumkrone" caption="Schwarm der [Westlichen Honigbiene](https://de.wikipedia.org/wiki/Westliche_Honigbiene)." >}}
+{{< fig src="bienenschwarm.jpg" alt="Bienenschwarm hängt als längliche Traube im Geäst vor einer hellen Hauswand" caption="Schwarm der [Westlichen Honigbiene](https://de.wikipedia.org/wiki/Westliche_Honigbiene)." >}}
 
 ## „Bienennester“
 
@@ -26,14 +26,14 @@ Mehr Infos gibt’s bei der [Stadt München](https://stadt.muenchen.de/infos/wes
 
 #### Honigbiene
 
-{{< fig src="biene.jpg" caption="[Westliche Honigbiene](https://de.wikipedia.org/wiki/Westliche_Honigbiene). Bild von [Iupac](https://pixabay.com/de/users/iupac-35785262/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=8320764) auf [Pixabay](https://pixabay.com/de//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=8320764)." >}}
+{{< fig src="biene.jpg" alt="Honigbiene mit braun-grau gestreiftem, pelzigem Körper auf einer gelben Blüte" caption="[Westliche Honigbiene](https://de.wikipedia.org/wiki/Westliche_Honigbiene). Bild von [Iupac](https://pixabay.com/de/users/iupac-35785262/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=8320764) auf [Pixabay](https://pixabay.com/de//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=8320764)." >}}
 
 #### Wespe
 
-{{< fig src="wespe.jpg" caption="[Deutsche Wespe](https://de.wikipedia.org/wiki/Deutsche_Wespe). Bild von [Zdeněk Krejčí](https://pixabay.com/de/users/zkrej-9506069/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4977991) auf [Pixabay](https://pixabay.com/de//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4977991)." >}}
+{{< fig src="wespe.jpg" alt="Wespe mit leuchtend gelb-schwarzer Zeichnung und glattem Körper auf einem Holzbrett" caption="[Deutsche Wespe](https://de.wikipedia.org/wiki/Deutsche_Wespe). Bild von [Zdeněk Krejčí](https://pixabay.com/de/users/zkrej-9506069/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4977991) auf [Pixabay](https://pixabay.com/de//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=4977991)." >}}
 
-{{< fig src="wespennest.jpg" caption="Nest der [Gemeinen Wespe](https://de.wikipedia.org/wiki/Gemeine_Wespe). Bild von [David Hablützel](https://pixabay.com/de/users/umsiedlungen-8315758/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3430995) auf [Pixabay](https://pixabay.com/de//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3430995)." >}}
+{{< fig src="wespennest.jpg" alt="Graues, papierartiges Wespennest mit rundem Einflugloch, an dem mehrere Wespen sitzen" caption="Nest der [Gemeinen Wespe](https://de.wikipedia.org/wiki/Gemeine_Wespe). Bild von [David Hablützel](https://pixabay.com/de/users/umsiedlungen-8315758/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3430995) auf [Pixabay](https://pixabay.com/de//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3430995)." >}}
 
 #### Hornisse
 
-{{< fig src="hornisse.jpg" caption="[Europäische Hornisse](https://de.wikipedia.org/wiki/Hornisse). Bild von [Andreas Hoja](https://pixabay.com/de/users/andhoj-7200068/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7389489) auf [Pixabay](https://pixabay.com/de//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7389489)." >}}
+{{< fig src="hornisse.jpg" alt="Hornisse mit rotbraunem Kopf und Brustteil und gelbem Hinterleib auf einem Baumstamm" caption="[Europäische Hornisse](https://de.wikipedia.org/wiki/Hornisse). Bild von [Andreas Hoja](https://pixabay.com/de/users/andhoj-7200068/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7389489) auf [Pixabay](https://pixabay.com/de//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7389489)." >}}

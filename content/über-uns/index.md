@@ -15,7 +15,7 @@ beim Wachsschmelzen, beim Honig rühren oder einfach nur beim stillen Ertragen m
 Und so wurde aus einem Versuch eine Leidenschaft – und aus der Leidenschaft unsere kleine Imkerei.
 {.lead}
 
-{{< fig src="IMG_20240708_195442.jpg" >}}
+{{< fig src="IMG_20240708_195442.jpg" alt="Rauchender Smoker auf dem Blechdeckel eines Bienenstocks, dahinter eine Wiese am Waldrand im Abendlicht" >}}
 
 ## Regionalität
 
@@ -25,7 +25,7 @@ Der Hauptstandort unserer Imkerei liegt mitten in den Bayerischen Staatsforsten 
 
 Besonders die Nähe zu Streuobstwiesen und das reiche Angebot im Wald sorgen dafür, dass unsere Bienen ordentlich was zu tun haben – und wir Jahr für Jahr mit besonders aromatischem Honig belohnt werden. 🍯🐝
 
-{{< fig src="IMG_20240708_205828.jpg" >}}
+{{< fig src="IMG_20240708_205828.jpg" alt="Bienenstand mit mehreren Holzbeuten im hohen Gras am Waldrand" >}}
 
 ## Philosophie
 
@@ -36,7 +36,7 @@ Wir bilden uns regelmäßig weiter, passen unsere Betriebsweise laufend an – u
 
 Unser Motto lautet deshalb ganz unkompliziert: **„Weniger ist mehr!“**
 
-{{< fig src="IMG_20250427_144256.jpg" >}}
+{{< fig src="IMG_20250427_144256.jpg" alt="Dicht mit Bienen besetzte Wabe, in der Mitte die Königin mit blauem Punkt" >}}
 
 Imkern ist alles – nur nicht langweilig.
 Monat für Monat warten neue Aufgaben: mal braucht’s Fingerspitzengefühl, mal handwerkliches Geschick, manchmal auch einfach gute Nerven.
