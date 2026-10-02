@@ -8,7 +8,7 @@ description: |
     Perfekt zur bayerischen Brotzeit: so schmeckt’s richtig guad!
 ---
 
-{{< fig src="IMG_20250607_192212.jpg" >}}
+{{< fig src="IMG_20250607_192212.jpg" alt="Glasschüssel mit hellem Frischkäse-Aufstrich, mit frischen Kräutern bestreut" >}}
 
 ## Des kimmt eini
 

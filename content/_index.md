@@ -5,7 +5,7 @@ params:
     images: [IMG_20230617_093428-crop.png]
 ---
 
-{{< fig src="IMG_20230617_093428-crop.png" >}}
+{{< fig src="IMG_20230617_093428-crop.png" alt="Der Imker steht mit erhobenem Daumen hinter einem hohen Bienenstock aus gestapelten Holzzargen am Waldrand" >}}
 
 <!-- {{< box header="❗ Hinweis zu aktuellen Anfragen wegen „Bienennester“ ❗" >}}
 Zurzeit kriegen wir recht viele Meldungen wegen „Bienennester“, zum Beispiel unterm Balkon, in der Mülltonnenbox oder am Gartenhäusl.
