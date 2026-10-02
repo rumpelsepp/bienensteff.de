@@ -10,6 +10,10 @@ theme = "bienensteff"
 
 [params]
 description = "Honig und Bienen aus dem Münchner Grüngürtel"
+# Hosts neben der baseURL, die zur Seite gehoeren: Links dorthin gelten
+# nicht als extern (kein neuer Tab, kein Symbol), siehe
+# themes/bienensteff/layouts/_partials/_funcs/is-external.html.
+internalHosts = ['db.bienensteff.de']
 contact = """Imkerei Stefan Tatschner  
 Gräfelfinger Str. 169a  
 81375 München
