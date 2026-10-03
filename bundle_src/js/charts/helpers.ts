@@ -26,13 +26,22 @@ export enum QueenColorLight {
     Green = "#75a375"
 }
 
-export function chooseQueenColor(year: number, light: boolean = false): QueenColor | QueenColorLight {
+// The years of the white queens are drawn in black. On a dark chart black
+// can't be seen, there they are drawn in the light ink of the page instead.
+const QUEEN_BLACK_ON_DARK = "#efe8db";
+const QUEEN_BLACK_LIGHT_ON_DARK = "#a39c8f";
+
+export function chooseQueenColor(year: number, light: boolean = false): string {
+    const dark = document.documentElement.dataset.bsTheme === "dark";
     switch (year % 10) {
         case 0:
         case 5:
             return light ? QueenColorLight.Blue : QueenColor.Blue;
         case 1:
         case 6:
+            if (dark) {
+                return light ? QUEEN_BLACK_LIGHT_ON_DARK : QUEEN_BLACK_ON_DARK;
+            }
             return light ? QueenColorLight.Black : QueenColor.Black;
         case 2:
         case 7:

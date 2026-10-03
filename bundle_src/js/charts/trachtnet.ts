@@ -4,7 +4,7 @@ import * as echarts from 'echarts';
 
 import { chooseQueenColor, getCurrentYear, getToday, getXLimits, isInteger, isIntegerArray, isInSeason } from "./helpers";
 import { toTitleCase } from '../helpers';
-import { buildBaseOption, buildFormatterDE, initEchartsInstance } from "./base";
+import { buildBaseOption, buildFormatterDE, chartColors, initEchartsInstance, minorSplitLine } from "./base";
 
 type Record = {
     date: Temporal.PlainDate,
@@ -170,6 +170,11 @@ export async function getTrachtnetSeries(year: number | number[], region: string
             lineStyle: {
                 color: chooseQueenColor(+year),
             },
+            // The marker in the legend and in the tooltip takes the colour
+            // of the item, not that of the line.
+            itemStyle: {
+                color: chooseQueenColor(+year),
+            },
         };
 
         if (getCurrentYear() === +year) {
@@ -181,7 +186,7 @@ export async function getTrachtnetSeries(year: number | number[], region: string
                 },
                 lineStyle: {
                     type: "dashed",
-                    color: "#000",
+                    color: chartColors().ink,
                 },
                 data: [
                     { xAxis: getToday().toString() }
@@ -225,6 +230,11 @@ export async function getTrachtnetDerivative(years: number | number[], region: s
         let entry: echarts.BarSeriesOption = {
             name: y.toString(),
             type: "bar",
+            // For the marker in the legend and in the tooltip; the bars
+            // have their colours set one by one above.
+            itemStyle: {
+                color: chooseQueenColor(y),
+            },
             data: seriesData,
         };
 
@@ -368,7 +378,7 @@ export class LineChart {
                 axisLine: {
                     show: true,
                     lineStyle: {
-                        color: "#000"
+                        color: chartColors().ink
                     }
                 },
                 axisLabel: {
@@ -377,19 +387,17 @@ export class LineChart {
                 axisTick: {
                     show: true,
                     lineStyle: {
-                        color: "#000"
+                        color: chartColors().ink
                     }
                 },
                 minorTick: {
                     show: true,
                     splitNumber: 5,
                     lineStyle: {
-                        color: "#000"
+                        color: chartColors().ink
                     }
                 },
-                minorSplitLine: {
-                    show: true
-                }
+                minorSplitLine: minorSplitLine()
             },
             dataZoom: [
                 {
@@ -454,7 +462,7 @@ export class BarChart {
                 axisLine: {
                     show: true,
                     lineStyle: {
-                        color: "#000"
+                        color: chartColors().ink
                     }
                 },
                 axisLabel: {
@@ -466,19 +474,17 @@ export class BarChart {
                 axisTick: {
                     show: true,
                     lineStyle: {
-                        color: "#000"
+                        color: chartColors().ink
                     }
                 },
                 minorTick: {
                     show: true,
                     splitNumber: 5,
                     lineStyle: {
-                        color: "#000"
+                        color: chartColors().ink
                     }
                 },
-                minorSplitLine: {
-                    show: true
-                }
+                minorSplitLine: minorSplitLine()
             },
             dataZoom: [
                 {

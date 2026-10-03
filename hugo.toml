@@ -14,6 +14,9 @@ description = "Honig und Bienen aus dem Münchner Grüngürtel"
 # nicht als extern (kein neuer Tab, kein Symbol), siehe
 # themes/bienensteff/layouts/_partials/_funcs/is-external.html.
 internalHosts = ['db.bienensteff.de']
+# Dunkles Farbschema, wenn das System des Besuchers auf dunkel steht. Es gibt
+# keinen Schalter auf der Seite.
+darkMode = true
 contact = """Imkerei Stefan Tatschner  
 Gräfelfinger Str. 169a  
 81375 München

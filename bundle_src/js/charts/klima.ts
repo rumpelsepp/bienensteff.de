@@ -3,7 +3,7 @@ import type { ECharts } from 'echarts';
 import * as echarts from 'echarts';
 
 import { QueenColor, getXLimits, getToday } from "./helpers";
-import { buildBaseOption, buildFormatterDE, initEchartsInstance } from "./base";
+import { buildBaseOption, buildFormatterDE, chartColors, initEchartsInstance, minorSplitLine } from "./base";
 
 type DailyRecordRaw = {
     timestamp: string,
@@ -78,6 +78,10 @@ export async function getKlimaDailySeries(stationID: string): Promise<Array<echa
             lineStyle: {
                 color: QueenColor.Red,
             },
+            // The marker in the tooltip takes the colour of the item.
+            itemStyle: {
+                color: QueenColor.Red,
+            },
             smooth: true,
             data: data.map(r => {
                 return [
@@ -143,7 +147,7 @@ export class LineChart {
                 axisLine: {
                     show: true,
                     lineStyle: {
-                        color: "#000"
+                        color: chartColors().ink
                     }
                 },
                 axisLabel: {
@@ -152,19 +156,17 @@ export class LineChart {
                 axisTick: {
                     show: true,
                     lineStyle: {
-                        color: "#000"
+                        color: chartColors().ink
                     }
                 },
                 minorTick: {
                     show: true,
                     splitNumber: 5,
                     lineStyle: {
-                        color: "#000"
+                        color: chartColors().ink
                     }
                 },
-                minorSplitLine: {
-                    show: true
-                }
+                minorSplitLine: minorSplitLine()
             },
             {
                 type: "value",
@@ -174,7 +176,7 @@ export class LineChart {
                 axisLine: {
                     show: true,
                     lineStyle: {
-                        color: "#000"
+                        color: chartColors().ink
                     }
                 },
                 axisLabel: {
@@ -183,7 +185,7 @@ export class LineChart {
                 axisTick: {
                     show: true,
                     lineStyle: {
-                        color: "#000"
+                        color: chartColors().ink
                     }
                 },
                 splitLine: {

@@ -43,7 +43,18 @@ async function fetchAndRenderDailyKlimaChart(id: string, stationID: string) {
     chart.setData(data);
 }
 
+// The colours of a chart are fixed when it is built (axes, series), so on a
+// change of the colour scheme -- the theme's head.html then flips
+// data-bs-theme -- all of them are built anew. The data comes out of the
+// browser's cache.
 export async function initAllCharts() {
+    await renderAllCharts();
+    new MutationObserver(() => {
+        renderAllCharts();
+    }).observe(document.documentElement, { attributeFilter: ["data-bs-theme"] });
+}
+
+async function renderAllCharts() {
     const renderAllTrachtnet = <T>(selector: string, renderFn: (id: string, region: string, year: number) => Promise<T>) =>
         Array.from(document.querySelectorAll<HTMLElement>(selector))
             .map(c => {
