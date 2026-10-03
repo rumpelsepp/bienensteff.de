@@ -2,9 +2,9 @@
    bienensteff.de — brand palette
    ==========================================================================
    Site-specific token overrides on top of the theme's generic design
-   system (base_style.css). Warm honey amber as the primary accent, a
-   muted Grüngürtel green as a quiet secondary, everything else (layout,
-   spacing, components) stays at the theme's defaults.
+   system (base_style.css). Warm honey amber as the primary accent,
+   everything else (layout, spacing, components) stays at the theme's
+   defaults.
    ========================================================================== */
 
 :root {
@@ -29,7 +29,38 @@
   --color-border: rgba(42, 33, 21, 0.12);
   --color-primary: var(--bs-primary);
   --color-primary-ink: #ffffff;
-  --color-accent: #4b6b3a;
+
+  /* What the product photos of the Sortiment cards stand on, see
+     .sortiment-card. */
+  --sortiment-backdrop: var(--color-surface);
+}
+
+/* Dark mode (params.darkMode, see the theme's main.css): the palette above
+   overrides the theme's tokens, so their dark values have to be given here
+   as well -- the same warm brown, a shade towards honey. The honey shades
+   for buttons stay: white text on them works in either mode. */
+[data-bs-theme="dark"] {
+  /* The dark honey of the links has no contrast on a dark page; this
+     lighter one comes to 8:1. */
+  --bs-link-color: #e2a54a;
+  --bs-link-color-rgb: 226, 165, 74;
+  --bs-link-hover-color: #f0bd72;
+  --bs-link-hover-color-rgb: 240, 189, 114;
+
+  --color-bg: #1c1811;
+  --color-surface: #28221a;
+  --color-ink: #efe8db;
+  --color-ink-muted: #b5a892;
+  --color-border: rgba(239, 232, 219, 0.14);
+
+  --bs-body-bg-rgb: 40, 34, 26;
+  --bs-body-color-rgb: 239, 232, 219;
+  --bs-secondary-rgb: 181, 168, 146;
+
+  /* The photos have a white backdrop and are multiplied onto theirs: on a
+     dark one they would turn black. So it stays light, a little off the
+     white so the panel doesn't glare. */
+  --sortiment-backdrop: #f3ecdf;
 }
 
 .dropdown-menu {
@@ -96,8 +127,8 @@
      onto the gradient turns that white into a soft honey spotlight. */
   background: radial-gradient(
     ellipse at 50% 55%,
-    var(--color-surface) 35%,
-    color-mix(in srgb, var(--color-primary) 16%, var(--color-surface)) 100%
+    var(--sortiment-backdrop) 35%,
+    color-mix(in srgb, var(--color-primary) 16%, var(--sortiment-backdrop)) 100%
   );
   box-shadow: var(--shadow-md);
   /* For the cqi unit of the photo overlays below. */
