@@ -1,0 +1,15 @@
+{{- /*
+  The bar that controls the charts of the page (klima-widget,
+  trachtnet-widget). The year they show: a list of the years there is data
+  for, with a button to either side to step through them. And, on a wide
+  screen, their width: a button that lets them grow beyond the text column.
+  bundle_src/js/charts/render.ts fills the list and shows the bar; without
+  JavaScript there are no charts either.
+*/ -}}
+<div class="trachtnet-year-select" hidden>
+  <label for="trachtnet-year">Jahr</label>
+  <button type="button" class="btn btn-outline-primary btn-sm" data-step="-1" aria-label="Vorheriges Jahr">‹</button>
+  <select id="trachtnet-year" class="form-select form-select-sm"></select>
+  <button type="button" class="btn btn-outline-primary btn-sm" data-step="1" aria-label="Nächstes Jahr">›</button>
+  <button type="button" class="btn btn-outline-primary btn-sm chart-width-toggle" aria-pressed="false">Breit</button>
+</div>

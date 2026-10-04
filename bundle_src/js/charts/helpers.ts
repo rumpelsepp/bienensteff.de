@@ -57,6 +57,19 @@ export function chooseQueenColor(year: number, light: boolean = false): string {
     }
 }
 
+// Mean over the week around each value (three to either side, fewer at the
+// ends), leaving out what is missing: daily values jump up and down too
+// much to see how things are developing.
+export function centredWeeklyMean(values: (number | null | undefined)[]): (number | null)[] {
+    return values.map((_, i) => {
+        const window = values.slice(Math.max(0, i - 3), i + 4).filter(v => v !== null && v !== undefined);
+        if (window.length === 0) {
+            return null;
+        }
+        return window.reduce((sum, v) => sum + v, 0) / window.length;
+    });
+}
+
 export function isInteger(value: unknown): value is number {
     return typeof value === "number" && Number.isInteger(value);
 }
@@ -70,6 +83,26 @@ export function isInSeason(date: Temporal.PlainDate): boolean {
         return true;
     }
     return false;
+}
+
+// The key figures of a year and the smoothed course of its changes say
+// something only once its season is over; before that the data is still
+// building up.
+export function isSeasonOver(year: number): boolean {
+    const today = getToday();
+    return year < today.year || (year === today.year && today.month > 8);
+}
+
+// The stretch of the calendar of "year" a chart opens with: for the current
+// year what getXLimits() says, a past one is shown in full.
+export function getXWindow(year: number): [Temporal.PlainDate, Temporal.PlainDate] {
+    if (year === getCurrentYear()) {
+        return getXLimits();
+    }
+    return [
+        Temporal.PlainDate.from({ year, month: 1, day: 1 }),
+        Temporal.PlainDate.from({ year, month: 12, day: 31 }),
+    ];
 }
 
 export function getXLimits(): [Temporal.PlainDate, Temporal.PlainDate] {

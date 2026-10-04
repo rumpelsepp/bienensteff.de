@@ -84,12 +84,57 @@ export function initEchartsInstance(elementID: string): ECharts {
     return chart;
 }
 
+// The margins around the plot of a chart. The same for all of them, so
+// that charts standing one below the other line up day for day: room for
+// the labels and the name of a value axis on either side, whether a chart
+// has one on the right or not. ECharts' own margins are a share of the
+// width, which leaves a wide chart mostly empty at its sides; on a narrow
+// screen they are the tighter ones and are kept.
+export function chartGrid(top: number): echarts.GridComponentOption {
+    if (isNarrow()) {
+        return { top };
+    }
+    return { top, left: 80, right: 80 };
+}
+
+// A phone: the charts are as wide as the window there, and what is laid
+// out for a wide one doesn't fit.
+export function isNarrow(): boolean {
+    return window.innerWidth < 576;
+}
+
+// How far down the title and the given number of lines below it reach
+// [px]: where the legend or the plot of a chart can begin.
+export function headHeight(lines: number): number {
+    return 36 + lines * 13;
+}
+
+// A value axis as all the charts draw it: named along its middle, with a
+// line, ticks and minor ticks in the ink of the mode.
+export function valueAxis(name: string, labelFormatter: (value: number) => string): echarts.YAXisComponentOption {
+    const line = { lineStyle: { color: chartColors().ink } };
+    return {
+        type: "value",
+        name,
+        nameLocation: "middle",
+        nameGap: 55,
+        axisLine: { show: true, ...line },
+        axisLabel: { formatter: labelFormatter },
+        axisTick: { show: true, ...line },
+        minorTick: { show: true, splitNumber: 5, ...line },
+        minorSplitLine: minorSplitLine(),
+    };
+}
+
 // Shared skeleton (title/animation/aria/toolbox/tooltip/xAxis) for the chart
 // widgets in klima.ts and trachtnet.ts. Callers add their own yAxis/dataZoom.
+// The x axis spans the whole of "year", whatever part of it there is data
+// for: charts standing one below the other line up day for day.
 export function buildBaseOption(
     title: string,
     subTitle: string,
-    tooltipFormatter: (params: any) => string
+    tooltipFormatter: (params: any) => string,
+    year: number,
 ): echarts.EChartsOption {
     const colors = chartColors();
     return {
@@ -102,6 +147,8 @@ export function buildBaseOption(
             left: "center",
             textStyle: {
                 color: colors.ink,
+                // The titles are long: "Trachtänderungen Niederbayern 2026".
+                fontSize: isNarrow() ? 14 : 18,
             },
             top: 0,
         },
@@ -113,7 +160,9 @@ export function buildBaseOption(
             }
         },
         toolbox: {
-            show: true,
+            // The button to save the chart sits in the top right corner,
+            // where on a phone the title ends.
+            show: !isNarrow(),
             feature: {
                 saveAsImage: {}
             }
@@ -132,6 +181,8 @@ export function buildBaseOption(
         },
         xAxis: {
             type: "time",
+            min: `${year}-01-01`,
+            max: `${year}-12-31`,
             axisLine: {
                 onZero: false,
                 lineStyle: {
