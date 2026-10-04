@@ -9,15 +9,15 @@ Die Graphen werden täglich aktualisiert.
 Die Daten zu „heute“ und „gestern“ fehlen, da das TrachtNet Netzwerk die Datensätze verzögert aktualisiert.
 {.lead}
 
+{{< trachtnet-year-select >}}
+
 ## Bayern
 
-{{< klima-widget station_id="03379" >}}
+{{< klima-widget station_id="03379" region="Bayern" >}}
 
 {{< trachtnet-widget region="Bayern" type="derivative" >}}
 
 {{< trachtnet-widget region="Bayern" type="progress" >}}
-
-{{< trachtnet-evaluation region="Bayern" >}}
 
 ### Oberbayern
 
@@ -25,15 +25,11 @@ Die Daten zu „heute“ und „gestern“ fehlen, da das TrachtNet Netzwerk die
 
 {{< trachtnet-widget region="Oberbayern" type="progress" >}}
 
-{{< trachtnet-evaluation region="Oberbayern" >}}
-
 ### Niederbayern
 
 {{< trachtnet-widget region="Niederbayern" type="derivative" >}}
 
 {{< trachtnet-widget region="Niederbayern" type="progress" >}}
-
-{{< trachtnet-evaluation region="Niederbayern" >}}
 
 ---
 

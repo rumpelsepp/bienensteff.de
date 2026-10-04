@@ -118,6 +118,67 @@
 }
 
 /* --------------------------------------------------------------------
+   Charts (layouts/shortcodes/klima-widget.html, trachtnet-widget.html)
+   -------------------------------------------------------------------- */
+
+/* A year along the x axis gains from width, but a page of charts as wide
+   as the window is a lot to take in. So they are as wide as the text
+   column, until the reader asks for more (the button in the bar of
+   trachtnet-year-select sets .charts-wide on <body>): then, like a
+   panorama (.figure-breakout in the theme), a chart breaks out of the
+   column, centred on it, as far as the window allows less a margin -- but
+   no wider than 1600px, and never narrower than the column. */
+.charts-wide .chart-breakout {
+  --breakout-width: max(100%, min(100vw - 2rem, 1600px));
+  width: var(--breakout-width);
+  margin-inline: calc((100% - var(--breakout-width)) / 2);
+}
+
+/* --------------------------------------------------------------------
+   Year of the charts (layouts/shortcodes/trachtnet-year-select.html)
+   -------------------------------------------------------------------- */
+
+/* Stays in view below the navbar while the page is scrolled: the charts of
+   a region further down are compared by flipping the year, too. */
+.trachtnet-year-select {
+  position: sticky;
+  top: 5rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  margin-bottom: 1.5rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  font-weight: 600;
+
+  .form-select {
+    width: auto;
+  }
+
+  /* [hidden] loses against display: flex above. */
+  &[hidden] {
+    display: none;
+  }
+
+  .chart-width-toggle {
+    margin-left: 0.5rem;
+  }
+
+  /* Where the window is no wider than the column and its margins there is
+     nothing to gain. */
+  @media (max-width: 1199.98px) {
+    .chart-width-toggle {
+      display: none;
+    }
+  }
+}
+
+/* --------------------------------------------------------------------
    Sortiment cards (Verkauf)
    -------------------------------------------------------------------- */
 

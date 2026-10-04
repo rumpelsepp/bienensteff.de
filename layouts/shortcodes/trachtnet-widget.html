@@ -3,7 +3,7 @@
 {{ $type := .Get "type" }}
 {{ $cssID := printf "trachtnet-%s-chart-%s-%s" $type $region $year }}
 
-<div class="trachtnet-{{ $type }}-chart-container mb-4"
+<div class="trachtnet-{{ $type }}-chart-container chart-breakout mb-4"
     data-region="{{ $region}}"
     data-year="{{ $year }}"
     data-id="{{ $cssID }}"

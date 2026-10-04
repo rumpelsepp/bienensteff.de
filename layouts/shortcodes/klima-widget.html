@@ -1,8 +1,14 @@
+{{- /*
+  Weather of a DWD station (bundle_src/js/charts/klima.ts). With "region",
+  a region of Trachtnet as for the trachtnet-widget, the phases of this
+  year's honey flow there are shaded in the chart.
+*/ -}}
 {{ $station_id := lower (.Get "station_id") }}
 {{ $cssID := printf "klima-%s-chart" $station_id }}
 
-<div class="klima-chart-container mb-4"
+<div class="klima-chart-container chart-breakout mb-4"
     data-station-id="{{ $station_id }}"
+    {{- with .Get "region" }} data-region="{{ lower . }}"{{ end }}
     data-id="{{ $cssID }}"
 >
     <div class="card">

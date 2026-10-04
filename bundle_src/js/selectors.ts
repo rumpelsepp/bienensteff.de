@@ -6,6 +6,9 @@ export const TRACHTNET_PROGRESS_CHART = ".trachtnet-progress-chart-container";
 export const TRACHTNET_DERIVATIVE_CHART = ".trachtnet-derivative-chart-container";
 export const TRACHTNET_EVALUATION_TABLE = ".trachtnet-evaluation-table-container";
 export const KLIMA_CHART = ".klima-chart-container";
+// Not a widget of its own: the list of years the charts are switched with,
+// see charts/render.ts.
+export const TRACHTNET_YEAR_SELECT = ".trachtnet-year-select";
 
 export const ALL_CHARTS = [
     TRACHTNET_PROGRESS_CHART,
