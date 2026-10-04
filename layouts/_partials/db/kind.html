@@ -1,0 +1,21 @@
+{{- /*
+  What kind of record an id of the database stands for, by its prefix.
+  Returns a dict: "kind" (article, filling, batch, bucket, centrifugation),
+  "name" as shown to the reader and "what", a sentence saying what such a
+  record is. An unknown prefix is an error.
+
+  Param: the id
+*/ -}}
+{{- $kinds := dict
+  "SKU" (dict "kind" "article" "name" "Artikel" "what" "Ein Artikel ist ein Produkt, wie es im Verkauf steht: eine Honigsorte in einem bestimmten Glas mit einem bestimmten Etikett.")
+  "A" (dict "kind" "filling" "name" "Abfüllung" "what" "Eine Abfüllung sind die Gläser eines Artikels, die an einem Tag aus einem Los abgefüllt wurden. Ihre Nummer steht auf dem Etikett.")
+  "L" (dict "kind" "batch" "name" "Los" "what" "Ein Los ist eine Charge Honig: die Eimer, die zusammen als eine Sorte abgefüllt werden.")
+  "E" (dict "kind" "bucket" "name" "Eimer" "what" "Ein Eimer ist ein Lagergebinde, in das der Honig bei einer Schleuderung gefüllt wurde.")
+  "S" (dict "kind" "centrifugation" "name" "Schleuderung" "what" "Eine Schleuderung ist ein Erntetag: Der Honig wird aus den Waben geschleudert und in Eimer gefüllt.")
+}}
+{{- $prefix := index (split . "-") 0 }}
+{{- $kind := index $kinds $prefix }}
+{{- if not $kind }}
+  {{- errorf "db/kind: unknown kind of id %q" . }}
+{{- end }}
+{{- return $kind }}

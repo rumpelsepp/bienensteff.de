@@ -1,0 +1,50 @@
+{{- /*
+  The traceability database, assets/db/db.json (written by
+  scripts/src/bstools/cli/dump_db.py), as far as it is public, for the db
+  layouts and partials and for content/datenbank/_content.gotmpl. Call it
+  with partialCached, the file is parsed once per build.
+
+  Public is what there may still be a jar of on somebody's shelf: a filling
+  past its best-before date is left out, and with it what led to nothing
+  but such fillings -- a batch all of whose fillings have expired, the
+  buckets of such a batch (or of none) and a centrifugation none of whose
+  buckets is left. A batch that has not been filled yet stays. Articles
+  all stay, without their expired fillings.
+
+  Returns a dict:
+    db    the tables: articles, fillings, buckets, batches, centrifugations
+    byId  every row of every table by its id (SKU-…, A-…, E-…, L-…, S-…)
+*/ -}}
+{{- $raw := dict }}
+{{- with resources.Get "/db/db.json" }}
+  {{- $raw = . | transform.Unmarshal (dict "format" "json") }}
+{{- end }}
+{{- $today := now.Format "2006-01-02" }}
+
+{{- $fillings := where $raw.fillings "best_before_date" "ge" $today }}
+{{- $batches := slice }}
+{{- $batchIds := slice }}
+{{- range $raw.batches }}
+  {{- $current := where .fillings "best_before_date" "ge" $today }}
+  {{- if or $current (not .fillings) }}
+    {{- $batches = $batches | append (merge . (dict "fillings" $current)) }}
+    {{- $batchIds = $batchIds | append .id }}
+  {{- end }}
+{{- end }}
+{{- $buckets := where $raw.buckets "batch_id" "in" $batchIds }}
+{{- $centrifugationIds := slice }}
+{{- range $buckets }}{{ with .centrifugation_id }}{{ $centrifugationIds = $centrifugationIds | append . }}{{ end }}{{ end }}
+{{- $centrifugations := where $raw.centrifugations "id" "in" ($centrifugationIds | uniq) }}
+{{- $articles := slice }}
+{{- range $raw.articles }}
+  {{- $articles = $articles | append (merge . (dict "fillings" (where .fillings "best_before_date" "ge" $today))) }}
+{{- end }}
+
+{{- $db := dict "articles" $articles "fillings" $fillings "buckets" $buckets "batches" $batches "centrifugations" $centrifugations }}
+{{- $byId := dict }}
+{{- range $db }}
+  {{- range . }}
+    {{- $byId = merge $byId (dict .id .) }}
+  {{- end }}
+{{- end }}
+{{- return dict "db" $db "byId" $byId }}

@@ -1,0 +1,74 @@
+{{- /*
+  Everything a record of the database is connected to, from the harvest to
+  the product on the shelf:
+
+    Schleuderung (S) -> Eimer (E) -> Los (L) -> Abfüllung (A) -> Artikel (SKU)
+
+  A bucket belongs to one centrifugation and to one batch, a filling to one
+  batch and to one article. Starting from the record with the given id the
+  connections are followed in both directions -- among what is public,
+  see db/index.html.
+
+  Returns a dict of lists of rows, each sorted by id: centrifugations,
+  buckets, batches, fillings, articles.
+
+  Param: the id
+*/ -}}
+{{- $id := . }}
+{{- $ix := partialCached "db/index.html" "db" }}
+{{- $db := $ix.db }}
+{{- $row := index $ix.byId $id }}
+{{- $kind := (partial "db/kind.html" $id).kind }}
+
+{{- $centrifugations := slice }}
+{{- $buckets := slice }}
+{{- $batchIds := slice }}
+{{- $fillings := slice }}
+
+{{- if eq $kind "filling" }}
+  {{- $fillings = slice $row }}
+  {{- $batchIds = slice $row.batch_id }}
+{{- else if eq $kind "batch" }}
+  {{- $batchIds = slice $id }}
+{{- else if eq $kind "bucket" }}
+  {{- $buckets = slice $row }}
+  {{- with $row.batch_id }}{{ $batchIds = slice . }}{{ end }}
+{{- else if eq $kind "centrifugation" }}
+  {{- $centrifugations = slice $row }}
+  {{- $buckets = where $db.buckets "centrifugation_id" $id }}
+  {{- range $buckets }}{{ with .batch_id }}{{ $batchIds = $batchIds | append . }}{{ end }}{{ end }}
+{{- else if eq $kind "article" }}
+  {{- $fillings = where $db.fillings "sku" $row.sku }}
+  {{- range $fillings }}{{ $batchIds = $batchIds | append .batch_id }}{{ end }}
+{{- end }}
+{{- $batchIds = $batchIds | uniq }}
+
+{{- $batches := slice }}
+{{- with $batchIds }}{{ $batches = where $db.batches "id" "in" . }}{{ end }}
+{{- if and (not $fillings) $batchIds }}
+  {{- $fillings = where $db.fillings "batch_id" "in" $batchIds }}
+{{- end }}
+{{- if and (not $buckets) $batchIds }}
+  {{- $buckets = where $db.buckets "batch_id" "in" $batchIds }}
+{{- end }}
+{{- if not $centrifugations }}
+  {{- $ids := slice }}
+  {{- range $buckets }}{{ with .centrifugation_id }}{{ $ids = $ids | append . }}{{ end }}{{ end }}
+  {{- with $ids | uniq }}{{ $centrifugations = where $db.centrifugations "id" "in" . }}{{ end }}
+{{- end }}
+{{- $articles := slice }}
+{{- if eq $kind "article" }}
+  {{- $articles = slice $row }}
+{{- else }}
+  {{- $skus := slice }}
+  {{- range $fillings }}{{ $skus = $skus | append .sku }}{{ end }}
+  {{- with $skus | uniq }}{{ $articles = where $db.articles "sku" "in" . }}{{ end }}
+{{- end }}
+
+{{- return dict
+  "centrifugations" (sort $centrifugations "id")
+  "buckets" (sort $buckets "id")
+  "batches" (sort $batches "id")
+  "fillings" (sort $fillings "id")
+  "articles" (sort $articles "id")
+}}

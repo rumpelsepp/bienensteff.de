@@ -1,23 +1,21 @@
+{{/* A page for every public record of the database, see
+     layouts/_partials/db/index.html for what is public. */}}
 {{ $dbBaseURL := "https://db.bienensteff.de" }}
 
-{{ with resources.Get "/db/db.json" }}
-    {{ with . | transform.Unmarshal (dict "format" "json") }}
-        {{ range $k, $v := . }}
-            {{ range $row := $v }}
-                {{ $id := (strings.ToLower .id)}}
-                {{ $path := (urls.JoinPath "q" $id)}}
-                {{ $params := merge $row (dict "canonicalURL" ( printf "%s/?q=%s" $dbBaseURL $id))}}
-                {{ $page := dict
-                    "kind" "page"
-                    "layout" "single"
-                    "type" "db"
-                    "outputs" (slice "html")
-                    "params" $params
-                    "path" $path
-                    "title" .id
-                }}
-                {{ $.AddPage $page }}
-            {{ end }}
-        {{ end }}
+{{ range $k, $v := (partialCached "db/index.html" "db").db }}
+    {{ range $row := $v }}
+        {{ $id := (strings.ToLower .id)}}
+        {{ $path := (urls.JoinPath "q" $id)}}
+        {{ $params := merge $row (dict "canonicalURL" ( printf "%s/?q=%s" $dbBaseURL $id))}}
+        {{ $page := dict
+            "kind" "page"
+            "layout" "single"
+            "type" "db"
+            "outputs" (slice "html")
+            "params" $params
+            "path" $path
+            "title" .id
+        }}
+        {{ $.AddPage $page }}
     {{ end }}
 {{ end }}

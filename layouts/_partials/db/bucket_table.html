@@ -1,0 +1,37 @@
+{{- /*
+  Buckets as a table, one a row.
+
+  Params (dict):
+    buckets         rows of the buckets table
+    batch           true for a column with the batch of each bucket
+    centrifugation  true for columns with the centrifugation of each bucket
+                    and its date
+*/ -}}
+{{- $byId := (partialCached "db/index.html" "db").byId }}
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-sm db-table">
+    <thead>
+      <tr>
+        <th scope="col">Eimer</th>
+        {{- if .centrifugation }}<th scope="col">Schleuderung</th><th scope="col">Geschleudert am</th>{{ end }}
+        {{- if .batch }}<th scope="col">Los</th>{{ end }}
+      </tr>
+    </thead>
+    <tbody>
+      {{- range .buckets }}
+      <tr>
+        <td>{{ partial "db/crosslink.html" (dict "id" .id) }}</td>
+        {{- if $.centrifugation }}
+          {{- with .centrifugation_id }}
+            <td>{{ partial "db/crosslink.html" (dict "id" .) }}</td>
+            <td>{{ with index $byId . }}{{ partial "db/date.html" (dict "date" .date) }}{{ end }}</td>
+          {{- else }}
+            <td></td><td></td>
+          {{- end }}
+        {{- end }}
+        {{- if $.batch }}<td>{{ with .batch_id }}{{ partial "db/crosslink.html" (dict "id" .) }}{{ end }}</td>{{ end }}
+      </tr>
+      {{- end }}
+    </tbody>
+  </table>
+</div>

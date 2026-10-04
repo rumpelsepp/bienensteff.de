@@ -1,12 +1,8 @@
+{{- $byId := (partialCached "db/index.html" "db").byId }}
 <tr><th scope="row">Eimernummer</th><td>{{ .Params.id }}</td></tr>
-{{ with .Params.centrifugation }}
-    <tr><th scope="row">Schleuderungsnummer</th><td>{{ partial "db/crosslink.html" (dict "id" .id) }}</td></tr>
+{{ with .Params.centrifugation_id }}
+    <tr><th scope="row">Schleuderung</th><td>{{ partial "db/crosslink.html" (dict "id" .) }}{{ with index $byId . }} vom {{ partial "db/date.html" (dict "date" .date) }}{{ end }}</td></tr>
 {{ end }}
-{{ with .Params.batch }}
-    <tr><th scope="row">Losnummer</th><td>{{ partial "db/crosslink.html" (dict "id" .id) }}</td></tr>
-{{ end }}
-<tr><th scope="row">Wassergehalt</th><td>{{ partial "db/de-number.html" (dict "format" "%.2f %%" "value" (math.Mul .Params.moisture 100)) }}</td></tr>
-<tr><th scope="row">Gewicht</th><td>{{ partial "db/de-number.html" (dict "format" "%.2f kg" "value" .Params.weight) }}</td></tr>
-{{ with .Params.comment }}
-    <tr><th scope="row">Kommentar</th><td>{{ . }}</td></tr>
+{{ with .Params.batch_id }}
+    <tr><th scope="row">Los</th><td>{{ partial "db/crosslink.html" (dict "id" .) }}{{ with index $byId . }}{{ with .honey_type }} ({{ . }}){{ end }}{{ end }}</td></tr>
 {{ end }}
