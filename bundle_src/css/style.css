@@ -227,14 +227,17 @@
 }
 
 @media (max-width: 767.98px) {
+  /* The gap holds the arrow, with air above and below it. */
   .db-chain ol {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
   .db-chain-step + .db-chain-step::before {
     content: "↓";
-    top: -1.25rem;
+    top: -1.5rem;
     left: 0.9rem;
+    line-height: 1;
   }
 }
 
@@ -259,12 +262,7 @@
    Year of the charts (layouts/shortcodes/trachtnet-year-select.html)
    -------------------------------------------------------------------- */
 
-/* Stays in view below the navbar while the page is scrolled: the charts of
-   a region further down are compared by flipping the year, too. */
 .trachtnet-year-select {
-  position: sticky;
-  top: 5rem;
-  z-index: 10;
   display: flex;
   align-items: center;
   gap: 0.5rem;
