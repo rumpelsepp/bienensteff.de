@@ -1,30 +1,8 @@
+{{/* Quantities, the number of buckets and the comments of the database say
+     how the business runs and are not shown, here or on the other pages. */}}
 <tr><th scope="row">Losnummer</th><td>{{ .Params.id }}</td></tr>
 <tr><th scope="row">Sortenempfehlung</th><td>{{ .Params.honey_type }}</td></tr>
-<tr><th scope="row">Gewicht</th><td>{{ partial "db/de-number.html" (dict "format" "%.2f kg" "value" .Params.weight) }}</td></tr>
-<tr><th scope="row">Geprüfte Qualität Bayern</th><td>
-    {{ if .Params.certified }}
-        ja
-    {{ else }}
-        nein
-    {{ end }}
-</td></tr>
-{{ with .Params.fillings }}
-    <tr><th scope="row">Abfüllungen</th>
-    <td>{{ partial "db/filling_list.html" (dict "fillings" . "showBatchLink" false) }}</td></tr>
-{{ end }}
-{{ with .Params.buckets }}
-    <tr><th scope="row">Eimer</th><td>
-        <ul>
-            {{ range . }}
-                <li>
-                    {{ partial "db/crosslink.html" (dict "id" .id) }}
-                    <ul>
-                        <li><strong>Wassergehalt (Stichprobe)</strong>: {{ partial "db/de-number.html" (dict "format" "%.2f %%" "value" (math.Mul .moisture 100)) }}</li>
-                        <li><strong>Gewicht</strong>: {{ partial "db/de-number.html" (dict "format" "%.2f kg" "value" .weight) }}</li>
-                        <li><strong>Schleuderung</strong>: {{ partial "db/crosslink.html" (dict "id" .centrifugation_id) }}</li>
-                    </ul>
-                </li>
-            {{ end }}
-        </ul>
-    </td></tr>
-{{ end }}
+{{/* The batch meets the requirements; that says nothing about how its
+     honey was labelled, see the fillings below. */}}
+<tr><th scope="row"><abbr title="Das Los erfüllt die Anforderungen von „Geprüfte Qualität – Bayern“. Ob ein Glas daraus das Siegel trägt, steht bei der Abfüllung.">GQ-Bayern-konform</abbr></th><td>{{ partial "db/yesno.html" .Params.gqb_compliant }}</td></tr>
+{{ partial "db/lab.html" .Params }}

@@ -1,0 +1,43 @@
+{{- /*
+  The way of the honey as a row of five steps, from the centrifugation to
+  the article, and at each step the records the given one is connected to
+  (db/trace.html). The step of the record itself is marked. It is what
+  makes a page of the database readable without knowing it: where am I,
+  what came before, what comes after.
+
+  Params (dict):
+    id     the id of the record the page is about
+    trace  what db/trace.html returns for it
+*/ -}}
+{{- $id := .id }}
+{{- $current := (partial "db/kind.html" $id).kind }}
+{{- $steps := slice
+  (dict "kind" "centrifugation" "name" "Schleuderung" "what" "Honig wird geerntet" "rows" .trace.centrifugations)
+  (dict "kind" "bucket" "name" "Eimer" "what" "und in Eimern gelagert" "rows" .trace.buckets)
+  (dict "kind" "batch" "name" "Los" "what" "Eimer bilden eine Charge" "rows" .trace.batches)
+  (dict "kind" "filling" "name" "Abfüllung" "what" "die in Gläser abgefüllt wird" "rows" .trace.fillings)
+  (dict "kind" "article" "name" "Artikel" "what" "und als Produkt verkauft" "rows" .trace.articles)
+}}
+<nav class="db-chain" aria-label="Rückverfolgung">
+  <ol>
+    {{- range $steps }}
+    <li class="db-chain-step{{ if eq .kind $current }} db-chain-step--current{{ end }}"{{ if eq .kind $current }} aria-current="step"{{ end }}>
+      <span class="db-chain-name">{{ .name }}</span>
+      <span class="db-chain-what">{{ .what }}</span>
+      <span class="db-chain-ids">
+        {{- range .rows }}
+          {{- $text := .id }}
+          {{- with .sku }}{{ if strings.HasPrefix $text "SKU-" }}{{ $text = . }}{{ end }}{{ end }}
+          {{- if eq .id $id }}
+            <strong>{{ $text }}</strong>
+          {{- else }}
+            {{ partial "db/crosslink.html" (dict "id" .id "text" $text) }}
+          {{- end }}
+        {{- else }}
+          <span class="db-chain-none">noch keine</span>
+        {{- end }}
+      </span>
+    </li>
+    {{- end }}
+  </ol>
+</nav>

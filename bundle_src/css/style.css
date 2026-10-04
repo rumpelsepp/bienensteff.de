@@ -118,6 +118,127 @@
 }
 
 /* --------------------------------------------------------------------
+   Traceability database (layouts/db/, layouts/_partials/db/)
+   -------------------------------------------------------------------- */
+
+/* Tables of records: numbers and dates must not break, and the page is
+   not the place for justified text. */
+.db-record {
+  .db-table,
+  #honeydb {
+    text-align: left;
+    hyphens: none;
+  }
+
+  .db-table td,
+  .db-table th {
+    white-space: nowrap;
+  }
+
+  /* The last column holds lists of numbers or a comment. */
+  .db-table td:last-child {
+    white-space: normal;
+  }
+}
+
+/* What kind of record a page is about, above its number. */
+.db-kind {
+  margin: 0 0 0.15rem;
+  color: var(--color-ink-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.db-what {
+  margin: 0.5rem 0 0;
+  color: var(--color-ink-muted);
+  text-align: left;
+  hyphens: manual;
+}
+
+/* The way of the honey: five steps in a row with an arrow between them,
+   one below the other on a narrow screen. The step of the record the page
+   is about stands out. */
+.db-chain {
+  margin: 0 0 2rem;
+  text-align: left;
+  hyphens: manual;
+
+  ol {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.db-chain-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.db-chain-step + .db-chain-step::before {
+  content: "→";
+  position: absolute;
+  top: 0.7rem;
+  left: -1.05rem;
+  color: var(--color-ink-muted);
+  font-weight: 600;
+}
+
+.db-chain-step--current {
+  border-color: var(--color-primary);
+  box-shadow: inset 0 0 0 1px var(--color-primary), var(--shadow-sm);
+  background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface));
+}
+
+.db-chain-name {
+  font-weight: 600;
+}
+
+.db-chain-what {
+  color: var(--color-ink-muted);
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+.db-chain-ids {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1rem 0.6rem;
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.db-chain-none {
+  color: var(--color-ink-muted);
+}
+
+@media (max-width: 767.98px) {
+  .db-chain ol {
+    grid-template-columns: 1fr;
+  }
+
+  .db-chain-step + .db-chain-step::before {
+    content: "↓";
+    top: -1.25rem;
+    left: 0.9rem;
+  }
+}
+
+/* --------------------------------------------------------------------
    Charts (layouts/shortcodes/klima-widget.html, trachtnet-widget.html)
    -------------------------------------------------------------------- */
 

@@ -11,104 +11,87 @@
     </tr>
 {{ end }}
 
-{{ define "_partials/inline/db/analysis-permalink.html" }}
-    {{ with resources.GetMatch (printf "/db/analysen/an-%s.pdf" (strings.ToLower .)) }}
-    <tr>
-        <th scope="row">Laboranalyse</th>
-        <td>
-            {{ if hugo.IsDevelopment }}
-                <a href="{{ .Permalink }}">{{ .Permalink }}</a>
-            {{ else }}
-                <!-- This is needed to force hugo to copy the files: {{ .Permalink }} -->
-                {{ $url := printf "https://db.bienensteff.de/?q=%s" (strings.ToLower (strings.TrimPrefix "/db/analysen/" .Title)) }}
-                {{ partial "link.html" (dict "href" $url "text" $url) }}
-            {{ end }}
-        </td>
-    </tr>
-    {{ end }}
-{{ end }}
-
 {{ define "main" }}
 
 {{ if not .Params }}
     {{ errorf "Params are empty!" }}
 {{ end }}
 
-{{ $type := "" }}
-{{ if strings.HasPrefix .Params.id "SKU-" }}
-    {{ $type = "article" }}
-{{ else if strings.HasPrefix .Params.id "L-" }}
-    {{ $type = "batch" }}
-{{ else if strings.HasPrefix .Params.id "E-" }}
-    {{ $type = "bucket" }}
-{{ else if strings.HasPrefix .Params.id "S-" }}
-    {{ $type = "centrifugation" }}
-{{ else if strings.HasPrefix .Params.id "A-" }}
-    {{ $type = "filling" }}
-{{ else }}
-    {{ errorf "invalid id in: %+v" .Params }}
-{{ end }}
+{{/* Every page of the database is built the same way, so that one who has
+     read one can read them all: what kind of record it is, where it stands
+     on the way of the honey and what it is connected to (db/chain.html),
+     its own particulars, and then the records next to it as tables. */}}
+{{ $id := .Params.id }}
+{{ $kind := partial "db/kind.html" $id }}
+{{ $type := $kind.kind }}
+{{ $trace := partial "db/trace.html" $id }}
 
 <div class="single">
-    <article class="content">
-    <header>
-        <h1>
-            {{ if eq $type "article" }}
-                {{ .Params.label }}
-            {{ else if eq $type "batch" }}
-                {{ $.Title }}
-                (Los)
-            {{ else if eq $type "bucket" }}
-                {{ $.Title }}
-                (Eimer)
-            {{ else if eq $type "centrifugation" }}
-                {{ $.Title }}
-                (Schleuderung)
-            {{ else if eq $type "filling" }}
-                {{ $.Title }}
-                (Abfüllung)
-            {{ end }}
-        </h1>
+    <article class="content db-record">
+    <header class="content-header">
+        <p class="db-kind">{{ $kind.name }}</p>
+        <h1>{{ if eq $type "article" }}{{ .Params.label }}{{ else }}{{ $id }}{{ end }}</h1>
+        <p class="db-what">{{ $kind.what }}</p>
     </header>
-    
+
+    <h2>Rückverfolgung</h2>
+    {{ partial "db/chain.html" (dict "id" $id "trace" $trace) }}
+
+    <h2>Angaben</h2>
     <table id="honeydb" class="table table-striped table-bordered">
-        {{ if eq $type "article" }}
-            {{ partial "db/single_article.html" . }}
-            {{ partial "inline/db/permalink.html" . }}
-        {{ end }}
-        {{ if eq $type "batch" }}
-            {{ partial "db/single_batch.html" . }}
-            {{ partial "inline/db/analysis-permalink.html" .Params.id }}
-            {{ partial "inline/db/permalink.html" . }}
-        {{ else if eq $type "bucket" }}
-            {{ partial "db/single_bucket.html" . }}
-            {{ partial "inline/db/analysis-permalink.html" .Params.id }}
-            {{ partial "inline/db/permalink.html" . }}
-        {{ else if eq $type "centrifugation" }}
-            {{ partial "db/single_centrifugation.html" . }}
-            {{ partial "inline/db/analysis-permalink.html" .Params.id }}
-            {{ partial "inline/db/permalink.html" . }}
-        {{ else if eq $type "filling" }}
-            {{ partial "db/single_filling.html" . }}
-            {{ partial "inline/db/permalink.html" . }}
-        {{ end }}
+        {{ partial (printf "db/single_%s.html" $type) . }}
+        {{ partial "inline/db/permalink.html" . }}
     </table>
 
-    {{ if or (eq $type "batch") (eq $type "bucket") }}
-        <div class="card">
-            <div class="card-header">Hinweis zum Wassergehalt 💡🤔</div>
-            <div class="card-body">
-                Die angegebenen Werte entsprechen einer Eigenmessung basierend auf einer zufälligen Stichprobe.
-                Diese Werte geben einen groben Anhaltspunkt, stellen aber keine verlässliche Aussage über den tatsächlichen Wassergehalt dar.
-                Das verlässlichste Ergebnis stellt die Vermessung einer homogenisierten Probe unter Laborbedingungen dar.
-                Zur Homogenisierung orientieren wir uns an den {{ partial "link.html" (dict "href" "https://www.lwg.bayern.de/mam/cms06/bienen/dateien/qualit%C3%A4tskontrolle_honig_und_probennahme_tgd_2021.pdf" "text" "Richtlinien") }} des Tiergesundheitsdienst Bayern.
-                Sofern vorhanden, sind die Berichte der jeweiligen Laboranalysen in der obigen Tabelle verlinkt.
-            </div>
-        </div>
+    {{ if eq $type "article" }}
+        {{ with $trace.fillings }}
+            <h2>Abfüllungen im Verkauf</h2>
+            {{ partial "db/filling_table.html" (dict "fillings" . "batch" true) }}
+        {{ end }}
+    {{ else if eq $type "filling" }}
+        {{/* What is in the jar: who has a jar in hand wants to know what it
+             is before where it came from. */}}
+        {{ range $trace.articles }}
+            <h2>Artikel</h2>
+            <table class="table table-striped table-bordered">
+                <tr><th scope="row">Bezeichnung</th><td>{{ partial "db/crosslink.html" (dict "id" .id "text" .label) }}</td></tr>
+                {{ partial "db/single_article.html" (dict "Params" .) }}
+            </table>
+            {{ $label := .label }}
+            {{ with resources.GetMatch (printf "/db/img/%s.{jpg,png}" (strings.ToLower .id)) }}
+                {{ partial "image/figure.html" (dict "image" . "caption" $label "width" 400) }}
+            {{ end }}
+        {{ end }}
+        {{ with $trace.buckets }}
+            <h2>Eimer des Loses {{ $.Params.batch_id }}</h2>
+            {{ partial "db/bucket_table.html" (dict "buckets" . "centrifugation" true) }}
+        {{ end }}
+    {{ else if eq $type "batch" }}
+        {{ with $trace.buckets }}
+            <h2>Eimer in diesem Los</h2>
+            {{ partial "db/bucket_table.html" (dict "buckets" . "centrifugation" true) }}
+        {{ end }}
+        {{ with $trace.fillings }}
+            <h2>Abfüllungen aus diesem Los</h2>
+            {{ partial "db/filling_table.html" (dict "fillings" . "article" true) }}
+        {{ end }}
+    {{ else if eq $type "bucket" }}
+        {{ with $trace.fillings }}
+            <h2>Abfüllungen aus dem Los {{ $.Params.batch_id }}</h2>
+            {{ partial "db/filling_table.html" (dict "fillings" . "article" true) }}
+        {{ end }}
+    {{ else if eq $type "centrifugation" }}
+        {{ with $trace.buckets }}
+            <h2>Eimer dieser Schleuderung</h2>
+            {{ partial "db/bucket_table.html" (dict "buckets" . "batch" true) }}
+        {{ end }}
+        {{ with $trace.fillings }}
+            <h2>Abfüllungen aus den Losen dieser Schleuderung</h2>
+            {{ partial "db/filling_table.html" (dict "fillings" . "article" true "batch" true) }}
+        {{ end }}
     {{ end }}
-    
-    {{ $id := .Params.id }}
-    {{ with resources.GetMatch (printf "/db/img/%s.{jpg,png}" (strings.ToLower .Params.id)) }}
+
+    {{ with resources.GetMatch (printf "/db/img/%s.{jpg,png}" (strings.ToLower $id)) }}
         <hr>
         {{ partial "image/figure.html" (dict "image" . "caption" $id) }}
     {{ end }}

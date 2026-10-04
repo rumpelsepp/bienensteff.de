@@ -1,0 +1,29 @@
+{{- /*
+  The rows of a batch's table about its laboratory analyses and what else
+  is to be said about it in public (the "analyses" and the "public_note"
+  the dump gives a batch): the water content each analysis found and the
+  report it is from -- its number, who issued it and the name of the file,
+  so that the report can be laid on the table when somebody asks for it.
+  The reports themselves are not published.
+
+  A sample taken before the batch was homogenised did not measure the
+  honey as it is sold; the dump leaves its result out, and the report is
+  named as such. A batch without any analysis gets a row saying how its
+  water content is looked after instead.
+
+  Param: the batch
+*/ -}}
+{{- range .analyses }}
+  {{- with .water }}
+    <tr><th scope="row"><abbr title="Messung einer homogenisierten Probe im Labor">Wassergehalt (Laboranalyse)</abbr></th><td>{{ partial "db/de-number.html" (dict "format" "%.1f %%" "value" (math.Mul . 100)) }}</td></tr>
+  {{- end }}
+  {{- if .report_number }}
+    <tr><th scope="row">Laboranalyse</th><td>{{ .report_number }}{{ with .issuer }}, {{ . }}{{ end }}{{ if .before_homogenisation }}, Probe vor dem Homogenisieren{{ end }}{{ with .file_name }} (Datei <code>{{ . }}</code>){{ end }}</td></tr>
+  {{- end }}
+{{- end }}
+{{- if not .analyses }}
+    <tr><th scope="row">Wassergehalt</th><td>Für dieses Los liegt keine Laboranalyse vor. Wir stellen mit eigenen Stichproben sicher, dass der Wassergehalt die Anforderungen erfüllt.</td></tr>
+{{- end }}
+{{- with .public_note }}
+    <tr><th scope="row">Hinweis</th><td>{{ . }}</td></tr>
+{{- end }}

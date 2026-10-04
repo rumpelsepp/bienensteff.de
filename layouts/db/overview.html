@@ -1,53 +1,112 @@
 {{ define "main" }}
 
+{{ $db := (partialCached "db/index.html" "db").db }}
+
 <div class="single">
-    <article class="content">
+    <article class="content db-record">
     <header>
         <h1>{{$.Title}}</h1>
     </header>
 
         {{.Content}}
-        
+
     <hr>
 
-        
-{{ with resources.Get "/db/db.json" }}
-    {{ with . | transform.Unmarshal }}
-        {{ $data := sort .articles "sku" }}
+    <h2>So ist die Datenbank zu lesen</h2>
+    <p>
+        Jedes Glas lässt sich über seine Abfüllnummer bis zu dem Tag zurückverfolgen, an dem der Honig geschleudert wurde – und umgekehrt jede Schleuderung bis zu den Gläsern, die daraus entstanden sind.
+        Der Honig durchläuft dabei fünf Stationen, und jede hat eine eigene Nummer.
+        Auf der Seite eines Eintrags steht oben immer dieselbe Kette, mit allem, was davor und danach kam.
+    </p>
+    {{ partial "db/legend.html" . }}
 
-        <div id="beetable">
-        <table id="honeydb" class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th scope="col">Artikelnummer</th>
-                <th scope="col">GTIN</th>
-                <th scope="col">Produktname</th>
-                <th scope="col">Marke</th>
-            </tr>
-        </thead>
-        <tbody>
+    <h2>Artikel im Verkauf</h2>
+    <div id="beetable" class="table-responsive">
+    <table id="honeydb" class="table table-striped table-bordered db-table">
+    <thead>
+        <tr>
+            <th scope="col">Artikelnummer</th>
+            <th scope="col">GTIN</th>
+            <th scope="col">Produktname</th>
+            <th scope="col">Marke</th>
+        </tr>
+    </thead>
+    <tbody>
 
-        {{/* Nur Artikel mit mindestens einer noch nicht abgelaufenen
-             Abfüllung (MHD >= heute) landen in der Übersicht -- Artikel
-             ohne aktuell im Umlauf befindliche Gläser fallen raus, ohne
-             dass ihre eigene Seite/ihr Permalink verschwindet (siehe
-             _content.gotmpl, das ungefiltert bleibt). */}}
-        {{ range $data }}
-            {{ if where .fillings "best_before_date" "ge" (now.Format "2006-01-02") }}
-            <tr>
-                <td>{{ partial "db/crosslink.html" (dict "id" .id "text" .sku) }}</td>
-                <td>{{ partial "db/link_gtin.html" (dict "gtin" .gtin) }}</td>
-                <td>{{ .name }} {{ .packaging.net_weight }} {{ .packaging.filling_unit }}</td>
-                <td>{{ .brand.name }}</td>
-            </tr>
-            {{ end }}
+    {{/* Nur Artikel mit mindestens einer noch nicht abgelaufenen
+         Abfüllung landen in der Übersicht (db/index.html lässt die
+         abgelaufenen weg) -- Artikel ohne aktuell im Umlauf befindliche
+         Gläser fallen raus, ohne dass ihre eigene Seite/ihr Permalink
+         verschwindet. */}}
+    {{ range sort $db.articles "sku" }}
+        {{ if .fillings }}
+        <tr>
+            <td>{{ partial "db/crosslink.html" (dict "id" .id "text" .sku) }}</td>
+            <td>{{ partial "db/link_gtin.html" (dict "gtin" .gtin) }}</td>
+            <td>{{ .name }} {{ .packaging.net_weight }} {{ .packaging.filling_unit }}</td>
+            <td>{{ .brand.name }}</td>
+        </tr>
         {{ end }}
-
-        </tbody>
-        </table>
-        </div>
     {{ end }}
-{{ end }}
+
+    </tbody>
+    </table>
+    </div>
+
+    {{/* The two ends of the chain as lists, the newest first: where one
+         starts who comes with a batch number or the date of a harvest
+         instead of a jar. */}}
+    <h2>Honiglose</h2>
+    <div class="table-responsive">
+    <table class="table table-striped table-bordered table-sm db-table">
+    <thead>
+        <tr>
+            <th scope="col">Los</th>
+            <th scope="col">Sortenempfehlung</th>
+            <th scope="col"><abbr title="Das Los erfüllt die Anforderungen von „Geprüfte Qualität – Bayern“. Ob ein Glas daraus das Siegel trägt, steht bei der Abfüllung.">GQ-konform</abbr></th>
+            <th scope="col">Schleuderung</th>
+            <th scope="col" class="text-end"><abbr title="Wassergehalt laut Laboranalyse einer homogenisierten Probe">Wasser</abbr></th>
+            <th scope="col">Abfüllungen</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{ range sort $db.batches "id" "desc" }}
+        {{ $trace := partial "db/trace.html" .id }}
+        <tr>
+            <td>{{ partial "db/crosslink.html" (dict "id" .id) }}</td>
+            <td>{{ .honey_type }}</td>
+            <td>{{ partial "db/yesno.html" .gqb_compliant }}</td>
+            <td>{{ range $i, $c := $trace.centrifugations }}{{ if $i }} · {{ end }}{{ partial "db/crosslink.html" (dict "id" $c.id) }}{{ end }}</td>
+            <td class="text-end">{{ range first 1 (where .analyses "water" "ne" nil) }}{{ partial "db/de-number.html" (dict "format" "%.1f %%" "value" (math.Mul .water 100)) }}{{ end }}</td>
+            <td>{{ range $i, $f := sort .fillings "id" }}{{ if $i }} · {{ end }}{{ partial "db/crosslink.html" (dict "id" $f.id) }}{{ end }}</td>
+        </tr>
+    {{ end }}
+    </tbody>
+    </table>
+    </div>
+
+    <h2>Schleuderungen</h2>
+    <div class="table-responsive">
+    <table class="table table-striped table-bordered table-sm db-table">
+    <thead>
+        <tr>
+            <th scope="col">Schleuderung</th>
+            <th scope="col">Geschleudert am</th>
+            <th scope="col">Lose</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{ range sort $db.centrifugations "id" "desc" }}
+        {{ $trace := partial "db/trace.html" .id }}
+        <tr>
+            <td>{{ partial "db/crosslink.html" (dict "id" .id) }}</td>
+            <td>{{ partial "db/date.html" (dict "date" .date) }}</td>
+            <td>{{ range $i, $b := $trace.batches }}{{ if $i }} · {{ end }}{{ partial "db/crosslink.html" (dict "id" $b.id) }}{{ end }}</td>
+        </tr>
+    {{ end }}
+    </tbody>
+    </table>
+    </div>
     </article>
 </div>
 {{ end }}

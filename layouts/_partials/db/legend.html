@@ -1,0 +1,18 @@
+{{- /*
+  How the database is to be read: the five kinds of records along the way
+  of the honey, each with the letters its numbers begin with and a
+  sentence saying what it is. The same row of steps db/chain.html shows on
+  the page of a record, there with the records themselves.
+*/ -}}
+<nav class="db-chain db-chain--legend" aria-label="Aufbau der Datenbank">
+  <ol>
+    {{- range slice "S" "E" "L" "A" "SKU" }}
+    {{- $kind := partial "db/kind.html" . }}
+    <li class="db-chain-step">
+      <span class="db-chain-name">{{ $kind.name }}</span>
+      <span class="db-chain-ids"><strong>{{ . }}-…</strong></span>
+      <span class="db-chain-what">{{ $kind.what }}</span>
+    </li>
+    {{- end }}
+  </ol>
+</nav>
