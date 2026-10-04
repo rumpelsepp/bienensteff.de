@@ -1,12 +1,21 @@
 """
 Dumps the Bienensteff product/tracing database from its Grist SaaS document
-(articles, fillings, buckets, batches, centrifugations) as one joined JSON
-blob to stdout.
+(articles, fillings, buckets, batches with their laboratory analyses,
+centrifugations) as one joined JSON blob to stdout.
 
 The joining itself happens server-side, via Grist's /sql endpoint (SQLite
 dialect -- see GristClient.query_sql()), not client-side in Python. The
-nested "fillings"/"buckets" arrays (per article/batch) are built
+nested "fillings"/"buckets"/"analyses" arrays (per article/batch) are built
 client-side though, in _group_by() -- see there for why.
+
+The dump is committed to a public repository and holds only what the pages
+of the database show (layouts/db/): what a record is and what it is
+connected to. Quantities (weights, numbers of jars and hives), locations,
+the water content measured per bucket, stock and sales flags and the
+comments say how the business runs and stay in Grist; what is to be said
+about a batch in public is its `public_note`. So do the reports of
+the laboratory analyses themselves (Tracing_Analysen.document): the dump
+names them, by number, issuer and file.
 
 A batch/article with no matching fillings/buckets gets `[]`, not `null`,
 for that key -- fine for consumers (see layouts/_partials/db/*.html):
@@ -42,13 +51,10 @@ SELECT
   vd.color AS color,
   vd.flavor AS flavor,
   vd.gqb_certified AS gqb_certified,
-  vd.for_sale AS for_sale,
-  vd.in_stock AS in_stock,
   vd.label AS label,
   vd.auto_description AS auto_description,
   a.sku AS sku,
   a.name AS name,
-  a.comment AS comment,
   a.description AS description,
   m.name_short AS brand_name_short,
   m.name AS brand_name,
@@ -75,11 +81,8 @@ SELECT
   f.filling_id AS filling_id,
   date(f.date, 'unixepoch') AS date,
   date(f.best_before_date, 'unixepoch') AS best_before_date,
-  f.pieces AS pieces,
-  f.comment AS comment,
   f.dib_field AS dib_field,
   f.label AS label,
-  f.weight_total AS weight_total,
   l.batch_id AS batch_id,
   f.filling_id AS id
 FROM Abfullungen f
@@ -90,19 +93,12 @@ LEFT JOIN Artikel a ON f.sku = a.id AND substr(a.sku, 1, 1) != '_'
 BUCKETS_SQL = """
 SELECT
   e.bucket_id AS bucket_id,
-  e.weight AS weight,
-  e.moisture AS moisture,
-  e.comment AS comment,
-  e.done AS done,
-  e.date AS date,
   l.batch_id AS batch_id,
   s.centrifugation_id AS centrifugation_id,
-  st.location_id AS location_id,
   e.bucket_id AS id
 FROM Tracing_Eimer e
 LEFT JOIN Tracing_Lose l ON e.batch_id = l.id
 LEFT JOIN Tracing_Schleuderungen s ON e.centrifugation_id = s.id
-LEFT JOIN Standorte st ON e.location = st.id
 """
 
 BATCHES_SQL = """
@@ -110,9 +106,7 @@ SELECT
   l.batch_id AS batch_id,
   l.honey_type AS honey_type,
   l.gqb_compliant AS gqb_compliant,
-  l.comment AS comment,
-  l.weight AS weight,
-  l.avail AS avail,
+  l.public_note AS public_note,
   l.batch_id AS id
 FROM Tracing_Lose l
 """
@@ -121,12 +115,25 @@ CENTRIFUGATIONS_SQL = """
 SELECT
   s.centrifugation_id AS centrifugation_id,
   date(s.date, 'unixepoch') AS date,
-  s.number_of_hives AS number_of_hives,
-  s.comment AS comment,
-  s.weight AS weight,
-  s.weight_per_hive AS weight_per_hive,
   s.centrifugation_id AS id
 FROM Tracing_Schleuderungen s
+"""
+
+# A batch can have several analyses. `water` is a fraction (0.165 = 16.5 %).
+# A sample taken before the batch was homogenised (before_homogenisation)
+# did not measure the honey as it is sold: its report is named, its result
+# is not, see main().
+ANALYSES_SQL = """
+SELECT
+  l.batch_id AS batch_id,
+  an.water AS water,
+  an.report_number AS report_number,
+  an.issuer AS issuer,
+  an.file_name AS file_name,
+  an.before_homogenisation AS before_homogenisation
+FROM Tracing_Analysen an
+JOIN Tracing_Lose l ON an.batch_id = l.id
+ORDER BY an.id
 """
 
 
@@ -146,31 +153,6 @@ def _coerce_bools(rows: list[dict[str, Any]], keys: tuple[str, ...]) -> None:
     for row in rows:
         for key in keys:
             row[key] = bool(row[key])
-
-
-def _coerce_floats(rows: list[dict[str, Any]], keys: tuple[str, ...]) -> None:
-    """A whole-number value in a Grist Numeric column comes back from
-    query_sql() as a Python int, not a float -- SQLite's dynamic typing
-    stores a whole REAL/NUMERIC value using its INTEGER storage class (9.0
-    comes back as 9; 9.5 stays 9.5 either way), and query_sql() passes that
-    through as-is. Coerces the given columns of every row, in place, to
-    float, so a given key's JSON type stays stable across rows instead of
-    flipping between int and float depending on whether that particular
-    row's value happens to be a whole number. None (an unset cell, or no
-    match on the LEFT JOIN that produced it) is left as None.
-
-    Only applied to columns that are consistently float in practice (a
-    physical weight essentially never lands on a whole kg for long) --
-    *not* blanket-applied to every Grist "Numeric" column, since several of
-    those (pieces, ...) are just as consistently whole numbers, and
-    forcing e.g. `"pieces": 12.0` where every consumer and this script's own
-    history has always emitted `12` would be a regression in the other
-    direction.
-    """
-    for row in rows:
-        for key in keys:
-            if row[key] is not None:
-                row[key] = float(row[key])
 
 
 def _group_by(rows: list[dict[str, Any]], key: str) -> dict[Any, list[dict[str, Any]]]:
@@ -194,7 +176,7 @@ def main() -> None:
     grist = GristClient(GRIST_BASE_URL, get_api_key(), DOCUMENT_ID)
 
     skus = grist.query_sql(SKUS_SQL)
-    _coerce_bools(skus, ("gqb_certified", "for_sale", "in_stock"))
+    _coerce_bools(skus, ("gqb_certified",))
     for row in skus:
         row["brand"] = {
             "name_short": row.pop("brand_name_short"),
@@ -213,18 +195,20 @@ def main() -> None:
         }
 
     fillings = grist.query_sql(FILLINGS_SQL)
-    _coerce_floats(fillings, ("weight_total",))
 
     buckets = grist.query_sql(BUCKETS_SQL)
-    _coerce_bools(buckets, ("done",))
-    _coerce_floats(buckets, ("weight",))
 
     batches = grist.query_sql(BATCHES_SQL)
     _coerce_bools(batches, ("gqb_compliant",))
-    _coerce_floats(batches, ("weight", "avail"))
 
     centrifugations = grist.query_sql(CENTRIFUGATIONS_SQL)
-    _coerce_floats(centrifugations, ("weight",))
+
+    analyses = grist.query_sql(ANALYSES_SQL)
+    _coerce_bools(analyses, ("before_homogenisation",))
+    for row in analyses:
+        if row["before_homogenisation"]:
+            row["water"] = None
+    analyses_by_batch = _group_by(analyses, "batch_id")
 
     fillings_by_sku = _group_by(fillings, "sku")
     fillings_by_batch = _group_by(fillings, "batch_id")
@@ -234,6 +218,7 @@ def main() -> None:
     for row in batches:
         row["fillings"] = fillings_by_batch.get(row["batch_id"], [])
         row["buckets"] = buckets_by_batch.get(row["batch_id"], [])
+        row["analyses"] = analyses_by_batch.get(row["batch_id"], [])
 
     # Pretty-printed and UTF-8 rather than \u-escaped, so commits of
     # assets/db/db.json give readable diffs -- byte-identical to the `jq`
