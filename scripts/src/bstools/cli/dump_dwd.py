@@ -1,14 +1,17 @@
 """
 Downloads hourly temperature/humidity/precipitation data for a DWD weather
 station (opendata.dwd.de) and writes out an hourly and a daily-aggregated
-NDJSON file.
+NDJSON file. With --meta also what the station is: its name, position and
+height, as a JSON file.
 
 Usage:
-  dump-dwd --station-id 03379 static/klima/03379_hourly.json static/klima/03379_daily.json
+  dump-dwd --station-id 03379 --meta static/klima/03379_meta.json \\
+      static/klima/03379_hourly.json static/klima/03379_daily.json
 """
 
 import argparse
 import io
+import json
 import zipfile
 from pathlib import Path
 from string import Template
@@ -23,15 +26,40 @@ URL_TEMP_TPL = Template(BASE_URL + "/air_temperature/recent/stundenwerte_TU_${st
 URL_PREC_TPL = Template(BASE_URL + "/precipitation/recent/stundenwerte_RR_${station_id}_akt.zip")
 
 
-def fetch_dwd_csv(url: str) -> pl.DataFrame:
+def fetch_dwd_zip(url: str) -> zipfile.ZipFile:
     with httpclient.Client() as client:
         response = client.get(url)
         response.raise_for_status()
 
-    with zipfile.ZipFile(io.BytesIO(response.content)) as z:
-        product_file = next(name for name in z.namelist() if name.startswith("produkt_"))
-        with z.open(product_file) as f:
-            return pl.read_csv(f, separator=";", infer_schema_length=0)
+    return zipfile.ZipFile(io.BytesIO(response.content))
+
+
+def read_dwd_csv(z: zipfile.ZipFile) -> pl.DataFrame:
+    product_file = next(name for name in z.namelist() if name.startswith("produkt_"))
+    with z.open(product_file) as f:
+        return pl.read_csv(f, separator=";", infer_schema_length=0)
+
+
+def read_station(z: zipfile.ZipFile, station_id: str) -> dict[str, str | float]:
+    """What the station is, from the Metadaten_Geographie file every archive
+    comes with: a line per period the station stood somewhere, the last one
+    being where it stands now."""
+    geo_file = next(name for name in z.namelist() if name.startswith("Metadaten_Geographie_"))
+    lines = z.read(geo_file).decode("latin-1").splitlines()
+    header = [column.strip() for column in lines[0].split(";")]
+    rows = [
+        dict(zip(header, (value.strip() for value in line.split(";")), strict=True))
+        for line in lines[1:]
+        if line.strip()
+    ]
+    current = rows[-1]
+    return {
+        "id": station_id,
+        "name": current["Stationsname"],
+        "latitude": float(current["Geogr.Breite"]),
+        "longitude": float(current["Geogr.Laenge"]),
+        "height": float(current["Stationshoehe"]),
+    }
 
 
 def parse_dwd_timestamp(column_name: str = "MESS_DATUM") -> pl.Expr:
@@ -56,11 +84,14 @@ def clean_dwd_value(column_name: str) -> pl.Expr:
     return pl.when(parsed_float == -999.0).then(None).otherwise(parsed_float)
 
 
-def clean_and_prepare_data(station_id: str) -> pl.DataFrame:
+def clean_and_prepare_data(station_id: str) -> tuple[pl.DataFrame, dict[str, str | float]]:
     url_temp = URL_TEMP_TPL.substitute(station_id=station_id)
     url_prec = URL_PREC_TPL.substitute(station_id=station_id)
-    df_temp_raw = fetch_dwd_csv(url_temp)
-    df_prec_raw = fetch_dwd_csv(url_prec)
+    with fetch_dwd_zip(url_temp) as z:
+        df_temp_raw = read_dwd_csv(z)
+        station = read_station(z, station_id)
+    with fetch_dwd_zip(url_prec) as z:
+        df_prec_raw = read_dwd_csv(z)
 
     df_temp_raw = df_temp_raw.rename({c: c.strip() for c in df_temp_raw.columns})
     df_prec_raw = df_prec_raw.rename({c: c.strip() for c in df_prec_raw.columns})
@@ -90,7 +121,7 @@ def clean_and_prepare_data(station_id: str) -> pl.DataFrame:
 
     # df = df.with_columns(((b * alpha) / (a - alpha)).round(2).alias("dew_point"))
 
-    return df.sort("timestamp").select(["timestamp", "temperature", "precipitation"])
+    return df.sort("timestamp").select(["timestamp", "temperature", "precipitation"]), station
 
 
 def main() -> None:
@@ -102,11 +133,17 @@ def main() -> None:
         required=True,
         help="station ID according to DWD, ask AI or look in the DWD READMEs. Munich is 03379",
     )
+    parser.add_argument(
+        "--meta",
+        type=Path,
+        metavar="FILE",
+        help="path to write name, position and height of the station (JSON)",
+    )
     parser.add_argument("FILE_HOURLY", type=Path, help="path to write the hourly data")
     parser.add_argument("FILE_DAILY", type=Path, help="path to write the daily data")
     args = parser.parse_args()
 
-    df_hourly = clean_and_prepare_data(args.station_id)
+    df_hourly, station = clean_and_prepare_data(args.station_id)
     df_daily = df_hourly.group_by_dynamic(
         index_column="timestamp",
         every="1d",
@@ -124,6 +161,8 @@ def main() -> None:
         df_hourly.write_ndjson(f)
     with args.FILE_DAILY.open(mode="wb") as f:
         df_daily.write_ndjson(f)
+    if args.meta:
+        args.meta.write_text(json.dumps(station, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":
