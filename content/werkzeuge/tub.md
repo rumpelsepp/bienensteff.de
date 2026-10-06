@@ -3,14 +3,14 @@ title: "Teilen und Behandeln Rechner"
 description: "Übersicht und Werkzeug zum Berechnen der Termine für Teilen und Behandeln (TuB)"
 ---
 
-[Teilen und Behandeln (TuB)](https://www.laves.niedersachsen.de/startseite/tiere/bienenkunde/informationsmaterial/varroa-bekampfungskonzept-teilen-und-behandeln-234443.html) ist ein modernes Konzept zur gleichzeitigen Varroabekämpfung, Wabenhygiene und Königinnenverjüngung.
+[Teilen und Behandeln (TuB)](https://www.laves.niedersachsen.de/download/197079/Varroabehandlung_Teilen_und_Behandeln_nicht_barrierefrei_.pdf) ist ein modernes Konzept zur gleichzeitigen Varroabekämpfung, Wabenhygiene und Königinnenverjüngung.
 TuB ist größtenteils witterungsunabhängig und kann gut nach Zeitplan durchgeführt werden.
 {.lead}
 
 Mit diesem Werkzeug können interaktiv die Zeitpunkte der einzelnen Arbeitsphasen berechnet werden.
 Der hinterlegte Bereich symbolisiert die brutfreie Zeit.
 Termine in _kursiv_ sind geschätzt, da der Tag des Hochzeitsflugs und folglich der Start der Eiablage nicht vorhersehbar ist.
-Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://piaaumeier.de) veröffentlich wurden.
+Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://piaaumeier.de) veröffentlicht wurden.
 {.lead}
 
 ---
@@ -81,7 +81,7 @@ Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://
 
 * [Konzeptvorstellung TuB](https://www.youtube.com/watch?v=Qa2t2GCBqVw)
 * [Videoserie von Gerhard Liebig](https://www.youtube.com/watch?v=LnlxzgPWRoo&list=PLi1yvVwwMH4NPHr4Afg6QcU5FVlozfSqb)
-* [Videoserie von Pia Aumeier](https://www.youtube.com/watch?v=JDWpynwG8Do&list=PL1erWujjbQVKaJ-D3z1pPOU7V0D2UdsMG)
+* [Videoserie von Pia Aumeier](https://www.youtube.com/playlist?list=PL1erWujjbQVKaJ-D3z1pPOU7V0D2UdsMG)
 * [Videoserie vom Bieneninstitut Celle](https://www.youtube.com/watch?v=7zpV4eZLzm0)
 
 ## Nützliche Hinweise
