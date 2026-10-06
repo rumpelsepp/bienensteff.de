@@ -139,6 +139,15 @@
   .db-table td:last-child {
     white-space: normal;
   }
+
+  /* The particulars of a record are a heading and its value per row. On a
+     narrow screen the value has to give way: a long word or the address
+     of the permalink breaks rather than push the table out of the page.
+     Not for the overview, a .db-table that scrolls sideways instead. */
+  #honeydb:not(.db-table) td {
+    hyphens: auto;
+    overflow-wrap: anywhere;
+  }
 }
 
 /* What kind of record a page is about, above its number. */
@@ -371,4 +380,42 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
+}
+
+/* --------------------------------------------------------------------
+   Tables that scroll sideways (.table-responsive)
+   -------------------------------------------------------------------- */
+
+/* Such a table is first squeezed as far as its words allow and only then
+   scrolls. With the hyphenation and the justified text of the page that
+   leaves column heads cut into syllables and gaps between the words. */
+.content .table-responsive > .table {
+  text-align: left;
+  hyphens: manual;
+}
+
+/* --------------------------------------------------------------------
+   Calendar widgets (layouts/shortcodes/calendar-widget.html)
+   -------------------------------------------------------------------- */
+
+/* The toolbar of FullCalendar: the title and the buttons, each group in a
+   row that does not break -- on a phone the buttons are wider than the
+   screen. Its class names are generated, hence the selector by position:
+   the groups are the children of the calendar's first element. */
+.calendar-widget-container [id$="-calendar"] > div:first-child > div {
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
+  max-width: 100%;
+}
+
+/* FullCalendar's dark palette is a cold blue-black; on the dark page the
+   calendar takes the warm tones of the theme instead. */
+[data-bs-theme="dark"] .calendar-widget-container {
+  --fc-forma-background: var(--color-surface);
+  --fc-forma-foreground: var(--color-ink);
+  --fc-forma-muted-foreground: var(--color-ink-muted);
+  --fc-forma-faint-foreground: color-mix(in srgb, var(--color-ink-muted) 60%, var(--color-surface));
+  --fc-forma-border: var(--bs-border-color);
+  --fc-forma-muted-border: var(--bs-border-color);
+  --fc-forma-strong-border: var(--color-ink-muted);
 }
