@@ -10,7 +10,7 @@ Dazu das Startdatum X auswählen und auf absenden klicken.
 Der grüne Bereich symbolisiert den Zeitraum wo die Weiselzellen verdeckelt sind.
 Termine in _kursiv_ sind geschätzt, da der Tag des Hochzeitsflugs und folglich der Start der Eiablage nicht vorhersehbar ist.
 Termine in **fett** stellen konkrete Arbeitsschritte dar.
-Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://piaaumeier.de) veröffentlich wurden.
+Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://piaaumeier.de) veröffentlicht wurden.
 {.lead}
 
 <table class="table table-sm table-striped">
