@@ -7,9 +7,10 @@ Mit diesem Werkzeug können interaktiv die Schlupftermine von *Nachschaffungskö
 Diese Termine sind sinnvoll für die Planung von Brutwaben- oder Sammelbrutablegern.
 Dazu das Startdatum X auswählen und auf absenden klicken. Der hinterlegte Bereich symbolisiert die brutfreie Zeit.
 Termine in _kursiv_ sind geschätzt, da der Tag des Hochzeitsflugs und folglich der Start der Eiablage nicht vorhersehbar ist.
-Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://piaaumeier.de) veröffentlich wurden.
+Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://piaaumeier.de) veröffentlicht wurden.
 {.lead}
 
+<div class="table-responsive">
 <table class="table table-sm table-striped">
     <thead>
         <tr>
@@ -56,11 +57,13 @@ Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://
         </tr>
     </tbody>
 </table>
+</div>
 
 {{< calendar-widget type="beestate" >}}
 
 ## Allgemeine Infos
 
+<div class="table-responsive">
 <table class="table table-sm table-striped">
     <caption>Entwicklungsphasen der drei Bienenwesen (Dauer in Tagen)</caption>
     <thead>
@@ -128,7 +131,9 @@ Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://
         </tr>
     </tbody>
 </table>
+</div>
 
+<div class="table-responsive">
 <table class="table table-sm table-striped">
     <caption>Geschlechtsreife und Lebensdauer</caption>
     <thead>
@@ -154,5 +159,6 @@ Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://
         </tr>
     </tbody>
 </table>
+</div>
 
 Merkregeln aus dem Datenblatt „Wer? Wann? Was?" von [Pia Aumeier](https://piaaumeier.de): Ein Schwarm zieht aus, sobald die erste Schwarmzelle verdeckelt ist – die Schwarmkontrolle erfolgt daher alle 7 Tage. Flug- und Paarungswetter braucht mehr als 18 °C.
