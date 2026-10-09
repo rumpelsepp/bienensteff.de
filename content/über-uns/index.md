@@ -125,7 +125,8 @@ Jeder Monat bringt neue Aufgaben: Mal braucht’s Fingerspitzengefühl, mal hand
 Die Bienen danken’s uns auf ihre Art: mit einem Honig, der nicht nur gut schmeckt, sondern ein ganzes Bienenjahr in sich trägt. 🐝🍯
 {{< /split >}}
 
-{{< gallery lightbox="true" caption="Vom Bienenstock ins Glas: volle Honigwabe und Abfüllen" >}}
+{{< gallery lightbox="true" caption="Vom Bienenstock ins Glas: verdeckelte Honigwabe am Bienenstand, volle Wabe und Abfüllen" >}}
+IMG_20250603_181554.jpg | Weiß verdeckelte Honigwabe im Holzrähmchen auf einem offenen Bienenstock, darauf einzelne Bienen, im Hintergrund Wald
 IMG_20250728_113552.jpg | Honigwabe im Holzrähmchen, die Zellen randvoll mit dunklem Honig
 IMG_20260722_103551.jpg | Goldener Honig fließt aus dem Abfüllkübel in einen gelben Eimer
 {{< /gallery >}}
