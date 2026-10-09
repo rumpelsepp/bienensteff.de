@@ -2,8 +2,6 @@
 script reports missing config the same way instead of hand-rolling it.
 """
 
-from __future__ import annotations
-
 import logging
 import os
 import sys

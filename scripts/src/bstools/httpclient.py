@@ -47,8 +47,6 @@ encoding, Content-Encoding (gzip/brotli/zstd) and HTTP/2 streams below
 this layer, so a body always arrives here complete and decoded.
 """
 
-from __future__ import annotations
-
 import asyncio
 import io
 import json as jsonlib
@@ -58,7 +56,7 @@ import os
 import re
 import time
 from collections.abc import Mapping
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Literal, Self
 
@@ -93,20 +91,24 @@ _RETRY_ANY = {pycurl.E_COULDNT_RESOLVE_HOST, pycurl.E_COULDNT_CONNECT}
 # already have been applied server-side.
 _RETRY_GET = {pycurl.E_GOT_NOTHING, pycurl.E_SEND_ERROR, pycurl.E_RECV_ERROR}
 
-_HTTP_VERSIONS = {
-    pycurl.CURL_HTTP_VERSION_1_0: "HTTP/1.0",
-    pycurl.CURL_HTTP_VERSION_1_1: "HTTP/1.1",
-    pycurl.CURL_HTTP_VERSION_2_0: "HTTP/2",
-    pycurl.CURL_HTTP_VERSION_3: "HTTP/3",
-}
+_HTTP_VERSIONS = frozendict(
+    {
+        pycurl.CURL_HTTP_VERSION_1_0: "HTTP/1.0",
+        pycurl.CURL_HTTP_VERSION_1_1: "HTTP/1.1",
+        pycurl.CURL_HTTP_VERSION_2_0: "HTTP/2",
+        pycurl.CURL_HTTP_VERSION_3: "HTTP/3",
+    }
+)
 
 # Matches the header both as a real header line ("Authorization: ...")
 # and inside curl's HTTP/2 stream info text ("[authorization: ...]").
-_HTTP_VERSION_OPTS = {
-    "1.1": pycurl.CURL_HTTP_VERSION_1_1,
-    "2": pycurl.CURL_HTTP_VERSION_2TLS,  # h2 over TLS, HTTP/1.1 for plain http
-    "3": pycurl.CURL_HTTP_VERSION_3,  # try h3, fall back to h2/h1.1
-}
+_HTTP_VERSION_OPTS = frozendict(
+    {
+        "1.1": pycurl.CURL_HTTP_VERSION_1_1,
+        "2": pycurl.CURL_HTTP_VERSION_2TLS,  # h2 over TLS, HTTP/1.1 for plain http
+        "3": pycurl.CURL_HTTP_VERSION_3,  # try h3, fall back to h2/h1.1
+    }
+)
 
 _REDACT_RE = re.compile(r"(?i)\b((?:proxy-)?authorization|(?:set-)?cookie)(:\s*)[^\]\r\n]*")
 
@@ -214,7 +216,7 @@ class ClientConfig:
     """
 
     base_url: str = ""
-    headers: Mapping[str, str] = field(default_factory=dict)
+    headers: Mapping[str, str] = frozendict()
     user_agent: str = pycurl.version.split()[0]
     connect_timeout: float = 10.0
     timeout: float = 60.0

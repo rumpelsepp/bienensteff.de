@@ -64,11 +64,11 @@ Sie gelten unabhängig davon, ob der Honig bio oder konventionell erzeugt wurde.
 
 <div class="table-responsive">
 
-| Kriterium | Sagt etwas aus über | Günstig ist |
+| Krite&shy;rium | Sagt etwas aus über | Günstig ist |
 |---|---|---|
-| [Wassergehalt](#wassergehalt) | Reife und Gärungsgefahr | ein niedriger Wert: unter 18&nbsp;% (Deutscher Imkerbund), gesetzlich höchstens 20&nbsp;% |
-| [Invertase](#invertase-auch-saccharase) | Naturbelassenheit und schonende Behandlung | eine hohe Aktivität |
-| [5-HMF](#5-hydroxymethylfurfural-5-hmf) | Erwärmung und Lagerung | ein niedriger Gehalt |
+| [Wasser&shy;gehalt](#wassergehalt) | Reife und Gärungs&shy;gefahr | ein niedri&shy;ger Wert: unter 18&nbsp;% (Deutscher Imker&shy;bund), gesetz&shy;lich höchs&shy;tens 20&nbsp;% |
+| [Inver&shy;tase](#invertase-auch-saccharase) | Natur&shy;belassen&shy;heit und scho&shy;nende Behand&shy;lung | eine hohe Aktivität |
+| [5-HMF](#5-hydroxymethylfurfural-5-hmf) | Erwär&shy;mung und Lagerung | ein niedri&shy;ger Gehalt |
 {.table}
 
 </div>
@@ -261,13 +261,13 @@ Bio-Imkereien werden regelmäßig kontrolliert.
 
 <table class="table">
 <thead>
-<tr><td></td><th scope="col">Bio-Honig</th><th scope="col">Konventioneller Honig</th></tr>
+<tr><td></td><th scope="col">Bio-Honig</th><th scope="col">Konven&shy;tioneller Honig</th></tr>
 </thead>
 <tbody>
-<tr><th scope="row">Rechtsgrundlage</th><td>Honigverordnung und EU-Öko-Verordnung</td><td>Honigverordnung</td></tr>
-<tr><th scope="row">Betriebsweise</th><td>durch die EU-Öko-Verordnung geregelt</td><td>im Rahmen der allgemeinen gesetzlichen Vorgaben frei</td></tr>
-<tr><th scope="row">Kontrolle</th><td>regelmäßige Bio-Kontrollen</td><td>behördliche Lebensmittelüberwachung, freiwillig zusätzlich über <a href="#marken-und-zertifikate">Marken und Zertifikate</a></td></tr>
-<tr><th scope="row">Qualitätskriterien</th><td>Wassergehalt, Invertase, 5-HMF</td><td>Wassergehalt, Invertase, 5-HMF</td></tr>
+<tr><th scope="row">Rechts&shy;grundlage</th><td>Honig&shy;verordnung und EU-Öko-Ver&shy;ordnung</td><td>Honig&shy;verordnung</td></tr>
+<tr><th scope="row">Betriebs&shy;weise</th><td>durch die EU-Öko-Ver&shy;ordnung geregelt</td><td>im Rahmen der allge&shy;meinen gesetz&shy;lichen Vorgaben frei</td></tr>
+<tr><th scope="row">Kontrolle</th><td>regel&shy;mäßige Bio-Kontrollen</td><td>behörd&shy;liche Lebens&shy;mittel&shy;über&shy;wachung, freiwillig zusätz&shy;lich über <a href="#marken-und-zertifikate">Marken und Zerti&shy;fikate</a></td></tr>
+<tr><th scope="row">Qualitäts&shy;kriterien</th><td>Wasser&shy;gehalt, Invertase, 5-HMF</td><td>Wasser&shy;gehalt, Invertase, 5-HMF</td></tr>
 </tbody>
 </table>
 
