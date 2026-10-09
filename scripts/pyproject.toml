@@ -6,7 +6,7 @@ build-backend = "uv_build"
 name = "bienensteff-scripts"
 version = "0.1.0"
 description = "Internal data/ops scripts for bienensteff.de -- not published"
-requires-python = ">=3.14"
+requires-python = ">=3.15"
 dependencies = [
     "polars>=1.42",
     "pycurl>=7.48.0",

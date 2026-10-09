@@ -16,7 +16,7 @@ import zipfile
 from pathlib import Path
 from string import Template
 
-import polars as pl
+lazy import polars as pl
 
 from bstools import httpclient
 
@@ -162,7 +162,7 @@ def main() -> None:
     with args.FILE_DAILY.open(mode="wb") as f:
         df_daily.write_ndjson(f)
     if args.meta:
-        args.meta.write_text(json.dumps(station, ensure_ascii=False) + "\n", encoding="utf-8")
+        args.meta.write_text(json.dumps(station, ensure_ascii=False) + "\n")
 
 
 if __name__ == "__main__":

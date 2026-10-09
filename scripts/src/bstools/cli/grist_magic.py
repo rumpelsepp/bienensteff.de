@@ -111,8 +111,6 @@ Usage:
   grist-magic
 """
 
-from __future__ import annotations
-
 import argparse
 import logging
 import time
@@ -228,14 +226,16 @@ GRIST_ENV = [
 REQUIRED_ENV = ["LEXWARE_API_KEY"] + GRIST_ENV
 
 # voucherType -> German label, for the Docs table's Document_Type column.
-DOCUMENT_TYPE_LABELS: dict[str, str] = {
-    "invoice": "Rechnung",
-    "deliverynote": "Lieferschein",
-    "orderconfirmation": "Auftragsbestätigung",
-    "quotation": "Angebot",
-    "creditnote": "Gutschrift",
-    "dun": "Mahnung",
-}
+DOCUMENT_TYPE_LABELS = frozendict(
+    {
+        "invoice": "Rechnung",
+        "deliverynote": "Lieferschein",
+        "orderconfirmation": "Auftragsbestätigung",
+        "quotation": "Angebot",
+        "creditnote": "Gutschrift",
+        "dun": "Mahnung",
+    }
+)
 
 
 def document_type_label(voucher_type: str) -> str:
@@ -249,16 +249,18 @@ def document_type_label(voucher_type: str) -> str:
 # voided; quotations: rejected/accepted; delivery notes/OCs: open). Falls
 # back to the raw API value for anything not in here, see
 # document_status_label(), rather than silently hiding an unmapped status.
-DOCUMENT_STATUS_LABELS: dict[str, str] = {
-    "draft": "Entwurf",
-    "open": "Offen",
-    "paid": "Bezahlt",
-    "paidoff": "Bezahlt",
-    "overdue": "Überfällig",
-    "voided": "Storniert",
-    "rejected": "Abgelehnt",
-    "accepted": "Angenommen",
-}
+DOCUMENT_STATUS_LABELS = frozendict(
+    {
+        "draft": "Entwurf",
+        "open": "Offen",
+        "paid": "Bezahlt",
+        "paidoff": "Bezahlt",
+        "overdue": "Überfällig",
+        "voided": "Storniert",
+        "rejected": "Abgelehnt",
+        "accepted": "Angenommen",
+    }
+)
 
 
 def document_status_label(voucher_status: str | None) -> str | None:

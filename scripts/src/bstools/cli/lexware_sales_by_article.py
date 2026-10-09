@@ -59,15 +59,13 @@ Usage:
   lexware-sales-by-article --dry-run
 """
 
-from __future__ import annotations
-
 import argparse
 import json
 import logging
 import time
 from typing import Any
 
-import polars as pl
+lazy import polars as pl
 
 from bstools.env import require_env
 from bstools.grist import GristClient, changed_fields

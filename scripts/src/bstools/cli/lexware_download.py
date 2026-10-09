@@ -8,8 +8,6 @@ Usage:
   lexware-download RE-1044
 """
 
-from __future__ import annotations
-
 import argparse
 import logging
 import sys
@@ -22,12 +20,14 @@ from bstools.logging_setup import setup_logging
 logger = logging.getLogger(__name__)
 
 # Voucher number prefix -> voucherType (Lexware API filter value / RESOURCE_INFO key).
-PREFIX_TO_VOUCHER_TYPE = {
-    "RE": "invoice",
-    "AG": "quotation",
-    "AB": "orderconfirmation",
-    "LS": "deliverynote",
-}
+PREFIX_TO_VOUCHER_TYPE = frozendict(
+    {
+        "RE": "invoice",
+        "AG": "quotation",
+        "AB": "orderconfirmation",
+        "LS": "deliverynote",
+    }
+)
 
 
 def get_voucher_type(voucher_number: str) -> str:

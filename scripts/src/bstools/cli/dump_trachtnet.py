@@ -69,12 +69,14 @@ CLIENT_PATH = "cgi-bin/tdsa/tdsa_client.pl"
 # Query parameter -> output folder, in the order regions are listed in
 # index.json and resolved by name on the website (a Bundesland wins over a
 # Regierungsbezirk of the same name, e.g. "Berlin").
-KINDS = {
-    "blid": "bundesland",
-    "rbzid": "regierungsbezirk",
-    "lkid": "landkreis",
-    "wid": "waage",
-}
+KINDS = frozendict(
+    {
+        "blid": "bundesland",
+        "rbzid": "regierungsbezirk",
+        "lkid": "landkreis",
+        "wid": "waage",
+    }
+)
 
 # See TrachtnetConfig for where these numbers come from.
 DEFAULT_HTTP_CONFIG = httpclient.ClientConfig(
@@ -202,10 +204,7 @@ def parse_catalog(page: str) -> Catalog:
 def _hash_lookup(entries: list[dict[str, Any]]) -> dict[str, Any]:
     """Trachtnet's per-point extras come as a list of one-key dicts keyed by
     the point's x value (as a string)."""
-    out: dict[str, Any] = {}
-    for entry in entries:
-        out.update(entry)
-    return out
+    return {**entry for entry in entries}
 
 
 def parse_series(series: dict[str, Any]) -> list[Record]:

@@ -6,8 +6,6 @@ level filtering (see setup_logging's `debug` param) replaces the old
 one-off `if self.debug:` checks.
 """
 
-from __future__ import annotations
-
 import logging
 import sys
 

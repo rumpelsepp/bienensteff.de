@@ -4,8 +4,6 @@ this (throttled HTTP, pagination, deeplinks, article/contact lookups) on
 their own.
 """
 
-from __future__ import annotations
-
 import json
 import logging
 import time
@@ -28,19 +26,21 @@ MAX_VOUCHERLIST_PAGE_SIZE = 250
 
 # voucherType (API filter value) -> URL path segment, used for detail GETs,
 # file downloads, and deeplinks alike.
-RESOURCE_INFO: dict[str, str] = {
-    "invoice": "invoices",
-    "deliverynote": "delivery-notes",
-    "orderconfirmation": "order-confirmations",
-    "quotation": "quotations",  # path unverified, best guess
-    "creditnote": "credit-notes",
-    # Down-payment invoices (Abschlagsrechnungen) are their own voucherType,
-    # NOT included when filtering voucherType=invoice -- easy to miss a
-    # chunk of "Rechnungen" this way if the account uses them. Read-only via
-    # the API (no POST /v1/down-payment-invoices).
-    "downpaymentinvoice": "down-payment-invoices",
-    "dun": "dunnings",
-}
+RESOURCE_INFO = frozendict(
+    {
+        "invoice": "invoices",
+        "deliverynote": "delivery-notes",
+        "orderconfirmation": "order-confirmations",
+        "quotation": "quotations",  # path unverified, best guess
+        "creditnote": "credit-notes",
+        # Down-payment invoices (Abschlagsrechnungen) are their own voucherType,
+        # NOT included when filtering voucherType=invoice -- easy to miss a
+        # chunk of "Rechnungen" this way if the account uses them. Read-only via
+        # the API (no POST /v1/down-payment-invoices).
+        "downpaymentinvoice": "down-payment-invoices",
+        "dun": "dunnings",
+    }
+)
 
 
 class LexwareClient:

@@ -17,6 +17,7 @@
       {{ with resources.Get "/img/banner.jpg" }}
         {{ partial "image/img.html" (dict
           "image" .
+          "alt" "Bienen auf einer Wabe, mittendrin die Königin mit blauem Punkt"
           "class" "hero-media"
           "widths" (slice 800 1200 1600 2400 3200)
           "sizes" (printf "max(100vw, min(60vh, 26rem) * %.2f)" (div (float .Width) .Height))

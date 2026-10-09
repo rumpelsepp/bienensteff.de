@@ -7,8 +7,6 @@ One client instance is scoped to one document (doc_id); table_id is passed
 per call, since a document has several tables.
 """
 
-from __future__ import annotations
-
 import json
 import logging
 import marshal
