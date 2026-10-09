@@ -1,0 +1,29 @@
+{{- /*
+  The awards of the front matter as a row of cards, each with its medal
+  (.awards in style.css), the latest first:
+
+    params:
+      auszeichnungen:
+        - date: "2025-11-02"
+          medal: silber        # gold, silber or bronze
+          title: "Medaille für hervorragende Leistungen"
+          event: "Honigprämierung beim 11. Bayerischen Honigfest"
+          place: "Bischofsgrün (Oberfranken)"
+          url: /auszeichnungen/2025-11-02-honigpraemierung.pdf
+*/ -}}
+<ul class="awards" role="list">
+  {{- range sort .Page.Params.auszeichnungen "date" "desc" }}
+  {{- $date := time.AsTime .date }}
+  <li class="award award--{{ .medal }}">
+    <span class="award-medal" aria-hidden="true"><i class="bi bi-award-fill"></i></span>
+    <div class="award-body">
+      <p class="award-kind">{{ .medal | title }} · {{ $date.Format "2006" }}</p>
+      <p class="award-title">{{ .title }}</p>
+      <p class="award-event">{{ .event }}, {{ .place }}</p>
+      {{- with .url }}
+      <a class="award-link" href="{{ . }}"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> Urkunde ansehen<span class="visually-hidden"> ({{ $date.Format "2006" }})</span></a>
+      {{- end }}
+    </div>
+  </li>
+  {{- end }}
+</ul>

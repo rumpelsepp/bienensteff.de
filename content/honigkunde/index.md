@@ -1,47 +1,92 @@
 ---
 title: Honigkunde
-toc: true
 ---
 
-Auf dieser Seite stellen wir euch die wichtigsten Infos über Honig zusammen, von praktischen Alltagsfragen bis zu den Kriterien, die echte Honigqualität ausmachen.
-Dabei werden wir natürlich das Rad nicht neu erfinden, sondern wir beziehen uns hier auf offizielle bzw. wissenschaftlich anerkannte Quellen.
-Weiterführende Seiten oder Dokumente werden nach Möglichkeit verlinkt.
-Allgemeine Informationen rund um Honig gibt es auf der [Webseite](https://deutscherimkerbund.de/honig/) des Deutschen Imkerbundes.
+Diese Seite fasst die wichtigsten Informationen über Honig zusammen: was Honig ist, woran sich seine Qualität messen lässt und wie er gelagert wird.
+Die Angaben stützen sich auf Rechtstexte sowie auf Veröffentlichungen von Fachinstituten und Verbänden.
+Die Quellen sind jeweils verlinkt, die Originalzitate lassen sich aufklappen.
+Allgemeine Informationen rund um Honig gibt es außerdem auf der [Webseite](https://deutscherimkerbund.de/honig/) des Deutschen Imkerbundes.
 {.lead}
 
-## Haltbarkeit
+<ul class="fact-tiles" role="list">
+  <li><i class="bi bi-moon-stars" aria-hidden="true"></i><strong>Kühl, trocken, dunkel</strong><span>die übliche Lagerempfehlung</span></li>
+  <li><i class="bi bi-droplet" aria-hidden="true"></i><strong>Unter 18&nbsp;% Wasser</strong><span>Richtwert des Deutschen Imkerbundes</span></li>
+  <li><i class="bi bi-thermometer-half" aria-hidden="true"></i><strong>Nicht über 40&nbsp;°C</strong><span>Enzyme sind wärmeempfindlich</span></li>
+  <li><i class="bi bi-calendar-check" aria-hidden="true"></i><strong>Zwei Jahre</strong><span>übliche Mindesthaltbarkeit</span></li>
+</ul>
 
-_Kann Honig schlecht werden?_
+## Was ist Honig?
 
-Die Angabe eines Mindesthaltbarkeitsdatum für Honig ist gemäß [Lebensmittelinformations-Verordnung](http://data.europa.eu/eli/reg/2011/1169/oj) gesetzlich vorgeschrieben.
-Bei ordentlicher Lagerung kann Honig auch nach Ablauf der Mindesthaltbarkeit durchaus noch verzehrfähig sein.
-Bei ungünstigen Lagerbedingungen (z. B. zu warm, zu feucht oder zu hell) können die [Qualitätskriterien](#qualitätskriterien) negativ beeinträchtigt werden.
-Üblicherweise wird auf Honiggläsern eine Haltbarkeit von **zwei Jahren** angegeben.
+Was als Honig bezeichnet werden darf, regelt in Deutschland die [Honigverordnung](https://www.gesetze-im-internet.de/honigv_2004/BJNR009200004.html).
+Demnach ist Honig ein natursüßer Stoff, den Honigbienen aus Nektar oder Honigtau erzeugen, mit körpereigenen Stoffen umwandeln und in den Waben reifen lassen.
+Er besteht im Wesentlichen aus Fructose und Glucose sowie aus organischen Säuren, Enzymen und festen Partikeln wie Pollen.
+
+{{< blockquote summary="Wortlaut: Honigverordnung" caption="Honigverordnung vom 16. Januar 2004 (BGBl. I S. 92), die zuletzt durch Artikel 10 der Verordnung vom 5. Juli 2017 (BGBl. I S. 2272) geändert worden ist" >}}
+Honig ist der natursüße Stoff, der von Honigbienen erzeugt wird, indem die Bienen Nektar von Pflanzen oder Sekrete lebender Pflanzenteile oder sich auf den lebenden Pflanzenteilen befindende Exkrete von an Pflanzen saugenden Insekten aufnehmen, durch Kombination mit eigenen spezifischen Stoffen umwandeln, einlagern, dehydratisieren und in den Waben des Bienenstocks speichern und reifen lassen.
+
+Honig besteht im Wesentlichen aus verschiedenen Zuckerarten, insbesondere aus Fructose und Glucose, sowie aus organischen Säuren, Enzymen und beim Nektarsammeln aufgenommenen festen Partikeln. Die Farbe des Honigs reicht von nahezu farblos bis dunkelbraun. Er kann von flüssiger, dickflüssiger oder teilweise bis durchgehend kristalliner Beschaffenheit sein. Die Unterschiede in Geschmack und Aroma werden von der jeweiligen botanischen Herkunft bestimmt.
+{{</ blockquote >}}
+
+## Honigsorten
+
+Honig wird nach zwei Merkmalen unterschieden: nach der botanischen Herkunft und nach der Art der Gewinnung.
+
+{{< fig src="IMG_20260725_100047.jpg" alt="Zwei Honiggläser nebeneinander auf einem Holzbrett, links ein goldgelber, rechts ein rotbrauner Honig" caption="Zwei Honige, zwei Farben: Farbe, Geschmack und Aroma hängen von der botanischen Herkunft ab." crop-top="4" crop-bottom="4" width="520" >}}
+
+<div class="row row-cols-1 row-cols-md-2 g-3 mb-3">
+<div class="col">
+
+{{< card header="Nach botanischer Herkunft" card_class="h-100 text-start" >}}
+* **Blütenhonig** (auch Nektarhonig) wird überwiegend aus dem Nektar von Blüten gewonnen.
+* **Honigtauhonig** (z. B. Wald- oder Tannenhonig) geht auf Ausscheidungen pflanzensaugender Insekten zurück.
+* **Sortenhonig** darf ein Honig heißen, dessen überwiegender Teil nachweislich aus einer bestimmten Pflanze wie Raps, Linde oder Akazie stammt.
+{{< /card >}}
+
+</div>
+<div class="col">
+
+{{< card header="Nach Gewinnungsart" card_class="h-100 text-start" >}}
+* **Schleuderhonig** wird durch Zentrifugieren aus den Waben gelöst. Das ist die gängigste Form.
+* **Presshonig** wird aus den Waben gepresst und ist seltener.
+* **Wabenhonig** wird direkt im Wabenstück verkauft, ebenfalls selten.
+{{< /card >}}
+
+</div>
+</div>
+
+Weitere Einzelheiten stehen in den [Leitsätzen für Honig](https://www.bmel.de/SharedDocs/Downloads/DE/_Ernaehrung/Lebensmittel-Kennzeichnung/LeitsaetzeHonig.html) des Deutschen Lebensmittelbuchs und in den [Honigsorten-Bezeichnungen](https://deutscherimkerbund.de/wp-content/uploads/2025/02/34-honigsorten-bezeichnungen-2021.pdf) des Deutschen Imkerbundes.
 
 ## Qualitätskriterien
 
-Auf den Honiggläsern des Deutschen Imkerbundes findet sich der Hinweis „kühl, trocken, dunkel lagern".
-Der Hintergrund: Nur so bleiben Geschmack und wertvolle Inhaltsstoffe über Jahre erhalten.
-Doch woran lässt sich Honigqualität objektiv festmachen?
-Die folgenden drei Kriterien werden in jeder Honiganalyse geprüft, unabhängig davon, ob der Honig bio oder konventionell erzeugt wurde.
+Die Qualität von Honig lässt sich an messbaren Werten festmachen.
+Drei davon werden in einer Honiganalyse üblicherweise bestimmt.
+Sie gelten unabhängig davon, ob der Honig bio oder konventionell erzeugt wurde.
+
+<div class="table-responsive">
+
+| Kriterium | Sagt etwas aus über | Günstig ist |
+|---|---|---|
+| [Wassergehalt](#wassergehalt) | Reife und Gärungsgefahr | ein niedriger Wert: unter 18&nbsp;% (Deutscher Imkerbund), gesetzlich höchstens 20&nbsp;% |
+| [Invertase](#invertase-auch-saccharase) | Naturbelassenheit und schonende Behandlung | eine hohe Aktivität |
+| [5-HMF](#5-hydroxymethylfurfural-5-hmf) | Erwärmung und Lagerung | ein niedriger Gehalt |
+{.table}
+
+</div>
 
 ### Wassergehalt
 
-Der Wassergehalt ist das wichtigste Kriterium für die Qualität von Honig.
-Es ist zugleich auch das praxisnahste Kriterium, da sich der Wassergehalt einfach mit einem Refraktometer messen lässt, notfalls sogar direkt am Bienenstand.
-Die Honigverordnung gibt einen maximalen Wert von 20 % für Honig an und 23 % für Backhonig an.
+Der Wassergehalt gibt Auskunft über die Reife des Honigs und über die Gefahr, dass er gärt.
 
-Der Deutsche Imkerbund gibt an:
+* **Grenzwerte:** Die Honigverordnung erlaubt höchstens 20&nbsp;% Wasser, bei Backhonig 23&nbsp;%. Die [Qualitätsrichtlinien](https://deutscherimkerbund.de/qualitaetsrichtlinien/) des Deutschen Imkerbundes verlangen weniger als 18&nbsp;%.
+* **Messung:** Der Wassergehalt wird mit einem Refraktometer bestimmt. Das ist auch direkt am Bienenstand möglich.
+* **Folgen eines erhöhten Wertes:** Ein hoher Wassergehalt fördert die Gärung. Sie zeigt sich durch Luftblasen an der Oberfläche, Überdruck im Glas und einen sauren Geruch. Die [Schweizer Bienenzeitung](https://bienen.ch/wp-content/uploads/2024/06/3.3-Honiglagerung_2024.pdf) zeigt dazu Vergleichsbilder unterschiedlich gelagerter Honige.
 
-{{< blockquote caption="Quelle: [deutscherimkerbund.de](https://deutscherimkerbund.de/qualitaetsrichtlinien/)">}}
-Der Honig muss einen Wassergehalt von weniger als 18 % aufweisen.
+{{< blockquote summary="Originalzitat: Deutscher Imkerbund" caption="Quelle: [deutscherimkerbund.de](https://deutscherimkerbund.de/qualitaetsrichtlinien/)" >}}
+Der Honig muss einen Wassergehalt von weniger als 18&nbsp;% aufweisen.
 Wasserarme Honige sind reifer, weniger gärungsgefährdet und besitzen ein volleres Aroma.
 {{</ blockquote >}}
 
-Die Schweizer Bienenzeitung gibt ein paar zusätzliche Informationen was bei einem erhöhten Wassergehalt passiert.
-In dieser Quelle finden sich auch vergleichende Bilder von Honigen, die unterschiedlich gelagert wurden.
-
-{{< blockquote caption="Quelle: [bienen.ch](https://bienen.ch/wp-content/uploads/2024/06/3.3-Honiglagerung_2024.pdf)">}}
+{{< blockquote summary="Originalzitat: Schweizer Bienenzeitung" caption="Quelle: [bienen.ch](https://bienen.ch/wp-content/uploads/2024/06/3.3-Honiglagerung_2024.pdf)" >}}
 Erhöhter Wassergehalt fördert die Gärung (Fermentation). Auf der Honigoberfläche entstehen Luftblasen.
 Zwischen Honig und Deckel bildet sich ein Überdruck, der beim Öffnen des Gefässes deutlich hörbar entweicht.
 Gärender Honig riecht sauer. Da lebende Hefezellen Durchfall erzeugen, soll gärender Honig nur erhitzt, als Backhonig, verzehrt werden.
@@ -49,110 +94,103 @@ Gärender Honig riecht sauer. Da lebende Hefezellen Durchfall erzeugen, soll gä
 
 ### Invertase (auch: Saccharase)
 
-Die Bienen fügen dem Honig bei dessen Bereitung eine ganze Reihe körpereigener Enzyme bei.
-Diese Enzyme haben verschiedene Effekte auf den Honig, wie z. B. eine antibakterielle Wirkung.
-Viele Enzyme sind wärme- und/oder lichtempfindlich.
-In einer Honiganalyse wird üblicherweise das Enzym Invertase geprüft.
+Bienen fügen dem Honig bei der Bereitung körpereigene Enzyme hinzu.
+Eines davon ist die Invertase, die in einer Honiganalyse üblicherweise gemessen wird.
 
-Das Niedersächsische Landesinstitut für Bienenkunde hat folgende Informationen über das Enzym Invertase veröffentlicht:
+* **Aussage:** Die Invertase-Aktivität gilt als Maß für die Naturbelassenheit und informiert über Reife und schonende Behandlung des Honigs.
+* **Empfindlichkeit:** Invertase reagiert empfindlich auf Erwärmung über 40&nbsp;°C, und zwar deutlich empfindlicher als das in der Honigverordnung genannte Enzym Diastase. Auch eine lange oder ungeeignete Lagerung senkt die Aktivität.
+* **Einschränkung:** Manche Honigsorten haben von Natur aus eine geringe Invertase-Aktivität. Bei ihnen lässt der Wert keinen Rückschluss auf die Behandlung zu; aussagekräftiger ist dann der [5-HMF-Gehalt](#5-hydroxymethylfurfural-5-hmf).
 
-{{< blockquote caption="Quelle: [laves.niedersachsen.de](https://www.laves.niedersachsen.de/download/40999/Invertase-Aktivitaet_ein_Qualitaetsmerkmal_fuer_Honig.pdf)" >}}
+{{< blockquote summary="Originalzitat: Niedersächsisches Landesinstitut für Bienenkunde" caption="Quelle: [laves.niedersachsen.de](https://www.laves.niedersachsen.de/download/40999/Invertase-Aktivitaet_ein_Qualitaetsmerkmal_fuer_Honig.pdf)" >}}
 Das im Honig vorhandene Enzym Invertase wird zum überwiegenden Teil von den Bienen bei der Honigbereitung mit dem Speichel zugefügt.
 Chemisch handelt es sich um das Enzym á-Glucosidase, das insbesondere Saccharose (Rohrzucker) und Maltose (Malzzucker) spalten kann.
 
 Die Invertase-Aktivität wird als Maß für die Naturbelassenheit gewertet, und informiert damit über die Reife und schonende Behandlung von Honig.
-Dieses Enzym ist wesentlich empfindlicher gegenüber Erwärmungen über 40 °C als das ebenfalls im Honig enthaltene und in der Honigverordnung genannte Enzym Diastase.
+Dieses Enzym ist wesentlich empfindlicher gegenüber Erwärmungen über 40&nbsp;°C als das ebenfalls im Honig enthaltene und in der Honigverordnung genannte Enzym Diastase.
 {{</ blockquote >}}
 
-Das Fachzentrum für Imkerei schreibt ferner:
-
-{{< blockquote caption="Quelle: [bienenkunde.rlp.de](https://www.bienenkunde.rlp.de/Bienenkunde/Honig/Allgemeine-Informationen/DieSaccharase-AktivitaetimHonig)">}}
-Enzyme sind Eiweißmoleküle, die meist sehr wärmeempfindlich sind. Bei Temperaturen über 40 °C denaturieren diese und verlieren ihre katalytischen Eigenschaften.
+{{< blockquote summary="Originalzitat: Fachzentrum für Bienen und Imkerei" caption="Quelle: [bienenkunde.rlp.de](https://www.bienenkunde.rlp.de/Bienenkunde/Honig/Allgemeine-Informationen/DieSaccharase-AktivitaetimHonig)" >}}
+Enzyme sind Eiweißmoleküle, die meist sehr wärmeempfindlich sind. Bei Temperaturen über 40&nbsp;°C denaturieren diese und verlieren ihre katalytischen Eigenschaften.
 Sie können den chemischen Prozess also nicht mehr umsetzen.
 Somit lassen sich über die Aktivität von Enzymen - im Honig v.a. über die Saccharase-Aktivität - Wärmeeinwirkungen oder Hitzeschäden nachweisen.
 Auch falsche oder lange Lagerung des Honigs führt zu einer Abnahme der Saccharase-Aktivität.
 {{</ blockquote >}}
 
-Der Deutsche Imkerbund fasst den Sachverhalt wie folgt zusammen:
-
-{{< blockquote caption="Quelle: [deutscherimkerbund.de](https://deutscherimkerbund.de/qualitaetsrichtlinien/)">}}
+{{< blockquote summary="Originalzitat: Deutscher Imkerbund" caption="Quelle: [deutscherimkerbund.de](https://deutscherimkerbund.de/qualitaetsrichtlinien/)" >}}
 Invertase ist ein sehr wärmeempfindliches Enzym.
 Eine hohe Invertase-Aktivität ist eine Garantie dafür, dass der Honig nicht wärmebehandelt wurde.
 {{</ blockquote >}}
 
 ### 5-Hydroxymethylfurfural (5-HMF)
 
-Der Wikipedia Artikel zu 5-HMF ist relativ umfangreich und mit guten Quellen versehen, daher zitiere ich direkt den Artikel aus Wikipedia.
+5-HMF ist ein Abbauprodukt von Zucker.
 
-{{< blockquote caption="Quelle: [de.wikipedia.org](https://de.wikipedia.org/wiki/Hydroxymethylfurfural)">}}
+* **Entstehung:** In frisch geschleudertem Honig ist der Gehalt sehr gering. Er steigt mit der Lagerdauer und umso schneller, je wärmer der Honig gelagert oder verarbeitet wird.
+* **Aussage:** Ein niedriger 5-HMF-Gehalt weist auf schonende Gewinnung und sachgerechte Lagerung hin, ein hoher auf lange Lagerung oder Erwärmung.
+* **Gesundheitliche Bewertung:** Nach einer [Stellungnahme](https://www.bfr.bund.de/cm/343/5_hmf_gehalte_in_lebensmitteln_sind_nach_derzeitigem_wissenschaftlichen_kenntnisstand_gesundheitlich_unproblematisch.pdf) des Bundesinstituts für Risikobewertung sind die 5-HMF-Gehalte in Lebensmitteln nach derzeitigem wissenschaftlichen Kenntnisstand gesundheitlich unproblematisch. Der Wert dient also als Indikator für Lagerung und Verarbeitung.
+
+{{< blockquote summary="Originalzitat: Wikipedia" caption="Quelle: [de.wikipedia.org](https://de.wikipedia.org/wiki/Hydroxymethylfurfural)" >}}
 Hydroxymethylfurfural (HMF) ist in natürlichen Lebensmitteln nicht vorhanden.
 Diese Substanz entsteht erst bei der thermischen Zersetzung von Kohlenhydraten. […]
 Der HMF-Gehalt in frisch geschleudertem Honig ist sehr gering und steigt bei korrekter Lagerung, je nach pH-Wert und Lagertemperatur um ca. 2–3 mg/kg pro Jahr an.
-Lagerung bei Zimmertemperatur (21 °C) kann den HMF-Gehalt in einem Jahr bereits auf 20 mg/kg erhöhen.
+Lagerung bei Zimmertemperatur (21&nbsp;°C) kann den HMF-Gehalt in einem Jahr bereits auf 20 mg/kg erhöhen.
 Ein hoher 5-HMF-Wert des Honigs weist auf länger anhaltende Lagerung oder Erwärmung hin.
 {{</ blockquote >}}
 
-Das Bundesinstitut für Risikobewertung hat eine Stellungnahme zur Toxizität beim Menschen veröffentlicht.
-Das Ergebnis lautet wie folgt:
-
-{{< blockquote caption="Quelle: [bfr.bund.de](https://www.bfr.bund.de/cm/343/5_hmf_gehalte_in_lebensmitteln_sind_nach_derzeitigem_wissenschaftlichen_kenntnisstand_gesundheitlich_unproblematisch.pdf)">}}
+{{< blockquote summary="Originalzitat: Bundesinstitut für Risikobewertung" caption="Quelle: [bfr.bund.de](https://www.bfr.bund.de/cm/343/5_hmf_gehalte_in_lebensmitteln_sind_nach_derzeitigem_wissenschaftlichen_kenntnisstand_gesundheitlich_unproblematisch.pdf)" >}}
 5-HMF besitzt kein besonderes ausgeprägtes toxisches Potenzial.
 Derzeit kann aus den vorliegenden experimentellen Studien hinsichtlich einer krebserzeugenden und erbgutschädigenden Wirkung von 5-HMF keine Relevanz für den Menschen abgeleitet werden.
 {{</ blockquote >}}
 
-Obschon 5-HMF für den Menschen unbedenklich ist, hat der Test eine praktische Bedeutung: Der 5-HMF Gehalt stellt einen Indikator für die Lagerqualität von Honig dar.
-Manche Honigsorten haben naturgemäß eine geringe Invertaseaktivität.
-Dadurch kann der Wert der Invertaseaktivität in solchen Einzelfällen nicht verwendet werden um die einwandfreie Lagerbedingungen nachzuweisen.
-
-Der Deutsche Imkerbund beschreibt den HMF-Gehalt ebenfalls als Indikator für schonend verarbeiteten und richtig gelagerten Honig:
-
-{{< blockquote caption="Quelle: [deutscherimkerbund.de](https://deutscherimkerbund.de/qualitaetsrichtlinien/)">}}
+{{< blockquote summary="Originalzitat: Deutscher Imkerbund" caption="Quelle: [deutscherimkerbund.de](https://deutscherimkerbund.de/qualitaetsrichtlinien/)" >}}
 HMF ist ein Zuckerabbauprodukt, das insbesondere bei Überhitzung und unsachgemäßer Lagerung entsteht.
 Ein niedriger HMF-Gehalt ist also ein Kriterium für schonend gewonnenen und richtig gelagerten Honig.
 {{</ blockquote >}}
 
-### Zusammenfassung
+## Lagerung und Haltbarkeit
 
-Honig soll man kühl, trocken, dunkel lagern, denn:
+### Lagerung
 
-* durch Licht und Temperaturen ab 40 °C können Enzyme, die u.a. für die antibakterielle Wirkung von Honig verantwortlich sind, kaputt gehen.
-* bei Temperaturen über 40 °C entsteht 5-HMF. Ein Indikator für die Lager- und Verarbeitungsbedingungen des Honig.
-* Honig ist hygroskopisch, also nimmt aus der Luft Feuchtigkeit auf, sofern diese erhöht ist (Faustformel: über 60 % rel. Luftfeuchtigkeit). Ein hoher Wassergehalt fördert Gärungsprozesse durch Hefen im Honig, die Durchfallerkrankungen beim Menschen auslösen können.
+Auf den Honiggläsern des Deutschen Imkerbundes steht der Hinweis „kühl, trocken, dunkel lagern".
+Jede der drei Bedingungen hängt mit einem der [Qualitätskriterien](#qualitätskriterien) zusammen.
 
-{{< blockquote caption="Werner von der Ohe; Honig – Entstehung, Gewinnung, Verwertung. Kosmos-Verlag, Stuttgart 2014">}}
-Kühl (optimal sind 15 °C), trocken (optimal sind weniger als 55 % relative Luftfeuchte) und dunkel gelagert, lässt sich Honig über Jahre ohne nennenswerte Qualitätseinbußen aufbewahren.
+{{< box header="Kühl, trocken, dunkel – die Gründe" >}}
+* **Kühl:** Wärme senkt die Enzymaktivität und lässt den 5-HMF-Gehalt schneller steigen. Als optimal gelten 15&nbsp;°C.
+* **Trocken:** Honig ist hygroskopisch, er nimmt also Feuchtigkeit aus der Luft auf. Ein höherer Wassergehalt fördert die Gärung. Als optimal gelten weniger als 55&nbsp;% relative Luftfeuchte.
+* **Dunkel:** Einige Enzyme im Honig sind lichtempfindlich.
+{{< /box >}}
+
+{{< blockquote summary="Originalzitat: Werner von der Ohe" caption="Werner von der Ohe; Honig – Entstehung, Gewinnung, Verwertung. Kosmos-Verlag, Stuttgart 2014" >}}
+Kühl (optimal sind 15&nbsp;°C), trocken (optimal sind weniger als 55&nbsp;% relative Luftfeuchte) und dunkel gelagert, lässt sich Honig über Jahre ohne nennenswerte Qualitätseinbußen aufbewahren.
 {{</ blockquote >}}
 
-Zum Abschluss dieses Themenblocks noch ein Faktencheck zu einem beliebten Hausmittel: _Heißer Tee mit Honig gegen Halsschmerzen?_
+### Haltbarkeit
 
-Honig enthält Glucoseoxidase, ein Enzym, das Glucose zur Gluconsäure oxidiert, wobei Wasserstoffperoxid frei wird.
-Dieses weist eine antibakterielle Wirkung auf.
+Die [Lebensmittelinformations-Verordnung](http://data.europa.eu/eli/reg/2011/1169/oj) schreibt für Honig die Angabe eines Mindesthaltbarkeitsdatums vor.
+Üblich ist eine Angabe von **zwei Jahren**.
 
-{{< blockquote caption="Quelle: https://www.chemie.uni-wuerzburg.de/fileadmin/08010034/user_upload/Honig/Station_3_-_Enzyme_im_Honig.pdf" >}}
-Wird Honig also in heißem Tee gelöst, so wird die Glucoseoxidase inaktiviert und kein Wasserstoffperoxid mehr freigesetzt.
-Heißer Tee mit Honig wirkt folglich nicht antibakteriell und ist damit — entgegen vielfacher Annahmen — kein wirksames Hausmittel gegen Halsschmerzen.
-Sinnvoller ist es, den Honig in lauwarmem Tee zu lösen.
-{{</blockquote >}}
+Das Mindesthaltbarkeitsdatum ist kein Verfallsdatum: Sachgerecht gelagerter Honig kann auch danach noch verzehrfähig sein.
+Ungünstige Lagerbedingungen (zu warm, zu feucht oder zu hell) können die [Qualitätskriterien](#qualitätskriterien) dagegen schon vorher beeinträchtigen.
 
-## Honigsorten
+## Kristallisation und Erwärmen
 
-_Welche Honigsorten gibt es?_
+### Kristallisation
 
-Honig wird grob nach zwei Kriterien unterschieden: nach botanischer Herkunft und nach Gewinnungsart.
+Dass Honig mit der Zeit fest wird, ist ein natürlicher Vorgang.
+Er ist kein Hinweis auf zugesetzten Zucker und kein Zeichen von Verderb; kristallisierter Honig kann wie flüssiger verzehrt werden.
 
-Bei der **botanischen Herkunft** unterscheidet man zwischen Blütenhonig (auch Nektarhonig), der überwiegend aus dem Nektar von Blüten gewonnen wird, und Honigtauhonig (z. B. Wald- oder Tannenhonig), der auf Ausscheidungen pflanzensaugender Insekten zurückgeht.
-Stammt der überwiegende Teil eines Honigs nachweislich aus einer bestimmten Pflanze wie Raps, Linde oder Akazie, darf er als entsprechender Sortenhonig bezeichnet werden.
+* **Ursache:** Honig ist eine übersättigte Zuckerlösung. Wird für einen Zucker die Sättigungskonzentration überschritten, fällt er aus und bildet Kristalle.
+* **Einflussgrößen:** Wie schnell und wie fein ein Honig kristallisiert, hängt vom Zuckerspektrum, vom Wassergehalt, von der Temperatur und von vorhandenen Kristallisationskeimen ab. Deshalb werden manche Sorten rasch fest, während andere lange flüssig bleiben.
+* **Phasentrennung:** Trennt sich der Honig in eine feste und eine flüssige Phase, hat die flüssige Phase einen höheren Wassergehalt und kann gären.
 
-Bei der **Gewinnungsart** ist Schleuderhonig die mit Abstand gängigste Form: Er wird durch Zentrifugieren aus den Waben gelöst.
-Seltener sind Presshonig (aus den Waben gepresst) und Wabenhonig (direkt im Wabenstück verkauft).
+{{< blockquote summary="Originalzitat: Niedersächsisches Landesinstitut für Bienenkunde" caption="Quelle: [laves.niedersachsen.de](https://www.laves.niedersachsen.de/download/41274/Honig-Kristallisation.pdf)" >}}
+Die Kristallbildung im Honig ist abhängig von Zuckerspektrum, Konzentration der einzelnen Zucker, Gehalt an Kristallisationskeimen, Wassergehalt und Temperatur.
+[…]
+Die Kristallisation setzt ein, wenn für einen Zucker die Sättigungskonzentration überschritten wird.
+Der Zucker fällt aus der Lösung aus und bildet Kristalle, insbesondere wenn Kristallisationskeime (Pollen, Staub, Luftblasen, Primärzuckerkristalle) vorhanden sind.
+{{</ blockquote >}}
 
-Detailliertere Informationen findet ihr in den [Leitsätzen für Honig](https://www.bmel.de/SharedDocs/Downloads/DE/_Ernaehrung/Lebensmittel-Kennzeichnung/LeitsaetzeHonig.html) des Deutschen Lebensmittelbuchs oder in den [Honigsorten-Bezeichnungen](https://deutscherimkerbund.de/wp-content/uploads/2025/02/34-honigsorten-bezeichnungen-2021.pdf) vom Deutschen Imkerbund.
-
-## Kristallisation
-
-_Wurde dem Honig Zucker hinzugefügt?_
-
-{{< blockquote caption="Quelle: [bienen.info](https://bienen.info/honig-kristallisiert-biologin-klaert-auf/)">}}
+{{< blockquote summary="Originalzitat: bienen.info" caption="Quelle: [bienen.info](https://bienen.info/honig-kristallisiert-biologin-klaert-auf/)" >}}
 Kristallisierter Honig ist keinesfalls minderwertig.
 Im Gegenteil: Wenn ein Honig kristallisiert, zeugt das von dessen Naturbelassenheit.
 Das ist wiederum ein Zeichen von Qualität.
@@ -161,69 +199,89 @@ Er kann ganz normal gegessen werden.
 Nur wenn sich durch die Kristallisation zwei Phasen bilden, können sich in der flüssigeren Phase durch den höheren Wassergehalt Hefen vermehren und zur Gärung des Honigs dieser Phase führen.
 
 Es ist möglich, festen Honig durch Wärme wieder flüssiger zu machen.
-Die Temperatur sollte dabei unter 40 °C liegen, um Inhaltsstoffen des Honigs nicht zu schaden.
+Die Temperatur sollte dabei unter 40&nbsp;°C liegen, um Inhaltsstoffen des Honigs nicht zu schaden.
 Eine geeignete und schonende Methode ist die Verflüssigung von Honig im Wasserbad.
 {{</ blockquote >}}
 
-{{< blockquote caption="Quelle: [laves.niedersachsen.de](https://www.laves.niedersachsen.de/download/41274/Honig-Kristallisation.pdf)">}}
-Die Kristallbildung im Honig ist abhängig von Zuckerspektrum, Konzentration der einzelnen Zucker, Gehalt an Kristallisationskeimen, Wassergehalt und Temperatur.
+### Honig verflüssigen
+
+Fester Honig lässt sich durch Wärme wieder verflüssigen.
+
+{{< box header="Tipp: Festen Honig wieder flüssig machen" >}}
+Das Glas ins warme Wasserbad stellen und dabei unter 40&nbsp;°C bleiben, damit die wärmeempfindlichen Inhaltsstoffe erhalten bleiben.
+{{< /box >}}
+
+### Honig in heißen Getränken
+
+Für Honig in Getränken gilt dieselbe Temperaturgrenze.
+Honig enthält unter anderem das Enzym Glucoseoxidase, das Glucose zu Gluconsäure oxidiert, wobei Wasserstoffperoxid entsteht.
+In heißem Tee wird dieses Enzym inaktiviert.
+Sollen die Enzyme erhalten bleiben, wird der Honig erst in das lauwarme Getränk gegeben.
+
+{{< blockquote summary="Originalzitat: Universität Würzburg" caption="Quelle: [chemie.uni-wuerzburg.de](https://www.chemie.uni-wuerzburg.de/fileadmin/08010034/user_upload/Honig/Station_3_-_Enzyme_im_Honig.pdf)" >}}
+Wird Honig also in heißem Tee gelöst, so wird die Glucoseoxidase inaktiviert und kein Wasserstoffperoxid mehr freigesetzt.
 […]
-Die Kristallisation setzt ein, wenn für einen Zucker die Sättigungskonzentration überschritten wird.
-Der Zucker fällt aus der Lösung aus und bildet Kristalle, insbesondere wenn Kristallisationskeime (Pollen, Staub, Luftblasen, Primärzuckerkristalle) vorhanden sind.
+Sinnvoller ist es, den Honig in lauwarmem Tee zu lösen.
 {{</ blockquote >}}
-
-## Gesetzliche Grundlagen
-
-In der [„Honigverordnung vom 16. Januar 2004 (BGBl. I S. 92)"](https://www.gesetze-im-internet.de/honigv_2004/BJNR009200004.html) ist die Definition von Honig gesetzlich genau geregelt.
-Im Gesetz ist Honig wie folgt definiert:
-
-{{< blockquote caption="Honigverordnung vom 16. Januar 2004 (BGBl. I S. 92), die zuletzt durch Artikel 10 der Verordnung vom 5. Juli 2017 (BGBl. I S. 2272) geändert worden ist">}}
-Honig ist der natursüße Stoff, der von Honigbienen erzeugt wird, indem die Bienen Nektar von Pflanzen oder Sekrete lebender Pflanzenteile oder sich auf den lebenden Pflanzenteilen befindende Exkrete von an Pflanzen saugenden Insekten aufnehmen, durch Kombination mit eigenen spezifischen Stoffen umwandeln, einlagern, dehydratisieren und in den Waben des Bienenstocks speichern und reifen lassen.
-Honig besteht im Wesentlichen aus verschiedenen Zuckerarten, insbesondere aus Fructose und Glucose, sowie aus organischen Säuren, Enzymen und beim Nektarsammeln aufgenommenen festen Partikeln. Die Farbe des Honigs reicht von nahezu farblos bis dunkelbraun. Er kann von flüssiger, dickflüssiger oder teilweise bis durchgehend kristalliner Beschaffenheit sein. Die Unterschiede in Geschmack und Aroma werden von der jeweiligen botanischen Herkunft bestimmt.
-{{</ blockquote >}}
-
-Für Bio-Honig gilt zusätzlich die [Verordnung über die ökologische/biologische Produktion und die Kennzeichnung von ökologischen/biologischen Erzeugnissen](http://data.europa.eu/eli/reg/2018/848).
-Bio-Honig grenzt sich von konventionellem Honig hauptsächlich durch die Betriebsweise des Imkers ab.
-Zum Beispiel sind chemische Schädlingsbekämpfungsmittel grundsätzlich untersagt, es besteht eine detaillierte Dokumentationspflicht und es muss darauf geachtet werden, dass das Wachs in den Bienenstöcken eine hohe Qualität aufweist und frei von Rückständen etwaiger Pestizide o. ä. ist.
-Genauere Details können der verlinkten EU-Verordnung entnommen werden.
-Bio-Imkereien werden regelmäßig auditiert und die Erfüllung der gesetzlichen Vorgaben überprüft.
-Was das für die Honigqualität in der Praxis bedeutet, schauen wir uns weiter unten im Abschnitt [Ist Bio-Honig besser als konventioneller Honig?](#ist-bio-honig-besser-als-konventioneller-honig) genauer an.
 
 ## Marken und Zertifikate
 
-Im Lebensmittelhandel gibt es viele Qualitäts-Zertifikate, Marken und die generelle Unterteilung in konventionell und bio.
-Während die Unterscheidung von konventionellem Honig zu Bio-Honig per Gesetz geregelt ist, schließt man als Imker bei der Verwendung von Marken oder Zertifikaten oft einen Vertrag mit einem Zeichengeber.
-Marken und Zertifikate weisen die Erfüllung bestimmter Kriterien nach.
-Der Nutzen ist individuell unterschiedlich: Zum Beispiel benötigen manche Imker einen formalen Qualitätsnachweis gegenüber Supermärkten, während andere Zertifikate rein für eigene Marketingzwecke nutzen.
+Neben den gesetzlichen Vorgaben gibt es Marken und Zertifikate, die die Einhaltung zusätzlicher Kriterien nachweisen.
+Wer sie nutzt, schließt in der Regel einen Vertrag mit dem Zeichengeber.
+Damit verbunden sind Auflagen, Kontrollen und meist eine begrenzte Gültigkeit.
 
-Unsere Imkerei nutzt die Marke [Echter Deutscher Honig®](https://deutscherimkerbund.de/warum-unser-honig/) vom Deutschen Imkerbund.
-Durch den Verkauf von Honig unter dieser Marke verpflichtet sich der Imker, strengere Qualitätskriterien einzuhalten als durch die Honigverordnung vorgeschrieben.
-Der Deutsche Imkerbund führt über die Vereinsstruktur selbst Schulungen und Qualitätskontrollen durch.
-Die Qualitätskontrollen finden unabhängig von behördlichen Kontrollen statt und haben das übergeordnete Ziel den Imker bei der Erfüllung der Qualitätskriterien zu unterstützen.
+### Echter Deutscher Honig
 
-Zusätzlich ist unsere Imkerei Zeichennutzer des Siegels [Geprüfte Qualität Bayern für Honig](https://www.gq-bayern.de).
-Zertifikate sind oft verbunden mit strengen Auflagen und entsprechenden Kontrollen vor Ort und einer [begrenzten Gültigkeit](/zertifikate/20250523-gq-zertifikat.pdf).
-[Die Qualitätsbestimmungen](https://www.gq-bayern.de/wp-content/uploads/%C3%96ffentlicher-Bereich/Ueber-GQ-Bayern/Qualitaets-und-Pruefbestimmungen/Tierisch/Honig/gqualitaet_honig.pdf) für die Zertifikate sind beim Zeichengeber einsehbar; oft gibt es auch eine [Hilfestellung](https://www.gq-bayern.de/wp-content/uploads/%C3%96ffentlicher-Bereich/Ueber-GQ-Bayern/Qualitaets-und-Pruefbestimmungen/Tierisch/Honig/2021_12_Leistungsgegenueberstellung_GQ_3_Honig-M1-Genehmigt.pdf), die den Mehrwert des Zertifikates herausstellt.
-Durch das Siegel Geprüfte Qualität Bayern weisen wir eine nachvollziehbare und saubere Arbeitsweise in unserer Imkerei nach.
-Unsere [Rückverfolgungsdatenbank]({{% relref "datenbank" %}}) entstammt direkt den Anforderungen des Programms Geprüfte Qualität Bayern und setzt das Kriterium der Dokumentationspflicht unserer Honigchargen um.
+Unsere Imkerei nutzt die Marke [Echter Deutscher Honig®](https://deutscherimkerbund.de/warum-unser-honig/) des Deutschen Imkerbundes.
 
-Im Bio-Bereich werden oft die Siegel von Bio-Verbänden (z. B. [Naturland](https://www.naturland.de/) oder [Bioland](https://www.bioland.de/)) verwendet.
-Der formale Ablauf ist vergleichbar mit einer Zertifizierung von Geprüfte Qualität Bayern.
+* **Anforderungen:** Die [Qualitätsrichtlinien](https://deutscherimkerbund.de/qualitaetsrichtlinien/) der Marke gehen über die Honigverordnung hinaus, zum Beispiel beim [Wassergehalt](#wassergehalt).
+* **Kontrolle:** Der Deutsche Imkerbund führt über seine Vereinsstruktur eigene Schulungen und Qualitätskontrollen durch. Sie finden unabhängig von behördlichen Kontrollen statt.
 
-## Ist Bio-Honig besser als konventioneller Honig?
+### Geprüfte Qualität Bayern
 
-Jein.
-Bio-Honig unterscheidet sich hauptsächlich durch die streng kontrollierte Betriebsweise und die umfangreichen Dokumentationspflichten des Imkers von konventionellem Honig.
-Dieser Mehraufwand spiegelt sich unterm Strich auch im Honigpreis wider.
+Unsere Imkerei ist außerdem Zeichennutzer des Siegels [Geprüfte Qualität Bayern für Honig](https://www.gq-bayern.de).
 
-Aufgrund der strengen Kontrollen und der hohen formalen Hürden können wir vorsichtig ableiten[^1], dass die Wahrscheinlichkeit, dass ein zufällig ausgewählter Bio-Imker unsauber bzw. unsachgemäß arbeitet, geringer ist als bei einem zufällig gewählten konventionellen Imker.
-Aber: Auch konventionelle Imker können eine saubere Arbeitsweise und umfangreiche Dokumentationen nachweisen, zum Beispiel durch [Zertifikate](#marken-und-zertifikate).
+* **Anforderungen:** Die [Qualitäts- und Prüfbestimmungen](https://www.gq-bayern.de/wp-content/uploads/%C3%96ffentlicher-Bereich/Ueber-GQ-Bayern/Qualitaets-und-Pruefbestimmungen/Tierisch/Honig/gqualitaet_honig.pdf) sind beim Zeichengeber einsehbar. Eine [Gegenüberstellung](https://www.gq-bayern.de/wp-content/uploads/%C3%96ffentlicher-Bereich/Ueber-GQ-Bayern/Qualitaets-und-Pruefbestimmungen/Tierisch/Honig/2021_12_Leistungsgegenueberstellung_GQ_3_Honig-M1-Genehmigt.pdf) zeigt, worin sie über die gesetzlichen Vorgaben hinausgehen.
+* **Kontrolle:** Die Einhaltung wird vor Ort geprüft. Das [Zertifikat](/zertifikate/20250523-gq-zertifikat.pdf) ist zeitlich befristet.
+* **Dokumentation:** Das Programm verlangt eine dokumentierte Rückverfolgbarkeit der Honigchargen. Diese Anforderung setzen wir mit unserer [Rückverfolgungsdatenbank]({{% relref "datenbank" %}}) um.
 
-Wenn sauber gearbeitet und die Qualität des Honigs regelmäßig labortechnisch überprüft wird, sind aus unserer Sicht konventioneller Honig und Bio-Honig absolut gleichwertig.
-Die entsprechenden [Qualitätskriterien](#qualitätskriterien) haben wir weiter oben im Detail beschrieben.
-Wesentlich wichtiger ist hier das Vertrauen des Kunden in den Imker.
-Ein nachhaltiges Vertrauensverhältnis kann nicht durch ein Bio-Zertifikat ersetzt werden.
+### Bio-Verbände
 
-Wir stehen hinter den Werten der ökologischen Landwirtschaft, haben uns aber hauptsächlich aus Kostengründen (laufende Gebühren und der daraus resultierende höhere Honigpreis) gegen eine Bio-Zertifizierung entschieden.
+Im Bio-Bereich werden häufig zusätzlich die Siegel von Bio-Verbänden verwendet, zum Beispiel [Naturland](https://www.naturland.de/) oder [Bioland](https://www.bioland.de/).
+Der formale Ablauf ist mit der Zertifizierung für Geprüfte Qualität Bayern vergleichbar.
 
-[^1]: unsere subjektive Einschätzung, keine wissenschaftliche Aussage
+## Bio-Honig und konventioneller Honig
+
+Für jeden Honig gilt die [Honigverordnung](https://www.gesetze-im-internet.de/honigv_2004/BJNR009200004.html).
+Für Bio-Honig gilt zusätzlich die [EU-Öko-Verordnung](http://data.europa.eu/eli/reg/2018/848) (Verordnung über die ökologische/biologische Produktion und die Kennzeichnung von ökologischen/biologischen Erzeugnissen).
+Sie regelt die Betriebsweise der Imkerei, unter anderem die zulässigen Mittel zur Schädlingsbekämpfung, die Qualität und Rückstandsfreiheit des Wachses sowie die Dokumentationspflichten.
+Bio-Imkereien werden regelmäßig kontrolliert.
+
+<div class="table-responsive">
+
+<table class="table">
+<thead>
+<tr><td></td><th scope="col">Bio-Honig</th><th scope="col">Konventioneller Honig</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Rechtsgrundlage</th><td>Honigverordnung und EU-Öko-Verordnung</td><td>Honigverordnung</td></tr>
+<tr><th scope="row">Betriebsweise</th><td>durch die EU-Öko-Verordnung geregelt</td><td>im Rahmen der allgemeinen gesetzlichen Vorgaben frei</td></tr>
+<tr><th scope="row">Kontrolle</th><td>regelmäßige Bio-Kontrollen</td><td>behördliche Lebensmittelüberwachung, freiwillig zusätzlich über <a href="#marken-und-zertifikate">Marken und Zertifikate</a></td></tr>
+<tr><th scope="row">Qualitätskriterien</th><td>Wassergehalt, Invertase, 5-HMF</td><td>Wassergehalt, Invertase, 5-HMF</td></tr>
+</tbody>
+</table>
+
+</div>
+
+Das Bio-Siegel kennzeichnet also die Art der Erzeugung.
+Die [Qualitätskriterien](#qualitätskriterien) werden unabhängig davon durch Laboranalysen bestimmt und gelten für beide Erzeugungsarten gleichermaßen.
+
+Unsere Imkerei ist nicht bio-zertifiziert.
+Qualitätsnachweise erbringen wir über die Marke [Echter Deutscher Honig](#echter-deutscher-honig) und das Siegel [Geprüfte Qualität Bayern](#geprüfte-qualität-bayern).
+
+## Rechtsgrundlagen
+
+* [Honigverordnung](https://www.gesetze-im-internet.de/honigv_2004/BJNR009200004.html): Definition, Bezeichnungen und Beschaffenheit von Honig
+* [Leitsätze für Honig](https://www.bmel.de/SharedDocs/Downloads/DE/_Ernaehrung/Lebensmittel-Kennzeichnung/LeitsaetzeHonig.html) des Deutschen Lebensmittelbuchs: Verkehrsauffassung zu Honigsorten und Bezeichnungen
+* [Lebensmittelinformations-Verordnung](http://data.europa.eu/eli/reg/2011/1169/oj): Kennzeichnung, unter anderem das Mindesthaltbarkeitsdatum
+* [EU-Öko-Verordnung](http://data.europa.eu/eli/reg/2018/848): ökologische Erzeugung und deren Kennzeichnung

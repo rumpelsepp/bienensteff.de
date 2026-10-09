@@ -419,3 +419,395 @@
   --fc-forma-muted-border: var(--bs-border-color);
   --fc-forma-strong-border: var(--color-ink-muted);
 }
+
+/* --------------------------------------------------------------------
+   Text beside a picture (layouts/shortcodes/split.html)
+   -------------------------------------------------------------------- */
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.75fr);
+  align-items: center;
+  gap: 1.5rem 2.5rem;
+  margin-block: 1.5rem 2rem;
+
+  &.split--media-left {
+    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1fr);
+
+    .split-media {
+      order: -1;
+    }
+  }
+
+  /* A little larger than the running text, to hold its own beside the
+     picture. */
+  .split-text {
+    font-size: 1.1rem;
+  }
+
+  .split-text > :last-child,
+  .figure {
+    margin-bottom: 0;
+  }
+
+  .figure-img {
+    box-shadow: var(--shadow-md);
+  }
+
+  /* One below the other, the picture after the text whichever its side. */
+  @media (max-width: 767.98px) {
+    &,
+    &.split--media-left {
+      grid-template-columns: 1fr;
+    }
+
+    &.split--media-left .split-media {
+      order: 0;
+    }
+  }
+}
+
+/* --------------------------------------------------------------------
+   Über uns
+   -------------------------------------------------------------------- */
+
+/* A page in four catchwords (Über uns, Honigkunde): tiles in a row, two
+   rows on a phone. */
+.fact-tiles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+  padding: 0;
+  text-align: center;
+  hyphens: manual;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 1.1rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-primary);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .bi {
+    color: var(--bs-link-color);
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+
+  strong {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+
+  span {
+    color: var(--color-ink-muted);
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+
+  @media (max-width: 767.98px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.about-motto {
+  margin-block: 2rem;
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface));
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  text-align: center;
+  hyphens: manual;
+}
+
+/* A list of links as a row of pills. */
+.about-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  hyphens: manual;
+
+  li {
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+
+    &:has(a:hover, a:focus-visible) {
+      border-color: var(--color-primary);
+    }
+  }
+
+  a {
+    text-decoration-line: none;
+
+    &:hover,
+    &:focus-visible {
+      text-decoration-line: underline;
+    }
+  }
+
+  /* The theme pulls the icon of an external link in by a negative margin.
+     A pill is as wide as its content, so the icon would no longer fit in
+     the line and wrap. */
+  .external-link-icon {
+    margin-inline-end: 0;
+  }
+}
+
+/* Awards (layouts/shortcodes/auszeichnungen.html): a card each, the medal
+   in its metal. */
+.awards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: 1rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  text-align: left;
+  hyphens: manual;
+
+  p {
+    margin: 0;
+  }
+}
+
+.award {
+  --medal: #b98a2c;
+  display: flex;
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+
+  &.award--silber {
+    --medal: #8a9099;
+  }
+
+  &.award--bronze {
+    --medal: #a9683a;
+  }
+}
+
+.award-medal {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 30%,
+    color-mix(in srgb, var(--medal) 55%, #fff),
+    var(--medal) 70%
+  );
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--medal) 70%, #000), var(--shadow-sm);
+  color: #fff;
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.award-kind {
+  color: var(--color-ink-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.award-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.award-event {
+  margin-block: 0.35rem 0.6rem !important;
+  color: var(--color-ink-muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.award-link {
+  font-size: 0.95rem;
+}
+
+/* Certificates of competence (layouts/shortcodes/nachweise.html): the
+   year beside its entries, which hang on a line with a dot each. */
+.nachweise {
+  text-align: left;
+  hyphens: manual;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    border-left: 2px solid var(--color-border);
+  }
+
+  li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    column-gap: 0.75rem;
+    padding: 0.45rem 0 0.45rem 1.25rem;
+    line-height: 1.45;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 1rem;
+      left: -1px;
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 50%;
+      background: var(--color-primary);
+      translate: -50% 0;
+    }
+  }
+
+  time {
+    grid-row: span 2;
+    color: var(--color-ink-muted);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.nachweise-year {
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  column-gap: 1rem;
+
+  & + & {
+    margin-top: 0.75rem;
+  }
+
+  @media (max-width: 575.98px) {
+    grid-template-columns: 1fr;
+    row-gap: 0.25rem;
+  }
+}
+
+.nachweise-year-label {
+  margin: 0;
+  padding-top: 0.3rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.nachweise-issuer {
+  grid-column: 2;
+  color: var(--color-ink-muted);
+  font-size: 0.875rem;
+}
+
+/* Seals (layouts/shortcodes/siegel.html): the logo beside what it stands
+   for, two of them side by side. */
+.siegel-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.siegel {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  hyphens: manual;
+
+  /* The logos are drawn for a light ground, so theirs stays light in dark
+     mode, like the one of the product photos. */
+  .siegel-logo {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 6.5rem;
+    height: 6.5rem;
+    padding: 0.6rem;
+    border-radius: var(--radius-lg);
+    background: var(--sortiment-backdrop);
+
+    /* The min- lets the image shrink below its own size in the grid. */
+    img {
+      width: 100%;
+      height: 100%;
+      min-width: 0;
+      min-height: 0;
+      object-fit: contain;
+    }
+  }
+
+  .siegel-title {
+    margin: 0 0 0.35rem;
+    font-size: 1.1rem;
+  }
+
+  p {
+    margin-bottom: 0.35rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* --------------------------------------------------------------------
+   Honigkunde
+   -------------------------------------------------------------------- */
+
+/* A quote folded away behind the name of its source (blockquote shortcode
+   with a summary): the page says it in its own words, the original wording
+   is one click away. */
+.quote-details {
+  margin: 0 0 0.5rem;
+
+  /* The last of a run of them, before the text goes on. */
+  &:not(:has(+ .quote-details)) {
+    margin-bottom: 1.5rem;
+  }
+
+  summary {
+    width: fit-content;
+    color: var(--color-ink-muted);
+    font-size: 0.95rem;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--color-ink);
+    }
+  }
+
+  figure {
+    margin: 0.5rem 0 1rem;
+  }
+
+  blockquote {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+  }
+}

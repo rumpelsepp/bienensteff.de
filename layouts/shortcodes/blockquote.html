@@ -1,3 +1,27 @@
+{{- /*
+  A quote with its source below it.
+
+  The body of the shortcode is the quote, markdown.
+
+  Params:
+    caption  the source, markdown
+    summary  folds the quote away behind this line (<details>, .quote-details
+             in style.css), for a page that says the same in its own words
+             and keeps the original wording at hand
+*/ -}}
+{{- with .Get "summary" }}
+<details class="quote-details">
+<summary>{{ . | markdownify }}</summary>
+<figure>
+<blockquote class="blockquote">
+{{ $.Inner | $.Page.RenderString (dict "display" "block") }}
+</blockquote>
+{{- with $.Get "caption" }}
+<figcaption class="blockquote-footer">{{ . | markdownify }}</figcaption>
+{{- end }}
+</figure>
+</details>
+{{- else }}
 <figure>
     <blockquote class="blockquote">
         {{ .Inner }}
@@ -8,3 +32,4 @@
     </figcaption>
     {{ end }}
 </figure>
+{{- end }}
