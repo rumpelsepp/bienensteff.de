@@ -1,0 +1,40 @@
+{{- /*
+  Text beside a picture of the page bundle; one below the other on a narrow
+  screen, the picture last (.split in style.css). The picture is a figure
+  of the theme (image/figure.html), so it links to its large copy.
+
+  The body of the shortcode is the text, markdown.
+
+  Params:
+    src    the picture (required)
+    alt    its alt text
+    side   "left" to put the picture left of the text (default: right)
+    width  max. display width of the picture in px (default: 480)
+
+  crop-top, crop-right, crop-bottom, crop-left cut that many percent off the
+  side of the picture, as for the theme's fig shortcode.
+*/ -}}
+{{- $src := .Get "src" -}}
+{{- $img := .Page.Resources.GetMatch $src -}}
+<div class="split{{ if eq (.Get "side") "left" }} split--media-left{{ end }}">
+  <div class="split-text">
+    {{ .Inner | .Page.RenderString (dict "display" "block") }}
+  </div>
+  {{- if and $img (reflect.IsImageResourceProcessable $img) }}
+  <div class="split-media">
+    {{ partial "image/figure.html" (dict
+      "image" $img
+      "alt" (.Get "alt")
+      "width" (.Get "width" | default 480)
+      "crop" (dict
+        "top" (.Get "crop-top")
+        "right" (.Get "crop-right")
+        "bottom" (.Get "crop-bottom")
+        "left" (.Get "crop-left")
+      )
+    ) }}
+  </div>
+  {{- else }}
+    {{- warnf "shortcode split: no processable image matching %q in %s" $src .Page.Path }}
+  {{- end }}
+</div>

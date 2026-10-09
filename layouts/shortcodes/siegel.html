@@ -1,0 +1,18 @@
+{{- /*
+  A seal or mark the Imkerei may carry: its logo beside a title and a few
+  lines of text (.siegel in style.css). Several of them stand side by side
+  in a <div class="siegel-row">.
+
+  The body of the shortcode is the text, markdown.
+
+  Params:
+    logo   path of the logo, e.g. one in static/ (required)
+    title  name of the seal (required); the logo is decoration beside it
+*/ -}}
+<section class="siegel">
+  <span class="siegel-logo"><img src="{{ .Get "logo" }}" loading="lazy" alt=""></span>
+  <div class="siegel-body">
+    <h3 class="siegel-title">{{ .Get "title" }}</h3>
+    {{ .Inner | .Page.RenderString (dict "display" "block") }}
+  </div>
+</section>

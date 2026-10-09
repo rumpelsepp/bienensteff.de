@@ -1,0 +1,40 @@
+{{- /*
+  The certificates of competence of the front matter as a timeline, the
+  latest first and a year at a time (.nachweise in style.css):
+
+    params:
+      nachweise:
+        - date: "2026-04-21"
+          title: "Krankheiten und Schädlinge der Honigbiene"
+          issuer: "Bezirk Oberbayern: Fachberatung für Imkerei"
+          url: /fachkunde/2026-04-21-bienengesundheit.pdf
+*/ -}}
+{{- $year := "" -}}
+<div class="nachweise">
+  {{- range sort .Page.Params.nachweise "date" "desc" }}
+  {{- $date := time.AsTime .date }}
+  {{- $y := $date.Format "2006" }}
+  {{- if ne $y $year }}
+    {{- if $year }}
+    </ul>
+  </section>
+    {{- end }}
+    {{- $year = $y }}
+  <section class="nachweise-year" aria-label="{{ $y }}">
+    <p class="nachweise-year-label" aria-hidden="true">{{ $y }}</p>
+    <ul role="list">
+  {{- end }}
+      <li>
+        <time datetime="{{ $date.Format "2006-01-02" }}">{{ $date.Format "02.01." }}<span class="visually-hidden">{{ $y }}</span></time>
+        <span class="nachweise-title">
+          {{- $title := .title }}
+          {{- with .url }}<a href="{{ . }}">{{ $title }}</a>{{ else }}{{ $title }}{{ end -}}
+        </span>
+        <span class="nachweise-issuer">{{ .issuer }}</span>
+      </li>
+  {{- end }}
+  {{- if $year }}
+    </ul>
+  </section>
+  {{- end }}
+</div>
