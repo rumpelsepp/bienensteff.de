@@ -421,6 +421,25 @@
 }
 
 /* --------------------------------------------------------------------
+   Text size
+   -------------------------------------------------------------------- */
+
+/* The running text of every page a step larger than the theme's, and the
+   lead a step above that. Tables keep the theme's size: theirs are fitted
+   to the width of a phone. */
+article.content {
+  font-size: 1.1rem;
+
+  .lead {
+    font-size: 1.3rem;
+  }
+
+  table {
+    font-size: 1rem;
+  }
+}
+
+/* --------------------------------------------------------------------
    Text beside a picture (layouts/shortcodes/split.html)
    -------------------------------------------------------------------- */
 
