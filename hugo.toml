@@ -123,14 +123,11 @@ link = '/kontakt'
   weight = 20
 
 
+# Rohes HTML in Markdown und Attribute an Blöcken und Titeln bringt das
+# Theme mit (themes/bienensteff/hugo.toml); _merge übernimmt sie.
 [markup]
+  _merge = 'deep'
   [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
-    [markup.goldmark.parser]
-      [markup.goldmark.parser.attribute]
-        block = true
-        title = true
     [markup.goldmark.extensions]
       [markup.goldmark.extensions.typographer]
         apostrophe = '&rsquo;'
