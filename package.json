@@ -12,6 +12,6 @@
     "typescript": "^7.0.2"
   },
   "scripts": {
-    "build": "node themes/bienensteff/build.mjs --sourcemap"
+    "build": "node themes/bienensteff/build.mjs"
   }
 }
