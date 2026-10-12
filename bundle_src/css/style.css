@@ -439,12 +439,6 @@
     }
   }
 
-  /* A little larger than the running text, to hold its own beside the
-     picture. */
-  .split-text {
-    font-size: 1.1rem;
-  }
-
   .split-text > :last-child,
   .figure {
     margin-bottom: 0;
