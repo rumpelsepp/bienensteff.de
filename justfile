@@ -1,4 +1,4 @@
-hugo := "./scripts/hugo"
+hugo := "./themes/bienensteff/scripts/hugo"
 
 npm-build:
     npm run build
