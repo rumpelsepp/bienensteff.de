@@ -265,7 +265,7 @@
 {"date":"2026-09-22","weight":30.42,"delta":-0.1,"scales":1075}
 {"date":"2026-09-23","weight":30.29,"delta":-0.13,"scales":1080}
 {"date":"2026-09-24","weight":30.22,"delta":-0.07,"scales":1078}
-{"date":"2026-09-25","weight":30.1,"delta":-0.12,"scales":1077}
+{"date":"2026-09-25","weight":30.1,"delta":-0.12,"scales":1078}
 {"date":"2026-09-26","weight":30.01,"delta":-0.09,"scales":1078}
 {"date":"2026-09-27","weight":29.93,"delta":-0.08,"scales":1078}
 {"date":"2026-09-28","weight":29.91,"delta":-0.02,"scales":1079}
@@ -277,6 +277,7 @@
 {"date":"2026-10-04","weight":29.88,"delta":-0.03,"scales":1077}
 {"date":"2026-10-05","weight":29.8,"delta":-0.08,"scales":1076}
 {"date":"2026-10-06","weight":29.75,"delta":-0.05,"scales":1076}
-{"date":"2026-10-07","weight":29.78,"delta":0.03,"scales":1076}
+{"date":"2026-10-07","weight":29.78,"delta":0.03,"scales":1077}
 {"date":"2026-10-08","weight":29.82,"delta":0.04,"scales":1072}
 {"date":"2026-10-09","weight":29.79,"delta":-0.03,"scales":1061}
+{"date":"2026-10-10","weight":29.71,"delta":-0.08,"scales":1047}
