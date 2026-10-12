@@ -1,12 +1,12 @@
 hugo := "./themes/bienensteff/scripts/hugo"
 
-npm-build:
-    npm run build
+npm-build *args:
+    npm run build -- {{ args }}
 
 build: npm-build
     {{ hugo }} build --cleanDestinationDir
 
-serve: npm-build
+serve: (npm-build "--sourcemap")
     {{ hugo }} server --buildDrafts
 
 deploy: build
