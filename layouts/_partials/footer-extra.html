@@ -1,0 +1,22 @@
+{{- /*
+  The seals in the footer, between the columns and the copyright line of
+  the theme's footer.html (which is set up by params.footer in hugo.toml).
+*/ -}}
+  <div class="footer-seals">
+    {{/* The GQB seal is a solid-filled badge with no transparent gaps between
+         its ring and interior, so it keeps its original colors — a white
+         silhouette (like the Grüngürtel mark below) would just collapse
+         it into a blank oval. */}}
+    {{ partial "link.html" (dict
+      "href" "https://www.gq-bayern.de"
+      "class" "footer-seal"
+      "icon" false
+      "text" (`<img height="90" src="/GQB-Logo.svg" loading="lazy" alt="Geprüfte Qualität – Bayern">` | safeHTML)
+    ) }}
+    {{ partial "link.html" (dict
+      "href" "https://stadt.muenchen.de/infos/muenchner-gruenguertel.html"
+      "class" "footer-seal footer-seal--mono"
+      "icon" false
+      "text" (`<img height="90" src="/Grüngürtel_Logo.svg" loading="lazy" alt="Münchner Grüngürtel">` | safeHTML)
+    ) }}
+  </div>

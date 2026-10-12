@@ -28,6 +28,25 @@ Gräfelfinger Str. 169a
 info@bienensteff.de  
 """
 
+# Footer (Partial footer.html des Themes); die Siegel darunter bringt
+# layouts/_partials/footer-extra.html.
+[params.footer]
+brand = true
+copyright = true
+
+[[params.footer.columns]]
+title = 'Externe Links'
+menu = 'footerExternalLinks'
+
+[[params.footer.columns]]
+title = 'Rechtliches'
+menu = 'footerLegal'
+
+[[params.footer.columns]]
+title = 'Kontakt'
+contact = true
+link = '/kontakt'
+
 [menus]
   [[menus.main]]
   name = 'Verkauf'
