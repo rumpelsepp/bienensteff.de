@@ -19,6 +19,8 @@ Die Daten zu „heute“ und „gestern“ fehlen, da das TrachtNet Netzwerk die
 
 {{< trachtnet-widget region="Bayern" type="progress" >}}
 
+{{< trachtnet-widget region="Bayern" type="trend" >}}
+
 ### Oberbayern
 
 {{< trachtnet-widget region="Oberbayern" type="derivative" >}}

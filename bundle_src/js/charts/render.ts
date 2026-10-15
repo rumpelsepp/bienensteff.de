@@ -1,7 +1,7 @@
-import { KLIMA_CHART, TRACHTNET_DERIVATIVE_CHART, TRACHTNET_EVALUATION_TABLE, TRACHTNET_PROGRESS_CHART, TRACHTNET_YEAR_SELECT } from "../selectors";
+import { KLIMA_CHART, TRACHTNET_DERIVATIVE_CHART, TRACHTNET_EVALUATION_TABLE, TRACHTNET_PROGRESS_CHART, TRACHTNET_TREND_CHART, TRACHTNET_YEAR_SELECT } from "../selectors";
 import { getParam } from "../helpers";
 import { getCurrentYear } from "./helpers";
-import { availableYears, renderDerivativeChart, renderEvaluationTable, renderProgressChart } from "./trachtnet";
+import { availableYears, renderDerivativeChart, renderEvaluationTable, renderProgressChart, renderTrendChart } from "./trachtnet";
 import { renderKlimaChart } from "./klima";
 
 // The year the charts of the page show: the current one, unless the page is
@@ -111,6 +111,9 @@ async function renderAllCharts() {
         ...renderAll(KLIMA_CHART, ({ id, stationId, region }) => id && stationId ? renderKlimaChart(id, stationId, year, region || undefined) : undefined),
         ...renderAll(TRACHTNET_DERIVATIVE_CHART, chart(renderDerivativeChart)),
         ...renderAll(TRACHTNET_PROGRESS_CHART, chart(renderProgressChart)),
+        // The trend chart spans all years: it doesn't follow the year the
+        // page shows.
+        ...renderAll(TRACHTNET_TREND_CHART, ({ id, region }) => id && region ? renderTrendChart(id, region) : undefined),
         // A table is of the year its shortcode names: there is one a year,
         // in tabs.
         ...renderAll(TRACHTNET_EVALUATION_TABLE, ({ id, region, year }) => id && region && year ? renderEvaluationTable(id, region, parseInt(year)) : undefined),

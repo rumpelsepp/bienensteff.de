@@ -1,7 +1,7 @@
 import { Temporal } from "temporal-polyfill";
 import type * as echarts from 'echarts';
 
-import { centredWeeklyMean, chooseQueenColor, getCurrentYear, getToday, getXWindow, isInteger, isInSeason, isSeasonOver } from "./helpers";
+import { QueenColor, centredWeeklyMean, chooseQueenColor, getCurrentYear, getToday, getXWindow, isInteger, isInSeason, isSeasonOver } from "./helpers";
 import { toTitleCase } from '../helpers';
 import { buildBaseOption, buildFormatterDE, chartColors, chartGrid, headHeight, initEchartsInstance, valueAxis } from "./base";
 
@@ -701,4 +701,186 @@ export async function renderEvaluationTable(elementID: string, region: string, y
     ${rows.join("\n    ")}
   </tbody>
 </table>`;
+}
+
+// --------------------------------------------------------------------
+// Chart: when the honey flow began and ended, over the years
+// --------------------------------------------------------------------
+
+const SERIES_BEGIN = "Trachtbeginn";
+const SERIES_END = "Trachtende";
+const SERIES_TREND_BEGIN = "Trend Beginn";
+const SERIES_TREND_END = "Trend Ende";
+// The y axis counts the days of the year; its labels show them as dates of
+// a leap year, in which every month/day fits.
+const LABEL_YEAR = 2024;
+
+// A year's flow: the first day of its first phase of the season and the
+// last day of its last (see seasonPhases()), null where there was none.
+type Flow = {
+    year: number,
+    begin: Temporal.PlainDate | null,
+    end: Temporal.PlainDate | null,
+};
+
+function dayOfYear(date: Temporal.PlainDate): number {
+    return Temporal.PlainDate.from({ year: date.year, month: 1, day: 1 }).until(date).days + 1;
+}
+
+function dayOfYearToDate(doy: number): Temporal.PlainDate {
+    return Temporal.PlainDate.from({ year: LABEL_YEAR, month: 1, day: 1 }).add({ days: Math.round(doy) - 1 });
+}
+
+// Least squares over the given points: y = slope * x + intercept. Null if
+// there is nothing to fit.
+function linearRegression(points: [number, number][]): { slope: number, intercept: number } | null {
+    if (points.length < 2) {
+        return null;
+    }
+    const meanX = points.reduce((sum, [x]) => sum + x, 0) / points.length;
+    const meanY = points.reduce((sum, [, y]) => sum + y, 0) / points.length;
+    let sxy = 0;
+    let sxx = 0;
+    for (const [x, y] of points) {
+        sxy += (x - meanX) * (y - meanY);
+        sxx += (x - meanX) ** 2;
+    }
+    return sxx === 0 ? null : { slope: sxy / sxx, intercept: meanY - (sxy / sxx) * meanX };
+}
+
+function flowTrend(flow: Flow[], key: "begin" | "end"): { slope: number, intercept: number } | null {
+    return linearRegression(flow.flatMap(
+        f => f[key] ? [[f.year, dayOfYear(f[key]!)] as [number, number]] : [],
+    ));
+}
+
+// Days as a signed text: "+2,5 Tage".
+function signedDays(days: number): string {
+    return `${days >= 0 ? "+" : "-"}${Math.abs(days).toLocaleString("de-DE", { maximumFractionDigits: 1 })} Tage`;
+}
+
+// The dots of a flow series: one per year in its queen colour, the years
+// chronological as a thin line in the ink of the mode. A year without a
+// flow has no dot, and the line skips it.
+function flowSeries(name: string, flow: Flow[], key: "begin" | "end", symbol: string): echarts.LineSeriesOption {
+    return {
+        name,
+        type: "line",
+        symbol,
+        symbolSize: 9,
+        connectNulls: false,
+        z: 3,
+        lineStyle: { color: chartColors().ink, width: 1, opacity: 0.5 },
+        itemStyle: { color: chartColors().ink },
+        data: flow.map(f => f[key]
+            ? {
+                value: [f.year.toString(), dayOfYear(f[key]!), f[key]!.toLocaleString()],
+                itemStyle: { color: chooseQueenColor(f.year) },
+            }
+            : [f.year.toString(), null]),
+    };
+}
+
+// The dashed trend line over the years, from a regression (see
+// linearRegression()); nothing if there is nothing to fit.
+function trendSeries(name: string, flow: Flow[], trend: { slope: number, intercept: number } | null, color: string): echarts.SeriesOption | null {
+    if (!trend) {
+        return null;
+    }
+    const at = (year: number) => trend.slope * year + trend.intercept;
+    const first = flow[0].year;
+    const last = flow[flow.length - 1].year;
+    return {
+        name,
+        type: "line",
+        showSymbol: false,
+        z: 4,
+        lineStyle: { color, width: 2, type: "dashed" },
+        itemStyle: { color },
+        data: [
+            [first.toString(), at(first)],
+            [last.toString(), at(last)],
+        ],
+    };
+}
+
+// When the flow began and ended each year: a circle for the beginning, a
+// diamond for the end, both in the year's queen colour, the years
+// chronological as thin lines, and a dashed trend line over each. The
+// chart spans all years on its own: it doesn't follow the year the page
+// shows. For the year still running, the end is where the flow stands.
+export async function renderTrendChart(elementID: string, region: string) {
+    const chart = initEchartsInstance(elementID);
+    const colors = chartColors();
+
+    const years = await availableYears([region]);
+    const recordsPerYear = await Promise.all(years.map(y => loadYear(region, y)));
+    const flow: Flow[] = years.map((year, i) => {
+        const phases = seasonPhases(recordsPerYear[i]);
+        return {
+            year,
+            begin: phases[0]?.start ?? null,
+            end: phases.length > 0 ? phases[phases.length - 1].end : null,
+        };
+    });
+
+    const trendBegin = flowTrend(flow, "begin");
+    const trendEnd = flowTrend(flow, "end");
+    const series = [
+        flowSeries(SERIES_BEGIN, flow, "begin", "circle"),
+        flowSeries(SERIES_END, flow, "end", "diamond"),
+        trendSeries(SERIES_TREND_BEGIN, flow, trendBegin, MEAN_COLOR),
+        trendSeries(SERIES_TREND_END, flow, trendEnd, QueenColor.Green),
+    ].filter((s): s is echarts.SeriesOption => s !== null);
+
+    const tooltipFormatter = (params: any): string => {
+        let out = "";
+        for (const p of params) {
+            const prefix = `${p.marker} <b>${p.seriesName}</b> ${p.name}`;
+            if ((p.seriesName === SERIES_BEGIN || p.seriesName === SERIES_END) && p.value[1] !== null) {
+                out += `${prefix}: ${p.value[2]}`;
+                const trend = p.seriesName === SERIES_BEGIN ? trendBegin : trendEnd;
+                if (trend) {
+                    const toTrend = Math.round(p.value[1] - (trend.slope * +p.name + trend.intercept));
+                    if (toTrend !== 0) {
+                        out += ` (${toTrend > 0 ? "+" : ""}${toTrend} Tage zum Trend)`;
+                    }
+                }
+                out += "<br>";
+            } else if (p.seriesName === SERIES_TREND_BEGIN || p.seriesName === SERIES_TREND_END) {
+                out += `${prefix}: ${dayOfYearToDate(p.value[1]).toLocaleString("de-DE", { day: "numeric", month: "long" })}<br>`;
+            }
+        }
+        return out;
+    };
+
+    const trendNote = (label: string, trend: { slope: number, intercept: number } | null): string | null =>
+        trend ? `${label}: ${signedDays(trend.slope)} pro Jahr` : null;
+    const notes = [
+        `● ${SERIES_BEGIN}, ◆ ${SERIES_END}: erster bzw. letzter Tag einer Trachtphase (7-Tage-Mittel ab ${TRACHT_THRESHOLD.toLocaleString("de-DE")} kg/Tag, Mär–Aug)`,
+        [trendNote("Beginn", trendBegin), trendNote("Ende", trendEnd)].filter(t => t !== null).join(", ")
+            || "Zu wenig Jahre für einen Trend",
+    ];
+
+    chart.setOption({
+        // The trend chart is not of a single year: buildBaseOption()'s time
+        // axis of one is replaced by the years below.
+        ...buildBaseOption(
+            `Trachtbeginn und -ende ${toTitleCase(region)}`,
+            notes.join("\n"),
+            tooltipFormatter,
+            getCurrentYear(),
+        ),
+        grid: chartGrid(headHeight(notes.length) + 12),
+        xAxis: {
+            type: "category",
+            data: years.map(y => y.toString()),
+            boundaryGap: true,
+            axisLine: { lineStyle: { color: colors.ink } },
+            axisTick: { show: true, lineStyle: { color: colors.ink } },
+            splitLine: { show: true, lineStyle: { color: colors.grid } },
+        },
+        yAxis: valueAxis("Tag des Jahres", v => dayOfYearToDate(v).toLocaleString("de-DE", { day: "numeric", month: "short" })),
+        series,
+    });
 }
