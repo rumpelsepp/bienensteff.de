@@ -250,6 +250,59 @@ function keyFigures(records: DayRecord[]): KeyFigures | null {
     };
 }
 
+// A day of the year to sort "up to the same day of the year" by, as a
+// plain number: month, then day. (Temporal.PlainMonthDay.compare() is
+// beyond the polyfill's version 1.)
+function ordinalMonthDay(date: Temporal.PlainDate): number {
+    return date.month * 100 + date.day;
+}
+
+// The gross sums of the season (see isInSeason()): what the colonies
+// brought in on the days they gained, what they used up (or lost, e.g. to
+// robbing) on the others. For the year still running, "until" cuts records
+// back to the same day of the year, so that it can be compared with a year
+// that is over.
+function seasonTotals(records: DayRecord[], until?: number): { gain: number, loss: number } {
+    const totals = { gain: 0, loss: 0 };
+    for (const r of records) {
+        if (r.delta === null || !isInSeason(r.date)) {
+            continue;
+        }
+        if (until !== undefined && ordinalMonthDay(r.date) > until) {
+            continue;
+        }
+        if (r.delta >= 0) {
+            totals.gain += r.delta;
+        } else {
+            totals.loss -= r.delta;
+        }
+    }
+    return totals;
+}
+
+// The phases that begin in the season (see isInSeason()): before March
+// there is no flow to speak of, and the mean over a region's scales has
+// spikes in January -- scales being set up -- that the phase detection
+// would count.
+export function seasonPhases(records: DayRecord[]): Phase[] {
+    return trachtPhases(records).filter(p => isInSeason(p.start));
+}
+
+// The flow-free days between two of the phases, the longest run first --
+// the "Trachtlücke" an imker watches out for.
+function longestGap(phases: Phase[]): { days: number, from: Temporal.PlainDate, to: Temporal.PlainDate } | null {
+    let longest: { days: number, from: Temporal.PlainDate, to: Temporal.PlainDate } | null = null;
+    for (let i = 1; i < phases.length; i++) {
+        const from = phases[i - 1].end.add({ days: 1 });
+        const to = phases[i].start.add({ days: -1 });
+        const days = from.until(to).days + 1;
+        if (days > 0 && (!longest || days > longest.days)) {
+            longest = { days, from, to };
+        }
+    }
+    return longest;
+}
+
 // --------------------------------------------------------------------
 // Charts
 //
@@ -553,6 +606,38 @@ export async function renderDerivativeChart(elementID: string, region: string, y
 // Table of a year's key figures
 // --------------------------------------------------------------------
 
+// The mean of the season gain (see seasonTotals()) of the years around
+// "year", to put its own against -- cut back to the same day of the year
+// for one that is still running. Null if there is nothing to compare
+// with.
+async function meanSeasonGain(
+    region: string,
+    year: number,
+    records: DayRecord[],
+): Promise<{ mean: number, from: number, to: number } | null> {
+    const until = isSeasonOver(year) ? undefined : ordinalMonthDay(records[records.length - 1].date);
+    const gains: [year: number, gain: number][] = [];
+    for (const other of await otherYears(region, year)) {
+        const otherRecords = await loadYear(region, other);
+        if (!otherRecords.some(r => isInSeason(r.date))) {
+            continue;  // the region wasn't in TrachtNet yet that year
+        }
+        const gain = seasonTotals(otherRecords, until).gain;
+        if (until !== undefined && gain === 0 && !otherRecords.some(r => isInSeason(r.date) && ordinalMonthDay(r.date) <= until)) {
+            continue;  // it joined TrachtNet after "until": nothing of the season yet
+        }
+        gains.push([other, gain]);
+    }
+    if (gains.length === 0) {
+        return null;
+    }
+    return {
+        mean: gains.reduce((sum, [, gain]) => sum + gain, 0) / gains.length,
+        from: gains[0][0],
+        to: gains[gains.length - 1][0],
+    };
+}
+
 export async function renderEvaluationTable(elementID: string, region: string, year: number) {
     const records = await loadYear(region, year);
     if (records.length === 0) {
@@ -566,12 +651,54 @@ export async function renderEvaluationTable(elementID: string, region: string, y
     const { min, max, bestDay } = figures;
 
     const formatterDE = buildFormatterDE();
+    const date = (d: Temporal.PlainDate) => d.toLocaleString();
+    const row = (label: string, value: string) => `<tr><th scope="row">${label}</th><td>${value}</td></tr>`;
+    const rows = [
+        row("Jahresminimum", `${date(min.date)} (${formatterDE.format(min.value)} kg)`),
+        row("Jahresmaximum", `${date(max.date)} (${formatterDE.format(max.value)} kg)`),
+        row("Bester Tag", `${date(bestDay.date)} (Δ ${formatterDE.format(bestDay.delta!)} kg)`),
+    ];
+
+    // When the flow began and ended, how many phases it came in, and the
+    // longest stretch without it in between.
+    const phases = seasonPhases(records);
+    if (phases.length > 0) {
+        const phaseDays = phases.reduce((sum, p) => sum + p.start.until(p.end).days + 1, 0);
+        rows.push(
+            row("Trachtbeginn", date(phases[0].start)),
+            row("Trachtende", date(phases[phases.length - 1].end)),
+            row("Trachtphasen", `${phases.length} (${phaseDays} Tage)`),
+        );
+        const gap = longestGap(phases);
+        if (gap) {
+            rows.push(row("Längste Trachtlücke", `${gap.days} Tage (${date(gap.from)} – ${date(gap.to)})`));
+        }
+    }
+
+    // What the season added up to, and how that stands against the years
+    // around it.
+    const totals = seasonTotals(records);
+    rows.push(
+        row("Gesamteintrag (Mär–Aug)", `${formatterDE.format(totals.gain)} kg`),
+        row("Gesamtverlust (Mär–Aug)", `${formatterDE.format(totals.loss)} kg`),
+    );
+    const comparison = await meanSeasonGain(region, year, records);
+    if (comparison) {
+        const years = comparison.from === comparison.to
+            ? `${comparison.from}`
+            : `${comparison.from}–${comparison.to}`;
+        let against = `Mittel ${years}: ${formatterDE.format(comparison.mean)} kg`;
+        if (comparison.mean > 0) {
+            const percent = Math.round((totals.gain / comparison.mean - 1) * 100);
+            against = `${percent >= 0 ? "+" : ""}${percent} % (${against})`;
+        }
+        rows.push(row("Gesamteintrag ggü. Mittel", against));
+    }
+
     document.getElementById(elementID)!.innerHTML = `<table class="table table-bordered table-striped table-sm">
-  <caption>Auswertung von ${toTitleCase(region)} (${year})</caption>
+  <caption>Auswertung von ${toTitleCase(region)} (${year}${isSeasonOver(year) ? "" : ", bis dato"})</caption>
   <tbody>
-    <tr><th scope="row">Jahresminimum</th><td>${min.date.toLocaleString()} (${formatterDE.format(min.value)} kg)</td></tr>
-    <tr><th scope="row">Jahresmaximum</th><td>${max.date.toLocaleString()} (${formatterDE.format(max.value)} kg)</td></tr>
-    <tr><th scope="row">Bester Tag</th><td>${bestDay.date.toLocaleString()} (Δ ${formatterDE.format(bestDay.delta!)} kg)</td></tr>
+    ${rows.join("\n    ")}
   </tbody>
 </table>`;
 }
