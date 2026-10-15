@@ -4,31 +4,49 @@ import type * as echarts from "echarts";
 import { chooseQueenColor, getCurrentYear } from "./helpers";
 import { toTitleCase } from "../helpers";
 import { buildBaseOption, chartColors, chartGrid, headHeight, initEchartsInstance, valueAxis } from "./base";
-import { availableYears, dayOfYear, dayOfYearToDate, linearRegression, loadYear, seasonPhases, signedDays, type Phase } from "./trachtnet";
+import { availableYears, dayOfYear, dayOfYearToDate, linearRegression, loadYear, seasonPhases, signedDays, type DayRecord, type Phase } from "./trachtnet";
 
 // The gaps chart: the days without a honey flow between a season's
 // phases (see seasonPhases()), one vertical segment per gap and year --
 // for the question when in the year there is time to harvest, how much
 // that timing moves around and whether it has drifted over the years.
 
-// A gap: the flow-free days between two consecutive phases.
+// A gap: the flow-free days between two consecutive phases. A gap is
+// only a gap if its days were actually seen: days missing from the dump
+// (a scale offline, see the dump script) are no proof of a flow ending.
+// Up to GAP_TOLERATED missing days are lived with; more make the gap
+// what it is -- a hole in the data, drawn as an outline and left out of
+// the statistics.
 type Gap = {
     start: Temporal.PlainDate,
     end: Temporal.PlainDate,
     days: number,
+    // Days of the gap that have data.
+    covered: number,
+    reliable: boolean,
     // The year's longest -- the window an imker waits for.
     longest: boolean,
 };
 
-function gapsOf(phases: Phase[]): Gap[] {
+const GAP_TOLERATED = 2;
+
+function gapsOf(phases: Phase[], records: DayRecord[]): Gap[] {
+    const dates = new Set(records.map(r => r.date.toString()));
     const gaps: Gap[] = [];
     for (let i = 1; i < phases.length; i++) {
         const start = phases[i - 1].end.add({ days: 1 });
         const end = phases[i].start.add({ days: -1 });
         const days = start.until(end).days + 1;
-        if (days > 0) {
-            gaps.push({ start, end, days, longest: false });
+        if (days <= 0) {
+            continue;
         }
+        let covered = 0;
+        for (let d = start; start.until(d).days < days; d = d.add({ days: 1 })) {
+            if (dates.has(d.toString())) {
+                covered++;
+            }
+        }
+        gaps.push({ start, end, days, covered, reliable: days - covered <= GAP_TOLERATED, longest: false });
     }
     gaps.forEach(g => {
         g.longest = g.days === Math.max(...gaps.map(x => x.days));
@@ -54,30 +72,35 @@ export async function renderGapsChart(elementID: string, region: string) {
 
     const years = await availableYears([region]);
     const recordsPerYear = await Promise.all(years.map(y => loadYear(region, y)));
-    const gapsPerYear = recordsPerYear.map(records => gapsOf(seasonPhases(records)));
+    const gapsPerYear = recordsPerYear.map(records => gapsOf(seasonPhases(records), records));
     const longestPerYear = gapsPerYear.map(gaps => gaps.find(g => g.longest) ?? null);
 
     // The rule of thumb to take away: the median of when the longest gaps
-    // begin and end over the years.
+    // begin and end over the years -- only over the ones that rest on
+    // data, see Gap.reliable.
     const med = (values: number[]): number => {
         const sorted = [...values].sort((a, b) => a - b);
         const mid = Math.floor(sorted.length / 2);
         return sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
     };
-    const longestStarts = longestPerYear.flatMap(g => g ? [dayOfYear(g.start)] : []);
-    const longestEnds = longestPerYear.flatMap(g => g ? [dayOfYear(g.end)] : []);
-    const median = {
+    const solid = longestPerYear.flatMap(g => g && g.reliable ? [g] : []);
+    const longestStarts = solid.map(g => dayOfYear(g.start));
+    const longestEnds = solid.map(g => dayOfYear(g.end));
+    const median = longestStarts.length > 0 ? {
         start: med(longestStarts),
         end: med(longestEnds),
-    };
+    } : null;
     const medianText = (doy: number) =>
         dayOfYearToDate(doy).toLocaleString("de-DE", { day: "numeric", month: "numeric" });
 
     // Whether the gaps have drifted over the years: the trend of the
     // centers of the longest ones.
-    const centers: [number, number][] = longestPerYear.flatMap((g, i) =>
-        g ? [[years[i], (dayOfYear(g.start) + dayOfYear(g.end)) / 2] as [number, number]] : [],
-    );
+    const centers: [number, number][] = gapsPerYear.flatMap((gaps, i) => {
+        const g = gaps.find(x => x.longest);
+        return g && g.reliable
+            ? [[years[i], (dayOfYear(g.start) + dayOfYear(g.end)) / 2] as [number, number]]
+            : [];
+    });
     const trend = linearRegression(centers);
     const quality = trend ? rSquared(centers, trend) : 0;
 
@@ -94,12 +117,23 @@ export async function renderGapsChart(elementID: string, region: string) {
             const yBottom = api.coord([api.value(0), api.value(1)])[1];
             const width = api.value(3) ? 16 : 7;
             const height = Math.max(yBottom - yTop, 2);
+            // An unreliable gap (see Gap.reliable) is only outlined: a
+            // hole in the data, not a window to harvest in.
+            const style = api.value(8)
+                ? {
+                    fill: chooseQueenColor(api.value(5), !api.value(3)),
+                }
+                : {
+                    fill: "none",
+                    stroke: chartColors().ink,
+                    lineWidth: 1.5,
+                    lineDash: [4, 3],
+                    opacity: 0.7,
+                };
             return {
                 type: "rect",
                 shape: { x: x - width / 2, y: yTop, width, height, r: width / 2 },
-                style: {
-                    fill: chooseQueenColor(api.value(5), !api.value(3)),
-                },
+                style,
             };
         },
         data: gapsPerYear.flatMap((gaps, i) => gaps.map(g => ({
@@ -112,6 +146,8 @@ export async function renderGapsChart(elementID: string, region: string) {
                 years[i],                            // 5: for the queen colour
                 g.start.toLocaleString("de-DE", { day: "numeric", month: "numeric" }),
                 g.end.toLocaleString("de-DE", { day: "numeric", month: "numeric" }),
+                g.reliable ? 1 : 0,                   // 8: rest on data?
+                g.covered,                            // 9
             ],
         }))),
     };
@@ -119,7 +155,7 @@ export async function renderGapsChart(elementID: string, region: string) {
     // The rule of thumb as a band: the typical window of the longest gap,
     // across all the years.
     let band: echarts.SeriesOption | null = null;
-    if (longestStarts.length > 0) {
+    if (median) {
         band = {
             type: "custom",
             name: "Median",
@@ -166,8 +202,12 @@ export async function renderGapsChart(elementID: string, region: string) {
         for (const p of parts) {
             if (p.seriesName === "Trachtlücken") {
                 const v = p.value as number[];
-                out += `${p.marker} <b>${v[5]}</b>: ${v[4]} Tage ohne Tracht (${v[6]} – ${v[7]})`
-                    + (v[3] ? " – längste Lücke" : "") + "<br>";
+                if (v[8]) {
+                    out += `${p.marker} <b>${v[5]}</b>: ${v[4]} Tage ohne Tracht (${v[6]} – ${v[7]})`
+                        + (v[3] ? " – längste Lücke" : "") + "<br>";
+                } else {
+                    out += `${p.marker} <b>${v[5]}</b>: Datenlücke, nur ${v[9]} von ${v[4]} Tagen mit Daten<br>`;
+                }
             }
         }
         return out;
@@ -175,8 +215,10 @@ export async function renderGapsChart(elementID: string, region: string) {
 
     const notes = [
         "Tage ohne Tracht zwischen den Trachtphasen (Mär–Aug)",
-        "dick: längste Lücke · hinterlegt: Median"
-            + (longestStarts.length > 0 ? ` ${medianText(median.start)}–${medianText(median.end)}` : ""),
+        "dick: längste Lücke · gestrichelt: Datenlücke",
+        median
+            ? `hinterlegt: Median ${medianText(median.start)}–${medianText(median.end)}`
+            : "Zu wenig verlässliche Jahre für einen Median",
         trend
             ? `Trend: ${signedDays(trend.slope * 10)}/Jahrzehnt · R² ${quality.toLocaleString("de-DE", { maximumFractionDigits: 2 })}${quality < 0.25 ? " – eher zufällig" : ""}`
             : "Zu wenig Jahre für einen Trend",

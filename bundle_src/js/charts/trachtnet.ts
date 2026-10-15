@@ -750,7 +750,22 @@ type Flow = {
     year: number,
     begin: Temporal.PlainDate | null,
     end: Temporal.PlainDate | null,
+    beginObserved: boolean,
+    endObserved: boolean,
 };
+
+// Whether a phase boundary was seen: at least half of the fortnight
+// outside of it must have data.
+function boundaryObserved(records: DayRecord[], date: Temporal.PlainDate, before: boolean): boolean {
+    const dates = new Set(records.map(r => r.date.toString()));
+    let seen = 0;
+    for (let i = 1; i <= 14; i++) {
+        if (dates.has(date.add({ days: before ? -i : i }).toString())) {
+            seen++;
+        }
+    }
+    return seen >= 7;
+}
 
 export function dayOfYear(date: Temporal.PlainDate): number {
     return Temporal.PlainDate.from({ year: date.year, month: 1, day: 1 }).until(date).days + 1;
@@ -778,8 +793,11 @@ export function linearRegression(points: [number, number][]): { slope: number, i
 }
 
 function flowTrend(flow: Flow[], key: "begin" | "end"): { slope: number, intercept: number } | null {
+    const observed = (f: Flow) => key === "begin" ? f.beginObserved : f.endObserved;
     return linearRegression(flow.flatMap(
-        f => f[key] ? [[f.year, dayOfYear(f[key]!)] as [number, number]] : [],
+        f => f[key] && observed(f)
+            ? [[f.year, dayOfYear(f[key]!)] as [number, number]]
+            : [],
     ));
 }
 
@@ -790,7 +808,9 @@ export function signedDays(days: number): string {
 
 // The dots of a flow series: one per year in its queen colour, the years
 // chronological as a thin line in the ink of the mode. A year without a
-// flow has no dot, and the line skips it.
+// flow has no dot, and the line skips it. An unobserved boundary (see
+// Flow.beginObserved) is drawn hollow: there is a dot, but it says
+// nothing -- the days around it are missing from the dump.
 function flowSeries(name: string, flow: Flow[], key: "begin" | "end", symbol: string): echarts.LineSeriesOption {
     return {
         name,
@@ -801,12 +821,22 @@ function flowSeries(name: string, flow: Flow[], key: "begin" | "end", symbol: st
         z: 3,
         lineStyle: { color: chartColors().ink, width: 1, opacity: 0.5 },
         itemStyle: { color: chartColors().ink },
-        data: flow.map(f => f[key]
-            ? {
-                value: [f.year.toString(), dayOfYear(f[key]!), f[key]!.toLocaleString()],
-                itemStyle: { color: chooseQueenColor(f.year) },
+        data: flow.map(f => {
+            if (!f[key]) {
+                return [f.year.toString(), null];
             }
-            : [f.year.toString(), null]),
+            const observed = key === "begin" ? f.beginObserved : f.endObserved;
+            return {
+                value: [f.year.toString(), dayOfYear(f[key]!), f[key]!.toLocaleString(), observed ? 1 : 0],
+                itemStyle: observed
+                    ? { color: chooseQueenColor(f.year) }
+                    : {
+                        color: "none",
+                        borderColor: chooseQueenColor(f.year),
+                        borderWidth: 2,
+                    },
+            };
+        }),
     };
 }
 
@@ -846,10 +876,14 @@ export async function renderTrendChart(elementID: string, region: string) {
     const recordsPerYear = await Promise.all(years.map(y => loadYear(region, y)));
     const flow: Flow[] = years.map((year, i) => {
         const phases = seasonPhases(recordsPerYear[i]);
+        const begin = phases[0]?.start ?? null;
+        const end = phases.length > 0 ? phases[phases.length - 1].end : null;
         return {
             year,
-            begin: phases[0]?.start ?? null,
-            end: phases.length > 0 ? phases[phases.length - 1].end : null,
+            begin,
+            end,
+            beginObserved: begin !== null && boundaryObserved(recordsPerYear[i], begin, true),
+            endObserved: end !== null && boundaryObserved(recordsPerYear[i], end, false),
         };
     });
 
@@ -868,8 +902,11 @@ export async function renderTrendChart(elementID: string, region: string) {
             const prefix = `${p.marker} <b>${p.seriesName}</b> ${p.name}`;
             if ((p.seriesName === SERIES_BEGIN || p.seriesName === SERIES_END) && p.value[1] !== null) {
                 out += `${prefix}: ${p.value[2]}`;
+                if (!p.value[3]) {
+                    out += " (unsicher: zu wenig Daten davor/danach)";
+                }
                 const trend = p.seriesName === SERIES_BEGIN ? trendBegin : trendEnd;
-                if (trend) {
+                if (trend && p.value[3]) {
                     const toTrend = Math.round(p.value[1] - (trend.slope * +p.name + trend.intercept));
                     if (toTrend !== 0) {
                         out += ` (${toTrend > 0 ? "+" : ""}${toTrend} Tage zum Trend)`;
@@ -886,7 +923,7 @@ export async function renderTrendChart(elementID: string, region: string) {
     const trendNote = (label: string, trend: { slope: number, intercept: number } | null): string | null =>
         trend ? `${label}: ${signedDays(trend.slope)} pro Jahr` : null;
     const notes = [
-        `● ${SERIES_BEGIN}, ◆ ${SERIES_END} (Mär–Aug)`,
+        `● ${SERIES_BEGIN}, ◆ ${SERIES_END} · ◌ unsicher (Mär–Aug)`,
         [trendNote("Beginn", trendBegin), trendNote("Ende", trendEnd)].filter(t => t !== null).join(", ")
             || "Zu wenig Jahre für einen Trend",
     ];
