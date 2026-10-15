@@ -723,17 +723,17 @@ type Flow = {
     end: Temporal.PlainDate | null,
 };
 
-function dayOfYear(date: Temporal.PlainDate): number {
+export function dayOfYear(date: Temporal.PlainDate): number {
     return Temporal.PlainDate.from({ year: date.year, month: 1, day: 1 }).until(date).days + 1;
 }
 
-function dayOfYearToDate(doy: number): Temporal.PlainDate {
+export function dayOfYearToDate(doy: number): Temporal.PlainDate {
     return Temporal.PlainDate.from({ year: LABEL_YEAR, month: 1, day: 1 }).add({ days: Math.round(doy) - 1 });
 }
 
 // Least squares over the given points: y = slope * x + intercept. Null if
 // there is nothing to fit.
-function linearRegression(points: [number, number][]): { slope: number, intercept: number } | null {
+export function linearRegression(points: [number, number][]): { slope: number, intercept: number } | null {
     if (points.length < 2) {
         return null;
     }
@@ -755,7 +755,7 @@ function flowTrend(flow: Flow[], key: "begin" | "end"): { slope: number, interce
 }
 
 // Days as a signed text: "+2,5 Tage".
-function signedDays(days: number): string {
+export function signedDays(days: number): string {
     return `${days >= 0 ? "+" : "-"}${Math.abs(days).toLocaleString("de-DE", { maximumFractionDigits: 1 })} Tage`;
 }
 
@@ -857,7 +857,7 @@ export async function renderTrendChart(elementID: string, region: string) {
     const trendNote = (label: string, trend: { slope: number, intercept: number } | null): string | null =>
         trend ? `${label}: ${signedDays(trend.slope)} pro Jahr` : null;
     const notes = [
-        `● ${SERIES_BEGIN}, ◆ ${SERIES_END}: erster bzw. letzter Tag einer Trachtphase (7-Tage-Mittel ab ${TRACHT_THRESHOLD.toLocaleString("de-DE")} kg/Tag, Mär–Aug)`,
+        `● ${SERIES_BEGIN}, ◆ ${SERIES_END} (Mär–Aug)`,
         [trendNote("Beginn", trendBegin), trendNote("Ende", trendEnd)].filter(t => t !== null).join(", ")
             || "Zu wenig Jahre für einen Trend",
     ];

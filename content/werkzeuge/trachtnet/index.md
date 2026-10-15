@@ -21,6 +21,10 @@ Die Daten zu „heute“ und „gestern“ fehlen, da das TrachtNet Netzwerk die
 
 {{< trachtnet-widget region="Bayern" type="trend" >}}
 
+Wann in der Saison dagegen kein Eintrag mehr kommt – die Trachtlücken – zeigt die nächste Grafik: die Zeitfenster, in denen geschleudert und aufgebaut werden kann.
+
+{{< trachtnet-widget region="Bayern" type="gaps" >}}
+
 Die folgende Karte zeigt, wo die Völker der TrachtNet-Waagstöcke in der Saison am meisten eintragen – nützlich bei der Frage, wo ein Bienenstand lohnt.
 
 {{< trachtnet-widget region="Bayern" type="map" height="520px" >}}
