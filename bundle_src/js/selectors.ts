@@ -5,6 +5,7 @@ export const CALENDAR_WIDGET = ".calendar-widget-container";
 export const TRACHTNET_PROGRESS_CHART = ".trachtnet-progress-chart-container";
 export const TRACHTNET_DERIVATIVE_CHART = ".trachtnet-derivative-chart-container";
 export const TRACHTNET_TREND_CHART = ".trachtnet-trend-chart-container";
+export const TRACHTNET_MAP_CHART = ".trachtnet-map-chart-container";
 export const TRACHTNET_EVALUATION_TABLE = ".trachtnet-evaluation-table-container";
 export const KLIMA_CHART = ".klima-chart-container";
 // Not a widget of its own: the list of years the charts are switched with,
@@ -15,6 +16,7 @@ export const ALL_CHARTS = [
     TRACHTNET_PROGRESS_CHART,
     TRACHTNET_DERIVATIVE_CHART,
     TRACHTNET_TREND_CHART,
+    TRACHTNET_MAP_CHART,
     TRACHTNET_EVALUATION_TABLE,
     KLIMA_CHART,
 ].join(", ");
