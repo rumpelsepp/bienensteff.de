@@ -267,6 +267,30 @@
   margin-inline: calc((100% - var(--breakout-width)) / 2);
 }
 
+/* A page section folded away behind a handle (the Regierungsbezirke of
+   the Trachtnet page): the headline stays, its charts are one click
+   away. <details> needs no JavaScript -- but a chart built while the
+   fold is closed has no size; charts/render.ts listens for it opening
+   and resizes them. */
+.region-details {
+  margin-bottom: 1.5rem;
+
+  summary {
+    width: fit-content;
+    color: var(--color-ink-muted);
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--color-ink);
+    }
+  }
+
+  &[open] summary {
+    margin-bottom: 1rem;
+  }
+}
+
 /* --------------------------------------------------------------------
    Year of the charts (layouts/shortcodes/trachtnet-year-select.html)
    -------------------------------------------------------------------- */

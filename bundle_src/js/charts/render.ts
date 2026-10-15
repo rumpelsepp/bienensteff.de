@@ -21,6 +21,13 @@ export async function initAllCharts() {
         shownYear = year;
     }
     initWidthToggle();
+    // Charts inside a folded <details> (the Regierungsbezirke of the
+    // Trachtnet page) are built while it is closed, at size zero: once it
+    // opens they take the size they now have. The toggle event doesn't
+    // bubble; the capture listener catches it anyway.
+    document.addEventListener("toggle", () => {
+        requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
+    }, true);
     await initYearSelect();
     await renderAllCharts();
     new MutationObserver(() => {

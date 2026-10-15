@@ -33,15 +33,29 @@ Kreisgrenzen der Karte: Datenlizenz Deutschland – Namensnennung – Version 2.
 
 ### Oberbayern
 
+<details class="region-details">
+<summary>Diagramme</summary>
+
 {{< trachtnet-widget region="Oberbayern" type="derivative" >}}
 
 {{< trachtnet-widget region="Oberbayern" type="progress" >}}
 
+{{< trachtnet-widget region="Oberbayern" type="gaps" >}}
+
+</details>
+
 ### Niederbayern
+
+<details class="region-details">
+<summary>Diagramme</summary>
 
 {{< trachtnet-widget region="Niederbayern" type="derivative" >}}
 
 {{< trachtnet-widget region="Niederbayern" type="progress" >}}
+
+{{< trachtnet-widget region="Niederbayern" type="gaps" >}}
+
+</details>
 
 ---
 
