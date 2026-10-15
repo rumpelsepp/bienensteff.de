@@ -1,4 +1,3 @@
-{"timestamp":"2025-04-11T00:00:00+00:00","temperature_mean":11.6,"temperature_max":18.6,"temperature_min":3.8,"precipitation_sum":0.0}
 {"timestamp":"2025-04-12T00:00:00+00:00","temperature_mean":13.7,"temperature_max":20.9,"temperature_min":5.2,"precipitation_sum":0.0}
 {"timestamp":"2025-04-13T00:00:00+00:00","temperature_mean":14.3,"temperature_max":19.4,"temperature_min":9.2,"precipitation_sum":0.0}
 {"timestamp":"2025-04-14T00:00:00+00:00","temperature_mean":15.4,"temperature_max":19.9,"temperature_min":11.6,"precipitation_sum":0.0}
@@ -548,3 +547,4 @@
 {"timestamp":"2026-10-10T00:00:00+00:00","temperature_mean":11.9,"temperature_max":13.1,"temperature_min":10.6,"precipitation_sum":8.5}
 {"timestamp":"2026-10-11T00:00:00+00:00","temperature_mean":10.7,"temperature_max":13.4,"temperature_min":8.7,"precipitation_sum":0.4}
 {"timestamp":"2026-10-12T00:00:00+00:00","temperature_mean":9.1,"temperature_max":14.4,"temperature_min":4.6,"precipitation_sum":0.0}
+{"timestamp":"2026-10-13T00:00:00+00:00","temperature_mean":9.8,"temperature_max":15.8,"temperature_min":2.4,"precipitation_sum":0.4}
