@@ -1,7 +1,7 @@
 import { Temporal } from "temporal-polyfill";
 import type * as echarts from 'echarts';
 
-import { QueenColor, centredWeeklyMean, chooseQueenColor, getCurrentYear, getToday, getXWindow, isInteger, isInSeason, isSeasonOver } from "./helpers";
+import { QueenColor, chooseQueenColor, getCurrentYear, getToday, getXWindow, isInteger, isInSeason, isSeasonOver } from "./helpers";
 import { toTitleCase } from '../helpers';
 import { buildBaseOption, buildFormatterDE, chartColors, chartGrid, headHeight, initEchartsInstance, valueAxis } from "./base";
 
@@ -150,8 +150,33 @@ export type Phase = {
     end: Temporal.PlainDate,
 }
 
+// The mean of the deltas over the seven calendar days around each day --
+// in contrast to centredWeeklyMean() of helpers.ts, whose window is
+// positional: where days are missing from the dump -- a scale offline,
+// see the dump script -- that mean would reach across the hole, from one
+// side of it to the other, and see a flow that isn't there, or miss one
+// that is. The weather of klima.ts has no holes; there the positional
+// mean stays.
+export function calendarWeeklyMean(records: DayRecord[]): (number | null)[] {
+    return records.map((record, i) => {
+        const window: number[] = [];
+        const withinWeek = (j: number) => Math.abs(records[j].date.until(record.date).days) <= 3;
+        for (let j = i; j >= 0 && withinWeek(j); j--) {
+            if (records[j].delta !== null) {
+                window.push(records[j].delta!);
+            }
+        }
+        for (let j = i + 1; j < records.length && withinWeek(j); j++) {
+            if (records[j].delta !== null) {
+                window.push(records[j].delta!);
+            }
+        }
+        return window.length > 0 ? window.reduce((sum, d) => sum + d, 0) / window.length : null;
+    });
+}
+
 export function trachtPhases(records: DayRecord[]): Phase[] {
-    const mean = centredWeeklyMean(records.map(r => r.delta));
+    const mean = calendarWeeklyMean(records);
     const phases: Phase[] = [];
     let current: Phase | null = null;
     const close = () => {
@@ -521,7 +546,7 @@ export async function renderDerivativeChart(elementID: string, region: string, y
         })),
     }];
 
-    const mean = centredWeeklyMean(current.map(r => r.delta));
+    const mean = calendarWeeklyMean(current);
     series.push({
         name: SERIES_MEAN,
         type: "line",
@@ -717,6 +742,10 @@ const LABEL_YEAR = 2024;
 
 // A year's flow: the first day of its first phase of the season and the
 // last day of its last (see seasonPhases()), null where there was none.
+// Whether the beginning and the ending were observed -- whether the days
+// around them have data: where the dump has a hole there (a scale
+// offline, see the dump script), the flow may well have gone on before
+// or after, and the dot says nothing. See boundaryObserved().
 type Flow = {
     year: number,
     begin: Temporal.PlainDate | null,
