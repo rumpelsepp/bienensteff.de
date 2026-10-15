@@ -23,7 +23,7 @@ Die Daten zu „heute“ und „gestern“ fehlen, da das TrachtNet Netzwerk die
 
 Die folgende Karte zeigt, wo die Völker der TrachtNet-Waagstöcke in der Saison am meisten eintragen – nützlich bei der Frage, wo ein Bienenstand lohnt.
 
-{{< trachtnet-widget region="Bayern" type="map" >}}
+{{< trachtnet-widget region="Bayern" type="map" height="520px" >}}
 
 Kreisgrenzen der Karte: Datenlizenz Deutschland – Namensnennung – Version 2.0 ([dl-de/by-2.0](https://www.govdata.de/dl-de/by-2-0)), © Bundesamt für Kartographie und Geodäsie.
 

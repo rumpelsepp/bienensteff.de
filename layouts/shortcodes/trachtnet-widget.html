@@ -1,6 +1,7 @@
 {{ $region := lower (.Get "region") }}
 {{ $year := .Get "year" | default (now | dateFormat "2006") }}
 {{ $type := .Get "type" }}
+{{ $height := .Get "height" | default "400px" }}
 {{ $cssID := printf "trachtnet-%s-chart-%s-%s" $type $region $year }}
 
 <div class="trachtnet-{{ $type }}-chart-container chart-breakout mb-4"
@@ -10,7 +11,7 @@
 >
     <div class="card">
         <div class="card-body" style="padding-left: 0; padding-right: 0;">
-            <div id="{{ $cssID }}" style="height: 400px;"></div>
+            <div id="{{ $cssID }}" style="height: {{ $height }};"></div>
         </div>
     </div>
 </div>

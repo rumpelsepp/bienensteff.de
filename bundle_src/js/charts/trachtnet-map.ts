@@ -2,7 +2,7 @@ import * as echarts from "echarts";
 
 import { getCurrentYear } from "./helpers";
 import { toTitleCase } from "../helpers";
-import { buildFormatterDE, chartColors, initEchartsInstance } from "./base";
+import { buildFormatterDE, chartColors, initEchartsInstance, isNarrow } from "./base";
 
 // The map chart: the season gain of every Landkreis of Bayern, drawn over
 // the county boundaries of /trachtnet-dump/bayern-kreise.geojson (AGS as
@@ -135,17 +135,20 @@ export async function renderMapChart(elementID: string, region: string, year: nu
     };
 
     const notes = [
-        "Summe der Tagesgewinne Mär–Aug je Landkreis [kg], dunkler = mehr",
-        "grau: keine Daten · Höchststand und Waagenzahl im Tooltip"
-            + (year === getCurrentYear() ? " · laufendes Jahr bis dato" : ""),
+        "Summe der Tagesgewinne Mär–Aug je Landkreis [kg]",
+        "grau: keine Daten · Waagenzahl im Tooltip",
     ];
+    if (year === getCurrentYear()) {
+        notes.push("laufendes Jahr bis dato");
+    }
 
     const option: echarts.EChartsOption = {
         title: {
             text: `Saison-Gesamteintrag ${toTitleCase(region)} ${year}`,
             subtext: notes.join("\n"),
             left: "center",
-            textStyle: { color: colors.ink, fontSize: 18 },
+            // The title of the other charts' size, see buildBaseOption().
+            textStyle: { color: colors.ink, fontSize: isNarrow() ? 14 : 18 },
             top: 0,
         },
         animation: false,
@@ -156,7 +159,7 @@ export async function renderMapChart(elementID: string, region: string, year: nu
             },
         },
         toolbox: {
-            show: true,
+            show: !isNarrow(),
             feature: {
                 saveAsImage: {},
             },
@@ -193,6 +196,12 @@ export async function renderMapChart(elementID: string, region: string, year: nu
             map: MAP_NAME,
             roam: true,
             scaleLimit: { min: 1, max: 8 },
+            // Fitted into the whole canvas the map would end up under the
+            // title (and above it the canvas): laid out by hand it sits
+            // below the title block and above the visualMap -- 80% of the
+            // chart's height, verified from 360 to 1200 px wide.
+            layoutCenter: ["50%", "54%"],
+            layoutSize: "80%",
             data: data.map(d => ({ name: d.name, value: d.value ?? undefined })),
             // Regions without data stay this colour; the ones with one
             // are coloured by the visualMap.
