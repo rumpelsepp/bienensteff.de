@@ -1,8 +1,10 @@
 """
-Two Lexware Office reports in one JSON, grouped by year:
+Lexware Office reports, plus the cash sales recorded in Grist, in one JSON,
+grouped by year:
 
 1. "artikel": sold quantity per article number across all paid invoices
-   (for e.g. a GQ-Kontrolle). Only invoices with voucherStatus == "paid"
+   and all cash sales (for e.g. a GQ-Kontrolle), split into
+   "menge_rechnung" and "menge_bar" next to the total "menge". Only invoices with voucherStatus == "paid"
    are counted (drafts, open, overdue, voided invoices are ignored). Line
    items of type "material" or "service" are attributed to their article's
    articleNumber (resolved via LexwareClient.get_article_number()); line
@@ -13,8 +15,9 @@ Two Lexware Office reports in one JSON, grouped by year:
    article deleted from Lexware without a recoverable articleNumber).
 
 2. "einnahmen_ausgaben": per-year totalAmount of the same paid invoices as
-   the "artikel" report (already fetched, no extra API calls) -- a plain
-   income overview, NOT a profit calculation.
+   the "artikel" report (already fetched, no extra API calls), the cash
+   takings from Grist, and their sum -- a plain income overview (e.g. for
+   the Kleinunternehmer limits), NOT a profit calculation.
 
    Manually recorded bookkeeping vouchers ("Belege", GET /v1/vouchers) were
    meant to be folded in here too (income AND expenses), but that endpoint
@@ -29,9 +32,36 @@ Two Lexware Office reports in one JSON, grouped by year:
    figure (AfA tables, useful life, acquisition cost) that belongs to a
    real BWA or your Steuerberater.
 
+3. "barbelege": per year, one entry per cash receipt number from Grist,
+   with its date, source, summed amount and number of items -- to check
+   against the cash vouchers booked in Lexware.
+
+Cash sales (Grist table "Barverkaeufe", hardcoded, read only): cash sold
+without an invoice, e.g. from the honesty box in the woods, is booked in
+Lexware as a plain cash voucher without line items, so Lexware cannot say
+which articles left. One row per emptying of the box and article:
+  - Date: day of the emptying/count.
+  - Source: where the cash was taken (CASH_SOURCES).
+  - Receipt_Number: number of the Kassenbericht, the same as on the cash
+    voucher in Lexware (e.g. "VB-014"). This is what ties the two together.
+  - Article_Number: Lexware articleNumber; GTIN, description and unit are
+    looked up in Lexware by it. Empty on a row that only carries money.
+  - Quantity: jars that left the box according to the stock count, stolen
+    ones included -- for the GQ check every jar that left counts, paid or
+    not.
+  - Amount: counted cash. Per receipt, the amounts of its rows add up to
+    the cash voucher in Lexware -- put the whole sum on one row or split it,
+    whichever is easier. Shortfall (expected price minus counted cash) is
+    not income and does not appear here.
+  - Note: free text, e.g. the shortfall or what was refilled.
+Invoices made out for cash payments (receipts for customers who want one)
+are regular Lexware invoices with line items, so they are counted from
+Lexware and must not be entered here as well.
+
 Grist sync (table "Verkaufszahlen", hardcoded -- this script feeds exactly
 one table, unlike grist_magic's generic GRIST_TABLE_ID): every normal run
-also upserts the "artikel" rows into Grist, keyed on (Year, Article_Number).
+also upserts the "artikel" rows into Grist, keyed on (Year, Article_Number),
+with Quantity_Invoices and Quantity_Cash next to the total Quantity.
 The upserted Quantity is the FULL sum for that year recomputed from this
 run's fetch, not a delta -- so only years that this run's --from/--to window
 covers completely (from on/before Jan 1 through on/after Dec 31, or through
@@ -39,7 +69,7 @@ covers completely (from on/before Jan 1 through on/after Dec 31, or through
 (e.g. a single month) would only see a fraction of the year's invoices and
 would silently overwrite a previous full-year total with that fraction, so
 such incomplete years are computed for the JSON report but skipped for
-Grist (see is_year_complete()/build_grist_rows()). Rows whose voucherDate
+Grist. Cash sales are cut to the same --from/--to window as the invoices (see is_year_complete()/build_grist_rows()). Rows whose voucherDate
 was missing (year bucket "unbekannt") are likewise never synced, since that
 bucket can silently merge quantities from otherwise-unrelated invoices --
 it only ever shows up in the JSON report. Only articles with a resolvable
@@ -53,7 +83,7 @@ Required environment variables:
   LEXWARE_API_KEY, GRIST_API_KEY, GRIST_BASE_URL, GRIST_DOC_ID
 
 Usage:
-  lexware-sales-by-article --init [--dry-run]   # create/update the Grist table
+  lexware-sales-by-article --init [--dry-run]   # create/update the Grist tables
   lexware-sales-by-article
   lexware-sales-by-article --from 2026-01-01 --to 2026-12-31
   lexware-sales-by-article --dry-run
@@ -63,12 +93,13 @@ import argparse
 import json
 import logging
 import time
+from datetime import UTC, datetime
 from typing import Any
 
 lazy import polars as pl
 
 from bstools.env import require_env
-from bstools.grist import GristClient, changed_fields
+from bstools.grist import GristClient, changed_fields, choice_options, date_options
 from bstools.lexware import LexwareClient
 from bstools.logging_setup import setup_logging
 
@@ -77,6 +108,11 @@ logger = logging.getLogger(__name__)
 # This script feeds exactly one Grist table, unlike grist_magic's generic
 # GRIST_TABLE_ID -- so the table name is a constant here, not an env var.
 GRIST_TABLE_ID = "Verkaufszahlen"
+# Entered by hand, only read here -- see the module docstring.
+CASH_TABLE_ID = "Barverkaeufe"
+# Choices of Barverkaeufe.Source. --init resets the column's choices to this
+# list, so a new place where cash is taken goes here, not only into Grist.
+CASH_SOURCES = ["Verkaufsbox"]
 
 GRIST_ENV = ["GRIST_API_KEY", "GRIST_BASE_URL", "GRIST_DOC_ID"]
 REQUIRED_ENV = ["LEXWARE_API_KEY"] + GRIST_ENV
@@ -93,18 +129,32 @@ GRIST_SCHEMA: list[tuple[str, str, dict[str, Any] | None]] = [
     ("GTIN", "Text", None),
     ("Unit", "Text", None),
     ("Quantity", "Numeric", None),
+    ("Quantity_Invoices", "Numeric", None),
+    ("Quantity_Cash", "Numeric", None),
     ("Last_Synced", "Text", None),
+]
+
+CASH_SCHEMA: list[tuple[str, str, dict[str, Any] | None]] = [
+    ("Date", "Date", date_options("DD.MM.YYYY")),
+    ("Source", "Choice", choice_options(CASH_SOURCES)),
+    ("Receipt_Number", "Text", None),
+    ("Article_Number", "Text", None),
+    ("Quantity", "Numeric", None),
+    ("Amount", "Numeric", None),
+    ("Note", "Text", None),
 ]
 
 # Short version of the module docstring above, for --help -- the full one is
 # too long to dump on a terminal usefully. Keep in sync by hand; it's meant
 # to stay a stable summary, not track every detail of the long version.
-CLI_HELP = """Two Lexware Office reports in one JSON, grouped by year: "artikel" (sold
-quantity per article number across paid invoices, e.g. for a GQ-Kontrolle)
-and "einnahmen_ausgaben" (per-year paid-invoice revenue -- a plain income
-overview, not a profit calculation; manual bookkeeping vouchers and
-depreciation are deliberately not included, see the module docstring in the
-source for why).
+CLI_HELP = """Lexware Office reports plus the cash sales from the Grist table
+"Barverkaeufe", in one JSON, grouped by year: "artikel" (sold quantity per
+article number across paid invoices and cash sales, e.g. for a
+GQ-Kontrolle), "einnahmen_ausgaben" (per-year paid-invoice revenue and cash
+takings -- a plain income overview, not a profit calculation; manual
+bookkeeping vouchers and depreciation are deliberately not included, see
+the module docstring in the source for why) and "barbelege" (cash takings
+per receipt number, to check against Lexware).
 
 Also upserts the "artikel" rows (GTIN required) into the Grist table
 "Verkaufszahlen"; see the module docstring for the sync/key details.
@@ -113,7 +163,7 @@ Required environment variables:
   LEXWARE_API_KEY, GRIST_API_KEY, GRIST_BASE_URL, GRIST_DOC_ID
 
 Usage:
-  lexware-sales-by-article --init [--dry-run]   # create/update the Grist table
+  lexware-sales-by-article --init [--dry-run]   # create/update the Grist tables
   lexware-sales-by-article
   lexware-sales-by-article --from 2026-01-01 --to 2026-12-31
   lexware-sales-by-article --dry-run"""
@@ -121,7 +171,8 @@ Usage:
 
 def build_grouped_df(rows: list[dict[str, Any]]) -> pl.DataFrame:
     """One row per (jahr, artikelnummer): bezeichnung/gtin/einheit (first
-    seen) and menge (summed) -- the shared aggregation behind both
+    seen), menge (summed) and its split by quelle ("rechnung"/"bar") into
+    menge_rechnung/menge_bar -- the shared aggregation behind both
     build_article_report() (JSON, grouped by year) and build_grist_rows()
     (flat, GTIN-filtered).
     """
@@ -134,6 +185,8 @@ def build_grouped_df(rows: list[dict[str, Any]]) -> pl.DataFrame:
                 "gtin": pl.Utf8,
                 "einheit": pl.Utf8,
                 "menge": pl.Float64,
+                "menge_rechnung": pl.Float64,
+                "menge_bar": pl.Float64,
             }
         )
     return (
@@ -144,6 +197,8 @@ def build_grouped_df(rows: list[dict[str, Any]]) -> pl.DataFrame:
             pl.col("gtin").first(),
             pl.col("einheit").first(),
             pl.col("menge").sum(),
+            pl.col("menge").filter(pl.col("quelle") == "rechnung").sum().alias("menge_rechnung"),
+            pl.col("menge").filter(pl.col("quelle") == "bar").sum().alias("menge_bar"),
         )
         .sort(["jahr", "artikelnummer"])
     )
@@ -205,6 +260,134 @@ def build_grist_rows(
 
 def run_init(grist: GristClient, dry_run: bool) -> None:
     grist.ensure_table_schema(GRIST_TABLE_ID, GRIST_SCHEMA, dry_run)
+    grist.ensure_table_schema(CASH_TABLE_ID, CASH_SCHEMA, dry_run)
+
+
+def epoch_to_date(value: Any) -> str | None:
+    """Grist Date cell (Unix seconds, UTC midnight) -> "YYYY-MM-DD"."""
+    if not isinstance(value, (int, float)) or isinstance(value, bool):
+        return None
+    return datetime.fromtimestamp(value, UTC).strftime("%Y-%m-%d")
+
+
+def fetch_cash_sales(
+    grist: GristClient,
+    client: LexwareClient,
+    date_from: str | None,
+    date_to: str | None,
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+    """Reads Barverkaeufe (see the module docstring) within --from/--to.
+    Returns (article rows in the same shape as the invoice line items, with
+    quelle "bar"; one entry per cash row with its date/year/source/receipt/
+    amount/quantity, for the income and per-receipt reports).
+
+    A missing table is only a warning (nothing recorded yet, or --init not
+    run since this table was added); rows that cannot be placed -- no date,
+    or a quantity without an article -- are skipped with a warning, since
+    guessing would put them into the wrong year or nowhere visible.
+    """
+    if CASH_TABLE_ID not in grist.list_tables():
+        logger.warning(
+            "Grist table '%s' does not exist, no cash sales counted -- run --init.",
+            CASH_TABLE_ID,
+        )
+        return [], []
+
+    articles: dict[str, dict[str, Any]] | None = None
+    article_rows: list[dict[str, Any]] = []
+    cash_entries: list[dict[str, Any]] = []
+    for rec in grist.get_records(CASH_TABLE_ID):
+        fields = rec.get("fields", {})
+        date = epoch_to_date(fields.get("Date"))
+        quantity = fields.get("Quantity") or 0
+        amount = fields.get("Amount") or 0
+        number = (fields.get("Article_Number") or "").strip()
+        if not date:
+            if quantity or amount:
+                logger.warning("%s row %s has no date, skipped.", CASH_TABLE_ID, rec["id"])
+            continue
+        if (date_from and date < date_from) or (date_to and date > date_to):
+            continue
+
+        if quantity and not number:
+            logger.warning(
+                "%s row %s has a Quantity but no Article_Number, quantity skipped.",
+                CASH_TABLE_ID,
+                rec["id"],
+            )
+            quantity = 0
+        if not quantity and not amount:
+            continue
+
+        year = date[:4]
+        receipt = (fields.get("Receipt_Number") or "").strip()
+        if not receipt:
+            receipt = f"(ohne Belegnummer) {date}"
+            logger.warning(
+                "%s row %s has no Receipt_Number -- it can't be matched with Lexware.",
+                CASH_TABLE_ID,
+                rec["id"],
+            )
+        cash_entries.append(
+            {
+                "jahr": year,
+                "datum": date,
+                "quelle": fields.get("Source") or "",
+                "beleg": receipt,
+                "betrag": amount,
+                "menge": quantity,
+            }
+        )
+        if not quantity:
+            continue
+
+        if articles is None:
+            articles = client.index_articles_by_number()
+        article = articles.get(number)
+        if article is None:
+            logger.warning(
+                "%s row %s: article number %r not found in Lexware -- counted in the "
+                "JSON report, but without a GTIN, so not synced to '%s'.",
+                CASH_TABLE_ID,
+                rec["id"],
+                number,
+                GRIST_TABLE_ID,
+            )
+        article_rows.append(
+            {
+                "jahr": year,
+                "artikelnummer": number,
+                "bezeichnung": (article or {}).get("title") or number,
+                "gtin": (article or {}).get("gtin") or None,
+                "menge": quantity,
+                "einheit": (article or {}).get("unitName") or "",
+                "quelle": "bar",
+            }
+        )
+    return article_rows, cash_entries
+
+
+def build_receipt_report(cash_entries: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+    """Per year, one entry per receipt number: date (earliest), source,
+    summed amount and quantity -- to check against Lexware's cash vouchers.
+    """
+    if not cash_entries:
+        return {}
+    df = (
+        pl.DataFrame(cash_entries)
+        .group_by(["jahr", "beleg"], maintain_order=True)
+        .agg(
+            pl.col("datum").min(),
+            pl.col("quelle").first(),
+            pl.col("betrag").sum().round(2),
+            pl.col("menge").sum(),
+        )
+        .sort(["jahr", "datum", "beleg"])
+    )
+    result: dict[str, list[dict[str, Any]]] = {}
+    for year, group in df.group_by(["jahr"], maintain_order=True):
+        result[year[0]] = group.drop("jahr").to_dicts()
+    return result
 
 
 def fetch_existing_grist(
@@ -242,6 +425,8 @@ def sync_sales_to_grist(
             "GTIN": row["gtin"],
             "Unit": row["einheit"],
             "Quantity": row["menge"],
+            "Quantity_Invoices": row["menge_rechnung"],
+            "Quantity_Cash": row["menge_bar"],
         }
         key = (row["jahr"], row["artikelnummer"])
         if key not in existing:
@@ -275,13 +460,13 @@ def main() -> None:
         "--from",
         dest="date_from",
         metavar="YYYY-MM-DD",
-        help="only invoices/vouchers on/after this date",
+        help="only invoices/cash sales on/after this date",
     )
     parser.add_argument(
         "--to",
         dest="date_to",
         metavar="YYYY-MM-DD",
-        help="only invoices/vouchers on/before this date",
+        help="only invoices/cash sales on/before this date",
     )
     parser.add_argument("--debug", action="store_true", help="print raw API payloads to stderr")
     parser.add_argument("--dry-run", action="store_true", help="don't write anything to Grist")
@@ -299,6 +484,7 @@ def main() -> None:
 
     cfg = require_env(*REQUIRED_ENV)
     client = LexwareClient(cfg["LEXWARE_API_KEY"])
+    grist = GristClient(cfg["GRIST_BASE_URL"], cfg["GRIST_API_KEY"], cfg["GRIST_DOC_ID"])
     rows: list[dict[str, Any]] = []
     invoice_revenue_by_year: dict[str, float] = {}
 
@@ -362,18 +548,36 @@ def main() -> None:
                     "gtin": gtin,
                     "menge": quantity,
                     "einheit": item.get("unitName") or "",
+                    "quelle": "rechnung",
                 }
             )
 
-    einnahmen_ausgaben: dict[str, dict[str, float]] = {
-        year: {"einnahmen_rechnungen": round(amount, 2)}
-        for year, amount in invoice_revenue_by_year.items()
-    }
+    cash_rows, cash_entries = fetch_cash_sales(grist, client, args.date_from, args.date_to)
+    rows.extend(cash_rows)
+    logger.info(
+        "Found %s cash sale row(s) in Grist '%s' in the date window.",
+        len(cash_entries),
+        CASH_TABLE_ID,
+    )
+    cash_by_year: dict[str, float] = {}
+    for entry in cash_entries:
+        cash_by_year[entry["jahr"]] = cash_by_year.get(entry["jahr"], 0.0) + entry["betrag"]
+
+    einnahmen_ausgaben: dict[str, dict[str, float]] = {}
+    for year in sorted(invoice_revenue_by_year.keys() | cash_by_year.keys()):
+        from_invoices = invoice_revenue_by_year.get(year, 0.0)
+        cash = cash_by_year.get(year, 0.0)
+        einnahmen_ausgaben[year] = {
+            "einnahmen_rechnungen": round(from_invoices, 2),
+            "einnahmen_bar": round(cash, 2),
+            "einnahmen_gesamt": round(from_invoices + cash, 2),
+        }
 
     df = build_grouped_df(rows)
     result = {
         "artikel": build_article_report(df),
         "einnahmen_ausgaben": einnahmen_ausgaben,
+        "barbelege": build_receipt_report(cash_entries),
     }
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
@@ -391,7 +595,6 @@ def main() -> None:
             ", ".join(incomplete_years),
         )
 
-    grist = GristClient(cfg["GRIST_BASE_URL"], cfg["GRIST_API_KEY"], cfg["GRIST_DOC_ID"])
     sync_sales_to_grist(
         grist, build_grist_rows(df, args.date_from, args.date_to, today), dry_run=args.dry_run
     )

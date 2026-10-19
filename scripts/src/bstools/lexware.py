@@ -289,6 +289,19 @@ class LexwareClient:
                 self._article_cache[article_id] = (number, None)
         return self._article_cache[article_id]
 
+    def index_articles_by_number(self) -> dict[str, dict[str, Any]]:
+        """articleNumber -> article, over all articles in the account. For
+        looking up articles referenced by number from outside Lexware (e.g.
+        the Grist cash-sales table). Fetches the whole list once instead of
+        filtering per number: there are few articles, and the result does
+        not depend on how the server treats a filter parameter.
+        """
+        return {
+            article["articleNumber"]: article
+            for article in self._paginate("/articles", {})
+            if article.get("articleNumber")
+        }
+
     def deeplink(self, voucher_type: str, voucher_id: str) -> str:
         return f"{APP_BASE_URL}/permalink/{RESOURCE_INFO[voucher_type]}/view/{voucher_id}"
 
