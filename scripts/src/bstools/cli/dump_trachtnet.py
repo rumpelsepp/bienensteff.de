@@ -41,9 +41,9 @@ previous year is fetched too, to catch its final revisions.
 Load on the (public) server: see TrachtnetConfig.
 
 Usage:
-  dump-trachtnet --outdir static/trachtnet-dump            # current year
-  dump-trachtnet --year 2011 2012 2013 --outdir static/trachtnet-dump
-  dump-trachtnet --concurrency 2 --min-interval 0.5 --debug
+  bscli dump trachtnet --outdir static/trachtnet-dump            # current year
+  bscli dump trachtnet --year 2011 2012 2013 --outdir static/trachtnet-dump
+  bscli dump trachtnet --concurrency 2 --min-interval 0.5 --debug
 """
 
 import argparse
@@ -449,10 +449,10 @@ async def dump_all(config: TrachtnetConfig, years: list[int] | None, outdir: Pat
     logger.info("Wrote %s files and index.json to %s", written, outdir)
 
 
-def main() -> None:
+def main(argv: list[str] | None = None, prog: str | None = None) -> None:
     defaults = TrachtnetConfig()
     parser = argparse.ArgumentParser(
-        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+        prog=prog, description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
     parser.add_argument(
         "--year",
@@ -493,7 +493,7 @@ def main() -> None:
         help="hard cap per request (default: %(default)s)",
     )
     parser.add_argument("--debug", action="store_true", help="log every request with timings")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     setup_logging(debug=args.debug)
     if args.concurrency < 1 or args.batch_size < 1:
         parser.error("--concurrency and --batch-size must be at least 1")

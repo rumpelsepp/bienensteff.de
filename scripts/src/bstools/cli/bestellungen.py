@@ -106,9 +106,9 @@ Required environment variables:
   LEXWARE_API_KEY, GRIST_API_KEY, GRIST_BASE_URL, GRIST_DOC_ID, GRIST_TABLE_ID
 
 Usage:
-  grist-magic --init [--dry-run]   # create/update the Grist table
-  grist-magic --debug --dry-run
-  grist-magic
+  bscli bestellungen --init [--dry-run]   # create/update the Grist table
+  bscli bestellungen --debug --dry-run
+  bscli bestellungen
 """
 
 import argparse
@@ -154,9 +154,9 @@ Required environment variables:
   LEXWARE_API_KEY, GRIST_API_KEY, GRIST_BASE_URL, GRIST_DOC_ID, GRIST_TABLE_ID
 
 Usage:
-  grist-magic --init [--dry-run]   # create/update the Grist table
-  grist-magic --debug --dry-run
-  grist-magic"""
+  bscli bestellungen --init [--dry-run]   # create/update the Grist table
+  bscli bestellungen --debug --dry-run
+  bscli bestellungen"""
 
 # Invoice voucherStatus values (raw Lexware API values, not user-facing --
 # German display strings are a separate concern, see DOCUMENT_STATUS_LABELS)
@@ -728,9 +728,9 @@ def run_init(grist: GristClient, table_id: str, dry_run: bool) -> None:
     grist.ensure_table_schema(docs_table_id, docs_schema, dry_run)
 
 
-def main() -> None:
+def main(argv: list[str] | None = None, prog: str | None = None) -> None:
     parser = argparse.ArgumentParser(
-        description=CLI_HELP, formatter_class=argparse.RawDescriptionHelpFormatter
+        prog=prog, description=CLI_HELP, formatter_class=argparse.RawDescriptionHelpFormatter
     )
     parser.add_argument("--debug", action="store_true", help="print raw API payloads to stderr")
     parser.add_argument("--dry-run", action="store_true", help="don't write anything to Grist")
@@ -742,7 +742,7 @@ def main() -> None:
         metavar="AB_NUMBER",
         help="only process this one order confirmation number, for debugging (e.g. --only AB-0042)",
     )
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     setup_logging(debug=args.debug)
 
     if args.init:

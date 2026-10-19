@@ -16,7 +16,8 @@ grouped by year:
 
 2. "einnahmen_ausgaben": per-year totalAmount of the same paid invoices as
    the "artikel" report (already fetched, no extra API calls), the cash
-   takings from Grist, and their sum -- a plain income overview (e.g. for
+   and the non-cash (Wero/SEPA) takings of the box from Grist, and their
+   sum -- a plain income overview (e.g. for
    the Kleinunternehmer limits), NOT a profit calculation.
 
    Manually recorded bookkeeping vouchers ("Belege", GET /v1/vouchers) were
@@ -33,33 +34,44 @@ grouped by year:
    real BWA or your Steuerberater.
 
 3. "barbelege": per year, one entry per cash receipt number from Grist,
-   with its date, source, summed amount and number of items -- to check
-   against the cash vouchers booked in Lexware.
+   with its date, source, counted cash (betrag), non-cash payments (unbar),
+   their sum (beleg_betrag -- the amount of the voucher with that number in
+   Lexware, to check against), expected amount (soll), shortfall
+   (fehlbetrag) and number of items.
 
-Cash sales (Grist table "Barverkaeufe", hardcoded, read only): cash sold
+Cash sales (Grist tables "Box_Leerungen" and "Box_Bestand", hardcoded, read
+only; set up by hand in Grist, --init only checks their columns): cash sold
 without an invoice, e.g. from the honesty box in the woods, is booked in
-Lexware as a plain cash voucher without line items, so Lexware cannot say
-which articles left. One row per emptying of the box and article:
-  - Date: day of the emptying/count.
-  - Source: where the cash was taken (CASH_SOURCES).
-  - Receipt_Number: number of the Kassenbericht, the same as on the cash
-    voucher in Lexware (e.g. "VB-014"). This is what ties the two together.
-  - Article_Number: Lexware articleNumber; GTIN, description and unit are
-    looked up in Lexware by it. Empty on a row that only carries money.
-  - Quantity: jars that left the box according to the stock count, stolen
-    ones included -- for the GQ check every jar that left counts, paid or
-    not.
-  - Amount: counted cash. Per receipt, the amounts of its rows add up to
-    the cash voucher in Lexware -- put the whole sum on one row or split it,
-    whichever is easier. Shortfall (expected price minus counted cash) is
-    not income and does not appear here.
-  - Note: free text, e.g. the shortfall or what was refilled.
+Lexware as a plain voucher without line items, so Lexware cannot say
+which articles left. Both tables follow the paper Kassenbericht:
+  - Box_Leerungen, one row per emptying (= one Kassenbericht = one voucher
+    in Lexware, over cash plus Wero/SEPA; the cash is assigned to it via
+    the cash register, the Wero/SEPA payments from the bank account):
+    Belegnummer ("BV-014", BV = Barverkauf: one running number across all
+    boxes, the same as on the voucher in Lexware -- this is what ties the
+    two together), Datum, Quelle (formula: the name of the box, from the
+    reference Box to the table Boxen), Betrag (labelled "Bargeld in der
+    Box": counted cash), Unbar (labelled "unbar": sum of the Wero/SEPA payments
+    with the box's reference since its previous emptying, as written on the
+    Kassenbericht), Soll and
+    Fehlbetrag (formulas: Soll from the article rows, Fehlbetrag = Soll -
+    Betrag - Unbar; the shortfall is not income and is only reported,
+    never added up as such).
+  - Box_Bestand, one row per emptying and article: Leerung (reference to
+    the emptying), Artikel (reference to Artikel), Gezaehlt and
+    Aufgefuellt_auf (entered), Weg (formula: what the previous emptying
+    filled the box up to, minus what was counted now -- stolen jars
+    included, since for the GQ check every jar that left counts, paid or
+    not) and Article_Number (formula, Artikel.sku = Lexware articleNumber;
+    GTIN, description and unit are looked up in Lexware by it).
+The date window applies to the emptying's date; article rows follow their
+emptying.
 Invoices made out for cash payments (receipts for customers who want one)
 are regular Lexware invoices with line items, so they are counted from
 Lexware and must not be entered here as well.
 
 Grist sync (table "Verkaufszahlen", hardcoded -- this script feeds exactly
-one table, unlike grist_magic's generic GRIST_TABLE_ID): every normal run
+one table, unlike bestellungen's generic GRIST_TABLE_ID): every normal run
 also upserts the "artikel" rows into Grist, keyed on (Year, Article_Number),
 with Quantity_Invoices and Quantity_Cash next to the total Quantity.
 The upserted Quantity is the FULL sum for that year recomputed from this
@@ -83,10 +95,10 @@ Required environment variables:
   LEXWARE_API_KEY, GRIST_API_KEY, GRIST_BASE_URL, GRIST_DOC_ID
 
 Usage:
-  lexware-sales-by-article --init [--dry-run]   # create/update the Grist tables
-  lexware-sales-by-article
-  lexware-sales-by-article --from 2026-01-01 --to 2026-12-31
-  lexware-sales-by-article --dry-run
+  bscli verkaufszahlen --init [--dry-run]   # create/update the Grist tables
+  bscli verkaufszahlen
+  bscli verkaufszahlen --from 2026-01-01 --to 2026-12-31
+  bscli verkaufszahlen --dry-run
 """
 
 import argparse
@@ -99,25 +111,27 @@ from typing import Any
 lazy import polars as pl
 
 from bstools.env import require_env
-from bstools.grist import GristClient, changed_fields, choice_options, date_options
+from bstools.grist import GristClient, changed_fields
 from bstools.lexware import LexwareClient
 from bstools.logging_setup import setup_logging
 
 logger = logging.getLogger(__name__)
 
-# This script feeds exactly one Grist table, unlike grist_magic's generic
+# This script feeds exactly one Grist table, unlike bestellungen's generic
 # GRIST_TABLE_ID -- so the table name is a constant here, not an env var.
 GRIST_TABLE_ID = "Verkaufszahlen"
-# Entered by hand, only read here -- see the module docstring.
-CASH_TABLE_ID = "Barverkaeufe"
-# Choices of Barverkaeufe.Source. --init resets the column's choices to this
-# list, so a new place where cash is taken goes here, not only into Grist.
-CASH_SOURCES = ["Verkaufsbox"]
+# Entered by hand, only read here -- see the module docstring. Both are set
+# up in Grist (references, formulas), so --init only checks that the columns
+# read below exist.
+BOX_TABLE_ID = "Box_Leerungen"
+BOX_COLUMNS = ["Belegnummer", "Datum", "Quelle", "Betrag", "Unbar", "Soll", "Fehlbetrag"]
+BOX_ITEMS_TABLE_ID = "Box_Bestand"
+BOX_ITEMS_COLUMNS = ["Leerung", "Article_Number", "Weg"]
 
 GRIST_ENV = ["GRIST_API_KEY", "GRIST_BASE_URL", "GRIST_DOC_ID"]
 REQUIRED_ENV = ["LEXWARE_API_KEY"] + GRIST_ENV
 
-# Columns this script needs, in creation order -- see grist_magic.py's
+# Columns this script needs, in creation order -- see bestellungen.py's
 # GRIST_SCHEMA for the general shape. Year is Text, not Numeric/Date: rows
 # with an unresolvable voucherDate fall back to "unbekannt" (see main()),
 # which wouldn't fit either of those types. GTIN is Text too, to preserve it
@@ -134,21 +148,11 @@ GRIST_SCHEMA: list[tuple[str, str, dict[str, Any] | None]] = [
     ("Last_Synced", "Text", None),
 ]
 
-CASH_SCHEMA: list[tuple[str, str, dict[str, Any] | None]] = [
-    ("Date", "Date", date_options("DD.MM.YYYY")),
-    ("Source", "Choice", choice_options(CASH_SOURCES)),
-    ("Receipt_Number", "Text", None),
-    ("Article_Number", "Text", None),
-    ("Quantity", "Numeric", None),
-    ("Amount", "Numeric", None),
-    ("Note", "Text", None),
-]
-
 # Short version of the module docstring above, for --help -- the full one is
 # too long to dump on a terminal usefully. Keep in sync by hand; it's meant
 # to stay a stable summary, not track every detail of the long version.
-CLI_HELP = """Lexware Office reports plus the cash sales from the Grist table
-"Barverkaeufe", in one JSON, grouped by year: "artikel" (sold quantity per
+CLI_HELP = """Lexware Office reports plus the cash sales from the Grist tables
+"Box_Leerungen"/"Box_Bestand", in one JSON, grouped by year: "artikel" (sold quantity per
 article number across paid invoices and cash sales, e.g. for a
 GQ-Kontrolle), "einnahmen_ausgaben" (per-year paid-invoice revenue and cash
 takings -- a plain income overview, not a profit calculation; manual
@@ -163,10 +167,10 @@ Required environment variables:
   LEXWARE_API_KEY, GRIST_API_KEY, GRIST_BASE_URL, GRIST_DOC_ID
 
 Usage:
-  lexware-sales-by-article --init [--dry-run]   # create/update the Grist tables
-  lexware-sales-by-article
-  lexware-sales-by-article --from 2026-01-01 --to 2026-12-31
-  lexware-sales-by-article --dry-run"""
+  bscli verkaufszahlen --init [--dry-run]   # create/update the Grist tables
+  bscli verkaufszahlen
+  bscli verkaufszahlen --from 2026-01-01 --to 2026-12-31
+  bscli verkaufszahlen --dry-run"""
 
 
 def build_grouped_df(rows: list[dict[str, Any]]) -> pl.DataFrame:
@@ -260,7 +264,19 @@ def build_grist_rows(
 
 def run_init(grist: GristClient, dry_run: bool) -> None:
     grist.ensure_table_schema(GRIST_TABLE_ID, GRIST_SCHEMA, dry_run)
-    grist.ensure_table_schema(CASH_TABLE_ID, CASH_SCHEMA, dry_run)
+    tables = grist.list_tables()
+    for table_id, columns in (
+        (BOX_TABLE_ID, BOX_COLUMNS),
+        (BOX_ITEMS_TABLE_ID, BOX_ITEMS_COLUMNS),
+    ):
+        if table_id not in tables:
+            logger.warning("Grist table '%s' does not exist -- set it up in Grist.", table_id)
+            continue
+        missing = [c for c in columns if c not in grist.get_columns(table_id)]
+        if missing:
+            logger.warning("Grist table '%s' lacks column(s) %s.", table_id, ", ".join(missing))
+        else:
+            print(f"Grist '{table_id}': all columns this script reads are there.")
 
 
 def epoch_to_date(value: Any) -> str | None:
@@ -270,76 +286,103 @@ def epoch_to_date(value: Any) -> str | None:
     return datetime.fromtimestamp(value, UTC).strftime("%Y-%m-%d")
 
 
+def cell_number(value: Any) -> float | None:
+    """A Numeric/Int cell as a number; None for empty cells and for formula
+    errors, which the API sends as a list like ["E", "TypeError"].
+    """
+    if not isinstance(value, (int, float)) or isinstance(value, bool):
+        return None
+    return value
+
+
 def fetch_cash_sales(
     grist: GristClient,
     client: LexwareClient,
     date_from: str | None,
     date_to: str | None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
-    """Reads Barverkaeufe (see the module docstring) within --from/--to.
-    Returns (article rows in the same shape as the invoice line items, with
-    quelle "bar"; one entry per cash row with its date/year/source/receipt/
-    amount/quantity, for the income and per-receipt reports).
+    """Reads Box_Leerungen and Box_Bestand (see the module docstring), the
+    emptyings within --from/--to and their article rows. Returns (article
+    rows in the same shape as the invoice line items, with quelle "bar";
+    one entry per emptying with its date/year/source/receipt/amount/
+    non-cash amount/expected amount/shortfall/quantity, for the income and per-receipt
+    reports).
 
-    A missing table is only a warning (nothing recorded yet, or --init not
-    run since this table was added); rows that cannot be placed -- no date,
-    or a quantity without an article -- are skipped with a warning, since
-    guessing would put them into the wrong year or nowhere visible.
+    A missing table is only a warning (nothing recorded yet); rows that
+    cannot be placed -- an emptying without a date, an article row without
+    an article, a formula error or a negative Weg -- are skipped with a
+    warning, since guessing would put them into the wrong year or nowhere
+    visible.
     """
-    if CASH_TABLE_ID not in grist.list_tables():
-        logger.warning(
-            "Grist table '%s' does not exist, no cash sales counted -- run --init.",
-            CASH_TABLE_ID,
-        )
+    tables = grist.list_tables()
+    missing = [t for t in (BOX_TABLE_ID, BOX_ITEMS_TABLE_ID) if t not in tables]
+    if missing:
+        logger.warning("Grist table(s) %s do not exist, no cash sales counted.", ", ".join(missing))
         return [], []
 
-    articles: dict[str, dict[str, Any]] | None = None
-    article_rows: list[dict[str, Any]] = []
-    cash_entries: list[dict[str, Any]] = []
-    for rec in grist.get_records(CASH_TABLE_ID):
+    # Grist row id of the emptying -> its entry, for the article rows below.
+    emptyings: dict[int, dict[str, Any]] = {}
+    for rec in grist.get_records(BOX_TABLE_ID):
         fields = rec.get("fields", {})
-        date = epoch_to_date(fields.get("Date"))
-        quantity = fields.get("Quantity") or 0
-        amount = fields.get("Amount") or 0
-        number = (fields.get("Article_Number") or "").strip()
+        date = epoch_to_date(fields.get("Datum"))
+        amount = cell_number(fields.get("Betrag")) or 0
+        non_cash = cell_number(fields.get("Unbar")) or 0
         if not date:
-            if quantity or amount:
-                logger.warning("%s row %s has no date, skipped.", CASH_TABLE_ID, rec["id"])
+            if amount or non_cash:
+                logger.warning("%s row %s has no date, skipped.", BOX_TABLE_ID, rec["id"])
             continue
         if (date_from and date < date_from) or (date_to and date > date_to):
             continue
-
-        if quantity and not number:
-            logger.warning(
-                "%s row %s has a Quantity but no Article_Number, quantity skipped.",
-                CASH_TABLE_ID,
-                rec["id"],
-            )
-            quantity = 0
-        if not quantity and not amount:
-            continue
-
-        year = date[:4]
-        receipt = (fields.get("Receipt_Number") or "").strip()
+        receipt = (fields.get("Belegnummer") or "").strip()
         if not receipt:
             receipt = f"(ohne Belegnummer) {date}"
             logger.warning(
-                "%s row %s has no Receipt_Number -- it can't be matched with Lexware.",
-                CASH_TABLE_ID,
+                "%s row %s has no Belegnummer -- it can't be matched with Lexware.",
+                BOX_TABLE_ID,
                 rec["id"],
             )
-        cash_entries.append(
-            {
-                "jahr": year,
-                "datum": date,
-                "quelle": fields.get("Source") or "",
-                "beleg": receipt,
-                "betrag": amount,
-                "menge": quantity,
-            }
-        )
+        emptyings[rec["id"]] = {
+            "jahr": date[:4],
+            "datum": date,
+            "quelle": fields.get("Quelle") or "",
+            "beleg": receipt,
+            "betrag": amount,
+            "unbar": non_cash,
+            "soll": cell_number(fields.get("Soll")) or 0,
+            "fehlbetrag": cell_number(fields.get("Fehlbetrag")) or 0,
+            "menge": 0,
+        }
+
+    articles: dict[str, dict[str, Any]] | None = None
+    article_rows: list[dict[str, Any]] = []
+    for rec in grist.get_records(BOX_ITEMS_TABLE_ID):
+        fields = rec.get("fields", {})
+        # Outside the date window, or an emptying without a date (warned above).
+        emptying = emptyings.get(fields.get("Leerung") or 0)
+        if emptying is None:
+            continue
+        quantity = cell_number(fields.get("Weg"))
+        number = (fields.get("Article_Number") or "").strip()
+        if quantity is None or quantity < 0:
+            logger.warning(
+                "%s row %s (%s): Weg is %r -- check the counts, row skipped.",
+                BOX_ITEMS_TABLE_ID,
+                rec["id"],
+                emptying["beleg"],
+                fields.get("Weg"),
+            )
+            continue
         if not quantity:
             continue
+        if not number:
+            logger.warning(
+                "%s row %s (%s) has no article, quantity skipped.",
+                BOX_ITEMS_TABLE_ID,
+                rec["id"],
+                emptying["beleg"],
+            )
+            continue
+        emptying["menge"] += quantity
 
         if articles is None:
             articles = client.index_articles_by_number()
@@ -348,11 +391,12 @@ def fetch_cash_sales(
             logger.warning(
                 "%s row %s: article number %r not found in Lexware -- counted in the "
                 "JSON report, but without a GTIN, so not synced to '%s'.",
-                CASH_TABLE_ID,
+                BOX_ITEMS_TABLE_ID,
                 rec["id"],
                 number,
                 GRIST_TABLE_ID,
             )
+        year = emptying["jahr"]
         article_rows.append(
             {
                 "jahr": year,
@@ -364,12 +408,14 @@ def fetch_cash_sales(
                 "quelle": "bar",
             }
         )
-    return article_rows, cash_entries
+    return article_rows, list(emptyings.values())
 
 
 def build_receipt_report(cash_entries: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
     """Per year, one entry per receipt number: date (earliest), source,
-    summed amount and quantity -- to check against Lexware's cash vouchers.
+    summed cash, non-cash and voucher amount, expected amount, shortfall
+    and quantity -- to check against Lexware's vouchers. Normally one emptying per receipt
+    number; a number used twice shows up summed, under one entry.
     """
     if not cash_entries:
         return {}
@@ -380,6 +426,10 @@ def build_receipt_report(cash_entries: list[dict[str, Any]]) -> dict[str, list[d
             pl.col("datum").min(),
             pl.col("quelle").first(),
             pl.col("betrag").sum().round(2),
+            pl.col("unbar").sum().round(2),
+            (pl.col("betrag") + pl.col("unbar")).sum().round(2).alias("beleg_betrag"),
+            pl.col("soll").sum().round(2),
+            pl.col("fehlbetrag").sum().round(2),
             pl.col("menge").sum(),
         )
         .sort(["jahr", "datum", "beleg"])
@@ -397,7 +447,7 @@ def fetch_existing_grist(
     only rows that actually changed, instead of a
     full wipe-and-reinsert -- a partial --from/--to run must only ever touch
     the years it actually fetched, never delete other years' rows a previous
-    full run already put there (unlike grist_magic's fully-derived _Docs
+    full run already put there (unlike bestellungen's fully-derived _Docs
     table, which has no such partial-run concern).
     """
     existing: dict[tuple[str, str], tuple[int, dict[str, Any]]] = {}
@@ -452,9 +502,9 @@ def sync_sales_to_grist(
     grist.update_records(GRIST_TABLE_ID, to_update)
 
 
-def main() -> None:
+def main(argv: list[str] | None = None, prog: str | None = None) -> None:
     parser = argparse.ArgumentParser(
-        description=CLI_HELP, formatter_class=argparse.RawDescriptionHelpFormatter
+        prog=prog, description=CLI_HELP, formatter_class=argparse.RawDescriptionHelpFormatter
     )
     parser.add_argument(
         "--from",
@@ -473,7 +523,7 @@ def main() -> None:
     parser.add_argument(
         "--init", action="store_true", help="create/update the Grist table, then exit"
     )
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     setup_logging(debug=args.debug)
 
     if args.init:
@@ -555,22 +605,27 @@ def main() -> None:
     cash_rows, cash_entries = fetch_cash_sales(grist, client, args.date_from, args.date_to)
     rows.extend(cash_rows)
     logger.info(
-        "Found %s cash sale row(s) in Grist '%s' in the date window.",
+        "Found %s emptying(s) in Grist '%s' in the date window.",
         len(cash_entries),
-        CASH_TABLE_ID,
+        BOX_TABLE_ID,
     )
     cash_by_year: dict[str, float] = {}
+    non_cash_by_year: dict[str, float] = {}
     for entry in cash_entries:
-        cash_by_year[entry["jahr"]] = cash_by_year.get(entry["jahr"], 0.0) + entry["betrag"]
+        year = entry["jahr"]
+        cash_by_year[year] = cash_by_year.get(year, 0.0) + entry["betrag"]
+        non_cash_by_year[year] = non_cash_by_year.get(year, 0.0) + entry["unbar"]
 
     einnahmen_ausgaben: dict[str, dict[str, float]] = {}
     for year in sorted(invoice_revenue_by_year.keys() | cash_by_year.keys()):
         from_invoices = invoice_revenue_by_year.get(year, 0.0)
         cash = cash_by_year.get(year, 0.0)
+        non_cash = non_cash_by_year.get(year, 0.0)
         einnahmen_ausgaben[year] = {
             "einnahmen_rechnungen": round(from_invoices, 2),
             "einnahmen_bar": round(cash, 2),
-            "einnahmen_gesamt": round(from_invoices + cash, 2),
+            "einnahmen_box_unbar": round(non_cash, 2),
+            "einnahmen_gesamt": round(from_invoices + cash + non_cash, 2),
         }
 
     df = build_grouped_df(rows)

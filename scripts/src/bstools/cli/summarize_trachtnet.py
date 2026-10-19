@@ -18,7 +18,7 @@ first: {"kind", "years", "regions": {<ags>: {"name", "slug", "years":
 season record in a year are left out of it.
 
 Usage:
-  summarize-trachtnet --outdir static/trachtnet-dump
+  bscli dump trachtnet-summary --outdir static/trachtnet-dump
 """
 
 import argparse
@@ -112,17 +112,17 @@ def summarize(outdir: Path) -> None:
     logger.info("Wrote %s regions, %s years, to %s", len(regions), len(years), path)
 
 
-def main() -> None:
+def main(argv: list[str] | None = None, prog: str | None = None) -> None:
     parser = argparse.ArgumentParser(
-        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+        prog=prog, description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
     parser.add_argument(
         "--outdir",
         type=Path,
         default=Path("./trachtnet-dump"),
-        help="output directory of dump-trachtnet (default: %(default)s)",
+        help="output directory of `bscli dump trachtnet` (default: %(default)s)",
     )
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     setup_logging()
     summarize(args.outdir)
 

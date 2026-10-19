@@ -250,7 +250,7 @@ falschen Koordinaten geführt).
   `static/varroaampel/forecast.json` (~20 kB). Das Frontend lädt einmal,
   Stationswechsel ist rein clientseitig.
 - Die Ampel wird **nicht** im CLI berechnet. Das CLI ist ein reiner Daten-Dump
-  wie `dump-dwd`; die Regeln liegen im Frontend neben der Darstellung.
+  wie `bscli dump dwd`; die Regeln liegen im Frontend neben der Darstellung.
 - JSON statt NDJSON, weil die Struktur verschachtelt ist (Stationen → Tage).
 
 ```json

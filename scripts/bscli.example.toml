@@ -1,0 +1,14 @@
+# Config for bscli and the other bstools scripts.
+# Copy to ~/.config/bscli/config.toml (or point BSCLI_CONFIG / `bscli --config` at it).
+# Environment variables (GRIST_API_KEY, ...) win over this file.
+#
+# Every value can be given as <key>_cmd instead: a command whose output is the
+# value, run without a shell -- keeps secrets in gopass instead of this file.
+
+[grist]
+base_url = "https://docs.getgrist.com"
+doc_id = "DOC_ID"
+api_key_cmd = ["gopass", "show", "grist-api-key"]
+
+[lexware]
+api_key_cmd = ["gopass", "show", "lexware-api-key"]

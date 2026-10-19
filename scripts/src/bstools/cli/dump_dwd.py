@@ -5,7 +5,7 @@ NDJSON file. With --meta also what the station is: its name, position and
 height, as a JSON file.
 
 Usage:
-  dump-dwd --station-id 03379 --meta static/klima/03379_meta.json \\
+  bscli dump dwd --station-id 03379 --meta static/klima/03379_meta.json \\
       static/klima/03379_hourly.json static/klima/03379_daily.json
 """
 
@@ -124,9 +124,9 @@ def clean_and_prepare_data(station_id: str) -> tuple[pl.DataFrame, dict[str, str
     return df.sort("timestamp").select(["timestamp", "temperature", "precipitation"]), station
 
 
-def main() -> None:
+def main(argv: list[str] | None = None, prog: str | None = None) -> None:
     parser = argparse.ArgumentParser(
-        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+        prog=prog, description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
     parser.add_argument(
         "--station-id",
@@ -141,7 +141,7 @@ def main() -> None:
     )
     parser.add_argument("FILE_HOURLY", type=Path, help="path to write the hourly data")
     parser.add_argument("FILE_DAILY", type=Path, help="path to write the daily data")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     df_hourly, station = clean_and_prepare_data(args.station_id)
     df_daily = df_hourly.group_by_dynamic(

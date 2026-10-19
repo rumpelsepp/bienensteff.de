@@ -1,5 +1,5 @@
-"""Shared Lexware Office API client, used by grist_magic, lexware_download and
-lexware_sales_by_article -- previously each of those reimplemented parts of
+"""Shared Lexware Office API client, used by bestellungen, beleg_pdf and
+verkaufszahlen -- previously each of those reimplemented parts of
 this (throttled HTTP, pagination, deeplinks, article/contact lookups) on
 their own.
 """
@@ -7,6 +7,7 @@ their own.
 import json
 import logging
 import time
+import uuid
 from collections.abc import Iterator
 from typing import Any
 
@@ -41,6 +42,11 @@ RESOURCE_INFO = frozendict(
         "dun": "dunnings",
     }
 )
+
+# Posting category "Einnahmen als Kleinunternehmer" for salesinvoice
+# bookkeeping vouchers (changed by Lexware on 2026-04-28, see the API
+# changelog; the old id was 7a1efa0e-6283-4cbf-9583-8e88d3ba5960).
+CATEGORY_SMALL_BUSINESS_INCOME = "f5c7fee8-f184-4e7a-ab04-8f7e7ad6c207"
 
 
 class LexwareClient:
@@ -101,6 +107,46 @@ class LexwareClient:
         return self._send(
             "GET", path, headers={"Accept": "application/pdf, application/xml, */*"}
         ).content
+
+    def post(self, path: str, payload: dict[str, Any]) -> dict[str, Any]:
+        data: dict[str, Any] = self._send("POST", path, json=payload).json()
+        return data
+
+    def voucher_deeplink(self, voucher_id: str) -> str:
+        """Deeplink to a bookkeeping voucher (Beleg). Kept apart from
+        RESOURCE_INFO/deeplink(), which only cover sales vouchers."""
+        return f"{APP_BASE_URL}/permalink/vouchers/view/{voucher_id}"
+
+    def create_voucher(self, payload: dict[str, Any]) -> str:
+        """POST /vouchers (a bookkeeping voucher, "Beleg"); returns its id."""
+        voucher_id: str = self.post("/vouchers", payload)["id"]
+        return voucher_id
+
+    def upload_voucher_file(
+        self, voucher_id: str, filename: str, data: bytes, content_type: str = "application/pdf"
+    ) -> str:
+        """Attaches a file (pdf, image or xml, at most 5 MB) to an existing
+        bookkeeping voucher; returns the file id. Lexware deduplicates by
+        content: the same bytes again return the existing file's id.
+        """
+        boundary = uuid.uuid4().hex
+        body = (
+            (
+                f"--{boundary}\r\n"
+                f'Content-Disposition: form-data; name="file"; filename="{filename}"\r\n'
+                f"Content-Type: {content_type}\r\n\r\n"
+            ).encode()
+            + data
+            + f"\r\n--{boundary}--\r\n".encode()
+        )
+        resp = self._send(
+            "POST",
+            f"/vouchers/{voucher_id}/files",
+            content=body,
+            headers={"Content-Type": f"multipart/form-data; boundary={boundary}"},
+        )
+        file_id: str = resp.json()["id"]
+        return file_id
 
     def _paginate(self, path: str, params: dict[str, Any]) -> Iterator[dict[str, Any]]:
         """Generic pager for Lexware's {content, last, ...} paged list

@@ -5,7 +5,7 @@ RE-1044, AG-0012, AB-0042, LS-0007) via the Lexware Office API.
 Required environment variable: LEXWARE_API_KEY
 
 Usage:
-  lexware-download RE-1044
+  bscli beleg-pdf RE-1044
 """
 
 import argparse
@@ -40,12 +40,12 @@ def get_voucher_type(voucher_number: str) -> str:
         ) from None
 
 
-def main() -> None:
+def main(argv: list[str] | None = None, prog: str | None = None) -> None:
     parser = argparse.ArgumentParser(
-        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+        prog=prog, description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )
     parser.add_argument("DOCUMENT_NUMBER")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     setup_logging()
 
     client = LexwareClient(require_env_var("LEXWARE_API_KEY"))

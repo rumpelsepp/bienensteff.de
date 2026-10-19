@@ -390,12 +390,21 @@ class _BaseClient:
         params: Mapping[str, Any] | None,
         json: Any,
         headers: Mapping[str, str] | None,
+        content: bytes | None = None,
     ) -> tuple[str, pycurl.CurlUrl, list[str], bytes | None]:
-        body = None if json is None else jsonlib.dumps(json).encode()
+        """`content` is a ready-made body (e.g. multipart/form-data) whose
+        Content-Type the caller sets in `headers`; it excludes `json`."""
+        if json is not None and content is not None:
+            raise ValueError("pass either json or content, not both")
+        body = (
+            content
+            if content is not None
+            else (None if json is None else jsonlib.dumps(json).encode())
+        )
         return (
             str(method).upper(),
             self._build_url(url, params),
-            self._header_lines(headers, has_json=body is not None),
+            self._header_lines(headers, has_json=json is not None),
             body,
         )
 
@@ -433,8 +442,11 @@ class Client(_BaseClient):
         params: Mapping[str, Any] | None = None,
         json: Any = None,
         headers: Mapping[str, str] | None = None,
+        content: bytes | None = None,
     ) -> Response:
-        method, curl_url, header_lines, body = self._prepare(method, url, params, json, headers)
+        method, curl_url, header_lines, body = self._prepare(
+            method, url, params, json, headers, content
+        )
         attempt = 0
         while True:
             if wait := self._reserve_start():
@@ -491,8 +503,11 @@ class AsyncClient(_BaseClient):
         params: Mapping[str, Any] | None = None,
         json: Any = None,
         headers: Mapping[str, str] | None = None,
+        content: bytes | None = None,
     ) -> Response:
-        method, curl_url, header_lines, body = self._prepare(method, url, params, json, headers)
+        method, curl_url, header_lines, body = self._prepare(
+            method, url, params, json, headers, content
+        )
         attempt = 0
         while True:
             async with self._sem:

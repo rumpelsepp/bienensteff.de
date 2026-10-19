@@ -17,11 +17,11 @@ deploy: build
     rsync -avz --delete public/ deploy@bienensteff.de:/srv/http/deploy/bienensteff.de
 
 update-db:
-    uv run --project scripts dump-db > assets/db/db.json
+    uv run --project scripts bscli dump db > assets/db/db.json
 
 update-trachtnet:
-    uv run --project scripts dump-trachtnet --outdir static/trachtnet-dump
-    uv run --project scripts summarize-trachtnet --outdir static/trachtnet-dump
+    uv run --project scripts bscli dump trachtnet --outdir static/trachtnet-dump
+    uv run --project scripts bscli dump trachtnet-summary --outdir static/trachtnet-dump
 
 update-klima:
-    uv run --project scripts dump-dwd --station-id 03379 --meta static/klima/03379_meta.json static/klima/03379_hourly.json static/klima/03379_daily.json
+    uv run --project scripts bscli dump dwd --station-id 03379 --meta static/klima/03379_meta.json static/klima/03379_hourly.json static/klima/03379_daily.json

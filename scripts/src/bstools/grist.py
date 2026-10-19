@@ -1,6 +1,6 @@
-"""Shared Grist API client, used by grist_magic (self-hosted-or-SaaS doc sync)
+"""Shared Grist API client, used by bestellungen (self-hosted-or-SaaS doc sync)
 and dump_db (simple table reads from a Grist SaaS document) -- previously
-grist_magic had its own copy and dump_db reimplemented a one-off GET via
+bestellungen had its own copy and dump_db reimplemented a one-off GET via
 requests.
 
 One client instance is scoped to one document (doc_id); table_id is passed

@@ -21,21 +21,20 @@ A batch/article with no matching fillings/buckets gets `[]`, not `null`,
 for that key -- fine for consumers (see layouts/_partials/db/*.html):
 Hugo's `{{ with }}` treats a zero-length slice the same as nil.
 
-Requires a working `gopass show grist-api-key`.
+Settings (environment variable, or config file -- see bscli.example.toml):
+  GRIST_API_KEY, GRIST_BASE_URL, GRIST_DOC_ID
 
 Usage:
-  dump-db > assets/db/db.json
+  bscli dump db > assets/db/db.json
 """
 
+import argparse
 import json
-import subprocess
 from typing import Any
 
+from bstools.env import require_env
 from bstools.grist import GristClient
 from bstools.logging_setup import setup_logging
-
-GRIST_BASE_URL = "https://docs.getgrist.com"
-DOCUMENT_ID = "DOC_ID"
 
 # One flat query per top-level output section -- no nested subqueries; the
 # "fillings"/"buckets" arrays nested under articles/batches are grouped
@@ -137,14 +136,6 @@ ORDER BY an.id
 """
 
 
-def get_api_key() -> str:
-    return (
-        subprocess.run(["gopass", "show", "grist-api-key"], check=True, capture_output=True)
-        .stdout.decode()
-        .strip()
-    )
-
-
 def _coerce_bools(rows: list[dict[str, Any]], keys: tuple[str, ...]) -> None:
     """query_sql() returns Grist Bool columns as SQLite's own 0/1 integers,
     not JSON booleans like get_records() does -- coerces the given columns
@@ -171,9 +162,13 @@ def _group_by(rows: list[dict[str, Any]], key: str) -> dict[Any, list[dict[str, 
     return groups
 
 
-def main() -> None:
+def main(argv: list[str] | None = None, prog: str | None = None) -> None:
+    argparse.ArgumentParser(
+        prog=prog, description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    ).parse_args(argv)
     setup_logging()
-    grist = GristClient(GRIST_BASE_URL, get_api_key(), DOCUMENT_ID)
+    cfg = require_env("GRIST_BASE_URL", "GRIST_API_KEY", "GRIST_DOC_ID")
+    grist = GristClient(cfg["GRIST_BASE_URL"], cfg["GRIST_API_KEY"], cfg["GRIST_DOC_ID"])
 
     skus = grist.query_sql(SKUS_SQL)
     _coerce_bools(skus, ("gqb_certified",))
