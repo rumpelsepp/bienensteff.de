@@ -265,11 +265,11 @@
 {"date":"2026-09-23","weight":28.07,"delta":-0.05,"scales":6}
 {"date":"2026-09-24","weight":28,"delta":-0.07,"scales":6}
 {"date":"2026-09-25","weight":28.12,"delta":0.12,"scales":6}
-{"date":"2026-09-26","weight":28.47,"delta":0.35,"scales":7}
-{"date":"2026-09-27","weight":28.44,"delta":-0.03,"scales":7}
-{"date":"2026-09-28","weight":28.35,"delta":-0.09,"scales":7}
-{"date":"2026-09-29","weight":28.26,"delta":-0.09,"scales":7}
-{"date":"2026-09-30","weight":28.16,"delta":-0.1,"scales":7}
+{"date":"2026-09-26","weight":28.43,"delta":0.31,"scales":8}
+{"date":"2026-09-27","weight":28.42,"delta":-0.01,"scales":8}
+{"date":"2026-09-28","weight":28.33,"delta":-0.09,"scales":8}
+{"date":"2026-09-29","weight":28.25,"delta":-0.08,"scales":8}
+{"date":"2026-09-30","weight":28.16,"delta":-0.09,"scales":8}
 {"date":"2026-10-01","weight":28.32,"delta":0.16,"scales":7}
 {"date":"2026-10-02","weight":28.18,"delta":-0.14,"scales":7}
 {"date":"2026-10-03","weight":28.09,"delta":-0.09,"scales":7}
@@ -284,6 +284,7 @@
 {"date":"2026-10-12","weight":27.61,"delta":-0.06,"scales":7}
 {"date":"2026-10-13","weight":27.67,"delta":0.06,"scales":7}
 {"date":"2026-10-14","weight":27.5,"delta":-0.17,"scales":7}
-{"date":"2026-10-15","weight":27.48,"delta":-0.02,"scales":7}
-{"date":"2026-10-16","weight":27.51,"delta":0.03,"scales":6}
-{"date":"2026-10-17","weight":27.39,"delta":-0.12,"scales":6}
+{"date":"2026-10-15","weight":27.47,"delta":-0.03,"scales":7}
+{"date":"2026-10-16","weight":27.5,"delta":0.03,"scales":6}
+{"date":"2026-10-17","weight":27.38,"delta":-0.12,"scales":6}
+{"date":"2026-10-18","weight":27.37,"delta":-0.01,"scales":6}
