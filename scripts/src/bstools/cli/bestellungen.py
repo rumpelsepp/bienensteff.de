@@ -728,10 +728,7 @@ def run_init(grist: GristClient, table_id: str, dry_run: bool) -> None:
     grist.ensure_table_schema(docs_table_id, docs_schema, dry_run)
 
 
-def main(argv: list[str] | None = None, prog: str | None = None) -> None:
-    parser = argparse.ArgumentParser(
-        prog=prog, description=CLI_HELP, formatter_class=argparse.RawDescriptionHelpFormatter
-    )
+def add_arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--debug", action="store_true", help="print raw API payloads to stderr")
     parser.add_argument("--dry-run", action="store_true", help="don't write anything to Grist")
     parser.add_argument(
@@ -742,7 +739,9 @@ def main(argv: list[str] | None = None, prog: str | None = None) -> None:
         metavar="AB_NUMBER",
         help="only process this one order confirmation number, for debugging (e.g. --only AB-0042)",
     )
-    args = parser.parse_args(argv)
+
+
+def run(args: argparse.Namespace) -> None:
     setup_logging(debug=args.debug)
 
     if args.init:
@@ -777,6 +776,14 @@ def main(argv: list[str] | None = None, prog: str | None = None) -> None:
     else:
         docs_table_id = f"{table_id}{DOCS_TABLE_SUFFIX}"
         sync_docs_table(grist, docs_table_id, records, row_ids, dry_run=args.dry_run)
+
+
+def main(argv: list[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(
+        description=CLI_HELP, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    add_arguments(parser)
+    run(parser.parse_args(argv))
 
 
 if __name__ == "__main__":

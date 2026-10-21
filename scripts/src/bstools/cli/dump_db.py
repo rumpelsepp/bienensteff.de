@@ -32,6 +32,7 @@ import argparse
 import json
 from typing import Any
 
+from bstools import tracing
 from bstools.env import require_env
 from bstools.grist import GristClient
 from bstools.logging_setup import setup_logging
@@ -118,22 +119,37 @@ SELECT
 FROM Tracing_Schleuderungen s
 """
 
-# A batch can have several analyses. `water` is a fraction (0.165 = 16.5 %).
-# A sample taken before the batch was homogenised (before_homogenisation)
-# did not measure the honey as it is sold: its report is named, its result
-# is not, see main().
-ANALYSES_SQL = """
-SELECT
-  l.batch_id AS batch_id,
-  an.water AS water,
-  an.report_number AS report_number,
-  an.issuer AS issuer,
-  an.file_name AS file_name,
-  an.before_homogenisation AS before_homogenisation
-FROM Tracing_Analysen an
-JOIN Tracing_Lose l ON an.batch_id = l.id
-ORDER BY an.id
-"""
+# A batch can have several analyses, and one analysis can belong to several
+# batches: Tracing_Analysen.batch_id is a RefList. Read through the records
+# API rather than /sql -- SQLite holds a RefList cell as JSON text, or as a
+# marshalled blob for cells converted from the former Ref column, which SQL
+# cannot take apart; the API decodes both (["L", 9, 10]). One row per analysis
+# and batch, in the order of the analyses. `water` is a fraction
+# (0.165 = 16.5 %). A sample taken before the batch was homogenised
+# (before_homogenisation) did not measure the honey as it is sold: its report
+# is named, its result is not.
+
+
+def _analyses(grist: GristClient) -> list[dict[str, Any]]:
+    lose = {r["id"]: r.get("fields", {}).get("batch_id") for r in grist.get_records("Tracing_Lose")}
+    rows = []
+    for an in sorted(grist.get_records("Tracing_Analysen"), key=lambda r: r["id"]):
+        f = an.get("fields", {})
+        before = bool(f.get("before_homogenisation"))
+        for los_id in sorted(tracing.refs(f.get("batch_id"))):
+            if los_id not in lose:
+                continue
+            rows.append(
+                {
+                    "batch_id": lose[los_id],
+                    "water": None if before else f.get("water"),
+                    "report_number": f.get("report_number"),
+                    "issuer": f.get("issuer"),
+                    "file_name": f.get("file_name"),
+                    "before_homogenisation": before,
+                }
+            )
+    return rows
 
 
 def _coerce_bools(rows: list[dict[str, Any]], keys: tuple[str, ...]) -> None:
@@ -162,10 +178,11 @@ def _group_by(rows: list[dict[str, Any]], key: str) -> dict[Any, list[dict[str, 
     return groups
 
 
-def main(argv: list[str] | None = None, prog: str | None = None) -> None:
-    argparse.ArgumentParser(
-        prog=prog, description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
-    ).parse_args(argv)
+def add_arguments(parser: argparse.ArgumentParser) -> None:
+    """No options of its own: the output goes to stdout."""
+
+
+def run(args: argparse.Namespace) -> None:
     setup_logging()
     cfg = require_env("GRIST_BASE_URL", "GRIST_API_KEY", "GRIST_DOC_ID")
     grist = GristClient(cfg["GRIST_BASE_URL"], cfg["GRIST_API_KEY"], cfg["GRIST_DOC_ID"])
@@ -198,11 +215,7 @@ def main(argv: list[str] | None = None, prog: str | None = None) -> None:
 
     centrifugations = grist.query_sql(CENTRIFUGATIONS_SQL)
 
-    analyses = grist.query_sql(ANALYSES_SQL)
-    _coerce_bools(analyses, ("before_homogenisation",))
-    for row in analyses:
-        if row["before_homogenisation"]:
-            row["water"] = None
+    analyses = _analyses(grist)
     analyses_by_batch = _group_by(analyses, "batch_id")
 
     fillings_by_sku = _group_by(fillings, "sku")
@@ -231,6 +244,14 @@ def main(argv: list[str] | None = None, prog: str | None = None) -> None:
             ensure_ascii=False,
         )
     )
+
+
+def main(argv: list[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    add_arguments(parser)
+    run(parser.parse_args(argv))
 
 
 if __name__ == "__main__":

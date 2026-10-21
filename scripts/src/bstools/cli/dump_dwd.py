@@ -192,10 +192,7 @@ def clean_and_prepare_data(
     )
 
 
-def main(argv: list[str] | None = None, prog: str | None = None) -> None:
-    parser = argparse.ArgumentParser(
-        prog=prog, description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
-    )
+def add_arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument(
         "--station-id",
         required=True,
@@ -216,7 +213,9 @@ def main(argv: list[str] | None = None, prog: str | None = None) -> None:
     )
     parser.add_argument("FILE_HOURLY", type=Path, help="path to write the hourly data")
     parser.add_argument("FILE_DAILY", type=Path, help="path to write the daily data")
-    args = parser.parse_args(argv)
+
+
+def run(args: argparse.Namespace) -> None:
 
     historical = args.since_year is not None
     df_all, station, recent_start = clean_and_prepare_data(args.station_id, historical)
@@ -247,6 +246,14 @@ def main(argv: list[str] | None = None, prog: str | None = None) -> None:
         df_daily.write_ndjson(f)
     if args.meta:
         args.meta.write_text(json.dumps(station, ensure_ascii=False) + "\n")
+
+
+def main(argv: list[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    add_arguments(parser)
+    run(parser.parse_args(argv))
 
 
 if __name__ == "__main__":

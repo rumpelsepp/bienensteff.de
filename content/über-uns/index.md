@@ -1,69 +1,95 @@
----
-title: Über uns
-aliases: ["/über-uns"]
-slug: "/ueber-uns"
-params:
-  # Shown by the auszeichnungen shortcode, the latest first.
-  auszeichnungen:
-    - date: "2025-11-02"
-      medal: silber
-      title: "Medaille für hervorragende Leistungen"
-      event: "Bienenwirtschaftliche Ausstellung „Honigprämierung“ beim 11. Bayerischen Honigfest"
-      place: "Bischofsgrün (Oberfranken)"
-      url: /auszeichnungen/2025-11-02-honigpraemierung.pdf
-    - date: "2024-11-03"
-      medal: gold
-      title: "Medaille für hervorragende Leistungen"
-      event: "Bienenwirtschaftliche Ausstellung „Honigprämierung“ beim 10. Bayerischen Honigfest"
-      place: "Hauzenberg (Niederbayern)"
-      url: /auszeichnungen/2024-11-03-honigpraemierung.pdf
-  # Shown by the nachweise shortcode, the latest first.
-  nachweise:
-    - date: "2026-07-30"
-      title: "Sachkunde: Qualifizierter Nestentferner für die mechanische Bekämpfung (Lanzenmethode) von Nestern der Vespa velutina"
-      issuer: "Institut für Bienenkunde und Imkerei; Bayerische Landesanstalt für Weinbau und Gartenbau (LWG)"
-      url: /fachkunde/2026-07-30-velutina-lanzenmethode.pdf
-    - date: "2026-07-29"
-      title: "Sachkunde: Qualifizierter Nestentferner für die mechanische Bekämpfung (Absaugmethode) von Nestern der Vespa velutina"
-      issuer: "Institut für Bienenkunde und Imkerei; Bayerische Landesanstalt für Weinbau und Gartenbau (LWG)"
-      url: /fachkunde/2026-07-29-velutina-absaugmethode.pdf
-    - date: "2026-07-28"
-      title: "Wespen und Hornissenfachberater"
-      issuer: "Institut für Bienenkunde und Imkerei; Bayerische Landesanstalt für Weinbau und Gartenbau (LWG)"
-      url: /fachkunde/2026-07-28-wespen-fachberater.pdf
-    - date: "2026-04-21"
-      title: "Krankheiten und Schädlinge der Honigbiene"
-      issuer: "Bezirk Oberbayern: Fachberatung für Imkerei"
-      url: /fachkunde/2026-04-21-bienengesundheit.pdf
-    - date: "2025-02-06"
-      title: "Trachtpflanzen erkennen und bewerten"
-      issuer: "Bezirk Oberbayern: Fachberatung für Imkerei"
-      url: /fachkunde/2025-02-06-trachtpflanzen.pdf
-    - date: "2025-01-03"
-      title: "Imkerkurs mit Dr. Pia Aumeier (Modul 1 — 8)"
-      issuer: "Imkerling — Die Akademie für Bienenfreunde"
-      url: /fachkunde/2025-01-03-imkerkurs-mit-dr-pia-aumeier.pdf
-    - date: "2024-10-11"
-      title: "Biozertifizierung in der Imkerei"
-      issuer: "Bezirk Oberbayern: Fachberatung für Imkerei"
-      url: /fachkunde/2024-10-11-bio-zertifizierung.pdf
-    - date: "2024-09-04"
-      title: "Vespa velutina - Die asiatische Hornisse"
-      issuer: "Landakademie"
-      url: /fachkunde/2024-09-04-velutina.pdf
-    - date: "2024-06-28"
-      title: "Biologie Varroamilbe & Varroamanagement"
-      issuer: "Bezirk Oberbayern: Fachberatung für Imkerei"
-      url: /fachkunde/2024-06-28-fachkunde-varroa.pdf
-    - date: "2024-02-05"
-      title: "Völkervermehrung in vier Schritten mit Dr. Pia Aumeier"
-      issuer: "Imkerling — Die Akademie für Bienenfreunde"
-      url: /fachkunde/2024-02-05-Völkervermehrung.pdf
-    - date: "2022-07-18"
-      title: "Qualitätsanforderungen für Deutschen Honig gemäß den Warenzeichenbestimmungen des Deutschen Imkerbundes e.V."
-      issuer: "Deutscher Imkerbund"
-      url: /fachkunde/2022-07-18-DIB-cert.pdf
----
++++
+title = "Über uns"
+aliases = ["/über-uns"]
+slug = "/ueber-uns"
+
+[params]
+
+# Shown by the auszeichnungen shortcode, the latest first.
+[[params.auszeichnungen]]
+date = "2025-11-02"
+medal = "silber"
+title = "Medaille für hervorragende Leistungen"
+event = "Bienenwirtschaftliche Ausstellung „Honigprämierung“ beim 11. Bayerischen Honigfest"
+place = "Bischofsgrün (Oberfranken)"
+url = "/auszeichnungen/2025-11-02-honigpraemierung.pdf"
+
+[[params.auszeichnungen]]
+date = "2024-11-03"
+medal = "gold"
+title = "Medaille für hervorragende Leistungen"
+event = "Bienenwirtschaftliche Ausstellung „Honigprämierung“ beim 10. Bayerischen Honigfest"
+place = "Hauzenberg (Niederbayern)"
+url = "/auszeichnungen/2024-11-03-honigpraemierung.pdf"
+
+# Shown by the nachweise shortcode, the latest first; also read by
+# `bscli eigenkontrolle` (criterion G1, see scripts/src/bstools/website.py).
+[[params.nachweise]]
+date = "2026-07-30"
+title = "Sachkunde: Qualifizierter Nestentferner für die mechanische Bekämpfung (Lanzenmethode) von Nestern der Vespa velutina"
+issuer = "Institut für Bienenkunde und Imkerei; Bayerische Landesanstalt für Weinbau und Gartenbau (LWG)"
+url = "/fachkunde/2026-07-30-velutina-lanzenmethode.pdf"
+
+[[params.nachweise]]
+date = "2026-07-29"
+title = "Sachkunde: Qualifizierter Nestentferner für die mechanische Bekämpfung (Absaugmethode) von Nestern der Vespa velutina"
+issuer = "Institut für Bienenkunde und Imkerei; Bayerische Landesanstalt für Weinbau und Gartenbau (LWG)"
+url = "/fachkunde/2026-07-29-velutina-absaugmethode.pdf"
+
+[[params.nachweise]]
+date = "2026-07-28"
+title = "Wespen und Hornissenfachberater"
+issuer = "Institut für Bienenkunde und Imkerei; Bayerische Landesanstalt für Weinbau und Gartenbau (LWG)"
+url = "/fachkunde/2026-07-28-wespen-fachberater.pdf"
+
+[[params.nachweise]]
+date = "2026-04-21"
+title = "Krankheiten und Schädlinge der Honigbiene"
+issuer = "Bezirk Oberbayern: Fachberatung für Imkerei"
+url = "/fachkunde/2026-04-21-bienengesundheit.pdf"
+
+[[params.nachweise]]
+date = "2025-02-06"
+title = "Trachtpflanzen erkennen und bewerten"
+issuer = "Bezirk Oberbayern: Fachberatung für Imkerei"
+url = "/fachkunde/2025-02-06-trachtpflanzen.pdf"
+
+[[params.nachweise]]
+date = "2025-01-03"
+title = "Imkerkurs mit Dr. Pia Aumeier (Modul 1 — 8)"
+issuer = "Imkerling — Die Akademie für Bienenfreunde"
+url = "/fachkunde/2025-01-03-imkerkurs-mit-dr-pia-aumeier.pdf"
+
+[[params.nachweise]]
+date = "2024-10-11"
+title = "Biozertifizierung in der Imkerei"
+issuer = "Bezirk Oberbayern: Fachberatung für Imkerei"
+url = "/fachkunde/2024-10-11-bio-zertifizierung.pdf"
+
+[[params.nachweise]]
+date = "2024-09-04"
+title = "Vespa velutina - Die asiatische Hornisse"
+issuer = "Landakademie"
+url = "/fachkunde/2024-09-04-velutina.pdf"
+
+[[params.nachweise]]
+date = "2024-06-28"
+title = "Biologie Varroamilbe & Varroamanagement"
+issuer = "Bezirk Oberbayern: Fachberatung für Imkerei"
+url = "/fachkunde/2024-06-28-fachkunde-varroa.pdf"
+
+[[params.nachweise]]
+date = "2024-02-05"
+title = "Völkervermehrung in vier Schritten mit Dr. Pia Aumeier"
+issuer = "Imkerling — Die Akademie für Bienenfreunde"
+url = "/fachkunde/2024-02-05-Völkervermehrung.pdf"
+
+[[params.nachweise]]
+date = "2022-07-18"
+title = "Qualitätsanforderungen für Deutschen Honig gemäß den Warenzeichenbestimmungen des Deutschen Imkerbundes e.V."
+issuer = "Deutscher Imkerbund"
+url = "/fachkunde/2022-07-18-DIB-cert.pdf"
++++
 
 {{< split src="IMG_20260721_082406.jpg" alt="Zwei lächelnde Menschen in Imkerschleiern am Bienenstand, im Hintergrund Bäume und Bienenkästen" >}}
 **Wie ich zum Imkern gekommen bin? Ganz ehrlich – ziemlich unspektakulär.**

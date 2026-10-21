@@ -1,0 +1,7 @@
+[package]
+name = "imkerei"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["Stefan Tatschner"]
+license = "LicenseRef-proprietary"
+description = "Design der Imkerei Stefan Tatschner: Briefkopf mit Logo, Farben, Überschriften, Tabellen, Kästen und Felder zum Ausfüllen."

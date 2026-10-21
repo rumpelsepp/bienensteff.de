@@ -1,6 +1,7 @@
 """
-Lexware Office reports, plus the cash sales recorded in Grist, in one JSON,
-grouped by year:
+Sales report per year as PDF (templates/verkaufszahlen.typ; with --json
+also as JSON on stdout): paid Lexware invoices plus the honesty boxes
+recorded in Grist. Per year:
 
 1. "artikel": sold quantity per article number across all paid invoices
    and all cash sales (for e.g. a GQ-Kontrolle), split into
@@ -40,7 +41,7 @@ grouped by year:
    (fehlbetrag) and number of items.
 
 Cash sales (Grist tables "Box_Leerungen" and "Box_Bestand", hardcoded, read
-only; set up by hand in Grist, --init only checks their columns): cash sold
+only; set up by hand in Grist, nothing written there): cash sold
 without an invoice, e.g. from the honesty box in the woods, is booked in
 Lexware as a plain voucher without line items, so Lexware cannot say
 which articles left. Both tables follow the paper Kassenbericht:
@@ -70,115 +71,73 @@ Invoices made out for cash payments (receipts for customers who want one)
 are regular Lexware invoices with line items, so they are counted from
 Lexware and must not be entered here as well.
 
-Grist sync (table "Verkaufszahlen", hardcoded -- this script feeds exactly
-one table, unlike bestellungen's generic GRIST_TABLE_ID): every normal run
-also upserts the "artikel" rows into Grist, keyed on (Year, Article_Number),
-with Quantity_Invoices and Quantity_Cash next to the total Quantity.
-The upserted Quantity is the FULL sum for that year recomputed from this
-run's fetch, not a delta -- so only years that this run's --from/--to window
-covers completely (from on/before Jan 1 through on/after Dec 31, or through
-"today" for the still-running current year) are synced. A narrower window
-(e.g. a single month) would only see a fraction of the year's invoices and
-would silently overwrite a previous full-year total with that fraction, so
-such incomplete years are computed for the JSON report but skipped for
-Grist. Cash sales are cut to the same --from/--to window as the invoices (see is_year_complete()/build_grist_rows()). Rows whose voucherDate
-was missing (year bucket "unbekannt") are likewise never synced, since that
-bucket can silently merge quantities from otherwise-unrelated invoices --
-it only ever shows up in the JSON report. Only articles with a resolvable
-GTIN are uploaded -- rows without one (custom/free-text positions, or an
-article deleted from Lexware without a recoverable GTIN) are left out of
-Grist entirely, though they still show up in the JSON report on stdout as
-before. "einnahmen_ausgaben" is not synced -- it isn't per-article data, so
-it doesn't fit this table.
+A year that the --from/--to window does not cover completely is marked as
+such in the PDF -- its numbers are then only a part of the year.
 
-Required environment variables:
+Settings (environment variable, or config file -- see bscli.example.toml):
   LEXWARE_API_KEY, GRIST_API_KEY, GRIST_BASE_URL, GRIST_DOC_ID
 
 Usage:
-  bscli verkaufszahlen --init [--dry-run]   # create/update the Grist tables
-  bscli verkaufszahlen
-  bscli verkaufszahlen --from 2026-01-01 --to 2026-12-31
-  bscli verkaufszahlen --dry-run
+  bscli verkaufszahlen                                   # the current year
+  bscli verkaufszahlen --year 2025                      # Verkaufszahlen_2025.pdf
+  bscli verkaufszahlen --year 2024 2026                 # 2024 to 2026
+  bscli verkaufszahlen --year 2026 --gqb only -o gq-kontrolle-2026.pdf
+  bscli verkaufszahlen --from 2026-04-01 --to 2026-09-30
+  bscli verkaufszahlen --from 2026-01-01 --json > verkaufszahlen.json
 """
 
 import argparse
 import json
 import logging
+import sys
 import time
 from datetime import UTC, datetime
+from pathlib import Path
 from typing import Any
 
 lazy import polars as pl
 
 from bstools.env import require_env
-from bstools.grist import GristClient, changed_fields
+from bstools.grist import GristClient
 from bstools.lexware import LexwareClient
 from bstools.logging_setup import setup_logging
+from bstools.pdf import add_print_arguments, count, eur, german_date, letterhead, render
 
 logger = logging.getLogger(__name__)
 
-# This script feeds exactly one Grist table, unlike bestellungen's generic
-# GRIST_TABLE_ID -- so the table name is a constant here, not an env var.
-GRIST_TABLE_ID = "Verkaufszahlen"
-# Entered by hand, only read here -- see the module docstring. Both are set
-# up in Grist (references, formulas), so --init only checks that the columns
-# read below exist.
+# Entered by hand in Grist, only read here -- see the module docstring.
 BOX_TABLE_ID = "Box_Leerungen"
-BOX_COLUMNS = ["Belegnummer", "Datum", "Quelle", "Betrag", "Unbar", "Soll", "Fehlbetrag"]
 BOX_ITEMS_TABLE_ID = "Box_Bestand"
-BOX_ITEMS_COLUMNS = ["Leerung", "Article_Number", "Weg"]
 
 GRIST_ENV = ["GRIST_API_KEY", "GRIST_BASE_URL", "GRIST_DOC_ID"]
 REQUIRED_ENV = ["LEXWARE_API_KEY"] + GRIST_ENV
 
-# Columns this script needs, in creation order -- see bestellungen.py's
-# GRIST_SCHEMA for the general shape. Year is Text, not Numeric/Date: rows
-# with an unresolvable voucherDate fall back to "unbekannt" (see main()),
-# which wouldn't fit either of those types. GTIN is Text too, to preserve it
-# verbatim rather than risk it being read back as a mangled number.
-GRIST_SCHEMA: list[tuple[str, str, dict[str, Any] | None]] = [
-    ("Year", "Text", None),
-    ("Article_Number", "Text", None),
-    ("Description", "Text", None),
-    ("GTIN", "Text", None),
-    ("Unit", "Text", None),
-    ("Quantity", "Numeric", None),
-    ("Quantity_Invoices", "Numeric", None),
-    ("Quantity_Cash", "Numeric", None),
-    ("Last_Synced", "Text", None),
-]
-
 # Short version of the module docstring above, for --help -- the full one is
 # too long to dump on a terminal usefully. Keep in sync by hand; it's meant
 # to stay a stable summary, not track every detail of the long version.
-CLI_HELP = """Lexware Office reports plus the cash sales from the Grist tables
-"Box_Leerungen"/"Box_Bestand", in one JSON, grouped by year: "artikel" (sold quantity per
-article number across paid invoices and cash sales, e.g. for a
-GQ-Kontrolle), "einnahmen_ausgaben" (per-year paid-invoice revenue and cash
-takings -- a plain income overview, not a profit calculation; manual
-bookkeeping vouchers and depreciation are deliberately not included, see
-the module docstring in the source for why) and "barbelege" (cash takings
-per receipt number, to check against Lexware).
+CLI_HELP = """Sales report per year as PDF -- paid Lexware invoices plus the honesty
+boxes from the Grist tables "Box_Leerungen"/"Box_Bestand": sold quantity per
+article, split into invoices and boxes (e.g. for the GQ-Kontrolle), income
+(invoices, boxes cash and non-cash) and the Kassenberichte of the boxes.
+A plain income overview, not a profit calculation; see the module docstring
+in the source for what is deliberately left out.
 
-Also upserts the "artikel" rows (GTIN required) into the Grist table
-"Verkaufszahlen"; see the module docstring for the sync/key details.
-
-Required environment variables:
+Settings (environment variable, or config file -- see bscli.example.toml):
   LEXWARE_API_KEY, GRIST_API_KEY, GRIST_BASE_URL, GRIST_DOC_ID
 
 Usage:
-  bscli verkaufszahlen --init [--dry-run]   # create/update the Grist tables
-  bscli verkaufszahlen
-  bscli verkaufszahlen --from 2026-01-01 --to 2026-12-31
-  bscli verkaufszahlen --dry-run"""
+  bscli verkaufszahlen                                   # the current year
+  bscli verkaufszahlen --year 2025                      # Verkaufszahlen_2025.pdf
+  bscli verkaufszahlen --year 2024 2026                 # 2024 to 2026
+  bscli verkaufszahlen --year 2026 --gqb only -o gq-kontrolle-2026.pdf
+  bscli verkaufszahlen --from 2026-04-01 --to 2026-09-30
+  bscli verkaufszahlen --from 2026-01-01 --json > verkaufszahlen.json"""
 
 
 def build_grouped_df(rows: list[dict[str, Any]]) -> pl.DataFrame:
     """One row per (jahr, artikelnummer): bezeichnung/gtin/einheit (first
     seen), menge (summed) and its split by quelle ("rechnung"/"bar") into
-    menge_rechnung/menge_bar -- the shared aggregation behind both
-    build_article_report() (JSON, grouped by year) and build_grist_rows()
-    (flat, GTIN-filtered).
+    menge_rechnung/menge_bar -- the aggregation behind build_article_report().
     """
     if not rows:
         return pl.DataFrame(
@@ -219,13 +178,10 @@ def build_article_report(df: pl.DataFrame) -> dict[str, list[dict[str, Any]]]:
 
 
 def is_year_complete(year: str, date_from: str | None, date_to: str | None, today: str) -> bool:
-    """Whether this run's --from/--to window covers ALL of `year`, i.e.
-    whether it's safe to upsert that year's summed Quantity into Grist
-    without silently shrinking a previously-synced full-year total (see the
-    module docstring's Grist sync section). `year` is the "jahr" bucket, so
-    the literal "unbekannt" fallback is always incomplete -- there is no
-    real year to compare against, and lumping unrelated invoices under one
-    key is exactly what must never reach Grist.
+    """Whether this run's --from/--to window covers ALL of `year` -- if not,
+    the PDF marks that year's numbers as a part of it. `year` is the "jahr"
+    bucket, so the literal "unbekannt" fallback (invoices without a date) is
+    never complete.
     """
     if not year.isdigit():
         return False
@@ -237,46 +193,6 @@ def is_year_complete(year: str, date_from: str | None, date_to: str | None, toda
     # A year still in progress (year_end is in the future) can only be
     # "complete" up through today -- there's no Dec-31 data to require yet.
     return effective_to >= (min(year_end, today))
-
-
-def build_grist_rows(
-    df: pl.DataFrame, date_from: str | None, date_to: str | None, today: str
-) -> list[dict[str, Any]]:
-    """Flat (jahr, artikelnummer, bezeichnung, gtin, einheit, menge) rows for
-    the Grist sync -- only articles with a resolvable GTIN, per user request,
-    and only for years this run's date window covers completely (see
-    is_year_complete()). Rows filtered out here still show up in the JSON
-    report on stdout as before.
-    """
-    if df.is_empty():
-        return []
-    return (
-        df.filter(pl.col("gtin").is_not_null())
-        .filter(
-            pl.col("jahr").map_elements(
-                lambda year: is_year_complete(year, date_from, date_to, today),
-                return_dtype=pl.Boolean,
-            )
-        )
-        .to_dicts()
-    )
-
-
-def run_init(grist: GristClient, dry_run: bool) -> None:
-    grist.ensure_table_schema(GRIST_TABLE_ID, GRIST_SCHEMA, dry_run)
-    tables = grist.list_tables()
-    for table_id, columns in (
-        (BOX_TABLE_ID, BOX_COLUMNS),
-        (BOX_ITEMS_TABLE_ID, BOX_ITEMS_COLUMNS),
-    ):
-        if table_id not in tables:
-            logger.warning("Grist table '%s' does not exist -- set it up in Grist.", table_id)
-            continue
-        missing = [c for c in columns if c not in grist.get_columns(table_id)]
-        if missing:
-            logger.warning("Grist table '%s' lacks column(s) %s.", table_id, ", ".join(missing))
-        else:
-            print(f"Grist '{table_id}': all columns this script reads are there.")
 
 
 def epoch_to_date(value: Any) -> str | None:
@@ -389,12 +305,11 @@ def fetch_cash_sales(
         article = articles.get(number)
         if article is None:
             logger.warning(
-                "%s row %s: article number %r not found in Lexware -- counted in the "
-                "JSON report, but without a GTIN, so not synced to '%s'.",
+                "%s row %s: article number %r not found in Lexware -- counted, "
+                "but without GTIN, description and unit.",
                 BOX_ITEMS_TABLE_ID,
                 rec["id"],
                 number,
-                GRIST_TABLE_ID,
             )
         year = emptying["jahr"]
         article_rows.append(
@@ -440,72 +355,169 @@ def build_receipt_report(cash_entries: list[dict[str, Any]]) -> dict[str, list[d
     return result
 
 
-def fetch_existing_grist(
-    grist: GristClient,
-) -> dict[tuple[str, str], tuple[int, dict[str, Any]]]:
-    """(Year, Article_Number) -> (Grist row id, row fields), for upserting
-    only rows that actually changed, instead of a
-    full wipe-and-reinsert -- a partial --from/--to run must only ever touch
-    the years it actually fetched, never delete other years' rows a previous
-    full run already put there (unlike bestellungen's fully-derived _Docs
-    table, which has no such partial-run concern).
+GQB_FILTERS = {
+    "only": "nur GQB-zertifizierte Artikel",
+    "exclude": "nur Artikel ohne GQB-Zertifizierung",
+}
+
+
+def article_details(grist: GristClient) -> dict[str, tuple[bool, int]]:
+    """Article number (Artikel.sku = Lexware articleNumber) -> (GQB
+    certified, packaging unit), from the Grist table Verkaufdetails. The
+    packaging unit is the number of jars per sold unit, e.g. 12 for a box of
+    12 -- what the GQ check counts are jars.
     """
-    existing: dict[tuple[str, str], tuple[int, dict[str, Any]]] = {}
-    for rec in grist.get_records(GRIST_TABLE_ID):
-        fields = rec.get("fields", {})
-        year, number = fields.get("Year"), fields.get("Article_Number")
-        if year and number:
-            existing[(year, number)] = (rec["id"], fields)
-    return existing
-
-
-def sync_sales_to_grist(
-    grist: GristClient, grist_rows: list[dict[str, Any]], dry_run: bool
-) -> None:
-    existing = fetch_existing_grist(grist)
-    now_iso = time.strftime("%Y-%m-%dT%H:%M:%S")
-    to_add: list[dict[str, Any]] = []
-    to_update: list[tuple[int, dict[str, Any]]] = []
-
-    for row in grist_rows:
-        fields = {
-            "Year": row["jahr"],
-            "Article_Number": row["artikelnummer"],
-            "Description": row["bezeichnung"],
-            "GTIN": row["gtin"],
-            "Unit": row["einheit"],
-            "Quantity": row["menge"],
-            "Quantity_Invoices": row["menge_rechnung"],
-            "Quantity_Cash": row["menge_bar"],
-        }
-        key = (row["jahr"], row["artikelnummer"])
-        if key not in existing:
-            to_add.append({**fields, "Last_Synced": now_iso})
-            continue
-        row_id, old_fields = existing[key]
-        # Last_Synced only on rows that actually changed, so an unchanged
-        # run doesn't rewrite every row just for a fresh timestamp.
-        changed = changed_fields(fields, old_fields)
-        if changed:
-            to_update.append((row_id, {**changed, "Last_Synced": now_iso}))
-
-    unchanged = len(grist_rows) - len(to_add) - len(to_update)
-    print(
-        f"Grist '{GRIST_TABLE_ID}': new {len(to_add)}, updated {len(to_update)}, "
-        f"unchanged {unchanged} "
-        f"(articles without a GTIN are not synced, see module docstring)."
+    rows = grist.query_sql(
+        "SELECT a.sku AS sku, v.gqb_certified AS gqb, v.packaging_unit AS vpe "
+        "FROM Verkaufdetails v JOIN Artikel a ON v.sku = a.id"
     )
-    if dry_run:
-        print("--dry-run is set, nothing will be written to Grist.")
-        return
-    grist.add_records(GRIST_TABLE_ID, to_add)
-    grist.update_records(GRIST_TABLE_ID, to_update)
+    return {r["sku"]: (bool(r["gqb"]), int(r["vpe"]) if r["vpe"] else 1) for r in rows if r["sku"]}
 
 
-def main(argv: list[str] | None = None, prog: str | None = None) -> None:
-    parser = argparse.ArgumentParser(
-        prog=prog, description=CLI_HELP, formatter_class=argparse.RawDescriptionHelpFormatter
+def add_gqb(
+    articles: dict[str, list[dict[str, Any]]],
+    details: dict[str, tuple[bool, int]],
+    gqb_filter: str | None,
+) -> dict[str, list[dict[str, Any]]]:
+    """Adds gqb, vpe and glaeser (jars: quantity x packaging unit, for units
+    counted in pieces) to every article row, and keeps only GQB-certified
+    ("only") or only uncertified ("exclude") articles if asked. An article
+    missing from Verkaufdetails (e.g. a free-text invoice position) counts
+    as not certified.
+    """
+    out: dict[str, list[dict[str, Any]]] = {}
+    for year, rows in articles.items():
+        kept = []
+        for a in rows:
+            gqb, vpe = details.get(a["artikelnummer"], (False, 1))
+            if (gqb_filter == "only" and not gqb) or (gqb_filter == "exclude" and gqb):
+                continue
+            pieces = (a["einheit"] or "").lower().startswith("st")
+            kept.append(
+                {**a, "gqb": gqb, "vpe": vpe, "glaeser": a["menge"] * vpe if pieces else None}
+            )
+        out[year] = kept
+    return out
+
+
+def loose_label(unit: str) -> str:
+    """Label of the total of articles not counted in jars: a weight is
+    summed as such; "pauschal" (a lump sum, e.g. "Honig (pauschal)") has no
+    quantity of its own, only the number of such invoice positions."""
+    if unit.lower() == "pauschal":
+        return "Pauschal berechnet (Anzahl Positionen, keine Gläser)"
+    return f"Summe in {unit}" if unit else "Summe ohne Einheit"
+
+
+def article_group(title: str, rows: list[dict[str, Any]]) -> dict[str, Any]:
+    """One table of the PDF: its rows and the totals below it (jars; kg of
+    loose honey separately, since those are no jars)."""
+    jars = sum(a["glaeser"] for a in rows if a["glaeser"] is not None)
+    loose = [a for a in rows if a["glaeser"] is None]
+    summen = [{"label": "Summe Gläser", "wert": count(jars)}]
+    for unit in sorted({a["einheit"] for a in loose}):
+        total = sum(a["menge"] for a in loose if a["einheit"] == unit)
+        summen.append({"label": loose_label(unit), "wert": count(total)})
+    return {
+        "titel": title,
+        "artikel": [
+            {
+                # Free-text invoice positions carry their name as key, see run().
+                "nr": "–" if a["artikelnummer"].startswith("(") else a["artikelnummer"],
+                "bezeichnung": a["bezeichnung"],
+                "gtin": a["gtin"] or "",
+                "einheit": a["einheit"],
+                "vpe": count(a["vpe"]) if a["vpe"] != 1 else "",
+                "rechnung": count(a["menge_rechnung"]),
+                "box": count(a["menge_bar"]),
+                "gesamt": count(a["menge"]),
+                "glaeser": count(a["glaeser"]),
+            }
+            for a in rows
+        ],
+        "summen": summen,
+    }
+
+
+def pdf_data(
+    result: dict[str, Any],
+    date_from: str | None,
+    date_to: str | None,
+    today: str,
+    gqb_filter: str | None = None,
+) -> dict[str, Any]:
+    """The report, formatted for templates/verkaufszahlen.typ: one entry per
+    year, newest first, with a note when the --from/--to window does not
+    cover the whole year (the numbers are then a part of it). Articles come
+    in two tables, GQB-certified and not; with a GQB filter only the
+    matching one, and without income and box vouchers -- those are not per
+    article, so a filter cannot apply to them.
+    """
+    start = german_date(date_from) if date_from else "Beginn"
+    zeitraum = f"{start} – {german_date(date_to or today)}"
+    years = sorted(
+        result["artikel"].keys() | result["einnahmen_ausgaben"].keys() | result["barbelege"].keys(),
+        reverse=True,
     )
+    jahre = []
+    for year in years:
+        if not year.isdigit():
+            hinweis = "Rechnungen ohne Datum, keinem Jahr zuzuordnen."
+        elif not is_year_complete(year, date_from, date_to, today):
+            hinweis = f"Nur ein Teil des Jahres: Zeitraum {zeitraum}."
+        elif year == today[:4]:
+            hinweis = f"Laufendes Jahr, Stand {german_date(today)}."
+        else:
+            hinweis = ""
+        income = result["einnahmen_ausgaben"].get(year, {})
+        articles = result["artikel"].get(year, [])
+        jahre.append(
+            {
+                "jahr": year,
+                "hinweis": hinweis,
+                "gruppen": [
+                    article_group(title, rows)
+                    for title, rows in (
+                        ("GQB-zertifiziert", [a for a in articles if a["gqb"]]),
+                        ("Nicht GQB-zertifiziert", [a for a in articles if not a["gqb"]]),
+                    )
+                    if rows
+                ],
+                # Sources without income that year are left out; the total stays.
+                "einnahmen": [
+                    {"quelle": label, "betrag": eur(income[key])}
+                    for key, label in (
+                        ("einnahmen_rechnungen", "Rechnungen (bezahlt)"),
+                        ("einnahmen_bar", "Boxen, bar"),
+                        ("einnahmen_box_unbar", "Boxen, unbar"),
+                    )
+                    if income.get(key)
+                ],
+                "einnahmen_gesamt": eur(income.get("einnahmen_gesamt", 0.0)),
+                "barbelege": [
+                    {
+                        "beleg": b["beleg"],
+                        "datum": german_date(b["datum"]),
+                        "box": b["quelle"],
+                        "bar": eur(b["betrag"]),
+                        "unbar": eur(b["unbar"]),
+                        "beleg_betrag": eur(b["beleg_betrag"]),
+                        "soll": eur(b["soll"]),
+                        "fehlbetrag": eur(b["fehlbetrag"]),
+                    }
+                    for b in result["barbelege"].get(year, [])
+                ],
+            }
+        )
+    return {
+        "zeitraum": zeitraum,
+        "filter": GQB_FILTERS.get(gqb_filter or "", ""),
+        "mit_geld": gqb_filter is None,
+        "jahre": jahre,
+    }
+
+
+def add_arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument(
         "--from",
         dest="date_from",
@@ -518,19 +530,53 @@ def main(argv: list[str] | None = None, prog: str | None = None) -> None:
         metavar="YYYY-MM-DD",
         help="only invoices/cash sales on/before this date",
     )
-    parser.add_argument("--debug", action="store_true", help="print raw API payloads to stderr")
-    parser.add_argument("--dry-run", action="store_true", help="don't write anything to Grist")
     parser.add_argument(
-        "--init", action="store_true", help="create/update the Grist table, then exit"
+        "-y",
+        "--year",
+        type=int,
+        nargs="+",
+        metavar="YYYY",
+        help="whole years instead of the current one: --year 2025 is --from 2025-01-01 "
+        "--to 2025-12-31; "
+        "several years span from the first to the last",
     )
-    args = parser.parse_args(argv)
-    setup_logging(debug=args.debug)
+    parser.add_argument(
+        "-o",
+        "--output",
+        type=Path,
+        metavar="PATH",
+        help="PDF path (default: Verkaufszahlen_<year>.pdf or Verkaufszahlen_<from>_bis_<to>.pdf)",
+    )
+    parser.add_argument(
+        "--gqb",
+        choices=list(GQB_FILTERS),
+        help="only GQB-certified articles, or exclude them -- e.g. for the GQ check",
+    )
+    parser.add_argument("--json", action="store_true", help="also print the report as JSON")
+    add_print_arguments(parser)
+    parser.add_argument("--debug", action="store_true", help="print raw API payloads to stderr")
 
-    if args.init:
-        cfg = require_env(*GRIST_ENV)
-        grist = GristClient(cfg["GRIST_BASE_URL"], cfg["GRIST_API_KEY"], cfg["GRIST_DOC_ID"])
-        run_init(grist, dry_run=args.dry_run)
+
+def apply_years(args: argparse.Namespace) -> None:
+    """--year as --from/--to of whole years (the two cannot be combined);
+    without --year, --from and --to the current year."""
+    if not args.year and not (args.date_from or args.date_to):
+        args.year = [int(time.strftime("%Y"))]
+    if not args.year:
         return
+    if args.date_from or args.date_to:
+        print(
+            "bscli verkaufszahlen: error: --year cannot be combined with --from/--to",
+            file=sys.stderr,
+        )
+        sys.exit(2)
+    args.date_from = f"{min(args.year):04d}-01-01"
+    args.date_to = f"{max(args.year):04d}-12-31"
+
+
+def run(args: argparse.Namespace) -> None:
+    setup_logging(debug=args.debug)
+    apply_years(args)
 
     cfg = require_env(*REQUIRED_ENV)
     client = LexwareClient(cfg["LEXWARE_API_KEY"])
@@ -630,29 +676,33 @@ def main(argv: list[str] | None = None, prog: str | None = None) -> None:
 
     df = build_grouped_df(rows)
     result = {
-        "artikel": build_article_report(df),
+        "artikel": add_gqb(build_article_report(df), article_details(grist), args.gqb),
         "einnahmen_ausgaben": einnahmen_ausgaben,
         "barbelege": build_receipt_report(cash_entries),
     }
-    print(json.dumps(result, ensure_ascii=False, indent=2))
+    if args.json:
+        print(json.dumps(result, ensure_ascii=False, indent=2))
 
     today = time.strftime("%Y-%m-%d")
-    incomplete_years = sorted(
-        year
-        for year in df["jahr"].unique().to_list()
-        if not is_year_complete(year, args.date_from, args.date_to, today)
-    )
-    if incomplete_years:
-        logger.warning(
-            "year(s) %s are not fully covered by --from/--to (or have an unresolvable "
-            "voucherDate) and are therefore NOT synced to Grist this run, to avoid "
-            "overwriting a full-year total with a partial one -- see the module docstring.",
-            ", ".join(incomplete_years),
+    if args.year:
+        span = f"{min(args.year)}" + (f"-{max(args.year)}" if len(set(args.year)) > 1 else "")
+        default_name = f"Verkaufszahlen_{span}.pdf"
+    else:
+        default_name = (
+            f"Verkaufszahlen_{args.date_from or 'Beginn'}_bis_{args.date_to or today}.pdf"
         )
+    output: Path = args.output or Path(default_name)
+    data = {**letterhead(grist), **pdf_data(result, args.date_from, args.date_to, today, args.gqb)}
+    output.write_bytes(render("verkaufszahlen.typ", data, bw=args.bw))
+    print(f"{output} written.")
 
-    sync_sales_to_grist(
-        grist, build_grist_rows(df, args.date_from, args.date_to, today), dry_run=args.dry_run
+
+def main(argv: list[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(
+        description=CLI_HELP, formatter_class=argparse.RawDescriptionHelpFormatter
     )
+    add_arguments(parser)
+    run(parser.parse_args(argv))
 
 
 if __name__ == "__main__":

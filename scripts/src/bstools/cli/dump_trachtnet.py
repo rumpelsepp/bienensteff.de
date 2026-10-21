@@ -449,11 +449,16 @@ async def dump_all(config: TrachtnetConfig, years: list[int] | None, outdir: Pat
     logger.info("Wrote %s files and index.json to %s", written, outdir)
 
 
-def main(argv: list[str] | None = None, prog: str | None = None) -> None:
+def at_least_one(value: str) -> int:
+    """argparse type: an integer >= 1."""
+    number = int(value)
+    if number < 1:
+        raise argparse.ArgumentTypeError(f"must be at least 1, not {number}")
+    return number
+
+
+def add_arguments(parser: argparse.ArgumentParser) -> None:
     defaults = TrachtnetConfig()
-    parser = argparse.ArgumentParser(
-        prog=prog, description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
-    )
     parser.add_argument(
         "--year",
         type=int,
@@ -468,7 +473,7 @@ def main(argv: list[str] | None = None, prog: str | None = None) -> None:
     )
     parser.add_argument(
         "--concurrency",
-        type=int,
+        type=at_least_one,
         default=defaults.http.max_concurrency,
         help="max requests in flight (default: %(default)s)",
     )
@@ -481,7 +486,7 @@ def main(argv: list[str] | None = None, prog: str | None = None) -> None:
     )
     parser.add_argument(
         "--batch-size",
-        type=int,
+        type=at_least_one,
         default=defaults.batch_size,
         help="regions per request (default: %(default)s)",
     )
@@ -493,10 +498,11 @@ def main(argv: list[str] | None = None, prog: str | None = None) -> None:
         help="hard cap per request (default: %(default)s)",
     )
     parser.add_argument("--debug", action="store_true", help="log every request with timings")
-    args = parser.parse_args(argv)
+
+
+def run(args: argparse.Namespace) -> None:
+    defaults = TrachtnetConfig()
     setup_logging(debug=args.debug)
-    if args.concurrency < 1 or args.batch_size < 1:
-        parser.error("--concurrency and --batch-size must be at least 1")
 
     config = dataclasses.replace(
         defaults,
@@ -509,6 +515,14 @@ def main(argv: list[str] | None = None, prog: str | None = None) -> None:
         ),
     )
     asyncio.run(dump_all(config, args.year, args.outdir))
+
+
+def main(argv: list[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    add_arguments(parser)
+    run(parser.parse_args(argv))
 
 
 if __name__ == "__main__":

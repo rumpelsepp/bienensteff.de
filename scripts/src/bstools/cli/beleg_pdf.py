@@ -40,12 +40,11 @@ def get_voucher_type(voucher_number: str) -> str:
         ) from None
 
 
-def main(argv: list[str] | None = None, prog: str | None = None) -> None:
-    parser = argparse.ArgumentParser(
-        prog=prog, description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
-    )
+def add_arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("DOCUMENT_NUMBER")
-    args = parser.parse_args(argv)
+
+
+def run(args: argparse.Namespace) -> None:
     setup_logging()
 
     client = LexwareClient(require_env_var("LEXWARE_API_KEY"))
@@ -57,6 +56,14 @@ def main(argv: list[str] | None = None, prog: str | None = None) -> None:
         sys.exit(1)
 
     Path(args.DOCUMENT_NUMBER).with_suffix(".pdf").write_bytes(data)
+
+
+def main(argv: list[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    add_arguments(parser)
+    run(parser.parse_args(argv))
 
 
 if __name__ == "__main__":

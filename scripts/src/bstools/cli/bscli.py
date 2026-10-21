@@ -1,100 +1,101 @@
 """
-bscli -- the command line tools of bienensteff.de, as subcommands.
+The command line tools of bienensteff.de, as subcommands.
 
-Every command has its own options: `bscli <command> --help`. API keys, URLs
-and the Grist document come from the environment or the config file, see
-bstools.env and bscli.example.toml.
+API keys, URLs and the Grist document come from the environment or the
+config file bscli.toml, see bscli.example.toml.
 """
 
-import importlib
+import argparse
 import os
-import sys
+from types import ModuleType
 
-type Command = tuple[str, str]  # (module with main(argv, prog), one-line summary)
+from bstools.cli import (
+    abfuellungen,
+    beleg_pdf,
+    bestellungen,
+    dump_db,
+    dump_dwd,
+    dump_trachtnet,
+    eigenkontrolle,
+    kassenbericht,
+    lint,
+    summarize_trachtnet,
+    typst_build,
+    verkaufszahlen,
+)
 
-COMMANDS: dict[str, Command | dict[str, Command]] = {
+# Each module provides add_arguments(parser) and run(args); argparse builds
+# usage, help and errors from that. The text after the name is the
+# one-line summary in `bscli --help`; the full help is the module's own.
+COMMANDS: dict[str, tuple[ModuleType, str]] = {
     "kassenbericht": (
-        "bstools.cli.kassenbericht",
-        "Kassenbericht einer Box-Leerung aus Grist als PDF, optional als Beleg nach Lexware",
+        kassenbericht,
+        "Kassenbericht of a box emptying as PDF, optionally to Lexware",
     ),
-    "verkaufszahlen": (
-        "bstools.cli.verkaufszahlen",
-        "verkaufte Stückzahlen je Artikel (Rechnungen + Boxen), Sync nach Grist",
-    ),
-    "bestellungen": (
-        "bstools.cli.bestellungen",
-        "Lexware-Auftragsbestätigungen und ihre Belege nach Grist",
-    ),
-    "beleg-pdf": (
-        "bstools.cli.beleg_pdf",
-        "PDF eines Lexware-Belegs per Nummer herunterladen (RE-, AG-, AB-, LS-)",
-    ),
-    "dump": {
-        "db": (
-            "bstools.cli.dump_db",
-            "Produkt-/Tracing-Datenbank aus Grist als JSON (assets/db/db.json)",
-        ),
-        "trachtnet": (
-            "bstools.cli.dump_trachtnet",
-            "TrachtNet-Stockwaagen-Daten (static/trachtnet-dump)",
-        ),
-        "trachtnet-summary": (
-            "bstools.cli.summarize_trachtnet",
-            "Zusammenfassung des TrachtNet-Dumps für die Karte",
-        ),
-        "dwd": (
-            "bstools.cli.dump_dwd",
-            "Wetterdaten einer DWD-Station (static/klima)",
-        ),
-    },
+    "verkaufszahlen": (verkaufszahlen, "sales per article, GQB and income per year as PDF"),
+    "abfuellungen": (abfuellungen, "fillings per year with their batches as PDF"),
+    "eigenkontrolle": (eigenkontrolle, "GQ-Bayern Eigenkontrolle of a year as PDF, from Grist"),
+    "bestellungen": (bestellungen, "Lexware order confirmations and their vouchers to Grist"),
+    "beleg-pdf": (beleg_pdf, "PDF of a Lexware voucher by number (RE-, AG-, AB-, LS-)"),
+    "typst": (typst_build, "build any typst file in the design of the business"),
+    "lint": (lint, "check the honey records in Grist for errors and gaps"),
+}
+DUMPS: dict[str, tuple[ModuleType, str]] = {
+    "db": (dump_db, "product/tracing database from Grist as JSON"),
+    "trachtnet": (dump_trachtnet, "TrachtNet hive scale data"),
+    "trachtnet-summary": (summarize_trachtnet, "summary of the TrachtNet dump for the map"),
+    "dwd": (dump_dwd, "weather data of a DWD station"),
 }
 
 
-def usage() -> str:
-    rows: list[tuple[str, str]] = []
-    for name, entry in COMMANDS.items():
-        if isinstance(entry, dict):
-            rows += [(f"{name} {sub}", summary) for sub, (_, summary) in entry.items()]
-        else:
-            rows.append((name, entry[1]))
-    width = max(len(name) for name, _ in rows)
-    lines = "\n".join(f"  {name:<{width}}  {summary}" for name, summary in rows)
-    return (
-        "usage: bscli [--config PATH] <command> [options]\n\n"
-        f"commands:\n{lines}\n\n"
-        "`bscli <command> --help` for the options of a command."
+def _add_commands(
+    subparsers: argparse._SubParsersAction[argparse.ArgumentParser],
+    commands: dict[str, tuple[ModuleType, str]],
+) -> None:
+    for name, (module, summary) in commands.items():
+        parser = subparsers.add_parser(
+            name,
+            help=summary,
+            description=getattr(module, "CLI_HELP", None) or module.__doc__,
+            formatter_class=argparse.RawDescriptionHelpFormatter,
+            suggest_on_error=True,
+        )
+        module.add_arguments(parser)
+        parser.set_defaults(run=module.run)
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        prog="bscli",
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        suggest_on_error=True,
     )
+    parser.add_argument(
+        "--config",
+        metavar="PATH",
+        help="config file to use instead of looking for bscli.toml",
+    )
+    commands = parser.add_subparsers(title="commands", metavar="COMMAND", required=True)
+    _add_commands(commands, COMMANDS)
+    dump = commands.add_parser(
+        "dump",
+        help="data for the website (db, trachtnet, dwd, ...)",
+        description="Data dumps for the website.",
+        suggest_on_error=True,
+    )
+    _add_commands(
+        dump.add_subparsers(title="dumps", metavar="DUMP", required=True),
+        DUMPS,
+    )
+    return parser
 
 
-def fail(message: str) -> None:
-    print(f"bscli: {message}\n\n{usage()}", file=sys.stderr)
-    sys.exit(2)
-
-
-def main() -> None:
-    argv = sys.argv[1:]
-    # Global option, before the command: which config file to use.
-    if argv[:1] == ["--config"]:
-        if len(argv) < 2:
-            fail("--config needs a path")
-        os.environ["BSCLI_CONFIG"] = argv[1]
-        argv = argv[2:]
-    if not argv or argv[0] in ("-h", "--help", "help"):
-        print(usage())
-        sys.exit(0 if argv else 2)
-
-    name, rest = argv[0], argv[1:]
-    entry = COMMANDS.get(name)
-    if entry is None:
-        fail(f"unknown command {name!r}")
-        return
-    if isinstance(entry, dict):
-        if not rest or rest[0] not in entry:
-            fail(f"{name} needs one of: {', '.join(entry)}")
-            return
-        name, entry, rest = f"{name} {rest[0]}", entry[rest[0]], rest[1:]
-    module = importlib.import_module(entry[0])
-    module.main(rest, prog=f"bscli {name}")
+def main(argv: list[str] | None = None) -> None:
+    args = build_parser().parse_args(argv)
+    if args.config:
+        os.environ["BSCLI_CONFIG"] = args.config
+    args.run(args)
 
 
 if __name__ == "__main__":

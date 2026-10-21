@@ -2,14 +2,13 @@
   The awards of the front matter as a row of cards, each with its medal
   (.awards in style.css), the latest first:
 
-    params:
-      auszeichnungen:
-        - date: "2025-11-02"
-          medal: silber        # gold, silber or bronze
-          title: "Medaille für hervorragende Leistungen"
-          event: "Honigprämierung beim 11. Bayerischen Honigfest"
-          place: "Bischofsgrün (Oberfranken)"
-          url: /auszeichnungen/2025-11-02-honigpraemierung.pdf
+    [[params.auszeichnungen]]
+    date = "2025-11-02"
+    medal = "silber"        # gold, silber or bronze
+    title = "Medaille für hervorragende Leistungen"
+    event = "Honigprämierung beim 11. Bayerischen Honigfest"
+    place = "Bischofsgrün (Oberfranken)"
+    url = "/auszeichnungen/2025-11-02-honigpraemierung.pdf"
 */ -}}
 <ul class="awards" role="list">
   {{- range sort .Page.Params.auszeichnungen "date" "desc" }}

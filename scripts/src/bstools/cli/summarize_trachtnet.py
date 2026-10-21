@@ -145,19 +145,26 @@ def summarize(outdir: Path) -> None:
     logger.info("Wrote %s regions, %s years, to %s", len(regions), len(years), path)
 
 
-def main(argv: list[str] | None = None, prog: str | None = None) -> None:
-    parser = argparse.ArgumentParser(
-        prog=prog, description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
-    )
+def add_arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument(
         "--outdir",
         type=Path,
         default=Path("./trachtnet-dump"),
         help="output directory of `bscli dump trachtnet` (default: %(default)s)",
     )
-    args = parser.parse_args(argv)
+
+
+def run(args: argparse.Namespace) -> None:
     setup_logging()
     summarize(args.outdir)
+
+
+def main(argv: list[str] | None = None) -> None:
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
+    add_arguments(parser)
+    run(parser.parse_args(argv))
 
 
 if __name__ == "__main__":

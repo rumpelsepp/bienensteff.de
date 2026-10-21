@@ -8,4 +8,7 @@
 .ruff_cache
 __pycache__
 
+# bscli settings, secrets or pointers to them (see scripts/bscli.example.toml)
+bscli.toml
+
 /TODO
