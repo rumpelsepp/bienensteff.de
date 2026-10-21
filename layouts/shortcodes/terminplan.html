@@ -34,7 +34,18 @@
      from the rows of the table. */}}
   <div class="terminplan-calendar" aria-hidden="true"></div>
 
-  <table class="table table-sm terminplan-table">
+  {{- /* What the looks of calendar and table mean -- only the kinds the
+     schedule has. */}}
+  {{- $kinds := slice }}
+  {{- range $steps }}{{ $kinds = $kinds | append .kind }}{{ end }}
+  <ul class="terminplan-legend">
+    {{- if in $kinds "work" }}<li class="terminplan-work">Arbeitsschritt</li>{{ end }}
+    {{- if in $kinds "info" }}<li class="terminplan-info">im Volk</li>{{ end }}
+    {{- if in $kinds "estimate" }}<li class="terminplan-estimate">geschätzt, hängt vom Wetter beim Hochzeitsflug ab</li>{{ end }}
+    {{- if where $steps "until" "!=" nil }}<li class="terminplan-stretch">Zeitraum</li>{{ end }}
+  </ul>
+
+  <table class="table terminplan-table">
     <thead>
       <tr>
         <th scope="col" class="terminplan-date">Datum</th>
@@ -55,5 +66,4 @@
       {{- end }}
     </tbody>
   </table>
-  <p class="terminplan-legend"><strong>fett</strong>: Arbeitsschritt · <em>kursiv</em>: geschätzt, hängt vom Wetter beim Hochzeitsflug ab</p>
 </section>

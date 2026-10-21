@@ -51,8 +51,9 @@ function weekday(day: number): number {
 }
 
 // The weeks from the one of day X to the one of the last step, Monday
-// first: a day with a step carries a dot in the colour of its kind and
-// its title, a day of a stretch (Step.until) is shaded, and the days
+// first: a day with a step carries its title as a chip in the look of its
+// kind, a day of a stretch (Step.until) is shaded, day X and today are
+// marked at their number, the first of a month names it, and the days
 // before X and after the last step are faded.
 function renderCalendar(container: HTMLElement, steps: Step[], x: number) {
     const last = x + Math.max(...steps.map(s => s.until ?? s.day));
@@ -72,12 +73,18 @@ function renderCalendar(container: HTMLElement, steps: Step[], x: number) {
         cell.classList.toggle("is-outside", day < x || day > last);
         cell.classList.toggle("is-stretch", steps.some(s => s.until !== null && day >= x + s.day && day <= x + s.until));
         cell.classList.toggle("is-today", day === today());
+        cell.classList.toggle("is-day-x", day === x);
+        cell.classList.toggle("is-weekend", weekday(day) >= 5);
+        cell.classList.toggle("is-month-start", date.getUTCDate() === 1);
 
         const number = document.createElement("span");
         number.className = "terminplan-cell-day";
         number.textContent = date.getUTCDate() === 1 || day === first
             ? `${date.getUTCDate()}. ${monthName.format(date)}`
             : `${date.getUTCDate()}`;
+        if (day === x) {
+            number.title = "Tag X";
+        }
         cell.append(number);
 
         for (const step of steps.filter(s => x + s.day === day)) {

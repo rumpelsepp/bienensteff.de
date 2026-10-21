@@ -64,7 +64,7 @@ export async function renderEvaluationTable(elementID: string, region: string, y
         rows.push(row("Gesamteintrag ggü. Mittel", against));
     }
 
-    document.getElementById(elementID)!.innerHTML = `<table class="table table-bordered table-striped table-sm">
+    document.getElementById(elementID)!.innerHTML = `<table class="table">
   <caption>Auswertung von ${toTitleCase(region)} (${year}${isSeasonOver(year) ? "" : ", bis dato"})</caption>
   <tbody>
     ${rows.join("\n    ")}

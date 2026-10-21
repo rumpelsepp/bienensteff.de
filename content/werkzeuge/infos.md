@@ -20,7 +20,7 @@ Ein Achtel einer Wabe enthält etwa:
 | Futter | 125 g | 100 g |
 | Bienen | 125 | 110 |
 | verdeckelte bzw. offene Brutzellen | 400 | 360 |
-{.table .table-striped .table-sm}
+{.table}
 
 ## Erweitern und ernten
 
@@ -63,7 +63,7 @@ Angabe als Reinzucker zum Auffüttern (aus Pias Datenblatt):
 | --- | --- | --- |
 | warm (z. B. NRW) | 13 kg Zucker (≈ 18 kg / 13 l Sirup ≈ 8 gefüllte Zanderwaben) | 10 kg Zucker (≈ 14 kg / 10 l Sirup ≈ 6 Waben) |
 | kühl (z. B. Bayern, BW) | 20 kg Zucker (≈ 28 kg / 20 l Sirup ≈ 12 gefüllte Zanderwaben) | 15 kg Zucker (≈ 21 kg / 15 l Sirup ≈ 9 Waben) |
-{.table .table-striped .table-sm}
+{.table}
 
 Die Einteilung richtet sich nach der Länge der brutfreien Winterphase, nicht nach der Durchschnittstemperatur – milde Winter mit durchgehender Brut erhöhen den Verbrauch zusätzlich. Zuckerwasser wird im Verhältnis **3 : 2** (Zucker : Wasser) angerührt.
 
@@ -89,7 +89,7 @@ Grobe Anhaltspunkte für den monatlichen Verbrauch (cf. Gerhard Liebig: _Einfach
 | Februar | 1 – 2 kg |
 | März | 3 – 5 kg |
 | April | 3 – 5 kg |
-{.table .table-striped .table-sm}
+{.table}
 
 In Summe – je nach Volksstärke – rund **10 bis 15 kg**.
 Die Größenordnung passt zur physiologischen Faustregel: **brutfrei ca. 1 kg/Monat**, **mit Brut und Wärmeleistung ca. 3 kg/Monat**. Quelle: [bienenundnatur.de](https://www.bienenundnatur.de/imkerpraxis/spaetsommerpflege/wie-viel-futter-braucht-ein-bienenvolk-fuer-den-winter-590).
@@ -105,7 +105,7 @@ Beurteilung Ende Oktober nach einer kalten Nacht (ca. 5 °C): die mit Bienen bes
 | 5 oder mehr | einwinterungsreif, über 5.000 Bienen |
 | 4 | minimale Einwinterungsstärke, um 5.000 Bienen |
 | 3 oder weniger | stark verlustgefährdet – mit einem anderen Volk vereinigen |
-{.table .table-striped .table-sm}
+{.table}
 
 ## Mit Daten und Zeiträumen rechnen
 

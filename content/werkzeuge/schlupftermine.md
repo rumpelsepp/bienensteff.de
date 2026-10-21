@@ -14,7 +14,7 @@ Der Inhalt dieser Seite basiert auf Informationen, die [Pia Aumeier](https://pia
 ## Allgemeine Infos
 
 <div class="table-responsive">
-<table class="table table-sm table-striped">
+<table class="table">
     <caption>Entwicklungsphasen der drei Bienenwesen (Dauer in Tagen)</caption>
     <thead>
         <tr>
@@ -24,7 +24,7 @@ Der Inhalt dieser Seite basiert auf Informationen, die [Pia Aumeier](https://pia
             <th scope="col">Drohn</th>
         </tr>
     </thead>
-    <tbody class="table-group-divider">
+    <tbody>
         <tr>
             <td><strong>Anzahl pro Volk</strong></td>
             <td colspan="3">eine (Ausnahme: Stille Umweiselung)</td>
@@ -84,7 +84,7 @@ Der Inhalt dieser Seite basiert auf Informationen, die [Pia Aumeier](https://pia
 </div>
 
 <div class="table-responsive">
-<table class="table table-sm table-striped">
+<table class="table">
     <caption>Geschlechtsreife und Lebensdauer</caption>
     <thead>
         <tr>
@@ -94,7 +94,7 @@ Der Inhalt dieser Seite basiert auf Informationen, die [Pia Aumeier](https://pia
             <th scope="col">Drohn</th>
         </tr>
     </thead>
-    <tbody class="table-group-divider">
+    <tbody>
         <tr>
             <td><strong>Geschlechtsreife</strong></td>
             <td>7 Tage nach Schlupf</td>

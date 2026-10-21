@@ -65,7 +65,8 @@ Unser Honig kann an folgenden Stellen gekauft werden.
 Wir nehmen Honiggläser gerne gespült zurück – Etikett bitte, wenn möglich, entfernen.
 
 {{< verkaufsstellen.inline >}}
-    <table class="table table-striped table-bordered">
+  <div class="table-responsive">
+    <table class="table">
         <thead>
             <tr>
               <th scope="col">Verkaufsstelle</th>
@@ -87,6 +88,7 @@ Wir nehmen Honiggläser gerne gespült zurück – Etikett bitte, wenn möglich,
           {{- end -}}
         </tbody>
     </table>
+  </div>
 {{</ verkaufsstellen.inline >}}
 
 ### Öffnungszeiten
