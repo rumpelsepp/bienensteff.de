@@ -21,30 +21,31 @@ export async function initAllCharts() {
         shownYear = year;
     }
     initWidthToggle();
-    // Charts inside a folded <details> (the Regierungsbezirke of the
-    // Trachtnet page) are built while it is closed, at size zero: once it
-    // opens they take the size they now have. The toggle event doesn't
-    // bubble; the capture listener catches it anyway.
-    document.addEventListener("toggle", () => {
-        requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
+    // The widgets of a folded <details> wait for it to open, see
+    // renderAll(). The toggle event doesn't bubble; the capture listener
+    // catches it anyway.
+    document.addEventListener("toggle", event => {
+        const details = event.target as HTMLElement;
+        if (details instanceof HTMLDetailsElement && details.open) {
+            renderPending(details);
+        }
     }, true);
     await initYearSelect();
-    await renderAllCharts();
+    await renderAllCharts("all");
     new MutationObserver(() => {
-        renderAllCharts();
+        renderAllCharts("all");
     }).observe(document.documentElement, { attributeFilter: ["data-bs-theme"] });
 }
 
 // The button that lets the charts grow beyond the text column and back
-// (.charts-wide in style.css). The charts take the new width by the resize
-// their instances listen for.
+// (.charts-wide in style.css). The charts follow the size of their
+// containers on their own, see initEchartsInstance().
 function initWidthToggle() {
     const button = document.querySelector<HTMLButtonElement>(`${TRACHTNET_YEAR_SELECT} .chart-width-toggle`);
     button?.addEventListener("click", () => {
         const wide = document.body.classList.toggle("charts-wide");
         button.setAttribute("aria-pressed", wide.toString());
         button.classList.toggle("active", wide);
-        window.dispatchEvent(new Event("resize"));
     });
 }
 
@@ -88,7 +89,7 @@ async function initYearSelect() {
             url.searchParams.set("year", year.toString());
         }
         history.replaceState(null, "", url);
-        renderAllCharts();
+        renderAllCharts("year");
     };
 
     select.addEventListener("change", () => change(parseInt(select.value)));
@@ -99,19 +100,42 @@ async function initYearSelect() {
     box.hidden = false;
 }
 
+// Widgets inside a folded <details> (the Regierungsbezirke of the
+// Trachtnet page), with what builds them once it opens: nobody may ever
+// look at them, and a chart built while folded has no size anyway.
+const pending = new Map<HTMLElement, () => Promise<void>>();
+
+function renderPending(details: HTMLElement) {
+    for (const [container, render] of pending) {
+        if (details.contains(container)) {
+            pending.delete(container);
+            render().catch(reason => console.error("Failed to render chart widget:", reason));
+        }
+    }
+}
+
 // The widgets of a kind on the page, each rendered from the data attributes
 // its shortcode in layouts/shortcodes/ gives it.
 function renderAll(selector: string, render: (data: DOMStringMap) => Promise<void> | undefined): Promise<void>[] {
     return Array.from(document.querySelectorAll<HTMLElement>(selector)).map(async container => {
-        const rendered = render(container.dataset);
-        if (!rendered) {
-            throw new Error(`Widget is missing required data attributes: ${container.outerHTML.slice(0, 200)}`);
+        const build = async () => {
+            const rendered = render(container.dataset);
+            if (!rendered) {
+                throw new Error(`Widget is missing required data attributes: ${container.outerHTML.slice(0, 200)}`);
+            }
+            await rendered;
+        };
+        if (container.closest("details:not([open])")) {
+            pending.set(container, build);
+            return;
         }
-        await rendered;
+        await build();
     });
 }
 
-async function renderAllCharts() {
+// "year": another year was picked, and what doesn't follow it stays as it
+// is. "all": everything anew, e.g. for another colour scheme.
+async function renderAllCharts(what: "all" | "year") {
     const year = shownYear;
     const chart = (render: (id: string, region: string, year: number) => Promise<void>) =>
         ({ id, region }: DOMStringMap) => id && region ? render(id, region, year) : undefined;
@@ -121,13 +145,15 @@ async function renderAllCharts() {
         ...renderAll(TRACHTNET_DERIVATIVE_CHART, chart(renderDerivativeChart)),
         ...renderAll(TRACHTNET_PROGRESS_CHART, chart(renderProgressChart)),
         ...renderAll(TRACHTNET_MAP_CHART, chart(renderMapChart)),
-        // The trend chart spans all years: it doesn't follow the year the
-        // page shows.
-        ...renderAll(TRACHTNET_TREND_CHART, ({ id, region }) => id && region ? renderTrendChart(id, region) : undefined),
-        ...renderAll(TRACHTNET_GAPS_CHART, ({ id, region }) => id && region ? renderGapsChart(id, region) : undefined),
-        // A table is of the year its shortcode names: there is one a year,
-        // in tabs.
-        ...renderAll(TRACHTNET_EVALUATION_TABLE, ({ id, region, year }) => id && region && year ? renderEvaluationTable(id, region, parseInt(year)) : undefined),
+        ...(what === "all" ? [
+            // The trend and gaps charts span all years: they don't follow
+            // the year the page shows.
+            ...renderAll(TRACHTNET_TREND_CHART, ({ id, region }) => id && region ? renderTrendChart(id, region) : undefined),
+            ...renderAll(TRACHTNET_GAPS_CHART, ({ id, region }) => id && region ? renderGapsChart(id, region) : undefined),
+            // A table is of the year its shortcode names: there is one a
+            // year, in tabs.
+            ...renderAll(TRACHTNET_EVALUATION_TABLE, ({ id, region, year }) => id && region && year ? renderEvaluationTable(id, region, parseInt(year)) : undefined),
+        ] : []),
     ]);
     for (const result of results) {
         if (result.status === "rejected") {

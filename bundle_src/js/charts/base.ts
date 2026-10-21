@@ -75,14 +75,20 @@ export function initEchartsInstance(elementID: string): ECharts {
         locale: "DE",
     });
 
-    window.addEventListener("resize", () => {
-        if (!chart.isDisposed()) {
-            chart.resize();
-        }
-    });
+    sizeObserver.observe(chartContainer);
 
     return chart;
 }
+
+// A chart takes the size of its container whenever that changes: a
+// resized window, the charts let grow beyond the text column, a folded
+// <details> opened. One observer for all containers, which asks for the
+// instance in there now -- nothing holds on to the ones disposed.
+const sizeObserver = new ResizeObserver(entries => {
+    for (const entry of entries) {
+        echarts.getInstanceByDom(entry.target as HTMLElement)?.resize();
+    }
+});
 
 // The margins around the plot of a chart. The same for all of them, so
 // that charts standing one below the other line up day for day: room for
