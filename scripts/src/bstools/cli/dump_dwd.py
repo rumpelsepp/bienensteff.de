@@ -4,15 +4,24 @@ station (opendata.dwd.de) and writes out an hourly and a daily-aggregated
 NDJSON file. With --meta also what the station is: its name, position and
 height, as a JSON file.
 
+The DWD splits its data in two: "recent" (about the last 500 days, updated
+daily) and "historical" (everything before, up to the end of last year,
+updated once a year). Both are fetched and joined, "recent" winning where
+they overlap. The daily file goes back to --since-year; the hourly file
+covers only the "recent" period, back to 2011 it would be ~11 MB.
+
 Usage:
-  bscli dump dwd --station-id 03379 --meta static/klima/03379_meta.json \\
+  bscli dump dwd --station-id 03379 --since-year 2011 \\
+      --meta static/klima/03379_meta.json \\
       static/klima/03379_hourly.json static/klima/03379_daily.json
 """
 
 import argparse
 import io
 import json
+import re
 import zipfile
+from datetime import UTC, datetime
 from pathlib import Path
 from string import Template
 
@@ -22,8 +31,34 @@ from bstools import httpclient
 
 BASE_URL = "https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly"
 
-URL_TEMP_TPL = Template(BASE_URL + "/air_temperature/recent/stundenwerte_TU_${station_id}_akt.zip")
-URL_PREC_TPL = Template(BASE_URL + "/precipitation/recent/stundenwerte_RR_${station_id}_akt.zip")
+# The product's directory and the code in its file names.
+PRODUCT_TEMP = ("air_temperature", "TU")
+PRODUCT_PREC = ("precipitation", "RR")
+
+URL_RECENT_TPL = Template(
+    BASE_URL + "/${directory}/recent/stundenwerte_${code}_${station_id}_akt.zip"
+)
+URL_HISTORICAL_DIR_TPL = Template(BASE_URL + "/${directory}/historical/")
+
+
+def historical_url(product: tuple[str, str], station_id: str) -> str | None:
+    """The "historical" archive of a station. Its name carries the period it
+    covers (stundenwerte_TU_03379_19970701_20251231_hist.zip), which moves
+    every year, so it is looked up in the directory listing. None where the
+    station has none."""
+    directory, code = product
+    url = URL_HISTORICAL_DIR_TPL.substitute(directory=directory)
+    with httpclient.Client() as client:
+        response = client.get(url)
+        response.raise_for_status()
+    names = sorted(
+        set(
+            re.findall(
+                rf"stundenwerte_{code}_{station_id}_\d{{8}}_\d{{8}}_hist\.zip", response.text
+            )
+        )
+    )
+    return url + names[-1] if names else None
 
 
 def fetch_dwd_zip(url: str) -> zipfile.ZipFile:
@@ -84,17 +119,44 @@ def clean_dwd_value(column_name: str) -> pl.Expr:
     return pl.when(parsed_float == -999.0).then(None).otherwise(parsed_float)
 
 
-def clean_and_prepare_data(station_id: str) -> tuple[pl.DataFrame, dict[str, str | float]]:
-    url_temp = URL_TEMP_TPL.substitute(station_id=station_id)
-    url_prec = URL_PREC_TPL.substitute(station_id=station_id)
-    with fetch_dwd_zip(url_temp) as z:
-        df_temp_raw = read_dwd_csv(z)
+def read_product(
+    product: tuple[str, str], station_id: str, historical: bool
+) -> tuple[pl.DataFrame, dict[str, str | float], str]:
+    """The raw rows of a product, "recent" and with "historical" also the
+    archive before, with what the station is ("recent" knows it best) and
+    the first MESS_DATUM of "recent"."""
+    directory, code = product
+    with fetch_dwd_zip(
+        URL_RECENT_TPL.substitute(directory=directory, code=code, station_id=station_id)
+    ) as z:
+        recent = read_dwd_csv(z)
         station = read_station(z, station_id)
-    with fetch_dwd_zip(url_prec) as z:
-        df_prec_raw = read_dwd_csv(z)
+    frames = [recent]
+    if historical and (url := historical_url(product, station_id)):
+        with fetch_dwd_zip(url) as z:
+            frames.insert(0, read_dwd_csv(z))
+    frames = [
+        df.rename({c: c.strip() for c in df.columns}).with_columns(
+            pl.col("MESS_DATUM").str.strip_chars()
+        )
+        for df in frames
+    ]
+    recent_start = frames[-1]["MESS_DATUM"].min()
+    # Where both have an hour, "recent" comes last and is kept.
+    df = pl.concat(frames, how="diagonal").unique(
+        subset="MESS_DATUM", keep="last", maintain_order=True
+    )
+    return df, station, recent_start
 
-    df_temp_raw = df_temp_raw.rename({c: c.strip() for c in df_temp_raw.columns})
-    df_prec_raw = df_prec_raw.rename({c: c.strip() for c in df_prec_raw.columns})
+
+def clean_and_prepare_data(
+    station_id: str, historical: bool = False
+) -> tuple[pl.DataFrame, dict[str, str | float], str]:
+    """The hourly data, what the station is and where its "recent" period
+    starts (MESS_DATUM, of the temperature)."""
+    df_temp_raw, station, recent_start = read_product(PRODUCT_TEMP, station_id, historical)
+    df_prec_raw, _, _ = read_product(PRODUCT_PREC, station_id, historical)
+
     df_temp = df_temp_raw.select(
         [
             parse_dwd_timestamp().alias("timestamp"),
@@ -110,7 +172,9 @@ def clean_and_prepare_data(station_id: str) -> tuple[pl.DataFrame, dict[str, str
         ]
     )
 
-    df = df_temp.join(df_prec, on="timestamp", how="inner")
+    # Hours with only one of the two still count: the station has gaps in
+    # either.
+    df = df_temp.join(df_prec, on="timestamp", how="full", coalesce=True)
 
     # FIXME: Taupunkt Berechnung ist falsch.
     # 5. Berechnung des Taupunkts (Magnus-Formel)
@@ -121,7 +185,11 @@ def clean_and_prepare_data(station_id: str) -> tuple[pl.DataFrame, dict[str, str
 
     # df = df.with_columns(((b * alpha) / (a - alpha)).round(2).alias("dew_point"))
 
-    return df.sort("timestamp").select(["timestamp", "temperature", "precipitation"]), station
+    return (
+        df.sort("timestamp").select(["timestamp", "temperature", "precipitation"]),
+        station,
+        recent_start,
+    )
 
 
 def main(argv: list[str] | None = None, prog: str | None = None) -> None:
@@ -134,6 +202,13 @@ def main(argv: list[str] | None = None, prog: str | None = None) -> None:
         help="station ID according to DWD, ask AI or look in the DWD READMEs. Munich is 03379",
     )
     parser.add_argument(
+        "--since-year",
+        type=int,
+        metavar="YEAR",
+        help="also fetch the DWD's historical archive and write daily data from this year on "
+        "(default: only the recent ~500 days)",
+    )
+    parser.add_argument(
         "--meta",
         type=Path,
         metavar="FILE",
@@ -143,8 +218,11 @@ def main(argv: list[str] | None = None, prog: str | None = None) -> None:
     parser.add_argument("FILE_DAILY", type=Path, help="path to write the daily data")
     args = parser.parse_args(argv)
 
-    df_hourly, station = clean_and_prepare_data(args.station_id)
-    df_daily = df_hourly.group_by_dynamic(
+    historical = args.since_year is not None
+    df_all, station, recent_start = clean_and_prepare_data(args.station_id, historical)
+    if historical:
+        df_all = df_all.filter(pl.col("timestamp").dt.year() >= args.since_year)
+    df_daily = df_all.group_by_dynamic(
         index_column="timestamp",
         every="1d",
     ).agg(
@@ -153,10 +231,16 @@ def main(argv: list[str] | None = None, prog: str | None = None) -> None:
             pl.col("temperature").max().round(1).alias("temperature_max"),
             pl.col("temperature").min().round(1).alias("temperature_min"),
             # pl.col("dew_point").mean().round(1).alias("dew_point_mean"),
-            pl.col("precipitation").sum().round(1).alias("precipitation_sum"),
+            # A day without any value is unknown, not dry.
+            pl.when(pl.col("precipitation").count() > 0)
+            .then(pl.col("precipitation").sum().round(1))
+            .alias("precipitation_sum"),
         ]
     )
 
+    # The hourly data only as far back as "recent" goes, as before.
+    since = datetime.strptime(recent_start, "%Y%m%d%H").replace(tzinfo=UTC)
+    df_hourly = df_all.filter(pl.col("timestamp") >= since)
     with args.FILE_HOURLY.open(mode="wb") as f:
         df_hourly.write_ndjson(f)
     with args.FILE_DAILY.open(mode="wb") as f:

@@ -24,4 +24,4 @@ update-trachtnet:
     uv run --project scripts bscli dump trachtnet-summary --outdir static/trachtnet-dump
 
 update-klima:
-    uv run --project scripts bscli dump dwd --station-id 03379 --meta static/klima/03379_meta.json static/klima/03379_hourly.json static/klima/03379_daily.json
+    uv run --project scripts bscli dump dwd --station-id 03379 --since-year 2011 --meta static/klima/03379_meta.json static/klima/03379_hourly.json static/klima/03379_daily.json
