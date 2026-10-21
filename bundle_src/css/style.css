@@ -419,29 +419,239 @@
 }
 
 /* --------------------------------------------------------------------
-   Calendar widgets (layouts/shortcodes/calendar-widget.html)
+   Terminplan (layouts/shortcodes/terminplan.html)
    -------------------------------------------------------------------- */
 
-/* The toolbar of FullCalendar: the title and the buttons, each group in a
-   row that does not break -- on a phone the buttons are wider than the
-   screen. Its class names are generated, hence the selector by position:
-   the groups are the children of the calendar's first element. */
-.calendar-widget-container [id$="-calendar"] > div:first-child > div {
-  flex-wrap: wrap;
-  row-gap: 0.5rem;
-  max-width: 100%;
+.terminplan {
+  margin-bottom: 2rem;
+
+  .terminplan-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .terminplan-name {
+      flex: 1 1 14rem;
+    }
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  /* What the sheet is, on paper only (see the print rules below). */
+  .terminplan-sheet-head {
+    display: none;
+  }
+
+  /* The weeks of the schedule (see renderCalendar() in terminplan.ts):
+     a dot in the colour of its kind and the title on the day of a step --
+     filled for work, grey for what happens in the colony, hollow for an
+     estimate --, the days of a stretch shaded, those around faded. On a
+     phone only the dots: the titles are in the table below. */
+  .terminplan-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    margin-bottom: 1.5rem;
+    border-top: 1px solid var(--color-border);
+    border-left: 1px solid var(--color-border);
+    font-size: 0.8rem;
+    line-height: 1.2;
+  }
+
+  .terminplan-weekday,
+  .terminplan-cell {
+    border-right: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.2rem 0.3rem;
+  }
+
+  .terminplan-weekday {
+    text-align: center;
+    font-weight: bold;
+    color: var(--color-ink-muted);
+  }
+
+  .terminplan-cell {
+    min-height: 4.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+
+    &.is-stretch {
+      background: color-mix(in srgb, var(--color-primary) 18%, transparent);
+    }
+
+    &.is-outside {
+      color: var(--color-ink-muted);
+      opacity: 0.55;
+    }
+
+    &.is-today .terminplan-cell-day {
+      font-weight: bold;
+      color: var(--color-primary);
+    }
+  }
+
+  .terminplan-cell-day {
+    font-size: 0.75rem;
+    color: var(--color-ink-muted);
+  }
+
+  .terminplan-cell-step {
+    position: relative;
+    padding-left: 0.85rem;
+    hyphens: auto;
+    overflow-wrap: anywhere;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.25em;
+      width: 0.6rem;
+      height: 0.6rem;
+      border: 2px solid var(--color-ink);
+      border-radius: 50%;
+      background: var(--color-ink);
+    }
+
+    &.terminplan-work {
+      font-weight: bold;
+    }
+
+    &.terminplan-info::before {
+      border-color: var(--color-ink-muted);
+      background: var(--color-ink-muted);
+    }
+
+    &.terminplan-estimate {
+      font-style: italic;
+
+      &::before {
+        border-color: var(--color-ink-muted);
+        background: transparent;
+      }
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    .terminplan-cell {
+      min-height: 2.75rem;
+    }
+
+    .terminplan-cell-step {
+      font-size: 0;
+      padding-left: 0;
+      height: 0.75rem;
+    }
+  }
+
+  .terminplan-table {
+    td {
+      vertical-align: top;
+    }
+
+    .terminplan-date,
+    .terminplan-day {
+      white-space: nowrap;
+    }
+
+    .terminplan-title {
+      display: block;
+    }
+
+    .terminplan-text {
+      display: block;
+      font-size: 0.9em;
+      color: var(--color-ink-muted);
+    }
+
+    .terminplan-work .terminplan-title {
+      font-weight: bold;
+    }
+
+    .terminplan-estimate {
+      font-style: italic;
+    }
+  }
+
+  /* The dates are there once the script has worked them out. */
+  &:not(.is-dated) .terminplan-date {
+    display: none;
+  }
+
+  .terminplan-legend {
+    font-size: 0.9em;
+    color: var(--color-ink-muted);
+  }
 }
 
-/* FullCalendar's dark palette is a cold blue-black; on the dark page the
-   calendar takes the warm tones of the theme instead. */
-[data-bs-theme="dark"] .calendar-widget-container {
-  --fc-forma-background: var(--color-surface);
-  --fc-forma-foreground: var(--color-ink);
-  --fc-forma-muted-foreground: var(--color-ink-muted);
-  --fc-forma-faint-foreground: color-mix(in srgb, var(--color-ink-muted) 60%, var(--color-surface));
-  --fc-forma-border: var(--bs-border-color);
-  --fc-forma-muted-border: var(--bs-border-color);
-  --fc-forma-strong-border: var(--color-ink-muted);
+/* A page with a Terminplan prints as one sheet of it: the schedule under
+   a head that says what it is -- not the menu, the explanations or the
+   form. */
+@media print {
+  body:has(.terminplan) {
+    #site-header,
+    #site-footer,
+    .skip-link,
+    .content-header,
+    .content > :not(.terminplan) {
+      display: none !important;
+    }
+
+    /* Black on white, whatever the colour scheme of the screen; and the
+       shading and dots of the calendar are printed, which browsers leave
+       out as backgrounds otherwise. */
+    .terminplan {
+      --color-ink: #000;
+      --color-ink-muted: #555;
+      --color-bg: #fff;
+      --color-border: #999;
+      --bs-body-color: #000;
+      --bs-table-color: #000;
+      --bs-table-bg: transparent;
+      color: #000;
+
+      .terminplan-calendar {
+        print-color-adjust: exact;
+        font-size: 8pt;
+      }
+
+      .terminplan-cell {
+        min-height: 3.2rem;
+      }
+
+      .terminplan-form {
+        display: none;
+      }
+
+      .terminplan-sheet-head {
+        display: block;
+        margin-bottom: 1.5rem;
+
+        h2 {
+          margin-bottom: 0.25rem;
+        }
+      }
+
+      .terminplan-table {
+        font-size: 10pt;
+      }
+
+      tr {
+        break-inside: avoid;
+      }
+    }
+  }
 }
 
 /* --------------------------------------------------------------------

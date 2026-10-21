@@ -7,75 +7,12 @@ description: "Übersicht und Werkzeug zum Berechnen der Termine für Teilen und 
 TuB ist größtenteils witterungsunabhängig und kann gut nach Zeitplan durchgeführt werden.
 {.lead}
 
-Mit diesem Werkzeug können interaktiv die Zeitpunkte der einzelnen Arbeitsphasen berechnet werden.
-Der hinterlegte Bereich symbolisiert die brutfreie Zeit.
-Termine in _kursiv_ sind geschätzt, da der Tag des Hochzeitsflugs und folglich der Start der Eiablage nicht vorhersehbar ist.
-Der Inhalt dieser Seite basiert auf Informationen die von [Pia Aumeier](https://piaaumeier.de) veröffentlicht wurden.
-{.lead}
+Tag X ist der Tag der Teilung.
+Der Inhalt dieser Seite basiert auf Informationen, die [Pia Aumeier](https://piaaumeier.de) veröffentlicht hat.
 
----
-<table class="table table-sm">
-    <thead>
-        <tr>
-            <th scope="col">Schritt</th>
-            <th scope="col">Zeitpunkt</th>
-            <th scope="col">Völkerführung und Varroabehandlung</th>
-        </tr>
-    </thead>
-    <tbody class="table-group-divider">
-        <tr>
-            <td class="align-middle">Schritt 1</td>
-            <td class="align-middle">X</td>
-            <td class="align-middle">Startzeitpunkt von TuB durch Teilung des Volkes (optimal Mitte Juli bis Mitte August)</td>
-        </tr>
-        <tr>
-            <td class="align-middle">Schritt 2</td>
-            <td class="align-middle">X + 2</td>
-            <td class="align-middle">Flugling hat sich gebildet und kann behandelt sowie gefüttert werden</td>
-        </tr>
-        <tr>
-            <td class="align-middle"></td>
-            <td class="align-middle">X + 9</td>
-            <td class="align-middle">Flugling ist verdeckelt. Wirkungsgrad der Behandlung ab jetzt geringer.</td>
-        </tr>
-        <tr>
-            <td class="align-middle" rowspan="2">Schritt 3(a)</td>
-            <td class="align-middle">X + 11</td>
-            <td>Nachschaffungskönigin des Brutvolkes schlüpft.</td>
-        </tr>
-        <tr>
-            <td class="align-middle">X + 21</td>
-            <td>Das Brutvolk ist brutfrei und kann behandelt werden. Das Brutvolk unter Beachtung der Wabenhygiene auf eine Zarge einengen. Prüfen auf Weiselrichtigkeit. Nachdem sich die Bienen beruhigt haben eine Sprüh-Behandlung mit Oxalsäure durchführen und füttern.</td>
-        </tr>
-        <tr>
-            <td class="align-middle">Schritt 3(b)</td>
-            <td rowspan="2" class="align-middle">X + 27-30</td>
-            <td class="align-middle">Bei starkem Varroabefall erneut mit Oxalsäure behandeln. Starker Befall bei 3000 gefallenen Milben innerhalb der ersten vier Tagen nach Behandlung.</td>
-        </tr>
-        <tr>
-            <td class="align-middle">Schritt 3(c)</td>
-            <td class="align-middle">Bei weisellosem Brutvolk dieses auflösen oder neu mit einer Königin aus einem Jungvolk beweiseln (in ca. 10% der Fälle notwendig).</td>
-        </tr>
-        <tr>
-            <td class="align-middle"></td>
-            <td class="align-middle"><em>X + 28</em></td>
-            <td class="align-middle"><em>Das Brutvolk hat die erste verdeckelte Brut. Wirkungsgrad der Behandlung ab jetzt geringer.</em></td>
-        </tr>
-        <tr>
-            <td class="align-middle" rowspan="2">Ausblick</td>
-            <td class="align-middle">September</td>
-            <td class="align-middle">Flugling und Brutvolk füttern.</td>
-        </tr>
-        <tr>
-            <td class="align-middle">Oktober (optional)</td>
-            <td class="align-middle">Beide Volksteile wiedervereinigen.</td>
-        </tr>
-    </tbody>
-</table>
+{{< terminplan "tub" >}}
 
----
-
-{{< calendar-widget type="tub" >}}
+Danach: im September Flugling und Brutvolk füttern, im Oktober beide Volksteile auf Wunsch wiedervereinigen.
 
 ## Lehrvideos
 

@@ -1,0 +1,126 @@
+# The schedules of the Terminplan shortcode (layouts/shortcodes/terminplan.html):
+# per procedure the title of its printed sheet and its steps, counted in
+# days from day X.
+#
+#   day:   days after X
+#   until: last day of a stretch that starts on "day" (optional) -- drawn as
+#          a band on the timeline
+#   kind:  work     -- something to do, in bold
+#          info     -- what happens in the colony
+#          estimate -- depends on the weather of the mating flight, in italics
+#   title, text: what the step is, and what to know about it
+#
+# The days follow the data sheets of Pia Aumeier (piaaumeier.de).
+
+schlupftermine:
+  title: Schlupftermine
+  steps:
+    - day: 0
+      kind: work
+      title: Königin entfernen
+      text: Die Königin wird aus dem Volk entfernt, z. B. durch Teilung.
+    - day: 11
+      kind: info
+      title: Königin schlüpft
+      text: Die Nachschaffungskönigin schlüpft nach elf Tagen – aufgezogen wird aus etwa zwei Tage alten Larven.
+    - day: 18
+      kind: info
+      title: Königin geschlechtsreif
+      text: Sieben Tage nach dem Schlupf.
+    - day: 19
+      kind: estimate
+      title: Königin in Eiablage
+      text: Hochzeitsflug bei gutem Wetter (ab 18 °C); die Eiablage beginnt meist acht Tage nach dem Schlupf, bei schlechtem Wetter später.
+    - day: 21
+      until: 27
+      kind: info
+      title: Volk brutfrei
+      text: Alle Arbeiterinnenbrut ist geschlüpft, drei Tage später (X + 24) auch die Drohnenbrut. Brutfrei bis zur ersten verdeckelten Brut.
+    - day: 28
+      kind: estimate
+      title: Brut verdeckelt
+      text: Neun Tage nach Beginn der Eiablage.
+    - day: 40
+      kind: estimate
+      title: Erste Jungbienen
+      text: 21 Tage nach Beginn der Eiablage.
+
+voelkervermehrung:
+  title: Völkervermehrung in vier Schritten
+  steps:
+    - day: 0
+      kind: work
+      title: Sammelbrutableger bilden
+      text: Sammelbrutableger (SBA) mit neun Brutwaben bilden.
+    - day: 9
+      kind: work
+      title: Weiselzellen brechen, Zuchtlatte einhängen
+      text: Weiselzellen brechen und direkt danach eine Zuchtlatte mit Zuchtstoff einhängen. Den Sammelbrutableger durch Untersetzen erweitern.
+    - day: 14
+      until: 19
+      kind: info
+      title: Weiselzellen verdeckelt
+      text: Fünf Tage nach Beginn der Nachschaffung; ab jetzt können die Zellen verschult werden.
+    - day: 19
+      kind: work
+      title: Weiselzellen verschulen
+      text: Die verdeckelten Weiselzellen bekommen einen Schlupfkäfig. Möglich ab X + 14 – früheres Verschulen verhindert Wildbau zwischen den Zellen, dann kann auch gefüttert werden.
+    - day: 20
+      kind: info
+      title: Jungköniginnen schlüpfen
+      text: Ab jetzt können die Begattungsvölker gebildet werden – nicht später als X + 21, sonst tötet das Pflegevolk die verschulten Königinnen.
+    - day: 21
+      kind: work
+      title: Pflegevolk auflösen
+      text: Das Pflegevolk auflösen und Begattungsvölker mit je einer Jungkönigin bilden.
+    - day: 27
+      kind: info
+      title: Königinnen geschlechtsreif
+      text: Sieben Tage nach dem Schlupf.
+    - day: 28
+      kind: estimate
+      title: Königinnen in Eiablage
+      text: Hochzeitsflug bei gutem Wetter (ab 18 °C); die Eiablage beginnt meist acht Tage nach dem Schlupf, bei schlechtem Wetter später.
+    - day: 37
+      kind: estimate
+      title: Brut verdeckelt
+      text: Neun Tage nach Beginn der Eiablage.
+    - day: 49
+      kind: estimate
+      title: Erste Jungbienen
+      text: 21 Tage nach Beginn der Eiablage.
+
+tub:
+  title: Teilen und Behandeln
+  steps:
+    - day: 0
+      kind: work
+      title: "Schritt 1: Teilen"
+      text: Das Volk in Flugling und Brutvolk teilen (am besten Mitte Juli bis Mitte August).
+    - day: 2
+      until: 8
+      kind: work
+      title: "Schritt 2: Flugling behandeln"
+      text: Der Flugling hat sich gebildet und kann behandelt und gefüttert werden. Brutfrei, bis seine erste Brut verdeckelt ist.
+    - day: 9
+      kind: info
+      title: Flugling verdeckelt
+      text: Die Behandlung wirkt ab jetzt schlechter.
+    - day: 11
+      kind: info
+      title: Brutvolk – Königin schlüpft
+      text: Die Nachschaffungskönigin des Brutvolks schlüpft.
+    - day: 21
+      until: 27
+      kind: work
+      title: "Schritt 3a: Brutvolk behandeln"
+      text: Das Brutvolk ist brutfrei. Unter Beachtung der Wabenhygiene auf eine Zarge einengen und auf Weiselrichtigkeit prüfen; sobald sich die Bienen beruhigt haben, mit Oxalsäure sprühen und füttern.
+    - day: 27
+      until: 30
+      kind: work
+      title: "Schritt 3b/c: Nachbehandeln, Weisel prüfen"
+      text: Bei starkem Befall (3000 gefallene Milben in den ersten vier Tagen nach der Behandlung) erneut mit Oxalsäure behandeln. Ein weiselloses Brutvolk auflösen oder mit der Königin eines Jungvolks neu beweiseln (in etwa 10 % der Fälle nötig).
+    - day: 28
+      kind: estimate
+      title: Brutvolk – erste verdeckelte Brut
+      text: Die Behandlung wirkt ab jetzt schlechter.

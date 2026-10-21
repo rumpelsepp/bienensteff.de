@@ -1,0 +1,63 @@
+{{- /*
+  A schedule counted from a day X, from data/terminplaene.yaml:
+  {{< terminplan "voelkervermehrung" >}}.
+
+  Rendered here as a table of "X + n", which reads without JavaScript
+  too. bundle_src/js/terminplan.ts shows the form above it, fills in the
+  dates of the day X picked there and draws the weeks they fall in as a
+  calendar; the page prints as one sheet with just the schedule (see
+  .terminplan in style.css).
+*/ -}}
+{{- $id := .Get 0 }}
+{{- $plan := index hugo.Data.terminplaene $id }}
+{{- if not $plan }}{{ errorf "terminplan: no schedule %q in data/terminplaene.yaml (%s)" $id .Position }}{{ end }}
+{{- $steps := $plan.steps }}
+
+<section class="terminplan" data-plan="{{ $id }}" aria-label="Terminplan">
+  <form class="terminplan-form" hidden>
+    <div>
+      <label for="terminplan-{{ $id }}-date">Tag X</label>
+      <input class="form-control form-control-sm" type="date" id="terminplan-{{ $id }}-date" name="date">
+    </div>
+    <div class="terminplan-name">
+      <label for="terminplan-{{ $id }}-name">Name <span class="text-body-secondary">(für den Ausdruck)</span></label>
+      <input class="form-control form-control-sm" type="text" id="terminplan-{{ $id }}-name" name="name" placeholder="z. B. Zuchtserie 2 – Grafenau">
+    </div>
+    <button type="button" class="btn btn-outline-primary btn-sm terminplan-print">
+      <i class="bi bi-printer" aria-hidden="true"></i> Drucken / PDF
+    </button>
+  </form>
+
+  {{- /* Only on paper: what the sheet is. */}}
+  <header class="terminplan-sheet-head">
+    <h2>{{ $plan.title }}<span class="terminplan-sheet-name"></span></h2>
+    <p class="terminplan-sheet-day"></p>
+  </header>
+
+  {{- /* The weeks from day X to the last step, drawn by the script
+     from the rows of the table. */}}
+  <div class="terminplan-calendar" aria-hidden="true"></div>
+
+  <table class="table table-sm terminplan-table">
+    <thead>
+      <tr>
+        <th scope="col" class="terminplan-date">Datum</th>
+        <th scope="col">Tag</th>
+        <th scope="col">Schritt</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{- range $steps }}
+      <tr class="terminplan-{{ .kind }}" data-kind="{{ .kind }}" data-day="{{ .day }}"{{ with .until }} data-until="{{ . }}"{{ end }}>
+        <td class="terminplan-date"></td>
+        <td class="terminplan-day">X + {{ .day }}{{ with .until }}–{{ . }}{{ end }}</td>
+        <td>
+          <span class="terminplan-title">{{ .title }}</span>
+          <span class="terminplan-text">{{ .text }}</span>
+        </td>
+      </tr>
+      {{- end }}
+    </tbody>
+  </table>
+  <p class="terminplan-legend"><strong>fett</strong>: Arbeitsschritt · <em>kursiv</em>: geschätzt, hängt vom Wetter beim Hochzeitsflug ab</p>
+</section>

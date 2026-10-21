@@ -1,7 +1,7 @@
 // Container selectors of the widgets rendered by the shortcodes in
 // layouts/shortcodes/. Kept in this dependency-free module so main.ts can
 // check for them without pulling in the (code-split) widget modules.
-export const CALENDAR_WIDGET = ".calendar-widget-container";
+export const TERMINPLAN = ".terminplan";
 export const TRACHTNET_PROGRESS_CHART = ".trachtnet-progress-chart-container";
 export const TRACHTNET_DERIVATIVE_CHART = ".trachtnet-derivative-chart-container";
 export const TRACHTNET_TREND_CHART = ".trachtnet-trend-chart-container";
