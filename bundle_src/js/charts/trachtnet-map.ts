@@ -80,21 +80,6 @@ function loadSummary(): Promise<Summary> {
     return summaryPromise;
 }
 
-// The fill of a region with patchy data: thin diagonal stripes in the
-// ink of the mode over the grey of no data.
-function hatching(colors: ReturnType<typeof chartColors>): echarts.PatternObject {
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="6" height="6">`
-        + `<rect width="6" height="6" fill="${colors.grid}"/>`
-        + `<path d="M-1,1 l2,-2 M0,6 l6,-6 M5,7 l2,-2" stroke="${colors.ink}" stroke-width="0.8" stroke-opacity="0.6"/>`
-        + `</svg>`;
-    return {
-        image: `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`,
-        repeat: "repeat",
-        imageWidth: 6,
-        imageHeight: 6,
-    };
-}
-
 type RegionData = {
     // The AGS, as the geojson feature's "name".
     name: string,
@@ -166,7 +151,7 @@ export async function renderMapChart(elementID: string, region: string, year: nu
 
     const notes = [
         "Summe der Tagesgewinne Mär–Aug je Landkreis [kg]",
-        "grau: keine Daten · schraffiert: lückenhafte Daten · Zahlen im Tooltip",
+        "grau: keine oder lückenhafte Daten · Zahlen im Tooltip",
     ];
     if (year === getCurrentYear()) {
         notes.push("laufendes Jahr bis dato");
@@ -182,10 +167,11 @@ export async function renderMapChart(elementID: string, region: string, year: nu
             top: 0,
         },
         animation: false,
-        // The description for screen readers, without ECharts' automatic
-        // patterns: on a choropleth they hatch every region.
         aria: {
             enabled: true,
+            decal: {
+                show: true,
+            },
         },
         toolbox: {
             show: !isNarrow(),
@@ -234,10 +220,9 @@ export async function renderMapChart(elementID: string, region: string, year: nu
             data: data.map(d => ({
                 name: d.name,
                 // Patchy data, see MIN_COVERAGE: its gain is too low to go
-                // by, so it takes no colour of the scale but stripes; the
-                // number is in the tooltip.
+                // by, so it stays grey like no data; the number and how
+                // patchy it is are in the tooltip.
                 value: d.patchy ? undefined : d.value ?? undefined,
-                itemStyle: d.patchy ? { areaColor: hatching(colors) } : undefined,
             })),
             // Regions without data stay this colour; the ones with one
             // are coloured by the visualMap.
