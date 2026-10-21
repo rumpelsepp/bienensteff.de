@@ -229,6 +229,18 @@ export async function renderMapChart(elementID: string, region: string, year: nu
                 borderColor: colors.ink,
                 borderWidth: 0.5,
             },
+            // Hovering a region: its name is in the tooltip, not written
+            // across the map, and it keeps its colour -- a thick outline
+            // marks it.
+            emphasis: {
+                label: { show: false },
+                itemStyle: {
+                    areaColor: "inherit",
+                    borderColor: colors.ink,
+                    borderWidth: 2,
+                },
+            },
+            select: { disabled: true },
         }],
     };
     chart.setOption(option);
