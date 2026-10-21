@@ -1,9 +1,13 @@
 import { KLIMA_CHART, TRACHTNET_DERIVATIVE_CHART, TRACHTNET_EVALUATION_TABLE, TRACHTNET_GAPS_CHART, TRACHTNET_MAP_CHART, TRACHTNET_PROGRESS_CHART, TRACHTNET_TREND_CHART, TRACHTNET_YEAR_SELECT } from "../selectors";
 import { getParam } from "../helpers";
 import { getCurrentYear } from "./helpers";
-import { availableYears, renderDerivativeChart, renderEvaluationTable, renderProgressChart, renderTrendChart } from "./trachtnet";
-import { renderGapsChart } from "./trachtnet-gaps";
-import { renderMapChart } from "./trachtnet-map";
+import { availableYears } from "./trachtnet/data";
+import { renderDerivativeChart } from "./trachtnet/derivative";
+import { renderGapsChart } from "./trachtnet/gaps";
+import { renderMapChart } from "./trachtnet/map";
+import { renderProgressChart } from "./trachtnet/progress";
+import { renderEvaluationTable } from "./trachtnet/table";
+import { renderTrendChart } from "./trachtnet/trend";
 import { renderKlimaChart } from "./klima";
 
 // The year the charts of the page show: the current one, unless the page is

@@ -4,7 +4,8 @@ import { sum } from "simple-statistics";
 
 import { QueenColor, centredWeeklyMean, getCurrentYear, getXWindow, getToday } from "./helpers";
 import { buildBaseOption, buildFormatterDE, chartColors, chartGrid, headHeight, initEchartsInstance, isNarrow, valueAxis } from "./base";
-import { loadTrachtPhases, phaseMarkArea, type Phase } from "./trachtnet";
+import { loadTrachtPhases, type Phase } from "./trachtnet/analysis";
+import { phaseMarkArea } from "./trachtnet/marks";
 import { toTitleCase } from "../helpers";
 
 type DailyRecordRaw = {

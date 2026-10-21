@@ -1,9 +1,9 @@
 import * as echarts from "echarts";
 import { quantile } from "simple-statistics";
 
-import { getCurrentYear } from "./helpers";
-import { toTitleCase } from "../helpers";
-import { buildFormatterDE, chartColors, initEchartsInstance, isNarrow } from "./base";
+import { getCurrentYear } from "../helpers";
+import { toTitleCase } from "../../helpers";
+import { buildFormatterDE, chartColors, initEchartsInstance, isNarrow } from "../base";
 
 // The map chart: the season gain of every Landkreis of Bayern, drawn over
 // the county boundaries of /trachtnet-dump/bayern-kreise.geojson (AGS as

@@ -1,11 +1,12 @@
-import { Temporal } from "temporal-polyfill";
 import type * as echarts from "echarts";
 import { median } from "simple-statistics";
 
-import { chooseQueenColor, getCurrentYear } from "./helpers";
-import { toTitleCase } from "../helpers";
-import { buildBaseOption, chartColors, chartGrid, headHeight, initEchartsInstance, valueAxis } from "./base";
-import { availableYears, dayOfYear, dayOfYearToDate, fitTrend, GAP_MIN_DAYS, loadYear, signedDays, trachtGaps } from "./trachtnet";
+import { chooseQueenColor, getCurrentYear } from "../helpers";
+import { toTitleCase } from "../../helpers";
+import { buildBaseOption, chartColors, chartGrid, headHeight, initEchartsInstance, valueAxis } from "../base";
+import { availableYears, loadYear } from "./data";
+import { dayOfYear, dayOfYearToDate, fitTrend, GAP_MIN_DAYS, trachtGaps } from "./analysis";
+import { signedDays } from "./marks";
 
 // The gaps chart: the days without a honey flow between a season's
 // phases (see trachtGaps()), one vertical segment per gap and year --
