@@ -155,6 +155,9 @@ function onCalendarOf(records: DayRecord[], year: number): DayRecord[] {
 // over the week around the day, for at least this many days.
 export const TRACHT_THRESHOLD = 0.5;
 const TRACHT_MIN_DAYS = 3;
+// Fewer days than this between two flows are no "Trachtlücke": the two
+// are one flow, through a few cool days.
+export const GAP_MIN_DAYS = 7;
 
 export type Phase = {
     start: Temporal.PlainDate,
@@ -202,26 +205,33 @@ export function trachtPhases(records: DayRecord[]): Phase[] {
     return phases;
 }
 
+// The phases of the season: runs of days whose weekly mean reaches the
+// threshold, from March on -- before, the mean over a region's scales has
+// spikes (scales being set up) that are no flow. A day missing from the
+// dump counts as one without a flow. Runs closer to each other than
+// GAP_MIN_DAYS are one phase, through cool days and short holes in the
+// data alike; what is left shorter than
+// TRACHT_MIN_DAYS, or begins after the season (see isInSeason()), is
+// dropped.
 function detectPhases(records: DayRecord[]): Phase[] {
     const mean = calendarWeeklyMean(records);
-    const phases: Phase[] = [];
-    let current: Phase | null = null;
-    const close = () => {
-        if (current && current.start.until(current.end).days + 1 >= TRACHT_MIN_DAYS) {
-            phases.push(current);
-        }
-        current = null;
-    };
+    type Run = { first: DayRecord, last: DayRecord };
+    const runs: Run[] = [];
     records.forEach((r, i) => {
         const m = mean[i];
-        if (m !== null && m >= TRACHT_THRESHOLD) {
-            current = { start: current?.start ?? r.date, end: r.date };
+        if (m === null || m < TRACHT_THRESHOLD || r.date.month < 3) {
+            return;
+        }
+        const run = runs[runs.length - 1];
+        if (run && r.day - run.last.day < GAP_MIN_DAYS + 1) {
+            run.last = r;
         } else {
-            close();
+            runs.push({ first: r, last: r });
         }
     });
-    close();
-    return phases;
+    return runs
+        .filter(run => run.last.day - run.first.day + 1 >= TRACHT_MIN_DAYS && isInSeason(run.first.date))
+        .map(run => ({ start: run.first.date, end: run.last.date }));
 }
 
 export async function loadTrachtPhases(region: string, year: number): Promise<Phase[]> {
@@ -332,27 +342,54 @@ function seasonTotals(records: DayRecord[], until?: number): { gain: number, los
     return totals;
 }
 
-// The phases that begin in the season (see isInSeason()): before March
-// there is no flow to speak of, and the mean over a region's scales has
-// spikes in January -- scales being set up -- that the phase detection
-// would count.
-export function seasonPhases(records: DayRecord[]): Phase[] {
-    return trachtPhases(records).filter(p => isInSeason(p.start));
-}
+// A "Trachtlücke": the days between two consecutive phases, at least
+// GAP_MIN_DAYS of them (see detectPhases()). A gap is only a gap if its
+// days were actually seen: days missing from the dump (a scale offline,
+// see the dump script) are no proof of a flow ending. Up to
+// GAP_TOLERATED missing days are lived with; more make the gap what it
+// is -- a hole in the data, drawn as an outline and left out of the
+// statistics.
+export type Gap = {
+    start: Temporal.PlainDate,
+    end: Temporal.PlainDate,
+    days: number,
+    // Days of the gap that have data.
+    covered: number,
+    reliable: boolean,
+    // The year's longest reliable one -- the window an imker waits for.
+    longest: boolean,
+};
 
-// The flow-free days between two of the phases, the longest run first --
-// the "Trachtlücke" an imker watches out for.
-function longestGap(phases: Phase[]): { days: number, from: Temporal.PlainDate, to: Temporal.PlainDate } | null {
-    let longest: { days: number, from: Temporal.PlainDate, to: Temporal.PlainDate } | null = null;
-    for (let i = 1; i < phases.length; i++) {
-        const from = phases[i - 1].end.add({ days: 1 });
-        const to = phases[i].start.add({ days: -1 });
-        const days = from.until(to).days + 1;
-        if (days > 0 && (!longest || days > longest.days)) {
-            longest = { days, from, to };
-        }
+const GAP_TOLERATED = 2;
+
+const gapCache = new WeakMap<DayRecord[], Gap[]>();
+
+export function trachtGaps(records: DayRecord[]): Gap[] {
+    let gaps = gapCache.get(records);
+    if (gaps) {
+        return gaps;
     }
-    return longest;
+    const phases = trachtPhases(records);
+    gaps = phases.slice(1).map((phase, i) => {
+        const first = epochDay(phases[i].end) + 1;
+        const last = epochDay(phase.start) - 1;
+        const days = last - first + 1;
+        const covered = records.filter(r => r.day >= first && r.day <= last).length;
+        return {
+            start: phases[i].end.add({ days: 1 }),
+            end: phase.start.add({ days: -1 }),
+            days,
+            covered,
+            reliable: days - covered <= GAP_TOLERATED,
+            longest: false,
+        };
+    });
+    const longest = gaps.filter(g => g.reliable).reduce<Gap | null>((best, g) => !best || g.days > best.days ? g : best, null);
+    if (longest) {
+        longest.longest = true;
+    }
+    gapCache.set(records, gaps);
+    return gaps;
 }
 
 // --------------------------------------------------------------------
@@ -713,7 +750,7 @@ export async function renderEvaluationTable(elementID: string, region: string, y
 
     // When the flow began and ended, how many phases it came in, and the
     // longest stretch without it in between.
-    const phases = seasonPhases(records);
+    const phases = trachtPhases(records);
     if (phases.length > 0) {
         const phaseDays = phases.reduce((sum, p) => sum + p.start.until(p.end).days + 1, 0);
         rows.push(
@@ -721,9 +758,9 @@ export async function renderEvaluationTable(elementID: string, region: string, y
             row("Trachtende", date(phases[phases.length - 1].end)),
             row("Trachtphasen", `${phases.length} (${phaseDays} Tage)`),
         );
-        const gap = longestGap(phases);
+        const gap = trachtGaps(records).find(g => g.longest);
         if (gap) {
-            rows.push(row("Längste Trachtlücke", `${gap.days} Tage (${date(gap.from)} – ${date(gap.to)})`));
+            rows.push(row("Längste Trachtlücke", `${gap.days} Tage (${date(gap.start)} – ${date(gap.end)})`));
         }
     }
 
@@ -763,12 +800,13 @@ const SERIES_BEGIN = "Trachtbeginn";
 const SERIES_END = "Trachtende";
 const SERIES_TREND_BEGIN = "Trend Beginn";
 const SERIES_TREND_END = "Trend Ende";
-// The y axis counts the days of the year; its labels show them as dates of
-// a leap year, in which every month/day fits.
+// The y axis counts the days of the year on the calendar of a leap year,
+// in which every month/day fits: the 1st of March is day 61 in every
+// year, and the labels show the date the dot stands for.
 const LABEL_YEAR = 2024;
 
 // A year's flow: the first day of its first phase of the season and the
-// last day of its last (see seasonPhases()), null where there was none.
+// last day of its last (see detectPhases()), null where there was none.
 // Whether the beginning and the ending were observed -- whether the days
 // around them have data: where the dump has a hole there (a scale
 // offline, see the dump script), the flow may well have gone on before
@@ -792,7 +830,7 @@ function boundaryObserved(records: DayRecord[], date: Temporal.PlainDate, before
 }
 
 export function dayOfYear(date: Temporal.PlainDate): number {
-    return Temporal.PlainDate.from({ year: date.year, month: 1, day: 1 }).until(date).days + 1;
+    return (Date.UTC(LABEL_YEAR, date.month - 1, date.day) - Date.UTC(LABEL_YEAR, 0, 1)) / 86_400_000 + 1;
 }
 
 export function dayOfYearToDate(doy: number): Temporal.PlainDate {
@@ -899,7 +937,7 @@ export async function renderTrendChart(elementID: string, region: string) {
     const years = await availableYears([region]);
     const recordsPerYear = await Promise.all(years.map(y => loadYear(region, y)));
     const flow: Flow[] = years.map((year, i) => {
-        const phases = seasonPhases(recordsPerYear[i]);
+        const phases = trachtPhases(recordsPerYear[i]);
         const begin = phases[0]?.start ?? null;
         const end = phases.length > 0 ? phases[phases.length - 1].end : null;
         return {

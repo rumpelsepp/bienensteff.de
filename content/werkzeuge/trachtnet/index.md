@@ -11,7 +11,7 @@ Die Grafiken werden täglich aktualisiert; die letzten zwei Tage fehlen, weil Tr
 
 {{< box header="Kurz gesagt" >}}
 - **Tracht:** Das 7-Tage-Mittel der täglichen Gewichtszunahme einer Region liegt mindestens drei Tage lang bei 0,5 kg pro Tag oder mehr.
-- **Trachtlücke:** die Tage zwischen zwei Trachtphasen.
+- **Trachtlücke:** mindestens 7 Tage ohne Tracht zwischen zwei Trachtphasen.
 - **Gestrichelt oder hohl gezeichnet:** unsicher – meist fehlen dort Daten. 🐝
 {{< /box >}}
 
@@ -27,17 +27,19 @@ Tage ohne Daten, längere Null-Reihen abgeschalteter Waagen und die zwei noch vo
 - Gerechnet wird mit dem 7-Tage-Mittel statt mit Einzeltagen, damit ein kühler Tag die Tracht nicht unterbricht.
   Das Mittel läuft über Kalendertage – über Datenlöcher hinweg wird nicht gemittelt.
 - Schwelle: 0,5 kg pro Tag, mindestens drei Tage lang, Beginn frühestens im März.
+- Liegen zwischen zwei Phasen weniger als 7 Tage, gelten sie als eine – über ein paar kühle Tage oder ein kurzes Datenloch hinweg.
 - **Trachtbeginn** ist der erste Tag der ersten Trachtphase des Jahres, **Trachtende** der letzte Tag der letzten.
 
 **Trachtlücke.**
-Die Tage zwischen zwei Trachtphasen.
-Fehlen in einer Lücke an mehr als zwei Tagen die Daten, ist sie nur gestrichelt umrandet und zählt für Median und Trend nicht.
+Mindestens 7 Tage zwischen zwei Trachtphasen.
+Fehlen in einer Lücke an mehr als zwei Tagen die Daten, ist sie nur gestrichelt umrandet und zählt nicht als längste Lücke des Jahres.
 
 **Unsichere Ränder.**
 Haben weniger als 7 der 14 Tage vor dem Trachtbeginn (bzw. nach dem Trachtende) Daten, ist der Punkt hohl gezeichnet und zählt für den Trend nicht.
 
 **Median und Trend.**
-Die typische Trachtlücke ist der Median von Beginn und Ende der längsten Lücke jedes Jahres – anders als ein Mittelwert verzerren ihn einzelne Ausreißerjahre nicht.
+Die typische Trachtlücke ergibt sich aus dem Median von Beginn und Länge der längsten Lücke jedes Jahres – anders als ein Mittelwert verzerren ihn einzelne Ausreißerjahre nicht.
+Jahre ohne Lücke gehen nicht ein.
 Die Trendgerade läuft durch die Mitten dieser Lücken; ein R² unter 0,25 heißt: eher Zufall als Trend.
 
 **Grenzen.**

@@ -4,51 +4,12 @@ import type * as echarts from "echarts";
 import { chooseQueenColor, getCurrentYear } from "./helpers";
 import { toTitleCase } from "../helpers";
 import { buildBaseOption, chartColors, chartGrid, headHeight, initEchartsInstance, valueAxis } from "./base";
-import { availableYears, dayOfYear, dayOfYearToDate, epochDay, linearRegression, loadYear, seasonPhases, signedDays, type DayRecord, type Phase } from "./trachtnet";
+import { availableYears, dayOfYear, dayOfYearToDate, GAP_MIN_DAYS, linearRegression, loadYear, signedDays, trachtGaps } from "./trachtnet";
 
 // The gaps chart: the days without a honey flow between a season's
-// phases (see seasonPhases()), one vertical segment per gap and year --
+// phases (see trachtGaps()), one vertical segment per gap and year --
 // for the question when in the year there is time to harvest, how much
 // that timing moves around and whether it has drifted over the years.
-
-// A gap: the flow-free days between two consecutive phases. A gap is
-// only a gap if its days were actually seen: days missing from the dump
-// (a scale offline, see the dump script) are no proof of a flow ending.
-// Up to GAP_TOLERATED missing days are lived with; more make the gap
-// what it is -- a hole in the data, drawn as an outline and left out of
-// the statistics.
-type Gap = {
-    start: Temporal.PlainDate,
-    end: Temporal.PlainDate,
-    days: number,
-    // Days of the gap that have data.
-    covered: number,
-    reliable: boolean,
-    // The year's longest -- the window an imker waits for.
-    longest: boolean,
-};
-
-const GAP_TOLERATED = 2;
-
-function gapsOf(phases: Phase[], records: DayRecord[]): Gap[] {
-    const gaps: Gap[] = [];
-    for (let i = 1; i < phases.length; i++) {
-        const start = phases[i - 1].end.add({ days: 1 });
-        const end = phases[i].start.add({ days: -1 });
-        const days = start.until(end).days + 1;
-        if (days <= 0) {
-            continue;
-        }
-        const first = epochDay(start);
-        const last = epochDay(end);
-        const covered = records.filter(r => r.day >= first && r.day <= last).length;
-        gaps.push({ start, end, days, covered, reliable: days - covered <= GAP_TOLERATED, longest: false });
-    }
-    gaps.forEach(g => {
-        g.longest = g.days === Math.max(...gaps.map(x => x.days));
-    });
-    return gaps;
-}
 
 // R² of the regression, for whether its slope is anything to go by.
 function rSquared(points: [number, number][], trend: { slope: number, intercept: number }): number {
@@ -68,35 +29,32 @@ export async function renderGapsChart(elementID: string, region: string) {
 
     const years = await availableYears([region]);
     const recordsPerYear = await Promise.all(years.map(y => loadYear(region, y)));
-    const gapsPerYear = recordsPerYear.map(records => gapsOf(seasonPhases(records), records));
+    const gapsPerYear = recordsPerYear.map(records => trachtGaps(records));
     const longestPerYear = gapsPerYear.map(gaps => gaps.find(g => g.longest) ?? null);
 
     // The rule of thumb to take away: the median of when the longest gaps
-    // begin and end over the years -- only over the ones that rest on
-    // data, see Gap.reliable.
+    // begin and of how long they last over the years -- only over the
+    // ones that rest on data, see Gap.reliable. (A median of their ends
+    // could come out before the median of their beginnings.)
     const med = (values: number[]): number => {
         const sorted = [...values].sort((a, b) => a - b);
         const mid = Math.floor(sorted.length / 2);
         return sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
     };
-    const solid = longestPerYear.flatMap(g => g && g.reliable ? [g] : []);
-    const longestStarts = solid.map(g => dayOfYear(g.start));
-    const longestEnds = solid.map(g => dayOfYear(g.end));
-    const median = longestStarts.length > 0 ? {
-        start: med(longestStarts),
-        end: med(longestEnds),
+    const solid = longestPerYear.flatMap(g => g ? [g] : []);
+    const medianStart = solid.length > 0 ? med(solid.map(g => dayOfYear(g.start))) : 0;
+    const median = solid.length > 0 ? {
+        start: medianStart,
+        end: medianStart + med(solid.map(g => g.days)) - 1,
     } : null;
     const medianText = (doy: number) =>
         dayOfYearToDate(doy).toLocaleString("de-DE", { day: "numeric", month: "numeric" });
 
     // Whether the gaps have drifted over the years: the trend of the
     // centers of the longest ones.
-    const centers: [number, number][] = gapsPerYear.flatMap((gaps, i) => {
-        const g = gaps.find(x => x.longest);
-        return g && g.reliable
-            ? [[years[i], (dayOfYear(g.start) + dayOfYear(g.end)) / 2] as [number, number]]
-            : [];
-    });
+    const centers: [number, number][] = longestPerYear.flatMap((g, i) => g
+        ? [[years[i], (dayOfYear(g.start) + dayOfYear(g.end)) / 2] as [number, number]]
+        : []);
     const trend = linearRegression(centers);
     const quality = trend ? rSquared(centers, trend) : 0;
 
@@ -210,7 +168,7 @@ export async function renderGapsChart(elementID: string, region: string) {
     };
 
     const notes = [
-        "Tage ohne Tracht zwischen den Trachtphasen (Mär–Aug)",
+        `Trachtlücken ab ${GAP_MIN_DAYS} Tagen zwischen den Trachtphasen (ab März)`,
         "dick: längste Lücke · gestrichelt: Datenlücke",
         median
             ? `hinterlegt: Median ${medianText(median.start)}–${medianText(median.end)}`
