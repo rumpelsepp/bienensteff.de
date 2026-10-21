@@ -2,14 +2,51 @@
 title: Trachtnet Auswertungen
 ---
 
-Die Daten für die folgenden Auswertungen stammen aus TrachtNet, das von [Agrarmeteorologie Rheinland-Pfalz](https://www.wetter.rlp.de/Internet/global/inetcntr.nsf/dlr_web_full.xsp?src=N7V9968V90&p1=3M315JB66X) zur Verfügung gestellt wird.
-Für TrachtNet gibt es eine eigene [Web UI](https://dlr-web-daten1.aspdienste.de/cgi-bin/tdsa/tdsa_client.pl), die interaktiv verwendet werden kann.
-Die folgenden Grafiken sind meine eigenen Auswertungen und zeigen hauptsächlich für mich selbst relevante Regionen.
-Die Graphen werden täglich aktualisiert.
-Die Daten zu „heute“ und „gestern“ fehlen, da das TrachtNet Netzwerk die Datensätze verzögert aktualisiert.
+Eigene Auswertungen der TrachtNet-Waagstöcke, vor allem für die Regionen, in denen wir imkern.
+Die Daten stellt die [Agrarmeteorologie Rheinland-Pfalz](https://www.wetter.rlp.de/Internet/global/inetcntr.nsf/dlr_web_full.xsp?src=N7V9968V90&p1=3M315JB66X) bereit; interaktiv lassen sie sich auch in der [TrachtNet-Weboberfläche](https://dlr-web-daten1.aspdienste.de/cgi-bin/tdsa/tdsa_client.pl) ansehen.
+Die Grafiken werden täglich aktualisiert; die letzten zwei Tage fehlen, weil TrachtNet sie erst vorläufig berechnet.
 {.lead}
 
 {{< trachtnet-year-select >}}
+
+{{< box header="Kurz gesagt" >}}
+- **Tracht:** Das 7-Tage-Mittel der täglichen Gewichtszunahme einer Region liegt mindestens drei Tage lang bei 0,5 kg pro Tag oder mehr.
+- **Trachtlücke:** die Tage zwischen zwei Trachtphasen.
+- **Gestrichelt oder hohl gezeichnet:** unsicher – meist fehlen dort Daten. 🐝
+{{< /box >}}
+
+<details class="fold-details">
+<summary>Methodik im Detail</summary>
+
+**Daten.**
+Grundlage ist die tägliche Gewichtsänderung jedes Waagstocks, gemittelt über alle Waagen einer Region.
+Tage ohne Daten, längere Null-Reihen abgeschalteter Waagen und die zwei noch vorläufigen letzten Tage fliegen vorher raus.
+
+**Tracht.**
+
+- Gerechnet wird mit dem 7-Tage-Mittel statt mit Einzeltagen, damit ein kühler Tag die Tracht nicht unterbricht.
+  Das Mittel läuft über Kalendertage – über Datenlöcher hinweg wird nicht gemittelt.
+- Schwelle: 0,5 kg pro Tag, mindestens drei Tage lang, Beginn frühestens im März.
+- **Trachtbeginn** ist der erste Tag der ersten Trachtphase des Jahres, **Trachtende** der letzte Tag der letzten.
+
+**Trachtlücke.**
+Die Tage zwischen zwei Trachtphasen.
+Fehlen in einer Lücke an mehr als zwei Tagen die Daten, ist sie nur gestrichelt umrandet und zählt für Median und Trend nicht.
+
+**Unsichere Ränder.**
+Haben weniger als 7 der 14 Tage vor dem Trachtbeginn (bzw. nach dem Trachtende) Daten, ist der Punkt hohl gezeichnet und zählt für den Trend nicht.
+
+**Median und Trend.**
+Die typische Trachtlücke ist der Median von Beginn und Ende der längsten Lücke jedes Jahres – anders als ein Mittelwert verzerren ihn einzelne Ausreißerjahre nicht.
+Die Trendgerade läuft durch die Mitten dieser Lücken; ein R² unter 0,25 heißt: eher Zufall als Trend.
+
+**Grenzen.**
+
+- Hinter einer Region stecken oft nur wenige Waagen; die Karte zeigt ihre Zahl im Tooltip.
+- Gemessen wird der Nettozuwachs, der Verbrauch des Volks ist also schon abgezogen – die 0,5 kg sind eine Faustregel.
+- Fütterungen oder andere Eingriffe am Waagstock können wie Eintrag aussehen.
+
+</details>
 
 ## Bayern
 
@@ -33,7 +70,7 @@ Kreisgrenzen der Karte: Datenlizenz Deutschland – Namensnennung – Version 2.
 
 ### Oberbayern
 
-<details class="region-details">
+<details class="fold-details">
 <summary>Diagramme</summary>
 
 {{< trachtnet-widget region="Oberbayern" type="derivative" >}}
@@ -46,7 +83,7 @@ Kreisgrenzen der Karte: Datenlizenz Deutschland – Namensnennung – Version 2.
 
 ### Niederbayern
 
-<details class="region-details">
+<details class="fold-details">
 <summary>Diagramme</summary>
 
 {{< trachtnet-widget region="Niederbayern" type="derivative" >}}
