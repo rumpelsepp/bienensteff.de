@@ -59,14 +59,3 @@ In der Saison (Frühjahr bis Spätsommer) kann's mal länger dauern, bei Schwär
 
 Beim Direktverkauf an der Haustür bitte vorher kurz anrufen oder schreiben.
 In München ist tendenziell montags tagsüber jemand zu Hause (ganz unverbindliche Info).
-
-## Ernte-Benachrichtigung
-
-Die frische Ernte gibt's jedes Jahr ab September.
-Wenn ihr eine kurze Nachricht wollt, sobald es so weit ist, schreibt uns – wir nehmen euch dann für die nächste Ernte auf die Liste:
-
-<a class="btn btn-outline-primary mb-3" href="mailto:info@bienensteff.de?subject=Ernte-Benachrichtigung&body=Servus%2C%0A%0Abitte%20gebt%20mir%20Bescheid%2C%20sobald%20die%20neue%20Honigernte%20da%20ist.">
-<i class="bi bi-bell" aria-hidden="true"></i> Auf die Ernte-Liste setzen
-</a>
-
-Die E-Mail-Adresse nutzen wir ausschließlich für diese Benachrichtigung und löschen sie auf Wunsch jederzeit wieder (siehe [Datenschutz]({{< relref "datenschutz" >}})).
