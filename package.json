@@ -2,12 +2,25 @@
   "dependencies": {
     "bootstrap": "^5.3.6",
     "bootstrap-icons": "^1.13.1",
-    "echarts": "^6.1.0",
+    "d3-axis": "^3.0.0",
+    "d3-geo": "^3.1.1",
+    "d3-interpolate": "^3.0.1",
+    "d3-scale": "^4.0.2",
+    "d3-selection": "^3.0.0",
+    "d3-shape": "^3.2.0",
+    "d3-zoom": "^3.0.0",
     "simple-statistics": "^7.12.1",
     "temporal-polyfill": "^1.0.5"
   },
   "devDependencies": {
     "@types/bootstrap": "^5.2.11",
+    "@types/d3-axis": "^3.0.6",
+    "@types/d3-geo": "^3.1.1",
+    "@types/d3-interpolate": "^3.0.4",
+    "@types/d3-scale": "^4.0.9",
+    "@types/d3-selection": "^3.0.12",
+    "@types/d3-shape": "^3.2.0",
+    "@types/d3-zoom": "^3.0.9",
     "esbuild": "^0.28.2",
     "typescript": "^7.0.2"
   },

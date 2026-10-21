@@ -1,10 +1,11 @@
-import { KLIMA_CHART, TRACHTNET_DERIVATIVE_CHART, TRACHTNET_EVALUATION_TABLE, TRACHTNET_GAPS_CHART, TRACHTNET_MAP_CHART, TRACHTNET_PROGRESS_CHART, TRACHTNET_TREND_CHART, TRACHTNET_YEAR_SELECT } from "../selectors";
+import { KLIMA_CHART, TRACHTNET_DERIVATIVE_CHART, TRACHTNET_EVALUATION_TABLE, TRACHTNET_FLOWMAP_CHART, TRACHTNET_GAPS_CHART, TRACHTNET_MAP_CHART, TRACHTNET_PROGRESS_CHART, TRACHTNET_TREND_CHART, TRACHTNET_YEAR_SELECT } from "../selectors";
 import { getParam } from "../helpers";
 import { getCurrentYear } from "./helpers";
 import { availableYears } from "./trachtnet/data";
 import { renderDerivativeChart } from "./trachtnet/derivative";
 import { renderGapsChart } from "./trachtnet/gaps";
 import { renderMapChart } from "./trachtnet/map";
+import { renderFlowMapChart } from "./trachtnet/flowmap";
 import { renderProgressChart } from "./trachtnet/progress";
 import { renderEvaluationTable } from "./trachtnet/table";
 import { renderTrendChart } from "./trachtnet/trend";
@@ -102,6 +103,8 @@ async function initYearSelect() {
     }
     show(shownYear);
     box.hidden = false;
+    // How the charts are used, see the shortcode: only with them.
+    document.querySelector<HTMLElement>(".chart-help")?.removeAttribute("hidden");
 }
 
 // Widgets inside a folded <details> (the Regierungsbezirke of the
@@ -149,6 +152,7 @@ async function renderAllCharts(what: "all" | "year") {
         ...renderAll(TRACHTNET_DERIVATIVE_CHART, chart(renderDerivativeChart)),
         ...renderAll(TRACHTNET_PROGRESS_CHART, chart(renderProgressChart)),
         ...renderAll(TRACHTNET_MAP_CHART, chart(renderMapChart)),
+        ...renderAll(TRACHTNET_FLOWMAP_CHART, chart(renderFlowMapChart)),
         ...(what === "all" ? [
             // The trend and gaps charts span all years: they don't follow
             // the year the page shows.

@@ -76,21 +76,28 @@ export async function resolveRegion(region: string): Promise<Region> {
 
 // Every file is fetched once, however many charts and tables of the page
 // show it -- also when they are all built anew for another colour scheme.
+// The same array, too: what is worked out of it is kept along with it
+// (see analysis.ts).
 export const yearCache = new Map<string, Promise<DayRecord[]>>();
 
-// The days of a region in a year, empty if the dump has none.
-export function loadYear(region: string, year: number): Promise<DayRecord[]> {
-    const key = `${region.toLowerCase()}/${year}`;
+// The days of a region in a year, empty if the dump has none -- the region
+// by its name, see resolveRegion().
+export async function loadYear(region: string, year: number): Promise<DayRecord[]> {
+    return loadRegionYear(await resolveRegion(region), year);
+}
+
+// The same for a region of the index, e.g. each Landkreis of a map.
+export function loadRegionYear(r: Region, year: number): Promise<DayRecord[]> {
+    const key = `${r.kind}/${r.id}/${year}`;
     let records = yearCache.get(key);
     if (!records) {
-        records = fetchYear(region, year);
+        records = fetchYear(r, year);
         yearCache.set(key, records);
     }
     return records;
 }
 
-export async function fetchYear(region: string, year: number): Promise<DayRecord[]> {
-    const r = await resolveRegion(region);
+export async function fetchYear(r: Region, year: number): Promise<DayRecord[]> {
     if (!r.years.includes(year)) {
         return [];
     }

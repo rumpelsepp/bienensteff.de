@@ -107,6 +107,36 @@ export async function loadTrachtPhases(region: string, year: number): Promise<Ph
     return trachtPhases(await loadYear(region, year));
 }
 
+// Whether the days of a year cover the stretch of it from "first" to
+// "last" (month, day) in full: data from its first week to its last, for
+// at least COVERAGE of its days. A year a region joined TrachtNet in
+// counts its weight from the day it joined, not from January; and the
+// year still running stops today: neither belongs in a mean over years.
+const COVERAGE = 0.9;
+
+function covers(records: DayRecord[], first: [number, number], last: [number, number]): boolean {
+    if (records.length === 0) {
+        return false;
+    }
+    const year = records[0].date.year;
+    const from = Date.UTC(year, first[0] - 1, first[1]) / 86_400_000;
+    const to = Date.UTC(year, last[0] - 1, last[1]) / 86_400_000;
+    const inside = records.filter(r => r.day >= from && r.day <= to);
+    return inside.length >= COVERAGE * (to - from + 1)
+        && inside[0].day <= from + 6
+        && inside[inside.length - 1].day >= to - 6;
+}
+
+// The whole year, January to December.
+export function coversYear(records: DayRecord[]): boolean {
+    return covers(records, [1, 1], [12, 31]);
+}
+
+// The season (see isInSeason()), March to August.
+export function coversSeason(records: DayRecord[]): boolean {
+    return covers(records, [3, 1], [8, 31]);
+}
+
 // For every day of the calendar of "year": the mean of where the given
 // years stood on that day.
 export function meanPerDay(years: DayRecord[][], year: number): [Temporal.PlainDate, number][] {
@@ -242,10 +272,10 @@ export function trachtGaps(records: DayRecord[]): Gap[] {
 // kept to what can't be said elsewhere, so that it doesn't end up on top
 // of other text: what bands and dashed lines mean stands below the title.
 
-// The mean of the season gain (see seasonTotals()) of the years around
-// "year", to put its own against -- cut back to the same day of the year
-// for one that is still running. Null if there is nothing to compare
-// with.
+// The mean of the season gain (see seasonTotals()) of the other years
+// with a full season (see coversSeason()), to put that of "year" against
+// -- cut back to the same day of the year for one that is still running.
+// Null if there is nothing to compare with.
 export async function meanSeasonGain(
     region: string,
     year: number,
@@ -255,14 +285,9 @@ export async function meanSeasonGain(
     const gains: [year: number, gain: number][] = [];
     for (const other of await otherYears(region, year)) {
         const otherRecords = await loadYear(region, other);
-        if (!otherRecords.some(r => isInSeason(r.date))) {
-            continue;  // the region wasn't in TrachtNet yet that year
+        if (coversSeason(otherRecords)) {
+            gains.push([other, seasonTotals(otherRecords, until).gain]);
         }
-        const gain = seasonTotals(otherRecords, until).gain;
-        if (until !== undefined && gain === 0 && !otherRecords.some(r => isInSeason(r.date) && ordinalMonthDay(r.date) <= until)) {
-            continue;  // it joined TrachtNet after "until": nothing of the season yet
-        }
-        gains.push([other, gain]);
     }
     if (gains.length === 0) {
         return null;
@@ -281,6 +306,23 @@ export const LABEL_YEAR = 2024;
 
 export function dayOfYear(date: Temporal.PlainDate): number {
     return (Date.UTC(LABEL_YEAR, date.month - 1, date.day) - Date.UTC(LABEL_YEAR, 0, 1)) / 86_400_000 + 1;
+}
+
+// Lines for an axis of days of the year (see dayOfYear()) between "from"
+// and "to": labelled on the 1st and the 15th of each month, faint on the
+// 8th and the 22nd.
+export function datesTicks(from: number, to: number): { major: number[], minor: number[] } {
+    const major: number[] = [];
+    const minor: number[] = [];
+    for (let month = 1; month <= 12; month++) {
+        for (const [day, into] of [[1, major], [8, minor], [15, major], [22, minor]] as const) {
+            const doy = dayOfYear(Temporal.PlainDate.from({ year: LABEL_YEAR, month, day }));
+            if (doy >= from && doy <= to) {
+                into.push(doy);
+            }
+        }
+    }
+    return { major, minor };
 }
 
 export function dayOfYearToDate(doy: number): Temporal.PlainDate {

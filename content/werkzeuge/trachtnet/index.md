@@ -69,7 +69,11 @@ Die folgende Karte zeigt, wo die Völker der TrachtNet-Waagstöcke in der Saison
 
 {{< trachtnet-widget region="Bayern" type="map" height="520px" >}}
 
-Kreisgrenzen der Karte: Datenlizenz Deutschland – Namensnennung – Version 2.0 ([dl-de/by-2.0](https://www.govdata.de/dl-de/by-2-0)), © Bundesamt für Kartographie und Geodäsie.
+Wo die Saison früher beginnt und wo sie länger dauert, zeigt die nächste Karte: Trachtbeginn und Trachtende je Landkreis, umschaltbar über die Knöpfe.
+
+{{< trachtnet-widget region="Bayern" type="flowmap" height="560px" >}}
+
+Kreisgrenzen der Karten: Datenlizenz Deutschland – Namensnennung – Version 2.0 ([dl-de/by-2.0](https://www.govdata.de/dl-de/by-2-0)), © Bundesamt für Kartographie und Geodäsie.
 
 ### Oberbayern
 

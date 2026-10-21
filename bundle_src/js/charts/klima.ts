@@ -1,11 +1,11 @@
 import { Temporal } from "temporal-polyfill";
-import type * as echarts from 'echarts';
+import { area, line, curveMonotoneX } from "d3-shape";
 import { sum } from "simple-statistics";
 
 import { QueenColor, centredWeeklyMean, getCurrentYear, getXWindow, getToday } from "./helpers";
-import { buildBaseOption, buildFormatterDE, chartColors, chartGrid, headHeight, initEchartsInstance, isNarrow, valueAxis } from "./base";
-import { loadTrachtPhases, type Phase } from "./trachtnet/analysis";
-import { phaseMarkArea } from "./trachtnet/marks";
+import { DAY_MS, emptyNote, formatDE, hatch, hLine, isNarrow, mountChart, swatch, timeChart } from "./frame";
+import { loadTrachtPhases } from "./trachtnet/analysis";
+import { phaseBands, plotDay } from "./trachtnet/marks";
 import { toTitleCase } from "../helpers";
 
 type DailyRecordRaw = {
@@ -82,8 +82,6 @@ const SERIES_RAIN = "Niederschlag (7-Tage-Summe)";
 
 // From this temperature on the bees fly.
 const FLIGHT_TEMPERATURE = 12;
-// Carries the band of the daily range and shows nothing itself.
-const SERIES_RANGE_BASE = "Tagesminimum";
 
 // Rain of the seven days up to and including each day: a single day's rain
 // is a thin spike, the sum shows the wet and the dry spells. Looking back
@@ -100,181 +98,37 @@ function weeklySum(data: DailyRecord[]): (number | null)[] {
     });
 }
 
-// The series for the days of "year". The weekly values are worked out over
-// all the days there are, so the first week of the year has a past, too.
-function buildSeries(all: DailyRecord[], year: number, phases: Phase[]): echarts.LineSeriesOption[] {
+// A day of "year" with what the chart shows of it. The weekly values are
+// worked out over all the days there are, so the first week of the year
+// has a past, too.
+type Day = {
+    record: DailyRecord,
+    date: Date,
+    trend: number | null,
+    rain: number | null,
+};
+
+function daysOf(all: DailyRecord[], year: number): Day[] {
     // The daily means jump up and down too much to see how the weather is
     // developing: the line is their mean over the week around each day.
-    const allTrend = centredWeeklyMean(all.map(r => r.temperatureMean));
-    const allRain = weeklySum(all);
-    const inYear = all.map((_, i) => i).filter(i => all[i].timestamp.year === year);
-    const data = inYear.map(i => all[i]);
-    const trend = inYear.map(i => allTrend[i]);
-    const rain = inYear.map(i => allRain[i]);
-    if (data.length === 0) {
-        return [];
-    }
-    return [
-        // The range of a day as a band between its minimum and its maximum:
-        // an invisible line along the minimum, and stacked on it the
-        // difference to the maximum as an area.
-        {
-            name: SERIES_RANGE_BASE,
-            type: "line",
-            yAxisIndex: 0,
-            stack: "range",
-            stackStrategy: "all",
-            showSymbol: false,
-            silent: true,
-            lineStyle: {
-                opacity: 0,
-            },
-            data: data.map(r => {
-                return [
-                    r.timestamp.toString(),
-                    r.temperatureMin,
-                ];
-            }),
-        },
-        {
-            name: SERIES_RANGE,
-            type: "line",
-            yAxisIndex: 0,
-            stack: "range",
-            stackStrategy: "all",
-            showSymbol: false,
-            silent: true,
-            lineStyle: {
-                opacity: 0,
-            },
-            itemStyle: {
-                color: QueenColor.Red,
-                opacity: 0.35,
-            },
-            areaStyle: {
-                color: QueenColor.Red,
-                opacity: 0.18,
-            },
-            data: data.map(r => {
-                // The station has days without values: no band there.
-                const known = r.temperatureMin != null && r.temperatureMax != null;
-                return [
-                    r.timestamp.toString(),
-                    known ? r.temperatureMax - r.temperatureMin : null,
-                ];
-            }),
-        },
-        {
-            name: SERIES_TREND,
-            type: "line",
-            yAxisIndex: 0,
-            showSymbol: false,
-            lineStyle: {
-                color: QueenColor.Red,
-                width: 2.5,
-            },
-            // The marker in legend and tooltip takes the colour of the item.
-            itemStyle: {
-                color: QueenColor.Red,
-            },
-            smooth: true,
-            markLine: {
-                symbol: "none",
-                silent: true,
-                // Said below the title instead, where it is in nobody's way.
-                label: {
-                    show: false,
-                },
-                lineStyle: {
-                    type: "dashed",
-                    color: chartColors().ink,
-                },
-                data: [
-                    { yAxis: FLIGHT_TEMPERATURE }
-                ],
-            },
-            // When the honey flow of the region was on, see trachtnet.ts.
-            markArea: phaseMarkArea(phases),
-            // Behind the mean of the week the values of the day itself, for
-            // the tooltip.
-            data: data.map((r, i) => {
-                return [
-                    r.timestamp.toString(),
-                    trend[i],
-                    r.temperatureMean,
-                    r.temperatureMin,
-                    r.temperatureMax,
-                ];
-            }),
-        },
-        {
-            name: SERIES_RAIN,
-            type: "line",
-            yAxisIndex: 1,
-            // Behind the temperature, which is drawn at the default of 2.
-            z: 1,
-            showSymbol: false,
-            lineStyle: {
-                color: QueenColor.Blue,
-                width: 1.5,
-            },
-            itemStyle: {
-                color: QueenColor.Blue,
-            },
-            areaStyle: {
-                color: QueenColor.Blue,
-                opacity: 0.25,
-            },
-            // Behind the sum of the week the rain of the day itself, for the
-            // tooltip.
-            data: data.map((r, i) => {
-                return [
-                    r.timestamp.toString(),
-                    rain[i],
-                    r.precipitationSum,
-                ];
-            }),
-        },
-    ];
+    const trend = centredWeeklyMean(all.map(r => r.temperatureMean));
+    const rain = weeklySum(all);
+    return all.flatMap((record, i) => record.timestamp.year === year
+        ? [{ record, date: plotDay(record.timestamp), trend: trend[i], rain: rain[i] }]
+        : []);
 }
 
 // Weather of a DWD station in "year". With a "region" the phases of that
 // year's honey flow there are shaded, as in the Trachtnet charts the chart
 // stands above.
 export async function renderKlimaChart(elementID: string, stationID: string, year: number, region?: string) {
-    const chart = initEchartsInstance(elementID);
-    const formatterDE = buildFormatterDE();
-
-    const [data, station, phases] = await Promise.all([
+    const [all, station, phases] = await Promise.all([
         fetchKlimaDaily(stationID),
         fetchStation(stationID),
         region ? loadTrachtPhases(region, year) : Promise.resolve([]),
     ]);
-    const series = buildSeries(data, year, phases);
-
-    const tooltipFormatter = (params: any): string => {
-        let out = "";
-        for (const p of params) {
-            const prefix = `${p.marker} <b>${p.seriesName}</b>`;
-            if (p.seriesName === SERIES_TREND) {
-                const [, week, mean, min, max] = p.value;
-                out += `${prefix}: ${formatterDE.format(week)} °C<br>`;
-                if (mean != null && min != null && max != null) {
-                    out += `${p.marker} <b>Tag</b>: ⌀ ${formatterDE.format(mean)} °C`
-                        + ` (${formatterDE.format(min)} bis ${formatterDE.format(max)} °C)<br>`;
-                }
-            } else if (p.seriesName === SERIES_RAIN) {
-                out += `${prefix}: ${formatterDE.format(p.value[1])} mm<br>`;
-                if (p.value[2] != null) {
-                    out += `${p.marker} <b>Tag</b>: ${formatterDE.format(p.value[2])} mm<br>`;
-                }
-            }
-        }
-        return out;
-    };
-
-    // The station doesn't have every year, and not every year in full.
-    const days = data.filter(r => r.timestamp.year === year);
+    const days = daysOf(all, year);
+    const byDay = new Map(days.map(d => [d.date.getTime(), d]));
     const hasData = days.length > 0;
 
     // The lines below the title: what the dashed line and the bands mean,
@@ -292,78 +146,103 @@ export async function renderKlimaChart(elementID: string, stationID: string, yea
             marks.push(`hinterlegt: Tracht in ${toTitleCase(region)}`);
         }
         notes.push(...(isNarrow() ? marks : [marks.join(" · ")]));
-        if (days[0].timestamp.dayOfYear > 7) {
-            notes.push(`Wetterdaten erst ab ${days[0].timestamp.toLocaleString("de-DE", { day: "numeric", month: "numeric" })}`);
+        if (days[0].record.timestamp.dayOfYear > 7) {
+            notes.push(`Wetterdaten erst ab ${days[0].record.timestamp.toLocaleString("de-DE", { day: "numeric", month: "numeric" })}`);
         }
     }
-    // The legend follows them: its three entries in a row, on a phone one
-    // below the other.
-    const legendTop = headHeight(notes.length) + 4;
-    const legendHeight = isNarrow() ? 70 : 26;
 
-    const [startDate, endDate] = getXWindow(year);
-    chart.setOption({
-        ...buildBaseOption(
-            station ? `Wetter ${station.name} ${year}` : `Klimadaten für Klimastation ${stationID} ${year}`,
-            notes.join("\n"),
-            tooltipFormatter,
+    const temperatures = days.flatMap(d => [d.record.temperatureMin, d.record.temperatureMax]).filter(v => v != null);
+    const rains = days.flatMap(d => d.rain !== null ? [d.rain] : []);
+    const [start, end] = getXWindow(year);
+    const middle = (x: (d: Date) => number, date: Date) => x(new Date(date.getTime() + DAY_MS / 2));
+
+    mountChart(elementID, {
+        title: station ? `Wetter ${station.name} ${year}` : `Klimadaten für Klimastation ${stationID} ${year}`,
+        notes,
+        legend: hasData ? [
+            { label: SERIES_TREND, color: QueenColor.Red, look: "line" },
+            { label: SERIES_RANGE, color: QueenColor.Red, look: "area" },
+            { label: SERIES_RAIN, color: QueenColor.Blue, look: "hatch" },
+        ] : [],
+    }, canvas => {
+        timeChart(canvas, {
             year,
-        ),
+            // Nothing to see after today.
+            window: [plotDay(start), plotDay(year === getCurrentYear() ? getToday() : end)],
+            left: {
+                // To the fives around the data.
+                domain: temperatures.length > 0
+                    ? [Math.floor(Math.min(...temperatures) / 5) * 5, Math.ceil(Math.max(...temperatures) / 5) * 5]
+                    : [-10, 30],
+                name: "Temperatur [°C]",
+                format: v => Math.trunc(v) + " °C",
+            },
+            right: {
+                domain: [0, Math.max(10, ...rains)],
+                name: "Niederschlag, 7 Tage [mm]",
+                format: v => Math.trunc(v) + " mm",
+            },
+            draw: (layer, x, temperature, rainScale) => {
+                const height = temperature.range()[0];
+                phaseBands(layer, x, phases, height);
+                // Behind the temperature: the rain of the week, hatched --
+                // it lies under the band of the temperature.
+                layer.append("path")
+                    .style("fill", hatch("rain"))
+                    .attr("stroke", QueenColor.Blue)
+                    .attr("stroke-width", 1.5)
+                    .attr("d", area<Day>()
+                        .defined(d => d.rain !== null)
+                        .x(d => middle(x, d.date))
+                        .y0(rainScale!(0))
+                        .y1(d => rainScale!(d.rain!))(days));
+                // The range of a day, as a band from its minimum to its
+                // maximum; the station has days without values.
+                layer.append("path")
+                    .attr("fill", QueenColor.Red)
+                    .attr("fill-opacity", 0.18)
+                    .attr("d", area<Day>()
+                        .defined(d => d.record.temperatureMin != null && d.record.temperatureMax != null)
+                        .x(d => middle(x, d.date))
+                        .y0(d => temperature(d.record.temperatureMin))
+                        .y1(d => temperature(d.record.temperatureMax))(days));
+                hLine(layer, temperature(FLIGHT_TEMPERATURE), x.range()[1], "var(--color-ink)");
+                layer.append("path")
+                    .attr("class", "chart-line")
+                    .attr("stroke", QueenColor.Red)
+                    .attr("stroke-width", 2.5)
+                    .attr("d", line<Day>()
+                        .defined(d => d.trend !== null)
+                        .x(d => middle(x, d.date))
+                        .y(d => temperature(d.trend!))
+                        .curve(curveMonotoneX)(days));
+            },
+            tooltip: day => {
+                const d = byDay.get(day.getTime());
+                if (!d) {
+                    return null;
+                }
+                const r = d.record;
+                let html = "";
+                if (d.trend !== null) {
+                    html += `${swatch(QueenColor.Red)}<b>${SERIES_TREND}</b>: ${formatDE.format(d.trend)} °C<br>`;
+                }
+                if (r.temperatureMean != null && r.temperatureMin != null && r.temperatureMax != null) {
+                    html += `${swatch(QueenColor.Red)}<b>Tag</b>: ⌀ ${formatDE.format(r.temperatureMean)} °C (${formatDE.format(r.temperatureMin)} bis ${formatDE.format(r.temperatureMax)} °C)<br>`;
+                }
+                if (d.rain !== null) {
+                    html += `${swatch(QueenColor.Blue)}<b>${SERIES_RAIN}</b>: ${formatDE.format(d.rain)} mm<br>`;
+                }
+                if (r.precipitationSum != null) {
+                    html += `${swatch(QueenColor.Blue)}<b>Tag</b>: ${formatDE.format(r.precipitationSum)} mm`;
+                }
+                return html || null;
+            },
+        });
         // Without data the empty frame stays, so the charts below keep
         // their place, with a note across it saying why it is empty.
-        graphic: hasData ? [] : [
-            {
-                type: "text",
-                left: "center",
-                top: "middle",
-                // Above the grid lines of the frame.
-                z: 100,
-                style: {
-                    lineHeight: 22,
-                    text: `Für ${year} liegen keine Wetterdaten\ndes Deutschen Wetterdienstes vor.`,
-                    align: "center",
-                    font: "600 15px sans-serif",
-                    fill: chartColors().ink,
-                    backgroundColor: chartColors().surface,
-                    borderColor: chartColors().ink,
-                    borderWidth: 1,
-                    borderRadius: 6,
-                    padding: [12, 18],
-                },
-            },
-        ],
-        yAxis: [
-            {
-                ...valueAxis("Temperatur [°C]", val => Math.trunc(val) + " °C"),
-                // To the fives around the data: left alone, the axis reaches
-                // far below the coldest day, as the stacked band counts in.
-                min: (value: { min: number }) => Math.floor(value.min / 5) * 5,
-                max: (value: { max: number }) => Math.ceil(value.max / 5) * 5,
-            },
-            {
-                ...valueAxis("Niederschlag, 7 Tage [mm]", val => Math.trunc(val) + " mm"),
-                // The grid belongs to the temperature.
-                minorTick: { show: false },
-                minorSplitLine: { show: false },
-                splitLine: { show: false },
-            },
-        ],
-        legend: {
-            show: hasData,
-            top: legendTop,
-            data: [SERIES_TREND, SERIES_RANGE, SERIES_RAIN],
-        },
-        grid: chartGrid(legendTop + legendHeight + 8),
-        dataZoom: [
-            {
-                type: "slider",
-                show: hasData,
-                showDetail: false,
-                startValue: startDate.toString(),
-                // Nothing to see after today.
-                endValue: (year === getCurrentYear() ? getToday() : endDate).toString(),
-            }
-        ],
-        series,
+        if (!hasData) {
+            emptyNote(canvas, `Für ${year} liegen keine Wetterdaten des Deutschen Wetterdienstes vor.`);
+        }
     });
 }

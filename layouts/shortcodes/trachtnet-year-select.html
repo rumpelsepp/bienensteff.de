@@ -13,3 +13,13 @@
   <button type="button" class="btn btn-outline-primary btn-sm" data-step="1" aria-label="Nächstes Jahr">›</button>
   <button type="button" class="btn btn-outline-primary btn-sm chart-width-toggle" aria-pressed="false">Breit</button>
 </div>
+
+{{- /* How the charts are used, with mouse, finger and keyboard. */}}
+<details class="fold-details chart-help" hidden>
+  <summary>Bedienung der Grafiken</summary>
+  <ul>
+    <li><strong>Werte ablesen:</strong> mit der Maus über die Grafik fahren oder darauf tippen.</li>
+    <li><strong>Zoomen:</strong> <kbd>Strg</kbd> + Mausrad, auf dem Handy mit zwei Fingern; ziehen verschiebt den Ausschnitt, ein Doppelklick setzt ihn zurück.</li>
+    <li id="chart-keys"><strong>Tastatur:</strong> mit <kbd>Tab</kbd> eine Grafik wählen, dann mit den Pfeiltasten von Tag zu Tag (mit <kbd>Umschalt</kbd> wochenweise), von Jahr zu Jahr oder von Landkreis zu Landkreis; <kbd>+</kbd> und <kbd>−</kbd> zoomen, <kbd>0</kbd> setzt zurück, <kbd>Esc</kbd> schließt die Anzeige. Ein Screenreader liest die Werte vor.</li>
+  </ul>
+</details>
