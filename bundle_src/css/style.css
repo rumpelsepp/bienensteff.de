@@ -438,10 +438,6 @@
       gap: 0.25rem;
     }
 
-    .terminplan-name {
-      flex: 1 1 14rem;
-    }
-
     &[hidden] {
       display: none;
     }

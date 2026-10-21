@@ -1,7 +1,7 @@
 // The Terminplan shortcode (layouts/shortcodes/terminplan.html): the form
 // above the schedule, and the dates of the day X picked there in its
-// table. Day X and the name of the sheet stand in the URL (?date=, ?name=),
-// so a schedule can be opened again, or printed later, as it was.
+// table and its calendar. Day X stands in the URL (?date=), so a schedule
+// can be opened again, or printed later, as it was.
 
 import { TERMINPLAN } from "./selectors";
 
@@ -91,7 +91,7 @@ function renderCalendar(container: HTMLElement, steps: Step[], x: number) {
     container.replaceChildren(...cells);
 }
 
-function render(plan: HTMLElement, x: number, name: string) {
+function render(plan: HTMLElement, x: number) {
     renderCalendar(plan.querySelector(".terminplan-calendar")!, stepsOf(plan), x);
     for (const row of plan.querySelectorAll<HTMLTableRowElement>("tbody tr")) {
         const from = x + Number(row.dataset.day);
@@ -101,7 +101,6 @@ function render(plan: HTMLElement, x: number, name: string) {
             cell.textContent += ` – ${shortDate.format((x + Number(row.dataset.until)) * DAY_MS)}`;
         }
     }
-    plan.querySelector(".terminplan-sheet-name")!.textContent = name ? ` – ${name}` : "";
     plan.querySelector(".terminplan-sheet-day")!.textContent = `Tag X: ${longDate.format(x * DAY_MS)}`;
     plan.classList.add("is-dated");
 }
@@ -109,24 +108,16 @@ function render(plan: HTMLElement, x: number, name: string) {
 function initPlan(plan: HTMLElement) {
     const form = plan.querySelector<HTMLFormElement>(".terminplan-form")!;
     const dateInput = form.querySelector<HTMLInputElement>("input[name=date]")!;
-    const nameInput = form.querySelector<HTMLInputElement>("input[name=name]")!;
 
     const params = new URLSearchParams(window.location.search);
     dateInput.value = isoDay(parseDay(params.get("date")) ?? today());
-    nameInput.value = params.get("name") ?? "";
 
     const update = () => {
         const x = parseDay(dateInput.value) ?? today();
-        const name = nameInput.value.trim();
-        render(plan, x, name);
+        render(plan, x);
 
         const url = new URL(window.location.href);
         url.searchParams.set("date", isoDay(x));
-        if (name) {
-            url.searchParams.set("name", name);
-        } else {
-            url.searchParams.delete("name");
-        }
         history.replaceState(null, "", url);
     };
 
@@ -134,7 +125,7 @@ function initPlan(plan: HTMLElement) {
     form.addEventListener("submit", event => event.preventDefault());
     form.querySelector(".terminplan-print")!.addEventListener("click", () => window.print());
     // The title of the page names the PDF a browser prints to: the
-    // procedure, the name of the sheet and day X.
+    // procedure and day X.
     const title = document.title;
     window.addEventListener("beforeprint", () => {
         const heading = plan.querySelector(".terminplan-sheet-head h2")!.textContent;

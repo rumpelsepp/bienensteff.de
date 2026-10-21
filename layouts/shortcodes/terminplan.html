@@ -19,10 +19,6 @@
       <label for="terminplan-{{ $id }}-date">Tag X</label>
       <input class="form-control form-control-sm" type="date" id="terminplan-{{ $id }}-date" name="date">
     </div>
-    <div class="terminplan-name">
-      <label for="terminplan-{{ $id }}-name">Name <span class="text-body-secondary">(für den Ausdruck)</span></label>
-      <input class="form-control form-control-sm" type="text" id="terminplan-{{ $id }}-name" name="name" placeholder="z. B. Zuchtserie 2 – Grafenau">
-    </div>
     <button type="button" class="btn btn-outline-primary btn-sm terminplan-print">
       <i class="bi bi-printer" aria-hidden="true"></i> Drucken / PDF
     </button>
@@ -30,7 +26,7 @@
 
   {{- /* Only on paper: what the sheet is. */}}
   <header class="terminplan-sheet-head">
-    <h2>{{ $plan.title }}<span class="terminplan-sheet-name"></span></h2>
+    <h2>{{ $plan.title }}</h2>
     <p class="terminplan-sheet-day"></p>
   </header>
 
