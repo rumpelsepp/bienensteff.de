@@ -1,4 +1,5 @@
 import { Temporal } from "temporal-polyfill";
+import { mean } from "simple-statistics";
 
 export function getCurrentYear(): number {
     return Temporal.Now.plainDateISO().year;
@@ -66,7 +67,7 @@ export function centredWeeklyMean(values: (number | null | undefined)[]): (numbe
         if (window.length === 0) {
             return null;
         }
-        return window.reduce((sum, v) => sum + v, 0) / window.length;
+        return mean(window);
     });
 }
 

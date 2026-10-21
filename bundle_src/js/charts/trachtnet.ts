@@ -1,5 +1,6 @@
 import { Temporal } from "temporal-polyfill";
 import type * as echarts from 'echarts';
+import { linearRegression, linearRegressionLine, mean, rSquared } from "simple-statistics";
 
 import { QueenColor, chooseQueenColor, getCurrentYear, getToday, getXWindow, isInteger, isInSeason, isSeasonOver } from "./helpers";
 import { toTitleCase } from '../helpers';
@@ -285,7 +286,7 @@ function meanPerDay(years: DayRecord[][], year: number): [Temporal.PlainDate, nu
     for (let date = first; date.year === year; date = date.add({ days: 1 })) {
         const values = perDay.get(date.toPlainMonthDay().toString());
         if (values && values.length > 0) {
-            means.push([date, values.reduce((sum, v) => sum + v, 0) / values.length]);
+            means.push([date, mean(values)]);
         }
     }
     return means;
@@ -721,7 +722,7 @@ async function meanSeasonGain(
         return null;
     }
     return {
-        mean: gains.reduce((sum, [, gain]) => sum + gain, 0) / gains.length,
+        mean: mean(gains.map(([, gain]) => gain)),
         from: gains[0][0],
         to: gains[gains.length - 1][0],
     };
@@ -837,26 +838,27 @@ export function dayOfYearToDate(doy: number): Temporal.PlainDate {
     return Temporal.PlainDate.from({ year: LABEL_YEAR, month: 1, day: 1 }).add({ days: Math.round(doy) - 1 });
 }
 
-// Least squares over the given points: y = slope * x + intercept. Null if
-// there is nothing to fit.
-export function linearRegression(points: [number, number][]): { slope: number, intercept: number } | null {
+// A straight line through points of (year, day), by least squares: its
+// slope [days per year], the line itself, and how much of the points'
+// spread it explains (R²). Null with fewer than two years to fit it to.
+export type Trend = {
+    slope: number,
+    at: (x: number) => number,
+    rSquared: number,
+};
+
+export function fitTrend(points: [number, number][]): Trend | null {
     if (points.length < 2) {
         return null;
     }
-    const meanX = points.reduce((sum, [x]) => sum + x, 0) / points.length;
-    const meanY = points.reduce((sum, [, y]) => sum + y, 0) / points.length;
-    let sxy = 0;
-    let sxx = 0;
-    for (const [x, y] of points) {
-        sxy += (x - meanX) * (y - meanY);
-        sxx += (x - meanX) ** 2;
-    }
-    return sxx === 0 ? null : { slope: sxy / sxx, intercept: meanY - (sxy / sxx) * meanX };
+    const line = linearRegression(points);
+    const at = linearRegressionLine(line);
+    return { slope: line.m, at, rSquared: rSquared(points, at) };
 }
 
-function flowTrend(flow: Flow[], key: "begin" | "end"): { slope: number, intercept: number } | null {
+function flowTrend(flow: Flow[], key: "begin" | "end"): Trend | null {
     const observed = (f: Flow) => key === "begin" ? f.beginObserved : f.endObserved;
-    return linearRegression(flow.flatMap(
+    return fitTrend(flow.flatMap(
         f => f[key] && observed(f)
             ? [[f.year, dayOfYear(f[key]!)] as [number, number]]
             : [],
@@ -903,12 +905,12 @@ function flowSeries(name: string, flow: Flow[], key: "begin" | "end", symbol: st
 }
 
 // The dashed trend line over the years, from a regression (see
-// linearRegression()); nothing if there is nothing to fit.
-function trendSeries(name: string, flow: Flow[], trend: { slope: number, intercept: number } | null, color: string): echarts.SeriesOption | null {
+// fitTrend()); nothing if there is nothing to fit.
+function trendSeries(name: string, flow: Flow[], trend: Trend | null, color: string): echarts.SeriesOption | null {
     if (!trend) {
         return null;
     }
-    const at = (year: number) => trend.slope * year + trend.intercept;
+    const at = trend.at;
     const first = flow[0].year;
     const last = flow[flow.length - 1].year;
     return {
@@ -969,7 +971,7 @@ export async function renderTrendChart(elementID: string, region: string) {
                 }
                 const trend = p.seriesName === SERIES_BEGIN ? trendBegin : trendEnd;
                 if (trend && p.value[3]) {
-                    const toTrend = Math.round(p.value[1] - (trend.slope * +p.name + trend.intercept));
+                    const toTrend = Math.round(p.value[1] - trend.at(+p.name));
                     if (toTrend !== 0) {
                         out += ` (${toTrend > 0 ? "+" : ""}${toTrend} Tage zum Trend)`;
                     }
@@ -982,7 +984,7 @@ export async function renderTrendChart(elementID: string, region: string) {
         return out;
     };
 
-    const trendNote = (label: string, trend: { slope: number, intercept: number } | null): string | null =>
+    const trendNote = (label: string, trend: Trend | null): string | null =>
         trend ? `${label}: ${signedDays(trend.slope)} pro Jahr` : null;
     const notes = [
         `● ${SERIES_BEGIN}, ◆ ${SERIES_END} · ◌ unsicher (Mär–Aug)`,

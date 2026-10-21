@@ -1,4 +1,5 @@
 import * as echarts from "echarts";
+import { quantile } from "simple-statistics";
 
 import { getCurrentYear } from "./helpers";
 import { toTitleCase } from "../helpers";
@@ -125,11 +126,8 @@ export async function renderMapChart(elementID: string, region: string, year: nu
     // Where the colour scale ends: the 90th percentile of the year's
     // gains, so a single outstanding region doesn't wash out the rest of
     // the map -- anything above it takes the darkest colour anyway.
-    const gains = data.flatMap(d => d.value !== null && !d.patchy ? [d.value] : [])
-        .sort((a, b) => a - b);
-    const cap = gains.length > 0
-        ? Math.ceil(gains[Math.floor(gains.length * 0.9)] / 10) * 10
-        : 100;
+    const gains = data.flatMap(d => d.value !== null && !d.patchy ? [d.value] : []);
+    const cap = gains.length > 0 ? Math.ceil(quantile(gains, 0.9) / 10) * 10 : 100;
 
     const tooltipFormatter = (params: any): string => {
         const d = data.find(x => x.name === params.name);

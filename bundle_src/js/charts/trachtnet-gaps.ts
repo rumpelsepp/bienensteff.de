@@ -1,27 +1,16 @@
 import { Temporal } from "temporal-polyfill";
 import type * as echarts from "echarts";
+import { median } from "simple-statistics";
 
 import { chooseQueenColor, getCurrentYear } from "./helpers";
 import { toTitleCase } from "../helpers";
 import { buildBaseOption, chartColors, chartGrid, headHeight, initEchartsInstance, valueAxis } from "./base";
-import { availableYears, dayOfYear, dayOfYearToDate, GAP_MIN_DAYS, linearRegression, loadYear, signedDays, trachtGaps } from "./trachtnet";
+import { availableYears, dayOfYear, dayOfYearToDate, fitTrend, GAP_MIN_DAYS, loadYear, signedDays, trachtGaps } from "./trachtnet";
 
 // The gaps chart: the days without a honey flow between a season's
 // phases (see trachtGaps()), one vertical segment per gap and year --
 // for the question when in the year there is time to harvest, how much
 // that timing moves around and whether it has drifted over the years.
-
-// R² of the regression, for whether its slope is anything to go by.
-function rSquared(points: [number, number][], trend: { slope: number, intercept: number }): number {
-    const meanY = points.reduce((sum, [, y]) => sum + y, 0) / points.length;
-    let ssRes = 0;
-    let ssTot = 0;
-    for (const [x, y] of points) {
-        ssRes += (y - (trend.slope * x + trend.intercept)) ** 2;
-        ssTot += (y - meanY) ** 2;
-    }
-    return ssTot === 0 ? 0 : 1 - ssRes / ssTot;
-}
 
 export async function renderGapsChart(elementID: string, region: string) {
     const chart = initEchartsInstance(elementID);
@@ -36,16 +25,11 @@ export async function renderGapsChart(elementID: string, region: string) {
     // begin and of how long they last over the years -- only over the
     // ones that rest on data, see Gap.reliable. (A median of their ends
     // could come out before the median of their beginnings.)
-    const med = (values: number[]): number => {
-        const sorted = [...values].sort((a, b) => a - b);
-        const mid = Math.floor(sorted.length / 2);
-        return sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
-    };
     const solid = longestPerYear.flatMap(g => g ? [g] : []);
-    const medianStart = solid.length > 0 ? med(solid.map(g => dayOfYear(g.start))) : 0;
-    const median = solid.length > 0 ? {
+    const medianStart = solid.length > 0 ? median(solid.map(g => dayOfYear(g.start))) : 0;
+    const typical = solid.length > 0 ? {
         start: medianStart,
-        end: medianStart + med(solid.map(g => g.days)) - 1,
+        end: medianStart + median(solid.map(g => g.days)) - 1,
     } : null;
     const medianText = (doy: number) =>
         dayOfYearToDate(doy).toLocaleString("de-DE", { day: "numeric", month: "numeric" });
@@ -55,8 +39,7 @@ export async function renderGapsChart(elementID: string, region: string) {
     const centers: [number, number][] = longestPerYear.flatMap((g, i) => g
         ? [[years[i], (dayOfYear(g.start) + dayOfYear(g.end)) / 2] as [number, number]]
         : []);
-    const trend = linearRegression(centers);
-    const quality = trend ? rSquared(centers, trend) : 0;
+    const trend = fitTrend(centers);
 
     // One vertical segment per gap, at its year. The segments are what is
     // read here, so they carry their tooltip themselves; what they stand
@@ -109,7 +92,7 @@ export async function renderGapsChart(elementID: string, region: string) {
     // The rule of thumb as a band: the typical window of the longest gap,
     // across all the years.
     let band: echarts.SeriesOption | null = null;
-    if (median) {
+    if (typical) {
         band = {
             type: "custom",
             name: "Median",
@@ -117,8 +100,8 @@ export async function renderGapsChart(elementID: string, region: string) {
             silent: true,
             renderItem: (params: any, api: any) => {
                 const sys = params.coordSys;
-                const yTop = api.coord([0, median.end])[1];
-                const yBottom = api.coord([0, median.start])[1];
+                const yTop = api.coord([0, typical.end])[1];
+                const yBottom = api.coord([0, typical.start])[1];
                 return {
                     type: "rect",
                     shape: { x: sys.x, y: yTop, width: sys.width, height: yBottom - yTop },
@@ -128,13 +111,13 @@ export async function renderGapsChart(elementID: string, region: string) {
                     },
                 };
             },
-            data: [[0, median.start, median.end]],
+            data: [[0, typical.start, typical.end]],
         };
     }
 
     let trendLine: echarts.SeriesOption | null = null;
     if (trend) {
-        const at = (year: number) => trend.slope * year + trend.intercept;
+        const at = trend.at;
         trendLine = {
             type: "line",
             name: "Trend der Mitten",
@@ -170,11 +153,11 @@ export async function renderGapsChart(elementID: string, region: string) {
     const notes = [
         `Trachtlücken ab ${GAP_MIN_DAYS} Tagen zwischen den Trachtphasen (ab März)`,
         "dick: längste Lücke · gestrichelt: Datenlücke",
-        median
-            ? `hinterlegt: Median ${medianText(median.start)}–${medianText(median.end)}`
+        typical
+            ? `hinterlegt: Median ${medianText(typical.start)}–${medianText(typical.end)}`
             : "Zu wenig verlässliche Jahre für einen Median",
         trend
-            ? `Trend: ${signedDays(trend.slope * 10)}/Jahrzehnt · R² ${quality.toLocaleString("de-DE", { maximumFractionDigits: 2 })}${quality < 0.25 ? " – eher zufällig" : ""}`
+            ? `Trend: ${signedDays(trend.slope * 10)}/Jahrzehnt · R² ${trend.rSquared.toLocaleString("de-DE", { maximumFractionDigits: 2 })}${trend.rSquared < 0.25 ? " – eher zufällig" : ""}`
             : "Zu wenig Jahre für einen Trend",
     ];
 

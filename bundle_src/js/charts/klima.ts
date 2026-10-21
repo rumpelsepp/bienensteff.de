@@ -1,5 +1,6 @@
 import { Temporal } from "temporal-polyfill";
 import type * as echarts from 'echarts';
+import { sum } from "simple-statistics";
 
 import { QueenColor, centredWeeklyMean, getCurrentYear, getXWindow, getToday } from "./helpers";
 import { buildBaseOption, buildFormatterDE, chartColors, chartGrid, headHeight, initEchartsInstance, isNarrow, valueAxis } from "./base";
@@ -94,7 +95,7 @@ function weeklySum(data: DailyRecord[]): (number | null)[] {
         if (window.length === 0) {
             return null;
         }
-        return window.reduce((sum, v) => sum + v, 0);
+        return sum(window);
     });
 }
 
