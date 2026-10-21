@@ -45,6 +45,7 @@ Die Trendgerade läuft durch die Mitten dieser Lücken; ein R² unter 0,25 heiß
 **Grenzen.**
 
 - Hinter einer Region stecken oft nur wenige Waagen; die Karte zeigt ihre Zahl im Tooltip.
+- Fehlen einem Landkreis an mehr als 10 % der Saisontage die Daten, fällt seine Summe zu niedrig aus; die Karte zeigt ihn schraffiert statt eingefärbt.
 - Gemessen wird der Nettozuwachs, der Verbrauch des Volks ist also schon abgezogen – die 0,5 kg sind eine Faustregel.
 - Fütterungen oder andere Eingriffe am Waagstock können wie Eintrag aussehen.
 

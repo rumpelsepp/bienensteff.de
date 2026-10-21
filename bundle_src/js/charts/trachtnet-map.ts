@@ -20,7 +20,14 @@ type YearSummary = {
     // The median number of scales that reported on a day -- how
     // trustworthy the average over them is.
     scales: number,
+    // The days of the season with data, and how many there were to have.
+    days: number,
+    season_days: number,
 };
+
+// Below this share of the season's days with data, a region's gain falls
+// short of what its colonies brought in: the map hatches it.
+const MIN_COVERAGE = 0.9;
 
 type Summary = {
     kind: "landkreis",
@@ -73,6 +80,21 @@ function loadSummary(): Promise<Summary> {
     return summaryPromise;
 }
 
+// The fill of a region with patchy data: thin diagonal stripes in the
+// ink of the mode over the grey of no data.
+function hatching(colors: ReturnType<typeof chartColors>): echarts.PatternObject {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="6" height="6">`
+        + `<rect width="6" height="6" fill="${colors.grid}"/>`
+        + `<path d="M-1,1 l2,-2 M0,6 l6,-6 M5,7 l2,-2" stroke="${colors.ink}" stroke-width="0.8" stroke-opacity="0.6"/>`
+        + `</svg>`;
+    return {
+        image: `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`,
+        repeat: "repeat",
+        imageWidth: 6,
+        imageHeight: 6,
+    };
+}
+
 type RegionData = {
     // The AGS, as the geojson feature's "name".
     name: string,
@@ -80,6 +102,9 @@ type RegionData = {
     value: number | null,
     peak: number | null,
     scales: number | null,
+    // Days of the season with data, of how many, where the data is too
+    // patchy for the gain to be compared (see MIN_COVERAGE); null if not.
+    patchy: { days: number, of: number } | null,
     // How the region is called in the tooltip: TrachtNet's name, or the
     // one of the geojson where it has none there (e.g. the kreisfreie
     // Städte without a scale).
@@ -105,6 +130,9 @@ export async function renderMapChart(elementID: string, region: string, year: nu
             value: yearSummary?.gain ?? null,
             peak: yearSummary?.peak ?? null,
             scales: yearSummary?.scales ?? null,
+            patchy: yearSummary && yearSummary.days < MIN_COVERAGE * yearSummary.season_days
+                ? { days: yearSummary.days, of: yearSummary.season_days }
+                : null,
             displayName: s?.name ?? `${f.properties.gen} (${f.properties.bez})`,
         };
     });
@@ -112,8 +140,7 @@ export async function renderMapChart(elementID: string, region: string, year: nu
     // Where the colour scale ends: the 90th percentile of the year's
     // gains, so a single outstanding region doesn't wash out the rest of
     // the map -- anything above it takes the darkest colour anyway.
-    const gains = data.map(d => d.value)
-        .filter((v): v is number => v !== null)
+    const gains = data.flatMap(d => d.value !== null && !d.patchy ? [d.value] : [])
         .sort((a, b) => a - b);
     const cap = gains.length > 0
         ? Math.ceil(gains[Math.floor(gains.length * 0.9)] / 10) * 10
@@ -131,12 +158,15 @@ export async function renderMapChart(elementID: string, region: string, year: nu
         const peak = d.peak !== null
             ? `<br>Höchststand ${formatterDE.format(d.peak)} kg`
             : "";
-        return `${d.displayName}<br>Saison-Gesamteintrag: <b>${formatterDE.format(d.value)} kg</b>${waagen}${peak}`;
+        const patchy = d.patchy
+            ? `<br>lückenhaft: nur ${d.patchy.days} von ${d.patchy.of} Tagen mit Daten`
+            : "";
+        return `${d.displayName}<br>Saison-Gesamteintrag: <b>${formatterDE.format(d.value)} kg</b>${waagen}${peak}${patchy}`;
     };
 
     const notes = [
         "Summe der Tagesgewinne Mär–Aug je Landkreis [kg]",
-        "grau: keine Daten · Waagenzahl im Tooltip",
+        "grau: keine Daten · schraffiert: lückenhafte Daten · Zahlen im Tooltip",
     ];
     if (year === getCurrentYear()) {
         notes.push("laufendes Jahr bis dato");
@@ -152,11 +182,10 @@ export async function renderMapChart(elementID: string, region: string, year: nu
             top: 0,
         },
         animation: false,
+        // The description for screen readers, without ECharts' automatic
+        // patterns: on a choropleth they hatch every region.
         aria: {
             enabled: true,
-            decal: {
-                show: true,
-            },
         },
         toolbox: {
             show: !isNarrow(),
@@ -202,7 +231,14 @@ export async function renderMapChart(elementID: string, region: string, year: nu
             // chart's height, verified from 360 to 1200 px wide.
             layoutCenter: ["50%", "54%"],
             layoutSize: "80%",
-            data: data.map(d => ({ name: d.name, value: d.value ?? undefined })),
+            data: data.map(d => ({
+                name: d.name,
+                // Patchy data, see MIN_COVERAGE: its gain is too low to go
+                // by, so it takes no colour of the scale but stripes; the
+                // number is in the tooltip.
+                value: d.patchy ? undefined : d.value ?? undefined,
+                itemStyle: d.patchy ? { areaColor: hatching(colors) } : undefined,
+            })),
             // Regions without data stay this colour; the ones with one
             // are coloured by the visualMap.
             itemStyle: {

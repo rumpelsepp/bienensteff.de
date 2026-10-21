@@ -10,11 +10,15 @@ website's isInSeason()):
   brought in;
 - peak: the highest cumulative weight of the season [kg];
 - scales: the median number of scales that reported on a day -- how
-  trustworthy the average over them is.
+  trustworthy the average over them is;
+- days, season_days: the days of the season with data, and how many
+  there were to have -- for the year still running only up to the
+  latest day in the dump. Where many are missing, gain falls short of
+  what the colonies brought in; the map marks such regions.
 
 Output: <outdir>/landkreis-summary.json, one region per line, oldest
 first: {"kind", "years", "regions": {<ags>: {"name", "slug", "years":
-{"<year>": {"gain", "peak", "scales"}}}}}. Regions without a single
+{"<year>": {"gain", "peak", "scales", "days", "season_days"}}}}}. Regions without a single
 season record in a year are left out of it.
 
 Usage:
@@ -22,6 +26,7 @@ Usage:
 """
 
 import argparse
+import datetime
 import json
 import logging
 import statistics
@@ -49,6 +54,8 @@ class YearSummary(TypedDict):
     gain: float
     peak: float
     scales: int
+    days: int
+    season_days: int
 
 
 class RegionSummary(TypedDict):
@@ -57,7 +64,16 @@ class RegionSummary(TypedDict):
     years: dict[str, YearSummary]
 
 
-def summarize_year(records: list[Record]) -> YearSummary | None:
+def season_days(year: int, latest: str) -> int:
+    """The days of the season of `year` up to `latest` (an ISO date, the
+    latest day the dump has for that year)."""
+    first = datetime.date(year, SEASON_FIRST, 1)
+    end = datetime.date(year, SEASON_LAST + 1, 1) - datetime.timedelta(days=1)
+    end = min(end, datetime.date.fromisoformat(latest))
+    return max((end - first).days + 1, 0)
+
+
+def summarize_year(records: list[Record], expected: int) -> YearSummary | None:
     in_season = [
         r
         for r in records
@@ -70,6 +86,8 @@ def summarize_year(records: list[Record]) -> YearSummary | None:
         "gain": round(sum(gains), 1),
         "peak": round(max(r["weight"] for r in in_season), 1),
         "scales": round(statistics.median(r["scales"] for r in in_season)),
+        "days": len(in_season),
+        "season_days": expected,
     }
 
 
@@ -84,13 +102,28 @@ def summarize(outdir: Path) -> None:
     landkreise = [r for r in index["regions"] if r["kind"] == "landkreis"]
     logger.info("Summarising %s Landkreise", len(landkreise))
 
+    # Region id -> year -> its records.
+    records = {
+        region["id"]: {
+            path.stem.rsplit("-", 1)[1]: read_records(path)
+            for path in sorted((outdir / "landkreis").glob(f"{region['id']}-*.ndjson"))
+        }
+        for region in landkreise
+    }
+    # The latest day of each year in the dump, for how many days of a
+    # season still running there are to have.
+    latest: dict[str, str] = {}
+    for per_year in records.values():
+        for year, rs in per_year.items():
+            if rs:
+                latest[year] = max(latest.get(year, ""), rs[-1]["date"])
+
     regions: dict[str, RegionSummary] = {}
     years: set[int] = set()
     for region in landkreise:
         summaries: dict[str, YearSummary] = {}
-        for path in sorted((outdir / "landkreis").glob(f"{region['id']}-*.ndjson")):
-            year = path.stem.rsplit("-", 1)[1]
-            summary = summarize_year(read_records(path))
+        for year, rs in records[region["id"]].items():
+            summary = summarize_year(rs, season_days(int(year), latest[year]))
             if summary is not None:
                 summaries[year] = summary
                 years.add(int(year))
