@@ -4,7 +4,7 @@ import type * as echarts from "echarts";
 import { chooseQueenColor, getCurrentYear } from "./helpers";
 import { toTitleCase } from "../helpers";
 import { buildBaseOption, chartColors, chartGrid, headHeight, initEchartsInstance, valueAxis } from "./base";
-import { availableYears, dayOfYear, dayOfYearToDate, linearRegression, loadYear, seasonPhases, signedDays, type DayRecord, type Phase } from "./trachtnet";
+import { availableYears, dayOfYear, dayOfYearToDate, epochDay, linearRegression, loadYear, seasonPhases, signedDays, type DayRecord, type Phase } from "./trachtnet";
 
 // The gaps chart: the days without a honey flow between a season's
 // phases (see seasonPhases()), one vertical segment per gap and year --
@@ -31,7 +31,6 @@ type Gap = {
 const GAP_TOLERATED = 2;
 
 function gapsOf(phases: Phase[], records: DayRecord[]): Gap[] {
-    const dates = new Set(records.map(r => r.date.toString()));
     const gaps: Gap[] = [];
     for (let i = 1; i < phases.length; i++) {
         const start = phases[i - 1].end.add({ days: 1 });
@@ -40,12 +39,9 @@ function gapsOf(phases: Phase[], records: DayRecord[]): Gap[] {
         if (days <= 0) {
             continue;
         }
-        let covered = 0;
-        for (let d = start; start.until(d).days < days; d = d.add({ days: 1 })) {
-            if (dates.has(d.toString())) {
-                covered++;
-            }
-        }
+        const first = epochDay(start);
+        const last = epochDay(end);
+        const covered = records.filter(r => r.day >= first && r.day <= last).length;
         gaps.push({ start, end, days, covered, reliable: days - covered <= GAP_TOLERATED, longest: false });
     }
     gaps.forEach(g => {

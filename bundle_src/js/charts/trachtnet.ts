@@ -12,6 +12,9 @@ import { buildBaseOption, buildFormatterDE, chartColors, chartGrid, headHeight, 
 // A day of a region: the mean of its scales.
 export type DayRecord = {
     date: Temporal.PlainDate,
+    // The date as days since 1970-01-01 (see epochDay()), for the
+    // arithmetic on dates the phase detection does day by day.
+    day: number,
     // Weight gained since the start of the year [kg].
     value: number,
     // Change against the day before [kg].
@@ -104,13 +107,22 @@ async function fetchYear(region: string, year: number): Promise<DayRecord[]> {
         .filter(line => line.trim() !== "")
         .map(line => {
             const raw = JSON.parse(line) as RawRecord;
+            const date = Temporal.PlainDate.from(raw.date);
             return {
-                date: Temporal.PlainDate.from(raw.date),
+                date,
+                day: epochDay(date),
                 value: raw.weight,
                 delta: raw.delta,
                 nWaagen: raw.scales,
             };
         });
+}
+
+// Days since 1970-01-01. Comparing and counting days is what the phase
+// detection does most; Temporal's polyfill takes milliseconds for what
+// is a subtraction of two numbers here.
+export function epochDay(date: Temporal.PlainDate): number {
+    return Date.UTC(date.year, date.month - 1, date.day) / 86_400_000;
 }
 
 async function otherYears(region: string, year: number): Promise<number[]> {
@@ -159,23 +171,38 @@ export type Phase = {
 // mean stays.
 export function calendarWeeklyMean(records: DayRecord[]): (number | null)[] {
     return records.map((record, i) => {
-        const window: number[] = [];
-        const withinWeek = (j: number) => Math.abs(records[j].date.until(record.date).days) <= 3;
-        for (let j = i; j >= 0 && withinWeek(j); j--) {
-            if (records[j].delta !== null) {
-                window.push(records[j].delta!);
+        let sum = 0;
+        let n = 0;
+        const add = (r: DayRecord) => {
+            if (r.delta !== null) {
+                sum += r.delta;
+                n++;
             }
+        };
+        for (let j = i; j >= 0 && record.day - records[j].day <= 3; j--) {
+            add(records[j]);
         }
-        for (let j = i + 1; j < records.length && withinWeek(j); j++) {
-            if (records[j].delta !== null) {
-                window.push(records[j].delta!);
-            }
+        for (let j = i + 1; j < records.length && records[j].day - record.day <= 3; j++) {
+            add(records[j]);
         }
-        return window.length > 0 ? window.reduce((sum, d) => sum + d, 0) / window.length : null;
+        return n > 0 ? sum / n : null;
     });
 }
 
+// The phases of a year's days, worked out once: every chart and table of
+// the page asks for them, of the same arrays (see loadYear()).
+const phaseCache = new WeakMap<DayRecord[], Phase[]>();
+
 export function trachtPhases(records: DayRecord[]): Phase[] {
+    let phases = phaseCache.get(records);
+    if (!phases) {
+        phases = detectPhases(records);
+        phaseCache.set(records, phases);
+    }
+    return phases;
+}
+
+function detectPhases(records: DayRecord[]): Phase[] {
     const mean = calendarWeeklyMean(records);
     const phases: Phase[] = [];
     let current: Phase | null = null;
@@ -757,13 +784,10 @@ type Flow = {
 // Whether a phase boundary was seen: at least half of the fortnight
 // outside of it must have data.
 function boundaryObserved(records: DayRecord[], date: Temporal.PlainDate, before: boolean): boolean {
-    const dates = new Set(records.map(r => r.date.toString()));
-    let seen = 0;
-    for (let i = 1; i <= 14; i++) {
-        if (dates.has(date.add({ days: before ? -i : i }).toString())) {
-            seen++;
-        }
-    }
+    const boundary = epochDay(date);
+    const seen = records.filter(r => before
+        ? r.day < boundary && r.day >= boundary - 14
+        : r.day > boundary && r.day <= boundary + 14).length;
     return seen >= 7;
 }
 
