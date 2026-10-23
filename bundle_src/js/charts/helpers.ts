@@ -33,7 +33,7 @@ const QUEEN_BLACK_ON_DARK = "#efe8db";
 const QUEEN_BLACK_LIGHT_ON_DARK = "#a39c8f";
 
 export function chooseQueenColor(year: number, light: boolean = false): string {
-    const dark = document.documentElement.dataset.bsTheme === "dark";
+    const dark = document.documentElement.dataset.theme === "dark";
     switch (year % 10) {
         case 0:
         case 5:

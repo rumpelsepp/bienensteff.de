@@ -2,16 +2,14 @@
    values. */
 
 :root {
-  --bs-primary: #b8720c;
-  --bs-primary-rgb: 184, 114, 12;
-  --bs-link-color: #9c5c09;
-  --bs-link-color-rgb: 156, 92, 9;
-  --bs-link-hover-color: #764408;
-  --bs-link-hover-color-rgb: 118, 68, 8;
-  --bs-focus-ring-color: rgba(184, 114, 12, 0.25);
+  --color-primary: #b8720c;
+  --color-link: #9c5c09;
+  --color-link-hover: #764408;
+  --color-focus-ring: rgba(184, 114, 12, 0.25);
 
   /* Darker shades for text-on-primary (hero button, disabled states): the
-     raw --bs-primary is a touch too light for white text to pass contrast. */
+     raw --color-primary is a touch too light for white text to pass
+     contrast. */
   --honey-700: #96600a;
   --honey-800: #7a4d08;
   --honey-900: #623e06;
@@ -21,7 +19,6 @@
   --color-ink: #2a2115;
   --color-ink-muted: #6d5f4c;
   --color-border: rgba(42, 33, 21, 0.12);
-  --color-primary: var(--bs-primary);
   --color-primary-ink: #ffffff;
 
   /* What the product photos of the Sortiment cards stand on, see
@@ -33,23 +30,17 @@
    overrides the theme's tokens, so their dark values have to be given here
    as well -- the same warm brown, a shade towards honey. The honey shades
    for buttons stay: white text on them works in either mode. */
-[data-bs-theme="dark"] {
+[data-theme="dark"] {
   /* The dark honey of the links has no contrast on a dark page; this
      lighter one comes to 8:1. */
-  --bs-link-color: #e2a54a;
-  --bs-link-color-rgb: 226, 165, 74;
-  --bs-link-hover-color: #f0bd72;
-  --bs-link-hover-color-rgb: 240, 189, 114;
+  --color-link: #e2a54a;
+  --color-link-hover: #f0bd72;
 
   --color-bg: #1c1811;
   --color-surface: #28221a;
   --color-ink: #efe8db;
   --color-ink-muted: #b5a892;
   --color-border: rgba(239, 232, 219, 0.14);
-
-  --bs-body-bg-rgb: 40, 34, 26;
-  --bs-body-color-rgb: 239, 232, 219;
-  --bs-secondary-rgb: 181, 168, 146;
 
   /* The photos have a white backdrop and are multiplied onto theirs: on a
      dark one they would turn black. So it stays light, a little off the

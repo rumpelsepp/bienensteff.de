@@ -18,7 +18,7 @@ let shownYear = getCurrentYear();
 
 // The colours of a chart are fixed when it is built (axes, series), so on a
 // change of the colour scheme -- the theme's head.html then flips
-// data-bs-theme -- all of them are built anew, as they are for another
+// data-theme -- all of them are built anew, as they are for another
 // year. The Trachtnet data is kept from the first time, see trachtnet.ts.
 export async function initAllCharts() {
     const year = parseInt(getParam("year") ?? "");
@@ -39,7 +39,7 @@ export async function initAllCharts() {
     await renderAllCharts("all");
     new MutationObserver(() => {
         renderAllCharts("all");
-    }).observe(document.documentElement, { attributeFilter: ["data-bs-theme"] });
+    }).observe(document.documentElement, { attributeFilter: ["data-theme"] });
 }
 
 // The button that lets the charts grow beyond the text column and back

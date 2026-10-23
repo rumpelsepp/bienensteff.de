@@ -27,7 +27,7 @@
   }
 
   .bi {
-    color: var(--bs-link-color);
+    color: var(--color-link);
     font-size: 1.6rem;
     /* An SVG brings no line height of its own, unlike the glyph of the
        icon font did: the room around it, a little more below. */
