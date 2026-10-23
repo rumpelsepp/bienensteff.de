@@ -30,7 +30,7 @@
 
   /* Where the window is no wider than the column and its margins there is
      nothing to gain. */
-  @media (max-width: 1199.98px) {
+  @media (width < 1200px) {
     .chart-width-toggle {
       display: none;
     }

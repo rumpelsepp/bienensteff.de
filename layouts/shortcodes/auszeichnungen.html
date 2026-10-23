@@ -15,7 +15,7 @@
   {{- $date := time.AsTime .date }}
   <li class="award award--{{ .medal }}">
     <span class="award-medal" aria-hidden="true">{{ partial "icon.html" "award-fill" }}</span>
-    <div class="award-body">
+    <div>
       <p class="award-kind">{{ .medal | title }} · {{ $date.Format "2006" }}</p>
       <p class="award-title">{{ .title }}</p>
       <p class="award-event">{{ .event }}, {{ .place }}</p>

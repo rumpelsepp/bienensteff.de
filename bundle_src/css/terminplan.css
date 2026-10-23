@@ -160,7 +160,7 @@
     }
   }
 
-  @media (max-width: 575.98px) {
+  @media (width < 576px) {
     .terminplan-cell {
       min-height: 3rem;
       padding: 0.2rem;

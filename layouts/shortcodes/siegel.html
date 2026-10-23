@@ -11,7 +11,7 @@
 */ -}}
 <section class="siegel">
   <span class="siegel-logo"><img src="{{ .Get "logo" }}" loading="lazy" alt=""></span>
-  <div class="siegel-body">
+  <div>
     <h3 class="siegel-title">{{ .Get "title" }}</h3>
     {{ .Inner | .Page.RenderString (dict "display" "block") }}
   </div>

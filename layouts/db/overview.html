@@ -16,7 +16,7 @@
 */ -}}
 {{ define "main" }}
 {{- $db := resources.Get "/db/db.json" | minify | fingerprint }}
-<div class="single">
+<div>
   <article class="content db-record">
     <header>
       <h1>{{ .Title }}</h1>

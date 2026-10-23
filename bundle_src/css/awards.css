@@ -12,10 +12,6 @@
   padding: 0;
   text-align: left;
   hyphens: manual;
-
-  p {
-    margin: 0;
-  }
 }
 
 .award {
@@ -56,6 +52,7 @@
 }
 
 .award-kind {
+  margin: 0;
   color: var(--color-ink-muted);
   font-size: 0.8rem;
   font-weight: 600;
@@ -64,6 +61,7 @@
 }
 
 .award-title {
+  margin: 0;
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 600;
@@ -71,7 +69,7 @@
 }
 
 .award-event {
-  margin-block: 0.35rem 0.6rem !important;
+  margin: 0.35rem 0 0.6rem;
   color: var(--color-ink-muted);
   font-size: 0.9rem;
   line-height: 1.45;

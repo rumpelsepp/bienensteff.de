@@ -25,7 +25,7 @@
   {{- end }}
       <li>
         <time datetime="{{ $date.Format "2006-01-02" }}">{{ $date.Format "02.01." }}<span class="visually-hidden">{{ $y }}</span></time>
-        <span class="nachweise-title">
+        <span>
           {{- $title := .title }}
           {{- with .url }}<a href="{{ . }}">{{ $title }}</a>{{ else }}{{ $title }}{{ end -}}
         </span>
