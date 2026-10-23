@@ -14,6 +14,10 @@
   --honey-800: #7a4d08;
   --honey-900: #623e06;
 
+  /* Filled buttons and the current entry of a menu: white on the darker
+     honey. */
+  --color-button: var(--honey-700);
+
   --color-bg: #faf6ee;
   --color-surface: #ffffff;
   --color-ink: #2a2115;
@@ -48,7 +52,3 @@
   --sortiment-backdrop: #f3ecdf;
 }
 
-/* The current page in a dropdown of the menu: white on the darker honey. */
-.site-nav {
-  --nav-active-bg: var(--honey-700);
-}
