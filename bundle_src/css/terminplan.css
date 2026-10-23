@@ -288,9 +288,7 @@
       --color-bg: #fff;
       --color-surface: #fff;
       --color-border: #999;
-      --bs-body-color: #000;
-      --bs-table-color: #000;
-      --bs-table-bg: transparent;
+      --table-bg: transparent;
       color: #000;
       print-color-adjust: exact;
 
