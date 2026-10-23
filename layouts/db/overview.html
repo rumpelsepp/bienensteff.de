@@ -16,6 +16,11 @@
 */ -}}
 {{ define "main" }}
 {{- $db := resources.Get "/db/db.json" | minify | fingerprint }}
+{{/* The address a record keeps for good, on the label of a jar. The
+     development server serves no such address -- there the page's own
+     is the record's, so a permalink clicked in the preview stays in
+     the preview. */}}
+{{- $permalink := cond hugo.IsServer (printf "%s?q=" .Permalink) `https://db.bienensteff.de/?q=` }}
 <div>
   <article class="content db-record">
     <header>
@@ -26,7 +31,7 @@
 
     <hr>
 
-    <div id="db-app" data-src="{{ $db.RelPermalink }}" data-permalink="https://db.bienensteff.de/?q=" data-site="{{ site.Title }}">
+    <div id="db-app" data-src="{{ $db.RelPermalink }}" data-permalink="{{ $permalink }}" data-site="{{ site.Title }}">
       <noscript><p>Die Einträge der Datenbank zeigt diese Seite mit JavaScript an.</p></noscript>
     </div>
 

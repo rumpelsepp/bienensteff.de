@@ -16,8 +16,14 @@ async function initDatabase() {
     if (!app) {
         return;
     }
+    // What stands in the app while the code and the database are on their
+    // way, and what it looks like to the visitor.
+    app.innerHTML = '<p class="db-status">Datenbank wird geladen…</p>';
+    // The chunk and the database are on their way at the same time -- one
+    // waiting for the other would cost a round trip.
+    const response = fetch(app.dataset.src ?? "");
     const { initDb } = await import("./db");
-    await initDb(app);
+    await initDb(app, response);
 }
 
 async function initCharts() {

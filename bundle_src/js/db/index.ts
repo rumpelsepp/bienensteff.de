@@ -6,10 +6,20 @@
 import { type Db, find, publicOn, today } from "./data";
 import { notFound, overview, pageFrom, record, titleOf } from "./view";
 
-export async function initDb(app: HTMLElement): Promise<void> {
-    const response = await fetch(app.dataset.src ?? "");
-    if (!response.ok) throw new Error(`database: ${response.status} ${response.statusText}`);
-    const db = publicOn((await response.json()) as Db, today());
+export async function initDb(app: HTMLElement, responsePromise: Promise<Response>): Promise<void> {
+    // What went wrong on the way is said on the page, not only in the
+    // console: an empty page tells the visitor nothing.
+    let db: Db;
+    try {
+        const response = await responsePromise;
+        if (!response.ok) throw new Error(`database: ${response.status} ${response.statusText}`);
+        db = publicOn((await response.json()) as Db, today());
+    } catch (cause) {
+        console.error("Failed to load the database:", cause);
+        app.innerHTML = '<p class="db-status">Die Datenbank konnte nicht geladen werden – bitte die Seite neu laden.</p>';
+        return;
+    }
+
     const page = pageFrom(app);
 
     const id = new URLSearchParams(location.search).get("q")?.trim();

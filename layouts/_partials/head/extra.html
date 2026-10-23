@@ -1,0 +1,20 @@
+{{- /*
+  What the database page (the section of type "db", the one layout in
+  layouts/db/) asks of the browser before it could know it needs it
+  (layouts/db/overview.html, bundle_src/js/db/): the code of the
+  database as a chunk that base_bundle.js imports only once it runs,
+  and the database itself, which the chunk fetches only once it runs.
+  Both requests start with the page here, in parallel, instead of one
+  after the other after the other.
+
+  The chunk's name is esbuild's, hash included; the pattern catches
+  whatever the current hash is. as=fetch needs crossorigin, or the
+  preload does not match the request the chunk sends.
+*/ -}}
+{{- if eq .Type "db" }}
+{{- range resources.Match "gen/chunks/db-*.js" }}
+<link rel="modulepreload" href="{{ .RelPermalink }}">
+{{- end }}
+{{- $db := resources.Get "/db/db.json" | minify | fingerprint }}
+<link rel="preload" as="fetch" href="{{ $db.RelPermalink }}" crossorigin>
+{{- end }}

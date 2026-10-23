@@ -6,7 +6,7 @@
    not the place for justified text. */
 .db-record {
   .db-table,
-  #honeydb {
+  table {
     text-align: left;
     hyphens: none;
   }
@@ -25,10 +25,16 @@
      narrow screen the value has to give way: a long word or the address
      of the permalink breaks rather than push the table out of the page.
      Not for the overview, a .db-table that scrolls sideways instead. */
-  #honeydb:not(.db-table) td {
+  table:not(.db-table) td {
     hyphens: auto;
     overflow-wrap: anywhere;
   }
+}
+
+/* What the page says while the database is on its way, or why it failed
+   to arrive. */
+.db-status {
+  color: var(--color-ink-muted);
 }
 
 /* What kind of record a page is about, above its number. */
