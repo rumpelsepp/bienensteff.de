@@ -14,16 +14,9 @@
 
   {{ .Content }}
 
-  {{ $last := sub (len .Pages) 1 }}
-  {{ range $i, $p := .Pages }}
-
-    {{ if eq (mod $i 3) 0 }}
-      <div class="row">
-    {{ end }}
-
-    <div class="col-md-4">
+  <div class="grid">
+  {{ range $p := .Pages }}
       {{ $context := dict
-          "cardClass" "mb-3"
           "title" $p.Title
           "level" 2
           "image" ($p.Resources.GetMatch ($p.Param "image"))
@@ -31,11 +24,7 @@
           "url" $p.RelPermalink
       }}
       {{ partial "card.html" $context }}
-    </div>
-
-    {{ if or (eq (mod $i 3) 2) (eq $i $last) }}
-      </div>
-    {{ end }}
   {{ end }}
+  </div>
 </article>
 {{ end }}

@@ -33,25 +33,20 @@ Honig wird nach zwei Merkmalen unterschieden: nach der botanischen Herkunft und 
 
 {{< fig src="IMG_20260725_100047.jpg" alt="Zwei Honiggläser nebeneinander auf einem Holzbrett, links ein goldgelber, rechts ein rotbrauner Honig" caption="Zwei Honige, zwei Farben: Farbe, Geschmack und Aroma hängen von der botanischen Herkunft ab." crop-top="4" crop-bottom="4" width="520" >}}
 
-<div class="row row-cols-1 row-cols-md-2 g-3 mb-3">
-<div class="col">
+<div class="grid mb-3" style="--grid-max: 2; --grid-min: 20rem; --grid-gap: 1rem">
 
-{{< card header="Nach botanischer Herkunft" card_class="h-100 text-start" >}}
+{{< card header="Nach botanischer Herkunft" card_class="text-start" >}}
 * **Blütenhonig** (auch Nektarhonig) wird überwiegend aus dem Nektar von Blüten gewonnen.
 * **Honigtauhonig** (z. B. Wald- oder Tannenhonig) geht auf Ausscheidungen pflanzensaugender Insekten zurück.
 * **Sortenhonig** darf ein Honig heißen, dessen überwiegender Teil nachweislich aus einer bestimmten Pflanze wie Raps, Linde oder Akazie stammt.
 {{< /card >}}
 
-</div>
-<div class="col">
-
-{{< card header="Nach Gewinnungsart" card_class="h-100 text-start" >}}
+{{< card header="Nach Gewinnungsart" card_class="text-start" >}}
 * **Schleuderhonig** wird durch Zentrifugieren aus den Waben gelöst. Das ist die gängigste Form.
 * **Presshonig** wird aus den Waben gepresst und ist seltener.
 * **Wabenhonig** wird direkt im Wabenstück verkauft, ebenfalls selten.
 {{< /card >}}
 
-</div>
 </div>
 
 Weitere Einzelheiten stehen in den [Leitsätzen für Honig](https://www.bmel.de/SharedDocs/Downloads/DE/_Ernaehrung/Lebensmittel-Kennzeichnung/LeitsaetzeHonig.html) des Deutschen Lebensmittelbuchs und in den [Honigsorten-Bezeichnungen](https://deutscherimkerbund.de/wp-content/uploads/2025/02/34-honigsorten-bezeichnungen-2021.pdf) des Deutschen Imkerbundes.
