@@ -1,42 +1,28 @@
-{{ $region := lower (.Get "region") }}
-{{ $year := .Get "year" | default (now | dateFormat "2006") }}
-{{ $currentYear := now | dateFormat "2006" }}
-{{ $years := (.Get "years" | default (slice (add (int $currentYear) -3) (add (int $currentYear) -2) (add (int
-$currentYear) -1) (int $currentYear))) }}
+{{- /*
+  The evaluation table of a Trachtnet region, one per year, each folded
+  into a <details>; they share a name, so one is open at a time, the
+  latest to begin with. The table of a folded year is drawn once it opens
+  (bundle_src/js/charts/render.ts).
 
-<ul class="nav nav-tabs" role="tablist">
-  {{ range $i, $year := $years }}
-    {{ $cssID := printf "trachtnet-evaluation-%s-%d" $region $year }}
-    <li class="nav-item" role="presentation">
-      {{ $classes := slice "nav-link" }}
-      {{ $ariaSelected := "false"}}
+    {{< trachtnet-evaluation region="Bayern" >}}
 
-      {{ if eq (add $i 1) (len $years) }}
-        {{ $classes = $classes | append (slice "active") }}
-        {{ $ariaSelected = "true" }}
-      {{ end }}
+  Params:
+    region  the region (required)
+    years   the years, as a slice (default: the current one and the three
+            before)
+*/ -}}
+{{- $region := lower (.Get "region") }}
+{{- $current := int (now.Format "2006") }}
+{{- $years := .Get "years" | default (slice (sub $current 3) (sub $current 2) (sub $current 1) $current) }}
+{{- $group := printf "trachtnet-evaluation-%s" $region }}
 
-      <button class="{{ delimit $classes " "}}" id="tab-{{ $region }}-{{ $year }}" data-bs-toggle="tab"
-        data-bs-target="#tab-pane-evaluation-{{ $region }}-{{ $year }}" type="button" role="tab"
-        aria-controls="tab-pane-evaluation-{{ $region }}-{{ $year }}" aria-selected="{{ $ariaSelected }}">{{ $year
-        }}</button>
-    </li>
-  {{ end }}
-</ul>
-
-<div class="tab-content mt-4">
-  {{ range $i, $year := $years }}
-    {{ $cssID := printf "trachtnet-evaluation-%s-%d" $region $year }}
-
-    {{ $classes := slice "tab-pane" }}
-    {{ if eq (add $i 1) (len $years) }}
-      {{ $classes = $classes | append (slice "show" "active") }}
-    {{ end }}
-
-    <div class="{{ delimit $classes " "}}" id="tab-pane-evaluation-{{ $region }}-{{ $year }}" role="tabpanel"
-      aria-labelledby="tab-evaluation-{{ $region }}-{{ $year }}" tabindex="0">
+<div class="trachtnet-evaluation">
+  {{- range $i, $year := $years }}
+    {{- $cssID := printf "trachtnet-evaluation-%s-%d" $region $year }}
+    <details name="{{ $group }}"{{ if eq (add $i 1) (len $years) }} open{{ end }}>
+      <summary>{{ $year }}</summary>
       <div class="trachtnet-evaluation-table-container mb-4" id="{{ $cssID }}" data-id="{{ $cssID }}"
         data-region="{{ $region }}" data-year="{{ $year }}"></div>
-    </div>
-  {{ end }}
+    </details>
+  {{- end }}
 </div>
