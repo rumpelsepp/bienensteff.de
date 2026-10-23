@@ -191,7 +191,7 @@ Unsere Imkerei ist Mitglied in diesen Verbänden:
 * [Deutscher Imkerbund e.V.](https://deutscherimkerbund.de/)
 * [Landesverband Bayerischer Imker e.V.](https://www.lvbi.de/)
 * [Bienenzuchtverein München und Umgebung e.V. (BZVM)](https://bzvm.de/)
-{.about-links}
+{.pills}
 
 ## Kontakt
 
