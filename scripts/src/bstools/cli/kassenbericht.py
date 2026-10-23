@@ -14,8 +14,11 @@ amount = Bargeld + unbar, posting category "Einnahmen als Kleinunternehmer",
 0 % tax, collective contact. Then the PDF is attached to it. Assigning the
 payments -- the cash register for the Bargeld, the bank transactions for
 unbar -- is not possible via the API (payments are read-only there) and
-stays a step in Lexware. The upload is refused if a voucher with that number
-already exists, or if the amount is 0 (e.g. BV-000, the initial filling).
+stays a step in Lexware. The upload is refused if the emptying is already
+ticked "festgeschrieben" in Grist, if a voucher with that number already
+exists, or if the amount is 0 (e.g. BV-000, the initial filling). After a
+successful upload the emptying is ticked "festgeschrieben" in Grist, which
+locks it and its article rows there (access rules on that column).
 
 Settings (environment variable, or config file -- see bscli.example.toml):
   GRIST_API_KEY, GRIST_BASE_URL, GRIST_DOC_ID; LEXWARE_API_KEY for --upload
@@ -99,6 +102,8 @@ def fetch_report(grist: GristClient, voucher_number: str) -> dict[str, Any]:
         logger.warning("%s: no article rows in Grist '%s'.", voucher_number, BOX_ITEMS_TABLE_ID)
 
     return {
+        "grist_id": rec["id"],
+        "festgeschrieben": bool(f.get("Festgeschrieben")),
         "nummer": voucher_number,
         "datum_iso": date,
         "datum": german_date(date),
@@ -151,8 +156,16 @@ def voucher_payload(report: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def upload(report: dict[str, Any], pdf: bytes, filename: str, dry_run: bool) -> None:
+def upload(
+    grist: GristClient, report: dict[str, Any], pdf: bytes, filename: str, dry_run: bool
+) -> None:
     payload = voucher_payload(report)
+    if report["festgeschrieben"]:
+        logger.error(
+            "%s is already festgeschrieben in Grist (uploaded before), not uploaded again.",
+            report["nummer"],
+        )
+        sys.exit(1)
     if report["beleg_betrag_wert"] <= 0:
         logger.error(
             "%s: amount is %s -- nothing to book (initial filling?), not uploaded.",
@@ -162,13 +175,15 @@ def upload(report: dict[str, Any], pdf: bytes, filename: str, dry_run: bool) -> 
         sys.exit(1)
     if dry_run:
         print("--dry-run: would create this voucher in Lexware and attach", filename)
+        print("and then tick it festgeschrieben in Grist")
         print(json.dumps(payload, ensure_ascii=False, indent=2))
         return
 
     client = LexwareClient(require_env("LEXWARE_API_KEY")["LEXWARE_API_KEY"])
     if existing := client.find_voucher_id("salesinvoice", report["nummer"]):
         logger.error(
-            "%s already exists in Lexware (%s), not uploaded again.",
+            "%s already exists in Lexware (%s), not uploaded again -- tick it "
+            "festgeschrieben in Grist if that is the right one.",
             report["nummer"],
             client.voucher_deeplink(existing),
         )
@@ -178,6 +193,8 @@ def upload(report: dict[str, Any], pdf: bytes, filename: str, dry_run: bool) -> 
     print(
         f"Lexware: voucher {report['nummer']} created, PDF attached: {client.voucher_deeplink(voucher_id)}"
     )
+    grist.update_records(BOX_TABLE_ID, [(report["grist_id"], {"Festgeschrieben": True})])
+    print(f"Grist: {report['nummer']} festgeschrieben.")
     print("Still to do in Lexware: assign the Bargeld (Kasse) and the unbar bank payments.")
 
 
@@ -208,7 +225,7 @@ def run(args: argparse.Namespace) -> None:
     output.write_bytes(pdf)
     print(f"{output} written ({len(pdf) // 1024} KiB).")
     if args.upload:
-        upload(report, pdf, output.name, args.dry_run)
+        upload(grist, report, pdf, output.name, args.dry_run)
 
 
 def main(argv: list[str] | None = None) -> None:

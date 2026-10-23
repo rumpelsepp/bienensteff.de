@@ -27,6 +27,9 @@
 #let line-color = if bw { luma(55%) } else { rgb("#90a4ae") }
 #let sep = if bw { luma(80%) } else { rgb("#cfd8dc") }
 
+// The house font, for all documents of the business.
+#let schrift = "Noto Sans"
+
 // Links: a thin underline in the line colour, so they show without
 // shouting. `imkerei` and `aushang` apply it unless
 // `links-unterstreichen: false`.
@@ -77,7 +80,7 @@
   ) + data
   let firma = d.firma
   set document(title: title, author: firma)
-  set text(font: "Liberation Sans", size: 10pt, fill: ink, lang: "de", region: "DE")
+  set text(font: schrift, size: 10pt, fill: ink, lang: "de", region: "DE")
   set par(justify: false, leading: 0.55em)
   show: link-stil.with(links-unterstreichen)
   set page(
@@ -185,7 +188,7 @@
 // Pages are centred; `margin` as in `set page`.
 #let aushang(title: "", paper: "a4", flipped: false, margin: 1.2cm, links-unterstreichen: true, body) = {
   set document(title: title, author: betrieb.firma)
-  set text(font: "Liberation Sans", size: 12pt, fill: ink, lang: "de", region: "DE")
+  set text(font: schrift, size: 12pt, fill: ink, lang: "de", region: "DE")
   set par(justify: false, leading: 0.5em)
   set page(paper: paper, flipped: flipped, margin: margin)
   show: link-stil.with(links-unterstreichen)
