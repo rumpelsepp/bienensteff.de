@@ -1,0 +1,54 @@
+/* --------------------------------------------------------------------
+   Über uns
+   -------------------------------------------------------------------- */
+
+.about-motto {
+  margin-block: 2rem;
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface));
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  text-align: center;
+  hyphens: manual;
+}
+
+/* A list of links as a row of pills. */
+.about-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  hyphens: manual;
+
+  li {
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+
+    &:has(a:hover, a:focus-visible) {
+      border-color: var(--color-primary);
+    }
+  }
+
+  a {
+    text-decoration-line: none;
+
+    &:hover,
+    &:focus-visible {
+      text-decoration-line: underline;
+    }
+  }
+
+  /* The theme pulls the icon of an external link in by a negative margin.
+     A pill is as wide as its content, so the icon would no longer fit in
+     the line and wrap. */
+  .external-link-icon {
+    margin-inline-end: 0;
+  }
+}

@@ -1,0 +1,62 @@
+/* --------------------------------------------------------------------
+   Seals
+   -------------------------------------------------------------------- */
+
+/* Seals (layouts/shortcodes/siegel.html): the logo beside what it stands
+   for, two of them side by side. */
+.siegel-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.siegel {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  hyphens: manual;
+
+  /* The logos are drawn for a light ground, so theirs stays light in dark
+     mode, like the one of the product photos. */
+  .siegel-logo {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 6.5rem;
+    height: 6.5rem;
+    padding: 0.6rem;
+    border-radius: var(--radius-lg);
+    background: var(--sortiment-backdrop);
+
+    /* The min- lets the image shrink below its own size in the grid. */
+    img {
+      width: 100%;
+      height: 100%;
+      min-width: 0;
+      min-height: 0;
+      object-fit: contain;
+    }
+  }
+
+  .siegel-title {
+    margin: 0 0 0.35rem;
+    font-size: 1.1rem;
+  }
+
+  p {
+    margin-bottom: 0.35rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,27 @@
+/* --------------------------------------------------------------------
+   Folded stretch of a page
+   -------------------------------------------------------------------- */
+
+/* A stretch of a page folded away behind a handle (the Regierungsbezirke
+   and the methodology of the Trachtnet page): the headline stays, the
+   rest is one click away. <details> needs no JavaScript -- but a chart
+   built while the fold is closed has no size; charts/render.ts listens
+   for it opening and resizes them. */
+.fold-details {
+  margin-bottom: 1.5rem;
+
+  summary {
+    width: fit-content;
+    color: var(--color-ink-muted);
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--color-ink);
+    }
+  }
+
+  &[open] summary {
+    margin-bottom: 1rem;
+  }
+}

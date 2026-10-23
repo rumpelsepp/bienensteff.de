@@ -43,7 +43,7 @@ export async function initAllCharts() {
 }
 
 // The button that lets the charts grow beyond the text column and back
-// (.charts-wide in style.css). The charts follow the size of their
+// (.charts-wide in bundle_src/css/charts.css). The charts follow the size of their
 // containers on their own, see initEchartsInstance().
 function initWidthToggle() {
     const button = document.querySelector<HTMLButtonElement>(`${TRACHTNET_YEAR_SELECT} .chart-width-toggle`);

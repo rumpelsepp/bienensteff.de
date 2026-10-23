@@ -1,0 +1,38 @@
+/* --------------------------------------------------------------------
+   Year of the charts (layouts/shortcodes/trachtnet-year-select.html)
+   -------------------------------------------------------------------- */
+
+.trachtnet-year-select {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  margin-bottom: 1.5rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+  font-weight: 600;
+
+  .form-select {
+    width: auto;
+  }
+
+  /* [hidden] loses against display: flex above. */
+  &[hidden] {
+    display: none;
+  }
+
+  .chart-width-toggle {
+    margin-left: 0.5rem;
+  }
+
+  /* Where the window is no wider than the column and its margins there is
+     nothing to gain. */
+  @media (max-width: 1199.98px) {
+    .chart-width-toggle {
+      display: none;
+    }
+  }
+}

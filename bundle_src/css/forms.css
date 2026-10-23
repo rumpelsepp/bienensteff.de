@@ -1,0 +1,51 @@
+/* Bootstrap's buttons and form fields in honey. */
+
+/* Bootstrap's outline button is its own blue, which has only 4.2:1 on the
+   page background; the darker honey shade has enough contrast and is on
+   brand. */
+.btn-outline-primary {
+  --bs-btn-color: var(--honey-800);
+  --bs-btn-border-color: var(--honey-800);
+  --bs-btn-hover-bg: var(--honey-800);
+  --bs-btn-hover-border-color: var(--honey-800);
+  --bs-btn-active-bg: var(--honey-900);
+  --bs-btn-active-border-color: var(--honey-900);
+  --bs-btn-disabled-color: var(--honey-800);
+  --bs-btn-disabled-border-color: var(--honey-800);
+  --bs-btn-focus-shadow-rgb: 184, 114, 12;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--honey-700);
+  --bs-btn-border-color: var(--honey-700);
+  --bs-btn-hover-bg: var(--honey-800);
+  --bs-btn-hover-border-color: var(--honey-800);
+  --bs-btn-active-bg: var(--honey-900);
+  --bs-btn-active-border-color: var(--honey-900);
+  --bs-btn-disabled-bg: var(--honey-700);
+  --bs-btn-disabled-border-color: var(--honey-700);
+  --bs-btn-focus-shadow-rgb: 184, 114, 12;
+}
+
+.btn-hero-primary {
+  background: var(--honey-700);
+  border-color: var(--honey-700);
+}
+
+.btn-hero-primary:hover,
+.btn-hero-primary:focus {
+  background: var(--honey-800);
+  border-color: var(--honey-800);
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+  border-color: #d9a758;
+  box-shadow: 0 0 0 0.25rem rgba(184, 114, 12, 0.25);
+}
+
+.form-check-input:checked {
+  background-color: var(--honey-700);
+  border-color: var(--honey-700);
+}

@@ -1,0 +1,72 @@
+/* --------------------------------------------------------------------
+   Certificates of competence
+   -------------------------------------------------------------------- */
+
+/* Certificates of competence (layouts/shortcodes/nachweise.html): the
+   year beside its entries, which hang on a line with a dot each. */
+.nachweise {
+  text-align: left;
+  hyphens: manual;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    border-left: 2px solid var(--color-border);
+  }
+
+  li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    column-gap: 0.75rem;
+    padding: 0.45rem 0 0.45rem 1.25rem;
+    line-height: 1.45;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 1rem;
+      left: -1px;
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 50%;
+      background: var(--color-primary);
+      translate: -50% 0;
+    }
+  }
+
+  time {
+    grid-row: span 2;
+    color: var(--color-ink-muted);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.nachweise-year {
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  column-gap: 1rem;
+
+  & + & {
+    margin-top: 0.75rem;
+  }
+
+  @media (max-width: 575.98px) {
+    grid-template-columns: 1fr;
+    row-gap: 0.25rem;
+  }
+}
+
+.nachweise-year-label {
+  margin: 0;
+  padding-top: 0.3rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.nachweise-issuer {
+  grid-column: 2;
+  color: var(--color-ink-muted);
+  font-size: 0.875rem;
+}

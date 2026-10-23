@@ -1,0 +1,35 @@
+/* --------------------------------------------------------------------
+   Folded quotes (layouts/shortcodes/blockquote.html)
+   -------------------------------------------------------------------- */
+
+/* A quote folded away behind the name of its source (blockquote shortcode
+   with a summary): the page says it in its own words, the original wording
+   is one click away. */
+.quote-details {
+  margin: 0 0 0.5rem;
+
+  /* The last of a run of them, before the text goes on. */
+  &:not(:has(+ .quote-details)) {
+    margin-bottom: 1.5rem;
+  }
+
+  summary {
+    width: fit-content;
+    color: var(--color-ink-muted);
+    font-size: 0.95rem;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--color-ink);
+    }
+  }
+
+  figure {
+    margin: 0.5rem 0 1rem;
+  }
+
+  blockquote {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+  }
+}

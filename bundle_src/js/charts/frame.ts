@@ -2,7 +2,7 @@
 // HTML -- title, the lines below it that say what bands and dashed lines
 // mean, a legend -- and below it the plot as SVG, with a tooltip of HTML
 // over it. Text and lines take the colours of the page by CSS (.chart in
-// style.css), so a chart follows the colour scheme without being told.
+// bundle_src/css/charts.css), so a chart follows the colour scheme without being told.
 //
 // Two kinds of plot: timeChart() for the days of one year, with zoom and
 // a tooltip per day; yearChart() for one value per year.

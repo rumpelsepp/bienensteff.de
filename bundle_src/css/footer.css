@@ -1,0 +1,4 @@
+/* The name of the site in the footer, in bold. */
+#site-footer .footer-brand {
+  font-weight: 700;
+}
