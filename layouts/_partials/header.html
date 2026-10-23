@@ -1,7 +1,7 @@
 {{- $logo := resources.Get "/img/logo.svg" }}
 
 <div class="site-nav-bar">
-  {{ partial "menu-bootstrap.html" (dict "menuID" "main" "page" . "brand" $logo "brandText" "bienensteff") }}
+  {{ partial "nav.html" (dict "menuID" "main" "page" . "brand" $logo "brandText" "bienensteff") }}
 </div>
 
 {{ if .IsHome }}

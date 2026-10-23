@@ -63,8 +63,9 @@
   --sortiment-backdrop: #f3ecdf;
 }
 
-.dropdown-menu {
-  --bs-dropdown-link-active-bg: var(--honey-700);
+/* The current page in a dropdown of the menu: white on the darker honey. */
+.site-nav {
+  --nav-active-bg: var(--honey-700);
 }
 
 /* Bootstrap's outline button is its own blue, which has only 4.2:1 on the
