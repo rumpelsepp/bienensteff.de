@@ -2,6 +2,10 @@
    values. */
 
 :root {
+  /* Noto Sans (fonts.css) for text and headings, the system's font
+     until it has arrived. */
+  --font-body: "Noto Sans Variable", var(--font-system);
+
   --color-primary: #b8720c;
   --color-link: #9c5c09;
   --color-link-hover: #764408;

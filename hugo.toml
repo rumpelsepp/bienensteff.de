@@ -13,6 +13,9 @@ theme = "bienensteff"
 
 [params]
 description = "Honig und Bienen aus dem Münchner Grüngürtel"
+# Schriftdateien, die jede Seite braucht und die der Browser gleich mit
+# laden soll (siehe bundle_src/css/fonts.css und das Theme, head/fonts.html).
+preloadFonts = ['noto-sans-latin-wght-normal']
 # Hosts neben der baseURL, die zur Seite gehoeren: Links dorthin gelten
 # nicht als extern (kein neuer Tab, kein Symbol), siehe
 # themes/bienensteff/layouts/_partials/_funcs/is-external.html.
