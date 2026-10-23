@@ -35,7 +35,7 @@
   --sortiment-backdrop: var(--color-surface);
 }
 
-/* Dark mode (params.darkMode, see the theme's main.css): the palette above
+/* Dark mode (params.darkMode, see the theme's tokens.css): the palette above
    overrides the theme's tokens, so their dark values have to be given here
    as well -- the same warm brown, a shade towards honey. The honey shades
    for buttons stay: white text on them works in either mode. */

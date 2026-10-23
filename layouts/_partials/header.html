@@ -12,7 +12,7 @@
            needs at the banner's aspect ratio (~4:1), whichever is larger --
            on a phone the hero is ~416px tall, i.e. the image ~1660px wide,
            not 100vw. The height term mirrors .hero's min-height in the
-           theme's main.css. Eager + high priority: largest thing above the
+           theme's hero.css. Eager + high priority: largest thing above the
            fold. */}}
       {{ with resources.Get "/img/banner.jpg" }}
         {{ partial "image/img.html" (dict
