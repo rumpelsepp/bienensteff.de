@@ -9,10 +9,10 @@ Allgemeine Informationen rund um Honig gibt es außerdem auf der [Webseite](http
 {.lead}
 
 <ul class="fact-tiles" role="list">
-  <li><i class="bi bi-moon-stars" aria-hidden="true"></i><strong>Kühl, trocken, dunkel</strong><span>die übliche Lagerempfehlung</span></li>
-  <li><i class="bi bi-droplet" aria-hidden="true"></i><strong>Unter 18&nbsp;% Wasser</strong><span>Richtwert des Deutschen Imkerbundes</span></li>
-  <li><i class="bi bi-thermometer-half" aria-hidden="true"></i><strong>Nicht über 40&nbsp;°C</strong><span>Enzyme sind wärmeempfindlich</span></li>
-  <li><i class="bi bi-calendar-check" aria-hidden="true"></i><strong>Zwei Jahre</strong><span>übliche Mindesthaltbarkeit</span></li>
+  <li>{{< icon "moon-stars" >}}<strong>Kühl, trocken, dunkel</strong><span>die übliche Lagerempfehlung</span></li>
+  <li>{{< icon "droplet" >}}<strong>Unter 18&nbsp;% Wasser</strong><span>Richtwert des Deutschen Imkerbundes</span></li>
+  <li>{{< icon "thermometer-half" >}}<strong>Nicht über 40&nbsp;°C</strong><span>Enzyme sind wärmeempfindlich</span></li>
+  <li>{{< icon "calendar-check" >}}<strong>Zwei Jahre</strong><span>übliche Mindesthaltbarkeit</span></li>
 </ul>
 
 ## Was ist Honig?

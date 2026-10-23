@@ -14,13 +14,13 @@
   {{- range sort .Page.Params.auszeichnungen "date" "desc" }}
   {{- $date := time.AsTime .date }}
   <li class="award award--{{ .medal }}">
-    <span class="award-medal" aria-hidden="true"><i class="bi bi-award-fill"></i></span>
+    <span class="award-medal" aria-hidden="true">{{ partial "icon.html" "award-fill" }}</span>
     <div class="award-body">
       <p class="award-kind">{{ .medal | title }} · {{ $date.Format "2006" }}</p>
       <p class="award-title">{{ .title }}</p>
       <p class="award-event">{{ .event }}, {{ .place }}</p>
       {{- with .url }}
-      <a class="award-link" href="{{ . }}"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> Urkunde ansehen<span class="visually-hidden"> ({{ $date.Format "2006" }})</span></a>
+      <a class="award-link" href="{{ . }}">{{ partial "icon.html" "file-earmark-pdf" }} Urkunde ansehen<span class="visually-hidden"> ({{ $date.Format "2006" }})</span></a>
       {{- end }}
     </div>
   </li>

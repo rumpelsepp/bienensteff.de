@@ -111,10 +111,10 @@ So wurde aus einem Versuch eine Leidenschaft – und aus der Leidenschaft unsere
 {{< /split >}}
 
 <ul class="fact-tiles" role="list">
-  <li><i class="bi bi-calendar-heart" aria-hidden="true"></i><strong>Seit 2021</strong><span>Imkerei aus Leidenschaft</span></li>
-  <li><i class="bi bi-geo-alt" aria-hidden="true"></i><strong>Münchner Südwesten</strong><span>mitten im Grüngürtel</span></li>
-  <li><i class="bi bi-award" aria-hidden="true"></i><strong>Gold und Silber</strong><span>Bayerische Honigprämierung</span></li>
-  <li><i class="bi bi-patch-check" aria-hidden="true"></i><strong>Geprüfte Qualität Bayern</strong><span>Siegel für unseren Honig</span></li>
+  <li>{{< icon "calendar-heart" >}}<strong>Seit 2021</strong><span>Imkerei aus Leidenschaft</span></li>
+  <li>{{< icon "geo-alt" >}}<strong>Münchner Südwesten</strong><span>mitten im Grüngürtel</span></li>
+  <li>{{< icon "award" >}}<strong>Gold und Silber</strong><span>Bayerische Honigprämierung</span></li>
+  <li>{{< icon "patch-check" >}}<strong>Geprüfte Qualität Bayern</strong><span>Siegel für unseren Honig</span></li>
 </ul>
 
 {{< fig src="IMG_20240708_195442.jpg" alt="Rauchender Smoker auf dem Blechdeckel eines Bienenstocks, dahinter eine Wiese am Waldrand im Abendlicht" crop-top="16" crop-bottom="6" width="900" >}}
@@ -198,5 +198,5 @@ Unsere Imkerei ist Mitglied in diesen Verbänden:
 Ihr habt Fragen, wollt Honig bestellen oder einfach über Bienen ratschen? Meldet euch gern – wie ihr uns erreicht, steht auf der Kontaktseite.
 
 <a class="btn btn-primary mb-3" href="{{< relref "kontakt" >}}">
-<i class="bi bi-envelope" aria-hidden="true"></i> Zur Kontaktseite
+{{< icon "envelope" >}} Zur Kontaktseite
 </a>

@@ -14,10 +14,10 @@ Am schnellsten geht's per E-Mail oder Telefon – ein klassisches Ladengeschäft
 Schreibt uns kurz, welche [Sorte]({{< relref "verkauf#sortiment" >}}) und Menge ihr möchtet und wo ihr abholen wollt – wir melden uns mit allen Details zurück.
 
 <a class="btn btn-primary mb-3" href="mailto:info@bienensteff.de?subject=Bestellanfrage&body=Servus%2C%0A%0Aich%20h%C3%A4tt%20gern%20Honig%20%E2%80%93%20hier%20meine%20Anfrage%3A%0A%0A-%20Sorte%28n%29%20und%20Menge%3A%0A-%20Abholung%20in%20M%C3%BCnchen%20oder%20Grafenau%3A%0A-%20Wunschtermin%3A%0A%0ADanke%20und%20viele%20Gr%C3%BC%C3%9Fe">
-<i class="bi bi-envelope" aria-hidden="true"></i> Bestellanfrage per E-Mail
+{{< icon "envelope" >}} Bestellanfrage per E-Mail
 </a>
 
-Telefonisch: <i class="bi bi-telephone" aria-hidden="true"></i> [+49 1512 4096409](tel:+4915124096409)
+Telefonisch: {{< icon "telephone" >}} [+49 1512 4096409](tel:+4915124096409)
 
 Ihr könnt euren Honig auch direkt an einer unserer [Verkaufsstellen]({{< relref "verkauf#verkaufsstellen" >}}) mitnehmen – dann braucht's vorher keine Anfrage.
 
@@ -25,7 +25,7 @@ Ihr könnt euren Honig auch direkt an einer unserer [Verkaufsstellen]({{< relref
 
 Wenn ihr einen Schwarm entdeckt habt, ruft am besten **direkt an**, dann geht's schneller:
 
-<i class="bi bi-telephone" aria-hidden="true"></i> [+49 1512 4096409](tel:+4915124096409)
+{{< icon "telephone" >}} [+49 1512 4096409](tel:+4915124096409)
 
 Sind wir gerade nicht erreichbar oder haben keine Kapazität, findet ihr auf [schwarmrettung.de](https://schwarmrettung.de/) weitere Imker in eurer Nähe.
 Alle Infos rund um Schwärme gibt's auf der Seite [Schwärme und Nester]({{< relref "schwaerme-und-nester" >}}).
@@ -36,14 +36,14 @@ Als ausgebildete Wespen- und Hornissenfachberater beraten wir euch gerne – bei
 
 Selbst entfernen dürfen wir aber nichts: Wespen und Hornissen stehen unter Naturschutz, ein Nest darf nur mit Genehmigung der Unteren Naturschutzbehörde entfernt werden. Die Hintergründe und Bestimmungshilfen stehen auf der Seite [Schwärme und Nester]({{< relref "schwaerme-und-nester#bienennester" >}}).
 
-Für eine Beratung erreicht ihr uns unter <i class="bi bi-telephone" aria-hidden="true"></i> [+49 1512 4096409](tel:+4915124096409) oder <i class="bi bi-envelope" aria-hidden="true"></i> [info@bienensteff.de](mailto:info@bienensteff.de?subject=Wespen-%2FHornissenberatung).
+Für eine Beratung erreicht ihr uns unter {{< icon "telephone" >}} [+49 1512 4096409](tel:+4915124096409) oder {{< icon "envelope" >}} [info@bienensteff.de](mailto:info@bienensteff.de?subject=Wespen-%2FHornissenberatung).
 Nester meldet ihr direkt bei der [Stadt München](https://stadt.muenchen.de/infos/wespen-hornissen-muenchen.html) über das [Online-Formular](https://service.muenchen.de/intelliform/forms/01/09/09/meldung_insektennest/index).
 
 ### Alles andere
 
 Presse, Rückfragen zur [Honigkunde]({{< relref "honigkunde" >}}), Kooperationen oder einfach a Servus:
 
-<i class="bi bi-envelope" aria-hidden="true"></i> [info@bienensteff.de](mailto:info@bienensteff.de?subject=Anfrage%20%C3%BCber%20bienensteff.de)
+{{< icon "envelope" >}} [info@bienensteff.de](mailto:info@bienensteff.de?subject=Anfrage%20%C3%BCber%20bienensteff.de)
 
 ## Standort
 
