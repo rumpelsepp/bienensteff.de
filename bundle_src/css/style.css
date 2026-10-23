@@ -1207,7 +1207,9 @@ article.content {
   .bi {
     color: var(--bs-link-color);
     font-size: 1.6rem;
-    line-height: 1.2;
+    /* An SVG brings no line height of its own, unlike the glyph of the
+       icon font did: the room around it, a little more below. */
+    margin-block: 0.15rem 0.35rem;
   }
 
   strong {
