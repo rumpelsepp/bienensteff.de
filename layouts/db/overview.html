@@ -1,112 +1,40 @@
+{{- /*
+  The page of the traceability database. What it shows is made in the
+  browser, by bundle_src/js/db/: the overview, or the record whose id is
+  in ?q= -- https://db.bienensteff.de/?q=… , the address on the labels,
+  leads here with the same query.
+
+  This template hands over what only Hugo has:
+  - the database, assets/db/db.json, fingerprinted so a new dump is
+    fetched anew (data-src);
+  - the pictures of records, assets/db/img/<id>.{jpg,png}, each as a
+    figure of the theme in a <template>;
+  - the mark of an external link, as the theme makes it.
+
+  The page is kept out of search engines (noindex in the front matter of
+  content/datenbank/_index.md, and robots.txt).
+*/ -}}
 {{ define "main" }}
-
-{{ $db := (partialCached "db/index.html" "db").db }}
-
+{{- $db := resources.Get "/db/db.json" | minify | fingerprint }}
 <div class="single">
-    <article class="content db-record">
+  <article class="content db-record">
     <header>
-        <h1>{{$.Title}}</h1>
+      <h1>{{ .Title }}</h1>
     </header>
 
-        {{.Content}}
+    {{ .Content }}
 
     <hr>
 
-    <h2>So ist die Datenbank zu lesen</h2>
-    <p>
-        Jedes Glas lässt sich über seine Abfüllnummer bis zu dem Tag zurückverfolgen, an dem der Honig geschleudert wurde – und umgekehrt jede Schleuderung bis zu den Gläsern, die daraus entstanden sind.
-        Der Honig durchläuft dabei fünf Stationen, und jede hat eine eigene Nummer.
-        Auf der Seite eines Eintrags steht oben immer dieselbe Kette, mit allem, was davor und danach kam.
-    </p>
-    {{ partial "db/legend.html" . }}
-
-    <h2>Artikel im Verkauf</h2>
-    <div id="beetable" class="table-responsive">
-    <table id="honeydb" class="table db-table">
-    <thead>
-        <tr>
-            <th scope="col">Artikelnummer</th>
-            <th scope="col">GTIN</th>
-            <th scope="col">Produktname</th>
-            <th scope="col">Marke</th>
-        </tr>
-    </thead>
-    <tbody>
-
-    {{/* Nur Artikel mit mindestens einer noch nicht abgelaufenen
-         Abfüllung landen in der Übersicht (db/index.html lässt die
-         abgelaufenen weg) -- Artikel ohne aktuell im Umlauf befindliche
-         Gläser fallen raus, ohne dass ihre eigene Seite/ihr Permalink
-         verschwindet. */}}
-    {{ range sort $db.articles "sku" }}
-        {{ if .fillings }}
-        <tr>
-            <td>{{ partial "db/crosslink.html" (dict "id" .id "text" .sku) }}</td>
-            <td>{{ partial "db/link_gtin.html" (dict "gtin" .gtin) }}</td>
-            <td>{{ .name }} {{ .packaging.net_weight }} {{ .packaging.filling_unit }}</td>
-            <td>{{ .brand.name }}</td>
-        </tr>
-        {{ end }}
-    {{ end }}
-
-    </tbody>
-    </table>
+    <div id="db-app" data-src="{{ $db.RelPermalink }}" data-permalink="https://db.bienensteff.de/?q=" data-site="{{ site.Title }}">
+      <noscript><p>Die Einträge der Datenbank zeigt diese Seite mit JavaScript an.</p></noscript>
     </div>
 
-    {{/* The two ends of the chain as lists, the newest first: where one
-         starts who comes with a batch number or the date of a harvest
-         instead of a jar. */}}
-    <h2>Honiglose</h2>
-    <div class="table-responsive">
-    <table class="table db-table">
-    <thead>
-        <tr>
-            <th scope="col">Los</th>
-            <th scope="col">Sortenempfehlung</th>
-            <th scope="col"><abbr title="Das Los erfüllt die Anforderungen von „Geprüfte Qualität – Bayern“. Ob ein Glas daraus das Siegel trägt, steht bei der Abfüllung.">GQ-konform</abbr></th>
-            <th scope="col">Schleuderung</th>
-            <th scope="col" class="text-end"><abbr title="Wassergehalt laut Laboranalyse einer homogenisierten Probe">Wasser</abbr></th>
-            <th scope="col">Abfüllungen</th>
-        </tr>
-    </thead>
-    <tbody>
-    {{ range sort $db.batches "id" "desc" }}
-        {{ $trace := partial "db/trace.html" .id }}
-        <tr>
-            <td>{{ partial "db/crosslink.html" (dict "id" .id) }}</td>
-            <td>{{ .honey_type }}</td>
-            <td>{{ partial "db/yesno.html" .gqb_compliant }}</td>
-            <td>{{ range $i, $c := $trace.centrifugations }}{{ if $i }} · {{ end }}{{ partial "db/crosslink.html" (dict "id" $c.id) }}{{ end }}</td>
-            <td class="text-end">{{ range first 1 (where .analyses "water" "ne" nil) }}{{ partial "db/de-number.html" (dict "format" "%.1f %%" "value" (math.Mul .water 100)) }}{{ end }}</td>
-            <td>{{ range $i, $f := sort .fillings "id" }}{{ if $i }} · {{ end }}{{ partial "db/crosslink.html" (dict "id" $f.id) }}{{ end }}</td>
-        </tr>
-    {{ end }}
-    </tbody>
-    </table>
-    </div>
-
-    <h2>Schleuderungen</h2>
-    <div class="table-responsive">
-    <table class="table db-table">
-    <thead>
-        <tr>
-            <th scope="col">Schleuderung</th>
-            <th scope="col">Geschleudert am</th>
-            <th scope="col">Lose</th>
-        </tr>
-    </thead>
-    <tbody>
-    {{ range sort $db.centrifugations "id" "desc" }}
-        {{ $trace := partial "db/trace.html" .id }}
-        <tr>
-            <td>{{ partial "db/crosslink.html" (dict "id" .id) }}</td>
-            <td>{{ partial "db/date.html" (dict "date" .date) }}</td>
-            <td>{{ range $i, $b := $trace.batches }}{{ if $i }} · {{ end }}{{ partial "db/crosslink.html" (dict "id" $b.id) }}{{ end }}</td>
-        </tr>
-    {{ end }}
-    </tbody>
-    </table>
-    </div>
-    </article>
+    <template data-db-external-mark>{{ partial "link-external-mark.html" dict }}</template>
+    {{- range resources.Match "/db/img/*.{jpg,png}" }}
+      {{- $id := path.BaseName .Name }}
+      <template data-db-image="{{ $id }}">{{ partial "image/figure.html" (dict "image" . "caption" (upper $id) "width" 400) }}</template>
+    {{- end }}
+  </article>
 </div>
 {{ end }}

@@ -1,8 +1,0 @@
-{{- $byId := (partialCached "db/index.html" "db").byId }}
-<tr><th scope="row">Eimernummer</th><td>{{ .Params.id }}</td></tr>
-{{ with .Params.centrifugation_id }}
-    <tr><th scope="row">Schleuderung</th><td>{{ partial "db/crosslink.html" (dict "id" .) }}{{ with index $byId . }} vom {{ partial "db/date.html" (dict "date" .date) }}{{ end }}</td></tr>
-{{ end }}
-{{ with .Params.batch_id }}
-    <tr><th scope="row">Los</th><td>{{ partial "db/crosslink.html" (dict "id" .) }}{{ with index $byId . }}{{ with .honey_type }} ({{ . }}){{ end }}{{ end }}</td></tr>
-{{ end }}

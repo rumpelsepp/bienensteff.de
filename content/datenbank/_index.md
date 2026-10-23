@@ -2,6 +2,11 @@
 title: Rückverfolgbarkeit
 type: db
 layout: overview
+# Not for search engines: the records are for who holds a jar in hand.
+robots: noindex
+outputs: [html]
+sitemap:
+  disable: true
 ---
 
 Diese Tabelle ist der Startpunkt zu unserer Rückverfolgbarkeits-Datenbank.

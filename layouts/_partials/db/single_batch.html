@@ -1,8 +1,0 @@
-{{/* Quantities, the number of buckets and the comments of the database say
-     how the business runs and are not shown, here or on the other pages. */}}
-<tr><th scope="row">Losnummer</th><td>{{ .Params.id }}</td></tr>
-<tr><th scope="row">Sortenempfehlung</th><td>{{ .Params.honey_type }}</td></tr>
-{{/* The batch meets the requirements; that says nothing about how its
-     honey was labelled, see the fillings below. */}}
-<tr><th scope="row"><abbr title="Das Los erfüllt die Anforderungen von „Geprüfte Qualität – Bayern“. Ob ein Glas daraus das Siegel trägt, steht bei der Abfüllung.">GQ-Bayern-konform</abbr></th><td>{{ partial "db/yesno.html" .Params.gqb_compliant }}</td></tr>
-{{ partial "db/lab.html" .Params }}

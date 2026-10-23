@@ -2,6 +2,8 @@
 // layouts/shortcodes/. Kept in this dependency-free module so main.ts can
 // check for them without pulling in the (code-split) widget modules.
 export const TERMINPLAN = ".terminplan";
+// The page of the traceability database, layouts/db/overview.html.
+export const DB_APP = "#db-app";
 export const TRACHTNET_PROGRESS_CHART = ".trachtnet-progress-chart-container";
 export const TRACHTNET_DERIVATIVE_CHART = ".trachtnet-derivative-chart-container";
 export const TRACHTNET_TREND_CHART = ".trachtnet-trend-chart-container";
