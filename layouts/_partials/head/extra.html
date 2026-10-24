@@ -10,6 +10,12 @@
   The chunk's name is esbuild's, hash included; the pattern catches
   whatever the current hash is. as=fetch needs crossorigin, or the
   preload does not match the request the chunk sends.
+
+  And which of the two the page is, decided before the first paint: with
+  ?q= a record, and until it is shown the overview, which arrives with
+  the page, gives way to what is on its way (.db-view-record in
+  bundle_src/css/db.css). Without JavaScript the page stays the
+  overview. The test is the one bundle_src/js/db/index.ts makes.
 */ -}}
 {{- if eq .Type "db" }}
 {{- range resources.Match "gen/chunks/db-*.js" }}
@@ -17,4 +23,5 @@
 {{- end }}
 {{- $db := resources.Get "/db/db.json" | minify | fingerprint }}
 <link rel="preload" as="fetch" href="{{ $db.RelPermalink }}" crossorigin>
+<script>if(new URLSearchParams(location.search).get("q")?.trim())document.documentElement.classList.add("db-view-record")</script>
 {{- end }}

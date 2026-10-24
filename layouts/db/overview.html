@@ -9,10 +9,18 @@
     fetched anew (data-src);
   - the pictures of records, assets/db/img/<id>.{jpg,png}, each as a
     figure of the theme in a <template>;
-  - the mark of an external link, as the theme makes it.
+  - the mark of an external link, as the theme makes it;
+  - the overview, made at build time by bundle_src/prerender-db.mjs, so
+    the page is painted with it and not grown by it after the first
+    paint. The browser keeps it while the database is the same on the
+    reader's day (data-rendered-on).
+
+  A record (?q=) is known only in the browser. Until it is shown, the
+  overview gives way to .db-pending, decided before the first paint by
+  head/extra.html.
 
   The page is kept out of search engines (noindex in the front matter of
-  content/datenbank/_index.md, and robots.txt).
+  content/datenbank/index.md, and robots.txt).
 */ -}}
 {{ define "main" }}
 {{- $db := resources.Get "/db/db.json" | minify | fingerprint }}
@@ -21,8 +29,14 @@
      is the record's, so a permalink clicked in the preview stays in
      the preview. */}}
 {{- $permalink := cond hugo.IsServer (printf "%s?q=" .Permalink) `https://db.bienensteff.de/?q=` }}
+{{- $prerendered := dict }}
+{{- with resources.Get "gen/db/overview.json" }}
+  {{- $prerendered = . | transform.Unmarshal }}
+{{- end }}
 <div>
   <article class="content db-record">
+    <p class="db-status db-pending">Eintrag wird geladen…</p>
+
     <header>
       <h1>{{ .Title }}</h1>
     </header>
@@ -31,8 +45,12 @@
 
     <hr>
 
-    <div id="db-app" data-src="{{ $db.RelPermalink }}" data-permalink="{{ $permalink }}" data-site="{{ site.Title }}">
+    <div id="db-app" data-src="{{ $db.RelPermalink }}" data-permalink="{{ $permalink }}" data-site="{{ site.Title }}"
+      {{- with $prerendered.renderedOn }} data-rendered-on="{{ . }}"{{ end }}>
       <noscript><p>Die Einträge der Datenbank zeigt diese Seite mit JavaScript an.</p></noscript>
+      {{- with $prerendered.html }}
+        {{- replace . "<!--db-external-mark-->" (partial "link-external-mark.html" dict) | safeHTML }}
+      {{- end }}
     </div>
 
     <template data-db-external-mark>{{ partial "link-external-mark.html" dict }}</template>
