@@ -32,6 +32,10 @@
 {{- $prerendered := dict }}
 {{- with resources.Get "gen/db/overview.json" }}
   {{- $prerendered = . | transform.Unmarshal }}
+  {{- /* Made from another db.json than the one the page hands over. */}}
+  {{- if ne $prerendered.source (sha256 (resources.Get "/db/db.json").Content) }}
+    {{- $prerendered = dict }}
+  {{- end }}
 {{- end }}
 <div>
   <article class="content db-record">
