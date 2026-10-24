@@ -10,6 +10,12 @@ set allow-duplicate-recipes
 default:
     @just --list --unsorted
 
+# Bundle CSS/JS into assets/gen/ with esbuild, then make the overview of
+# the database the page arrives with (bundle_src/prerender-db.mjs)
+npm-build *args:
+    npm run build -- {{ args }}
+    node bundle_src/prerender-db.mjs
+
 build: npm-build
     {{ hugo }} build --cleanDestinationDir
 

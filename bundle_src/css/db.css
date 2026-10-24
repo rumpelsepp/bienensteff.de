@@ -37,6 +37,28 @@
   color: var(--color-ink-muted);
 }
 
+/* A record (?q=, see layouts/_partials/head/extra.html): until it takes
+   the page, what stands there is that it is on its way, not the overview
+   the page arrived with. */
+.db-pending {
+  display: none;
+}
+
+.db-view-record .db-record > :not(.db-pending) {
+  display: none;
+}
+
+.db-view-record .db-record > .db-pending {
+  display: block;
+}
+
+/* And the record will be longer than the line that says so: the page
+   keeps the room of a screen for it, so that what follows (the footer)
+   is not drawn under that line first and pushed down after. */
+.db-view-record .db-record {
+  min-height: 100dvh;
+}
+
 /* What kind of record a page is about, above its number. */
 .db-kind {
   margin: 0 0 0.15rem;

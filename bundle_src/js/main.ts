@@ -17,8 +17,10 @@ async function initDatabase() {
         return;
     }
     // What stands in the app while the code and the database are on their
-    // way, and what it looks like to the visitor.
-    app.innerHTML = '<p class="db-status">Datenbank wird geladen…</p>';
+    // way, unless the overview came with the page (data-rendered-on).
+    if (!app.dataset.renderedOn) {
+        app.innerHTML = '<p class="db-status">Datenbank wird geladen…</p>';
+    }
     // The chunk and the database are on their way at the same time -- one
     // waiting for the other would cost a round trip.
     const response = fetch(app.dataset.src ?? "");

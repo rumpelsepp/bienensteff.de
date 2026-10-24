@@ -360,4 +360,4 @@ export function overview(db: Db, page: Page): Html {
         )}`;
 }
 
-export type { Html };
+export { Html };
