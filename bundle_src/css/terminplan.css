@@ -17,10 +17,6 @@
       flex-direction: column;
       gap: 0.25rem;
     }
-
-    &[hidden] {
-      display: none;
-    }
   }
 
   /* What the sheet is, on paper only (see the print rules below). */
