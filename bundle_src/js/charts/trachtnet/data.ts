@@ -1,5 +1,5 @@
 // The Trachtnet data: /trachtnet-dump/, written by
-// scripts/src/bstools/cli/dump_trachtnet.py -- the days of a region in a
+// bscli's src/bstools/cli/dump_trachtnet.py -- the days of a region in a
 // year, and which regions and years there are.
 
 import { Temporal } from "temporal-polyfill";

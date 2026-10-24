@@ -27,7 +27,7 @@ type DailyRecord = {
 }
 
 // What a station is: /klima/<id>_meta.json, written along with its data by
-// scripts/src/bstools/cli/dump_dwd.py.
+// bscli's src/bstools/cli/dump_dwd.py.
 type Station = {
     id: string,
     name: string,

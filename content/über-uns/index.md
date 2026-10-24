@@ -23,7 +23,7 @@ place = "Hauzenberg (Niederbayern)"
 url = "/auszeichnungen/2024-11-03-honigpraemierung.pdf"
 
 # Shown by the nachweise shortcode, the latest first; also read by
-# `bscli eigenkontrolle` (criterion G1, see scripts/src/bstools/website.py).
+# `bscli eigenkontrolle` (criterion G1, see src/bstools/website.py in the bscli repository).
 [[params.nachweise]]
 date = "2026-07-30"
 title = "Sachkunde: Qualifizierter Nestentferner für die mechanische Bekämpfung (Lanzenmethode) von Nestern der Vespa velutina"

@@ -1,4 +1,4 @@
-// The traceability database as scripts/src/bstools/cli/dump_db.py writes
+// The traceability database as bscli's src/bstools/cli/dump_db.py writes
 // it (assets/db/db.json): five flat tables, a record pointing to another by
 // that one's id. Here it is read, cut down to what is public today and
 // followed along the way of the honey:

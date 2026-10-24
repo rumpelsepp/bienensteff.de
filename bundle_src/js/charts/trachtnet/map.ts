@@ -1,6 +1,6 @@
 // The map chart: the season gain of every Landkreis of Bayern (see
 // choropleth.ts), from /trachtnet-dump/landkreis-summary.json, written by
-// scripts/src/bstools/cli/summarize_trachtnet.py.
+// bscli's src/bstools/cli/summarize_trachtnet.py.
 
 import { scaleLinear } from "d3-scale";
 import { quantile } from "simple-statistics";
