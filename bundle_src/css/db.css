@@ -44,19 +44,19 @@
   display: none;
 }
 
-.db-view-record .db-record > :not(.db-pending) {
-  display: none;
-}
-
-.db-view-record .db-record > .db-pending {
-  display: block;
-}
-
-/* And the record will be longer than the line that says so: the page
-   keeps the room of a screen for it, so that what follows (the footer)
-   is not drawn under that line first and pushed down after. */
 .db-view-record .db-record {
+  /* And the record will be longer than the line that says so: the page
+     keeps the room of a screen for it, so that what follows (the footer)
+     is not drawn under that line first and pushed down after. */
   min-height: 100dvh;
+
+  > :not(.db-pending) {
+    display: none;
+  }
+
+  > .db-pending {
+    display: block;
+  }
 }
 
 /* What kind of record a page is about, above its number. */
@@ -91,6 +91,13 @@
     gap: 1.25rem;
     margin: 0;
     padding: 0;
+
+    /* One below the other; the gap holds the arrow, with air above and
+       below it. */
+    @media (width < 768px) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
   }
 }
 
@@ -104,15 +111,22 @@
   border-radius: var(--radius-lg);
   background: var(--color-surface);
   box-shadow: var(--shadow-sm);
-}
 
-.db-chain-step + .db-chain-step::before {
-  content: "→";
-  position: absolute;
-  top: 0.7rem;
-  left: -1.05rem;
-  color: var(--color-ink-muted);
-  font-weight: 600;
+  & + &::before {
+    content: "→";
+    position: absolute;
+    top: 0.7rem;
+    left: -1.05rem;
+    color: var(--color-ink-muted);
+    font-weight: 600;
+
+    @media (width < 768px) {
+      content: "↓";
+      top: -1.5rem;
+      left: 0.9rem;
+      line-height: 1;
+    }
+  }
 }
 
 .db-chain-step--current {
@@ -142,19 +156,4 @@
 
 .db-chain-none {
   color: var(--color-ink-muted);
-}
-
-@media (width < 768px) {
-  /* The gap holds the arrow, with air above and below it. */
-  .db-chain ol {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .db-chain-step + .db-chain-step::before {
-    content: "↓";
-    top: -1.5rem;
-    left: 0.9rem;
-    line-height: 1;
-  }
 }
