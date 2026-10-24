@@ -1,8 +1,8 @@
 // The overview of the traceability database, made at build time with the
 // same code the browser runs (bundle_src/js/db/view.ts), so that the page
-// arrives with it instead of growing it after the first paint. Run from
-// the root of the site after the theme's build (`just npm-build`), which
-// empties assets/gen/ first.
+// arrives with it instead of growing it after the first paint. npm runs it
+// after `npm run build` (postbuild in package.json), from the root of the
+// site: after the theme's build, which empties assets/gen/ first.
 //
 // Writes assets/gen/db/overview.json: {renderedOn, html}. layouts/db/
 // overview.html puts the html into #db-app, and the browser keeps it as
