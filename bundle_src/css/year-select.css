@@ -19,11 +19,6 @@
     width: auto;
   }
 
-  /* [hidden] loses against display: flex above. */
-  &[hidden] {
-    display: none;
-  }
-
   .chart-width-toggle {
     margin-left: 0.5rem;
   }

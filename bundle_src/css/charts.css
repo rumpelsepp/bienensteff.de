@@ -16,6 +16,11 @@
   svg {
     display: block;
     overflow: visible;
+
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
   }
 
   text {
@@ -250,11 +255,6 @@
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
-}
-
-.chart svg:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
 }
 
 /* "Strg + Mausrad zum Zoomen", for a moment over the plot. */
