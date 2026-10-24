@@ -24,13 +24,14 @@ runs:
         hugo-version: 'latest'
         extended: true
 
-    - name: Build the assets
-      shell: bash
-      run: npm run build
+    - name: Install just
+      uses: extractions/setup-just@v3
 
+    # The same build as on the desk: the assets (with the prerendered
+    # overview of the database) and then the website, see justfile.
     - name: Build the website
       shell: bash
-      run: hugo build --ignoreCache
+      run: just build
 
     - name: Install SSH key
       uses: shimataro/ssh-key-action@v2
