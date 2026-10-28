@@ -24,7 +24,7 @@ build: npm-build
     {{ hugo }} build --cleanDestinationDir
 
 deploy: build
-    rsync -avz --delete public/ deploy@bienensteff.de:/srv/http/deploy/bienensteff.de
+    rsync -az --delete --info=progress2 --no-inc-recursive public/ deploy@bienensteff.de:/srv/http/deploy/bienensteff.de
 
 update-db:
     {{ bscli }} dump db > assets/db/db.json
