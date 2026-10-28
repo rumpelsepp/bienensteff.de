@@ -23,8 +23,12 @@ bscli := env("BSCLI", if path_exists(bscli_checkout / "pyproject.toml") == "true
 build: npm-build
     {{ hugo }} build --cleanDestinationDir
 
+# A terminal gets one line of overall progress; a CI log ($CI is set
+# there), which cannot redraw a line, gets the list of files instead.
+rsync_output := if env("CI", "") == "" { "--info=progress2 --no-inc-recursive" } else { "-v" }
+
 deploy: build
-    rsync -az --delete --info=progress2 --no-inc-recursive public/ deploy@bienensteff.de:/srv/http/deploy/bienensteff.de
+    rsync -az --delete {{ rsync_output }} public/ deploy@bienensteff.de:/srv/http/deploy/bienensteff.de
 
 update-db:
     {{ bscli }} dump db > assets/db/db.json
