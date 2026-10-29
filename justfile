@@ -28,7 +28,7 @@ build: npm-build
 rsync_output := if env("CI", "") == "" { "--info=progress2 --no-inc-recursive" } else { "-v" }
 
 deploy: build
-    rsync -az --delete {{ rsync_output }} public/ deploy@bienensteff.de:/srv/http/deploy/bienensteff.de
+    rsync -az --delete {{ rsync_output }} public/ deploy@bienensteff.de:bienensteff.de
 
 update-db:
     {{ bscli }} dump db > assets/db/db.json
