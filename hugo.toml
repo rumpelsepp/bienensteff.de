@@ -115,6 +115,11 @@ link = '/kontakt'
   URL = 'https://bzvm.de/'
   weight = 60
 
+  [[menus.footerExternalLinks]]
+  name = 'Stefan Tatschner (beruflich)'
+  URL = 'https://tatschner.eu/'
+  weight = 70
+
   [[menus.footerLegal]]
   name = 'Impressum'
   pageRef = '/impressum'
